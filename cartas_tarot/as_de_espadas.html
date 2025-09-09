@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ás de Espadas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Ás de Espadas</h1>
+            <p class="subtitulo">64 - O Corte da Verdade</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/64OneofSwords.jpg" alt="Ás de Espadas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Clareza</span>
+                        <span class="palavra-chave">Verdade</span>
+                        <span class="palavra-chave">Decisão</span>
+                        <span class="palavra-chave">Intelecto</span>
+                        <span class="palavra-chave">Justiça</span>
+                        <span class="palavra-chave">Conflito</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Ás de Espadas representa a energia ativa e cortante do intelecto, a primeira manifestação da mente em sua busca pela verdade. Este arcano indica o início de um processo de clareza, de discernimento e de tomada de decisões. A sua energia é a do sopro inicial, da ideia que surge e que tem o poder de transformar a realidade. O Ás simboliza a individualidade que se confronta com o caos, um ser que, embora jovem, carrega em si a totalidade do naipe de Espadas. A sua posição como mensageiro ou guerreiro reforça a ideia de um começo, de uma fase de questionamento e de confronto. A ausência de um número fixo no Ás permite que ele transite entre as energias de todos os números, absorvendo e refletindo as suas qualidades. Ele é o portal para o mundo das ideias, o ponto de entrada para a jornada da razão. A sua numerologia, portanto, é a do potencial ilimitado, da página em branco que espera ser preenchida com as experiências do pensamento.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, a numerologia é um pilar fundamental para a compreensão dos arcanos. O Ás de Espadas, embora não possua um número direto como os arcanos numerados, simboliza a energia do número 1, o princípio, a origem, a semente de uma nova ideia ou verdade. Ele indica o primeiro contato com as qualidades do naipe de Espadas, que representa o intelecto, a razão e a comunicação. A sua energia é de um novo ciclo, de um ponto de partida para a exploração mental e a busca pela clareza. O Ás simboliza a individualidade que se lança em um novo caminho de conhecimento, um ser que, embora jovem em sua jornada, carrega em si a totalidade do potencial do naipe de Espadas. A sua posição como mensageiro ou iniciador reforça a ideia de um começo, de uma fase de assimilação e de experimentação no campo das ideias. A ausência de um número fixo no Ás permite que ele transite entre as energias de todos os números, absorvendo e refletindo as suas qualidades, atuando como um catalisador para a manifestação da verdade e do discernimento. Ele é o ponto de partida para a jornada do intelecto, a primeira centelha da razão que ilumina o caminho. A sua numerologia, portanto, é a do potencial ilimitado, da página em branco que espera ser preenchida com as experiências do pensamento e da verdade.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No universo simbólico de Jodorowsky, as cores nos arcanos do Tarot não são meros adornos, mas portadoras de significados que complementam e enriquecem a interpretação de cada carta. Para o Ás de Espadas, a paleta de cores presente em sua representação visual para Jodorowsky revela nuances. O Ás de Espadas está ligado ao elemento ar, por isso sua vestimenta e frequentemente associada a cores que remetem à clareza e ao intelecto, como o azul, o branco e o cinza. Estas cores refletem a natureza mental, a clareza do pensamento e a objetividade que o naipe de Espadas representa. O azul, em particular, é a cor da comunicação, da verdade e da introspecção, qualidades que o Ás de Espadas busca desenvolver em sua jornada. O branco pode representar a neutralidade, a capacidade de observar sem julgamento, e a transição entre o preto (ignorância) e o branco (conhecimento), indicando um processo de amadurecimento intelectual. O cinza, por sua vez, simboliza a dualidade e a capacidade de análise, características inerentes ao naipe de Espadas.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Ás de Espadas, na ótica de Jodorowsky, indicam a capacidade de discernimento aguçado, a habilidade de ver através das ilusões e de questionar verdades estabelecidas. Essa não é uma crítica destrutiva, mas uma busca genuína pela clareza e pela verdade, um desejo de desmantelar estruturas obsoletas para construir algo mais sólido e autêntico. A sua postura indica uma disposição para a lógica e para a razão, sem as defesas ou as complexidades que a experiência pode trazer. O Ás de Espadas, portanto, é um símbolo de renovação intelectual e de um novo começo no domínio do pensamento, onde a objetividade e a curiosidade são as forças motrizes.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Ás de Espadas apresenta aspectos negativos, segundo Jodorowsky, pode indicar uma tendência à crítica excessiva, ao ceticismo destrutivo ou à frieza emocional. A espada que ele empunha, embora seja um instrumento de clareza, pode se tornar um símbolo de isolamento intelectual, de uma mente que se fecha para a intuição e para a emoção. A busca incessante pela verdade pode levar à rigidez, à intolerância e à dificuldade de aceitar as nuances da vida. A sua energia, que deveria ser de discernimento, pode se manifestar como arrogância intelectual, como a necessidade de estar sempre certo e de impor a própria visão. O Ás de Espadas, em seu aspecto negativo, simboliza a mente que se torna uma prisão, que se recusa a se render à sabedoria do coração e à complexidade do mundo. É a energia do corte que se torna autodestrutiva, da verdade que se transforma em dogma, da clareza que se converte em cegueira para outras perspectivas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

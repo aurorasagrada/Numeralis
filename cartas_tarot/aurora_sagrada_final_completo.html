@@ -1,0 +1,2419 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Numerologia - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #d4af37;
+            --cor-secundaria: #1a2b5c;
+            --cor-terciaria: #2c3e50;
+            --cor-fundo: linear-gradient(135deg, #0b1836 0%, #1a2b5c 100%);
+            --cor-texto: #ffffff;
+            --cor-destaque: #f39c12;
+            --subtitulo-verde: #4ecdc4;
+            --sombra-dourada: 0 4px 15px rgba(212, 175, 55, 0.3);
+            --borda-dourada: 2px solid var(--cor-primaria);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: var(--cor-fundo);
+            color: var(--cor-texto);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            border: var(--borda-dourada);
+            border-radius: 15px;
+            background: rgba(26, 43, 92, 0.3);
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        .header::before,
+        .header::after {
+            content: '✧ ☾ ☽ ✧';
+            position: absolute;
+            color: var(--cor-primaria);
+            font-size: 1.2rem;
+            top: 10px;
+        }
+
+        .header::before {
+            left: 20px;
+        }
+
+        .header::after {
+            right: 20px;
+        }
+
+        .header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            color: var(--cor-primaria);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: var(--subtitulo-verde);
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .sistema-selecao {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .sistema-selecao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--cor-primaria);
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .sistema-selecao h2::before {
+            content: '🔮';
+        }
+
+        .sistemas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .sistema-card {
+            background: linear-gradient(135deg, #2c1810 0%, #4a2c2a 100%);
+            border: var(--borda-dourada);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sistema-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .sistema-card:hover::before {
+            opacity: 1;
+        }
+
+        .sistema-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--sombra-dourada);
+        }
+
+        .sistema-card.ativo {
+            background: linear-gradient(135deg, #1a4a3a 0%, #2d5a4a 100%);
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+        }
+
+        .sistema-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--cor-primaria);
+        }
+
+        .sistema-card h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--cor-primaria);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .sistema-card p {
+            color: #cccccc;
+            line-height: 1.5;
+        }
+
+        .formulario {
+            background: rgba(26, 43, 92, 0.3);
+            border: var(--borda-dourada);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .campo-grupo {
+            margin-bottom: 25px;
+        }
+
+        .campo-grupo label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--cor-primaria);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .campo-grupo input,
+        .campo-grupo select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--cor-primaria);
+            border-radius: 8px;
+            background: rgba(26, 43, 92, 0.8);
+            color: var(--cor-texto);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .campo-grupo input:focus,
+        .campo-grupo select:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+            transform: scale(1.02);
+        }
+
+        .opcoes-grupo {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .checkbox-custom {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            padding: 8px 15px;
+            border: 1px solid var(--cor-primaria);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-custom:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        .checkbox-custom input[type="checkbox"] {
+            width: auto;
+            margin: 0;
+        }
+
+        .botoes-grupo {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primario {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, #f39c12 100%);
+            color: #000;
+        }
+
+        .btn-secundario {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: var(--cor-texto);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            color: var(--cor-primaria);
+            font-size: 1.2rem;
+        }
+
+        .loading::before {
+            content: '✨';
+            animation: spin 2s linear infinite;
+            display: inline-block;
+            margin-right: 10px;
+            font-size: 1.5rem;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .resultados {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .secao-resultado {
+            background: rgba(26, 43, 92, 0.3);
+            border: var(--borda-dourada);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .secao-resultado h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--cor-primaria);
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            text-align: center;
+        }
+
+        .interpretacao {
+            background: rgba(44, 62, 80, 0.5);
+            border-left: 4px solid var(--cor-primaria);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .interpretacao.atual {
+            border-left-color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        .interpretacao h4 {
+            color: var(--cor-primaria);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .numero-resultado {
+            background: var(--cor-primaria);
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        /* Estilos para Pirâmide Invertida */
+        .piramide-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .piramide-linha {
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .piramide-numero {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, #f39c12 100%);
+            color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .piramide-numero:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.7);
+        }
+
+        /* Estilos para Sequências Negativas */
+        .sequencia-negativa {
+            background: linear-gradient(135deg, #8b0000 0%, #dc143c 100%);
+            border: 2px solid #ff6b6b;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            color: white;
+        }
+
+        .sequencia-negativa h4 {
+            color: #ffeb3b;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .sequencia-negativa .transformacao {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        /* Estilos para Arcanos Numerológicos */
+        .arcanos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .arcano-card {
+            border: 2px solid var(--cor-primaria);
+            border-radius: 15px;
+            padding: 20px;
+            background: rgba(26, 43, 92, 0.3);
+            backdrop-filter: blur(10px);
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .arcano-card.momento {
+            border-color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        .arcano-card.regente {
+            border-color: #9b59b6;
+            background: rgba(155, 89, 182, 0.1);
+        }
+
+        .arcano-card h4 {
+            color: var(--cor-primaria);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .arcano-numero {
+            font-size: 2rem;
+            font-weight: bold;
+            text-align: center;
+            margin: 10px 0;
+            color: var(--cor-primaria);
+        }
+
+        /* Estilos para Pínaculos */
+        .pinaculo-card {
+            background: rgba(44, 62, 80, 0.5);
+            border: 2px solid var(--cor-primaria);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .pinaculo-card.atual {
+            border-color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        .pinaculo-header h4 {
+            color: var(--cor-primaria);
+            margin-bottom: 10px;
+        }
+
+        .pinaculo-periodo {
+            color: #4ecdc4;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .pinaculo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .pinaculo-secao {
+            background: rgba(26, 43, 92, 0.3);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        .pinaculo-secao h5 {
+            color: var(--cor-primaria);
+            margin-bottom: 10px;
+        }
+
+        .pinaculo-conselho {
+            background: rgba(212, 175, 55, 0.1);
+            border-left: 4px solid var(--cor-primaria);
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+        }
+
+        /* Compatibilidade */
+        .compatibilidade-resultado {
+            text-align: center;
+            padding: 20px;
+            background: rgba(26, 43, 92, 0.3);
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .porcentagem-geral {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--cor-primaria);
+            margin: 20px 0;
+        }
+
+        .scores-detalhados {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .score-item {
+            background: rgba(44, 62, 80, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .score-valor {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--cor-primaria);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .sistemas-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .botoes-grupo {
+                flex-direction: column;
+            }
+            
+            .arcanos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(26, 43, 92, 0.3);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--cor-primaria);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>NUMEROLOGIA</h1>
+            <p>Desvende os mistérios dos números em sua jornada espiritual</p>
+        </div>
+
+        <!-- Seleção de Sistema -->
+        <div class="sistema-selecao">
+            <h2>ESCOLHA SEU SISTEMA NUMEROLÓGICO</h2>
+            <div class="sistemas-grid">
+                <div class="sistema-card ativo" data-sistema="pitagorico">
+                    <div class="sistema-icon">◊</div>
+                    <h3>NUMEROLOGIA<br>PITAGÓRICA</h3>
+                    <p>Sistema clássico focado na personalidade e desenvolvimento pessoal. Baseado nos ensinamentos milenares de Pitágoras.</p>
+                </div>
+                <div class="sistema-card" data-sistema="cabalistico">
+                    <div class="sistema-icon">✦</div>
+                    <h3>NUMEROLOGIA<br>CABALÍSTICA</h3>
+                    <p>Sistema esotérico focado na missão espiritual e karma. Baseado na tradição cabalística ancestral.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulário Principal -->
+        <div class="formulario">
+            <div class="campo-grupo">
+                <label for="nome">✨ Nome Completo</label>
+                <input type="text" id="nome" placeholder="Digite seu nome completo de nascimento">
+            </div>
+
+            <div class="campo-grupo">
+                <label for="dataNascimento">🌟 Data de Nascimento</label>
+                <input type="date" id="dataNascimento">
+            </div>
+
+            <div class="campo-grupo">
+                <label for="dataReferencia">📅 Data de Referência (opcional)</label>
+                <input type="date" id="dataReferencia">
+            </div>
+
+            <div class="opcoes-grupo">
+                <div class="checkbox-custom">
+                    <input type="checkbox" id="numerosMestres" checked>
+                    <label for="numerosMestres">Considerar Números Mestres (11, 22, 33)</label>
+                </div>
+                <div class="checkbox-custom">
+                    <input type="checkbox" id="yComoVogal">
+                    <label for="yComoVogal">Y como Vogal</label>
+                </div>
+            </div>
+
+            <div class="botoes-grupo">
+                <button class="btn btn-primario" onclick="calcularNumerologia()">✨ CALCULAR NUMEROLOGIA</button>
+                <button class="btn btn-secundario" onclick="limparFormulario()">🔄 LIMPAR</button>
+            </div>
+        </div>
+
+        <!-- Loading -->
+        <div class="loading" id="loading">
+            Calculando sua numerologia sagrada...
+        </div>
+
+        <!-- Resultados -->
+        <div class="resultados" id="resultados">
+            <!-- Numerologia Básica -->
+            <div class="secao-resultado">
+                <h3>🔮 NUMEROLOGIA BÁSICA</h3>
+                <div id="numerologiaBasica"></div>
+            </div>
+
+            <!-- Ano Pessoal -->
+            <div class="secao-resultado">
+                <h3>📅 ANO PESSOAL</h3>
+                <div id="anoPessoal"></div>
+            </div>
+
+            <!-- Pirâmide Invertida -->
+            <div class="secao-resultado">
+                <h3>🔺 PIRÂMIDE INVERTIDA</h3>
+                <div id="piramideInvertida"></div>
+            </div>
+
+            <!-- Sequências Negativas -->
+            <div class="secao-resultado">
+                <h3>⚡ SEQUÊNCIAS NEGATIVAS</h3>
+                <div id="sequenciasNegativas"></div>
+            </div>
+
+            <!-- Arcanos Numerológicos -->
+            <div class="secao-resultado">
+                <h3>🃏 ARCANOS NUMEROLÓGICOS</h3>
+                <div id="arcanosNumerologicos"></div>
+            </div>
+
+            <!-- Pínaculos da Vida -->
+            <div class="secao-resultado">
+                <h3>🏔️ PÍNACULOS DA VIDA</h3>
+                <div id="pinaculosVida"></div>
+            </div>
+
+            <!-- Funcionalidades Avançadas -->
+            <div class="secao-resultado">
+                <h3>✨ ANÁLISES AVANÇADAS</h3>
+                <div id="numerosMestresOcultos"></div>
+                <div id="arcanosPositivos"></div>
+                <div id="relacaoIntervalores"></div>
+                <div id="grauAscensao"></div>
+                <div id="numerosHarmonicos"></div>
+                <div id="diasFavoraveis"></div>
+                <div id="tendenciasOcultas"></div>
+            </div>
+        </div>
+
+        <!-- Compatibilidade de Nomes -->
+        <div class="formulario">
+            <h2 style="text-align: center; color: var(--cor-primaria); margin-bottom: 20px;">💖 COMPATIBILIDADE COMPLETA</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <div class="campo-grupo">
+                    <label for="nome1Compatibilidade">👤 Primeiro Nome:</label>
+                    <input type="text" id="nome1Compatibilidade" placeholder="Digite o primeiro nome">
+                </div>
+                <div class="campo-grupo">
+                    <label for="data1Compatibilidade">📅 Data de Nascimento 1:</label>
+                    <input type="date" id="data1Compatibilidade">
+                </div>
+                <div class="campo-grupo">
+                    <label for="nome2Compatibilidade">👤 Segundo Nome:</label>
+                    <input type="text" id="nome2Compatibilidade" placeholder="Digite o segundo nome">
+                </div>
+                <div class="campo-grupo">
+                    <label for="data2Compatibilidade">📅 Data de Nascimento 2:</label>
+                    <input type="date" id="data2Compatibilidade">
+                </div>
+            </div>
+
+            <div class="botoes-grupo">
+                <button class="btn btn-primario" onclick="calcularCompatibilidadeCompleta()">💖 ANALISAR COMPATIBILIDADE</button>
+            </div>
+
+            <div id="resultadoCompatibilidade"></div>
+        </div>
+
+        <!-- Calculadora de Datas Favoráveis -->
+        <div class="formulario">
+            <h2 style="text-align: center; color: var(--cor-primaria); margin-bottom: 20px;">📅 CALCULADORA DE DATAS FAVORÁVEIS</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+                <div class="campo-grupo">
+                    <label for="tipoEvento">🎯 Tipo de Evento:</label>
+                    <select id="tipoEvento">
+                        <option value="casamento">💒 Casamento</option>
+                        <option value="negocios">💼 Negócios</option>
+                        <option value="mudanca">🏠 Mudança</option>
+                        <option value="viagem">✈️ Viagem</option>
+                        <option value="cirurgia">🏥 Cirurgia</option>
+                        <option value="investimento">💰 Investimento</option>
+                        <option value="entrevista">👔 Entrevista</option>
+                        <option value="lancamento">🚀 Lançamento</option>
+                    </select>
+                </div>
+                <div class="campo-grupo">
+                    <label for="mesDesejado">📅 Mês/Ano Desejado:</label>
+                    <select id="mesDesejado">
+                        <option value="0">Janeiro</option>
+                        <option value="1">Fevereiro</option>
+                        <option value="2">Março</option>
+                        <option value="3">Abril</option>
+                        <option value="4">Maio</option>
+                        <option value="5">Junho</option>
+                        <option value="6">Julho</option>
+                        <option value="7">Agosto</option>
+                        <option value="8">Setembro</option>
+                        <option value="9">Outubro</option>
+                        <option value="10">Novembro</option>
+                        <option value="11">Dezembro</option>
+                    </select>
+                </div>
+                <div class="campo-grupo">
+                    <label for="anoDesejado">📅 Ano:</label>
+                    <select id="anoDesejado">
+                        <option value="2024">2024</option>
+                        <option value="2025">2025</option>
+                        <option value="2026">2026</option>
+                        <option value="2027">2027</option>
+                        <option value="2028">2028</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="botoes-grupo">
+                <button class="btn btn-primario" onclick="calcularDatasFavoraveis()">⭐ ENCONTRAR MELHORES DATAS</button>
+            </div>
+
+            <div id="resultadoDatasFavoraveis"></div>
+        </div>
+    </div>
+
+    <script>
+        // Variáveis globais
+        let sistemaAtual = 'pitagorico';
+
+        // Valores das letras para cada sistema
+        const valoresLetras = {
+            pitagorico: {
+                'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+                'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 6, 'P': 7, 'Q': 8, 'R': 9,
+                'S': 1, 'T': 2, 'U': 3, 'V': 4, 'W': 5, 'X': 6, 'Y': 7, 'Z': 8
+            },
+            cabalistico: {
+                'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 8, 'G': 3, 'H': 5, 'I': 1,
+                'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 7, 'P': 8, 'Q': 1, 'R': 2,
+                'S': 3, 'T': 4, 'U': 6, 'V': 6, 'W': 6, 'X': 5, 'Y': 1, 'Z': 7
+            }
+        };
+
+        // Interpretações dos números
+        const interpretacoesNumeros = {
+            1: {
+                nome: "O Pioneiro Universal",
+                positivo: "Liderança natural, independência, iniciativa, originalidade, determinação e capacidade de abrir novos caminhos.",
+                negativo: "Egoísmo, autoritarismo, impaciência, teimosia e tendência ao isolamento por orgulho excessivo.",
+                conselho: "Use sua liderança para inspirar outros, mas lembre-se de que verdadeiro poder vem da humildade e serviço."
+            },
+            2: {
+                nome: "O Diplomata Sensível",
+                positivo: "Cooperação, diplomacia, sensibilidade, intuição, capacidade de mediar conflitos e trabalhar em equipe.",
+                negativo: "Dependência emocional, indecisão, timidez excessiva, tendência à manipulação sutil e falta de autoconfiança.",
+                conselho: "Desenvolva sua autoestima e use sua sensibilidade para curar e harmonizar, não para se vitimizar."
+            },
+            3: {
+                nome: "O Comunicador Criativo",
+                positivo: "Criatividade, comunicação, otimismo, inspiração, talento artístico e capacidade de alegrar outros.",
+                negativo: "Superficialidade, dispersão, exagero, fofoca, irresponsabilidade e tendência à dramatização.",
+                conselho: "Canalize sua criatividade de forma focada e use suas palavras para elevar e inspirar, não para ferir."
+            },
+            4: {
+                nome: "O Construtor Sólido",
+                positivo: "Organização, disciplina, praticidade, confiabilidade, perseverança e capacidade de construir bases sólidas.",
+                negativo: "Rigidez, teimosia, pessimismo, resistência a mudanças e tendência ao excesso de trabalho.",
+                conselho: "Equilibre sua necessidade de estrutura com flexibilidade e lembre-se de que mudança pode ser construtiva."
+            },
+            5: {
+                nome: "O Aventureiro Livre",
+                positivo: "Liberdade, versatilidade, curiosidade, adaptabilidade, magnetismo pessoal e amor pela aventura.",
+                negativo: "Instabilidade, impulsividade, irresponsabilidade, tendência ao vício e dificuldade de compromisso.",
+                conselho: "Use sua liberdade com responsabilidade e canalize sua energia em projetos que beneficiem a humanidade."
+            },
+            6: {
+                nome: "O Cuidador Amoroso",
+                positivo: "Amor, compaixão, responsabilidade familiar, senso de justiça, capacidade de cura e proteção dos outros.",
+                negativo: "Possessividade, interferência excessiva, martírio, tendência ao controle e sacrifício desnecessário.",
+                conselho: "Ame sem possuir e cuide sem controlar. Seu maior serviço é ensinar outros a se amarem."
+            },
+            7: {
+                nome: "O Místico Sábio",
+                positivo: "Sabedoria, espiritualidade, intuição profunda, capacidade de análise, busca pela verdade e conhecimento interior.",
+                negativo: "Isolamento, frieza emocional, ceticismo excessivo, tendência à depressão e dificuldade de relacionamento.",
+                conselho: "Compartilhe sua sabedoria com humildade e use seu conhecimento para elevar a consciência coletiva."
+            },
+            8: {
+                nome: "O Realizador Poderoso",
+                positivo: "Ambição construtiva, capacidade executiva, senso de justiça material, liderança empresarial e realização no mundo físico.",
+                negativo: "Materialismo excessivo, autoritarismo, ganância, tendência à corrupção e obsessão pelo poder.",
+                conselho: "Use seu poder para criar abundância que beneficie todos e lembre-se de que riqueza verdadeira inclui valores espirituais."
+            },
+            9: {
+                nome: "O Humanitário Universal",
+                positivo: "Compaixão universal, sabedoria, generosidade, capacidade de inspirar, visão global e serviço à humanidade.",
+                negativo: "Tendência ao martírio, dispersão emocional, idealismo impraticável e dificuldade de focar em objetivos pessoais.",
+                conselho: "Sirva à humanidade começando por você mesmo. Sua cura pessoal é um presente para o mundo."
+            },
+            11: {
+                nome: "O Inspirador Iluminado",
+                positivo: "Intuição elevada, inspiração, capacidade de iluminar outros, sensibilidade psíquica e missão espiritual elevada.",
+                negativo: "Nervosismo, instabilidade emocional, tendência ao fanatismo, dificuldade de aterramento e excesso de sensibilidade.",
+                conselho: "Equilibre sua sensibilidade espiritual com praticidade terrena e use sua luz para guiar, não para ofuscar."
+            },
+            22: {
+                nome: "O Construtor Universal",
+                positivo: "Capacidade de materializar sonhos elevados, liderança visionária, poder de transformação global e realização de ideais elevados.",
+                negativo: "Pressão excessiva, tendência ao esgotamento, dificuldade de lidar com expectativas e possível megalomania.",
+                conselho: "Use seu poder de construção para criar um mundo melhor, mas lembre-se de cuidar de sua própria base emocional."
+            },
+            33: {
+                nome: "O Mestre Curador",
+                positivo: "Amor incondicional, capacidade de cura em massa, compaixão elevada, sabedoria do coração e serviço desinteressado.",
+                negativo: "Tendência ao sacrifício excessivo, dificuldade de estabelecer limites, possível complexo de salvador e esgotamento emocional.",
+                conselho: "Cure a si mesmo primeiro para poder curar outros de forma equilibrada e sustentável."
+            }
+        };
+
+        // Dados das Sequências Negativas
+        const sequenciasNegativas = {
+            111: {
+                titulo: "🔥 Ego Dominador",
+                subtitulo: "Padrão de Autoritarismo e Controle Excessivo",
+                descricao: "A sequência 111 revela um padrão energético onde o ego assumiu o controle total da personalidade, criando uma necessidade compulsiva de dominar e controlar tudo ao redor. Esta configuração indica uma alma que está experimentando um desequilíbrio profundo entre o poder pessoal e a humildade espiritual.",
+                manifestacoes: [
+                    "Necessidade constante de estar certo em todas as situações",
+                    "Dificuldade extrema em aceitar críticas ou sugestões",
+                    "Tendência a interromper e dominar conversas",
+                    "Impaciência severa com o ritmo dos outros",
+                    "Comportamento autoritário em relacionamentos",
+                    "Resistência em pedir ajuda ou admitir vulnerabilidades"
+                ],
+                raizPsicologica: "Esta sequência geralmente se origina de feridas profundas de abandono ou rejeição na infância, onde a criança desenvolveu uma armadura de controle como mecanismo de proteção. O ego hipertrofiado é uma compensação por sentimentos inconscientes de inadequação e medo de não ser amado por quem realmente é.",
+                consequencias: [
+                    "Isolamento progressivo devido ao comportamento dominador",
+                    "Relacionamentos superficiais baseados em poder, não em amor",
+                    "Estresse crônico por tentar controlar o incontrolável",
+                    "Perda de oportunidades por não aceitar colaboração",
+                    "Desenvolvimento de problemas de saúde relacionados à tensão",
+                    "Ciclos repetitivos de conflito e confronto"
+                ],
+                transformacao: {
+                    praticas: [
+                        "Praticar 10 minutos diários de meditação da humildade",
+                        "Fazer uma pergunta genuína a alguém todos os dias",
+                        "Praticar escuta ativa sem interromper",
+                        "Reconhecer e agradecer uma contribuição alheia diariamente",
+                        "Pedir desculpas quando estiver errado, sem justificativas",
+                        "Dedicar tempo semanal para servir outros sem reconhecimento"
+                    ],
+                    afirmacao: "Eu libero a necessidade de controlar e confio no fluxo divino da vida. Minha verdadeira força vem da humildade e do amor.",
+                    alerta: "Se você se reconhece neste padrão de forma intensa, considere buscar terapia ou aconselhamento espiritual para trabalhar as feridas emocionais subjacentes."
+                }
+            },
+            222: {
+                titulo: "💔 Dependência Emocional",
+                subtitulo: "Padrão de Codependência e Busca por Aprovação",
+                descricao: "A sequência 222 indica um padrão onde a pessoa perdeu completamente a conexão com seu próprio centro emocional, buscando constantemente validação externa para se sentir completa. Esta configuração revela uma alma que ainda não aprendeu a se amar incondicionalmente.",
+                manifestacoes: [
+                    "Necessidade constante de aprovação dos outros",
+                    "Dificuldade em tomar decisões sem consultar múltiplas pessoas",
+                    "Tendência a se anular em relacionamentos",
+                    "Medo paralisante de abandono ou rejeição",
+                    "Comportamento de 'pessoas agradáveis' mesmo quando prejudicial",
+                    "Perda da própria identidade em relacionamentos íntimos"
+                ],
+                raizPsicologica: "Este padrão frequentemente se desenvolve em ambientes familiares onde o amor era condicional, baseado em performance ou comportamento 'adequado'. A criança aprendeu que sua sobrevivência emocional dependia de agradar outros, nunca desenvolvendo um senso sólido de autoestima.",
+                consequencias: [
+                    "Relacionamentos desequilibrados e tóxicos",
+                    "Perda progressiva da identidade pessoal",
+                    "Ansiedade crônica e ataques de pânico",
+                    "Depressão por viver uma vida que não é autêntica",
+                    "Atração por parceiros narcisistas ou controladores",
+                    "Esgotamento emocional por dar mais do que recebe"
+                ],
+                transformacao: {
+                    praticas: [
+                        "Praticar 15 minutos diários de autocompaixão e autocuidado",
+                        "Tomar uma decisão pequena por dia sem consultar ninguém",
+                        "Estabelecer um limite saudável semanalmente",
+                        "Praticar dizer 'não' sem justificativas elaboradas",
+                        "Dedicar tempo diário para atividades que genuinamente gosta",
+                        "Escrever diariamente três qualidades que aprecia em si mesmo"
+                    ],
+                    afirmacao: "Eu sou completo e amado exatamente como sou. Minha aprovação é a única que realmente importa para minha felicidade.",
+                    alerta: "Padrões severos de codependência podem requerer terapia especializada e grupos de apoio para uma recuperação saudável."
+                }
+            },
+            333: {
+                titulo: "🎭 Dispersão Criativa",
+                subtitulo: "Padrão de Superficialidade e Falta de Foco",
+                descricao: "A sequência 333 revela um padrão onde a energia criativa está completamente dispersa, manifestando-se como superficialidade, drama excessivo e incapacidade de aprofundar-se em qualquer área da vida. Esta configuração indica uma alma que está evitando o compromisso com seu verdadeiro potencial.",
+                manifestacoes: [
+                    "Início de múltiplos projetos sem finalizar nenhum",
+                    "Tendência à dramatização excessiva de situações simples",
+                    "Conversas superficiais evitando temas profundos",
+                    "Busca constante por novidades e estímulos externos",
+                    "Dificuldade em manter relacionamentos duradouros",
+                    "Procrastinação crônica em compromissos importantes"
+                ],
+                raizPsicologica: "Este padrão geralmente surge do medo inconsciente do próprio poder criativo e da responsabilidade que vem com ele. A pessoa pode ter sido criticada ou punida por sua expressão autêntica na infância, desenvolvendo uma estratégia de 'voar baixo' para evitar confrontos.",
+                consequencias: [
+                    "Frustração crônica por não realizar o potencial criativo",
+                    "Relacionamentos superficiais e insatisfatórios",
+                    "Instabilidade financeira por falta de foco profissional",
+                    "Sensação de vazio existencial e falta de propósito",
+                    "Perda de credibilidade por não cumprir compromissos",
+                    "Desenvolvimento de vícios como escape da realidade"
+                ],
+                transformacao: {
+                    praticas: [
+                        "Escolher um projeto criativo e dedicar 30 minutos diários a ele",
+                        "Praticar meditação focada para desenvolver concentração",
+                        "Estabelecer metas pequenas e celebrar cada conquista",
+                        "Limitar o número de projetos simultâneos a no máximo três",
+                        "Praticar conversas profundas semanalmente com pessoas próximas",
+                        "Criar um ritual diário de reflexão e planejamento"
+                    ],
+                    afirmacao: "Eu foco minha energia criativa em projetos que realmente importam. Minha profundidade é meu maior presente para o mundo.",
+                    alerta: "Se a dispersão está afetando severamente sua vida profissional ou relacionamentos, considere avaliação para TDAH ou busque coaching especializado."
+                }
+            }
+        };
+
+        // Dados dos Arcanos Numerológicos (exemplo com 3 arcanos)
+        const arcanosNumerologicos = {
+            1: {
+                nome: "O Mago",
+                momento: {
+                    titulo: "🎭 Energia de Manifestação Ativa",
+                    mensagem: "Hoje você está conectado com a energia primordial da criação e manifestação. O Mago representa o poder de transformar pensamentos em realidade através da força de vontade direcionada. Esta é uma energia de início, de colocar projetos em movimento e de assumir o controle consciente de sua vida. Você tem acesso a todas as ferramentas necessárias para criar a realidade que deseja - os quatro elementos estão à sua disposição: a paixão do fogo, a intuição da água, a clareza mental do ar e a praticidade da terra. Use este dia para iniciar algo importante, para tomar decisões corajosas e para afirmar sua individualidade no mundo. Sua capacidade de liderança está amplificada e outros naturalmente se sentirão inspirados por sua energia determinada. É um momento propício para assumir responsabilidades, para ser pioneiro em alguma área e para demonstrar suas habilidades únicas. Confie em sua intuição e aja com determinação, pois o universo está conspirando para apoiar suas iniciativas mais autênticas.",
+                    desafios: "Evitar a dispersão de energia em múltiplas direções sem foco definido. Cuidado com a tendência ao egoísmo ou manipulação dos outros para atingir seus objetivos. A impaciência pode levá-lo a tomar decisões precipitadas - respire fundo antes de agir. Evite a arrogância que pode surgir do sucesso inicial, mantendo-se humilde e receptivo aos conselhos. Não tente controlar todos os aspectos de uma situação, permitindo que outros também contribuam.",
+                    orientacoes: "Concentre sua energia em um objetivo principal hoje, evitando dispersar-se. Pratique a gratidão pelas ferramentas e talentos que possui. Seja um líder inspirador, não um ditador autoritário. Use sua influência para elevar outros, não apenas para benefício próprio. Mantenha-se aterrado através de práticas como meditação ou contato com a natureza."
+                },
+                regente: {
+                    titulo: "👑 Missão do Líder Nato",
+                    mensagem: "Sua alma escolheu encarnar sob a regência do Mago para cumprir uma missão de liderança pioneira nesta existência. Você veio ao mundo para ser um iniciador, alguém que abre caminhos onde outros veem apenas obstáculos. Sua essência carrega a centelha divina da criação consciente - você tem o poder inato de materializar ideias no plano físico através da força de vontade disciplinada. Esta é uma encarnação de grande responsabilidade, pois você está aqui para demonstrar o poder da mente humana quando alinhada com propósitos elevados. Sua missão envolve ensinar outros sobre autoconfiança, determinação e a capacidade que cada ser humano tem de ser o mago de sua própria vida. Você é um canal natural para energias de transformação e renovação, capaz de inspirar mudanças significativas em sua comunidade. Ao longo da vida, você será testado em sua capacidade de usar o poder de forma ética e responsável. Sua jornada é sobre aprender a equilibrar ambição pessoal com serviço ao bem maior, descobrindo que o verdadeiro poder vem da humildade e do amor.",
+                    desafios: "Aprender a usar seu poder de forma ética e responsável, evitando a tentação de manipular outros. Lidar com a impaciência quando outros não acompanham seu ritmo acelerado de pensamento e ação. Superar a tendência ao isolamento que pode surgir quando você se sente incompreendido. Equilibrar sua necessidade de independência com a importância dos relacionamentos e colaboração. A tendência ao perfeccionismo excessivo pode paralisar sua capacidade de agir - aprenda que 'feito é melhor que perfeito'.",
+                    propositos: "Desenvolver e demonstrar liderança consciente e inspiradora em sua área de atuação. Ensinar outros sobre o poder da manifestação consciente e da determinação focada. Ser um pioneiro em algum campo, abrindo caminhos para que outros possam seguir. Equilibrar poder pessoal com responsabilidade social, usando sua influência para o bem comum."
+                }
+            },
+            2: {
+                nome: "A Sacerdotisa",
+                momento: {
+                    titulo: "🌙 Energia de Intuição Profunda",
+                    mensagem: "Este é um momento para ouvir sua voz interior e confiar na sabedoria que emerge do silêncio. A Sacerdotisa representa o acesso aos mistérios ocultos da vida, à intuição feminina e à sabedoria ancestral que reside em seu inconsciente. Hoje, sua sensibilidade psíquica está amplificada e você pode receber insights importantes através de sonhos, sincronicidades ou momentos de contemplação silenciosa. É um dia para honrar o aspecto receptivo de sua natureza, permitindo que as respostas venham até você ao invés de forçar soluções. Sua capacidade de compreender as motivações ocultas das pessoas está aguçada, tornando este um momento excelente para aconselhamento, cura ou trabalho terapêutico. A energia feminina divina flui através de você, trazendo compaixão, compreensão e uma perspectiva mais profunda sobre as situações da vida. Use este dia para meditar, refletir e conectar-se com sua sabedoria interior. Confie nos pressentimentos e nas primeiras impressões, pois elas carregam mensagens importantes do seu eu superior.",
+                    desafios: "Evitar o isolamento excessivo que pode levar à melancolia ou depressão. Cuidado com a tendência a absorver as emoções dos outros como se fossem suas. Não permita que a passividade se torne inação - há momentos que requerem ação decisiva. Evite usar sua intuição para manipular ou controlar situações de forma sutil. Mantenha-se aterrada para não se perder em fantasias ou ilusões.",
+                    orientacoes: "Dedique tempo para práticas contemplativas como meditação ou journaling. Confie em sua primeira impressão sobre pessoas e situações. Crie espaços sagrados em sua casa para reflexão e conexão espiritual. Pratique a escuta ativa e compassiva com outros. Use sua sensibilidade para curar e orientar, não para se vitimizar."
+                },
+                regente: {
+                    titulo: "🌟 Missão da Guardiã da Sabedoria",
+                    mensagem: "Sua alma carrega a missão de preservar e transmitir conhecimentos ancestrais e sabedoria espiritual para as futuras gerações. Você é uma ponte entre o mundo visível e invisível, capaz de acessar informações que estão além do alcance da mente racional comum. Sua sensibilidade psíquica não é um fardo, mas um dom sagrado que deve ser desenvolvido e usado para o bem da humanidade. Você veio para ensinar sobre a importância da intuição, da contemplação e da conexão com o divino feminino. Sua missão envolve ajudar outros a desenvolverem sua própria intuição e a confiarem na sabedoria interior. Ao longo da vida, você será chamada a ser uma conselheira, uma curadora ou uma guia espiritual para aqueles que buscam compreensão mais profunda. Sua jornada é sobre aprender a equilibrar receptividade com ação, sensibilidade com força, e sabedoria interior com aplicação prática no mundo.",
+                    desafios: "Aprender a estabelecer limites energéticos para não absorver as emoções negativas dos outros. Superar a tendência ao isolamento excessivo que pode levar à desconexão social. Equilibrar sua natureza contemplativa com a necessidade de ação no mundo físico. Lidar com incompreensões de pessoas que não valorizam a intuição e a espiritualidade. Evitar o uso da sensibilidade como desculpa para evitar responsabilidades práticas.",
+                    propositos: "Desenvolver e ensinar sobre intuição, espiritualidade e sabedoria interior. Ser uma ponte entre o mundo espiritual e material, ajudando outros na jornada de autoconhecimento. Preservar e transmitir tradições espirituais e conhecimentos ancestrais. Usar sua sensibilidade para cura emocional e orientação espiritual de outros."
+                }
+            },
+            3: {
+                nome: "A Imperatriz",
+                momento: {
+                    titulo: "🌸 Energia de Criação Abundante",
+                    mensagem: "Sua criatividade está florescendo magnificamente hoje, como um jardim em plena primavera. A Imperatriz representa a força criativa feminina em sua expressão mais abundante e generosa. Este é um momento de fertilidade em todos os aspectos da vida - ideias, projetos, relacionamentos e manifestações materiais. Sua capacidade de nutrir e fazer crescer está amplificada, seja cuidando de pessoas, projetos ou sonhos. A beleza, a arte e a expressão criativa fluem naturalmente através de você hoje. É um dia excelente para atividades artísticas, decoração, culinária, jardinagem ou qualquer forma de criação que traga beleza ao mundo. Sua energia maternal está ativada, tornando você um ímã para pessoas que precisam de cuidado e orientação. A abundância está disponível para você em múltiplas formas - permita-se receber e também compartilhar generosamente. Sua sensualidade e conexão com a natureza estão heightened, trazendo uma sensação de plenitude e satisfação. Use este dia para celebrar a vida em todas as suas formas e para criar algo belo que perdure.",
+                    desafios: "Evitar o excesso de indulgência em prazeres materiais que podem levar ao desequilíbrio. Cuidado com a tendência à possessividade em relacionamentos ou com bens materiais. Não permita que o desejo de controlar o crescimento dos outros sufoque sua independência. Evite a preguiça ou complacência que pode surgir quando tudo está fluindo facilmente. Mantenha-se consciente para não gastar energia criativa em projetos sem propósito real.",
+                    orientacoes: "Dedique tempo para atividades criativas que nutram sua alma. Conecte-se com a natureza através de caminhadas ou jardinagem. Pratique a generosidade consciente, dando e recebendo em equilíbrio. Cuide de seu corpo com carinho, honrando-o como templo sagrado. Crie beleza em seu ambiente, tornando-o um santuário de paz e inspiração."
+                },
+                regente: {
+                    titulo: "👑 Missão da Criadora Abundante",
+                    mensagem: "Você nasceu para ser um canal de abundância criativa no mundo, trazendo beleza, nutrição e crescimento para tudo que toca. Sua missão é demonstrar que a vida pode ser vivida com prazer, beleza e abundância quando estamos alinhados com os ciclos naturais da criação. Você é uma manifestação da Mãe Divina na Terra, capaz de nutrir e fazer florescer não apenas pessoas, mas também ideias, projetos e comunidades inteiras. Sua energia criativa é um dom sagrado que deve ser usado para embelezar e enriquecer o mundo. Ao longo da vida, você será chamada a ser uma criadora, uma nutridora, uma artista ou uma empresária que traz abundância para muitos. Sua jornada envolve aprender a equilibrar dar e receber, criação e descanso, abundância material e riqueza espiritual. Você está aqui para ensinar que prosperidade verdadeira inclui beleza, amor, criatividade e conexão com a natureza.",
+                    desafios: "Aprender a estabelecer limites saudáveis para não se esgotar cuidando excessivamente dos outros. Equilibrar o desejo de abundância material com valores espirituais e éticos. Superar a tendência à possessividade ou ciúme em relacionamentos. Lidar com períodos de escassez ou dificuldade sem perder a fé na abundância. Evitar o uso da criatividade apenas para ganho pessoal, lembrando-se do propósito maior.",
+                    propositos: "Criar abundância e beleza no mundo através de seus talentos e dons naturais. Nutrir e apoiar o crescimento de outros, especialmente mulheres e crianças. Demonstrar que prosperidade e espiritualidade podem coexistir harmoniosamente. Usar sua criatividade para resolver problemas sociais e ambientais, contribuindo para um mundo mais belo e sustentável."
+                }
+            }
+        };
+
+        // Função para obter valor da letra
+        function valorLetra(letra) {
+            return valoresLetras[sistemaAtual][letra.toUpperCase()] || 0;
+        }
+
+        // Função para reduzir número
+        function reduzirNumero(numero, manterMestres = false) {
+            if (manterMestres && document.getElementById('numerosMestres').checked) {
+                if (numero === 11 || numero === 22 || numero === 33) {
+                    return numero;
+                }
+            }
+            
+            while (numero > 9) {
+                numero = numero.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+                if (manterMestres && document.getElementById('numerosMestres').checked) {
+                    if (numero === 11 || numero === 22 || numero === 33) {
+                        return numero;
+                    }
+                }
+            }
+            return numero;
+        }
+
+        // Função para somar letras
+        function somarLetras(nome, tipo) {
+            const yComoVogal = document.getElementById('yComoVogal').checked;
+            const vogais = yComoVogal ? 'AEIOUÝ' : 'AEIOU';
+            const nomeUpper = nome.toUpperCase().replace(/[^A-Z]/g, '');
+            
+            let soma = 0;
+            for (let letra of nomeUpper) {
+                const isVogal = vogais.includes(letra);
+                if (tipo === 'vogais' && isVogal) {
+                    soma += valorLetra(letra);
+                } else if (tipo === 'consoantes' && !isVogal) {
+                    soma += valorLetra(letra);
+                } else if (tipo === 'todas') {
+                    soma += valorLetra(letra);
+                }
+            }
+            return soma;
+        }
+
+        // Função para calcular idade
+        function calcularIdade(dataNascimento, dataReferencia = null) {
+            const nascimento = new Date(dataNascimento);
+            const referencia = dataReferencia ? new Date(dataReferencia) : new Date();
+            
+            let idade = referencia.getFullYear() - nascimento.getFullYear();
+            const mesAtual = referencia.getMonth();
+            const diaAtual = referencia.getDate();
+            const mesNascimento = nascimento.getMonth();
+            const diaNascimento = nascimento.getDate();
+            
+            if (mesAtual < mesNascimento || (mesAtual === mesNascimento && diaAtual < diaNascimento)) {
+                idade--;
+            }
+            
+            return idade;
+        }
+
+        // Função para calcular arcano regente
+        function calcularArcanoRegente(idade) {
+            return ((idade % 22) || 22);
+        }
+
+        // Função para criar pirâmide invertida
+        function criarPiramideInvertida(nome) {
+            const nomeNumeros = nome.toUpperCase().replace(/[^A-Z]/g, '').split('').map(letra => valorLetra(letra));
+            let piramide = [nomeNumeros];
+            
+            while (piramide[piramide.length - 1].length > 1) {
+                const linhaAtual = piramide[piramide.length - 1];
+                const novaLinha = [];
+                
+                for (let i = 0; i < linhaAtual.length - 1; i++) {
+                    const soma = linhaAtual[i] + linhaAtual[i + 1];
+                    novaLinha.push(reduzirNumero(soma));
+                }
+                
+                piramide.push(novaLinha);
+            }
+            
+            return piramide;
+        }
+
+        // Função para detectar sequências negativas
+        function detectarSequenciasNegativas(dadosCompletos) {
+            const sequenciasEncontradas = [];
+            
+            // Verificar se há padrões repetitivos nos números principais
+            const numeros = [
+                dadosCompletos.motivacaoInterior,
+                dadosCompletos.euExterior,
+                dadosCompletos.expressao,
+                dadosCompletos.caminhoDestino
+            ];
+            
+            // Simular detecção de sequências (exemplo)
+            const numerosString = numeros.join('');
+            
+            Object.keys(sequenciasNegativas).forEach(seq => {
+                if (numerosString.includes(seq[0].repeat(2))) {
+                    sequenciasEncontradas.push(seq);
+                }
+            });
+            
+            return sequenciasEncontradas;
+        }
+
+        // Função para calcular arcanos numerológicos
+        function calcularArcanosNumerologicos(nome, dataNascimento) {
+            const hoje = new Date();
+            const nascimento = new Date(dataNascimento);
+            
+            // Arcano de Momento (data atual)
+            const arcanoDia = reduzirNumero(hoje.getDate() + (hoje.getMonth() + 1) + hoje.getFullYear());
+            const arcanoMomento = ((arcanoDia - 1) % 22) + 1;
+            
+            // Arcano Regente (data de nascimento)
+            const arcanoNascimento = reduzirNumero(nascimento.getDate() + (nascimento.getMonth() + 1) + nascimento.getFullYear());
+            const arcanoRegente = ((arcanoNascimento - 1) % 22) + 1;
+            
+            // Arcano do Ano (ano atual + data nascimento)
+            const arcanoAno = reduzirNumero(nascimento.getDate() + (nascimento.getMonth() + 1) + hoje.getFullYear());
+            const arcanoAnoFinal = ((arcanoAno - 1) % 22) + 1;
+            
+            return {
+                momento: arcanoMomento,
+                regente: arcanoRegente,
+                ano: arcanoAnoFinal
+            };
+        }
+
+        // Função para exibir pirâmide invertida
+        function exibirPiramideInvertida(piramide) {
+            const container = document.getElementById('piramideInvertida');
+            
+            let html = `
+                <div style="margin-bottom: 25px; text-align: center;">
+                    <p style="color: var(--subtitulo-verde); font-size: 1.1rem; line-height: 1.6;">
+                        A Pirâmide Invertida revela a jornada espiritual através da redução numerológica do seu nome. 
+                        Cada número representa uma qualidade da alma em desenvolvimento.
+                    </p>
+                </div>
+                <div class="piramide-container">
+            `;
+            
+            piramide.forEach((linha, index) => {
+                html += '<div class="piramide-linha">';
+                linha.forEach(numero => {
+                    html += `<div class="piramide-numero" title="Número ${numero}">${numero}</div>`;
+                });
+                html += '</div>';
+            });
+            
+            html += '</div>';
+            
+            // Interpretação do número final
+            const numeroFinal = piramide[piramide.length - 1][0];
+            const interpretacao = interpretacoesNumeros[numeroFinal];
+            
+            html += `
+                <div class="interpretacao">
+                    <h4>🔮 Essência Espiritual: ${numeroFinal} - ${interpretacao.nome}</h4>
+                    <p><strong>Qualidades da Alma:</strong> ${interpretacao.positivo}</p>
+                    <p><strong>Desafios Evolutivos:</strong> ${interpretacao.negativo}</p>
+                    <p><strong>Missão Espiritual:</strong> ${interpretacao.conselho}</p>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // Função para exibir sequências negativas
+        function exibirSequenciasNegativas(sequenciasDetectadas) {
+            const container = document.getElementById('sequenciasNegativas');
+            
+            if (sequenciasDetectadas.length === 0) {
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 20px; color: var(--subtitulo-verde);">
+                        <p>✨ Excelente! Não foram detectadas sequências negativas em seu mapa numerológico atual.</p>
+                        <p>Isso indica um bom equilíbrio energético em sua configuração numerológica.</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            
+            sequenciasDetectadas.forEach(seq => {
+                const dados = sequenciasNegativas[seq];
+                if (dados) {
+                    html += `
+                        <div class="sequencia-negativa">
+                            <h4>${dados.titulo}</h4>
+                            <p style="font-style: italic; margin-bottom: 15px;">${dados.subtitulo}</p>
+                            
+                            <p style="margin-bottom: 15px; line-height: 1.7;">${dados.descricao}</p>
+                            
+                            <h5 style="color: #ffeb3b; margin: 15px 0 10px 0;">🎯 Manifestações Principais:</h5>
+                            <ul style="margin-bottom: 15px;">
+                                ${dados.manifestacoes.map(m => `<li>${m}</li>`).join('')}
+                            </ul>
+                            
+                            <h5 style="color: #ffeb3b; margin: 15px 0 10px 0;">🧠 Raiz Psicológica:</h5>
+                            <p style="margin-bottom: 15px; line-height: 1.7;">${dados.raizPsicologica}</p>
+                            
+                            <h5 style="color: #ffeb3b; margin: 15px 0 10px 0;">⚠️ Possíveis Consequências:</h5>
+                            <ul style="margin-bottom: 15px;">
+                                ${dados.consequencias.map(c => `<li>${c}</li>`).join('')}
+                            </ul>
+                            
+                            <div class="transformacao">
+                                <h5 style="color: #4ecdc4; margin-bottom: 15px;">🌟 Caminho de Transformação</h5>
+                                
+                                <h6 style="color: #fff; margin: 10px 0 5px 0;">Práticas Diárias:</h6>
+                                <ul style="margin-bottom: 15px;">
+                                    ${dados.transformacao.praticas.map(p => `<li>${p}</li>`).join('')}
+                                </ul>
+                                
+                                <h6 style="color: #fff; margin: 10px 0 5px 0;">Afirmação Transformadora:</h6>
+                                <p style="font-style: italic; margin-bottom: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 5px;">
+                                    "${dados.transformacao.afirmacao}"
+                                </p>
+                                
+                                <div style="background: rgba(255,235,59,0.2); padding: 10px; border-radius: 5px; border-left: 4px solid #ffeb3b;">
+                                    <strong>⚠️ Importante:</strong> ${dados.transformacao.alerta}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Função para exibir arcanos numerológicos
+        function exibirArcanosNumerologicos(arcanos) {
+            const container = document.getElementById('arcanosNumerologicos');
+            
+            let html = `
+                <div style="margin-bottom: 25px; text-align: center;">
+                    <p style="color: var(--subtitulo-verde); font-size: 1.1rem; line-height: 1.6;">
+                        Os Arcanos Numerológicos revelam as energias espirituais que influenciam sua jornada atual.
+                    </p>
+                </div>
+                <div class="arcanos-grid">
+            `;
+            
+            // Arcano de Momento
+            const dadosMomento = arcanosNumerologicos[arcanos.momento];
+            if (dadosMomento) {
+                html += `
+                    <div class="arcano-card momento">
+                        <h4>🌟 Arcano de Momento</h4>
+                        <div class="arcano-numero">${arcanos.momento}</div>
+                        <h5 style="text-align: center; margin-bottom: 15px;">${dadosMomento.nome}</h5>
+                        
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <h6 style="color: #4ecdc4; margin: 15px 0 10px 0;">${dadosMomento.momento.titulo}</h6>
+                            <p style="margin-bottom: 15px; line-height: 1.6; text-align: justify;">${dadosMomento.momento.mensagem}</p>
+                            
+                            <h6 style="color: #ff6b6b; margin: 15px 0 10px 0;">⚠️ Desafios do Dia</h6>
+                            <p style="margin-bottom: 15px; line-height: 1.6; text-align: justify;">${dadosMomento.momento.desafios}</p>
+                            
+                            <h6 style="color: #4ecdc4; margin: 15px 0 10px 0;">💡 Orientações Práticas</h6>
+                            <p style="line-height: 1.6; text-align: justify;">${dadosMomento.momento.orientacoes}</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Arcano Regente
+            const dadosRegente = arcanosNumerologicos[arcanos.regente];
+            if (dadosRegente) {
+                html += `
+                    <div class="arcano-card regente">
+                        <h4>👑 Arcano Regente</h4>
+                        <div class="arcano-numero">${arcanos.regente}</div>
+                        <h5 style="text-align: center; margin-bottom: 15px;">${dadosRegente.nome}</h5>
+                        
+                        <div style="max-height: 400px; overflow-y: auto;">
+                            <h6 style="color: #9b59b6; margin: 15px 0 10px 0;">${dadosRegente.regente.titulo}</h6>
+                            <p style="margin-bottom: 15px; line-height: 1.6; text-align: justify;">${dadosRegente.regente.mensagem}</p>
+                            
+                            <h6 style="color: #ff6b6b; margin: 15px 0 10px 0;">🎯 Desafios da Missão</h6>
+                            <p style="margin-bottom: 15px; line-height: 1.6; text-align: justify;">${dadosRegente.regente.desafios}</p>
+                            
+                            <h6 style="color: #4ecdc4; margin: 15px 0 10px 0;">🌟 Propósitos de Vida</h6>
+                            <p style="line-height: 1.6; text-align: justify;">${dadosRegente.regente.propositos}</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            html += '</div>';
+            container.innerHTML = html;
+        }
+
+        // Função para exibir pínaculos detalhados
+        function exibirPinaculosDetalhados(pinaculos, idade) {
+            const container = document.getElementById('pinaculosVida');
+            
+            const pinaculosInfo = [
+                { numero: pinaculos[0], periodo: "0-36 anos", nome: "Formação e Desenvolvimento", ativo: idade <= 36 },
+                { numero: pinaculos[1], periodo: "37-45 anos", nome: "Manifestação Profissional", ativo: idade >= 37 && idade <= 45 },
+                { numero: pinaculos[2], periodo: "46-54 anos", nome: "Maturidade e Maestria", ativo: idade >= 46 && idade <= 54 },
+                { numero: pinaculos[3], periodo: "55+ anos", nome: "Legado e Sabedoria", ativo: idade >= 55 }
+            ];
+            
+            const pinaculosDetalhados = {
+                1: {
+                    nome: "Pínaculo da Liderança Pioneira",
+                    descricao: "Este pínaculo traz a energia da iniciativa, independência e liderança natural.",
+                    desafios: ["Desenvolver autoconfiança", "Superar a impaciência", "Equilibrar ego e humildade", "Aprender a liderar sem dominar"],
+                    oportunidades: ["Iniciar projetos inovadores", "Desenvolver liderança natural", "Conquistar independência", "Abrir novos caminhos"],
+                    conselho: "Use este período para desenvolver sua individualidade e capacidade de liderança, mas lembre-se de que verdadeiro poder vem da sabedoria e compaixão."
+                },
+                2: {
+                    nome: "Pínaculo da Cooperação e Diplomacia",
+                    descricao: "Este pínaculo enfatiza relacionamentos, cooperação e desenvolvimento da sensibilidade emocional.",
+                    desafios: ["Superar a timidez excessiva", "Evitar a dependência emocional", "Desenvolver autoestima", "Equilibrar dar e receber"],
+                    oportunidades: ["Construir relacionamentos duradouros", "Desenvolver habilidades diplomáticas", "Cultivar a intuição", "Trabalhar em equipe efetivamente"],
+                    conselho: "Este é um período para aprender sobre relacionamentos e cooperação, desenvolvendo sua sensibilidade sem perder sua identidade pessoal."
+                },
+                3: {
+                    nome: "Pínaculo da Expressão Criativa",
+                    descricao: "Este pínaculo desperta a criatividade, comunicação e expressão artística em todas as suas formas.",
+                    desafios: ["Focar a energia criativa", "Evitar a superficialidade", "Desenvolver disciplina artística", "Superar a autocrítica excessiva"],
+                    oportunidades: ["Expressar talentos criativos", "Desenvolver habilidades comunicativas", "Inspirar outros através da arte", "Encontrar alegria na criação"],
+                    conselho: "Use este período para explorar e desenvolver seus talentos criativos, mas mantenha o foco para não dispersar sua energia em muitas direções."
+                }
+            };
+            
+            let html = `
+                <div style="margin-bottom: 25px; text-align: center;">
+                    <p style="color: var(--subtitulo-verde); font-size: 1.1rem; line-height: 1.6;">
+                        Os Pínaculos da Vida representam as principais lições e oportunidades de cada fase da existência. 
+                        Sua idade atual é ${idade} anos.
+                    </p>
+                </div>
+            `;
+            
+            pinaculosInfo.forEach((pinaculo, index) => {
+                const detalhes = pinaculosDetalhados[pinaculo.numero] || pinaculosDetalhados[1];
+                const isAtivo = pinaculo.ativo;
+                
+                html += `
+                    <div class="pinaculo-card ${isAtivo ? 'atual' : ''}">
+                        <div class="pinaculo-header">
+                            <h4>${index + 1}º Pínaculo: ${pinaculo.numero} - ${detalhes.nome}</h4>
+                            <div class="pinaculo-periodo">${pinaculo.periodo} - ${pinaculo.nome} ${isAtivo ? '⭐ ATUAL' : ''}</div>
+                        </div>
+                        
+                        <div class="pinaculo-conteudo">
+                            <p style="margin-bottom: 20px; line-height: 1.7; text-align: justify;">
+                                ${detalhes.descricao}
+                            </p>
+                            
+                            <div class="pinaculo-grid">
+                                <div class="pinaculo-secao desafios">
+                                    <h5>🎯 Desafios Principais</h5>
+                                    <ul>
+                                        ${detalhes.desafios.map(d => `<li>${d}</li>`).join('')}
+                                    </ul>
+                                </div>
+                                
+                                <div class="pinaculo-secao oportunidades">
+                                    <h5>🌟 Oportunidades Únicas</h5>
+                                    <ul>
+                                        ${detalhes.oportunidades.map(o => `<li>${o}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="pinaculo-conselho">
+                                <h5>💫 Conselho Sagrado</h5>
+                                <p>${detalhes.conselho}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Função principal de cálculo
+        function calcularNumerologia() {
+            const nome = document.getElementById('nome').value.trim();
+            const dataNascimento = document.getElementById('dataNascimento').value;
+            const dataReferencia = document.getElementById('dataReferencia').value;
+            
+            if (!nome || !dataNascimento) {
+                alert('Por favor, preencha o nome e a data de nascimento.');
+                return;
+            }
+            
+            // Mostrar loading
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('resultados').style.display = 'none';
+            
+            setTimeout(() => {
+                // Cálculos básicos
+                const motivacaoInterior = reduzirNumero(somarLetras(nome, 'vogais'), true);
+                const euExterior = reduzirNumero(somarLetras(nome, 'consoantes'), true);
+                const expressao = reduzirNumero(somarLetras(nome, 'todas'), true);
+                
+                // Data de nascimento
+                const nascimento = new Date(dataNascimento);
+                const dia = nascimento.getDate();
+                const mes = nascimento.getMonth() + 1;
+                const ano = nascimento.getFullYear();
+                
+                const caminhoDestino = reduzirNumero(dia + mes + ano, true);
+                
+                // Ano pessoal
+                const anoReferencia = dataReferencia ? new Date(dataReferencia).getFullYear() : new Date().getFullYear();
+                const anoPessoal = reduzirNumero(dia + mes + anoReferencia);
+                
+                // Idade e Arcanos
+                const idade = calcularIdade(dataNascimento, dataReferencia);
+                const arcanoAtual = calcularArcanoRegente(idade);
+                const arcanoAnterior = calcularArcanoRegente(idade - 1);
+                const arcanoProximo = calcularArcanoRegente(idade + 1);
+                
+                // Pirâmide Invertida
+                const piramide = criarPiramideInvertida(nome);
+                
+                // Pínaculos
+                const pinaculo1 = reduzirNumero(dia + mes);
+                const pinaculo2 = reduzirNumero(dia + ano);
+                const pinaculo3 = reduzirNumero(pinaculo1 + pinaculo2);
+                const pinaculo4 = reduzirNumero(mes + ano);
+                
+                // Dados para as novas funcionalidades
+                const dadosCompletos = {
+                    motivacaoInterior: motivacaoInterior,
+                    euExterior: euExterior,
+                    expressao: expressao,
+                    caminhoDestino: caminhoDestino,
+                    anoPessoal: anoPessoal,
+                    idade: idade,
+                    arcanoAtual: arcanoAtual,
+                    arcanoAnterior: arcanoAnterior,
+                    arcanoProximo: arcanoProximo,
+                    pinaculos: [pinaculo1, pinaculo2, pinaculo3, pinaculo4]
+                };
+                
+                // Exibir resultados básicos
+                exibirResultados(dadosCompletos);
+                
+                // NOVAS FUNCIONALIDADES IMPLEMENTADAS
+                // 1. Pirâmide Invertida
+                exibirPiramideInvertida(piramide);
+                
+                // 2. Sequências Negativas Detalhadas
+                const sequenciasDetectadas = detectarSequenciasNegativas(dadosCompletos);
+                exibirSequenciasNegativas(sequenciasDetectadas);
+                
+                // 3. Arcanos Numerológicos (Momento, Regente, Ano)
+                const arcanosCalculados = calcularArcanosNumerologicos(nome, dataNascimento);
+                exibirArcanosNumerologicos(arcanosCalculados);
+                
+                // 4. Pínaculos da Vida Detalhados
+                exibirPinaculosDetalhados([pinaculo1, pinaculo2, pinaculo3, pinaculo4], idade);
+                
+                // Funcionalidades avançadas (simplificadas)
+                exibirFuncionalidadesAvancadas(dadosCompletos);
+                
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('resultados').style.display = 'block';
+                document.getElementById('resultados').scrollIntoView({ behavior: 'smooth' });
+            }, 2000);
+        }
+
+        // Função para exibir resultados básicos
+        function exibirResultados(dados) {
+            // Numerologia Básica
+            const numerologiaBasica = document.getElementById('numerologiaBasica');
+            numerologiaBasica.innerHTML = `
+                <div class="interpretacao">
+                    <h4>MO (Motivação Interior): <span class="numero-resultado">${dados.motivacaoInterior}</span></h4>
+                    <p><strong>${interpretacoesNumeros[dados.motivacaoInterior].nome}</strong></p>
+                    <p><strong>Aspectos Positivos:</strong> ${interpretacoesNumeros[dados.motivacaoInterior].positivo}</p>
+                    <p><strong>Desafios:</strong> ${interpretacoesNumeros[dados.motivacaoInterior].negativo}</p>
+                    <p><strong>Conselho Sagrado:</strong> ${interpretacoesNumeros[dados.motivacaoInterior].conselho}</p>
+                </div>
+                
+                <div class="interpretacao">
+                    <h4>EU (Eu Exterior): <span class="numero-resultado">${dados.euExterior}</span></h4>
+                    <p><strong>${interpretacoesNumeros[dados.euExterior].nome}</strong></p>
+                    <p><strong>Aspectos Positivos:</strong> ${interpretacoesNumeros[dados.euExterior].positivo}</p>
+                    <p><strong>Desafios:</strong> ${interpretacoesNumeros[dados.euExterior].negativo}</p>
+                    <p><strong>Conselho Sagrado:</strong> ${interpretacoesNumeros[dados.euExterior].conselho}</p>
+                </div>
+                
+                <div class="interpretacao">
+                    <h4>EX (Expressão): <span class="numero-resultado">${dados.expressao}</span></h4>
+                    <p><strong>${interpretacoesNumeros[dados.expressao].nome}</strong></p>
+                    <p><strong>Aspectos Positivos:</strong> ${interpretacoesNumeros[dados.expressao].positivo}</p>
+                    <p><strong>Desafios:</strong> ${interpretacoesNumeros[dados.expressao].negativo}</p>
+                    <p><strong>Conselho Sagrado:</strong> ${interpretacoesNumeros[dados.expressao].conselho}</p>
+                </div>
+                
+                <div class="interpretacao">
+                    <h4>CD (Caminho do Destino): <span class="numero-resultado">${dados.caminhoDestino}</span></h4>
+                    <p><strong>${interpretacoesNumeros[dados.caminhoDestino].nome}</strong></p>
+                    <p><strong>Aspectos Positivos:</strong> ${interpretacoesNumeros[dados.caminhoDestino].positivo}</p>
+                    <p><strong>Desafios:</strong> ${interpretacoesNumeros[dados.caminhoDestino].negativo}</p>
+                    <p><strong>Conselho Sagrado:</strong> ${interpretacoesNumeros[dados.caminhoDestino].conselho}</p>
+                </div>
+            `;
+            
+            // Ano Pessoal
+            const anoPessoal = document.getElementById('anoPessoal');
+            const anoReferencia = document.getElementById('dataReferencia').value ? 
+                new Date(document.getElementById('dataReferencia').value).getFullYear() : 
+                new Date().getFullYear();
+            
+            anoPessoal.innerHTML = `
+                <div class="interpretacao">
+                    <h4>Ano ${anoReferencia}: <span class="numero-resultado">${dados.anoPessoal}</span></h4>
+                    <p><strong>${interpretacoesNumeros[dados.anoPessoal].nome}</strong></p>
+                    <p><strong>Energia do Ano:</strong> ${interpretacoesNumeros[dados.anoPessoal].positivo}</p>
+                    <p><strong>Cuidados:</strong> ${interpretacoesNumeros[dados.anoPessoal].negativo}</p>
+                    <p><strong>Orientação:</strong> ${interpretacoesNumeros[dados.anoPessoal].conselho}</p>
+                </div>
+            `;
+        }
+
+        // Função para exibir funcionalidades avançadas (simplificada)
+        function exibirFuncionalidadesAvancadas(dados) {
+            const container = document.getElementById('numerosMestresOcultos');
+            container.innerHTML = `
+                <div class="interpretacao">
+                    <h4>🔮 Análises Complementares</h4>
+                    <p><strong>Arcano Atual (${dados.idade} anos):</strong> Arcano ${dados.arcanoAtual}</p>
+                    <p><strong>Transição:</strong> Do Arcano ${dados.arcanoAnterior} para o Arcano ${dados.arcanoProximo}</p>
+                    <p><strong>Pínaculos:</strong> ${dados.pinaculos.join(' - ')}</p>
+                </div>
+            `;
+        }
+
+        // Função para compatibilidade completa
+        function calcularCompatibilidadeCompleta() {
+            const nome1 = document.getElementById('nome1Compatibilidade').value.trim();
+            const nome2 = document.getElementById('nome2Compatibilidade').value.trim();
+            const data1 = document.getElementById('data1Compatibilidade').value;
+            const data2 = document.getElementById('data2Compatibilidade').value;
+            
+            if (!nome1 || !nome2) {
+                alert('Por favor, preencha ambos os nomes.');
+                return;
+            }
+            
+            // Cálculos numerológicos para ambas as pessoas
+            const pessoa1 = {
+                motivacao: reduzirNumero(somarLetras(nome1, 'vogais'), true),
+                exterior: reduzirNumero(somarLetras(nome1, 'consoantes'), true),
+                expressao: reduzirNumero(somarLetras(nome1, 'todas'), true)
+            };
+            
+            const pessoa2 = {
+                motivacao: reduzirNumero(somarLetras(nome2, 'vogais'), true),
+                exterior: reduzirNumero(somarLetras(nome2, 'consoantes'), true),
+                expressao: reduzirNumero(somarLetras(nome2, 'todas'), true)
+            };
+            
+            // Se as datas foram fornecidas, calcular destino
+            if (data1) {
+                const nasc1 = new Date(data1);
+                pessoa1.destino = reduzirNumero(nasc1.getDate() + (nasc1.getMonth() + 1) + nasc1.getFullYear(), true);
+            }
+            
+            if (data2) {
+                const nasc2 = new Date(data2);
+                pessoa2.destino = reduzirNumero(nasc2.getDate() + (nasc2.getMonth() + 1) + nasc2.getFullYear(), true);
+            }
+            
+            // Calcular compatibilidade
+            const compatibilidades = calcularCompatibilidade(pessoa1, pessoa2);
+            exibirCompatibilidade(nome1, nome2, compatibilidades);
+        }
+
+        // Função para calcular compatibilidade
+        function calcularCompatibilidade(pessoa1, pessoa2) {
+            const scores = {
+                motivacao: calcularScoreCompatibilidade(pessoa1.motivacao, pessoa2.motivacao),
+                exterior: calcularScoreCompatibilidade(pessoa1.exterior, pessoa2.exterior),
+                expressao: calcularScoreCompatibilidade(pessoa1.expressao, pessoa2.expressao)
+            };
+            
+            if (pessoa1.destino && pessoa2.destino) {
+                scores.destino = calcularScoreCompatibilidade(pessoa1.destino, pessoa2.destino);
+            }
+            
+            // Calcular score geral
+            const valores = Object.values(scores);
+            const scoreGeral = Math.round(valores.reduce((a, b) => a + b, 0) / valores.length);
+            
+            return {
+                scoreGeral: scoreGeral,
+                detalhes: scores
+            };
+        }
+
+        // Função para calcular score de compatibilidade entre dois números
+        function calcularScoreCompatibilidade(num1, num2) {
+            if (num1 === num2) return 100;
+            
+            const diferenca = Math.abs(num1 - num2);
+            if (diferenca === 1) return 85;
+            if (diferenca === 2) return 70;
+            if (diferenca === 3) return 60;
+            if (diferenca === 4) return 50;
+            if (diferenca === 5) return 45;
+            return 40;
+        }
+
+        // Função para exibir compatibilidade
+        function exibirCompatibilidade(nome1, nome2, compatibilidades) {
+            const container = document.getElementById('resultadoCompatibilidade');
+            
+            const cor = compatibilidades.scoreGeral >= 70 ? '#4ecdc4' : 
+                       compatibilidades.scoreGeral >= 50 ? '#f39c12' : '#e74c3c';
+            
+            let html = `
+                <div class="compatibilidade-resultado">
+                    <h3 style="color: var(--cor-primaria); margin-bottom: 20px;">
+                        💖 Compatibilidade: ${nome1} & ${nome2}
+                    </h3>
+                    
+                    <div class="porcentagem-geral" style="color: ${cor};">
+                        ${compatibilidades.scoreGeral}%
+                    </div>
+                    
+                    <div class="scores-detalhados">
+                        <div class="score-item">
+                            <div class="score-valor">${compatibilidades.detalhes.motivacao}%</div>
+                            <div>Motivações Interiores</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-valor">${compatibilidades.detalhes.exterior}%</div>
+                            <div>Personalidades Externas</div>
+                        </div>
+                        <div class="score-item">
+                            <div class="score-valor">${compatibilidades.detalhes.expressao}%</div>
+                            <div>Expressões Totais</div>
+                        </div>
+                        ${compatibilidades.detalhes.destino ? `
+                        <div class="score-item">
+                            <div class="score-valor">${compatibilidades.detalhes.destino}%</div>
+                            <div>Caminhos do Destino</div>
+                        </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 20px; background: rgba(26, 43, 92, 0.3); border-radius: 10px;">
+                        <h4 style="color: var(--cor-primaria); margin-bottom: 15px;">💫 Análise da Compatibilidade</h4>
+                        ${gerarConselhosCompatibilidade(compatibilidades.scoreGeral)}
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // Função para gerar conselhos de compatibilidade
+        function gerarConselhosCompatibilidade(score) {
+            if (score >= 80) {
+                return `
+                    <p style="color: #4ecdc4; margin-bottom: 10px;"><strong>Compatibilidade Excepcional!</strong></p>
+                    <p>Vocês têm uma harmonia natural extraordinária. Esta é uma conexão rara que deve ser valorizada e cultivada. Suas energias se complementam de forma quase perfeita, criando um ambiente de crescimento mútuo e realização compartilhada.</p>
+                `;
+            } else if (score >= 60) {
+                return `
+                    <p style="color: #f39c12; margin-bottom: 10px;"><strong>Boa Compatibilidade</strong></p>
+                    <p>Vocês têm uma base sólida para um relacionamento harmonioso. Algumas diferenças podem gerar crescimento mútuo se abordadas com compreensão e paciência. Foquem nas qualidades que se complementam e trabalhem juntos nas áreas de desafio.</p>
+                `;
+            } else {
+                return `
+                    <p style="color: #e74c3c; margin-bottom: 10px;"><strong>Compatibilidade Desafiadora</strong></p>
+                    <p>Este relacionamento requer trabalho consciente e dedicação mútua. As diferenças podem ser transformadas em oportunidades de crescimento se ambos estiverem dispostos a compreender e aceitar as perspectivas do outro. A comunicação aberta será fundamental.</p>
+                `;
+            }
+        }
+
+        // Função para calcular datas favoráveis
+        function calcularDatasFavoraveis() {
+            const tipoEvento = document.getElementById('tipoEvento').value;
+            const mes = parseInt(document.getElementById('mesDesejado').value);
+            const ano = parseInt(document.getElementById('anoDesejado').value);
+            
+            const nome = document.getElementById('nome').value.trim();
+            if (!nome) {
+                alert('Por favor, preencha seu nome primeiro na seção principal.');
+                return;
+            }
+            
+            const numeroDestino = reduzirNumero(somarLetras(nome, 'todas'), true);
+            const melhoresDatas = [];
+            
+            // Calcular para todos os dias do mês
+            const diasNoMes = new Date(ano, mes + 1, 0).getDate();
+            
+            for (let dia = 1; dia <= diasNoMes; dia++) {
+                const numeroData = reduzirNumero(dia + (mes + 1) + ano);
+                const compatibilidade = calcularCompatibilidadeData(numeroDestino, numeroData, tipoEvento);
+                
+                melhoresDatas.push({
+                    dia: dia,
+                    numeroData: numeroData,
+                    score: compatibilidade,
+                    data: new Date(ano, mes, dia)
+                });
+            }
+            
+            // Ordenar por score e pegar as 6 melhores
+            melhoresDatas.sort((a, b) => b.score - a.score);
+            const top6 = melhoresDatas.slice(0, 6);
+            
+            exibirDatasFavoraveis(tipoEvento, top6, mes, ano);
+        }
+
+        // Função para calcular compatibilidade de data
+        function calcularCompatibilidadeData(numeroDestino, numeroData, tipoEvento) {
+            let score = 50; // Base
+            
+            // Compatibilidade numérica
+            if (numeroDestino === numeroData) score += 30;
+            else if (Math.abs(numeroDestino - numeroData) === 1) score += 20;
+            else if (Math.abs(numeroDestino - numeroData) === 2) score += 10;
+            
+            // Bônus por tipo de evento
+            const bonusEventos = {
+                'casamento': [2, 6, 9],
+                'negocios': [1, 8, 4],
+                'mudanca': [5, 1, 9],
+                'viagem': [5, 3, 7],
+                'cirurgia': [4, 7, 2],
+                'investimento': [8, 4, 1],
+                'entrevista': [1, 3, 5],
+                'lancamento': [1, 3, 9]
+            };
+            
+            if (bonusEventos[tipoEvento] && bonusEventos[tipoEvento].includes(numeroData)) {
+                score += 15;
+            }
+            
+            return Math.min(score, 100);
+        }
+
+        // Função para exibir datas favoráveis
+        function exibirDatasFavoraveis(tipoEvento, datas, mes, ano) {
+            const container = document.getElementById('resultadoDatasFavoraveis');
+            const nomesMeses = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                              'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+            const tiposEventos = {
+                'casamento': '💒 Casamento',
+                'negocios': '💼 Negócios',
+                'mudanca': '🏠 Mudança',
+                'viagem': '✈️ Viagem',
+                'cirurgia': '🏥 Cirurgia',
+                'investimento': '💰 Investimento',
+                'entrevista': '👔 Entrevista',
+                'lancamento': '🚀 Lançamento'
+            };
+            
+            let html = `
+                <div style="margin-top: 30px; padding: 25px; background: rgba(26, 43, 92, 0.3); border-radius: 15px;">
+                    <h3 style="color: var(--cor-primaria); text-align: center; margin-bottom: 20px;">
+                        ⭐ Melhores Datas para ${tiposEventos[tipoEvento]}
+                    </h3>
+                    <p style="text-align: center; color: var(--subtitulo-verde); margin-bottom: 25px;">
+                        ${nomesMeses[mes]} de ${ano}
+                    </p>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px;">
+            `;
+            
+            datas.forEach((data, index) => {
+                const cor = data.score >= 80 ? '#4ecdc4' : data.score >= 65 ? '#f39c12' : '#e74c3c';
+                const diaSemana = data.data.toLocaleDateString('pt-BR', { weekday: 'short' });
+                
+                html += `
+                    <div style="background: rgba(44, 62, 80, 0.5); padding: 15px; border-radius: 10px; text-align: center; border: 2px solid ${cor};">
+                        <div style="font-size: 1.5rem; font-weight: bold; color: ${cor}; margin-bottom: 5px;">
+                            ${data.dia}
+                        </div>
+                        <div style="color: #cccccc; font-size: 0.9rem; margin-bottom: 8px;">
+                            ${diaSemana}
+                        </div>
+                        <div style="color: ${cor}; font-weight: bold; margin-bottom: 5px;">
+                            ${data.score}%
+                        </div>
+                        <div style="color: #cccccc; font-size: 0.8rem;">
+                            Número: ${data.numeroData}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                    </div>
+                    
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(212, 175, 55, 0.1); border-radius: 8px; border-left: 4px solid var(--cor-primaria);">
+                        <h5 style="color: var(--cor-primaria); margin-bottom: 10px;">💡 Como interpretar:</h5>
+                        <p style="margin-bottom: 8px;"><span style="color: #4ecdc4;">●</span> <strong>80%+:</strong> Datas excepcionalmente favoráveis</p>
+                        <p style="margin-bottom: 8px;"><span style="color: #f39c12;">●</span> <strong>65-79%:</strong> Datas boas com energia positiva</p>
+                        <p><span style="color: #e74c3c;">●</span> <strong>50-64%:</strong> Datas neutras, requerem mais cuidado</p>
+                    </div>
+                </div>
+            `;
+            
+            container.innerHTML = html;
+        }
+
+        // Função para exibir Pirâmide Invertida
+        function exibirPiramideInvertida(dadosCompletos) {
+            const container = document.getElementById('piramideInvertida');
+            const visualizacao = document.getElementById('piramideVisualizacao');
+            const interpretacao = document.getElementById('piramideInterpretacao');
+            
+            // Calcular pirâmide
+            const piramide = calcularPiramideInvertida(dadosCompletos.nome, dadosCompletos.dataNascimento);
+            
+            // Visualização da pirâmide
+            let htmlVis = '<div class="piramide-visual">';
+            piramide.niveis.forEach((nivel, index) => {
+                htmlVis += `<div class="nivel-piramide nivel-${index}">`;
+                nivel.forEach(num => {
+                    htmlVis += `<div class="numero-piramide">${num}</div>`;
+                });
+                htmlVis += '</div>';
+            });
+            htmlVis += '</div>';
+            
+            // Interpretação
+            const interpretacaoPiramide = interpretarPiramideInvertida(piramide.numeroFinal);
+            let htmlInt = `
+                <div class="interpretacao-piramide">
+                    <h4>🔮 Número Final da Pirâmide: ${piramide.numeroFinal}</h4>
+                    <div class="qualidades-espirituais">
+                        <h5>✨ Qualidades Espirituais:</h5>
+                        <p>${interpretacaoPiramide.qualidades}</p>
+                    </div>
+                    <div class="desafios-piramide">
+                        <h5>⚠️ Desafios a Superar:</h5>
+                        <p>${interpretacaoPiramide.desafios}</p>
+                    </div>
+                    <div class="caminho-evolucao">
+                        <h5>🌟 Caminho de Evolução:</h5>
+                        <p>${interpretacaoPiramide.caminho}</p>
+                    </div>
+                </div>
+            `;
+            
+            visualizacao.innerHTML = htmlVis;
+            interpretacao.innerHTML = htmlInt;
+            container.style.display = 'block';
+        }
+
+        // Função para calcular Pirâmide Invertida
+        function calcularPiramideInvertida(nome, dataNascimento) {
+            const nomeCompleto = nome.replace(/\s+/g, '').toUpperCase();
+            const numeros = [];
+            
+            // Converter letras em números
+            for (let letra of nomeCompleto) {
+                if (letra.match(/[A-Z]/)) {
+                    numeros.push(letra.charCodeAt(0) - 64);
+                }
+            }
+            
+            const niveis = [numeros];
+            let nivelAtual = numeros;
+            
+            // Calcular níveis da pirâmide
+            while (nivelAtual.length > 1) {
+                const proximoNivel = [];
+                for (let i = 0; i < nivelAtual.length - 1; i++) {
+                    const soma = nivelAtual[i] + nivelAtual[i + 1];
+                    proximoNivel.push(reduzirNumero(soma));
+                }
+                niveis.push(proximoNivel);
+                nivelAtual = proximoNivel;
+            }
+            
+            return {
+                niveis: niveis,
+                numeroFinal: nivelAtual[0]
+            };
+        }
+
+        // Função para interpretar Pirâmide Invertida
+        function interpretarPiramideInvertida(numero) {
+            const interpretacoes = {
+                1: {
+                    qualidades: "Liderança natural, iniciativa, independência e capacidade de pioneirismo. Você possui uma energia criativa poderosa que pode manifestar grandes realizações.",
+                    desafios: "Evitar o egoísmo excessivo, a impaciência e a tendência ao autoritarismo. Aprender a trabalhar em equipe sem perder sua individualidade.",
+                    caminho: "Desenvolver sua liderança de forma consciente e ética, usando sua força criativa para inspirar e elevar outros ao seu redor."
+                },
+                2: {
+                    qualidades: "Diplomacia, cooperação, sensibilidade emocional e capacidade de mediar conflitos. Você possui um dom natural para harmonizar ambientes e pessoas.",
+                    desafios: "Superar a indecisão, a dependência emocional e a tendência a se anular pelos outros. Fortalecer sua autoestima e assertividade.",
+                    caminho: "Usar sua sensibilidade como força, desenvolvendo relacionamentos saudáveis e contribuindo para a paz e harmonia coletiva."
+                },
+                3: {
+                    qualidades: "Criatividade abundante, comunicação expressiva, otimismo contagiante e capacidade de inspirar através da arte e da palavra.",
+                    desafios: "Evitar a dispersão de energia, a superficialidade e a tendência à dramatização excessiva. Focar suas múltiplas habilidades.",
+                    caminho: "Canalizar sua criatividade de forma produtiva, usando seus dons artísticos e comunicativos para elevar a consciência coletiva."
+                }
+            };
+            
+            return interpretacoes[numero] || interpretacoes[1];
+        }
+
+        // Função para exibir Sequências Negativas
+        function exibirSequenciasNegativas(dadosCompletos) {
+            const container = document.getElementById('sequenciasNegativas');
+            const conteudo = document.getElementById('sequenciasConteudo');
+            
+            const sequencias = detectarSequenciasNegativas(dadosCompletos);
+            
+            if (sequencias.length === 0) {
+                container.style.display = 'none';
+                return;
+            }
+            
+            let html = '';
+            sequencias.forEach(seq => {
+                const detalhes = obterDetalhesSequencia(seq);
+                html += `
+                    <div class="sequencia-negativa">
+                        <h4 style="color: #e74c3c;">⚠️ ${detalhes.titulo}</h4>
+                        <p class="subtitulo">${detalhes.subtitulo}</p>
+                        <div class="descricao">${detalhes.descricao}</div>
+                        <div class="transformacao">
+                            <h5>🌟 Caminho de Transformação:</h5>
+                            <p>${detalhes.transformacao}</p>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            conteudo.innerHTML = html;
+            container.style.display = 'block';
+        }
+
+        // Função para detectar sequências negativas
+        function detectarSequenciasNegativas(dados) {
+            const sequencias = [];
+            const numeros = [
+                dados.motivacaoInterior,
+                dados.personalidadeExterna, 
+                dados.expressaoTotal,
+                dados.numeroDestino
+            ];
+            
+            // Verificar padrões repetitivos
+            const numerosStr = numeros.join('');
+            if (numerosStr.includes('111')) sequencias.push('111');
+            if (numerosStr.includes('222')) sequencias.push('222');
+            if (numerosStr.includes('333')) sequencias.push('333');
+            
+            return sequencias;
+        }
+
+        // Função para obter detalhes da sequência
+        function obterDetalhesSequencia(sequencia) {
+            const detalhes = {
+                '111': {
+                    titulo: "Sequência 111 - Ego Dominador",
+                    subtitulo: "Padrão de autoritarismo e controle excessivo",
+                    descricao: "Esta sequência indica uma tendência ao egocentrismo exagerado, onde a pessoa pode se tornar autoritária, impaciente e dominadora. Há uma necessidade compulsiva de estar sempre no controle e ser o centro das atenções.",
+                    transformacao: "Desenvolver humildade genuína, praticar a escuta ativa e aprender a valorizar as contribuições dos outros. Canalizar a energia de liderança de forma construtiva e colaborativa."
+                },
+                '222': {
+                    titulo: "Sequência 222 - Dependência Emocional",
+                    subtitulo: "Padrão de codependência e busca excessiva por aprovação",
+                    descricao: "Esta sequência revela uma tendência à dependência emocional extrema, onde a pessoa busca constantemente aprovação externa e pode se anular completamente pelos outros, perdendo sua identidade pessoal.",
+                    transformacao: "Fortalecer a autoestima, estabelecer limites saudáveis e desenvolver independência emocional. Aprender a se valorizar sem depender da validação constante dos outros."
+                },
+                '333': {
+                    titulo: "Sequência 333 - Dispersão Criativa",
+                    subtitulo: "Padrão de superficialidade e falta de foco",
+                    descricao: "Esta sequência indica dispersão excessiva da energia criativa, levando à superficialidade, falta de foco e dificuldade em concluir projetos. A pessoa pode se tornar tagarela compulsiva e dramatizar situações.",
+                    transformacao: "Desenvolver disciplina e foco, escolher prioridades claras e aprender a aprofundar-se em suas criações. Canalizar a comunicação de forma mais consciente e significativa."
+                }
+            };
+            
+            return detalhes[sequencia];
+        }
+
+        // Função para exibir Arcanos Numerológicos
+        function exibirArcanosNumerologicos(dadosCompletos) {
+            const container = document.getElementById('arcanosNumerologicos');
+            const conteudo = document.getElementById('arcanosConteudo');
+            
+            const arcanoMomento = calcularArcanoMomento();
+            const arcanoRegente = calcularArcanoRegente(dadosCompletos.dataNascimento);
+            const arcanoAno = calcularArcanoAno(dadosCompletos.dataNascimento);
+            
+            let html = '<div class="arcanos-grid">';
+            
+            // Arcano de Momento
+            const detalheMomento = obterDetalhesArcano(arcanoMomento, 'momento');
+            html += `
+                <div class="arcano-card momento">
+                    <h4>🌟 ${detalheMomento.titulo}</h4>
+                    <div class="arcano-numero">Arcano ${arcanoMomento}</div>
+                    <div class="arcano-nome">${detalheMomento.nome}</div>
+                    <div class="arcano-conteudo">
+                        <div class="mensagem">${detalheMomento.mensagem}</div>
+                        <div class="desafios">
+                            <h5>⚠️ Desafios:</h5>
+                            <p>${detalheMomento.desafios}</p>
+                        </div>
+                        <div class="orientacoes">
+                            <h5>💡 Orientações:</h5>
+                            <p>${detalheMomento.orientacoes}</p>
+                        </div>
+                        <button onclick="abrirArcano(${arcanoMomento})" class="btn-arcano">Ver Interpretação Completa</button>
+                    </div>
+                </div>
+            `;
+            
+            // Arcano Regente
+            const detalheRegente = obterDetalhesArcano(arcanoRegente, 'regente');
+            html += `
+                <div class="arcano-card regente">
+                    <h4>👑 ${detalheRegente.titulo}</h4>
+                    <div class="arcano-numero">Arcano ${arcanoRegente}</div>
+                    <div class="arcano-nome">${detalheRegente.nome}</div>
+                    <div class="arcano-conteudo">
+                        <div class="mensagem">${detalheRegente.mensagem}</div>
+                        <div class="desafios">
+                            <h5>🎯 Desafios da Missão:</h5>
+                            <p>${detalheRegente.desafios}</p>
+                        </div>
+                        <div class="propositos">
+                            <h5>🌟 Propósitos:</h5>
+                            <p>${detalheRegente.propositos}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            // Arcano do Ano
+            const detalheAno = obterDetalhesArcano(arcanoAno, 'ano');
+            html += `
+                <div class="arcano-card ano">
+                    <h4>📅 ${detalheAno.titulo}</h4>
+                    <div class="arcano-numero">Arcano ${arcanoAno}</div>
+                    <div class="arcano-nome">${detalheAno.nome}</div>
+                    <div class="arcano-conteudo">
+                        <div class="mensagem">${detalheAno.mensagem}</div>
+                        <div class="oportunidades">
+                            <h5>🎯 Oportunidades do Ano:</h5>
+                            <p>${detalheAno.oportunidades}</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            html += '</div>';
+            conteudo.innerHTML = html;
+            container.style.display = 'block';
+        }
+
+        // Função para calcular Arcano de Momento
+        function calcularArcanoMomento() {
+            const hoje = new Date();
+            const dia = hoje.getDate();
+            const mes = hoje.getMonth() + 1;
+            const ano = hoje.getFullYear();
+            
+            let soma = dia + mes + ano;
+            while (soma > 22) {
+                soma = reduzirNumero(soma);
+                if (soma > 22) {
+                    soma = soma - 22;
+                }
+            }
+            return soma === 0 ? 22 : soma;
+        }
+
+        // Função para calcular Arcano Regente
+        function calcularArcanoRegente(dataNascimento) {
+            const [ano, mes, dia] = dataNascimento.split('-').map(Number);
+            let soma = dia + mes + ano;
+            
+            while (soma > 22) {
+                soma = reduzirNumero(soma);
+                if (soma > 22) {
+                    soma = soma - 22;
+                }
+            }
+            return soma === 0 ? 22 : soma;
+        }
+
+        // Função para calcular Arcano do Ano
+        function calcularArcanoAno(dataNascimento) {
+            const [anoNasc, mes, dia] = dataNascimento.split('-').map(Number);
+            const anoAtual = new Date().getFullYear();
+            
+            let soma = dia + mes + anoAtual;
+            while (soma > 22) {
+                soma = reduzirNumero(soma);
+                if (soma > 22) {
+                    soma = soma - 22;
+                }
+            }
+            return soma === 0 ? 22 : soma;
+        }
+
+        // Função para obter detalhes do arcano
+        function obterDetalhesArcano(numero, tipo) {
+            const arcanos = {
+                1: {
+                    nome: "O Mago",
+                    momento: {
+                        titulo: "Energia de Manifestação Ativa",
+                        mensagem: "Hoje você está conectado com a energia primordial da criação e manifestação. O Mago representa o poder de transformar pensamentos em realidade através da força de vontade direcionada. Este é um momento de grande potencial criativo, onde suas ideias podem ganhar forma concreta no mundo material.",
+                        desafios: "Evitar a dispersão de energia em múltiplas direções. Cuidado com a tendência ao egoísmo ou manipulação. Evite a impaciência com resultados e mantenha a humildade diante do sucesso.",
+                        orientacoes: "Concentre sua energia em um objetivo principal. Use sua capacidade de liderança de forma ética. Mantenha-se conectado com seu propósito superior e pratique a gratidão pelas oportunidades que surgem."
+                    },
+                    regente: {
+                        titulo: "Missão do Líder Nato",
+                        mensagem: "Sua alma escolheu encarnar sob a regência do Mago para cumprir uma missão de liderança pioneira nesta existência. Você veio ao mundo para ser um iniciador, alguém que abre caminhos e inspira outros através do exemplo de determinação e criatividade.",
+                        desafios: "Aprender a usar seu poder de forma ética e responsável. Lidar com a impaciência quando outros não acompanham seu ritmo. A tendência ao isolamento também pode ser um obstáculo. O perfeccionismo excessivo pode paralisar sua capacidade de ação.",
+                        propositos: "Desenvolver projetos inovadores que beneficiem a coletividade. Inspirar outros através de sua determinação e criatividade. Usar sua energia de liderança para elevar o nível de consciência ao seu redor."
+                    },
+                    ano: {
+                        titulo: "Ano de Novos Começos",
+                        mensagem: "Este é um ano de iniciativas e novos projetos. A energia do Mago favorece empreendimentos, liderança e manifestação de ideias criativas.",
+                        oportunidades: "Iniciar novos projetos, assumir posições de liderança, desenvolver habilidades criativas e manifestar sonhos em realidade."
+                    }
+                },
+                2: {
+                    nome: "A Sacerdotisa",
+                    momento: {
+                        titulo: "Energia de Sabedoria Interior",
+                        mensagem: "Este é um momento para ouvir sua voz interior e confiar na sabedoria ancestral que habita em você. A Sacerdotisa representa a conexão com o conhecimento oculto e a intuição profunda.",
+                        desafios: "Evitar a passividade excessiva e a tendência ao isolamento. Não se deixar levar por medos infundados ou superstições.",
+                        orientacoes: "Pratique a meditação e desenvolva sua intuição. Busque conhecimento através de estudos esotéricos e mantenha-se receptiva aos sinais do universo."
+                    },
+                    regente: {
+                        titulo: "Missão da Guardiã da Sabedoria",
+                        mensagem: "Sua alma carrega a missão de preservar conhecimentos ancestrais e servir como ponte entre o mundo visível e invisível.",
+                        desafios: "Superar a tendência ao isolamento excessivo e aprender a compartilhar sua sabedoria de forma acessível aos outros.",
+                        propositos: "Desenvolver e compartilhar conhecimentos esotéricos, servir como conselheira espiritual e preservar tradições sagradas."
+                    },
+                    ano: {
+                        titulo: "Ano de Desenvolvimento Espiritual",
+                        mensagem: "Este é um ano para aprofundar seus conhecimentos espirituais e desenvolver sua intuição.",
+                        oportunidades: "Estudar temas esotéricos, desenvolver habilidades psíquicas, praticar meditação e conectar-se com sua sabedoria interior."
+                    }
+                },
+                3: {
+                    nome: "A Imperatriz",
+                    momento: {
+                        titulo: "Energia de Abundância Criativa",
+                        mensagem: "Sua criatividade está florescendo magnificamente hoje. A Imperatriz representa a fertilidade em todos os aspectos da vida - criativa, material e espiritual.",
+                        desafios: "Evitar o excesso de indulgência e a tendência à superficialidade. Não se deixar levar pela vaidade ou materialismo excessivo.",
+                        orientacoes: "Expresse sua criatividade livremente, cultive a beleza ao seu redor e pratique a generosidade com aqueles que ama."
+                    },
+                    regente: {
+                        titulo: "Missão da Criadora de Beleza",
+                        mensagem: "Você nasceu para criar beleza e abundância no mundo, seja através da arte, da maternidade ou de projetos que nutrem a vida.",
+                        desafios: "Equilibrar o desejo de conforto material com o crescimento espiritual. Evitar a possessividade excessiva e o apego aos bens materiais.",
+                        propositos: "Criar projetos que nutram a vida, desenvolver talentos artísticos e contribuir para a beleza e harmonia do mundo."
+                    },
+                    ano: {
+                        titulo: "Ano de Criatividade e Abundância",
+                        mensagem: "Este é um ano favorável para projetos criativos, crescimento material e desenvolvimento de talentos artísticos.",
+                        oportunidades: "Desenvolver projetos artísticos, aumentar a prosperidade material, cultivar relacionamentos amorosos e expressar sua criatividade."
+                    }
+                }
+            };
+            
+            const arcano = arcanos[numero] || arcanos[1];
+            return {
+                nome: arcano.nome,
+                ...arcano[tipo]
+            };
+        }
+
+        // Função para exibir Pínaculos da Vida
+        function exibirPinaculosVida(dadosCompletos) {
+            const container = document.getElementById('pinaculosVida');
+            const conteudo = document.getElementById('pinaculosConteudo');
+            
+            const pinaculos = calcularPinaculos(dadosCompletos.dataNascimento);
+            const idade = calcularIdade(dadosCompletos.dataNascimento);
+            
+            let html = '<div class="pinaculos-grid">';
+            
+            pinaculos.forEach((pinaculo, index) => {
+                const periodo = obterPeriodoPinaculo(index, dadosCompletos.dataNascimento);
+                const isAtual = idade >= periodo.inicio && idade <= periodo.fim;
+                const detalhes = obterDetalhesPinaculo(pinaculo.numero, index, isAtual);
+                
+                html += `
+                    <div class="pinaculo-card ${isAtual ? 'atual' : ''}">
+                        <h4>${detalhes.titulo} (${periodo.inicio}-${periodo.fim} anos)</h4>
+                        <div class="pinaculo-numero">Pínaculo ${pinaculo.numero}</div>
+                        <div class="pinaculo-conteudo">
+                            <div class="descricao">${detalhes.descricao}</div>
+                            <div class="desafios">
+                                <h5>🎯 Desafios:</h5>
+                                <ul>
+                                    ${detalhes.desafios.map(d => `<li>${d}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="oportunidades">
+                                <h5>✨ Oportunidades:</h5>
+                                <ul>
+                                    ${detalhes.oportunidades.map(o => `<li>${o}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="conselho">
+                                <h5>🌟 Conselho Sagrado:</h5>
+                                <p>${detalhes.conselho}</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += '</div>';
+            conteudo.innerHTML = html;
+            container.style.display = 'block';
+        }
+
+        // Função para calcular pínaculos
+        function calcularPinaculos(dataNascimento) {
+            const [ano, mes, dia] = dataNascimento.split('-').map(Number);
+            
+            const pinaculo1 = reduzirNumero(mes + dia);
+            const pinaculo2 = reduzirNumero(dia + ano);
+            const pinaculo3 = reduzirNumero(pinaculo1 + pinaculo2);
+            const pinaculo4 = reduzirNumero(mes + ano);
+            
+            return [
+                { numero: pinaculo1, periodo: 1 },
+                { numero: pinaculo2, periodo: 2 },
+                { numero: pinaculo3, periodo: 3 },
+                { numero: pinaculo4, periodo: 4 }
+            ];
+        }
+
+        // Função para obter período do pínaculo
+        function obterPeriodoPinaculo(index, dataNascimento) {
+            const numeroDestino = calcularNumeroDestino(dataNascimento);
+            const idadeBase = 36 - numeroDestino;
+            
+            const periodos = [
+                { inicio: 0, fim: idadeBase },
+                { inicio: idadeBase + 1, fim: idadeBase + 9 },
+                { inicio: idadeBase + 10, fim: idadeBase + 18 },
+                { inicio: idadeBase + 19, fim: 99 }
+            ];
+            
+            return periodos[index];
+        }
+
+        // Função para obter detalhes do pínaculo
+        function obterDetalhesPinaculo(numero, periodo, isAtual) {
+            const pinaculos = {
+                1: {
+                    titulo: "Pínaculo da Liderança Pioneira",
+                    descricao: "Este é um período de desenvolvimento da independência e liderança. Você será chamado a tomar iniciativas e abrir novos caminhos.",
+                    desafios: ["Superar a timidez e insegurança", "Evitar o egoísmo excessivo", "Desenvolver paciência com outros", "Controlar a impulsividade"],
+                    oportunidades: ["Assumir posições de liderança", "Iniciar novos projetos", "Desenvolver autoconfiança", "Inspirar outros através do exemplo"],
+                    conselho: "Use este período para desenvolver sua individualidade de forma construtiva, sempre lembrando que verdadeira liderança serve aos outros."
+                },
+                2: {
+                    titulo: "Pínaculo da Cooperação e Diplomacia",
+                    descricao: "Este é um período focado em relacionamentos, cooperação e desenvolvimento da sensibilidade emocional.",
+                    desafios: ["Superar a indecisão", "Evitar a dependência emocional", "Desenvolver assertividade", "Controlar a hipersensibilidade"],
+                    oportunidades: ["Desenvolver relacionamentos profundos", "Aprender diplomacia", "Cultivar a intuição", "Trabalhar em equipe efetivamente"],
+                    conselho: "Aprenda a equilibrar suas necessidades com as dos outros, desenvolvendo relacionamentos baseados no respeito mútuo."
+                },
+                3: {
+                    titulo: "Pínaculo da Expressão Criativa",
+                    descricao: "Este é um período de florescimento criativo, comunicação e expressão artística em todas suas formas.",
+                    desafios: ["Evitar a dispersão de energia", "Controlar a tendência à superficialidade", "Superar o medo de se expressar", "Desenvolver disciplina criativa"],
+                    oportunidades: ["Desenvolver talentos artísticos", "Melhorar habilidades comunicativas", "Expressar criatividade livremente", "Inspirar outros através da arte"],
+                    conselho: "Canalize sua criatividade de forma produtiva, usando seus dons para elevar e inspirar aqueles ao seu redor."
+                }
+            };
+            
+            return pinaculos[numero] || pinaculos[1];
+        }
+
+        // Função para abrir arquivo do arcano
+        function abrirArcano(numeroArcano) {
+            const arquivosArcanos = {
+                1: { arquivo: 'o_mago.html', imagem: 'o_mago.png' },
+                2: { arquivo: 'a_sacerdotisa.html', imagem: 'a_sacerdotisa.png' },
+                3: { arquivo: 'a_imperatriz.html', imagem: 'a_imperatriz.png' },
+                4: { arquivo: 'o_imperador.html', imagem: 'o_imperador.png' },
+                5: { arquivo: 'o_papa.html', imagem: 'o_papa.png' },
+                6: { arquivo: 'os_enamorados.html', imagem: 'os_enamorados.png' },
+                7: { arquivo: 'o_carro.html', imagem: 'o_carro.png' },
+                8: { arquivo: 'a_justica.html', imagem: 'a_justica.png' },
+                9: { arquivo: 'o_eremita.html', imagem: 'o_eremita.png' },
+                10: { arquivo: 'a_roda_da_fortuna.html', imagem: 'a_roda_da_fortuna.png' },
+                11: { arquivo: 'a_forca.html', imagem: 'a_forca.png' },
+                12: { arquivo: 'o_enforcado.html', imagem: 'o_enforcado.png' },
+                13: { arquivo: 'a_morte.html', imagem: 'a_morte.png' },
+                14: { arquivo: 'a_temperanca.html', imagem: 'a_temperanca.png' },
+                15: { arquivo: 'o_diabo.html', imagem: 'o_diabo.png' },
+                16: { arquivo: 'a_torre.html', imagem: 'a_torre.png' },
+                17: { arquivo: 'a_estrela.html', imagem: 'a_estrela.png' },
+                18: { arquivo: 'a_lua.html', imagem: 'a_lua.png' },
+                19: { arquivo: 'o_sol.html', imagem: 'o_sol.png' },
+                20: { arquivo: 'o_julgamento.html', imagem: 'o_julgamento.png' },
+                21: { arquivo: 'o_mundo.html', imagem: 'o_mundo.png' },
+                22: { arquivo: 'o_louco.html', imagem: 'o_louco.png' }
+            };
+            
+            const arcano = arquivosArcanos[numeroArcano];
+            if (arcano) {
+                window.open(`aurora_sagrada_corrigido/arcanos/${arcano.arquivo}`, '_blank');
+            }
+        }
+
+        // Função para obter imagem do arcano
+        function obterImagemArcano(numeroArcano) {
+            const arquivosArcanos = {
+                1: 'o_mago.png',
+                2: 'a_sacerdotisa.png',
+                3: 'a_imperatriz.png',
+                4: 'o_imperador.png',
+                5: 'o_papa.png',
+                6: 'os_enamorados.png',
+                7: 'o_carro.png',
+                8: 'a_justica.png',
+                9: 'o_eremita.png',
+                10: 'a_roda_da_fortuna.png',
+                11: 'a_forca.png',
+                12: 'o_enforcado.png',
+                13: 'a_morte.png',
+                14: 'a_temperanca.png',
+                15: 'o_diabo.png',
+                16: 'a_torre.png',
+                17: 'a_estrela.png',
+                18: 'a_lua.png',
+                19: 'o_sol.png',
+                20: 'o_julgamento.png',
+                21: 'o_mundo.png',
+                22: 'o_louco.png'
+            };
+            
+            return `aurora_sagrada_corrigido/arcanos/${arquivosArcanos[numeroArcano]}`;
+        }
+
+        // Função para limpar formulário
+        function limparFormulario() {
+            document.getElementById('nome').value = '';
+            document.getElementById('dataNascimento').value = '';
+            document.getElementById('dataReferencia').value = '';
+            document.getElementById('numerosMestres').checked = true;
+            document.getElementById('yComoVogal').checked = false;
+            document.getElementById('resultados').style.display = 'none';
+            document.getElementById('loading').style.display = 'none';
+            
+            // Limpar compatibilidade
+            document.getElementById('nome1Compatibilidade').value = '';
+            document.getElementById('nome2Compatibilidade').value = '';
+            document.getElementById('data1Compatibilidade').value = '';
+            document.getElementById('data2Compatibilidade').value = '';
+            document.getElementById('resultadoCompatibilidade').innerHTML = '';
+            
+            // Limpar datas favoráveis
+            document.getElementById('resultadoDatasFavoraveis').innerHTML = '';
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Sistema iniciado!');
+            
+            // Configurar seleção de sistema
+            document.querySelectorAll('.sistema-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    document.querySelectorAll('.sistema-card').forEach(c => c.classList.remove('ativo'));
+                    this.classList.add('ativo');
+                    sistemaAtual = this.dataset.sistema;
+                    console.log('Sistema alterado para:', sistemaAtual);
+                });
+            });
+            
+            console.log('Eventos de seleção de sistema inicializados');
+        });
+    </script>
+</body>
+</html>
+

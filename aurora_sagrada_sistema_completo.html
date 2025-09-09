@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aurora Sagrada - Sistema Numerológico Completo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Alice:wght@400&family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+        
+        :root {
+            --magenta-escuro: #3e0a29;
+            --verde-claro: #b2d1b1;
+            --azul-escuro: #0b1836;
+            --amarelo: #f0aa53;
+            --branco-lilas: #f2eaff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: var(--azul-escuro);
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(62, 10, 41, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(178, 209, 177, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(240, 170, 83, 0.05) 0%, transparent 50%);
+            background-attachment: fixed;
+            color: var(--branco-lilas);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Ornamentos nos cantos */
+        .ornament {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            z-index: 1000;
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 10px rgba(240, 170, 83, 0.5));
+        }
+
+        .ornament:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .ornament.top-left {
+            top: 20px;
+            left: 20px;
+            background: url('upload/ChatGPTImage3deset.de2025,17_35_58.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .ornament.top-right {
+            top: 20px;
+            right: 20px;
+            background: url('upload/ChatGPTImage3deset.de2025,17_41_13.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .ornament.bottom-left {
+            bottom: 20px;
+            left: 20px;
+            background: url('upload/ChatGPTImage3deset.de2025,17_08_21.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .ornament.bottom-right {
+            bottom: 20px;
+            right: 20px;
+            background: url('upload/ChatGPTImage3deset.de2025,17_33_59.png') no-repeat center;
+            background-size: contain;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            color: var(--amarelo);
+            text-shadow: 0 0 20px rgba(240, 170, 83, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+        }
+
+        .header p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            color: var(--verde-claro);
+            font-style: italic;
+            margin-bottom: 30px;
+        }
+
+        .main-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, var(--magenta-escuro) 0%, rgba(62, 10, 41, 0.9) 100%);
+            border: 2px solid var(--amarelo);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 500px;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(240, 170, 83, 0.2);
+            border-color: var(--verde-claro);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(240, 170, 83, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+
+        .card-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--amarelo);
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px rgba(240, 170, 83, 0.5);
+        }
+
+        .card p {
+            color: var(--verde-claro);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            background: var(--azul-escuro);
+            color: var(--branco-lilas);
+            border: 2px solid var(--amarelo);
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--verde-claro);
+            color: var(--azul-escuro);
+            border-color: var(--amarelo);
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(240, 170, 83, 0.3);
+        }
+
+        .form-section {
+            display: none;
+            background: linear-gradient(135deg, rgba(62, 10, 41, 0.9) 0%, rgba(11, 24, 54, 0.9) 100%);
+            border: 2px solid var(--amarelo);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-section h3 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2.2rem;
+            color: var(--amarelo);
+            text-align: center;
+            margin-bottom: 30px;
+            text-shadow: 0 0 15px rgba(240, 170, 83, 0.5);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--verde-claro);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--amarelo);
+            border-radius: 10px;
+            background: rgba(11, 24, 54, 0.8);
+            color: var(--branco-lilas);
+            font-size: 1rem;
+            font-family: 'Alice', serif;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--verde-claro);
+            box-shadow: 0 0 10px rgba(178, 209, 177, 0.3);
+        }
+
+        .resultado-card {
+            background: linear-gradient(135deg, rgba(11, 24, 54, 0.95) 0%, rgba(62, 10, 41, 0.95) 100%);
+            border: 2px solid var(--verde-claro);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        .resultado-card h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--amarelo);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .numeros-principais {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .numero-card {
+            background: rgba(62, 10, 41, 0.6);
+            border: 1px solid var(--amarelo);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .numero-card h4 {
+            color: var(--amarelo);
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .numero-valor {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--verde-claro);
+            margin: 10px 0;
+            text-shadow: 0 0 10px rgba(178, 209, 177, 0.5);
+        }
+
+        .numero-card p {
+            color: var(--branco-lilas);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .profissoes-talentos {
+            background: rgba(11, 24, 54, 0.6);
+            border: 1px solid var(--verde-claro);
+            border-radius: 10px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+
+        .profissoes-talentos h4 {
+            color: var(--amarelo);
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .profissoes-talentos p {
+            color: var(--branco-lilas);
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .piramide-visual {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .linha-piramide {
+            margin: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .numero-piramide {
+            background: var(--magenta-escuro);
+            color: var(--amarelo);
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--amarelo);
+            font-weight: bold;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .btn-ver-mais {
+            background: var(--verde-claro);
+            color: var(--azul-escuro);
+            border: 2px solid var(--amarelo);
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-ver-mais:hover {
+            background: var(--amarelo);
+            color: var(--azul-escuro);
+            transform: scale(1.05);
+        }
+
+        .btn-voltar {
+            background: var(--magenta-escuro);
+            color: var(--branco-lilas);
+            border: 2px solid var(--amarelo);
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-family: 'Cinzel', serif;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s ease;
+        }
+
+        .btn-voltar:hover {
+            background: var(--azul-escuro);
+            border-color: var(--verde-claro);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .main-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                padding: 30px 20px;
+            }
+            
+            .ornament {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Ornamentos nos cantos -->
+    <div class="ornament top-left"></div>
+    <div class="ornament top-right"></div>
+    <div class="ornament bottom-left"></div>
+    <div class="ornament bottom-right"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Aurora Sagrada</h1>
+            <p>Sistema Numerológico Completo - Pitagórico & Cabalístico</p>
+        </div>
+
+        <div id="menu-principal" class="main-cards">
+            <div class="card">
+                <div class="card-icon">
+                    <img src="upload/ChatGPTImage4deset.de2025,03_19_06.png" alt="Mística" style="width: 80px; height: 80px; image-rendering: pixelated; filter: drop-shadow(0 0 15px rgba(240, 170, 83, 0.6));">
+                </div>
+                <h2>Mapa Numerológico Completo</h2>
+                <p>Descubra seus números pessoais, pirâmide cabalística, arcano regente, profissões ideais e talentos ocultos através da numerologia pitagórica e cabalística.</p>
+                <button class="btn" onclick="mostrarSecao('numerologia')">Explorar Numerologia</button>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">
+                    <img src="upload/ChatGPTImage3deset.de2025,17_08_21.png" alt="Coração Místico" style="width: 80px; height: 80px; image-rendering: pixelated; filter: drop-shadow(0 0 15px rgba(240, 170, 83, 0.6));">
+                </div>
+                <h2>Compatibilidade Amorosa</h2>
+                <p>Análise completa de compatibilidade entre duas pessoas, com porcentagens detalhadas por áreas: amor, paixão, espiritualidade e material.</p>
+                <button class="btn" onclick="mostrarSecao('compatibilidade')">Analisar Compatibilidade</button>
+            </div>
+        </div>
+
+        <!-- Seção Numerologia -->
+        <div id="numerologia" class="form-section">
+            <h3>🔮 Mapa Numerológico Completo</h3>
+            <div class="form-group">
+                <label for="nome-numerologia">Nome Completo:</label>
+                <input type="text" id="nome-numerologia" placeholder="Digite seu nome completo">
+            </div>
+            <div class="form-group">
+                <label for="data-numerologia">Data de Nascimento:</label>
+                <input type="date" id="data-numerologia">
+            </div>
+            <button class="btn" onclick="calcularMapaNumerologico()">Revelar Mapa Numerológico</button>
+            <div id="resultado-numerologia"></div>
+            <button class="btn-voltar" onclick="voltarMenu()">Voltar ao Menu</button>
+        </div>
+
+        <!-- Seção Compatibilidade -->
+        <div id="compatibilidade" class="form-section">
+            <h3>💕 Compatibilidade Amorosa</h3>
+            <div class="form-group">
+                <label for="nome1">Nome da Primeira Pessoa:</label>
+                <input type="text" id="nome1" placeholder="Digite o primeiro nome">
+            </div>
+            <div class="form-group">
+                <label for="data1">Data de Nascimento:</label>
+                <input type="date" id="data1">
+            </div>
+            <div class="form-group">
+                <label for="nome2">Nome da Segunda Pessoa:</label>
+                <input type="text" id="nome2" placeholder="Digite o segundo nome">
+            </div>
+            <div class="form-group">
+                <label for="data2">Data de Nascimento:</label>
+                <input type="date" id="data2">
+            </div>
+            <button class="btn" onclick="calcularCompatibilidade()">Analisar Compatibilidade</button>
+            <div id="resultado-compatibilidade"></div>
+            <button class="btn-voltar" onclick="voltarMenu()">Voltar ao Menu</button>
+        </div>
+    </div>
+
+    <script>
+        // ===== TABELAS NUMEROLÓGICAS =====
+        
+        // Tabela Pitagórica (A=1, B=2... repetindo 1-9)
+        const tabelaPitagorica = {
+            'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+            'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 6, 'P': 7, 'Q': 8, 'R': 9,
+            'S': 1, 'T': 2, 'U': 3, 'V': 4, 'W': 5, 'X': 6, 'Y': 7, 'Z': 8
+        };
+        
+        // Tabela Cabalística (A=1... Z=26, reduzindo >22)
+        const tabelaCabalistica = {
+            'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9, 'J': 10,
+            'K': 11, 'L': 12, 'M': 13, 'N': 14, 'O': 15, 'P': 16, 'Q': 17, 'R': 18, 'S': 19, 'T': 20,
+            'U': 21, 'V': 22, 'W': 5, 'X': 6, 'Y': 7, 'Z': 8  // W=23→5, X=24→6, Y=25→7, Z=26→8
+        };
+
+        // ===== BASE DE DADOS COMPLETA =====
+        
+        // Interpretações do Mapa Pitagórico
+        const interpretacoesPitagoricas = {
+            1: {
+                expressao: "Você age com liderança natural, iniciativa e independência. Projeta ao mundo uma imagem de pioneiro e inovador, sempre pronto para abrir novos caminhos.",
+                impressao: "Os outros percebem você como uma pessoa forte, determinada e corajosa. Sua aura social transmite autoridade e capacidade de comando.",
+                motivacao: "Seu coração busca ser o primeiro, liderar e criar algo novo. Você é motivado pelo desejo de independência e realização pessoal.",
+                destino: "Sua missão é liderar, inovar e abrir caminhos para outros. O fio que guia sua vida é a coragem de ser pioneiro.",
+                profissoes: "Empreendedor, CEO, líder de equipe, inventor, consultor independente, coach executivo.",
+                talentos: "Liderança natural, capacidade de inovação, coragem para tomar decisões, independência.",
+                cursos: "Administração, Engenharia, Direito Empresarial, MBA em Liderança."
+            },
+            2: {
+                expressao: "Você age com diplomacia, cooperação e sensibilidade. Projeta ao mundo uma imagem de pessoa acolhedora e colaborativa.",
+                impressao: "Os outros percebem você como alguém gentil, empático e confiável. Sua aura social transmite paz e harmonia.",
+                motivacao: "Seu coração busca conexão, parceria e harmonia. Você é motivado pelo desejo de ajudar e criar vínculos.",
+                destino: "Sua missão é unir pessoas, mediar conflitos e criar harmonia. O fio que guia sua vida é a cooperação.",
+                profissoes: "Mediador, psicólogo, assistente social, diplomata, terapeuta, conselheiro matrimonial.",
+                talentos: "Empatia, capacidade de mediação, sensibilidade emocional, cooperação.",
+                cursos: "Psicologia, Serviço Social, Relações Internacionais, Terapias Holísticas."
+            },
+            3: {
+                expressao: "Você age com criatividade, comunicação e alegria. Projeta ao mundo uma imagem de pessoa expressiva e inspiradora.",
+                impressao: "Os outros percebem você como alguém carismático, divertido e criativo. Sua aura social transmite luz e positividade.",
+                motivacao: "Seu coração busca se expressar, criar e inspirar outros. Você é motivado pela necessidade de comunicação e arte.",
+                destino: "Sua missão é inspirar, criar e comunicar beleza ao mundo. O fio que guia sua vida é a expressão criativa.",
+                profissoes: "Artista, escritor, ator, designer, publicitário, professor de artes, comunicador.",
+                talentos: "Criatividade, comunicação, carisma, capacidade de inspirar outros.",
+                cursos: "Artes, Comunicação Social, Design, Literatura, Teatro, Marketing Criativo."
+            },
+            4: {
+                expressao: "Você age com disciplina, organização e praticidade. Projeta ao mundo uma imagem de pessoa confiável e estruturada.",
+                impressao: "Os outros percebem você como alguém sólido, trabalhador e responsável. Sua aura social transmite estabilidade.",
+                motivacao: "Seu coração busca construir algo duradouro e sólido. Você é motivado pela necessidade de segurança e ordem.",
+                destino: "Sua missão é construir bases sólidas e criar estruturas duradouras. O fio que guia sua vida é a construção.",
+                profissoes: "Engenheiro, arquiteto, contador, administrador, gerente de projetos, construtor.",
+                talentos: "Organização, disciplina, praticidade, capacidade de construir sistemas.",
+                cursos: "Engenharia, Arquitetura, Administração, Contabilidade, Gestão de Projetos."
+            },
+            5: {
+                expressao: "Você age com liberdade, versatilidade e aventura. Projeta ao mundo uma imagem de pessoa dinâmica e inovadora.",
+                impressao: "Os outros percebem você como alguém livre, aventureiro e cheio de energia. Sua aura social transmite movimento.",
+                motivacao: "Seu coração busca liberdade, experiências novas e aventuras. Você é motivado pela necessidade de mudança.",
+                destino: "Sua missão é explorar, experimentar e trazer renovação. O fio que guia sua vida é a liberdade.",
+                profissoes: "Jornalista, vendedor, guia turístico, piloto, consultor, representante comercial.",
+                talentos: "Adaptabilidade, comunicação, versatilidade, capacidade de inovação.",
+                cursos: "Jornalismo, Turismo, Aviação, Vendas, Marketing, Relações Públicas."
+            },
+            6: {
+                expressao: "Você age com cuidado, responsabilidade e amor. Projeta ao mundo uma imagem de pessoa protetora e acolhedora.",
+                impressao: "Os outros percebem você como alguém carinhoso, responsável e confiável. Sua aura social transmite proteção.",
+                motivacao: "Seu coração busca cuidar, proteger e criar harmonia familiar. Você é motivado pelo amor e responsabilidade.",
+                destino: "Sua missão é cuidar, curar e criar lares harmoniosos. O fio que guia sua vida é o amor incondicional.",
+                profissoes: "Médico, enfermeiro, professor, terapeuta, cozinheiro, decorador, cuidador.",
+                talentos: "Cuidado, empatia, senso estético, capacidade de cura e proteção.",
+                cursos: "Medicina, Enfermagem, Pedagogia, Psicologia, Gastronomia, Design de Interiores."
+            },
+            7: {
+                expressao: "Você age com profundidade, análise e espiritualidade. Projeta ao mundo uma imagem de pessoa sábia e misteriosa.",
+                impressao: "Os outros percebem você como alguém profundo, inteligente e espiritual. Sua aura social transmite mistério.",
+                motivacao: "Seu coração busca conhecimento, verdade e compreensão espiritual. Você é motivado pela busca da sabedoria.",
+                destino: "Sua missão é buscar e transmitir conhecimento profundo. O fio que guia sua vida é a sabedoria.",
+                profissoes: "Pesquisador, filósofo, cientista, terapeuta holístico, escritor, analista.",
+                talentos: "Intuição, análise profunda, espiritualidade, capacidade de pesquisa.",
+                cursos: "Filosofia, Ciências, Teologia, Pesquisa, Terapias Alternativas, Metafísica."
+            },
+            8: {
+                expressao: "Você age com autoridade, ambição e estratégia. Projeta ao mundo uma imagem de pessoa poderosa e bem-sucedida.",
+                impressao: "Os outros percebem você como alguém forte, ambicioso e capaz de grandes realizações. Sua aura social transmite poder.",
+                motivacao: "Seu coração busca sucesso material, reconhecimento e poder. Você é motivado pela realização e conquista.",
+                destino: "Sua missão é alcançar grandes realizações materiais e liderar com sabedoria. O fio que guia sua vida é o poder equilibrado.",
+                profissoes: "Executivo, empresário, banqueiro, político, diretor, investidor.",
+                talentos: "Liderança, visão estratégica, ambição, capacidade de realização material.",
+                cursos: "Administração, Economia, Direito, MBA Executivo, Finanças, Política."
+            },
+            9: {
+                expressao: "Você age com compaixão, generosidade e visão universal. Projeta ao mundo uma imagem de pessoa sábia e altruísta.",
+                impressao: "Os outros percebem você como alguém generoso, sábio e preocupado com o bem comum. Sua aura social transmite compaixão.",
+                motivacao: "Seu coração busca servir a humanidade e fazer a diferença no mundo. Você é motivado pelo amor universal.",
+                destino: "Sua missão é servir a humanidade e elevar a consciência coletiva. O fio que guia sua vida é o amor universal.",
+                profissoes: "Humanitário, professor, médico sem fronteiras, líder espiritual, artista social.",
+                talentos: "Compaixão, sabedoria, visão universal, capacidade de inspirar mudanças.",
+                cursos: "Filosofia, Teologia, Medicina, Educação, Artes, Trabalho Social."
+            },
+            11: {
+                expressao: "Você age com inspiração, intuição e visão espiritual. Projeta ao mundo uma imagem de pessoa iluminada e visionária.",
+                impressao: "Os outros percebem você como alguém especial, intuitivo e inspirador. Sua aura social transmite luz espiritual.",
+                motivacao: "Seu coração busca inspirar e elevar outros através da sua luz interior. Você é motivado pela missão espiritual.",
+                destino: "Sua missão é ser um farol de luz e inspiração para a humanidade. O fio que guia sua vida é a iluminação.",
+                profissoes: "Líder espiritual, terapeuta, artista visionário, professor inspirador, conselheiro.",
+                talentos: "Intuição elevada, capacidade de inspirar, visão espiritual, sensibilidade psíquica.",
+                cursos: "Terapias Holísticas, Artes Transcendentais, Filosofia Espiritual, Psicologia Transpessoal."
+            },
+            22: {
+                expressao: "Você age como um mestre construtor, unindo visão espiritual com realização prática. Projeta ao mundo uma imagem de grande realizador.",
+                impressao: "Os outros percebem você como alguém capaz de grandes feitos, visionário e prático. Sua aura social transmite maestria.",
+                motivacao: "Seu coração busca construir algo grandioso que beneficie a humanidade. Você é motivado pela realização de sonhos elevados.",
+                destino: "Sua missão é materializar grandes visões para o bem da humanidade. O fio que guia sua vida é a construção de legados.",
+                profissoes: "Grande empresário, arquiteto visionário, líder mundial, inventor revolucionário.",
+                talentos: "Visão grandiosa, capacidade de realização, liderança mundial, construção de legados.",
+                cursos: "Arquitetura Avançada, Engenharia de Grandes Projetos, Liderança Mundial, Inovação."
+            },
+            33: {
+                expressao: "Você age como um mestre do amor e da cura, dedicando-se ao serviço compassivo. Projeta ao mundo uma imagem de amor incondicional.",
+                impressao: "Os outros percebem você como alguém extremamente amoroso, curador e dedicado ao bem-estar de todos. Sua aura social transmite amor puro.",
+                motivacao: "Seu coração busca curar e amar incondicionalmente todos os seres. Você é motivado pela compaixão universal.",
+                destino: "Sua missão é ser um canal de amor e cura para o mundo. O fio que guia sua vida é o amor incondicional.",
+                profissoes: "Curador espiritual, terapeuta holístico, líder humanitário, mestre espiritual.",
+                talentos: "Amor incondicional, capacidade de cura, compaixão infinita, sabedoria do coração.",
+                cursos: "Terapias de Cura, Medicina Holística, Liderança Compassiva, Espiritualidade Aplicada."
+            }
+        };
+
+        // Sequências Negativas da Pirâmide Cabalística
+        const sequenciasNegativas = {
+            111: {
+                aspecto: "Ego Inflado",
+                sombra: "Excesso de individualismo, arrogância, necessidade compulsiva de ser o primeiro em tudo.",
+                licao: "Aprender que verdadeira liderança serve aos outros, não apenas ao ego."
+            },
+            222: {
+                aspecto: "Codependência",
+                sombra: "Perda da individualidade, submissão excessiva, medo de conflitos.",
+                licao: "Desenvolver limites saudáveis e autoestima equilibrada."
+            },
+            333: {
+                aspecto: "Dispersão Criativa",
+                sombra: "Falta de foco, superficialidade, uso da criatividade para fugir da realidade.",
+                licao: "Canalizar a criatividade com propósito e disciplina."
+            },
+            444: {
+                aspecto: "Rigidez Extrema",
+                sombra: "Inflexibilidade, obsessão por controle, medo de mudanças.",
+                licao: "Aprender que estrutura deve servir à vida, não limitá-la."
+            },
+            555: {
+                aspecto: "Instabilidade Crônica",
+                sombra: "Incapacidade de compromisso, fuga constante, irresponsabilidade.",
+                licao: "Encontrar liberdade através do compromisso consciente."
+            },
+            666: {
+                aspecto: "Controle Possessivo",
+                sombra: "Sufocamento dos outros, interferência excessiva, amor condicional.",
+                licao: "Aprender que amar é libertar, não possuir."
+            },
+            777: {
+                aspecto: "Isolamento Espiritual",
+                sombra: "Fuga da realidade, superioridade espiritual, desconexão com o mundo.",
+                licao: "Integrar espiritualidade com vida prática e relacionamentos."
+            },
+            888: {
+                aspecto: "Materialismo Obsessivo",
+                sombra: "Ganância, uso do poder para dominar, perda de valores humanos.",
+                licao: "Usar o poder material para servir propósitos elevados."
+            },
+            999: {
+                aspecto: "Martírio Espiritual",
+                sombra: "Sacrifício desnecessário, complexo de salvador, negligência pessoal.",
+                licao: "Servir com sabedoria, cuidando também de si mesmo."
+            }
+        };
+
+        // Interpretações de Compatibilidade por Porcentagem
+        const interpretacoesCompatibilidade = {
+            1: "Conexão quase impossível, caminhos opostos.",
+            10: "Compatibilidade baixa; tende a ser passageiro.",
+            20: "Compatibilidade limitada, conexão frágil.",
+            30: "Compatibilidade fraca; poucos pontos comuns.",
+            40: "Abaixo da média; tende a desgastar.",
+            50: "Neutro: pode dar certo ou não.",
+            60: "Estável em partes; outras instáveis.",
+            70: "Positiva e estável.",
+            80: "Muito boa; forte potencial.",
+            90: "Excepcional; amor sólido.",
+            100: "Almas-espelho; conexão perfeita."
+        };
+
+        // Mapa de Compatibilidade Completo
+        const mapaCompatibilidade = {
+            "1-1": { percentual: 85, forca: "Liderança compartilhada", desafio: "Competição pelo comando", amor: 80, paixao: 90, espiritualidade: 75, material: 95 },
+            "1-2": { percentual: 70, forca: "Complementaridade", desafio: "Diferenças de ritmo", amor: 75, paixao: 65, espiritualidade: 60, material: 80 },
+            "1-3": { percentual: 88, forca: "Criatividade e liderança", desafio: "Foco vs dispersão", amor: 85, paixao: 90, espiritualidade: 80, material: 95 },
+            "1-4": { percentual: 75, forca: "Estrutura e iniciativa", desafio: "Impaciência vs cautela", amor: 70, paixao: 75, espiritualidade: 65, material: 90 },
+            "1-5": { percentual: 82, forca: "Aventura e liderança", desafio: "Estabilidade vs mudança", amor: 80, paixao: 95, espiritualidade: 70, material: 85 },
+            "1-6": { percentual: 78, forca: "Proteção e cuidado", desafio: "Independência vs dependência", amor: 85, paixao: 70, espiritualidade: 75, material: 85 },
+            "1-7": { percentual: 65, forca: "Sabedoria e ação", desafio: "Introversão vs extroversão", amor: 60, paixao: 65, espiritualidade: 85, material: 70 },
+            "1-8": { percentual: 92, forca: "Poder e ambição", desafio: "Ego e competição", amor: 85, paixao: 95, espiritualidade: 80, material: 100 },
+            "1-9": { percentual: 73, forca: "Liderança humanitária", desafio: "Ego vs altruísmo", amor: 75, paixao: 70, espiritualidade: 90, material: 75 },
+            "2-2": { percentual: 90, forca: "Harmonia total", desafio: "Falta de iniciativa", amor: 95, paixao: 80, espiritualidade: 95, material: 85 },
+            "2-3": { percentual: 85, forca: "Criatividade harmoniosa", desafio: "Sensibilidade excessiva", amor: 90, paixao: 85, espiritualidade: 85, material: 80 },
+            "2-4": { percentual: 88, forca: "Estabilidade emocional", desafio: "Rotina vs espontaneidade", amor: 85, paixao: 75, espiritualidade: 80, material: 95 },
+            "2-5": { percentual: 72, forca: "Equilíbrio dinâmico", desafio: "Estabilidade vs aventura", amor: 75, paixao: 80, espiritualidade: 70, material: 65 },
+            "2-6": { percentual: 95, forca: "Amor e cuidado", desafio: "Codependência", amor: 100, paixao: 85, espiritualidade: 95, material: 90 },
+            "2-7": { percentual: 83, forca: "Profundidade emocional", desafio: "Comunicação indireta", amor: 85, paixao: 75, espiritualidade: 95, material: 75 },
+            "2-8": { percentual: 68, forca: "Suporte e ambição", desafio: "Sensibilidade vs dureza", amor: 70, paixao: 70, espiritualidade: 60, material: 85 },
+            "2-9": { percentual: 87, forca: "Compaixão compartilhada", desafio: "Excesso de doação", amor: 90, paixao: 80, espiritualidade: 95, material: 80 },
+            "3-3": { percentual: 92, forca: "Criatividade explosiva", desafio: "Dispersão de energia", amor: 90, paixao: 95, espiritualidade: 85, material: 85 },
+            "3-4": { percentual: 76, forca: "Criatividade estruturada", desafio: "Liberdade vs controle", amor: 75, paixao: 80, espiritualidade: 70, material: 85 },
+            "3-5": { percentual: 94, forca: "Aventura criativa", desafio: "Falta de foco", amor: 90, paixao: 100, espiritualidade: 85, material: 85 },
+            "3-6": { percentual: 89, forca: "Arte e beleza", desafio: "Responsabilidade vs liberdade", amor: 95, paixao: 85, espiritualidade: 85, material: 90 },
+            "3-7": { percentual: 81, forca: "Criatividade profunda", desafio: "Superfície vs profundidade", amor: 80, paixao: 85, espiritualidade: 90, material: 75 },
+            "3-8": { percentual: 79, forca: "Sucesso criativo", desafio: "Arte vs materialismo", amor: 75, paixao: 85, espiritualidade: 70, material: 90 },
+            "3-9": { percentual: 86, forca: "Inspiração universal", desafio: "Ego vs altruísmo", amor: 85, paixao: 85, espiritualidade: 95, material: 80 },
+            "4-4": { percentual: 87, forca: "Estabilidade sólida", desafio: "Rigidez excessiva", amor: 80, paixao: 75, espiritualidade: 75, material: 100 },
+            "4-5": { percentual: 63, forca: "Estrutura vs liberdade", desafio: "Conflito de valores", amor: 60, paixao: 70, espiritualidade: 55, material: 75 },
+            "4-6": { percentual: 91, forca: "Lar e segurança", desafio: "Excesso de controle", amor: 90, paixao: 80, espiritualidade: 85, material: 100 },
+            "4-7": { percentual: 78, forca: "Sabedoria prática", desafio: "Materialismo vs espiritualidade", amor: 75, paixao: 70, espiritualidade: 85, material: 85 },
+            "4-8": { percentual: 89, forca: "Sucesso estruturado", desafio: "Workaholic conjunto", amor: 80, paixao: 85, espiritualidade: 75, material: 100 },
+            "4-9": { percentual: 74, forca: "Serviço organizado", desafio: "Praticidade vs idealismo", amor: 75, paixao: 70, espiritualidade: 85, material: 85 },
+            "5-5": { percentual: 88, forca: "Aventura constante", desafio: "Instabilidade crônica", amor: 85, paixao: 100, espiritualidade: 80, material: 70 },
+            "5-6": { percentual: 71, forca: "Liberdade vs cuidado", desafio: "Compromisso vs aventura", amor: 75, paixao: 80, espiritualidade: 65, material: 75 },
+            "5-7": { percentual: 77, forca: "Busca e exploração", desafio: "Superfície vs profundidade", amor: 70, paixao: 85, espiritualidade: 85, material: 70 },
+            "5-8": { percentual: 84, forca: "Sucesso dinâmico", desafio: "Liberdade vs ambição", amor: 80, paixao: 90, espiritualidade: 75, material: 90 },
+            "5-9": { percentual: 80, forca: "Liberdade humanitária", desafio: "Compromisso vs idealismo", amor: 80, paixao: 85, espiritualidade: 90, material: 75 },
+            "6-6": { percentual: 93, forca: "Amor incondicional", desafio: "Sufocamento mútuo", amor: 100, paixao: 85, espiritualidade: 90, material: 95 },
+            "6-7": { percentual: 85, forca: "Cuidado espiritual", desafio: "Emoção vs razão", amor: 90, paixao: 75, espiritualidade: 95, material: 80 },
+            "6-8": { percentual: 82, forca: "Sucesso familiar", desafio: "Cuidado vs ambição", amor: 85, paixao: 80, espiritualidade: 75, material: 95 },
+            "6-9": { percentual: 96, forca: "Amor universal", desafio: "Excesso de doação", amor: 100, paixao: 85, espiritualidade: 100, material: 85 },
+            "7-7": { percentual: 91, forca: "Profundidade espiritual", desafio: "Isolamento conjunto", amor: 85, paixao: 80, espiritualidade: 100, material: 75 },
+            "7-8": { percentual: 73, forca: "Sabedoria e poder", desafio: "Espiritualidade vs materialismo", amor: 70, paixao: 75, espiritualidade: 85, material: 85 },
+            "7-9": { percentual: 88, forca: "Sabedoria compassiva", desafio: "Isolamento vs serviço", amor: 85, paixao: 80, espiritualidade: 100, material: 80 },
+            "8-8": { percentual: 94, forca: "Poder absoluto", desafio: "Competição destrutiva", amor: 85, paixao: 95, espiritualidade: 80, material: 100 },
+            "8-9": { percentual: 76, forca: "Sucesso humanitário", desafio: "Materialismo vs altruísmo", amor: 75, paixao: 80, espiritualidade: 85, material: 90 },
+            "9-9": { percentual: 89, forca: "Missão universal", desafio: "Martírio conjunto", amor: 90, paixao: 80, espiritualidade: 100, material: 80 }
+        };
+
+        // ===== FUNÇÕES DE CÁLCULO =====
+
+        function calcularComTabelaPitagorica(texto) {
+            return texto.toUpperCase().split('').reduce((soma, letra) => {
+                return soma + (tabelaPitagorica[letra] || 0);
+            }, 0);
+        }
+
+        function calcularComTabelaCabalistica(texto) {
+            return texto.toUpperCase().split('').map(letra => tabelaCabalistica[letra] || 0);
+        }
+
+        function reduzirNumero(numero) {
+            if (numero === 11 || numero === 22 || numero === 33) return numero;
+            while (numero > 9) {
+                numero = numero.toString().split('').reduce((soma, digito) => soma + parseInt(digito), 0);
+                if (numero === 11 || numero === 22 || numero === 33) return numero;
+            }
+            return numero;
+        }
+
+        function construirPiramide(numeros) {
+            const piramide = [numeros];
+            let linhaAtual = [...numeros];
+            
+            while (linhaAtual.length > 1) {
+                const novaLinha = [];
+                for (let i = 0; i < linhaAtual.length - 1; i++) {
+                    let soma = linhaAtual[i] + linhaAtual[i + 1];
+                    // Reduzir para 1-22 se maior que 22
+                    while (soma > 22) {
+                        soma = soma.toString().split('').reduce((s, d) => s + parseInt(d), 0);
+                    }
+                    novaLinha.push(soma);
+                }
+                piramide.push(novaLinha);
+                linhaAtual = novaLinha;
+            }
+            
+            return piramide;
+        }
+
+        function calcularNumeroDestino(dataNascimento) {
+            const data = dataNascimento.replace(/-/g, '');
+            return data.split('').reduce((soma, digito) => soma + parseInt(digito), 0);
+        }
+
+        function calcularAnoPessoal(dataNascimento, ano) {
+            const [anoNasc, mes, dia] = dataNascimento.split('-');
+            const somaData = parseInt(dia) + parseInt(mes) + ano;
+            return reduzirNumero(somaData);
+        }
+
+        function calcularArcanoRegente(nome, idade) {
+            const numerosCabalisticos = calcularComTabelaCabalistica(nome.replace(/\s/g, ''));
+            const piramide = construirPiramide(numerosCabalisticos);
+            const numArcanos = numerosCabalisticos.length;
+            const periodoArcano = 90 / numArcanos;
+            const posicaoAtual = Math.ceil(idade / periodoArcano);
+            
+            // Encontrar o arcano na posição calculada
+            let contador = 0;
+            for (let linha of piramide) {
+                for (let numero of linha) {
+                    contador++;
+                    if (contador === posicaoAtual) {
+                        return {
+                            arcano: numero,
+                            piramide: piramide,
+                            numArcanos: numArcanos,
+                            periodoArcano: periodoArcano.toFixed(1),
+                            posicaoAtual: posicaoAtual
+                        };
+                    }
+                }
+            }
+            
+            return { arcano: piramide[0][0], piramide: piramide, numArcanos: numArcanos, periodoArcano: periodoArcano.toFixed(1), posicaoAtual: 1 };
+        }
+
+        // Função principal do mapa numerológico PITAGÓRICO
+        function calcularMapaNumerologico() {
+            const nome = document.getElementById('nome-numerologia').value.trim();
+            const dataNascimento = document.getElementById('data-numerologia').value;
+            
+            if (!nome || !dataNascimento) {
+                alert('Por favor, preencha nome e data de nascimento.');
+                return;
+            }
+
+            const resultado = document.getElementById('resultado-numerologia');
+            
+            // Cálculos PITAGÓRICOS (sem arcanos)
+            const vogais = nome.replace(/[^AEIOUÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙÃÕ]/gi, '');
+            const consoantes = nome.replace(/[AEIOUÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙÃÕ\s]/gi, '');
+            
+            const numeroAlma = reduzirNumero(calcularComTabelaPitagorica(vogais));
+            const numeroPersonalidade = reduzirNumero(calcularComTabelaPitagorica(consoantes));
+            const numeroExpressao = reduzirNumero(calcularComTabelaPitagorica(nome.replace(/\s/g, '')));
+            const numeroDestino = reduzirNumero(calcularNumeroDestino(dataNascimento));
+            const anoPessoal = calcularAnoPessoal(dataNascimento, new Date().getFullYear());
+            
+            // Calcular idade para pirâmide cabalística
+            const hoje = new Date();
+            const anoAtual = hoje.getFullYear();
+            const mesAtual = hoje.getMonth() + 1; // JavaScript usa 0-11, convertendo para 1-12
+            const diaAtual = hoje.getDate();
+            
+            // Extrair partes da data de nascimento
+            const [anoNasc, mesNasc, diaNasc] = dataNascimento.split('-').map(Number);
+            
+            // Calcular idade
+            let idade = anoAtual - anoNasc;
+            
+            // Ajustar se ainda não fez aniversário este ano
+            if (mesAtual < mesNasc || (mesAtual === mesNasc && diaAtual < diaNasc)) {
+                idade--;
+            }
+            
+            // Pirâmide Cabalística e Arcano Regente
+            const resultadoArcano = calcularArcanoRegente(nome, idade);
+            
+            resultado.innerHTML = `
+                <div class="resultado-card">
+                    <h3>🔮 Mapa Numerológico Pitagórico</h3>
+                    <div class="numeros-principais">
+                        <div class="numero-card">
+                            <h4>Número da Alma (Motivação)</h4>
+                            <div class="numero-valor">${numeroAlma}</div>
+                            <p><strong>O que seu coração busca:</strong> ${interpretacoesPitagoricas[numeroAlma]?.motivacao}</p>
+                        </div>
+                        <div class="numero-card">
+                            <h4>Número da Personalidade (Impressão)</h4>
+                            <div class="numero-valor">${numeroPersonalidade}</div>
+                            <p><strong>Como os outros te veem:</strong> ${interpretacoesPitagoricas[numeroPersonalidade]?.impressao}</p>
+                        </div>
+                        <div class="numero-card">
+                            <h4>Número da Expressão</h4>
+                            <div class="numero-valor">${numeroExpressao}</div>
+                            <p><strong>Como você age no mundo:</strong> ${interpretacoesPitagoricas[numeroExpressao]?.expressao}</p>
+                        </div>
+                        <div class="numero-card">
+                            <h4>Número do Destino</h4>
+                            <div class="numero-valor">${numeroDestino}</div>
+                            <p><strong>Sua missão de vida:</strong> ${interpretacoesPitagoricas[numeroDestino]?.destino}</p>
+                        </div>
+                        <div class="numero-card">
+                            <h4>Ano Pessoal ${anoAtual}</h4>
+                            <div class="numero-valor">${anoPessoal}</div>
+                            <p>A energia que rege este ano em sua vida.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="profissoes-talentos">
+                        <h4>💼 Profissões Ideais (Expressão ${numeroExpressao})</h4>
+                        <p>${interpretacoesPitagoricas[numeroExpressao]?.profissoes}</p>
+                        
+                        <h4>✨ Talentos Naturais</h4>
+                        <p>${interpretacoesPitagoricas[numeroExpressao]?.talentos}</p>
+                        
+                        <h4>🎓 Cursos Recomendados</h4>
+                        <p>${interpretacoesPitagoricas[numeroExpressao]?.cursos}</p>
+                    </div>
+                </div>
+                
+                <div class="resultado-card">
+                    <h3>🔺 Pirâmide Cabalística e Arcano Regente</h3>
+                    <div class="piramide-info">
+                        <p><strong>Nome:</strong> ${nome}</p>
+                        <p><strong>Idade:</strong> ${idade} anos</p>
+                        <p><strong>Arcanos Pessoais:</strong> ${resultadoArcano.numArcanos}</p>
+                        <p><strong>Período de cada Arcano:</strong> ${resultadoArcano.periodoArcano} anos</p>
+                        <p><strong>Posição Atual:</strong> ${resultadoArcano.posicaoAtual}º Arcano</p>
+                        
+                        <div class="arcano-regente">
+                            <h4>🃏 Arcano Regente Atual</h4>
+                            <div class="numero-valor">${resultadoArcano.arcano}</div>
+                            <p>Este é o arcano que rege sua energia atual aos ${idade} anos.</p>
+                            <button onclick="verMaisArcano(${resultadoArcano.arcano})" class="btn-ver-mais">Ver Interpretação Completa</button>
+                        </div>
+                        
+                        <div class="piramide-visual">
+                            <h4>📐 Sua Pirâmide Pessoal</h4>
+                            ${resultadoArcano.piramide.map((linha, index) => 
+                                `<div class="linha-piramide nivel-${index}">
+                                    ${linha.map(num => `<span class="numero-piramide">${num}</span>`).join(' ')}
+                                </div>`
+                            ).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Função de compatibilidade amorosa
+        function calcularCompatibilidade() {
+            const nome1 = document.getElementById('nome1').value.trim();
+            const data1 = document.getElementById('data1').value;
+            const nome2 = document.getElementById('nome2').value.trim();
+            const data2 = document.getElementById('data2').value;
+            
+            if (!nome1 || !data1 || !nome2 || !data2) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+
+            const resultado = document.getElementById('resultado-compatibilidade');
+            
+            // Calcular números de expressão
+            const expressao1 = reduzirNumero(calcularComTabelaPitagorica(nome1.replace(/\s/g, '')));
+            const expressao2 = reduzirNumero(calcularComTabelaPitagorica(nome2.replace(/\s/g, '')));
+            
+            // Buscar compatibilidade no mapa
+            const chave1 = `${expressao1}-${expressao2}`;
+            const chave2 = `${expressao2}-${expressao1}`;
+            const compatibilidade = mapaCompatibilidade[chave1] || mapaCompatibilidade[chave2] || {
+                percentual: 50,
+                forca: "Conexão neutra",
+                desafio: "Necessita maior compreensão",
+                amor: 50,
+                paixao: 50,
+                espiritualidade: 50,
+                material: 50
+            };
+            
+            const interpretacao = interpretacoesCompatibilidade[Math.round(compatibilidade.percentual / 10) * 10] || "Compatibilidade moderada";
+            
+            resultado.innerHTML = `
+                <div class="resultado-card">
+                    <h3>💕 Análise de Compatibilidade Amorosa</h3>
+                    <div class="numeros-principais">
+                        <div class="numero-card">
+                            <h4>${nome1}</h4>
+                            <div class="numero-valor">${expressao1}</div>
+                            <p>Número de Expressão</p>
+                        </div>
+                        <div class="numero-card">
+                            <h4>${nome2}</h4>
+                            <div class="numero-valor">${expressao2}</div>
+                            <p>Número de Expressão</p>
+                        </div>
+                    </div>
+                    
+                    <div class="numero-card" style="text-align: center; margin: 20px 0;">
+                        <h4>Compatibilidade Geral</h4>
+                        <div class="numero-valor" style="font-size: 3rem;">${compatibilidade.percentual}%</div>
+                        <p><strong>${interpretacao}</strong></p>
+                    </div>
+                    
+                    <div class="profissoes-talentos">
+                        <h4>💪 Força do Casal</h4>
+                        <p>${compatibilidade.forca}</p>
+                        
+                        <h4>⚠️ Principal Desafio</h4>
+                        <p>${compatibilidade.desafio}</p>
+                        
+                        <h4>📊 Compatibilidade por Áreas</h4>
+                        <div class="numeros-principais">
+                            <div class="numero-card">
+                                <h4>💖 Amor/Afeto</h4>
+                                <div class="numero-valor">${compatibilidade.amor}%</div>
+                            </div>
+                            <div class="numero-card">
+                                <h4>🔥 Paixão/Química</h4>
+                                <div class="numero-valor">${compatibilidade.paixao}%</div>
+                            </div>
+                            <div class="numero-card">
+                                <h4>🙏 Espiritualidade</h4>
+                                <div class="numero-valor">${compatibilidade.espiritualidade}%</div>
+                            </div>
+                            <div class="numero-card">
+                                <h4>🏠 Material/Família</h4>
+                                <div class="numero-valor">${compatibilidade.material}%</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Funções de navegação
+        function mostrarSecao(secao) {
+            document.getElementById('menu-principal').style.display = 'none';
+            document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(secao).classList.add('active');
+        }
+
+        function voltarMenu() {
+            document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active'));
+            document.getElementById('menu-principal').style.display = 'grid';
+        }
+
+        function verMaisArcano(numero) {
+            // Navegar para página do arcano específico
+            const arcanos = {
+                1: 'o_mago.html',
+                2: 'a_sacerdotisa.html',
+                3: 'a_imperatriz.html',
+                4: 'o_imperador.html',
+                5: 'o_papa.html',
+                6: 'os_enamorados.html',
+                7: 'o_carro.html',
+                8: 'a_forca.html',
+                9: 'o_eremita.html',
+                10: 'a_roda_da_fortuna.html',
+                11: 'a_justica.html',
+                12: 'o_enforcado.html',
+                13: 'a_morte.html',
+                14: 'a_temperanca.html',
+                15: 'o_diabo.html',
+                16: 'a_torre.html',
+                17: 'a_estrela.html',
+                18: 'a_lua.html',
+                19: 'o_sol.html',
+                20: 'o_julgamento.html',
+                21: 'o_mundo.html',
+                22: 'o_louco.html'
+            };
+            
+            const arquivo = arcanos[numero];
+            if (arquivo) {
+                window.open(`arcanos/${arquivo}`, '_blank');
+            } else {
+                alert(`Interpretação do Arcano ${numero} em desenvolvimento.`);
+            }
+        }
+    </script>
+</body>
+</html>
+

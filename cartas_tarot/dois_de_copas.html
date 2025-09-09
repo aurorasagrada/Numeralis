@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dois de Copas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Dois de Copas</h1>
+            <p class="subtitulo">51 - A União das Almas</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/51TwoofCups.jpg" alt="Dois de Copas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">União</span>
+                        <span class="palavra-chave">Parceria</span>
+                        <span class="palavra-chave">Amor</span>
+                        <span class="palavra-chave">Conexão</span>
+                        <span class="palavra-chave">Harmonia</span>
+                        <span class="palavra-chave">Reconciliação</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Dois de Copas representa a fusão de duas entidades, a união de duas almas que se reconhecem e se complementam. Este arcano indica o encontro, a parceria e a reciprocidade. A sua energia é a da atração mútua, da harmonia que surge da conexão profunda entre opostos que se atraem. O Dois de Copas simboliza a individualidade que se dissolve na dualidade para criar uma nova totalidade, um ser que, ao se unir, transcende a si mesmo. A sua posição no naipe de Copas, que governa as emoções e os relacionamentos, reforça a ideia de um vínculo afetivo, de um pacto de amor e compreensão. A imagem da carta frequentemente mostra duas figuras que se olham, trocando taças, um gesto que simboliza a partilha de sentimentos e a aceitação mútua. A água, elemento associado às Copas, flui entre eles, indicando a corrente emocional que os une. A numerologia do Dois, neste contexto, é a da polaridade que busca a unidade, da dualidade que se resolve na complementaridade. Ele é o espelho que reflete o outro, o ponto de equilíbrio onde as diferenças se tornam forças. A sua essência é a da colaboração, da amizade e do amor verdadeiro, um convite à entrega e à confiança no vínculo que se estabelece. Este arcano fala da necessidade humana de conexão, da busca por um par que nos compreenda e nos aceite em nossa totalidade. É a promessa de um relacionamento que nutre e eleva, onde a individualidade é respeitada e a união é celebrada. A dança entre o eu e o outro, a troca de energias que fortalece ambos os lados. A presença do caduceu, em algumas representações, simboliza a cura e o equilíbrio que a união traz, a superação de conflitos através do diálogo e da compreensão. O Dois de Copas é, portanto, um símbolo de reconciliação, de paz e de um novo começo em qualquer tipo de parceria, seja ela amorosa, profissional ou de amizade. Ele nos lembra que a verdadeira força reside na capacidade de nos conectarmos com o outro, de nos abrirmos para a experiência da partilha e de construirmos pontes em vez de muros. A energia deste arcano é receptiva e ativa ao mesmo tempo, pois exige a iniciativa de se aproximar e a receptividade de acolher o outro. É um arcano de grande beleza e profundidade, que nos convida a celebrar os laços que nos unem e a valorizar a riqueza das nossas relações interpessoais. A sua mensagem é clara: a felicidade plena muitas vezes se encontra na união com o outro, na capacidade de amar e ser amado, de dar e receber, de compartilhar a jornada da vida com alguém que ressoa com a nossa própria alma. É a celebração da alteridade, da descoberta do eu no reflexo do outro, e da construção de um futuro comum baseado no respeito e na afeição mútua. A sua presença em uma leitura indica um momento propício para a formação de laços significativos, para a resolução de desavenças e para o fortalecimento de parcerias existentes. É um arcano que fala de pontes, de diálogos e de corações que se encontram em uma dança harmoniosa de dar e receber. A sua força reside na capacidade de transformar a dualidade em unidade, de encontrar a beleza na complementaridade e de construir um amor que seja ao mesmo tempo individual e coletivo, um amor que se expande e se multiplica através da união. É a promessa de um relacionamento que nutre e eleva, onde a individualidade é respeitada e a união é celebrada. A dança entre o eu e o outro, a troca de energias que fortalece ambos os lados. A presença do caduceu, em algumas representações, simboliza a cura e o equilíbrio que a união traz, a superação de conflitos através do diálogo e da compreensão. O Dois de Copas é, portanto, um símbolo de reconciliação, de paz e de um novo começo em qualquer tipo de parceria, seja ela amorosa, profissional ou de amizade. Ele nos lembra que a verdadeira força reside na capacidade de nos conectarmos com o outro, de nos abrirmos para a experiência da partilha e de construirmos pontes em vez de muros. A energia deste arcano é receptiva e ativa ao mesmo tempo, pois exige a iniciativa de se aproximar e a receptividade de acolher o outro. É um arcano de grande beleza e profundidade, que nos convida a celebrar os laços que nos unem e a valorizar a riqueza das nossas relações interpessoais. A sua mensagem é clara: a felicidade plena muitas vezes se encontra na união com o outro, na capacidade de amar e ser amado, de dar e receber, de compartilhar a jornada da vida com alguém que ressoa com a nossa própria alma. É a celebração da alteridade, da descoberta do eu no reflexo do outro, e da construção de um futuro comum baseado no respeito e na afeição mútua. A sua presença em uma leitura indica um momento propício para a formação de laços significativos, para a resolução de desavenças e para o fortalecimento de parcerias existentes. É um arcano que fala de pontes, de diálogos e de corações que se encontram em uma dança harmoniosa de dar e receber. A sua força reside na capacidade de transformar a dualidade em unidade, de encontrar a beleza na complementaridade e de construir um amor que seja ao mesmo tempo individual e coletivo, um amor que se expande e se multiplica através da união.
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, a numerologia é a chave para desvendar as camadas de significado de cada arcano. O Dois de Copas, como o próprio nome indica, carrega a energia do número 2. O Dois é o número da dualidade, da polaridade, da parceria e da cooperação. Ele representa a necessidade de relacionamento, a busca pelo outro, a complementaridade. Enquanto o Um é a unidade, o ponto de partida, o Dois é o primeiro passo para fora de si mesmo, o encontro com o outro. É o número da gestação, da receptividade, da energia feminina. No Dois de Copas, essa energia se manifesta no campo emocional. Ele simboliza a união de duas almas, a formação de um casal, a criação de um vínculo afetivo. O Dois é também o número da escolha, da decisão que precisa ser tomada em conjunto. Ele nos fala da importância do diálogo, da negociação e do equilíbrio em qualquer tipo de relacionamento. A presença do Dois de Copas em uma leitura indica um momento de grande potencial para a criação de laços duradouros e significativos. É um convite para abrir o coração e se permitir a experiência da união. A sua energia é a da harmonia que surge da aceitação das diferenças, da dança entre o eu e o outro. O Dois de Copas nos lembra que não estamos sozinhos no mundo, que a nossa jornada se torna mais rica e completa quando a compartilhamos com alguém. É a celebração do encontro, da descoberta do amor e da amizade. A sua mensagem é a de que a verdadeira força reside na capacidade de se unir, de se complementar e de construir algo novo a partir da fusão de duas individualidades. É a promessa de um futuro compartilhado, de um caminho que se percorre a dois, de mãos dadas, em direção a um objetivo comum. O Dois de Copas é a prova de que um mais um pode ser muito mais do que dois, pode ser o infinito.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No Dois de Copas, as cores desempenham um papel fundamental na sua simbologia, refletindo a natureza emocional e relacional deste arcano. O azul, predominante nas Copas, representa a profundidade dos sentimentos, a intuição e a fluidez das emoções. É a cor da água, elemento regente deste naipe, que simboliza a receptividade, a adaptabilidade e a capacidade de nutrir. O verde, frequentemente presente em elementos naturais ou vestimentas, indica crescimento, renovação e harmonia, aspectos essenciais para qualquer união bem-sucedida. O dourado ou amarelo, quando aparece, pode simbolizar a luz da compreensão mútua, a sabedoria que surge da troca e a prosperidade emocional que a parceria traz. O vermelho, se presente, pode indicar a paixão e a energia vital que impulsiona a conexão. A combinação dessas cores no Dois de Copas sublinha a complexidade e a riqueza dos laços afetivos. O contraste entre tons mais escuros e mais claros pode representar a superação de desafios e a iluminação que o amor e a parceria trazem. A paleta de cores, portanto, não é apenas estética, mas um mapa visual das energias que se entrelaçam neste arcano, guiando a interpretação para a profundidade dos sentimentos e a beleza da união.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Dois de Copas, na ótica de Jodorowsky, representam a capacidade de estabelecer conexões profundas e significativas. Este arcano indica a harmonia nas relações, a reciprocidade e o amor incondicional. É a energia da união que cura, que integra e que fortalece. O Dois de Copas simboliza a capacidade de se abrir para o outro, de compartilhar sentimentos e de construir um vínculo baseado na confiança e no respeito mútuo. A sua presença em uma leitura indica um momento propício para a reconciliação, para o perdão e para a superação de conflitos. É a promessa de um relacionamento que nutre a alma, que inspira o crescimento e que traz alegria e plenitude. Este arcano fala da beleza da colaboração, da força que surge da parceria e da riqueza que a troca de experiências proporciona. É a celebração da amizade verdadeira, do amor romântico e de todas as formas de união que elevam o espírito. O Dois de Copas nos lembra que a felicidade plena muitas vezes se encontra na capacidade de amar e ser amado, de dar e receber, de compartilhar a jornada da vida com alguém que ressoa com a nossa própria alma. É a celebração da alteridade, da descoberta do eu no reflexo do outro, e da construção de um futuro comum baseado no respeito e na afeição mútua. A sua presença em uma leitura indica um momento propício para a formação de laços significativos, para a resolução de desavenças e para o fortalecimento de parcerias existentes. É um arcano que fala de pontes, de diálogos e de corações que se encontram em uma dança harmoniosa de dar e receber. A sua força reside na capacidade de transformar a dualidade em unidade, de encontrar a beleza na complementaridade e de construir um amor que seja ao mesmo tempo individual e coletivo, um amor que se expande e se multiplica através da união.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Dois de Copas se manifesta em seus aspectos negativos, segundo Jodorowsky, ele pode indicar desequilíbrio nas relações, dependência emocional ou a incapacidade de estabelecer limites saudáveis. A união, que deveria ser fonte de força, pode se tornar um fardo, levando à fusão excessiva de identidades, onde um anula o outro. Este arcano, em sua sombra, representa a dificuldade de se desvincular de relações tóxicas, a submissão ou a dominação em parcerias. Pode simbolizar também a falta de reciprocidade, onde o dar e o receber estão em desarmonia, gerando frustração e ressentimento. A energia do Dois de Copas, quando mal direcionada, pode levar a conflitos constantes, a brigas e a desentendimentos que minam a base do relacionamento. A sua presença em uma leitura, sob uma luz negativa, alerta para a necessidade de reavaliar as parcerias, de buscar a individualidade dentro da união e de romper com padrões destrutivos. É um convite à reflexão sobre a dinâmica dos relacionamentos, sobre a importância do respeito mútuo e da liberdade individual. O Dois de Copas, em seu lado sombrio, nos lembra que nem toda união é benéfica, e que a verdadeira harmonia só pode ser alcançada quando ambas as partes estão em equilíbrio e integridade. A sua mensagem é a de que é preciso coragem para enfrentar as sombras das relações, para reconhecer os padrões que nos aprisionam e para buscar a libertação. É um arcano que nos convida a olhar para dentro, a curar as feridas emocionais e a construir relacionamentos baseados na autenticidade e no amor próprio. A sua força reside na capacidade de transformar a dor em aprendizado, de encontrar a luz na escuridão e de construir um futuro onde as relações sejam fontes de crescimento e de felicidade, e não de sofrimento.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+
+

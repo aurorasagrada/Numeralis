@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Três de Espadas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Três de Espadas</h1>
+            <p class="subtitulo">66 - A Dor da Verdade</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/66ThreeofSwords.jpg" alt="Três de Espadas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Dor</span>
+                        <span class="palavra-chave">Verdade</span>
+                        <span class="palavra-chave">Rompimento</span>
+                        <span class="palavra-chave">Clareza</span>
+                        <span class="palavra-chave">Luto</span>
+                        <span class="palavra-chave">Cura</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Três de Espadas representa a dor aguda da verdade, a clareza que fere. Este arcano indica um momento de rompimento doloroso, onde a mente, simbolizada pelas espadas, perfura o coração, o centro das emoções. A sua energia é de uma crise necessária, um confronto com uma realidade que não pode mais ser ignorada. O número três, na numerologia do tarot, simboliza a primeira manifestação, a criação que surge da união do um e do dois. Aqui, ele manifesta uma verdade que desestabiliza e quebra uma harmonia anterior. A dor indicada por esta carta não é gratuita; ela é o resultado de uma tomada de consciência, a consequência inevitável de ver as coisas como elas realmente são, sem o véu da ilusão ou da negação. É a energia da palavra que corta, da decisão que separa, e do luto que se segue à perda de uma crença ou de um relacionamento. O coração sangra, mas é um sangramento que limpa, que abre espaço para uma nova forma de sentir e de se relacionar com o mundo, baseada na honestidade e na aceitação da realidade, por mais dura que seja.</p>
+                    </div>
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>O número três, no contexto do Tarot de Jodorowsky, é a expressão da criação, da manifestação e da união. Ele indica a primeira forma que emerge da dualidade, a síntese que surge da tese e da antítese. No Três de Espadas, esta energia criativa se manifesta de forma impactante, muitas vezes dolorosa, pois indica a materialização de uma verdade que rompe com o status quo. As três espadas que perfuram o coração simbolizam a clareza mental que se impõe sobre as emoções, a razão que desvela a ilusão. É a tríade da mente, emoção e espírito em desequilíbrio, onde a mente, representada pelas espadas, assume o controle e impõe uma nova ordem, mesmo que isso cause sofrimento. A numerologia do três aqui não é de harmonia e crescimento fácil, mas de um crescimento que exige a superação de obstáculos e a aceitação de verdades difíceis. É a energia da comunicação que se torna um instrumento de corte, da palavra que fere para curar, da decisão que separa para reconstruir. A dor é um catalisador para a evolução, e o número três, neste arcano, indica o processo de gestação de uma nova consciência, que nasce da desintegração do antigo.</p>
+                    </div>
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No Três de Espadas, as cores desempenham um papel crucial na transmissão de sua mensagem. O azul, frequentemente associado à mente, à clareza e à comunicação, aqui se torna a cor predominante das espadas, indicando que a dor e o conflito são de natureza mental, frutos de pensamentos e verdades que se revelam. O coração, muitas vezes representado em tons de vermelho ou rosa, pode aparecer em tons mais escuros ou acinzentados, simbolizando a tristeza, o luto e a perda de vitalidade emocional. O céu, se presente, pode ser cinzento ou tempestuoso, refletindo o clima de desolação e turbulência interna. A ausência de cores vibrantes e a predominância de tons frios e sombrios reforçam a atmosfera de sofrimento e desilusão. No entanto, mesmo na escuridão, há um vislumbre de luz, uma promessa de que a clareza, por mais dolorosa que seja, é o primeiro passo para a cura e a reconstrução. A simbologia das cores neste arcano é um lembrete de que a dor é uma parte intrínseca do processo de crescimento e que, ao enfrentá-la, somos capazes de transcender as limitações e alcançar uma compreensão mais profunda da existência.</p>
+                    </div>
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Embora o Três de Espadas seja frequentemente associado à dor e ao sofrimento, Jodorowsky nos convida a olhar para além da superfície e a encontrar os aspectos positivos inerentes a esta carta. A dor, neste contexto, não é um fim em si mesma, mas um catalisador para a clareza e a libertação. As espadas que perfuram o coração simbolizam a verdade que, por mais dolorosa que seja, nos liberta de ilusões e enganos. É a coragem de enfrentar a realidade, de aceitar perdas e de cortar laços que já não servem ao nosso crescimento. Este arcano indica a capacidade de discernimento aguçado, a habilidade de ver através das aparências e de tomar decisões difíceis, mas necessárias. A dor da verdade é preferível à ilusão da felicidade. O Três de Espadas, em sua luz, representa a purificação, a limpeza de velhas feridas e a abertura para um novo ciclo de honestidade e autenticidade. É a energia da cura que surge da aceitação, da resiliência que nasce da adversidade. A superação da dor leva a uma compreensão mais profunda de si mesmo e do mundo, fortalecendo o espírito e preparando o indivíduo para novas experiências, livres do peso do passado. A clareza mental que advém deste processo permite uma reavaliação de valores e prioridades, pavimentando o caminho para um futuro mais alinhado com a verdadeira essência do ser.</p>
+                    </div>
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Três de Espadas se manifesta em seu aspecto negativo, ele indica uma imersão profunda na dor, na tristeza e no desespero. A clareza que deveria libertar se transforma em uma obsessão por mágoas passadas, em um remoer constante de feridas que impedem a cicatrização. As espadas, que deveriam cortar as ilusões, tornam-se instrumentos de autossabotagem, de pensamentos negativos que corroem a alma. Este arcano, em sua sombra, representa a incapacidade de perdoar, a amargura que se instala no coração e a resistência em aceitar a realidade, por mais evidente que ela seja. Pode indicar traição, desilusão, perdas irreparáveis e um profundo sentimento de abandono. A dor se torna paralisante, impedindo o indivíduído de seguir em frente e de encontrar novas perspectivas. A energia do Três de Espadas, quando mal direcionada, pode levar ao isolamento, à depressão e a um ciclo vicioso de sofrimento. É um alerta para a necessidade de buscar a cura, de confrontar os próprios demônios e de permitir que a luz da verdade, por mais dolorosa que seja, ilumine o caminho para a superação. A recusa em enfrentar a dor e em processar o luto pode levar a um estado de estagnação e a um prolongamento desnecessário do sofrimento, impedindo o fluxo natural da vida e o crescimento pessoal.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

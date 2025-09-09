@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinco de Espadas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Cinco de Espadas</h1>
+            <p class="subtitulo">68 - A Derrota Honrosa</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/68FiveofSwords.jpg" alt="Cinco de Espadas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Conflito</span>
+                        <span class="palavra-chave">Desilusão</span>
+                        <span class="palavra-chave">Vitória Pírrica</span>
+                        <span class="palavra-chave">Derrota</span>
+                        <span class="palavra-chave">Ressentimento</span>
+                        <span class="palavra-chave">Desapego</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Cinco de Espadas, no contexto do Tarot de Jodorowsky, representa um momento de conflito, desilusão e, paradoxalmente, de uma oportunidade para a verdadeira vitória. Não se trata de uma vitória no sentido convencional de dominar o outro, mas sim de uma conquista interna, um triunfo sobre as ilusões e as batalhas travadas no plano mental. Este arcano, inserido no naipe de Espadas, que simboliza o intelecto, a razão, a comunicação e os desafios mentais, aponta para a necessidade de confrontar as próprias sombras, os medos e as crenças limitantes que impedem o progresso. A imagem tradicional do Cinco de Espadas frequentemente mostra figuras em desvantagem, com espadas caídas ou roubadas, e uma figura central que parece ter "vencido" à custa dos outros. No entanto, Jodorowsky nos convida a olhar além da superfície, a questionar o que realmente significa vencer. Será que a vitória que causa a derrota alheia é uma vitória genuína? Ou será que ela esconde uma profunda perda de valores e de conexão humana?</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>O número cinco, no Tarot de Jodorowsky, é um símbolo de transição, de crise e de movimento. Ele representa a quebra da ordem e da estabilidade que o número quatro estabelece. Enquanto o quatro está associado à estrutura, à fundação e à segurança, o cinco introduz um elemento de dinamismo, de desafio e de incerteza. No naipe de Espadas, que governa o domínio do intelecto e da comunicação, o cinco manifesta-se como um conflito de ideias, uma dissonância cognitiva ou uma batalha verbal. A energia do cinco é ativa, impulsionando a mente a questionar, a desconstruir e a buscar novas perspectivas. Não é um número de repouso, mas de agitação, de experimentação e de uma busca incessante por um novo equilíbrio. Ele nos lembra que o crescimento muitas vezes surge do desconforto, da necessidade de abandonar velhas certezas para abraçar o desconhecido.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No Tarot de Jodorowsky, as cores são elementos vitais que comunicam significados profundos e sutis, complementando a iconografia e a numerologia de cada arcano. Para o Cinco de Espadas, a análise das cores presentes na carta, mesmo que não explicitamente detalhada na descrição do prompt, pode ser inferida a partir da natureza do naipe e do número. As espadas, associadas ao elemento Ar, frequentemente trazem consigo cores que remetem à clareza, à frieza, à intelectualidade e, por vezes, à melancolia ou à tensão. Tons de azul, cinza e branco são comuns, representando a mente, a lógica e a comunicação. O azul, em suas diversas tonalidades, pode simbolizar a verdade, a introspecção e a busca pelo conhecimento, mas também a tristeza e a distância emocional. O cinza pode indicar neutralidade, ambiguidade ou a ausência de paixão, enquanto o branco pode representar a pureza do pensamento, mas também a esterilidade ou o vazio.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Embora o Cinco de Espadas seja frequentemente associado a conflitos e perdas, na perspectiva de Jodorowsky, cada arcano, mesmo os mais desafiadores, contém em si um potencial de crescimento e de transformação. Os aspectos positivos deste arcano residem na capacidade de discernimento que ele impulsiona. A energia ativa do Cinco de Espadas, embora possa manifestar-se como discórdia, também representa a força necessária para cortar as ilusões, para desmascarar a falsidade e para confrontar a realidade nua e crua. Esta é uma carta que, paradoxalmente, pode levar à clareza mental e à libertação de padrões de pensamento destrutivos. A "derrota" aparente que o Cinco de Espadas pode indicar não é um fim em si mesma, mas um catalisador para uma reavaliação profunda. É a oportunidade de reconhecer onde as batalhas não valem a pena ser travadas, onde a energia está sendo desperdiçada em conflitos estéreis. A verdadeira vitória, neste contexto, é a de se retirar de situações tóxicas, de abandonar a necessidade de ter sempre razão e de priorizar a paz interior acima da disputa externa. A carta indica a possibilidade de uma purificação mental, onde as ideias obsoletas e os pensamentos negativos são eliminados, abrindo espaço para novas perspectivas e para uma compreensão mais profunda da verdade. A capacidade de se desapegar do resultado e de aceitar a perda como parte do processo de aprendizagem é um dos maiores triunfos que o Cinco de Espadas pode oferecer. É a sabedoria de saber quando recuar, quando ceder e quando, simplesmente, deixar ir. Essa atitude não é de fraqueza, mas de uma força interior que transcende o ego e busca a harmonia. O Cinco de Espadas, portanto, pode ser um arcano de grande libertação, onde a mente se torna mais flexível, mais resiliente e mais capaz de navegar pelos desafios da vida com uma nova sabedoria. A energia receptiva que se manifesta aqui é a da aceitação, da humildade e da capacidade de aprender com as experiências, mesmo as mais dolorosas. É a oportunidade de transformar a desilusão em discernimento, e o conflito em um caminho para a paz interior.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Cinco de Espadas se manifesta em seus aspectos negativos, ele indica uma mente aprisionada em padrões de conflito, amargura e ressentimento. A energia ativa do naipe de Espadas, que deveria ser usada para o discernimento e a clareza, é desviada para a auto-sabotagem, a crítica destrutiva e a manipulação. Este arcano pode representar a vitória pírrica, onde o indivíduo "vence" uma batalha, mas perde a guerra maior da conexão humana e da paz interior. A imagem de espadas caídas ou roubadas pode simbolizar a perda de ideais, a traição de princípios ou a sensação de ter sido enganado. A mente, neste estado, torna-se um campo de batalha onde os pensamentos negativos se multiplicam, gerando ansiedade, paranoia e desconfiança. O Cinco de Espadas, em sua sombra, pode indicar uma tendência a se envolver em discussões estéreis, a buscar a confrontação por si mesma, ou a se sentir constantemente atacado e incompreendido. Há uma dificuldade em perdoar, tanto a si mesmo quanto aos outros, e uma propensão a remoer mágoas passadas. A energia do número cinco, que deveria impulsionar a mudança e a transição, é distorcida, levando a um ciclo vicioso de conflito e desilusão. A pessoa pode se sentir isolada, pois suas ações e palavras afastam aqueles que poderiam oferecer apoio e compreensão. A busca por uma vitória a qualquer custo pode levar à perda de valores éticos e morais, resultando em um vazio interior. A arrogância intelectual, a incapacidade de ouvir diferentes pontos de vista e a rigidez mental são características negativas que o Cinco de Espadas pode manifestar. É um alerta para o perigo de se deixar consumir pela raiva, pelo orgulho ferido e pela necessidade de provar que está certo, mesmo que isso signifique destruir relacionamentos e oportunidades. A lição, neste caso, é que a verdadeira força não reside em dominar o outro, mas em dominar a si mesmo, em transcender os impulsos destrutivos da mente e em buscar a reconciliação e a harmonia. A ausência de uma verdadeira vitória, apesar da aparente conquista, é o fardo que o Cinco de Espadas, em seu aspecto negativo, carrega, lembrando-nos que o maior inimigo muitas vezes reside dentro de nós mesmos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rei de Ouros - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Rei de Ouros</h1>
+            <p class="subtitulo">35 - O Mestre da Matéria</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/35KingofPentacles.jpg" alt="Rei de Ouros" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Maestria</span>
+                        <span class="palavra-chave">Abundância</span>
+                        <span class="palavra-chave">Estabilidade</span>
+                        <span class="palavra-chave">Segurança</span>
+                        <span class="palavra-chave">Poder</span>
+                        <span class="palavra-chave">Generosidade</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Rei de Ouros representa a energia ativa que governa o elemento terrestre. Este arcano indica o domínio completo sobre as qualidades do naipe de Ouros. A sua energia é de consolidação, de um mestre que alcançou o ápice da realização material. O Rei simboliza a autoridade que se manifesta no mundo físico, um ser que, com sua experiência, governa com sabedoria e generosidade. A sua posição como governante reforça a ideia de estabilidade, de uma fase de colheita e de usufruto dos frutos do trabalho. Ele é o guardião da prosperidade, o ponto de referência para a jornada da matéria. A sua numerologia, portanto, é a da totalidade, da maestria que se completa e se expressa em abundância.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o Rei de Ouros, como todas as cartas da corte, não possui um número direto, mas representa a energia do número 4, associado à estabilidade, estrutura e realização. O Rei de Ouros é a manifestação da energia do 4 no plano material, indicando a concretização de projetos e a construção de bases sólidas. Ele é a personificação da ordem e da disciplina que levam à abundância. A sua presença indica a capacidade de organizar recursos, de planejar com antecedência e de executar com maestria. Ele é o arquiteto da prosperidade, o construtor de impérios. A sua numerologia, portanto, é a da materialização plena, da forma que se manifesta e se sustenta no tempo. Ele é a culminação do naipe de Ouros, a expressão máxima da sua energia.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No universo simbólico de Jodorowsky, as cores nos arcanos do Tarot não são meros adornos, mas portadoras de significados que complementam e enriquecem a interpretação de cada carta. Para o Rei de Ouros, a paleta de cores presente em sua representação visual revela nuances profundas. O Rei de Ouros está intrinsecamente ligado ao elemento terra, e por isso, sua vestimenta e o ambiente que o cerca frequentemente exibem cores terrosas, como o marrom profundo, o verde exuberante e o dourado reluzente. Estas cores refletem a natureza da matéria, a fertilidade, a estabilidade e a riqueza que o naipe de Ouros representa em sua plenitude. O marrom indica a solidez da terra, a base sobre a qual tudo se constrói, a paciência e a perseverança necessárias para o crescimento material. O verde simboliza a vida, a renovação, a abundância e a conexão com a natureza, elementos essenciais para a prosperidade sustentável. O dourado, por sua vez, representa a riqueza, o sucesso, a iluminação e a sabedoria adquirida através da experiência material. Além das cores primárias associadas ao elemento terra, é comum observar tons de azul e roxo em detalhes ou no fundo da carta, especialmente em interpretações que buscam aprofundar a conexão entre o material e o espiritual. O azul, a cor da sabedoria, da intuição e da comunicação, indica que o Rei de Ouros não é apenas um mestre material, mas também um ser que compreende as leis universais que regem a abundância. O roxo, cor da espiritualidade, da transformação e da realeza, sugere que o domínio material do Rei de Ouros é elevado por uma compreensão mais profunda da existência, transcendendo o meramente físico para alcançar um estado de maestria que integra corpo, mente e espírito. A combinação dessas cores na figura do Rei de Ouros, portanto, não é aleatória; ela indica um ser que não apenas acumula riquezas, mas que as utiliza com sabedoria, generosidade e uma profunda conexão com os princípios que governam o universo material e espiritual. Ele é a personificação da prosperidade consciente, da abundância que flui de um alinhamento com as forças da natureza e do cosmos.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Rei de Ouros, na ótica de Jodorowsky, indicam a capacidade de materialização plena, a habilidade de transformar ideias em realidade e de construir um legado duradouro. Ele representa a concretização de projetos, a segurança financeira e a estabilidade em todos os níveis da existência. A sua presença indica a maestria na gestão de recursos, a generosidade e a sabedoria na partilha da abundância. O Rei de Ouros é o provedor, o protetor, aquele que garante o bem-estar de sua comunidade. Ele é a personificação da prosperidade consciente, da abundância que flui de um alinhamento com as forças da natureza e do cosmos. Sua energia é de um líder que inspira confiança e que, através de seu exemplo, mostra o caminho para a realização material e espiritual. Ele é o arquétipo do sucesso alcançado com ética e responsabilidade, um ser que utiliza sua riqueza e influência para o bem maior. A sua postura indica uma disposição para o trabalho árduo, para a disciplina e para a perseverança, qualidades essenciais para a construção de um futuro próspero. Ele é o guardião dos valores tradicionais, o pilar da família e da sociedade. O Rei de Ouros, portanto, é um símbolo de realização, de segurança e de abundância, onde a sabedoria e a generosidade são as forças motrizes.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Rei de Ouros apresenta aspectos negativos, segundo Jodorowsky, pode indicar uma tendência ao materialismo excessivo, à avareza ou à rigidez. A sua busca por segurança pode se transformar em apego desmedido aos bens materiais, levando à estagnação e à falta de flexibilidade. Ele pode se tornar autoritário, controlador e resistente a mudanças, impedindo o fluxo natural da vida e o crescimento pessoal. A sua generosidade pode se converter em manipulação, utilizando seus recursos para exercer poder sobre os outros. O Rei de Ouros, em seu aspecto sombrio, pode representar a tirania do material, a escravidão do dinheiro e a perda de conexão com os valores espirituais. Ele pode se isolar em sua torre de riqueza, perdendo a capacidade de se relacionar com o mundo de forma autêntica e compassiva. A sua busca por estabilidade pode se transformar em medo do novo, da incerteza e da vulnerabilidade, impedindo-o de se arriscar e de explorar novas possibilidades. Ele pode se tornar um acumulador, um ser que vive para o ter e não para o ser, perdendo o sentido da vida e a alegria de viver. A sua maestria pode se converter em arrogância, acreditando que sabe tudo e que não precisa aprender mais nada. O Rei de Ouros, portanto, em seu aspecto negativo, é um alerta para os perigos do materialismo desenfreado, da busca por segurança a qualquer custo e da perda de conexão com os valores mais elevados da existência. Ele é a representação da sombra do naipe de Ouros, a manifestação da sua energia em desequilíbrio.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

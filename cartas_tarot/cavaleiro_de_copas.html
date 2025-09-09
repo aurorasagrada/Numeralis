@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cavaleiro de Copas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Cavaleiro de Copas</h1>
+            <p class="subtitulo">61 - O Mensageiro da Emoção Profunda</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/61KnightofCups.jpg" alt="Cavaleiro de Copas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Intuição</span>
+                        <span class="palavra-chave">Sensibilidade</span>
+                        <span class="palavra-chave">Romantismo</span>
+                        <span class="palavra-chave">Mensageiro</span>
+                        <span class="palavra-chave">Sonhos</span>
+                        <span class="palavra-chave">Emoção</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Cavaleiro de Copas representa a energia ativa e fluida do naipe de Copas, indicando um movimento em direção ao mundo emocional e intuitivo. Este arcano simboliza a busca por conexões profundas, a expressão de sentimentos e a exploração do inconsciente. Ele é o mensageiro das emoções, aquele que se aventura nas águas da alma para trazer insights e compreensão. A sua energia é de um fluxo constante, de uma jornada interior que revela verdades ocultas e promove a cura emocional. O Cavaleiro de Copas indica a capacidade de navegar pelas complexidades dos sentimentos, de abraçar a vulnerabilidade e de encontrar beleza na profundidade das experiências. Ele representa a individualidade que se entrega ao coletivo das emoções, um ser que, embora em movimento, carrega em si a totalidade do naipe. A sua postura é de um explorador, de um sonhador que busca a verdade no coração das coisas. A sua numerologia, portanto, é a do movimento emocional, da busca por significado e da conexão com o divino.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, a numerologia é um pilar fundamental para a compreensão dos arcanos, e o Cavaleiro de Copas, como todas as cartas de corte, carrega em si a energia do número 6 (Cavaleiro = 5 + 1 = 6, representando a harmonia, o equilíbrio e a escolha). No entanto, como figura da corte, não possui um número direto, mas representa a energia do número 6, a harmonia, o equilíbrio e a escolha. Ele indica o movimento em direção ao mundo emocional e intuitivo. A sua energia é de um fluxo constante, de uma jornada interior que revela verdades ocultas e promove a cura emocional. O Cavaleiro de Copas simboliza a busca por conexões profundas, a expressão de sentimentos e a exploração do inconsciente. A sua postura é de um explorador, de um sonhador que busca a verdade no coração das coisas. A sua numerologia, portanto, é a do movimento emocional, da busca por significado e da conexão com o divino.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No universo simbólico de Jodorowsky, as cores nos arcanos do Tarot não são meros adornos, mas portadoras de significados que complementam e enriquecem a interpretação de cada carta. Para o Cavaleiro de Copas, a paleta de cores presente em sua representação visual para Jodorowsky revela nuances. O Cavaleiro de Copas está ligado ao elemento água, por isso sua vestimenta e frequentemente associada a cores azuis, verdes e roxas. Estas cores refletem a natureza emocional, a profundidade dos sentimentos e a intuição que o naipe de Copas representa. O azul, em particular, é a cor da comunicação, da verdade e da introspecção, qualidades que o Cavaleiro de Copas busca desenvolver em sua jornada. O verde pode representar a cura, o crescimento e a renovação, indicando um processo de amadurecimento emocional. O roxo, por sua vez, simboliza a espiritualidade, a intuição e a transformação, qualidades que o Cavaleiro de Copas abraça em sua busca por significado.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Cavaleiro de Copas, na ótica de Jodorowsky, indicam a capacidade de expressar emoções de forma autêntica, a habilidade de se conectar com os outros em um nível profundo e a disposição para explorar o mundo interior. Essa não é uma busca superficial, mas uma jornada genuína pela compreensão de si mesmo e do universo emocional. A sua postura indica uma disposição para o amor e para a compaixão, sem as defesas ou as complexidades que a experiência pode trazer. O Cavaleiro de Copas, portanto, é um símbolo de renovação emocional e de um novo começo no domínio dos sentimentos, onde a intuição e a sensibilidade são as forças motrizes.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Cavaleiro de Copas apresenta aspectos negativos, segundo Jodorowsky, pode indicar uma tendência à melancolia, à passividade ou à fuga da realidade. A sua busca por conexões profundas pode se transformar em dependência emocional, e a sua sensibilidade pode levá-lo a se isolar do mundo. Ele pode se perder em seus próprios sonhos e fantasias, ignorando as responsabilidades do mundo material. A sua energia fluida pode se tornar instabilidade, e a sua intuição pode ser confundida com ilusões. O Cavaleiro de Copas, portanto, é um lembrete de que a jornada emocional exige equilíbrio e discernimento, e que a busca por significado deve ser acompanhada de ação e responsabilidade.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

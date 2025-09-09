@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sete de Copas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Sete de Copas</h1>
+            <p class="subtitulo">56 - A Ilusão dos Desejos</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/56SevenofCups.jpg" alt="Sete de Copas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Ilusão</span>
+                        <span class="palavra-chave">Escolhas</span>
+                        <span class="palavra-chave">Sonhos</span>
+                        <span class="palavra-chave">Confusão</span>
+                        <span class="palavra-chave">Fantasia</span>
+                        <span class="palavra-chave">Desejos</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Sete de Copas, no contexto do Tarot de Jodorowsky, representa a complexidade do mundo interior, onde a mente se depara com uma miríade de possibilidades e desejos. Este arcano indica um momento de introspecção profunda, onde a energia receptiva do naipe de Copas se encontra com a ação do número sete, que simboliza a busca pela verdade e a necessidade de discernimento. A carta sugere que o indivíduo está diante de múltiplas escolhas, muitas das quais podem ser ilusórias ou enganosas. A sua essência reside na capacidade de navegar por este labirinto de fantasias e aspirações, distinguindo o real do irreal, o substancial do efêmero. É um convite à clareza mental e à ponderação antes de tomar qualquer decisão. A ausência de um caminho claro e definido na carta simboliza a liberdade e, ao mesmo tempo, o perigo de se perder em devaneios. O Sete de Copas, portanto, é um espelho da alma, refletindo os anseios e as armadilhas da imaginação. A sua numerologia, embora não explícita como nos Arcanos Maiores, ressoa com a busca pela perfeição e a necessidade de superação das ilusões.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>O número sete, no Tarot de Jodorowsky, é um símbolo de introspecção, de busca espiritual e de uma jornada interior. No Sete de Copas, essa energia se manifesta na multiplicidade de opções e na necessidade de discernimento. O sete indica um período de reflexão, onde o indivíduo é convidado a olhar para dentro de si e a questionar suas motivações e desejos. A numerologia do sete também está ligada à perfeição e à totalidade, sugerindo que, ao superar as ilusões e as fantasias, o indivíduo pode alcançar um estado de maior clareza e autoconhecimento. A carta, portanto, simboliza a ação de escolher, de ponderar e de discernir entre as diversas possibilidades que se apresentam. É um convite a uma análise profunda das emoções e dos anseios, para que as decisões sejam tomadas com sabedoria e consciência. O sete, neste contexto, representa a busca pela verdade em meio à confusão, a capacidade de encontrar o caminho certo em um mar de incertezas.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>As cores no Sete de Copas, conforme a interpretação de Jodorowsky, desempenham um papel crucial na compreensão de sua simbologia. O azul, predominante no naipe de Copas, representa a emoção, a intuição e o inconsciente. No Sete de Copas, o azul pode se apresentar em tons variados, indicando a diversidade e a profundidade das emoções e dos desejos. O roxo, frequentemente associado à espiritualidade e à transformação, pode surgir em detalhes, simbolizando a busca por um propósito maior em meio às ilusões. O dourado, presente nas taças ou nos elementos decorativos, representa a sabedoria e a iluminação, sugerindo que a clareza pode ser alcançada através do discernimento. O verde, que pode aparecer em alguns elementos, simboliza o crescimento e a renovação, indicando que, ao superar as fantasias, o indivíduo pode iniciar um novo ciclo de desenvolvimento. A paleta de cores, portanto, reflete a complexidade do arcano, onde a emoção, a intuição e a busca pela verdade se entrelaçam em um cenário de múltiplas possibilidades.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Sete de Copas, na visão de Jodorowsky, indicam a riqueza da imaginação e a capacidade de sonhar. Este arcano simboliza a criatividade, a intuição aguçada e a habilidade de explorar o mundo interior em busca de inspiração. A multiplicidade de opções, embora possa gerar confusão, também representa um vasto campo de possibilidades e oportunidades. O Sete de Copas, portanto, é um convite à exploração da mente, à descoberta de novos caminhos e à manifestação de talentos ocultos. A carta sugere que o indivíduo possui um potencial ilimitado para criar e inovar, desde que consiga discernir entre as fantasias e as realidades. É um arcano que inspira a busca por um propósito maior, a conexão com o inconsciente e a manifestação de sonhos e aspirações. A energia receptiva do naipe de Copas, combinada com a ação do número sete, impulsiona o indivíduo a transformar seus desejos em realidade, com sabedoria e discernimento.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Sete de Copas se manifesta em seus aspectos negativos, segundo Jodorowsky, pode indicar confusão, indecisão e a tendência a se perder em fantasias. A multiplicidade de opções pode levar à paralisia, onde o indivíduo se sente sobrecarregado e incapaz de tomar uma decisão. A carta, neste contexto, simboliza a ilusão, o engano e a falta de clareza. Pode representar a fuga da realidade, a procrastinação e a dificuldade em distinguir entre o real e o irreal. O Sete de Copas, em seu lado sombrio, sugere que o indivíduo pode estar se iludindo com falsas promessas ou se perdendo em devaneios sem fundamento. É um alerta para a necessidade de aterrar-se, de buscar a clareza e de tomar decisões com base na realidade, e não em fantasias. A energia receptiva do naipe de Copas, quando desequilibrada, pode levar à passividade e à falta de ação, impedindo o indivíduo de alcançar seus objetivos. A carta, portanto, é um convite à reflexão e à busca por um propósito claro, para que as ilusões não se tornem armadilhas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

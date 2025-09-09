@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quatro de Ouros - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Quatro de Ouros</h1>
+            <p class="subtitulo">25 - A Consolidação da Matéria</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/25FourofPentacles.jpg" alt="Quatro de Ouros" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Segurança</span>
+                        <span class="palavra-chave">Estabilidade</span>
+                        <span class="palavra-chave">Posse</span>
+                        <span class="palavra-chave">Apego</span>
+                        <span class="palavra-chave">Conservadorismo</span>
+                        <span class="palavra-chave">Acúmulo</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Quatro de Ouros, no universo do Tarot de Jodorowsky, representa a consolidação da energia do naipe de Ouros, que se manifesta no plano material e concreto. Este arcano indica a estabilização, a segurança e a posse, mas também pode sinalizar uma fixação excessiva no que foi adquirido. A energia do número quatro, em sua essência, busca a ordem, a estrutura e a fundação sólida. No contexto dos Ouros, isso se traduz na materialização de recursos, na construção de bases financeiras e na busca por um porto seguro. O Quatro de Ouros simboliza a energia receptiva que se manifesta na forma de bens tangíveis, de um patrimônio que foi construído com esforço e dedicação. Ele indica a necessidade de proteger o que se tem, de manter a estabilidade e de evitar perdas. No entanto, essa busca por segurança pode, por vezes, levar à rigidez, ao apego e à resistência a mudanças. A carta representa a energia da terra em seu estado mais denso e palpável, a manifestação da abundância e da prosperidade. É a concretização de um ciclo, a colheita dos frutos de um trabalho árduo. A sua presença no jogo indica um momento de estabilidade material, onde as bases estão firmes e a segurança é uma realidade. Contudo, é fundamental observar se essa segurança não se transforma em aprisionamento, se a posse não se torna um fardo. O Quatro de Ouros convida à reflexão sobre a verdadeira natureza da riqueza e sobre o equilíbrio entre o ter e o ser. A sua numerologia, portanto, é a da solidez, da construção e da permanência, mas também a do desafio de transcender o apego material e de permitir o fluxo da vida. A carta, em sua representação visual, frequentemente exibe uma figura que se agarra firmemente aos seus ouros, indicando a posse e a proteção. Essa postura, embora transmita segurança, também pode sugerir uma certa inflexibilidade, uma dificuldade em compartilhar ou em se desapegar. A energia do Quatro de Ouros é, em última análise, um convite à introspecção sobre a relação com o mundo material e sobre a capacidade de encontrar a verdadeira segurança no interior, e não apenas nas posses externas. É a manifestação da energia receptiva que se concretiza no plano físico, mas que precisa ser constantemente reavaliada para evitar a estagnação e o isolamento. A carta, portanto, não é apenas um símbolo de riqueza material, mas também um espelho que reflete a nossa atitude em relação à abundância e à nossa capacidade de fluir com as transformações da vida. A sua mensagem é clara: a verdadeira segurança reside na capacidade de se adaptar e de se desapegar, e não na mera acumulação de bens. É a energia da terra que se manifesta em sua plenitude, mas que precisa ser cultivada com sabedoria para não se tornar um terreno árido e infértil. O Quatro de Ouros, em sua complexidade, nos lembra que a riqueza material é apenas um meio, e não um fim em si mesma. A sua essência é a da estabilidade, mas também a do desafio de encontrar a liberdade dentro da posse e de permitir que a energia da abundância flua livremente, sem amarras ou restrições. É a energia receptiva que se manifesta no plano físico, mas que precisa ser constantemente reavaliada para evitar a estagnação e o isolamento. A carta, portanto, não é apenas um símbolo de riqueza material, mas também um espelho que reflete a nossa atitude em relação à abundância e à nossa capacidade de fluir com as transformações da vida. A sua mensagem é clara: a verdadeira segurança reside na capacidade de se adaptar e de se desapegar, e não na mera acumulação de bens. É a energia da terra que se manifesta em sua plenitude, mas que precisa ser cultivada com sabedoria para não se tornar um terreno árido e infértil. O Quatro de Ouros, em sua complexidade, nos lembra que a riqueza material é apenas um meio, e não um fim em si mesma. A sua essência é a da estabilidade, mas também a do desafio de encontrar a liberdade dentro da posse e de permitir que a energia da abundância flua livremente, sem amarras ou restrições.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o número quatro representa a concretização, a estabilidade e a ordem. No naipe de Ouros, essa energia se manifesta na forma de bens materiais, segurança financeira e estrutura. O Quatro de Ouros indica a consolidação de um ciclo, a materialização de esforços e a construção de bases sólidas. A numerologia do quatro está intrinsecamente ligada à terra, à solidez e à forma. É o número que traz a estabilidade após a expansão do três, e antes da mudança e do movimento do cinco. No contexto do Quatro de Ouros, isso se traduz na posse, na acumulação e na proteção do que foi adquirido. A figura central da carta, muitas vezes, se apresenta em uma postura de guarda, cercada por seus ouros, simbolizando a defesa de seu patrimônio. Essa defesa, no entanto, pode se tornar uma prisão, um apego excessivo que impede o fluxo natural da vida e a chegada de novas oportunidades. Jodorowsky enfatiza que a numerologia não é apenas um valor quantitativo, mas uma energia que permeia o arcano, influenciando sua interpretação e suas manifestações. O quatro, neste caso, é a energia da construção, da fundação, mas também da rigidez e da resistência à mudança. A carta convida a uma reflexão sobre a natureza da segurança e sobre o equilíbrio entre a proteção e a liberdade. A numerologia do Quatro de Ouros, portanto, é a da materialização e da estabilidade, mas também a do desafio de transcender o apego e de permitir que a energia flua livremente. É a energia receptiva que se manifesta no plano físico, mas que precisa ser constantemente reavaliada para evitar a estagnação e o isolamento. A carta, portanto, não é apenas um símbolo de riqueza material, mas também um espelho que reflete a nossa atitude em relação à abundância e à nossa capacidade de fluir com as transformações da vida. A sua mensagem é clara: a verdadeira segurança reside na capacidade de se adaptar e de se desapegar, e não na mera acumulação de bens. É a energia da terra que se manifesta em sua plenitude, mas que precisa ser cultivada com sabedoria para não se tornar um terreno árido e infértil. O Quatro de Ouros, em sua complexidade, nos lembra que a riqueza material é apenas um meio, e não um fim em si mesma. A sua essência é a da estabilidade, mas também a do desafio de encontrar a liberdade dentro da posse e de permitir que a energia da abundância flua livremente, sem amarras ou restrições. É a energia receptiva que se manifesta no plano físico, mas que precisa ser constantemente reavaliada para evitar a estagnação e o isolamento. A carta, portanto, não é apenas um símbolo de riqueza material, mas também um espelho que reflete a nossa atitude em relação à abundância e à nossa capacidade de fluir com as transformações da vida. A sua mensagem é clara: a verdadeira segurança reside na capacidade de se adaptar e de se desapegar, e não na mera acumulação de bens. É a energia da terra que se manifesta em sua plenitude, mas que precisa ser cultivada com sabedoria para não se tornar um terreno árido e infértil. O Quatro de Ouros, em sua complexidade, nos lembra que a riqueza material é apenas um meio, e não um fim em si mesma. A sua essência é a da estabilidade, mas também a do desafio de encontrar a liberdade dentro da posse e de permitir que a energia da abundância flua livremente, sem amarras ou restrições.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No Tarot de Jodorowsky, as cores são elementos cruciais que revelam as nuances energéticas de cada arcano. No Quatro de Ouros, a paleta cromática, embora possa variar ligeiramente entre os baralhos, geralmente enfatiza tons terrosos, dourados e, por vezes, azuis ou verdes. O dourado, cor predominante nos ouros, simboliza a riqueza material, a abundância e o valor intrínseco. Representa a luz da consciência que ilumina o plano físico, a manifestação da prosperidade e do sucesso. O marrom e o verde, cores da terra, reforçam a conexão do naipe com o elemento terrestre, indicando solidez, fertilidade e crescimento. O marrom, em particular, remete à estabilidade, à segurança e à fundação, enquanto o verde simboliza a vida, a renovação e a natureza em sua plenitude. Quando o azul está presente, ele pode indicar a dimensão espiritual da matéria, a busca por um propósito maior na acumulação de bens, ou a introspecção necessária para compreender o verdadeiro valor da riqueza. O azul, cor da comunicação e da verdade, sugere que a posse material pode ser um meio para a expressão de ideias e para a busca do conhecimento. O vermelho, se presente, pode indicar a paixão e a energia vital que impulsionam a busca por segurança e a defesa do que foi conquistado. No entanto, em excesso, pode sinalizar um apego possessivo e uma energia desequilibrada. A ausência de cores vibrantes e a predominância de tons mais sóbrios no Quatro de Ouros podem indicar uma energia mais contida, uma introspecção sobre a relação com o mundo material e uma busca por segurança que, por vezes, pode levar ao isolamento. A combinação dessas cores no Quatro de Ouros, portanto, não é apenas um detalhe estético, mas um mapa simbólico que revela as múltiplas camadas de significado do arcano. Elas indicam a energia receptiva que se manifesta no plano físico, a busca por estabilidade e a necessidade de proteger o que foi conquistado. Contudo, as cores também alertam para o perigo do apego excessivo e da estagnação, convidando à reflexão sobre a verdadeira natureza da riqueza e sobre o equilíbrio entre o ter e o ser. A simbologia das cores no Quatro de Ouros é um convite à introspecção sobre a nossa relação com o mundo material e sobre a nossa capacidade de encontrar a verdadeira segurança no interior, e não apenas nas posses externas. É a manifestação da energia receptiva que se concretiza no plano físico, mas que precisa ser constantemente reavaliada para evitar a estagnação e o isolamento. A carta, portanto, não é apenas um símbolo de riqueza material, mas também um espelho que reflete a nossa atitude em relação à abundância e à nossa capacidade de fluir com as transformações da vida. A sua mensagem é clara: a verdadeira segurança reside na capacidade de se adaptar e de se desapegar, e não na mera acumulação de bens. É a energia da terra que se manifesta em sua plenitude, mas que precisa ser cultivada com sabedoria para não se tornar um terreno árido e infértil. O Quatro de Ouros, em sua complexidade, nos lembra que a riqueza material é apenas um meio, e não um fim em si mesma. A sua essência é a da estabilidade, mas também a do desafio de encontrar a liberdade dentro da posse e de permitir que a energia da abundância flua livremente, sem amarras ou restrições. É a energia receptiva que se manifesta no plano físico, mas que precisa ser constantemente reavaliada para evitar a estagnação e o isolamento. A carta, portanto, não é apenas um símbolo de riqueza material, mas também um espelho que reflete a nossa atitude em relação à abundância e à nossa capacidade de fluir com as transformações da vida. A sua mensagem é clara: a verdadeira segurança reside na capacidade de se adaptar e de se desapegar, e não na mera acumulação de bens. É a energia da terra que se manifesta em sua plenitude, mas que precisa ser cultivada com sabedoria para não se tornar um terreno árido e infértil. O Quatro de Ouros, em sua complexidade, nos lembra que a riqueza material é apenas um meio, e não um fim em si mesma. A sua essência é a da estabilidade, mas também a do desafio de encontrar a liberdade dentro da posse e de permitir que a energia da abundância flua livremente, sem amarras ou restrições.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Quatro de Ouros, na perspectiva de Jodorowsky, indicam a capacidade de construir uma base sólida e segura para a existência. Este arcano representa a estabilidade financeira, a segurança material e a habilidade de gerenciar recursos de forma eficaz. A energia ativa do Quatro de Ouros se manifesta na concretização de projetos, na acumulação de bens e na proteção do patrimônio. É a carta da pessoa que sabe valorizar o que tem, que cuida de suas posses e que busca a segurança em todos os níveis. A sua presença no jogo indica um momento de prosperidade, onde os esforços passados são recompensados e a estabilidade é alcançada. O Quatro de Ouros simboliza a sabedoria na gestão dos recursos, a capacidade de investir com discernimento e de colher os frutos do trabalho árduo. É a energia da terra que se manifesta em sua plenitude, trazendo segurança e abundância. A carta também pode indicar a capacidade de criar um ambiente seguro e acolhedor para si e para os outros, um lar estável e um refúgio contra as intempéries da vida. A sua energia é de um porto seguro, de um lugar onde se pode descansar e recarregar as energias. O Quatro de Ouros, portanto, é um símbolo de solidez, de prosperidade e de segurança, mas também de responsabilidade e de discernimento na gestão dos recursos. É a energia receptiva que se manifesta no plano físico, trazendo estabilidade e bem-estar. A carta convida à gratidão pelo que se tem e à valorização das conquistas materiais. A sua mensagem é clara: a verdadeira riqueza não está apenas na acumulação de bens, mas na capacidade de usá-los com sabedoria e de compartilhá-los com generosidade. É a energia da terra que se manifesta em sua plenitude, mas que precisa ser cultivada com sabedoria para não se tornar um terreno árido e infértil. O Quatro de Ouros, em sua complexidade, nos lembra que a riqueza material é apenas um meio, e não um fim em si mesma. A sua essência é a da estabilidade, mas também a do desafio de encontrar a liberdade dentro da posse e de permitir que a energia da abundância flua livremente, sem amarras ou restrições. É a energia receptiva que se manifesta no plano físico, mas que precisa ser constantemente reavaliada para evitar a estagnação e o isolamento. A carta, portanto, não é apenas um símbolo de riqueza material, mas também um espelho que reflete a nossa atitude em relação à abundância e à nossa capacidade de fluir com as transformações da vida. A sua mensagem é clara: a verdadeira segurança reside na capacidade de se adaptar e de se desapegar, e não na mera acumulação de bens. É a energia da terra que se manifesta em sua plenitude, mas que precisa ser cultivada com sabedoria para não se tornar um terreno árido e infértil. O Quatro de Ouros, em sua complexidade, nos lembra que a riqueza material é apenas um meio, e não um fim em si mesma. A sua essência é a da estabilidade, mas também a do desafio de encontrar a liberdade dentro da posse e de permitir que a energia da abundância flua livremente, sem amarras ou restrições.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Quatro de Ouros se manifesta em seus aspectos negativos, segundo Jodorowsky, ele indica um apego excessivo ao material, uma rigidez que impede o fluxo da vida e a estagnação. A energia ativa da carta se torna uma força de aprisionamento, onde a segurança se transforma em medo da perda e a posse em avareza. A figura central da carta, que antes protegia seus bens, agora se torna prisioneira deles, incapaz de se mover ou de se abrir para novas experiências. O Quatro de Ouros, em seu lado sombrio, simboliza a dificuldade em compartilhar, a resistência a mudanças e a teimosia em manter o status quo, mesmo que isso signifique a perda de oportunidades e o isolamento. A busca por segurança se torna uma obsessão, levando à desconfiança e à incapacidade de desfrutar da abundância. A carta pode indicar uma pessoa que se agarra ao passado, que teme o futuro e que vive em constante preocupação com o que pode perder. A sua energia é de um terreno árido, onde a vida não consegue florescer devido à falta de movimento e de renovação. O Quatro de Ouros, portanto, é um alerta para o perigo do apego material, da avareza e da rigidez. É a energia da terra que se manifesta em sua forma mais densa e inflexível, impedindo o crescimento e a evolução. A carta convida à reflexão sobre a verdadeira natureza da riqueza e sobre a importância de permitir o fluxo da vida, de compartilhar e de se desapegar. A sua mensagem é clara: a verdadeira segurança reside na capacidade de se adaptar e de se desapegar, e não na mera acumulação de bens. É a energia da terra que se manifesta em sua plenitude, mas que precisa ser cultivada com sabedoria para não se tornar um terreno árido e infértil. O Quatro de Ouros, em sua complexidade, nos lembra que a riqueza material é apenas um meio, e não um fim em si mesma. A sua essência é a da estabilidade, mas também a do desafio de encontrar a liberdade dentro da posse e de permitir que a energia da abundância flua livremente, sem amarras ou restrições.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

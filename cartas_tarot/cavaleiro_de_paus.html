@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cavaleiro de Paus - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Cavaleiro de Paus</h1>
+            <p class="subtitulo">47 - A Chama da Aventura</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/47KnightofClubs.jpg" alt="Cavaleiro de Paus" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Aventura</span>
+                        <span class="palavra-chave">Paixão</span>
+                        <span class="palavra-chave">Ação</span>
+                        <span class="palavra-chave">Iniciativa</span>
+                        <span class="palavra-chave">Coragem</span>
+                        <span class="palavra-chave">Impulso</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Cavaleiro de Paus, no contexto do Tarot de Jodorowsky, representa a energia ativa e impetuosa do elemento Fogo, manifestada através da figura de um jovem em movimento. Este arcano simboliza a iniciativa, a paixão e a busca por novas experiências. Ele indica um período de grande dinamismo, onde a ação precede a reflexão, e a intuição guia os passos. O Cavaleiro de Paus é a personificação da aventura, da exploração e da coragem para enfrentar o desconhecido. Sua presença na leitura sugere um impulso para a frente, uma necessidade de romper com a estagnação e de abraçar a mudança. Ele representa a energia que incita à jornada, à descoberta de novos horizontes e à manifestação da vontade individual no mundo. A sua essência é a do explorador, do inovador, daquele que não teme os desafios e que se lança com entusiasmo em direção aos seus objetivos. É a chama que acende a paixão e a determinação, impulsionando a alma para a realização de seus desejos mais profundos. A figura do Cavaleiro, com sua postura ereta e seu olhar fixo no horizonte, indica uma direção clara e um propósito definido. Ele não se detém diante dos obstáculos, mas os utiliza como degraus para alcançar patamares mais elevados. A sua energia é contagiante, inspirando aqueles ao seu redor a seguir seus próprios caminhos com coragem e convicção. O Cavaleiro de Paus é, portanto, um símbolo de transformação e de renovação, um convite à ação e à celebração da vida em sua plenitude. Ele nos lembra que a verdadeira liberdade reside na capacidade de nos reinventarmos a cada instante, de abraçarmos o novo e de nos permitirmos ser guiados pela nossa paixão interior. A sua mensagem é clara: o momento de agir é agora, e a jornada é a própria recompensa.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>Embora o Cavaleiro de Paus não possua um número direto como os arcanos numerados, sua posição como figura da corte o associa à energia do número 4, que representa a estabilidade, a estrutura e a concretização. No entanto, a energia do Cavaleiro é dinâmica e em constante movimento, o que o conecta também à energia do número 1 (início, individualidade) e do número 5 (mudança, aventura). A sua numerologia, portanto, é complexa e multifacetada, refletindo a sua natureza paradoxal de estabilidade em movimento. Ele representa a ação que busca a concretização, a paixão que se manifesta em projetos e a iniciativa que constrói novas realidades. A sua energia é a da força que impulsiona a matéria, da vontade que molda o destino e da determinação que transforma sonhos em realidade. O Cavaleiro de Paus é, portanto, um símbolo de poder e de realização, um convite à ação e à celebração da vida em sua plenitude. Ele nos lembra que a verdadeira liberdade reside na capacidade de nos reinventarmos a cada instante, de abraçarmos o novo e de nos permitirmos ser guiados pela nossa paixão interior. A sua mensagem é clara: o momento de agir é agora, e a jornada é a própria recompensa. A numerologia do Cavaleiro de Paus também pode ser interpretada através da soma dos seus elementos constituintes: o naipe de Paus (Fogo) e a figura do Cavaleiro (ação, movimento). O Fogo, como elemento primordial, representa a energia criativa, a paixão e a vontade. O Cavaleiro, por sua vez, simboliza a manifestação dessa energia no plano físico, a ação que transforma o potencial em realidade. A combinação desses elementos resulta em uma energia de grande poder e dinamismo, capaz de superar obstáculos e de alcançar objetivos ambiciosos. A sua numerologia, portanto, é a da força que impulsiona a matéria, da vontade que molda o destino e da determinação que transforma sonhos em realidade. O Cavaleiro de Paus é, portanto, um símbolo de poder e de realização, um convite à ação e à celebração da vida em sua plenitude. Ele nos lembra que a verdadeira liberdade reside na capacidade de nos reinventarmos a cada instante, de abraçarmos o novo e de nos permitirmos ser guiados pela nossa paixão interior. A sua mensagem é clara: o momento de agir é agora, e a jornada é a própria recompensa.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>As cores presentes na representação do Cavaleiro de Paus, no Tarot de Jodorowsky, são elementos cruciais para a compreensão de sua simbologia. O vermelho, predominante no naipe de Paus, representa a paixão, a energia, a vitalidade e a ação. É a cor do fogo, do impulso criativo e da força de vontade. O amarelo, presente em detalhes como o cabelo do Cavaleiro ou o fundo da carta, simboliza a inteligência, a iluminação, a clareza mental e a alegria. É a cor do sol, da sabedoria e da consciência. O azul, em menor proporção, pode indicar a intuição, a espiritualidade e a profundidade emocional. É a cor do céu, da verdade e da serenidade. O verde, presente na paisagem ou em elementos da vestimenta, representa o crescimento, a renovação, a esperança e a fertilidade. É a cor da natureza, da abundância e da harmonia. A combinação dessas cores cria um campo energético vibrante e dinâmico, que reflete a natureza impetuosa e aventureira do Cavaleiro de Paus. O vermelho e o amarelo, em particular, destacam a sua energia ativa e a sua capacidade de manifestar a vontade no mundo. O azul e o verde, por sua vez, adicionam nuances de intuição e de crescimento, indicando que a sua ação é guiada por uma sabedoria interior e por um desejo de evolução. A simbologia das cores, portanto, complementa a numerologia e a essência do arcano, revelando a sua complexidade e a sua riqueza de significados. O Cavaleiro de Paus é, assim, um arcano que nos convida a abraçar a nossa paixão, a agir com coragem e a buscar a nossa verdade interior, guiados pela luz da intuição e pela força da vontade. A sua mensagem é clara: o momento de agir é agora, e a jornada é a própria recompensa. A sua energia é contagiante, inspirando aqueles ao seu redor a seguir seus próprios caminhos com coragem e convicção. O Cavaleiro de Paus é, portanto, um símbolo de transformação e de renovação, um convite à ação e à celebração da vida em sua plenitude. Ele nos lembra que a verdadeira liberdade reside na capacidade de nos reinventarmos a cada instante, de abraçarmos o novo e de nos permitirmos ser guiados pela nossa paixão interior. A sua mensagem é clara: o momento de agir é agora, e a jornada é a própria recompensa.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Cavaleiro de Paus, na interpretação de Jodorowsky, representam a coragem, a iniciativa, a paixão e a determinação. Este arcano indica a capacidade de agir com entusiasmo e de perseguir os objetivos com vigor. Ele simboliza a energia que impulsiona a pessoa a sair da zona de conforto, a explorar novos caminhos e a abraçar desafios. O Cavaleiro de Paus é a personificação da aventura, da inovação e da busca por novas experiências. Sua presença na leitura sugere um período de grande dinamismo, onde a ação precede a reflexão, e a intuição guia os passos. Ele representa a energia que incita à jornada, à descoberta de novos horizontes e à manifestação da vontade individual no mundo. A sua essência é a do explorador, do inovador, daquele que não teme os desafios e que se lança com entusiasmo em direção aos seus objetivos. É a chama que acende a paixão e a determinação, impulsionando a alma para a realização de seus desejos mais profundos. A figura do Cavaleiro, com sua postura ereta e seu olhar fixo no horizonte, indica uma direção clara e um propósito definido. Ele não se detém diante dos obstáculos, mas os utiliza como degraus para alcançar patamares mais elevados. A sua energia é contagiante, inspirando aqueles ao seu redor a seguir seus próprios caminhos com coragem e convicção. O Cavaleiro de Paus é, portanto, um símbolo de transformação e de renovação, um convite à ação e à celebração da vida em sua plenitude. Ele nos lembra que a verdadeira liberdade reside na capacidade de nos reinventarmos a cada instante, de abraçarmos o novo e de nos permitirmos ser guiados pela nossa paixão interior. A sua mensagem é clara: o momento de agir é agora, e a jornada é a própria recompensa. A sua energia é contagiante, inspirando aqueles ao seu redor a seguir seus próprios caminhos com coragem e convicção. O Cavaleiro de Paus é, portanto, um símbolo de transformação e de renovação, um convite à ação e à celebração da vida em sua plenitude. Ele nos lembra que a verdadeira liberdade reside na capacidade de nos reinventarmos a cada instante, de abraçarmos o novo e de nos permitirmos ser guiados pela nossa paixão interior. A sua mensagem é clara: o momento de agir é agora, e a jornada é a própria recompensa.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Cavaleiro de Paus se manifesta em seus aspectos negativos, segundo Jodorowsky, ele pode indicar impulsividade, imprudência, agressividade e falta de planejamento. A energia impetuosa que o caracteriza pode se tornar destrutiva quando não canalizada adequadamente, levando a ações precipitadas e a decisões impensadas. Ele pode simbolizar a teimosia, a arrogância e a incapacidade de ouvir a opinião alheia. A sua busca por novas experiências pode se transformar em uma fuga da realidade, em uma constante insatisfação e em uma incapacidade de se comprometer. O Cavaleiro de Paus, em seu lado sombrio, representa a energia que incita à imprudência, à aventura sem propósito e à manifestação da vontade individual sem considerar as consequências. A sua essência é a do aventureiro irresponsável, do inovador sem direção, daquele que se lança com entusiasmo em direção aos seus objetivos sem medir os riscos. É a chama que queima sem controle, consumindo tudo ao seu redor e deixando um rastro de destruição. A figura do Cavaleiro, com sua postura ereta e seu olhar fixo no horizonte, pode indicar uma direção cega e um propósito egoísta. Ele pode se tornar insensível aos obstáculos, atropelando tudo e a todos em seu caminho. A sua energia, quando negativa, pode ser contagiante de forma prejudicial, inspirando aqueles ao seu redor a seguir seus próprios caminhos com imprudência e irresponsabilidade. O Cavaleiro de Paus é, portanto, um símbolo de transformação e de renovação, um convite à ação e à celebração da vida em sua plenitude. Ele nos lembra que a verdadeira liberdade reside na capacidade de nos reinventarmos a cada instante, de abraçarmos o novo e de nos permitirmos ser guiados pela nossa paixão interior. A sua mensagem é clara: o momento de agir é agora, e a jornada é a própria recompensa. A sua energia é contagiante, inspirando aqueles ao seu redor a seguir seus próprios caminhos com coragem e convicção. O Cavaleiro de Paus é, portanto, um símbolo de transformação e de renovação, um convite à ação e à celebração da vida em sua plenitude. Ele nos lembra que a verdadeira liberdade reside na capacidade de nos reinventarmos a cada instante, de abraçarmos o novo e de nos permitirmos ser guiados pela nossa paixão interior. A sua mensagem é clara: o momento de agir é agora, e a jornada é a própria recompensa.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valete de Ouros - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Valete de Ouros</h1>
+            <p class="subtitulo">32 - O Aprendiz da Matéria</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/32PageofPentacles.jpg" alt="Valete de Ouros" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Aprendizado</span>
+                        <span class="palavra-chave">Novas Habilidades</span>
+                        <span class="palavra-chave">Foco</span>
+                        <span class="palavra-chave">Diligência</span>
+                        <span class="palavra-chave">Manifestação</span>
+                        <span class="palavra-chave">Estudo</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Valete de Ouros representa a energia receptiva que se concentra no elemento terrestre. Este arcano indica o primeiro contato com as qualidades do naipe de Ouros. A sua energia é de um novo ciclo, de um ponto de partida para a exploração material. O Valete simboliza a individualidade que se abre para o coletivo dos sentimentos, um ser que, embora jovem, carrega em si a totalidade do naipe. A sua posição como mensageiro ou aprendiz reforça a ideia de um começo, de uma fase de assimilação e de experimentação. A ausência de um número fixo no Valete permite que ele transite entre as energias de todos os números, absorvendo e refletindo as suas qualidades. Ele é o portal para o mundo das emoções, o ponto de entrada para a jornada do coração. A sua numerologia, portanto, é a do potencial ilimitado, da página em branco que espera ser preenchida com as experiências da vida.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, a numerologia é um pilar fundamental para a compreensão dos arcanos, e o Valete de Ouros, como todas as cartas de corte, carrega em si a energia do número 1. No entanto, como figura da corte, não possui um número direto, mas representa a energia do número 1, o início, a semente, a potencialidade. Ele indica o primeiro contato com as qualidades do naipe de Ouros. A sua energia é de um novo ciclo, de um ponto de partida para a exploração emocional. O Valete simboliza a individualidade que se abre para o coletivo dos sentimentos, um ser que, embora jovem, carrega em si a totalidade do naipe. A sua posição como mensageiro ou aprendiz reforça a ideia de um começo, de uma fase de assimilação e de experimentação. A ausência de um número fixo no Valete permite que ele transite entre as energias de todos os números, absorvendo e refletindo as suas qualidades.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No universo simbólico de Jodorowsky, as cores nos arcanos do Tarot não são meros adornos, mas portadoras de significados que complementam e enriquecem a interpretação de cada carta. Para o Valete de Ouros, a paleta de cores presente em sua representação visual para Jodorowsky revela nuances. O Valete de Ouros está ligado ao elemento terra, por isso sua vestimenta e frequentemente associada a cores terrosas, como o marrom, o verde e o dourado. Estas cores refletem a natureza mental, a clareza do pensamento e a objetividade que o naipe de Ouros representa. O azul, em particular, é a cor da comunicação, da verdade e da introspecção, qualidades que o Valete de Ouros busca desenvolver em sua jornada. O branco pode representar a neutralidade, a capacidade de observar sem julgamento, e a transição entre o preto (ignorância) e o branco (conhecimento), indicando um processo de amadurecimento intelectual.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Valete de Ouros, na ótica de Jodorowsky, indicam a capacidade de discernimento aguçado, a habilidade de ver através das ilusões e de questionar verdades estabelecidas. Essa não é uma crítica destrutiva, mas uma busca genuína pela clareza e pela verdade, um desejo de desmantelar estruturas obsoletas para construir algo mais sólido e autêntico. A sua postura indica uma disposição para o amor e para a compaixão, sem as defesas ou as complexidades que a experiência pode trazer. O Valete de Ouros, portanto, é um símbolo de renovação emocional e de um novo começo no domínio dos sentimentos, onde a inocência e a curiosidade são as forças motrizes.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Valete de Ouros apresenta aspectos negativos, segundo Jodorowsky, pode indicar uma tendência à crítica excessiva, ao ceticismo destrutivo ou à frieza emocional. A espada que ele empunha não é para o combate, mas para cortar as ilusões, para dissecar a realidade e para abrir caminho através da ignorância. Ela é o sopro inicial de uma nova ideia, a curiosidade que se acende na mente jovem, pronta para começar a dominar o elemento ar, o reino das novas perspectivas intelectuais. Ele é o primeiro passo na jornada do intelecto, um passo cheio de potencial e pronto para iniciar sua jornada de descoberta e discernimento. É a energia do novo, do começo, da individualidade intelectual que se manifesta no mundo.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

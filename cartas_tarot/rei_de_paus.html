@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rei de Paus - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Rei de Paus</h1>
+            <p class="subtitulo">49 - A Força da Vontade Manifestada</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/49KingofClubs.jpg" alt="Rei de Paus" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Liderança</span>
+                        <span class="palavra-chave">Autoridade</span>
+                        <span class="palavra-chave">Criatividade</span>
+                        <span class="palavra-chave">Determinação</span>
+                        <span class="palavra-chave">Paixão</span>
+                        <span class="palavra-chave">Realização</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Rei de Paus simboliza a energia ativa em sua máxima expressão, a pura força de vontade que se manifesta no mundo. Ele representa a autoridade, a liderança e o domínio sobre o elemento Fogo. Este arcano indica um momento de grande poder pessoal, onde a criatividade e a ambição se unem para a realização de grandes feitos. A sua energia é a do mestre, daquele que já percorreu a jornada do naipe de Paus e agora detém o conhecimento e a experiência para guiar e inspirar os outros. O Rei de Paus é a personificação da autoconfiança, da coragem e da determinação. Ele não teme os desafios, pois sabe que possui a força interior para superá-los. A sua presença em uma leitura indica a necessidade de assumir o controle da própria vida, de agir com ousadia e de perseguir os seus objetivos com paixão e vigor. Ele é o arquétipo do líder carismático, do visionário que transforma ideias em realidade, do pai protetor que oferece segurança e orientação. A sua energia é contagiante, capaz de motivar e de impulsionar todos ao seu redor. O Rei de Paus é a chama que ilumina o caminho, a força que impulsiona a ação e a vontade que molda o destino.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o Rei de Paus, como todas as figuras da corte, transcende a simples soma numérica, encarnando a plenitude e a maestria do seu naipe. Embora não possua um número cardinal direto como os arcanos numerados, ele ressoa profundamente com a energia do número 4, que simboliza a estrutura, a estabilidade, a ordem e a realização no plano material. O Rei, em sua essência, é a materialização da energia do 4, a concretização do potencial ígneo dos Paus. Ele é a base sólida sobre a qual a ação e a criatividade se erguem. Sua presença indica a capacidade de organizar, de planejar e de construir com solidez. A energia do 4, manifestada no Rei de Paus, é a da autoridade estabelecida, da liderança que se baseia na experiência e na sabedoria. Ele não é um mero executor, mas um arquiteto de realidades, um construtor de impérios. A sua numerologia, portanto, é a da fundação, da disciplina e da persistência que levam à concretização dos ideais. Ele é o ponto culminante da jornada do naipe de Paus, onde a paixão e a inspiração se transformam em resultados tangíveis e duradouros. A sua força reside na capacidade de transformar o caos em ordem, a intuição em ação e o desejo em realidade. Ele é o guardião da chama, o mestre da criação, o rei que governa com sabedoria e poder.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No universo simbólico de Jodorowsky, as cores no Tarot são linguagens que revelam as profundezas da psique e do cosmos. Para o Rei de Paus, a paleta cromática que o envolve é um espelho de sua natureza ígnea e de sua autoridade. O vermelho, cor predominante em seu naipe, simboliza a paixão, a energia vital, a ação e a força criativa. É o fogo que arde, a vontade que impulsiona, a coragem que enfrenta. O Rei de Paus, imerso nesse vermelho vibrante, manifesta a capacidade de iniciar e de sustentar projetos com fervor inabalável. O dourado, frequentemente presente em seus adornos ou na coroa, representa a sabedoria, a iluminação, a realeza e a abundância. É a cor do sol, da divindade, do conhecimento adquirido através da experiência. O Rei de Paus, coroado de dourado, indica a maestria alcançada, a capacidade de discernir e de governar com justiça e clareza. O azul, em menor proporção, mas presente em detalhes, pode simbolizar a espiritualidade, a intuição e a comunicação. É a cor do céu, da profundidade do pensamento, da conexão com o divino. A presença do azul no Rei de Paus sugere que sua liderança não é apenas terrena, mas também inspirada por uma visão mais elevada, por uma compreensão intuitiva dos caminhos a seguir. O verde, se presente, pode indicar crescimento, renovação e harmonia, a capacidade de nutrir e de fazer prosperar. A combinação dessas cores no Rei de Paus revela um ser que une a paixão e a ação (vermelho) com a sabedoria e a autoridade (dourado), e que, em sua essência, busca a verdade e a intuição (azul), promovendo o crescimento e a harmonia (verde). Ele é a síntese da força criativa e da liderança iluminada, um farol de energia e propósito.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Rei de Paus, na visão de Jodorowsky, revelam um ser de ação e de propósito, um líder nato que inspira e que guia. Ele representa a força de vontade inabalável, a capacidade de transformar sonhos em realidade através da ação determinada. A sua presença indica a coragem de enfrentar desafios, a paixão que impulsiona a criatividade e a autoconfiança que atrai o sucesso. O Rei de Paus é o arquétipo do empreendedor, do inovador, daquele que não teme arriscar para alcançar os seus objetivos. Ele é o pai protetor, o mentor sábio, o amigo leal que oferece apoio e encorajamento. A sua energia é contagiante, capaz de despertar o potencial adormecido nos outros e de motivá-los a perseguir os seus próprios caminhos. Ele é o visionário que enxerga além do óbvio, o estrategista que planeja com maestria e o executor que age com precisão. A sua liderança é baseada na integridade, na honestidade e no respeito, conquistando a admiração e a lealdade de todos ao seu redor. O Rei de Paus, em sua luz, é a manifestação da força criativa divina, a chama que ilumina o caminho da realização e da plenitude.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Rei de Paus se manifesta em seus aspectos negativos, segundo Jodorowsky, ele pode indicar uma energia ígnea descontrolada, que se transforma em tirania, autoritarismo e impulsividade. A paixão que antes impulsionava a criação, agora se torna um fogo que consome, uma ambição desmedida que ignora os limites e as consequências. Ele pode se tornar um líder dominador, que impõe a sua vontade sem considerar as necessidades ou os sentimentos dos outros. A autoconfiança se transforma em arrogância, a coragem em imprudência e a determinação em teimosia cega. O Rei de Paus, em sua sombra, pode ser um déspota, um tirano que busca o poder pelo poder, sem se importar com o bem-estar coletivo. A sua criatividade pode ser usada para fins destrutivos, a sua energia para manipular e controlar. Ele pode se tornar um ser egoísta, que busca apenas a sua própria satisfação, ignorando as consequências de suas ações. A sua liderança se baseia no medo e na intimidação, afastando aqueles que antes o admiravam. O Rei de Paus, em seu lado sombrio, é a chama que queima sem controle, a força que destrói em vez de construir, a vontade que se torna tirania. É a manifestação de um poder desequilibrado, que precisa ser contido e redirecionado para o bem.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

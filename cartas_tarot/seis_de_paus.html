@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seis de Paus - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Seis de Paus</h1>
+            <p class="subtitulo">41 - O Triunfo da Vontade</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/41SixofClubs.jpg" alt="Seis de Paus" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Vitória</span>
+                        <span class="palavra-chave">Reconhecimento</span>
+                        <span class="palavra-chave">Liderança</span>
+                        <span class="palavra-chave">Sucesso</span>
+                        <span class="palavra-chave">Celebração</span>
+                        <span class="palavra-chave">Honra</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Seis de Paus representa a energia ativa que se manifesta no elemento Fogo, indicando a culminação de um ciclo de esforço e a celebração da vitória. Este arcano simboliza o triunfo, o reconhecimento e a superação de desafios. A sua energia é de um momento de glória, onde o indivíduo colhe os frutos do seu trabalho e é aclamado pela sua conquista. O Seis de Paus indica a capacidade de liderança e a inspiração que se irradia para o coletivo, motivando e guiando outros. É a manifestação da vontade e da determinação que levam ao sucesso. A imagem do cavaleiro vitorioso, com a coroa de louros, simboliza a honra e o mérito alcançados através da persistência e da coragem. Este arcano representa a recompensa pelo caminho percorrido, a validação externa do esforço interno. A sua numerologia, portanto, é a da harmonia e do equilíbrio alcançados após a ação, a estabilidade que advém da vitória.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o número Seis indica harmonia, equilíbrio e a resolução de conflitos. No naipe de Paus, que representa a energia, a criatividade e a ação, o Seis de Paus simboliza a harmonia alcançada através da ação e da vontade. O número Seis é a união de dois triângulos, um apontando para cima (espírito) e outro para baixo (matéria), representando a integração do mundo espiritual com o material. No contexto do Seis de Paus, isso indica que a vitória e o reconhecimento não são apenas externos, mas também internos, refletindo um alinhamento entre a vontade e o propósito. A presença de seis paus na carta reforça a ideia de uma estrutura sólida e bem-sucedida, construída com base na energia e na paixão. A numerologia do Seis de Paus, portanto, é a da realização e da celebração, onde a energia criativa encontra a sua forma e propósito.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>As cores no Seis de Paus, segundo a perspectiva de Jodorowsky, são cruciais para a sua interpretação. O elemento Fogo, associado ao naipe de Paus, é representado por tons vibrantes de vermelho, laranja e amarelo, que simbolizam a paixão, a energia e a vitalidade. O vermelho indica a força da vontade e a ação, enquanto o laranja e o amarelo representam a alegria, o otimismo e a iluminação. A coroa de louros, frequentemente verde, simboliza a vitória, o crescimento e a renovação. O azul, presente no céu ou em detalhes da vestimenta, pode indicar a clareza mental e a comunicação que acompanham o sucesso. A combinação dessas cores no Seis de Paus cria uma imagem de triunfo e celebração, onde a energia do Fogo é temperada pela sabedoria e pela harmonia. A paleta de cores, portanto, reforça a mensagem de reconhecimento e de sucesso alcançado através da ação consciente.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Seis de Paus, na ótica de Jodorowsky, indicam a capacidade de liderança inspiradora, a autoconfiança e a habilidade de motivar outros. Este arcano representa o reconhecimento merecido, a celebração das conquistas e a sensação de dever cumprido. É um momento de glória onde o indivíduo se sente valorizado e respeitado pelos seus feitos. O Seis de Paus simboliza a superação de obstáculos e a capacidade de transformar desafios em oportunidades. A sua energia é de otimismo e de entusiasmo, impulsionando o indivíduo a continuar buscando novos horizontes. É a manifestação da força interior que leva à vitória e à realização pessoal e coletiva. Este arcano indica que o sucesso não é apenas um fim em si mesmo, mas também uma plataforma para inspirar e guiar outros, criando um ciclo virtuoso de crescimento e prosperidade.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Seis de Paus apresenta aspectos negativos, segundo Jodorowsky, pode indicar arrogância, vaidade excessiva ou a busca por reconhecimento a qualquer custo. A celebração da vitória pode se transformar em ostentação, e o indivíduo pode se tornar complacente, perdendo a motivação para novos desafios. O Seis de Paus invertido ou em uma posição desfavorável pode simbolizar a falta de reconhecimento, a derrota ou a incapacidade de lidar com o sucesso. Pode indicar também a inveja alheia ou a traição, onde a glória é ofuscada por sentimentos negativos. A energia do Fogo, quando desequilibrada, pode levar à impulsividade, à agressão ou à tirania. Este arcano, em seu aspecto negativo, alerta para os perigos da autoindulgência e da perda de humildade, lembrando que o verdadeiro triunfo reside na capacidade de aprender com as experiências e de continuar evoluindo, independentemente do reconhecimento externo. É um convite à reflexão sobre o propósito da vitória e a importância de manter a integridade e a humildade no caminho do sucesso.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+
