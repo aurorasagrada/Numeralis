@@ -1,0 +1,288 @@
+/* 🖨️ Aurora Sagrada - Estilo para Impressão/PDF */
+
+@media print {
+    /* Reset para impressão */
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+        line-height: 1.4;
+        margin: 0;
+        padding: 20px;
+    }
+    
+    /* Ocultar elementos desnecessários */
+    .as-header,
+    .as-tabs,
+    .as-form-card,
+    .as-btn-export,
+    .as-tab-btn,
+    .as-btn {
+        display: none !important;
+    }
+    
+    /* Ajustar containers */
+    .as-container {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .as-section {
+        display: block !important;
+    }
+    
+    /* Cards para impressão */
+    .as-card {
+        break-inside: avoid;
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        margin-bottom: 20px;
+        background: white !important;
+        border-radius: 0 !important;
+    }
+    
+    .as-card h3 {
+        color: black !important;
+        font-size: 16pt;
+        margin-bottom: 15px;
+        text-align: left;
+        border-bottom: 2px solid #ccc;
+        padding-bottom: 5px;
+    }
+    
+    /* Números para impressão */
+    .as-numeros-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .as-numero-card {
+        border: 1px solid #ccc !important;
+        background: #f9f9f9 !important;
+        border-radius: 0 !important;
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .as-numero-valor {
+        font-size: 18pt !important;
+        color: black !important;
+        font-weight: bold;
+    }
+    
+    .as-numero-nome {
+        font-size: 12pt !important;
+        color: black !important;
+        font-weight: bold;
+    }
+    
+    .as-numero-desc {
+        font-size: 10pt !important;
+        color: #666 !important;
+    }
+    
+    /* Arcanos para impressão */
+    .as-arcano-card {
+        break-inside: avoid;
+        border: 1px solid #ccc !important;
+        background: white !important;
+        border-radius: 0 !important;
+        margin: 10px 0;
+        padding: 15px;
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .as-arcano-imagem {
+        width: 60px !important;
+        height: 100px !important;
+        border: 1px solid #ccc !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        flex-shrink: 0;
+    }
+    
+    .as-arcano-info {
+        flex: 1;
+    }
+    
+    .as-arcano-numero {
+        font-size: 16pt !important;
+        color: black !important;
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .as-arcano-nome {
+        font-size: 14pt !important;
+        color: black !important;
+        font-weight: bold;
+        margin-bottom: 8px;
+    }
+    
+    .as-arcano-desc {
+        font-size: 10pt !important;
+        color: black !important;
+        line-height: 1.3;
+    }
+    
+    /* Pirâmide para impressão */
+    .as-piramide-visual {
+        background: #f9f9f9 !important;
+        border: 1px solid #ccc !important;
+        border-radius: 0 !important;
+        padding: 15px;
+        text-align: center;
+        break-inside: avoid;
+    }
+    
+    .as-piramide-linha {
+        margin: 8px 0;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        flex-wrap: wrap;
+    }
+    
+    .as-piramide-numero {
+        background: #e0e0e0 !important;
+        color: black !important;
+        border: 1px solid #ccc !important;
+        border-radius: 50% !important;
+        padding: 8px 12px;
+        font-weight: bold;
+        min-width: 35px;
+        text-align: center;
+        font-size: 10pt;
+        box-shadow: none !important;
+    }
+    
+    /* Compatibilidade para impressão */
+    .as-compatibilidade-resultado {
+        background: #f0f0f0 !important;
+        border: 1px solid #ccc !important;
+        border-radius: 0 !important;
+        padding: 20px;
+        break-inside: avoid;
+    }
+    
+    .as-score-circle {
+        width: 80px !important;
+        height: 80px !important;
+        background: #e0e0e0 !important;
+        color: black !important;
+        border: 2px solid #ccc !important;
+        border-radius: 50% !important;
+        font-size: 16pt !important;
+        margin: 0 auto 15px;
+        box-shadow: none !important;
+    }
+    
+    .as-perfis-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+        margin: 15px 0;
+    }
+    
+    .as-perfil-card {
+        background: white !important;
+        border: 1px solid #ccc !important;
+        border-radius: 0 !important;
+        padding: 15px;
+        text-align: center;
+    }
+    
+    /* Estados especiais para impressão */
+    .as-numeros-mestres {
+        background: #f0f0f0 !important;
+        color: black !important;
+        border: 1px solid #ccc !important;
+        border-radius: 0 !important;
+        padding: 3px 8px;
+        font-size: 8pt;
+        font-weight: bold;
+        margin-top: 5px;
+        display: inline-block;
+    }
+    
+    .as-numero-karmico {
+        background: #e0e0e0 !important;
+        color: black !important;
+        border: 1px solid #999 !important;
+        border-radius: 0 !important;
+        padding: 3px 8px;
+        font-size: 8pt;
+        font-weight: bold;
+        margin-top: 5px;
+        display: inline-block;
+    }
+    
+    /* Listas para impressão */
+    ul, ol {
+        margin: 10px 0;
+        padding-left: 20px;
+    }
+    
+    li {
+        margin: 5px 0;
+        font-size: 10pt;
+        line-height: 1.3;
+    }
+    
+    /* Títulos para impressão */
+    h1, h2, h3, h4 {
+        color: black !important;
+        break-after: avoid;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    
+    h1 {
+        font-size: 20pt;
+        text-align: center;
+        border-bottom: 3px solid #ccc;
+        padding-bottom: 10px;
+    }
+    
+    h2 {
+        font-size: 16pt;
+    }
+    
+    h3 {
+        font-size: 14pt;
+    }
+    
+    h4 {
+        font-size: 12pt;
+    }
+    
+    /* Quebras de página */
+    .page-break {
+        page-break-before: always;
+    }
+    
+    .no-break {
+        break-inside: avoid;
+    }
+    
+    /* Rodapé para impressão */
+    @page {
+        margin: 2cm;
+        @bottom-center {
+            content: "Aurora Sagrada - Mapa Numerológico";
+            font-size: 8pt;
+            color: #666;
+        }
+    }
+}
+
