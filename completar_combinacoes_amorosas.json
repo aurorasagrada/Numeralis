@@ -1,0 +1,445 @@
+{
+  "results": [
+    {
+      "input": "3-3",
+      "output": {
+        "combinacao_completa": "{\n  \"3-3\": {\n    \"score\": 85,\n    \"titulo\": \"A Dupla Expressão Criativa\",\n    \"descricao\": \"A combinação 3-3 é um encontro vibrante de duas almas expressivas e comunicativas. Ambos os parceiros buscam a alegria, a criatividade e a interação social, o que pode levar a um relacionamento dinâmico e cheio de entusiasmo.\",\n    \"pontos_fortes\": [\n      \"Expressão artística e criativa\",\n      \"Otimismo e alegria contagiantes\",\n      \"Habilidade de comunicação e socialização\",\n      \"Capacidade de inspirar e motivar um ao outro\"\n    ],\n    \"desafios\": [\n      \"Tendência à superficialidade e falta de profundidade\",\n      \"Dificuldade em lidar com a rotina e a disciplina\",\n      \"Dispersão de energia e falta de foco\",\n      \"Necessidade constante de validação externa\"\n    ],\n    \"conselhos\": \"Para que esta união floresça, é crucial que ambos os parceiros encontrem um equilíbrio entre a liberdade de expressão e a responsabilidade. Cultivem a disciplina em suas paixões criativas e busquem aprofundar suas conexões emocionais para além da superfície.\"\n  }\n}",
+        "score": 85,
+        "titulo": "A Dupla Expressão Criativa"
+      },
+      "error": ""
+    },
+    {
+      "input": "3-4",
+      "output": {
+        "combinacao_completa": "{\n  \"score\": 65,\n  \"titulo\": \"A União da Expressão Criativa com a Estrutura Sólida\",\n  \"descricao\": \"Esta combinação une a energia vibrante e comunicativa do número 3 com a estabilidade e o pragmatismo do número 4. Enquanto o 3 busca a liberdade e a inovação, o 4 anseia por segurança e ordem, criando uma dinâmica de complementariedade e, por vezes, de atrito.\",\n  \"pontos_fortes\": [\n    \"Complementaridade energética entre criatividade e praticidade\",\n    \"Capacidade de transformar ideias abstratas em projetos concretos\",\n    \"Estímulo mútuo para o crescimento e a organização\",\n    \"Base sólida para a construção de um futuro estável\"\n  ],\n  \"desafios\": [\n    \"Conflito entre a necessidade de liberdade do 3 e a rotina do 4\",\n    \"Dificuldade do 3 em lidar com a rigidez e o conservadorismo do 4\",\n    \"Percepção do 4 sobre o 3 como irresponsável ou disperso\",\n    \"Risco de o 4 se sentir sobrecarregado pela espontaneidade do 3\"\n  ],\n  \"conselhos\": \"Para o sucesso desta união, o número 3 deve aprender a valorizar a segurança e a estrutura oferecidas pelo 4, enquanto o 4 precisa flexibilizar-se e abraçar a leveza e a criatividade do 3. A comunicação aberta e o respeito às diferenças são cruciais para harmonizar essas energias distintas.\"\n}",
+        "score": 65,
+        "titulo": "A União da Expressão Criativa com a Estrutura Sólida"
+      },
+      "error": ""
+    },
+    {
+      "input": "3-5",
+      "output": {
+        "combinacao_completa": "{\n  \"3-5\": {\n    \"score\": 85,\n    \"titulo\": \"A Dinâmica Vibrante da Expressão e da Liberdade\",\n    \"descricao\": \"A combinação numerológica 3-5 une a expressividade e a criatividade do número 3 com a busca incessante por liberdade e aventura do número 5. Esta união gera um relacionamento dinâmico, cheio de entusiasmo e com uma forte inclinação para a exploração e a novidade.\",\n    \"pontos_fortes\": [\n      \"Comunicação aberta e estimulante\",\n      \"Capacidade de adaptação e superação de rotinas\",\n      \"Entusiasmo contagiante e otimismo\",\n      \"Vida social rica e diversificada\"\n    ],\n    \"desafios\": [\n      \"Dificuldade em estabelecer raízes e compromissos a longo prazo\",\n      \"Impulsividade e falta de planejamento\",\n      \"Necessidade constante de estímulo pode levar ao tédio\",\n      \"Superficialidade em momentos de conflito\"\n    ],\n    \"conselhos\": \"Para prosperar, esta combinação deve aprender a equilibrar a necessidade de liberdade com a construção de uma base sólida, cultivando a comunicação e a adaptabilidade mútua.\"\n  }\n}",
+        "score": 85,
+        "titulo": "A Dinâmica Vibrante da Expressão e da Liberdade"
+      },
+      "error": ""
+    },
+    {
+      "input": "3-6",
+      "output": {
+        "combinacao_completa": "{\n  \"3-6\": {\n    \"score\": 85,\n    \"titulo\": \"A Dança da Expressão e da Harmonia\",\n    \"descricao\": \"A combinação numerológica 3-6 une a energia criativa e comunicativa do número 3 com a vibração de responsabilidade, harmonia e serviço do número 6. Esta união pode resultar em um relacionamento dinâmico, focado na expressão mútua e na construção de um ambiente de apoio e beleza.\",\n    \"pontos_fortes\": [\n      \"Expressão criativa e comunicação aberta\",\n      \"Capacidade de nutrir e cuidar do parceiro\",\n      \"Foco na beleza, harmonia e ambiente doméstico\",\n      \"Senso de responsabilidade e compromisso mútuo\"\n    ],\n    \"desafios\": [\n      \"Tendência do 3 à superficialidade pode conflitar com a profundidade do 6\",\n      \"O 6 pode se sentir sobrecarregado pela necessidade de atenção do 3\",\n      \"Dificuldade em lidar com críticas ou desarmonia\"\n    ],\n    \"conselhos\": \"Para prosperar, o 3 deve aprender a aprofundar suas expressões e o 6 a permitir mais leveza e alegria, evitando o excesso de sacrifício. A comunicação aberta e a valorização das qualidades um do outro são cruciais.\"\n  }\n}",
+        "score": 85,
+        "titulo": "A Dança da Expressão e da Harmonia"
+      },
+      "error": ""
+    },
+    {
+      "input": "3-7",
+      "output": {
+        "combinacao_completa": "{\n  \"3-7\": {\n    \"score\": 75,\n    \"titulo\": \"A União da Expressão Criativa com a Busca pela Verdade Interior\",\n    \"descricao\": \"A combinação numerológica 3-7 une a energia vibrante e comunicativa do número 3 com a natureza introspectiva e analítica do número 7. Esta parceria é marcada por um equilíbrio dinâmico entre a extroversão e a introspecção, a criatividade e a sabedoria. O 3 traz leveza, otimismo e a capacidade de expressar sentimentos e ideias, enquanto o 7 oferece profundidade, intuição e uma busca incessante por conhecimento e significado.\",\n    \"pontos_fortes\": [\n      \"Comunicação Profunda e Inspiradora\",\n      \"Criatividade com Propósito\",\n      \"Crescimento Mútuo através da Reflexão\",\n      \"Equilíbrio entre o Social e o Espiritual\"\n    ],\n    \"desafios\": [\n      \"Diferenças no Ritmo Social\",\n      \"Necessidade de Espaço Pessoal\",\n      \"Evitar a Superficialidade ou o Isolamento\"\n    ],\n    \"conselhos\": \"Para prosperar, o 3 deve respeitar a necessidade de solitude do 7, e o 7 deve se abrir para a alegria e a expressão do 3. Encontrem atividades que unam a criatividade com a busca por conhecimento, como estudos artísticos ou filosóficos em conjunto.\"\n  }\n}",
+        "score": 75,
+        "titulo": "A União da Expressão Criativa com a Busca pela Verdade Interior"
+      },
+      "error": ""
+    },
+    {
+      "input": "3-8",
+      "output": {
+        "combinacao_completa": "{\n  \"3-8\": {\n    \"score\": 75,\n    \"titulo\": \"A União Criativa e Estruturada\",\n    \"descricao\": \"Esta combinação une a expressividade e otimismo do número 3 com a ambição e o poder de realização do número 8. Juntos, formam uma parceria dinâmica capaz de transformar ideias em realidade com grande impacto.\",\n    \"pontos_fortes\": [\n      \"Comunicação fluida e inspiradora\",\n      \"Capacidade de manifestar grandes projetos\",\n      \"Otimismo que impulsiona a ação\",\n      \"Liderança natural e visão estratégica\"\n    ],\n    \"desafios\": [\n      \"Conflito entre a busca por liberdade e a necessidade de controle\",\n      \"Tendência do 3 à dispersão e do 8 ao excesso de trabalho\",\n      \"Dificuldade em lidar com críticas ou falhas\",\n      \"Risco de priorizar o material em detrimento do emocional\"\n    ],\n    \"conselhos\": \"Para o sucesso, o 3 deve aprender a focar sua energia criativa, enquanto o 8 precisa permitir mais leveza e expressão emocional, encontrando equilíbrio entre a ambição e a alegria de viver.\"\n  }\n}",
+        "score": 75,
+        "titulo": "A União Criativa e Estruturada"
+      },
+      "error": ""
+    },
+    {
+      "input": "3-9",
+      "output": {
+        "combinacao_completa": "\"3-9\": {\n  score: 85,\n  titulo: \"A União da Expressão Criativa com a Sabedoria Universal\",\n  descricao: \"Esta combinação une a energia vibrante e comunicativa do número 3 com a profundidade e a compaixão do número 9. Juntos, eles formam um relacionamento dinâmico, focado na expressão artística, na busca por ideais elevados e no serviço à humanidade.\",\n  pontos_fortes: [\"Expressão criativa e artística\", \"Compaixão e altruísmo\", \"Comunicação aberta e inspiradora\", \"Visão de mundo ampla e idealista\"],\n  desafios: [\"Tendência ao escapismo ou idealismo excessivo\", \"Dificuldade em lidar com a rotina e o pragmatismo\", \"Sensibilidade a críticas e desilusões\"],\n  conselhos: \"Para prosperar, esta combinação deve focar em canalizar sua criatividade para causas humanitárias e manter os pés no chão, equilibrando os sonhos com a realidade prática.\"\n}",
+        "score": 85,
+        "titulo": "A União da Expressão Criativa com a Sabedoria Universal"
+      },
+      "error": ""
+    },
+    {
+      "input": "4-4",
+      "output": {
+        "combinacao_completa": "{\"score\": 85, \"titulo\": \"A Aliança da Estabilidade e Construção Mútua\", \"descricao\": \"A combinação 4-4 representa um relacionamento fundamentado na solidez, disciplina e busca incessante por segurança. Ambos os parceiros valorizam a estrutura, o trabalho árduo e a construção de um futuro concreto, tornando a relação um pilar de estabilidade.\", \"pontos_fortes\": [\"Lealdade inabalável e comprometimento profundo\", \"Capacidade de construir uma base sólida e duradoura\", \"Organização e planejamento conjunto para metas de longo prazo\", \"Foco na segurança material e estabilidade familiar\"], \"desafios\": [\"Tendência ao perfeccionismo e rigidez excessiva\", \"Dificuldade em lidar com imprevistos e mudanças\", \"Risco de monotonia e falta de espontaneidade\", \"Exigência mútua por padrões elevados, gerando pressão\"], \"conselhos\": \"Para prosperar, esta união deve cultivar a flexibilidade e a abertura a novas experiências, evitando que a busca por segurança se transforme em estagnação. É crucial celebrar as pequenas conquistas e permitir momentos de leveza para equilibrar a seriedade inerente à combinação.\"}",
+        "score": 85,
+        "titulo": "A Aliança da Estabilidade e Construção Mútua"
+      },
+      "error": ""
+    },
+    {
+      "input": "4-5",
+      "output": {
+        "combinacao_completa": "\"4-5\": {\n  score: 75,\n  titulo: \"A Fundação Dinâmica: Estabilidade e Liberdade em Equilíbrio\",\n  descricao: \"A combinação 4-5 une a natureza estruturada e prática do número 4 com a energia adaptável e aventureira do número 5. Esta parceria busca um equilíbrio entre a necessidade de segurança e a ânsia por novas experiências, criando uma dinâmica de crescimento constante.\",\n  pontos_fortes: [\n    \"Capacidade de construir uma base sólida para o relacionamento\",\n    \"Flexibilidade para se adaptar a mudanças e desafios\",\n    \"Estímulo mútuo para explorar novas ideias e aventuras\",\n    \"Habilidade de transformar rotina em oportunidades de aprendizado\"\n  ],\n  desafios: [\n    \"Conflito entre a necessidade de rotina do 4 e a aversão à rotina do 5\",\n    \"Dificuldade em conciliar a cautela do 4 com a impulsividade do 5\",\n    \"Risco de o 4 se sentir negligenciado pela busca de liberdade do 5\",\n    \"Necessidade de comunicação constante para alinhar expectativas\"\n  ],\n  conselhos: \"Para que esta união prospere, o 4 deve aprender a abraçar a espontaneidade, enquanto o 5 precisa valorizar a segurança e a estrutura. Encontrem atividades que unam a estabilidade com a aventura, como planejar viagens com antecedência, mas permitindo espaço para imprevistos.\" \n}",
+        "score": 75,
+        "titulo": "A Fundação Dinâmica: Estabilidade e Liberdade em Equilíbrio"
+      },
+      "error": ""
+    },
+    {
+      "input": "4-6",
+      "output": {
+        "combinacao_completa": "{\n  \"score\": 85,\n  \"titulo\": \"A Construção Harmoniosa do Lar\",\n  \"descricao\": \"Esta combinação une a solidez e a estrutura do número 4 com a harmonia e o cuidado do número 6, criando uma base robusta para um relacionamento focado na construção de um lar e família. Ambos os parceiros valorizam a segurança, a estabilidade e o compromisso mútuos.\",\n  \"pontos_fortes\": [\n    \"Estabilidade e segurança mútua\",\n    \"Compromisso e lealdade inabaláveis\",\n    \"Foco na construção de um lar e família\",\n    \"Capacidade de nutrir e cuidar um do outro\"\n  ],\n  \"desafios\": [\n    \"Tendência à rotina e falta de espontaneidade\",\n    \"Dificuldade em lidar com mudanças inesperadas\",\n    \"Excesso de responsabilidade pode gerar sobrecarga\"\n  ],\n  \"conselhos\": \"Para manter a vitalidade, é crucial que ambos busquem atividades que quebrem a rotina e estimulem a aventura. Pratiquem a comunicação aberta para evitar o acúmulo de ressentimentos e compartilhem as responsabilidades para aliviar a sobrecarga.\"\n}",
+        "score": 85,
+        "titulo": "A Construção Harmoniosa do Lar"
+      },
+      "error": ""
+    },
+    {
+      "input": "4-7",
+      "output": {
+        "combinacao_completa": "\"4-7\": {\n  score: 75,\n  titulo: \"A Aliança da Estrutura e da Sabedoria Interior\",\n  descricao: \"Esta combinação une a necessidade de estabilidade e ordem do número 4 com a busca por profundidade e introspecção do número 7. Juntos, eles podem construir um relacionamento sólido e significativo, baseado em pilares de confiança e crescimento mútuo.\",\n  pontos_fortes: [\n    \"Estabilidade e segurança mútua\",\n    \"Profundidade intelectual e espiritual\",\n    \"Capacidade de construir bases sólidas\",\n    \"Respeito pelo espaço individual\"\n  ],\n  desafios: [\n    \"Tendência ao isolamento do 7 pode conflitar com a necessidade de rotina do 4\",\n    \"Dificuldade em expressar emoções abertamente\",\n    \"Excesso de análise pode levar à inação\",\n    \"Rigidez do 4 pode chocar com a fluidez do 7\"\n  ],\n  conselhos: \"Para esta união prosperar, o 4 deve aprender a respeitar a necessidade de solitude do 7, enquanto o 7 deve se esforçar para compartilhar suas descobertas internas com o parceiro 4, fortalecendo a conexão emocional e intelectual.\"\n}",
+        "score": 75,
+        "titulo": "A Aliança da Estrutura e da Sabedoria Interior"
+      },
+      "error": ""
+    },
+    {
+      "input": "4-8",
+      "output": {
+        "combinacao_completa": "{\n  score: 85,\n  titulo: \"A Aliança da Construção e do Poder\",\n  descricao: \"Esta combinação une a solidez e a disciplina do 4 com a ambição e o poder do 8. Juntos, formam uma parceria focada na construção de bases duradouras e na manifestação de sucesso material e profissional.\",\n  pontos_fortes: [\"Estabilidade e segurança mútua\", \"Capacidade de construir impérios\", \"Foco em metas e ambições compartilhadas\", \"Praticidade e organização na vida a dois\"],\n  desafios: [\"Tendência ao materialismo excessivo\", \"Rigidez e inflexibilidade nas decisões\", \"Conflitos de poder e controle\", \"Dificuldade em expressar emoções e vulnerabilidades\"],\n  conselhos: \"Para prosperar, esta dupla deve equilibrar a busca por conquistas materiais com a nutrição do vínculo emocional, cultivando a flexibilidade e a comunicação aberta para evitar a estagnação.\"\n}",
+        "score": 85,
+        "titulo": "A Aliança da Construção e do Poder"
+      },
+      "error": ""
+    },
+    {
+      "input": "4-9",
+      "output": {
+        "combinacao_completa": "\"4-9\": {\n  score: 75,\n  titulo: \"A Fundação Sólida e a Busca pela Sabedoria Interior\",\n  descricao: \"A combinação 4-9 une a estabilidade e a praticidade do número 4 com a sabedoria universal e a compaixão do número 9. Esta parceria é construída sobre uma base de trabalho árduo e dedicação mútua, com ambos os parceiros buscando um propósito maior em seu relacionamento.\",\n  pontos_fortes: [\n    \"Estabilidade e segurança mútua\",\n    \"Capacidade de construir um futuro sólido\",\n    \"Compreensão e compaixão\",\n    \"Desejo de servir e contribuir para o bem maior\"\n  ],\n  desafios: [\n    \"Rigidez e inflexibilidade do 4 podem colidir com a natureza expansiva do 9\",\n    \"O 9 pode sentir-se sobrecarregado pelas responsabilidades práticas do 4\",\n    \"Evitar o isolamento e a tendência a se fechar em seu próprio mundo\"\n  ],\n  conselhos: \"Para prosperar, o 4 deve aprender a ser mais flexível e o 9 a aterrar suas visões, encontrando um equilíbrio entre o idealismo e a realidade prática.\"\n}",
+        "score": 75,
+        "titulo": "A Fundação Sólida e a Busca pela Sabedoria Interior"
+      },
+      "error": ""
+    },
+    {
+      "input": "5-5",
+      "output": {
+        "combinacao_completa": "{\n  score: 75,\n  titulo: \"A Dança da Liberdade: União de Dois Caminhos Independentes\",\n  descricao: \"A combinação 5-5 representa a união de duas almas vibrantes, impulsionadas pela busca incessante por liberdade, aventura e novas experiências. Esta dinâmica é marcada por uma energia mutável e uma profunda necessidade de exploração.\",\n  pontos_fortes: [\n    \"Adaptabilidade inerente às mudanças e imprevistos\",\n    \"Estímulo mútuo à inovação e à experimentação\",\n    \"Compreensão da necessidade de espaço individual\",\n    \"Capacidade de transformar desafios em oportunidades de crescimento\"\n  ],\n  desafios: [\n    \"Dificuldade em estabelecer raízes e compromissos duradouros\",\n    \"Tendência à inconstância e à dispersão de energia\",\n    \"Necessidade de gerenciar a impulsividade e a busca por gratificação instantânea\"\n  ],\n  conselhos: \"Para sustentar esta união, é crucial que ambos os parceiros cultivem a comunicação aberta sobre suas necessidades de liberdade, encontrando formas criativas de explorar o mundo juntos sem sufocar a individualidade.\"\n}",
+        "score": 75,
+        "titulo": "A Dança da Liberdade: União de Dois Caminhos Independentes"
+      },
+      "error": ""
+    },
+    {
+      "input": "5-6",
+      "output": {
+        "combinacao_completa": "{\n  \"5-6\": {\n    score: 75,\n    titulo: \"A Liberdade Responsável: Combinação 5-6\",\n    descricao: \"Esta união harmoniza a busca por liberdade e aventura do 5 com a necessidade de estabilidade e cuidado do 6. Juntos, podem construir uma vida rica em experiências e com um forte alicerce familiar, desde que haja equilíbrio entre a individualidade e o compromisso.\",\n    pontos_fortes: [\n      \"Aventura e estabilidade: O 5 traz a emoção e o 6 a segurança.\",\n      \"Adaptabilidade e cuidado: O 5 se adapta a mudanças e o 6 oferece suporte.\",\n      \"Comunicação aberta: Ambos valorizam a troca de ideias e sentimentos.\",\n      \"Crescimento mútuo: Um estimula o outro a sair da zona de conforto e a se aprofundar.\"\n    ],\n    desafios: [\n      \"Inquietação vs. rotina: O 5 pode se sentir preso pela rotina do 6.\",\n      \"Compromisso vs. liberdade: O 5 pode resistir ao compromisso do 6.\",\n      \"Impulsividade vs. cautela: O 5 age por impulso, o 6 prefere planejar.\"\n    ],\n    conselhos: \"Para que essa combinação prospere, o 5 deve aprender a valorizar a segurança e o lar que o 6 oferece, enquanto o 6 precisa dar espaço para a individualidade e a necessidade de aventura do 5. A comunicação e o respeito mútuo são essenciais para superar os desafios e construir uma relação duradoura.\"\n  }\n}",
+        "score": 75,
+        "titulo": "A Liberdade Responsável: Combinação 5-6"
+      },
+      "error": ""
+    },
+    {
+      "input": "5-7",
+      "output": {
+        "combinacao_completa": "{\n  score: 75,\n  titulo: \"A União da Liberdade e da Sabedoria\",\n  descricao: \"Esta combinação une a energia dinâmica e adaptável do número 5 com a profundidade introspectiva e analítica do número 7. Juntos, eles buscam a verdade e a experiência, mas de maneiras distintas, o que pode gerar tanto fascínio quanto atrito.\",\n  pontos_fortes: [\"Estímulo intelectual mútuo\", \"Capacidade de adaptação e exploração\", \"Busca por conhecimento e crescimento\", \"Independência e respeito ao espaço individual\"],\n  desafios: [\"Necessidade de liberdade do 5 pode colidir com a reclusão do 7\", \"Dificuldade em conciliar a superficialidade do 5 com a profundidade do 7\", \"Tendência do 7 ao isolamento pode ser mal interpretada pelo 5\", \"Comunicação pode ser um desafio devido às diferentes abordagens da vida\"],\n  conselhos: \"O 5 deve aprender a respeitar a necessidade de introspecção do 7, enquanto o 7 pode se beneficiar da energia e da aventura que o 5 traz para a relação. Encontrem atividades que satisfaçam a busca por conhecimento de ambos, como viagens ou estudos, e valorizem a individualidade um do outro.\"\n}",
+        "score": 75,
+        "titulo": "A União da Liberdade e da Sabedoria"
+      },
+      "error": ""
+    },
+    {
+      "input": "5-8",
+      "output": {
+        "combinacao_completa": "\"5-8\": {\n  score: 65,\n  titulo: \"A Aventura Estruturada: Liberdade e Poder em Equilíbrio\",\n  descricao: \"Esta combinação une a energia vibrante e mutável do 5 com a força estruturada e ambiciosa do 8. A relação é marcada por uma busca conjunta por expansão e realização, onde a liberdade individual do 5 encontra o desejo de controle e sucesso do 8.\",\n  pontos_fortes: [\n    \"Visão ambiciosa e capacidade de realização conjunta\",\n    \"Estímulo à inovação e adaptabilidade mútua\",\n    \"Habilidade de superar desafios com resiliência\",\n    \"Potencial para construir um legado material e espiritual\"\n  ],\n  desafios: [\n    \"Conflito entre a necessidade de liberdade do 5 e o controle do 8\",\n    \"Risco de materialismo excessivo e negligência emocional\",\n    \"Dificuldade em lidar com a inconstância do 5 ou o autoritarismo do 8\",\n    \"Necessidade de conciliar a busca por aventura com a estabilidade\"\n  ],\n  conselhos: \"Para prosperar, o 5 deve aprender a canalizar sua energia em objetivos concretos do 8, enquanto o 8 precisa oferecer espaço para a espontaneidade e a adaptabilidade do 5, evitando o excesso de controle e valorizando a jornada tanto quanto o destino.\"\n}",
+        "score": 65,
+        "titulo": "A Aventura Estruturada: Liberdade e Poder em Equilíbrio"
+      },
+      "error": ""
+    },
+    {
+      "input": "5-9",
+      "output": {
+        "combinacao_completa": "{\n  score: 75,\n  titulo: \"A Dinâmica da Liberdade e da Sabedoria\",\n  descricao: \"Esta combinação une a energia vibrante e adaptável do número 5 com a profundidade e a introspecção do número 9. Juntos, eles buscam a liberdade através da compreensão e da expansão da consciência, enfrentando desafios relacionados à estabilidade e ao desapego.\",\n  pontos_fortes: [\"Abertura a novas experiências e aprendizados\", \"Capacidade de adaptação e resiliência\", \"Visão humanitária e desejo de servir\", \"Profundidade de pensamento e sabedoria inata\"],\n  desafios: [\"Dificuldade em manter o foco e a disciplina\", \"Tendência à inconstância e ao desapego excessivo\", \"Idealismo que pode levar à frustração\", \"Necessidade de equilibrar a liberdade pessoal com responsabilidades\"],\n  conselhos: \"Para esta combinação, é crucial encontrar um propósito maior que direcione a energia do 5 e a sabedoria do 9. Cultivar a disciplina e o compromisso com causas humanitárias pode trazer grande satisfação e estabilidade.\"\n}",
+        "score": 75,
+        "titulo": "A Dinâmica da Liberdade e da Sabedoria"
+      },
+      "error": ""
+    },
+    {
+      "input": "6-6",
+      "output": {
+        "combinacao_completa": "{\n  \"6-6\": {\n    \"score\": 85,\n    \"titulo\": \"O Lar Harmonioso: A União do Amor e da Responsabilidade\",\n    \"descricao\": \"A combinação 6-6 representa uma união profundamente enraizada no amor, na família e na responsabilidade mútua. Ambos os parceiros vibram com a energia do número 6, buscando harmonia, cuidado e um ambiente doméstico estável. Esta é uma parceria que prioriza o bem-estar do outro e a construção de um futuro seguro e acolhedor.\",\n    \"pontos_fortes\": [\n      \"Amor incondicional e dedicação\",\n      \"Forte senso de responsabilidade familiar\",\n      \"Habilidade de criar um lar acolhedor\",\n      \"Empatia e compreensão mútua\"\n    ],\n    \"desafios\": [\n      \"Tendência ao sacrifício excessivo\",\n      \"Dificuldade em estabelecer limites\",\n      \"Perfeccionismo e autocrítica\",\n      \"Risco de estagnação na rotina\"\n    ],\n    \"conselhos\": \"Para manter a vitalidade da relação, é crucial que ambos os parceiros encontrem um equilíbrio entre o cuidado com o outro e o autocuidado, evitando a sobrecarga e buscando novas experiências juntos para quebrar a rotina.\"\n  }\n}",
+        "score": 85,
+        "titulo": "O Lar Harmonioso: A União do Amor e da Responsabilidade"
+      },
+      "error": ""
+    },
+    {
+      "input": "6-7",
+      "output": {
+        "combinacao_completa": "{\n  \"6-7\": {\n    \"score\": 60,\n    \"titulo\": \"A Harmonia Desafiada pela Introspecção: 6 e 7\",\n    \"descricao\": \"Esta combinação une a natureza acolhedora e familiar do 6 com a essência introspectiva e analítica do 7. O 6 busca conexão e demonstrações de afeto, enquanto o 7 valoriza o espaço pessoal e a profundidade intelectual, o que pode gerar descompasso na expressão emocional.\",\n    \"pontos_fortes\": [\n      \"Capacidade do 6 de oferecer suporte e cuidado incondicional.\",\n      \"A profundidade intelectual do 7 pode enriquecer a visão de mundo do 6.\",\n      \"Potencial para um crescimento mútuo através da compreensão das diferenças.\",\n      \"O 7 pode aprender a expressar emoções com a influência do 6.\"\n    ],\n    \"desafios\": [\n      \"A necessidade de afeto do 6 pode colidir com a reserva do 7.\",\n      \"O 7 pode se sentir sobrecarregado pela intensidade emocional do 6.\",\n      \"Dificuldade em encontrar um equilíbrio entre a vida social do 6 e a reclusão do 7.\",\n      \"Comunicação de sentimentos pode ser um ponto de atrito.\"\n    ],\n    \"conselhos\": \"Para esta união, é crucial que o 6 respeite o espaço do 7 e que o 7 se esforce para comunicar suas necessidades e sentimentos. Ambos devem buscar atividades que satisfaçam suas naturezas individuais e compartilhadas, encontrando um ponto de equilíbrio entre a conexão e a individualidade.\"\n  }\n}",
+        "score": 60,
+        "titulo": "A Harmonia Desafiada pela Introspecção: 6 e 7"
+      },
+      "error": ""
+    },
+    {
+      "input": "6-8",
+      "output": {
+        "combinacao_completa": "{\n  score: 75,\n  titulo: \"A Harmonia Responsável e o Poder Construtivo\",\n  descricao: \"A união entre o 6 e o 8 forma uma parceria sólida, onde a busca por harmonia e estabilidade familiar do 6 encontra a ambição e a capacidade de realização do 8. Juntos, constroem um alicerce de segurança e prosperidade, equilibrando o afeto com o sucesso material.\",\n  pontos_fortes: [\n    \"Estabilidade e segurança mútua\",\n    \"Capacidade de construir um futuro próspero\",\n    \"Dedicação à família e ao lar\",\n    \"Equilíbrio entre afeto e ambição\"\n  ],\n  desafios: [\n    \"Conflito entre o idealismo do 6 e o pragmatismo do 8\",\n    \"Tendência do 8 a priorizar o trabalho em detrimento do relacionamento\",\n    \"O 6 pode se sentir sobrecarregado pela intensidade do 8\"\n  ],\n  conselhos: \"Para esta combinação, é crucial que o 6 e o 8 estabeleçam metas financeiras e familiares conjuntas, garantindo que a busca por sucesso material do 8 esteja alinhada com a necessidade de harmonia e segurança do 6. A comunicação aberta sobre as expectativas e a valorização das contribuições de cada um fortalecerão o vínculo.\"\n}",
+        "score": 75,
+        "titulo": "A Harmonia Responsável e o Poder Construtivo"
+      },
+      "error": ""
+    },
+    {
+      "input": "6-9",
+      "output": {
+        "combinacao_completa": "{\n  \"6-9\": {\n    \"score\": 75,\n    \"titulo\": \"A União Altruísta: Cuidado e Humanitarismo\",\n    \"descricao\": \"Esta combinação une a energia nutridora e responsável do número 6 com o espírito humanitário e universal do número 9. Juntos, formam uma parceria focada no serviço ao próximo e na construção de um ambiente de amor e compreensão.\",\n    \"pontos_fortes\": [\n      \"Profundo senso de responsabilidade mútua\",\n      \"Capacidade de nutrir e apoiar o crescimento um do outro\",\n      \"Dedicação a causas sociais e ao bem-estar coletivo\",\n      \"Compreensão e tolerância para com as diferenças\"\n    ],\n    \"desafios\": [\n      \"A necessidade de estabilidade do 6 pode colidir com o desejo de liberdade do 9\",\n      \"Risco de negligenciar as necessidades individuais em prol do coletivo\",\n      \"Dificuldade em lidar com a rotina e a previsibilidade para o 9\",\n      \"O 6 pode sentir-se sobrecarregado pela amplitude dos interesses do 9\"\n    ],\n    \"conselhos\": \"Para prosperar, o 6 deve aprender a dar espaço à natureza expansiva do 9, enquanto o 9 precisa reconhecer a importância da segurança e do lar para o 6. Encontrem um equilíbrio entre o serviço ao mundo e o cuidado com o relacionamento íntimo.\"\n  }\n}",
+        "score": 75,
+        "titulo": "A União Altruísta: Cuidado e Humanitarismo"
+      },
+      "error": ""
+    },
+    {
+      "input": "7-7",
+      "output": {
+        "combinacao_completa": "{\n  \"7-7\": {\n    \"score\": 85,\n    \"titulo\": \"A Sincronia das Almas: União de Intuitivos e Buscadores\",\n    \"descricao\": \"A combinação 7-7 na numerologia amorosa representa uma união de duas almas profundamente introspectivas e espirituais. Ambos os parceiros buscam um entendimento mais profundo da vida e do universo, valorizando a solitude e o espaço pessoal. Esta relação é marcada por uma intensa conexão mental e espiritual, onde a comunicação transcende o verbal, baseando-se em intuição e compreensão mútua.\",\n    \"pontos_fortes\": [\n      \"Profunda conexão espiritual e intelectual.\",\n      \"Respeito mútuo pela individualidade e necessidade de solitude.\",\n      \"Capacidade de crescimento pessoal e espiritual conjunto.\",\n      \"Intuição aguçada e compreensão não verbal.\"\n    ],\n    \"desafios\": [\n      \"Tendência ao isolamento e dificuldade em expressar emoções abertamente.\",\n      \"Risco de distanciamento emocional se não houver esforço para a conexão prática.\",\n      \"Necessidade de equilibrar a busca por conhecimento com a vida a dois.\"\n    ],\n    \"conselhos\": \"Para que esta união floresça, é crucial que ambos os parceiros se esforcem para compartilhar seus mundos internos, mesmo que isso exija sair da zona de conforto. Encontrem atividades que unam seus interesses espirituais e intelectuais, mas também dediquem tempo para expressar afeto e construir uma base emocional sólida.\"\n  }\n}",
+        "score": 85,
+        "titulo": "A Sincronia das Almas: União de Intuitivos e Buscadores"
+      },
+      "error": ""
+    },
+    {
+      "input": "7-8",
+      "output": {
+        "combinacao_completa": "\"7-8\": {\n  score: 75,\n  titulo: \"A União da Sabedoria e da Ambição\",\n  descricao: \"Esta combinação une a introspecção e a busca pelo conhecimento do número 7 com a ambição, o poder e a realização material do número 8. A dinâmica pode ser de grande crescimento mútuo, onde a espiritualidade encontra a materialidade.\",\n  pontos_fortes: [\"Profundidade de compreensão mútua\", \"Capacidade de transformar ideias em realidade\", \"Busca por propósito e significado em empreendimentos\", \"Estabilidade e segurança financeira\"],\n  desafios: [\"Conflito entre o mundo interior (7) e o exterior (8)\", \"Tendência ao isolamento do 7 pode frustrar o 8\", \"O pragmatismo do 8 pode chocar com a idealização do 7\", \"Dificuldade em equilibrar o desapego material do 7 com a busca por riqueza do 8\"],\n  conselhos: \"Para prosperar, o 7 deve aprender a aplicar sua sabedoria no mundo material, enquanto o 8 deve buscar um propósito maior em suas conquistas, evitando o materialismo excessivo. A comunicação aberta sobre valores e prioridades é crucial.\"\n}",
+        "score": 75,
+        "titulo": "A União da Sabedoria e da Ambição"
+      },
+      "error": ""
+    },
+    {
+      "input": "7-9",
+      "output": {
+        "combinacao_completa": "{\n  score: 75,\n  titulo: \"A União do Sábio e do Humanitário\",\n  descricao: \"Esta parceria é marcada por uma busca conjunta por significado e propósito, onde ambos valorizam a dimensão espiritual da vida. O 7 oferece ao 9 a profundidade de sua análise e a sabedoria adquirida em sua introspecção, enquanto o 9 inspira o 7 a expandir sua visão para além do individual, conectando-o com causas maiores e o bem-estar coletivo.\",\n  pontos_fortes: [\"Profundidade Espiritual Compartilhada\", \"Compreensão Mútua\", \"Crescimento e Expansão\", \"Idealismo e Propósito\"],\n  desafios: [\"Necessidade de Espaço vs. Engajamento\", \"Diferenças na Expressão Emocional\", \"Praticidade vs. Idealismo\"],\n  conselhos: \"Para que esta combinação floresça, o 7 deve comunicar abertamente sua necessidade de espaço e o 9 deve respeitar essa individualidade, encontrando formas de canalizar seu idealismo em atividades que não exijam a participação constante do parceiro. Ambos se beneficiarão ao buscar um equilíbrio entre a introspecção e o engajamento com o mundo, utilizando suas forças complementares para um crescimento mútuo e significativo.\"\n}",
+        "score": 75,
+        "titulo": "A União do Sábio e do Humanitário"
+      },
+      "error": ""
+    },
+    {
+      "input": "8-8",
+      "output": {
+        "combinacao_completa": "{\n  score: 85,\n  titulo: \"A Maestria do Poder Compartilhado\",\n  descricao: \"A combinação 8-8 é um dínamo de poder e ambição, onde a energia do número 8 é amplificada. Representa a maestria material, a autoridade e a busca incessante por conquistas.\",\n  pontos_fortes: [\"Visão estratégica e ambição compartilhada\", \"Capacidade de manifestar abundância material\", \"Liderança natural e forte presença\", \"Resiliência e determinação inabaláveis\"],\n  desafios: [\"Tendência ao controle e autoritarismo\", \"Risco de materialismo excessivo\", \"Dificuldade em expressar vulnerabilidade\", \"Conflitos de poder\"],\n  conselhos: \"Para esta união, é crucial que ambos os parceiros aprendam a ceder e a compartilhar o poder, focando em objetivos maiores que o acúmulo material. A verdadeira força reside na colaboração e no reconhecimento das contribuições mútuas.\"\n}",
+        "score": 85,
+        "titulo": "A Maestria do Poder Compartilhado"
+      },
+      "error": ""
+    },
+    {
+      "input": "8-9",
+      "output": {
+        "combinacao_completa": "\"8-9\": {\n  score: 85,\n  titulo: \"A União Visionária: Ambição com Propósito Humanitário\",\n  descricao: \"Esta combinação une a força realizadora do 8 com a visão altruísta do 9. Juntos, eles podem construir um legado significativo, equilibrando o sucesso material com a contribuição para o bem maior.\",\n  pontos_fortes: [\"Capacidade de transformar ideais em realidade\", \"Ambição direcionada para causas nobres\", \"Liderança inspiradora e eficaz\", \"Equilíbrio entre o material e o espiritual\"],\n  desafios: [\"Conflito entre o foco no poder pessoal (8) e o desapego (9)\", \"Risco de o 8 sobrecarregar o 9 com demandas práticas\", \"Dificuldade em conciliar a necessidade de controle (8) com a fluidez (9)\"],\n  conselhos: \"Para prosperar, o 8 deve aprender a canalizar sua energia para projetos que beneficiem a coletividade, enquanto o 9 precisa apoiar as iniciativas do 8 com pragmatismo, sem perder sua essência compassiva.\"\n}",
+        "score": 85,
+        "titulo": "A União Visionária: Ambição com Propósito Humanitário"
+      },
+      "error": ""
+    },
+    {
+      "input": "9-9",
+      "output": {
+        "combinacao_completa": "9-9\": {\n  score: 90,\n  titulo: \"A União Altruísta: Compaixão e Propósito Universal\",\n  descricao: \"A combinação 9-9 representa uma união de almas profundamente altruístas e idealistas, focadas em um propósito maior. Ambos os parceiros compartilham uma visão humanitária e um desejo inato de servir ao mundo, o que pode levar a um relacionamento de grande inspiração e impacto social. A conexão é marcada por uma compreensão mútua e uma capacidade de amar incondicionalmente.\",\n  pontos_fortes: [\"Compaixão e empatia profundas\", \"Idealismo compartilhado e propósito humanitário\", \"Amor incondicional e aceitação mútua\", \"Capacidade de inspirar e elevar o outro\"],\n  desafios: [\"Tendência ao desapego excessivo ou distanciamento emocional\", \"Risco de esgotamento ao focar demais nas necessidades alheias\", \"Dificuldade em lidar com as imperfeições mundanas e a realidade prática\"],\n  conselhos: \"Cultivem a individualidade e estabeleçam limites saudáveis para evitar o esgotamento. Lembrem-se de que o amor universal começa com o amor-próprio e a atenção às necessidades do relacionamento.\"\n}",
+        "score": 90,
+        "titulo": "A União Altruísta: Compaixão e Propósito Universal"
+      },
+      "error": ""
+    },
+    {
+      "input": "1-11",
+      "output": {
+        "combinacao_completa": "{\n  score: 85,\n  titulo: \"A Sinergia Visionária: Liderança e Iluminação\",\n  descricao: \"Esta combinação une a força pioneira do Número 1 com a intuição elevada e a visão inspiradora do Número Mestre 11. Juntos, eles formam uma parceria dinâmica com potencial para grandes realizações e crescimento espiritual, onde a ação se alinha à inspiração divina.\",\n  pontos_fortes: [\"Liderança inspirada e visionária\", \"Profunda conexão intuitiva e espiritual\", \"Capacidade de manifestar grandes ideais\", \"Estímulo mútuo para o crescimento pessoal\"],\n  desafios: [\"Conflito entre a independência do 1 e a sensibilidade do 11\", \"Tendência à sobrecarga emocional do 11\", \"Dificuldade em lidar com a praticidade do dia a dia\", \"Necessidade de equilibrar a individualidade com a união\"],\n  conselhos: \"Para prosperar, o Número 1 deve aprender a ouvir e valorizar a intuição do 11, enquanto o 11 precisa aterrar suas visões e comunicar suas necessidades de forma clara, evitando a auto-sacrifício.\"\n}",
+        "score": 85,
+        "titulo": "A Sinergia Visionária: Liderança e Iluminação"
+      },
+      "error": ""
+    },
+    {
+      "input": "2-11",
+      "output": {
+        "combinacao_completa": "{\n  score: 85,\n  titulo: \"A União da Sensibilidade e da Iluminação Espiritual\",\n  descricao: \"A combinação 2-11 representa a união da sensibilidade e cooperação do número 2 com a intuição e iluminação do Mestre Construtor 11. Esta parceria é marcada por uma profunda conexão espiritual e um potencial elevado para a cocriação, exigindo equilíbrio entre a receptividade e a visão superior.\",\n  pontos_fortes: [\"Sintonia intuitiva e telepática\", \"Capacidade de manifestar ideais elevados\", \"Apoio mútuo no crescimento espiritual\", \"Habilidade de inspirar e guiar outros casais\"],\n  desafios: [\"Tendência a idealizar excessivamente o parceiro\", \"Vulnerabilidade a flutuações emocionais\", \"Dificuldade em lidar com a realidade prática\", \"Necessidade de evitar a codependência\"],\n  conselhos: \"Cultivem a comunicação aberta e honesta, ancorando suas visões espirituais na realidade diária. Pratiquem a individualidade dentro da união para evitar a fusão excessiva e o desequilíbrio energético.\"\n}",
+        "score": 85,
+        "titulo": "A União da Sensibilidade e da Iluminação Espiritual"
+      },
+      "error": ""
+    },
+    {
+      "input": "3-11",
+      "output": {
+        "combinacao_completa": "{\n  \"3-11\": {\n    \"score\": 85,\n    \"titulo\": \"A União da Expressão Criativa com a Intuição Mestra\",\n    \"descricao\": \"Esta combinação une a energia vibrante e comunicativa do número 3 com a profundidade intuitiva e espiritual do número mestre 11. Resulta em um relacionamento dinâmico, onde a inspiração e a visão se encontram com a capacidade de manifestação e alegria.\",\n    \"pontos_fortes\": [\n      \"Comunicação inspiradora e profunda\",\n      \"Criatividade e inovação conjuntas\",\n      \"Forte conexão espiritual e emocional\",\n      \"Capacidade de manifestar ideais elevados\"\n    ],\n    \"desafios\": [\n      \"Equilibrar a necessidade de socialização do 3 com a introspecção do 11\",\n      \"Evitar que o 3 se sinta incompreendido pela profundidade do 11\",\n      \"Prevenir que o 11 se sobrecarregue com a energia extrovertida do 3\"\n    ],\n    \"conselhos\": \"Para prosperar, o 3 deve aprender a respeitar os momentos de recolhimento do 11, enquanto o 11 deve se esforçar para compartilhar suas visões de forma mais acessível e leve, celebrando a alegria e a expressão mútua.\"\n  }\n}",
+        "score": 85,
+        "titulo": "A União da Expressão Criativa com a Intuição Mestra"
+      },
+      "error": ""
+    },
+    {
+      "input": "4-11",
+      "output": {
+        "combinacao_completa": "{\n  score: 85,\n  titulo: \"A Construção Iluminada: Estabilidade e Visão Espiritual\",\n  descricao: \"Esta combinação une a solidez e o pragmatismo do número 4 com a intuição e a iluminação do número mestre 11. Resulta em uma parceria capaz de manifestar grandes visões espirituais no plano material, construindo bases firmes para ideais elevados.\",\n  pontos_fortes: [\"Capacidade de materializar ideais espirituais\", \"Estabilidade emocional e espiritual\", \"Intuição aguçada para decisões práticas\", \"Dedicação mútua e trabalho em equipe\"],\n  desafios: [\"Conflito entre o pragmatismo e o idealismo\", \"Tendência a sobrecarga devido à busca por perfeição\", \"Dificuldade em lidar com a rigidez ou a falta de flexibilidade\"],\n  conselhos: \"Para prosperar, ambos devem aprender a equilibrar a necessidade de estrutura com a abertura para a inspiração divina, permitindo que a intuição guie a construção de seus projetos e aprimorando a comunicação para alinhar suas diferentes perspectivas.\"\n}",
+        "score": 85,
+        "titulo": "A Construção Iluminada: Estabilidade e Visão Espiritual"
+      },
+      "error": ""
+    },
+    {
+      "input": "5-11",
+      "output": {
+        "combinacao_completa": "{\n  \"5-11\": {\n    \"score\": 85,\n    \"titulo\": \"A Conexão Iluminada: Liberdade e Intuição em Harmonia\",\n    \"descricao\": \"Esta combinação une a busca incessante por liberdade e aventura do Número 5 com a profunda intuição e espiritualidade do Número Mestre 11. Juntos, eles formam uma dinâmica vibrante, onde a adaptabilidade encontra a iluminação, resultando em um relacionamento de constante crescimento e descobertas.\",\n    \"pontos_fortes\": [\n      \"Estimulação mútua e constante evolução\",\n      \"Profunda conexão intuitiva e espiritual\",\n      \"Capacidade de adaptação a mudanças e desafios\",\n      \"Paixão e dinamismo na relação\"\n    ],\n    \"desafios\": [\n      \"Necessidade de liberdade do 5 pode conflitar com a intensidade do 11\",\n      \"A impulsividade do 5 pode desestabilizar a busca por ordem do 11\",\n      \"Manter o foco em planos de longo prazo pode ser um desafio para o 5\"\n    ],\n    \"conselhos\": \"Para prosperar, o Número 5 deve aprender a canalizar sua energia de mudança de forma construtiva, enquanto o Número 11 precisa oferecer espaço para a individualidade, nutrindo a liberdade inerente ao seu parceiro.\"\n  }\n}",
+        "score": 85,
+        "titulo": "A Conexão Iluminada: Liberdade e Intuição em Harmonia"
+      },
+      "error": ""
+    },
+    {
+      "input": "6-11",
+      "output": {
+        "combinacao_completa": "\"6-11\": {\n  score: 85,\n  titulo: \"A União Compassiva e Inspiradora: Lar e Visão Elevada\",\n  descricao: \"Esta combinação une a energia nutridora e harmoniosa do número 6 com a intuição e a inspiração do número mestre 11. Resulta em um relacionamento profundamente compassivo, focado no lar e na família, mas também impulsionado por uma busca espiritual e idealista. Há um forte senso de propósito compartilhado e uma conexão que transcende o mundano.\",\n  pontos_fortes: [\n    \"Profunda empatia e cuidado mútuo\",\n    \"Foco na construção de um lar harmonioso e seguro\",\n    \"Conexão espiritual e idealismo compartilhado\",\n    \"Capacidade de inspirar e elevar um ao outro\",\n    \"Lealdade e compromisso inabaláveis\",\n    \"Compreensão intuitiva das necessidades do parceiro\"\n  ],\n  desafios: [\n    \"Tendência ao perfeccionismo e idealismo excessivo\",\n    \"Sensibilidade elevada que pode levar a mágoas facilmente\",\n    \"Dificuldade em lidar com a imperfeição e a realidade prática\",\n    \"Risco de sacrifício excessivo de um pelo outro\",\n    \"Necessidade de equilibrar o foco no lar com a busca por propósitos maiores\"\n  ],\n  conselhos: \"Cultivem a comunicação aberta para gerenciar as expectativas elevadas e a sensibilidade. Encontrem um equilíbrio entre o cuidado com o lar e a busca por seus ideais, lembrando-se de que a perfeição reside na aceitação mútua e no crescimento contínuo.\"\n}",
+        "score": 85,
+        "titulo": "A União Compassiva e Inspiradora: Lar e Visão Elevada"
+      },
+      "error": ""
+    },
+    {
+      "input": "7-11",
+      "output": {
+        "combinacao_completa": "{\n  \"7-11\": {\n    \"score\": 85,\n    \"titulo\": \"A Conexão Mística: Intuição e Espiritualidade em Harmonia\",\n    \"descricao\": \"Esta combinação une a profundidade analítica do 7 com a iluminação espiritual do 11, criando um vínculo de intensa compreensão e crescimento mútuo. É uma união que transcende o material, focando na busca por verdades superiores e na evolução da consciência.\",\n    \"pontos_fortes\": [\n      \"Profunda conexão intuitiva e espiritual\",\n      \"Capacidade de compreensão mútua em níveis elevados\",\n      \"Estímulo ao crescimento pessoal e espiritual\",\n      \"Busca conjunta por conhecimento e sabedoria\",\n      \"Habilidade de transformar desafios em aprendizado\"\n    ],\n    \"desafios\": [\n      \"Tendência ao isolamento e introspecção excessiva\",\n      \"Dificuldade em lidar com a praticidade do dia a dia\",\n      \"Sensibilidade exacerbada a energias externas\",\n      \"Necessidade de equilibrar o mundo interior com o exterior\"\n    ],\n    \"conselhos\": \"Para prosperar, este par deve cultivar a comunicação aberta sobre suas jornadas internas e encontrar um equilíbrio entre a busca espiritual e as responsabilidades terrenas, ancorando sua visão em ações concretas.\"\n  }\n}",
+        "score": 85,
+        "titulo": "A Conexão Mística: Intuição e Espiritualidade em Harmonia"
+      },
+      "error": ""
+    },
+    {
+      "input": "8-11",
+      "output": {
+        "combinacao_completa": "{\n  score: 85,\n  titulo: \"A Força da Ambição e a Visão Espiritual: Combinação 8-11\",\n  descricao: \"Esta combinação une a energia pragmática e ambiciosa do número 8 com a intuição e a visão espiritual do número mestre 11. Juntos, eles podem construir um império material com um propósito maior, ou enfrentar conflitos entre o mundano e o divino.\",\n  pontos_fortes: [\"Ambição e realização material\", \"Intuição aguçada e visão inspiradora\", \"Capacidade de liderança e influência\", \"Potencial para impacto social positivo\"],\n  desafios: [\"Conflito entre materialismo e espiritualidade\", \"Pressão para viver à altura do potencial\", \"Tendência a sobrecarga e estresse\", \"Dificuldade em equilibrar poder e humildade\"],\n  conselhos: \"Para prosperar, o casal deve integrar a busca material com um propósito espiritual elevado, utilizando a intuição para guiar suas ações e a ambição para manifestar seus ideais.\"\n}",
+        "score": 85,
+        "titulo": "A Força da Ambição e a Visão Espiritual: Combinação 8-11"
+      },
+      "error": ""
+    },
+    {
+      "input": "9-11",
+      "output": {
+        "combinacao_completa": "{\n  score: 85,\n  titulo: \"A Conexão Altruísta e Transformadora\",\n  descricao: \"Esta combinação une a compaixão universal do Número 9 com a iluminação e idealismo do Mestre Construtor 11. Juntos, eles formam uma parceria com grande potencial para o serviço humanitário e a transformação social, impulsionados por uma visão elevada e um profundo senso de propósito.\",\n  pontos_fortes: [\"Profunda compaixão e desejo de servir\", \"Visão idealista e capacidade de inspirar\", \"Intuição aguçada e sabedoria espiritual\", \"Potencial para liderança humanitária\"],\n  desafios: [\"Evitar o martírio e o sacrifício excessivo\", \"Lidar com a intensidade emocional e a sensibilidade\", \"Manter o foco em projetos práticos\", \"Evitar o isolamento devido à natureza idealista\"],\n  conselhos: \"Para prosperar, esta dupla deve aprender a equilibrar o idealismo com a praticidade, canalizando sua energia para projetos tangíveis que beneficiem a coletividade sem se sobrecarregar emocionalmente.\"\n}",
+        "score": 85,
+        "titulo": "A Conexão Altruísta e Transformadora"
+      },
+      "error": ""
+    },
+    {
+      "input": "11-11",
+      "output": {
+        "combinacao_completa": "{\n  \"11-11\": {\n    \"score\": 95,\n    \"titulo\": \"A Conexão Iluminada: Mestres Espirituais em União\",\n    \"descricao\": \"A combinação 11-11 representa a união de duas almas com propósitos espirituais elevados. É um encontro de grande potencial intuitivo e sensibilidade, onde ambos os parceiros atuam como espelhos e catalisadores para o despertar um do outro. Esta parceria é marcada por uma profunda compreensão mútua e uma busca incessante por verdades superiores.\",\n    \"pontos_fortes\": [\n      \"Intuição e sensibilidade aguçadas, permitindo uma comunicação telepática e empática.\",\n      \"Capacidade de inspirar e elevar um ao outro, impulsionando o crescimento espiritual e pessoal.\",\n      \"Profunda conexão em níveis sutis, resultando em um entendimento que transcende as palavras.\",\n      \"Potencial para cocriar uma realidade alinhada com propósitos maiores, impactando positivamente o entorno.\"\n    ],\n    \"desafios\": [\n      \"A hipersensibilidade pode levar a flutuações emocionais e à absorção de energias externas, exigindo constante auto-proteção.\",\n      \"A tendência a viver em planos mais elevados pode dificultar a ancoragem na realidade material e a resolução de questões práticas.\",\n      \"A necessidade de individualidade e espaço para o desenvolvimento pessoal pode gerar conflitos se não houver clareza e respeito mútuo.\",\n      \"O perfeccionismo e a autoexigência podem criar pressões desnecessárias, levando à frustração se as expectativas não forem atendidas.\"\n    ],\n    \"conselhos\": \"Para prosperar, cultivem a comunicação aberta e honesta, estabeleçam limites saudáveis para proteger sua energia e dediquem-se a práticas que os ajudem a ancorar sua espiritualidade na vida cotidiana, como meditação e contato com a natureza.\"\n  }\n}",
+        "score": 95,
+        "titulo": "A Conexão Iluminada: Mestres Espirituais em União"
+      },
+      "error": ""
+    },
+    {
+      "input": "1-22",
+      "output": {
+        "combinacao_completa": "{\n  \"1-22\": {\n    \"score\": 85,\n    \"titulo\": \"O Visionário Construtor: Iniciativa e Manifestação\",\n    \"descricao\": \"A combinação numerológica 1-22 une a energia pioneira e individualista do Número 1 com o poder de manifestação e construção em larga escala do Número Mestre 22. Esta parceria é marcada por uma forte capacidade de iniciar projetos ambiciosos e transformá-los em realidade tangível, combinando a visão singular com a execução prática e disciplinada.\",\n    \"pontos_fortes\": [\n      \"Liderança visionária e capacidade de inspirar outros\",\n      \"Habilidade de transformar ideias grandiosas em estruturas concretas\",\n      \"Resiliência e determinação para superar obstáculos\",\n      \"Sinergia entre iniciativa individual e impacto coletivo\"\n    ],\n    \"desafios\": [\n      \"Risco de sobrecarga devido à magnitude dos projetos\",\n      \"Necessidade de equilibrar a individualidade do 1 com a responsabilidade do 22\",\n      \"Potencial para impaciência ou frustração se os resultados não forem imediatos\"\n    ],\n    \"conselhos\": \"Para otimizar esta união, o Número 1 deve canalizar sua iniciativa para apoiar as grandes visões do 22, enquanto o 22 deve garantir que a individualidade do 1 seja valorizada dentro dos planos maiores. A comunicação clara e o estabelecimento de metas realistas são cruciais para o sucesso mútuo.\"\n  }\n}",
+        "score": 85,
+        "titulo": "O Visionário Construtor: Iniciativa e Manifestação"
+      },
+      "error": ""
+    },
+    {
+      "input": "2-22",
+      "output": {
+        "combinacao_completa": "{\n  score: 92,\n  titulo: \"A Parceria do Mestre Construtor: Sensibilidade e Manifestação\",\n  descricao: \"A combinação numerológica 2-22 une a sensibilidade, a cooperação e a diplomacia do número 2 com o poder construtivo, a visão de longo prazo e a capacidade de manifestação do número mestre 22. Esta parceria é caracterizada por uma profunda conexão emocional e uma forte inclinação para a criação de algo grandioso e duradouro, seja no âmbito pessoal, profissional ou social. A energia do 2 suaviza a intensidade do 22, enquanto o 22 oferece a estrutura e a ambição necessárias para concretizar os ideais do 2.\",\n  pontos_fortes: [\"Profunda empatia e compreensão mútua, facilitando a resolução de conflitos.\", \"Capacidade inata de transformar grandes visões em realidade tangível.\", \"Forte senso de propósito compartilhado, impulsionando a colaboração em projetos significativos.\", \"Habilidade de construir bases sólidas para um futuro estável e próspero.\"],\n  desafios: [\"Tendência à sobrecarga devido à grandiosidade dos projetos e à sensibilidade emocional.\", \"Dificuldade em lidar com a frustração quando os resultados não são imediatos ou perfeitos.\", \"Risco de idealização excessiva, levando a expectativas irrealistas.\"],\n  conselhos: \"Para prosperar, esta combinação deve focar na comunicação aberta e no estabelecimento de metas realistas, celebrando pequenas vitórias para manter a motivação. É crucial que ambos os parceiros desenvolvam resiliência para enfrentar os desafios inerentes à construção de grandes empreendimentos.\"\n}",
+        "score": 92,
+        "titulo": "A Parceria do Mestre Construtor: Sensibilidade e Manifestação"
+      },
+      "error": ""
+    },
+    {
+      "input": "3-22",
+      "output": {
+        "combinacao_completa": "{\"3-22\": {\"score\": 85, \"titulo\": \"A Conex\\u00e3o Vision\\u00e1ria e Expressiva: Mestre Construtor e Comunicador\", \"descricao\": \"Esta combina\\u00e7\\u00e3o une a energia criativa e comunicativa do n\\u00famero 3 com a capacidade de manifesta\\u00e7\\u00e3o e idealismo do Mestre Construtor 22. Juntos, eles podem construir grandes sonhos com uma base s\\u00f3lida, mas precisam gerenciar a sensibilidade e a grandiosidade dos seus objetivos.\", \"pontos_fortes\": [\"Grande potencial para manifestar sonhos e ideais em realidade.\", \"Comunica\\u00e7\\u00eão expressiva e inspiradora, capaz de motivar e engajar.\", \"Vis\\u00e3o ampla e capacidade de planejar projetos de longo alcance.\", \"Criatividade e otimismo que impulsionam a rela\\u00e7\\u00eão.\"], \"desafios\": [\"A grandiosidade do 22 pode sobrecarregar a leveza do 3.\", \"Sensibilidade emocional do 22 pode ser mal interpretada pela extrovers\\u00e3o do 3.\", \"Necessidade de aterramento para o 22 e foco para o 3, evitando dispers\\u00eão.\", \"Conflitos podem surgir se o 3 sentir que sua liberdade est\\u00e1 sendo limitada pelos grandes planos do 22.\"], \"conselhos\": \"Para esta combina\\u00e7\\u00eão, \\u00e9 crucial que ambos os parceiros se apoiem mutuamente na realiza\\u00e7\\u00eão de seus objetivos, mantendo a comunica\\u00e7\\u00eão aberta e honesta. O 3 deve valorizar a vis\\u00eão do 22, e o 22 deve permitir que o 3 traga leveza e alegria \\u00e0 rela\\u00e7\\u00eão, encontrando um equil\\u00edbrio entre o idealismo e a praticidade.\"}}",
+        "score": 85,
+        "titulo": "A Conexão Visionária e Expressiva: Mestre Construtor e Comunicador"
+      },
+      "error": ""
+    },
+    {
+      "input": "4-22",
+      "output": {
+        "combinacao_completa": "{\"score\": 85, \"titulo\": \"A Aliança do Construtor Visionário e o Fundamento Sólido\", \"descricao\": \"Esta combinação une a visão grandiosa e a capacidade de manifestação do Mestre Construtor (22) com a solidez, a disciplina e a busca por estrutura do número 4. Juntos, eles formam uma parceria poderosa para a materialização de grandes projetos e a construção de um futuro duradouro.\", \"pontos_fortes\": [\"Capacidade excepcional de transformar ideias ambiciosas em realidade tangível.\", \"Estabilidade e segurança mútua, construindo uma base sólida para o relacionamento.\", \"Foco compartilhado em metas de longo prazo e construção de um legado.\", \"Habilidade de organização e planejamento para executar projetos complexos com eficiência.\"], \"desafios\": [\"A rigidez do 4 pode colidir com a necessidade de expansão e visão do 22.\", \"Risco de excesso de trabalho e negligência das necessidades emocionais e de lazer.\", \"Dificuldade em lidar com imprevistos ou desvios do plano estabelecido.\"], \"conselhos\": \"Para prosperar, o 4 deve aprender a flexibilizar seus métodos, enquanto o 22 precisa ancorar suas visões na realidade prática. Encontrem equilíbrio entre o trabalho árduo e momentos de leveza para nutrir a conexão.\"}",
+        "score": 85,
+        "titulo": "A Aliança do Construtor Visionário e o Fundamento Sólido"
+      },
+      "error": ""
+    },
+    {
+      "input": "5-22",
+      "output": {
+        "combinacao_completa": "{\n  \"5-22\": {\n    \"score\": 85,\n    \"titulo\": \"A Dinâmica da Liberdade e da Maestria Espiritual\",\n    \"descricao\": \"A combinação 5-22 une a energia da liberdade, adaptabilidade e busca por experiências do número 5 com a maestria, visão e capacidade de construção em larga escala do número 22. Esta união pode gerar um relacionamento dinâmico e transformador, mas exige equilíbrio entre a necessidade de expansão individual e a responsabilidade de um propósito maior.\",\n    \"pontos_fortes\": [\"Adaptabilidade mútua e flexibilidade\", \"Capacidade de inspirar e motivar grandes projetos\", \"Visão de futuro e inovação\", \"Habilidade de superar obstáculos com criatividade\"],\n    \"desafios\": [\"Inconstância do 5 versus a necessidade de estrutura do 22\", \"Dificuldade em aterrar ideias grandiosas em realidade prática\", \"Tendência a dispersão ou sobrecarga de responsabilidades\", \"Necessidade de liberdade individual pode colidir com compromissos\"],\n    \"conselhos\": \"Para que esta combinação floresça, o 5 deve aprender a canalizar sua energia para os projetos visionários do 22, enquanto o 22 deve permitir espaço para a exploração e a espontaneidade do 5. A comunicação aberta e o estabelecimento de metas compartilhadas são cruciais para harmonizar essas energias potentes.\"\n  }\n}",
+        "score": 85,
+        "titulo": "A Dinâmica da Liberdade e da Maestria Espiritual"
+      },
+      "error": ""
+    },
+    {
+      "input": "6-22",
+      "output": {
+        "combinacao_completa": "{\n  \"6-22\": {\n    score: 90,\n    titulo: \"A União do Cuidado e da Construção Visionária\",\n    descricao: \"Esta combinação une a energia nutridora e harmoniosa do número 6 com o poder de materialização e liderança do Mestre Construtor 22. Juntos, formam uma parceria com grande potencial para criar uma base sólida e realizar grandes projetos, tanto no âmbito pessoal quanto no coletivo.\",\n    pontos_fortes: [\n      \"Capacidade de construir um lar e uma família harmoniosos\",\n      \"Habilidade de transformar grandes visões em realidade tangível\",\n      \"Profundo senso de responsabilidade e compromisso mútuo\",\n      \"Liderança inspiradora e prática na vida a dois\"\n    ],\n    desafios: [\n      \"A teimosia do 6 pode colidir com a determinação do 22\",\n      \"A necessidade de controle do 22 pode sobrecarregar o 6\",\n      \"Equilibrar as demandas do lar com as ambições de construção do 22\"\n    ],\n    conselhos: \"Para o sucesso, o 6 deve confiar na visão do 22, enquanto o 22 deve valorizar o apoio e a harmonia que o 6 oferece. Cultivem a comunicação aberta para alinhar suas prioridades e evitar conflitos de poder.\"\n  }\n}",
+        "score": 90,
+        "titulo": "A União do Cuidado e da Construção Visionária"
+      },
+      "error": ""
+    },
+    {
+      "input": "7-22",
+      "output": {
+        "combinacao_completa": "\"7-22\": {\n  score: 85,\n  titulo: \"A União do Sábio e do Construtor: Realização Espiritual e Material\",\n  descricao: \"Esta combinação une a profundidade introspectiva do 7 com a capacidade de materialização do 22. Juntos, eles podem construir uma realidade sólida e significativa, fundamentada em valores espirituais e intelectuais. É uma parceria que busca a verdade e a concretização de grandes ideais.\",\n  pontos_fortes: [\"Profunda conexão espiritual e intelectual\", \"Capacidade de transformar sonhos em realidade\", \"Busca por sabedoria e conhecimento\", \"Estabilidade e construção duradoura\"],\n  desafios: [\"Tendência ao isolamento do 7 pode conflitar com a ambição do 22\", \"Excesso de análise pode atrasar a ação\", \"Dificuldade em lidar com o superficial\", \"Necessidade de equilíbrio entre o mundo interior e exterior\"],\n  conselhos: \"Para que esta união prospere, é crucial que ambos os parceiros encontrem um equilíbrio entre a introspecção e a ação. O 7 deve aprender a compartilhar suas descobertas, e o 22 a valorizar os momentos de quietude e reflexão, garantindo que os projetos construídos tenham uma base sólida e significativa.\"\n}",
+        "score": 85,
+        "titulo": "A União do Sábio e do Construtor: Realização Espiritual e Material"
+      },
+      "error": ""
+    },
+    {
+      "input": "8-22",
+      "output": {
+        "combinacao_completa": "{\n  \"score\": 90,\n  \"titulo\": \"A Aliança de Poder e Construção: 8-22\",\n  \"descricao\": \"A combinação 8-22 une a energia de poder e realização material do número 8 com a capacidade de construção em larga escala e manifestação de grandes sonhos do número mestre 22. Esta é uma parceria de imenso potencial, focada na concretização de objetivos ambiciosos e na construção de um legado duradouro.\",\n  \"pontos_fortes\": [\n    \"Ambição Compartilhada e Visão de Grandeza\",\n    \"Capacidade de Materialização\",\n    \"Liderança e Gestão Eficaz\",\n    \"Resiliência e Superação\"\n  ],\n  \"desafios\": [\n    \"Foco Excessivo no Material\",\n    \"Pressão por Resultados e Perfeccionismo\",\n    \"Rigidez e Controle\"\n  ],\n  \"conselhos\": \"Para que a combinação 8-22 prospere, é crucial que ambos os parceiros cultivem a flexibilidade e dediquem tempo para nutrir a conexão emocional, além dos objetivos materiais. É importante que aprendam a delegar e a confiar um no outro, aliviando a pressão por perfeição e celebrando as pequenas vitórias ao longo do caminho.\"\n}",
+        "score": 90,
+        "titulo": "A Aliança de Poder e Construção: 8-22"
+      },
+      "error": ""
+    },
+    {
+      "input": "9-22",
+      "output": {
+        "combinacao_completa": "{\n  \"9-22\": {\n    \"score\": 85,\n    \"titulo\": \"A Conexão do Humanitário e do Mestre Construtor\",\n    \"descricao\": \"Esta combinação une a compaixão universal do Número 9 com a visão e o potencial de manifestação do Número Mestre 22. É uma parceria com grande capacidade de impacto social e realização de grandes projetos.\",\n    \"pontos_fortes\": [\n      \"Altruísmo e serviço à humanidade\",\n      \"Capacidade de transformar ideais em realidade\",\n      \"Liderança inspiradora e visão de longo alcance\",\n      \"Empatia e compreensão profunda\"\n    ],\n    \"desafios\": [\n      \"Tendência a sobrecarga e esgotamento\",\n      \"Dificuldade em lidar com a imperfeição do mundo\",\n      \"Necessidade de equilibrar o idealismo com o pragmatismo\"\n    ],\n    \"conselhos\": \"Para prosperar, esta dupla deve focar em projetos que beneficiem um grande número de pessoas, utilizando a praticidade do 22 para ancorar os ideais do 9, e sempre reservando tempo para o autocuidado.\"\n  }\n}",
+        "score": 85,
+        "titulo": "A Conexão do Humanitário e do Mestre Construtor"
+      },
+      "error": ""
+    },
+    {
+      "input": "11-22",
+      "output": {
+        "combinacao_completa": "{\n  score: 85,\n  titulo: \"A Sinergia Visionária e Construtiva\",\n  descricao: \"Esta combinação une a intuição elevada do Mestre 11 com a capacidade de materialização do Mestre 22, criando um potencial imenso para a realização de grandes ideais. É uma parceria focada em propósito maior e impacto significativo.\",\n  pontos_fortes: [\"Visão compartilhada e idealismo\", \"Capacidade de transformar sonhos em realidade\", \"Profunda conexão espiritual e intuitiva\", \"Habilidade de liderar e inspirar\"],\n  desafios: [\"Tendência ao perfeccionismo e autoexigência\", \"Risco de sobrecarga e esgotamento\", \"Necessidade de aterramento e praticidade\"],\n  conselhos: \"Cultivem a comunicação aberta para alinhar suas visões e dividam as responsabilidades para evitar o esgotamento, mantendo o foco na execução prática de seus ideais.\"\n}",
+        "score": 85,
+        "titulo": "A Sinergia Visionária e Construtiva"
+      },
+      "error": ""
+    },
+    {
+      "input": "22-22",
+      "output": {
+        "combinacao_completa": "{\n  score: 95,\n  titulo: \"A Dupla de Mestres Construtores: Visão e Manifestação\",\n  descricao: \"Uma união de grande poder e potencial, onde ambos os parceiros são Mestres Construtores, capazes de manifestar grandes ideais e projetos. Esta combinação é marcada por uma profunda compreensão mútua e uma capacidade inigualável de transformar sonhos em realidade tangível, impactando o mundo ao seu redor.\",\n  pontos_fortes: [\n    \"Capacidade de manifestação em larga escala\",\n    \"Visão compartilhada de longo prazo e ambição\",\n    \"Profunda compreensão e apoio mútuo\",\n    \"Habilidade de transformar ideais em realidade\"\n  ],\n  desafios: [\n    \"Pressão para atender às próprias expectativas elevadas\",\n    \"Risco de sobrecarga e esgotamento devido à magnitude dos projetos\",\n    \"Necessidade de aterramento e foco no presente\"\n  ],\n  conselhos: \"Para manter o equilíbrio, é crucial que ambos os parceiros dediquem tempo ao autocuidado e ao aterramento, evitando que a grandiosidade de suas visões os desconecte da realidade cotidiana. Celebrem as pequenas vitórias e lembrem-se de que a construção de um império começa com um único tijolo.\"\n}",
+        "score": 95,
+        "titulo": "A Dupla de Mestres Construtores: Visão e Manifestação"
+      },
+      "error": ""
+    }
+  ]
+}

@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guia Numerológico Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alice:wght@400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #3e0a29;
+            --cor-secundaria: #b2d1b1;
+            --cor-terciaria: #0b1836;
+            --cor-acento: #f0aa53;
+            --cor-fundo: #f2eaff;
+            --cor-texto: #2c1810;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, var(--cor-fundo) 0%, #e8d5f0 100%);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-terciaria) 100%);
+            border-radius: 20px;
+            color: var(--cor-fundo);
+            box-shadow: 0 10px 30px rgba(62, 10, 41, 0.3);
+        }
+
+        .header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, var(--cor-secundaria) 0%, #9bc49b 100%);
+            color: var(--cor-primaria);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 25px;
+            font-family: 'Alice', serif;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(178, 209, 177, 0.3);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(178, 209, 177, 0.5);
+        }
+
+        .nav-btn.active {
+            background: linear-gradient(135deg, var(--cor-acento) 0%, #f5b563 100%);
+            color: var(--cor-primaria);
+        }
+
+        .section {
+            display: none;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid var(--cor-secundaria);
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section h2 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--cor-primaria);
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .section h3 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--cor-terciaria);
+            font-size: 1.8em;
+            margin: 25px 0 15px 0;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--cor-primaria);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--cor-secundaria);
+            border-radius: 10px;
+            font-family: 'Alice', serif;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--cor-acento);
+            box-shadow: 0 0 10px rgba(240, 170, 83, 0.3);
+        }
+
+        .btn-calcular {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-terciaria) 100%);
+            color: var(--cor-fundo);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-family: 'Alice', serif;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(62, 10, 41, 0.3);
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-calcular:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(62, 10, 41, 0.5);
+        }
+
+        .resultado {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, var(--cor-fundo) 0%, #e8d5f0 100%);
+            border-radius: 15px;
+            border: 2px solid var(--cor-acento);
+            display: none;
+        }
+
+        .resultado.show {
+            display: block;
+        }
+
+        .resultado h4 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--cor-primaria);
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .numero-destaque {
+            font-size: 3em;
+            font-weight: bold;
+            color: var(--cor-acento);
+            text-align: center;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .piramide {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px solid var(--cor-secundaria);
+        }
+
+        .piramide-linha {
+            text-align: center;
+            margin: 10px 0;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .piramide-numero {
+            display: inline-block;
+            background: var(--cor-acento);
+            color: var(--cor-primaria);
+            padding: 8px 12px;
+            margin: 0 5px;
+            border-radius: 50%;
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .arcano-card {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-terciaria) 100%);
+            color: var(--cor-fundo);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .arcano-numero {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .arcano-nome {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .tabela-conversao {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .letra-numero {
+            background: var(--cor-secundaria);
+            color: var(--cor-primaria);
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .ornamento {
+            text-align: center;
+            font-size: 2em;
+            color: var(--cor-acento);
+            margin: 20px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✨ Guia Numerológico Aurora Sagrada ✨</h1>
+            <p>Desvende os mistérios dos números e arcanos em sua jornada espiritual</p>
+        </div>
+
+        <div class="nav-menu">
+            <button class="nav-btn active" onclick="mostrarSecao('introducao')">📚 Introdução</button>
+            <button class="nav-btn" onclick="mostrarSecao('calculadora')">🔢 Calculadora</button>
+            <button class="nav-btn" onclick="mostrarSecao('piramide')">🔺 Pirâmide Cabalística</button>
+            <button class="nav-btn" onclick="mostrarSecao('arcanos')">🌟 Arcanos Temporais</button>
+            <button class="nav-btn" onclick="mostrarSecao('tabelas')">📋 Tabelas</button>
+            <button class="nav-btn" onclick="mostrarSecao('interpretacoes')">🔮 Interpretações</button>
+        </div>
+
+        <!-- Seção Introdução -->
+        <div id="introducao" class="section active">
+            <h2>🌙 Bem-vindo ao Universo Numerológico</h2>
+            
+            <div class="ornamento">✧･ﾟ: *✧･ﾟ:* ✧･ﾟ: *✧･ﾟ:*</div>
+            
+            <h3>🏛️ História da Numerologia</h3>
+            <p>A numerologia é uma ciência milenar que estuda a influência dos números na vida humana. Suas raízes remontam às antigas civilizações da Babilônia, Egito e Grécia, onde matemáticos e filósofos como Pitágoras desenvolveram sistemas complexos para compreender a relação entre números e destino.</p>
+            
+            <h3>⚖️ Sistemas Numerológicos</h3>
+            <p><strong>Sistema Pitagórico:</strong> Baseado nos ensinamentos de Pitágoras, utiliza os números de 1 a 9, reduzindo valores maiores através da soma de seus dígitos.</p>
+            <p><strong>Sistema Cabalístico:</strong> Originário da tradição hebraica, conecta letras do alfabeto com números específicos, criando correspondências místicas profundas.</p>
+            
+            <h3>🔮 Filosofia dos Números</h3>
+            <p>Cada número carrega uma vibração única, um arquétipo universal que influencia personalidade, destino e ciclos de vida. Os números são considerados forças criadoras que moldam a realidade através de padrões energéticos específicos.</p>
+            
+            <div class="ornamento">✧･ﾟ: *✧･ﾟ:* ✧･ﾟ: *✧･ﾟ:*</div>
+        </div>
+
+        <!-- Seção Calculadora -->
+        <div id="calculadora" class="section">
+            <h2>🔢 Calculadora Numerológica</h2>
+            
+            <div class="form-group">
+                <label for="nome-completo">Nome Completo:</label>
+                <input type="text" id="nome-completo" placeholder="Digite seu nome completo">
+            </div>
+            
+            <div class="form-group">
+                <label for="data-nascimento">Data de Nascimento:</label>
+                <input type="date" id="data-nascimento">
+            </div>
+            
+            <button class="btn-calcular" onclick="calcularNumerologia()">✨ Calcular Mapa Numerológico</button>
+            
+            <div id="resultado-calculadora" class="resultado">
+                <h4>🌟 Seu Mapa Numerológico</h4>
+                <div id="numeros-principais"></div>
+            </div>
+        </div>
+
+        <!-- Seção Pirâmide Cabalística -->
+        <div id="piramide" class="section">
+            <h2>🔺 Pirâmide Cabalística</h2>
+            
+            <p>A Pirâmide Cabalística é um método profundo que organiza seu nome em uma estrutura piramidal, revelando os arcanos que regem diferentes períodos de sua vida em ciclos de 90 anos.</p>
+            
+            <div class="form-group">
+                <label for="nome-piramide">Nome Completo (sem abreviações):</label>
+                <input type="text" id="nome-piramide" placeholder="Digite seu nome completo de batismo">
+            </div>
+            
+            <div class="form-group">
+                <label for="idade-atual">Idade Atual:</label>
+                <input type="number" id="idade-atual" placeholder="Digite sua idade">
+            </div>
+            
+            <button class="btn-calcular" onclick="calcularPiramide()">🔺 Construir Pirâmide</button>
+            
+            <div id="resultado-piramide" class="resultado">
+                <h4>🔺 Sua Pirâmide Cabalística</h4>
+                <div id="piramide-visual"></div>
+                <div id="arcano-regente"></div>
+            </div>
+        </div>
+
+        <!-- Seção Arcanos Temporais -->
+        <div id="arcanos" class="section">
+            <h2>🌟 Arcanos Temporais</h2>
+            
+            <p>Descubra os arcanos que regem diferentes períodos de tempo em sua vida, desde o arcano pessoal até as influências diárias.</p>
+            
+            <div class="form-group">
+                <label for="data-arcanos">Data para Análise:</label>
+                <input type="date" id="data-arcanos">
+            </div>
+            
+            <div class="form-group">
+                <label for="data-nasc-arcanos">Data de Nascimento:</label>
+                <input type="date" id="data-nasc-arcanos">
+            </div>
+            
+            <button class="btn-calcular" onclick="calcularArcanos()">🌟 Calcular Arcanos</button>
+            
+            <div id="resultado-arcanos" class="resultado">
+                <h4>🌟 Seus Arcanos Temporais</h4>
+                <div id="arcanos-lista"></div>
+            </div>
+        </div>
+
+        <!-- Seção Tabelas -->
+        <div id="tabelas" class="section">
+            <h2>📋 Tabelas de Conversão</h2>
+            
+            <h3>🔤 Tabela Pitagórica</h3>
+            <div class="tabela-conversao">
+                <div class="letra-numero">A = 1</div>
+                <div class="letra-numero">B = 2</div>
+                <div class="letra-numero">C = 3</div>
+                <div class="letra-numero">D = 4</div>
+                <div class="letra-numero">E = 5</div>
+                <div class="letra-numero">F = 6</div>
+                <div class="letra-numero">G = 7</div>
+                <div class="letra-numero">H = 8</div>
+                <div class="letra-numero">I = 9</div>
+                <div class="letra-numero">J = 1</div>
+                <div class="letra-numero">K = 2</div>
+                <div class="letra-numero">L = 3</div>
+                <div class="letra-numero">M = 4</div>
+                <div class="letra-numero">N = 5</div>
+                <div class="letra-numero">O = 6</div>
+                <div class="letra-numero">P = 7</div>
+                <div class="letra-numero">Q = 8</div>
+                <div class="letra-numero">R = 9</div>
+                <div class="letra-numero">S = 1</div>
+                <div class="letra-numero">T = 2</div>
+                <div class="letra-numero">U = 3</div>
+                <div class="letra-numero">V = 4</div>
+                <div class="letra-numero">W = 5</div>
+                <div class="letra-numero">X = 6</div>
+                <div class="letra-numero">Y = 7</div>
+                <div class="letra-numero">Z = 8</div>
+            </div>
+            
+            <h3>✡️ Tabela Cabalística</h3>
+            <div class="tabela-conversao">
+                <div class="letra-numero">A = 1</div>
+                <div class="letra-numero">B = 2</div>
+                <div class="letra-numero">C = 3</div>
+                <div class="letra-numero">D = 4</div>
+                <div class="letra-numero">E = 5</div>
+                <div class="letra-numero">F = 6</div>
+                <div class="letra-numero">G = 7</div>
+                <div class="letra-numero">H = 8</div>
+                <div class="letra-numero">I = 9</div>
+                <div class="letra-numero">J = 10</div>
+                <div class="letra-numero">K = 11</div>
+                <div class="letra-numero">L = 12</div>
+                <div class="letra-numero">M = 13</div>
+                <div class="letra-numero">N = 14</div>
+                <div class="letra-numero">O = 15</div>
+                <div class="letra-numero">P = 16</div>
+                <div class="letra-numero">Q = 17</div>
+                <div class="letra-numero">R = 18</div>
+                <div class="letra-numero">S = 19</div>
+                <div class="letra-numero">T = 20</div>
+                <div class="letra-numero">U = 21</div>
+                <div class="letra-numero">V = 22</div>
+                <div class="letra-numero">W = 23</div>
+                <div class="letra-numero">X = 24</div>
+                <div class="letra-numero">Y = 25</div>
+                <div class="letra-numero">Z = 26</div>
+            </div>
+        </div>
+
+        <!-- Seção Interpretações -->
+        <div id="interpretacoes" class="section">
+            <h2>🔮 Interpretações dos Números</h2>
+            
+            <div id="interpretacoes-numeros">
+                <!-- Conteúdo será carregado dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <script src="base_dados_ciclos_90_corrigida.js"></script>
+    <script>
+        // Tabelas de conversão
+        const tabelaPitagorica = {
+            'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+            'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 6, 'P': 7, 'Q': 8, 'R': 9,
+            'S': 1, 'T': 2, 'U': 3, 'V': 4, 'W': 5, 'X': 6, 'Y': 7, 'Z': 8
+        };
+
+        const tabelaCabalistica = {
+            'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+            'J': 10, 'K': 11, 'L': 12, 'M': 13, 'N': 14, 'O': 15, 'P': 16, 'Q': 17, 'R': 18,
+            'S': 19, 'T': 20, 'U': 21, 'V': 22, 'W': 23, 'X': 24, 'Y': 25, 'Z': 26
+        };
+
+        const arcanosMaiores = {
+            0: "O Louco", 1: "O Mago", 2: "A Sacerdotisa", 3: "A Imperatriz", 4: "O Imperador",
+            5: "O Papa", 6: "Os Enamorados", 7: "O Carro", 8: "A Justiça", 9: "O Eremita",
+            10: "A Roda da Fortuna", 11: "A Força", 12: "O Enforcado", 13: "A Morte",
+            14: "A Temperança", 15: "O Diabo", 16: "A Torre", 17: "A Estrela",
+            18: "A Lua", 19: "O Sol", 20: "O Julgamento", 21: "O Mundo", 22: "O Louco"
+        };
+
+        // Funções de navegação
+        function mostrarSecao(secaoId) {
+            // Esconder todas as seções
+            const secoes = document.querySelectorAll('.section');
+            secoes.forEach(secao => secao.classList.remove('active'));
+            
+            // Remover classe active de todos os botões
+            const botoes = document.querySelectorAll('.nav-btn');
+            botoes.forEach(botao => botao.classList.remove('active'));
+            
+            // Mostrar seção selecionada
+            document.getElementById(secaoId).classList.add('active');
+            
+            // Adicionar classe active ao botão clicado
+            event.target.classList.add('active');
+            
+            // Carregar interpretações se necessário
+            if (secaoId === 'interpretacoes') {
+                carregarInterpretacoes();
+            }
+        }
+
+        // Função para reduzir números
+        function reduzirNumero(numero) {
+            while (numero > 9 && numero !== 11 && numero !== 22 && numero !== 33) {
+                numero = numero.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+            }
+            return numero;
+        }
+
+        // Função para calcular com tabela pitagórica
+        function calcularComTabelaPitagorica(texto) {
+            return texto.toUpperCase().split('').reduce((soma, letra) => {
+                return soma + (tabelaPitagorica[letra] || 0);
+            }, 0);
+        }
+
+        // Função para calcular com tabela cabalística
+        function calcularComTabelaCabalistica(texto) {
+            return texto.toUpperCase().split('').map(letra => tabelaCabalistica[letra] || 0);
+        }
+
+        // Função para reduzir para arcano (1-22)
+        function reduzirParaArcano(numero) {
+            while (numero > 22) {
+                numero = numero.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+            }
+            return numero === 0 ? 22 : numero;
+        }
+
+        // Função principal de cálculo numerológico
+        function calcularNumerologia() {
+            const nome = document.getElementById('nome-completo').value.trim();
+            const dataNascimento = document.getElementById('data-nascimento').value;
+            
+            if (!nome || !dataNascimento) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Separar vogais e consoantes
+            const vogais = nome.replace(/[^AEIOUÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙÃÕ]/gi, '');
+            const consoantes = nome.replace(/[AEIOUÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙÃÕ\s]/gi, '');
+            
+            // Calcular números principais
+            const numeroAlma = reduzirNumero(calcularComTabelaPitagorica(vogais));
+            const numeroPersonalidade = reduzirNumero(calcularComTabelaPitagorica(consoantes));
+            const numeroExpressao = reduzirNumero(calcularComTabelaPitagorica(nome.replace(/\s/g, '')));
+            const numeroDestino = reduzirNumero(calcularNumeroDestino(dataNascimento));
+            const anoAtual = new Date().getFullYear();
+            const anoPessoal = calcularAnoPessoal(dataNascimento, anoAtual);
+            
+            // Exibir resultados
+            const resultadoDiv = document.getElementById('resultado-calculadora');
+            const numerosDiv = document.getElementById('numeros-principais');
+            
+            numerosDiv.innerHTML = `
+                <div class="arcano-card">
+                    <div class="arcano-numero">${numeroAlma}</div>
+                    <div class="arcano-nome">Número da Alma</div>
+                    <p>Representa sua motivação interior e desejos mais profundos.</p>
+                </div>
+                
+                <div class="arcano-card">
+                    <div class="arcano-numero">${numeroPersonalidade}</div>
+                    <div class="arcano-nome">Número da Personalidade</div>
+                    <p>Como os outros te veem e sua impressão exterior.</p>
+                </div>
+                
+                <div class="arcano-card">
+                    <div class="arcano-numero">${numeroExpressao}</div>
+                    <div class="arcano-nome">Número da Expressão</div>
+                    <p>Seus talentos naturais e forma de se expressar no mundo.</p>
+                </div>
+                
+                <div class="arcano-card">
+                    <div class="arcano-numero">${numeroDestino}</div>
+                    <div class="arcano-nome">Número do Destino</div>
+                    <p>Seu propósito de vida e lições a serem aprendidas.</p>
+                </div>
+                
+                <div class="arcano-card">
+                    <div class="arcano-numero">${anoPessoal}</div>
+                    <div class="arcano-nome">Ano Pessoal ${anoAtual}</div>
+                    <p>A energia que rege seu ano atual.</p>
+                </div>
+            `;
+            
+            resultadoDiv.classList.add('show');
+        }
+
+        // Função para calcular número do destino
+        function calcularNumeroDestino(data) {
+            const [ano, mes, dia] = data.split('-').map(Number);
+            return ano + mes + dia;
+        }
+
+        // Função para calcular ano pessoal
+        function calcularAnoPessoal(dataNascimento, ano) {
+            const [anoNasc, mes, dia] = dataNascimento.split('-').map(Number);
+            const soma = dia + mes + ano;
+            return reduzirNumero(soma);
+        }
+
+        // Função para calcular pirâmide cabalística
+        function calcularPiramide() {
+            const nome = document.getElementById('nome-piramide').value.trim().replace(/\s/g, '');
+            const idade = parseInt(document.getElementById('idade-atual').value);
+            
+            if (!nome || !idade) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Converter nome para números cabalísticos
+            const numerosCabalisticos = calcularComTabelaCabalistica(nome);
+            
+            // Construir pirâmide
+            const piramide = construirPiramide(numerosCabalisticos);
+            
+            // Calcular arcano regente
+            const numArcanos = numerosCabalisticos.length;
+            const periodoArcano = Math.round(90 / numArcanos);
+            const posicaoAtual = Math.ceil(idade / periodoArcano);
+            
+            // Encontrar arcano na posição calculada
+            let contador = 0;
+            let arcanoRegente = 0;
+            
+            for (let linha of piramide) {
+                for (let numero of linha) {
+                    contador++;
+                    if (contador === posicaoAtual) {
+                        arcanoRegente = reduzirParaArcano(numero);
+                        break;
+                    }
+                }
+                if (arcanoRegente > 0) break;
+            }
+            
+            // Exibir resultados
+            exibirPiramide(piramide, arcanoRegente, numArcanos, periodoArcano, posicaoAtual);
+        }
+
+        // Função para construir pirâmide
+        function construirPiramide(numeros) {
+            const piramide = [numeros];
+            let linhaAtual = numeros;
+            
+            while (linhaAtual.length > 1) {
+                const novaLinha = [];
+                for (let i = 0; i < linhaAtual.length - 1; i++) {
+                    const soma = linhaAtual[i] + linhaAtual[i + 1];
+                    novaLinha.push(reduzirParaArcano(soma));
+                }
+                piramide.push(novaLinha);
+                linhaAtual = novaLinha;
+            }
+            
+            return piramide;
+        }
+
+        // Função para exibir pirâmide
+        function exibirPiramide(piramide, arcanoRegente, numArcanos, periodoArcano, posicaoAtual) {
+            const resultadoDiv = document.getElementById('resultado-piramide');
+            const piramideDiv = document.getElementById('piramide-visual');
+            const arcanoDiv = document.getElementById('arcano-regente');
+            
+            let piramideHTML = '<div class="piramide">';
+            piramide.forEach((linha, index) => {
+                piramideHTML += '<div class="piramide-linha">';
+                linha.forEach(numero => {
+                    piramideHTML += `<span class="piramide-numero">${numero}</span>`;
+                });
+                piramideHTML += '</div>';
+            });
+            piramideHTML += '</div>';
+            
+            piramideDiv.innerHTML = piramideHTML;
+            
+            arcanoDiv.innerHTML = `
+                <div class="arcano-card">
+                    <div class="arcano-numero">${arcanoRegente}</div>
+                    <div class="arcano-nome">${arcanosMaiores[arcanoRegente]}</div>
+                    <p><strong>Arcanos Pessoais:</strong> ${numArcanos}</p>
+                    <p><strong>Período de cada Arcano:</strong> ${periodoArcano} anos</p>
+                    <p><strong>Posição Atual:</strong> ${posicaoAtual}º Arcano</p>
+                </div>
+            `;
+            
+            resultadoDiv.classList.add('show');
+        }
+
+        // Função para calcular arcanos temporais
+        function calcularArcanos() {
+            const dataAnalise = document.getElementById('data-arcanos').value;
+            const dataNascimento = document.getElementById('data-nasc-arcanos').value;
+            
+            if (!dataAnalise || !dataNascimento) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Calcular arcano pessoal
+            const arcanoPessoal = calcularArcanoPessoal(dataNascimento);
+            
+            // Calcular arcano do ano
+            const arcanoAno = calcularArcanoAno(dataNascimento, dataAnalise);
+            
+            // Calcular arcano do mês
+            const arcanoMes = calcularArcanoMes(arcanoAno, dataAnalise);
+            
+            // Calcular arcano da semana
+            const arcanoSemana = calcularArcanoSemana(dataAnalise);
+            
+            // Calcular arcano do dia
+            const arcanoDia = calcularArcanoDia(dataAnalise);
+            
+            // Exibir resultados
+            exibirArcanos(arcanoPessoal, arcanoAno, arcanoMes, arcanoSemana, arcanoDia);
+        }
+
+        // Funções de cálculo de arcanos
+        function calcularArcanoPessoal(dataNascimento) {
+            const [ano, mes, dia] = dataNascimento.split('-').map(Number);
+            const soma = dia + mes + ano;
+            return reduzirParaArcano(reduzirNumero(soma));
+        }
+
+        function calcularArcanoAno(dataNascimento, dataAnalise) {
+            const [anoNasc, mesNasc, diaNasc] = dataNascimento.split('-').map(Number);
+            const anoAnalise = parseInt(dataAnalise.split('-')[0]);
+            const soma = diaNasc + mesNasc + anoAnalise;
+            return reduzirParaArcano(reduzirNumero(soma));
+        }
+
+        function calcularArcanoMes(arcanoAno, dataAnalise) {
+            const mes = parseInt(dataAnalise.split('-')[1]);
+            const soma = arcanoAno + mes;
+            return reduzirParaArcano(reduzirNumero(soma));
+        }
+
+        function calcularArcanoSemana(dataAnalise) {
+            const data = new Date(dataAnalise);
+            const inicioAno = new Date(data.getFullYear(), 0, 1);
+            const diasPassados = Math.floor((data - inicioAno) / (24 * 60 * 60 * 1000));
+            const semana = Math.ceil(diasPassados / 7);
+            return reduzirParaArcano(reduzirNumero(semana));
+        }
+
+        function calcularArcanoDia(dataAnalise) {
+            const [ano, mes, dia] = dataAnalise.split('-').map(Number);
+            const soma = dia + mes + ano;
+            return reduzirParaArcano(reduzirNumero(soma));
+        }
+
+        // Função para exibir arcanos
+        function exibirArcanos(pessoal, ano, mes, semana, dia) {
+            const resultadoDiv = document.getElementById('resultado-arcanos');
+            const arcanosDiv = document.getElementById('arcanos-lista');
+            
+            arcanosDiv.innerHTML = `
+                <div class="arcano-card">
+                    <div class="arcano-numero">${pessoal}</div>
+                    <div class="arcano-nome">Arcano Pessoal - ${arcanosMaiores[pessoal]}</div>
+                    <p>Seu guia espiritual permanente, a essência de sua alma.</p>
+                </div>
+                
+                <div class="arcano-card">
+                    <div class="arcano-numero">${ano}</div>
+                    <div class="arcano-nome">Arcano do Ano - ${arcanosMaiores[ano]}</div>
+                    <p>A energia que rege todo o seu ano atual.</p>
+                </div>
+                
+                <div class="arcano-card">
+                    <div class="arcano-numero">${mes}</div>
+                    <div class="arcano-nome">Arcano do Mês - ${arcanosMaiores[mes]}</div>
+                    <p>A vibração predominante do mês atual.</p>
+                </div>
+                
+                <div class="arcano-card">
+                    <div class="arcano-numero">${semana}</div>
+                    <div class="arcano-nome">Arcano da Semana - ${arcanosMaiores[semana]}</div>
+                    <p>Os aprendizados e desafios da semana.</p>
+                </div>
+                
+                <div class="arcano-card">
+                    <div class="arcano-numero">${dia}</div>
+                    <div class="arcano-nome">Arcano do Dia - ${arcanosMaiores[dia]}</div>
+                    <p>A atmosfera espiritual que rege este dia específico.</p>
+                </div>
+            `;
+            
+            resultadoDiv.classList.add('show');
+        }
+
+        // Função para carregar interpretações
+        function carregarInterpretacoes() {
+            const interpretacoesDiv = document.getElementById('interpretacoes-numeros');
+            
+            const interpretacoes = {
+                1: {
+                    titulo: "O Pioneiro",
+                    descricao: "Liderança, independência, iniciativa e originalidade.",
+                    qualidades: "Determinação, coragem, ambição, criatividade",
+                    desafios: "Impaciência, egoísmo, teimosia, impulsividade"
+                },
+                2: {
+                    titulo: "O Cooperador",
+                    descricao: "Diplomacia, cooperação, sensibilidade e parceria.",
+                    qualidades: "Paciência, gentileza, intuição, harmonia",
+                    desafios: "Indecisão, dependência, timidez, passividade"
+                },
+                3: {
+                    titulo: "O Comunicador",
+                    descricao: "Expressão, criatividade, otimismo e sociabilidade.",
+                    qualidades: "Alegria, inspiração, talento artístico, carisma",
+                    desafios: "Superficialidade, dispersão, exagero, crítica"
+                },
+                4: {
+                    titulo: "O Construtor",
+                    descricao: "Estabilidade, organização, trabalho duro e praticidade.",
+                    qualidades: "Disciplina, lealdade, honestidade, perseverança",
+                    desafios: "Rigidez, teimosia, limitação, pessimismo"
+                },
+                5: {
+                    titulo: "O Aventureiro",
+                    descricao: "Liberdade, mudança, aventura e versatilidade.",
+                    qualidades: "Curiosidade, adaptabilidade, energia, progressividade",
+                    desafios: "Instabilidade, impulsividade, inquietação, irresponsabilidade"
+                },
+                6: {
+                    titulo: "O Cuidador",
+                    descricao: "Responsabilidade, amor, cuidado e harmonia familiar.",
+                    qualidades: "Compaixão, generosidade, proteção, beleza",
+                    desafios: "Interferência, preocupação excessiva, sacrifício, perfeccionismo"
+                },
+                7: {
+                    titulo: "O Místico",
+                    descricao: "Espiritualidade, análise, introspecção e sabedoria.",
+                    qualidades: "Intuição, pesquisa, meditação, conhecimento",
+                    desafios: "Isolamento, ceticismo, frieza, melancolia"
+                },
+                8: {
+                    titulo: "O Executivo",
+                    descricao: "Poder material, ambição, organização e sucesso.",
+                    qualidades: "Autoridade, eficiência, julgamento, realização",
+                    desafios: "Materialismo, dominação, estresse, desequilíbrio"
+                },
+                9: {
+                    titulo: "O Humanitário",
+                    descricao: "Serviço universal, compaixão, generosidade e sabedoria.",
+                    qualidades: "Altruísmo, tolerância, inspiração, liderança espiritual",
+                    desafios: "Emotividade, impraticidade, dispersão, desilusão"
+                }
+            };
+            
+            let html = '';
+            for (let numero = 1; numero <= 9; numero++) {
+                const interp = interpretacoes[numero];
+                html += `
+                    <div class="arcano-card">
+                        <div class="arcano-numero">${numero}</div>
+                        <div class="arcano-nome">${interp.titulo}</div>
+                        <p><strong>Essência:</strong> ${interp.descricao}</p>
+                        <p><strong>Qualidades:</strong> ${interp.qualidades}</p>
+                        <p><strong>Desafios:</strong> ${interp.desafios}</p>
+                    </div>
+                `;
+            }
+            
+            interpretacoesDiv.innerHTML = html;
+        }
+
+        // Inicializar página
+        document.addEventListener('DOMContentLoaded', function() {
+            // Definir data atual nos campos de data
+            const hoje = new Date().toISOString().split('T')[0];
+            document.getElementById('data-arcanos').value = hoje;
+        });
+    </script>
+</body>
+</html>
+
