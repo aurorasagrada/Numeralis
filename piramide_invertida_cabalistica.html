@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pirâmide Invertida Cabalística - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --wine: #3e0a29;
+            --sage: #b2d1b1;
+            --navy: #0b1836;
+            --gold: #f0aa53;
+            --parch: #f2eaff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, var(--navy) 0%, #1a2b4a 50%, var(--wine) 100%);
+            color: var(--parch);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Ornamentos místicos */
+        body::before {
+            content: '✦';
+            position: fixed;
+            top: 5%;
+            left: 5%;
+            font-size: 2rem;
+            color: var(--gold);
+            opacity: 0.3;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        body::after {
+            content: '◆';
+            position: fixed;
+            bottom: 5%;
+            right: 5%;
+            font-size: 2rem;
+            color: var(--sage);
+            opacity: 0.3;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .title {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--sage);
+            font-style: italic;
+            margin-bottom: 40px;
+        }
+
+        .form-section {
+            background: var(--wine);
+            border: 3px solid var(--sage);
+            border-radius: 0;
+            box-shadow: 
+                0 0 30px rgba(240,170,83,0.1),
+                inset 0 0 20px rgba(0,0,0,0.3);
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, var(--gold), var(--sage), var(--gold));
+            z-index: -1;
+            border-radius: 0;
+        }
+
+        .form-section::after {
+            content: '☾';
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            color: var(--gold);
+            font-size: 24px;
+            opacity: 0.4;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            background: rgba(242, 234, 255, 0.1);
+            border: 2px solid var(--sage);
+            border-radius: 8px;
+            color: var(--parch);
+            font-size: 1.1rem;
+            font-family: 'Cormorant Garamond', serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 15px rgba(240,170,83,0.3);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(45deg, var(--gold), #e6941a);
+            color: var(--navy);
+            box-shadow: 0 4px 15px rgba(240,170,83,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(240,170,83,0.4);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(45deg, var(--sage), #9bc49b);
+            color: var(--navy);
+            box-shadow: 0 4px 15px rgba(178,209,177,0.3);
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(178,209,177,0.4);
+        }
+
+        .results-section {
+            display: none;
+            margin-top: 40px;
+        }
+
+        .results-section.active {
+            display: block;
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-card {
+            background: var(--wine);
+            border: 3px solid var(--sage);
+            border-radius: 0;
+            box-shadow: 
+                0 0 30px rgba(240,170,83,0.1),
+                inset 0 0 20px rgba(0,0,0,0.3);
+            padding: 40px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .result-card::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: linear-gradient(45deg, var(--gold), var(--sage), var(--gold));
+            z-index: -1;
+            border-radius: 0;
+        }
+
+        .result-title {
+            font-family: 'Cinzel', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .arcano-atual {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .arcano-numero {
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+
+        .arcano-nome {
+            font-size: 1.5rem;
+            color: var(--sage);
+            margin-bottom: 20px;
+        }
+
+        .arcano-descricao {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            text-align: justify;
+            margin-bottom: 20px;
+        }
+
+        .btn-ler-mais {
+            background: linear-gradient(45deg, var(--navy), #1a2b4a);
+            color: var(--parch);
+            border: 2px solid var(--gold);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Cinzel', serif;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-ler-mais:hover {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .piramide-container {
+            margin-top: 40px;
+        }
+
+        .piramide-linha {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .piramide-arcano {
+            background: rgba(240,170,83,0.1);
+            border: 2px solid var(--sage);
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-weight: 600;
+            color: var(--gold);
+            min-width: 60px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .piramide-arcano:hover {
+            background: var(--gold);
+            color: var(--navy);
+            transform: scale(1.1);
+        }
+
+        .piramide-arcano.negativo {
+            background: rgba(255,0,0,0.2);
+            border-color: #ff6b6b;
+            color: #ff6b6b;
+        }
+
+        .piramide-arcano.atual {
+            background: var(--gold);
+            color: var(--navy);
+            box-shadow: 0 0 20px rgba(240,170,83,0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .sequencias-negativas {
+            margin-top: 40px;
+        }
+
+        .sequencia-item {
+            background: rgba(255,0,0,0.1);
+            border: 2px solid #ff6b6b;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .sequencia-titulo {
+            font-family: 'Cinzel', serif;
+            font-size: 1.3rem;
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+
+        .sequencia-texto {
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .piramide-linha {
+                gap: 5px;
+            }
+
+            .piramide-arcano {
+                min-width: 50px;
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title">Pirâmide Invertida Cabalística</h1>
+            <p class="subtitle">Ciclo de 90 Anos - Arcanos Regentes da Vida</p>
+        </div>
+
+        <div class="form-section">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label class="form-label">Nome Completo</label>
+                    <input type="text" class="form-input" id="nomeCompleto" placeholder="Digite o nome completo de nascimento">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Idade Atual</label>
+                    <input type="number" class="form-input" id="idadeAtual" placeholder="Digite a idade" min="0" max="120">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Assinatura Atual</label>
+                    <input type="text" class="form-input" id="assinaturaAtual" placeholder="Como assina atualmente (opcional)">
+                </div>
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="calcularPiramide()">✨ Calcular Pirâmide</button>
+                <button class="btn btn-secondary" onclick="preencherExemplo()">📝 Exemplo</button>
+                <button class="btn btn-secondary" onclick="limparFormulario()">🗑️ Limpar</button>
+            </div>
+        </div>
+
+        <div class="results-section" id="resultados">
+            <!-- Resultados serão inseridos aqui -->
+        </div>
+    </div>
+
+    <script>
+        // Tabela de conversão cabalística
+        const TABELA_CABALISTICA = {
+            'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 1,
+            'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 7, 'P': 8, 'Q': 1, 'R': 2,
+            'S': 3, 'T': 4, 'U': 6, 'V': 6, 'W': 6, 'X': 6, 'Y': 1, 'Z': 7
+        };
+
+        // Arcanos Maiores
+        const ARCANOS_MAIORES = {
+            1: "O Mago", 2: "A Sacerdotisa", 3: "A Imperatriz", 4: "O Imperador",
+            5: "O Papa", 6: "Os Enamorados", 7: "O Carro", 8: "A Justiça",
+            9: "O Eremita", 10: "A Roda da Fortuna", 11: "A Força", 12: "O Enforcado",
+            13: "A Morte", 14: "A Temperança", 15: "O Diabo", 16: "A Torre",
+            17: "A Estrela", 18: "A Lua", 19: "O Sol", 20: "O Julgamento",
+            21: "O Mundo", 22: "O Louco"
+        };
+
+        // Arcanos Menores (simplificado para 23-78)
+        const ARCANOS_MENORES = {
+            23: "Ás de Paus", 24: "Dois de Paus", 25: "Três de Paus", 26: "Quatro de Paus",
+            27: "Cinco de Paus", 28: "Seis de Paus", 29: "Sete de Paus", 30: "Oito de Paus",
+            31: "Nove de Paus", 32: "Dez de Paus", 33: "Valete de Paus", 34: "Cavaleiro de Paus",
+            35: "Rainha de Paus", 36: "Rei de Paus", 37: "Ás de Copas", 38: "Dois de Copas",
+            39: "Três de Copas", 40: "Quatro de Copas", 41: "Cinco de Copas", 42: "Seis de Copas",
+            43: "Sete de Copas", 44: "Oito de Copas", 45: "Nove de Copas", 46: "Dez de Copas",
+            47: "Valete de Copas", 48: "Cavaleiro de Copas", 49: "Rainha de Copas", 50: "Rei de Copas",
+            51: "Ás de Espadas", 52: "Dois de Espadas", 53: "Três de Espadas", 54: "Quatro de Espadas",
+            55: "Cinco de Espadas", 56: "Seis de Espadas", 57: "Sete de Espadas", 58: "Oito de Espadas",
+            59: "Nove de Espadas", 60: "Dez de Espadas", 61: "Valete de Espadas", 62: "Cavaleiro de Espadas",
+            63: "Rainha de Espadas", 64: "Rei de Espadas", 65: "Ás de Ouros", 66: "Dois de Ouros",
+            67: "Três de Ouros", 68: "Quatro de Ouros", 69: "Cinco de Ouros", 70: "Seis de Ouros",
+            71: "Sete de Ouros", 72: "Oito de Ouros", 73: "Nove de Ouros", 74: "Dez de Ouros",
+            75: "Valete de Ouros", 76: "Cavaleiro de Ouros", 77: "Rainha de Ouros", 78: "Rei de Ouros"
+        };
+
+        // Descrições dos arcanos (versões longas)
+        const DESCRICOES_ARCANOS = {
+            1: "O Mago representa o poder da vontade, a capacidade de manifestar ideias no mundo material. É o arcano da iniciativa, da criatividade e do domínio sobre os elementos. Quando rege um período da vida, traz oportunidades de liderança, novos começos e a necessidade de tomar decisões importantes. É um momento de grande potencial criativo e manifestação de projetos.",
+            
+            2: "A Sacerdotisa simboliza a intuição, o conhecimento oculto e a sabedoria interior. Representa períodos de introspecção, desenvolvimento espiritual e conexão com o inconsciente. Quando ativa, favorece estudos esotéricos, meditação e o desenvolvimento de capacidades psíquicas. É um tempo de escuta interior e revelações místicas.",
+            
+            3: "A Imperatriz é o arcano da fertilidade, abundância e criatividade maternal. Rege períodos de crescimento, prosperidade e realização material. Favorece questões relacionadas à família, maternidade, arte e beleza. É um tempo de colheita dos frutos plantados anteriormente e de expressão da criatividade de forma tangível.",
+            
+            // ... (continuar com todas as descrições)
+        };
+
+        // Sequências negativas e seus significados
+        const SEQUENCIAS_NEGATIVAS = {
+            "111": {
+                titulo: "Sequência 111 - Excesso de Ego",
+                descricao: "A repetição do número 1 indica um período de extremo individualismo e egocentrismo. Esta sequência sugere que a pessoa pode estar passando por uma fase onde o ego está inflado, levando a comportamentos autoritários, arrogância e dificuldade em trabalhar em equipe. É um momento que exige humildade e reconhecimento de que o sucesso verdadeiro vem da colaboração, não da dominação. A pessoa deve aprender a equilibrar sua liderança natural com a capacidade de ouvir e valorizar os outros."
+            },
+            "222": {
+                titulo: "Sequência 222 - Indecisão Paralisante",
+                descricao: "A repetição do número 2 representa um período de extrema indecisão e dependência emocional. Esta sequência indica que a pessoa pode estar vivenciando uma fase de paralisia mental, onde cada decisão se torna um tormento. Há uma tendência a buscar constantemente a aprovação dos outros, perdendo a própria identidade no processo. É necessário desenvolver a autoconfiança e aprender a tomar decisões baseadas na própria intuição, mesmo que isso signifique desagradar algumas pessoas."
+            },
+            "333": {
+                titulo: "Sequência 333 - Dispersão Criativa",
+                descricao: "A repetição do número 3 indica um período de extrema dispersão de energia criativa. Esta sequência sugere que a pessoa está tentando fazer muitas coisas ao mesmo tempo, sem conseguir finalizar nenhuma delas adequadamente. Há uma tendência à superficialidade e à falta de foco. É um momento que exige disciplina e a capacidade de escolher prioridades, concentrando a energia criativa em projetos específicos para obter resultados concretos."
+            },
+            "444": {
+                titulo: "Sequência 444 - Rigidez Extrema",
+                descricao: "A repetição do número 4 representa um período de extrema rigidez e resistência a mudanças. Esta sequência indica que a pessoa pode estar se tornando excessivamente conservadora, inflexível e presa a rotinas que já não servem mais. Há uma tendência ao perfeccionismo paralisante e ao medo de sair da zona de conforto. É necessário aprender a abraçar a mudança como parte natural da vida e desenvolver maior flexibilidade mental e emocional."
+            },
+            "555": {
+                titulo: "Sequência 555 - Instabilidade Constante",
+                descricao: "A repetição do número 5 indica um período de extrema instabilidade e busca desenfreada por liberdade. Esta sequência sugere que a pessoa pode estar vivenciando uma fase de inquietação constante, onde nada parece satisfazer por muito tempo. Há uma tendência à impulsividade e à dificuldade em manter compromissos. É um momento que exige o desenvolvimento da paciência e a compreensão de que a verdadeira liberdade vem da responsabilidade e do autocontrole."
+            },
+            "666": {
+                titulo: "Sequência 666 - Materialismo Excessivo",
+                descricao: "A repetição do número 6 representa um período de extremo materialismo e apego às posses materiais. Esta sequência indica que a pessoa pode estar priorizando excessivamente o mundo material em detrimento do desenvolvimento espiritual. Há uma tendência ao consumismo, à vaidade e à busca por status social através de bens materiais. É necessário reavaliar os valores e encontrar um equilíbrio entre as necessidades materiais e espirituais."
+            },
+            "777": {
+                titulo: "Sequência 777 - Isolamento Espiritual",
+                descricao: "A repetição do número 7 indica um período de extremo isolamento e desconexão do mundo material. Esta sequência sugere que a pessoa pode estar se refugiando excessivamente no mundo espiritual, evitando as responsabilidades práticas da vida. Há uma tendência ao escapismo e à dificuldade em aplicar os conhecimentos espirituais na vida cotidiana. É necessário encontrar um equilíbrio entre a busca espiritual e a participação ativa no mundo."
+            },
+            "888": {
+                titulo: "Sequência 888 - Ambição Desmedida",
+                descricao: "A repetição do número 8 representa um período de extrema ambição e busca por poder material. Esta sequência indica que a pessoa pode estar obcecada pelo sucesso financeiro e pelo reconhecimento social, muitas vezes às custas de relacionamentos e valores éticos. Há uma tendência ao workaholismo e à manipulação para alcançar objetivos. É necessário reavaliar as motivações e encontrar formas mais equilibradas de alcançar o sucesso."
+            },
+            "999": {
+                titulo: "Sequência 999 - Sacrifício Excessivo",
+                descricao: "A repetição do número 9 indica um período de extremo sacrifício pessoal e tendência ao martírio. Esta sequência sugere que a pessoa pode estar se doando excessivamente aos outros, negligenciando suas próprias necessidades e bem-estar. Há uma tendência ao complexo de salvador e à dificuldade em estabelecer limites saudáveis. É necessário aprender que o verdadeiro serviço aos outros começa com o cuidado consigo mesmo."
+            }
+        };
+
+        function normalizarTexto(texto) {
+            return texto.toUpperCase()
+                .replace(/[ÁÀÂÃÄ]/g, 'A')
+                .replace(/[ÉÈÊË]/g, 'E')
+                .replace(/[ÍÌÎÏ]/g, 'I')
+                .replace(/[ÓÒÔÕÖ]/g, 'O')
+                .replace(/[ÚÙÛÜ]/g, 'U')
+                .replace(/Ç/g, 'C')
+                .replace(/[^A-Z]/g, '');
+        }
+
+        function converterNomeParaArcanos(nome) {
+            const nomeNormalizado = normalizarTexto(nome);
+            const arcanos = [];
+            
+            for (let i = 0; i < nomeNormalizado.length - 1; i++) {
+                const letra1 = nomeNormalizado[i];
+                const letra2 = nomeNormalizado[i + 1];
+                const num1 = TABELA_CABALISTICA[letra1] || 0;
+                const num2 = TABELA_CABALISTICA[letra2] || 0;
+                const arcano = parseInt(num1.toString() + num2.toString());
+                arcanos.push(arcano);
+            }
+            
+            return arcanos;
+        }
+
+        function obterNomeArcano(numero) {
+            if (numero <= 22) {
+                return ARCANOS_MAIORES[numero] || "Desconhecido";
+            } else {
+                return ARCANOS_MENORES[numero] || "Desconhecido";
+            }
+        }
+
+        function identificarSequenciasNegativas(arcanos) {
+            const sequencias = [];
+            const arcanosStr = arcanos.join('');
+            
+            Object.keys(SEQUENCIAS_NEGATIVAS).forEach(seq => {
+                if (arcanosStr.includes(seq)) {
+                    sequencias.push(SEQUENCIAS_NEGATIVAS[seq]);
+                }
+            });
+            
+            return sequencias;
+        }
+
+        function construirPiramideInvertida(arcanos) {
+            const totalArcanos = arcanos.length;
+            const tempoVigencia = Math.round((90 / totalArcanos) * 10) / 10;
+            
+            // Distribuir arcanos em 9 linhas (décadas)
+            const piramide = [];
+            let indiceArcano = 0;
+            
+            for (let linha = 0; linha < 9; linha++) {
+                const arcanosNaLinha = Math.max(1, Math.floor((totalArcanos * (9 - linha)) / 45));
+                const linhaPiramide = [];
+                
+                for (let i = 0; i < arcanosNaLinha && indiceArcano < totalArcanos; i++) {
+                    linhaPiramide.push(arcanos[indiceArcano]);
+                    indiceArcano++;
+                }
+                
+                if (linhaPiramide.length > 0) {
+                    piramide.push({
+                        linha: linha,
+                        decada: `${linha * 10}-${linha * 10 + 9}`,
+                        arcanos: linhaPiramide
+                    });
+                }
+            }
+            
+            return { piramide, tempoVigencia };
+        }
+
+        function calcularArcanoAtual(arcanos, idade) {
+            const totalArcanos = arcanos.length;
+            const tempoVigencia = 90 / totalArcanos;
+            const posicao = idade / tempoVigencia;
+            const arcanoAtualIndex = Math.floor(posicao);
+            const progressoNoArcano = posicao - arcanoAtualIndex;
+            
+            return {
+                arcanoAtual: arcanos[arcanoAtualIndex] || arcanos[arcanos.length - 1],
+                arcanoDominante: arcanos[Math.max(0, arcanoAtualIndex - 1)] || arcanos[0],
+                posicaoAtual: arcanoAtualIndex,
+                progresso: progressoNoArcano,
+                tempoVigencia: Math.round(tempoVigencia * 10) / 10
+            };
+        }
+
+        function renderizarResultados(dados) {
+            const { arcanos, idade, piramideData, arcanoInfo, sequenciasNegativas } = dados;
+            
+            const html = `
+                <div class="result-card">
+                    <h2 class="result-title">✨ Arcano Atual</h2>
+                    <div class="arcano-atual">
+                        <div class="arcano-numero">${arcanoInfo.arcanoAtual}</div>
+                        <div class="arcano-nome">${obterNomeArcano(arcanoInfo.arcanoAtual)}</div>
+                        <div class="arcano-descricao">
+                            ${DESCRICOES_ARCANOS[arcanoInfo.arcanoAtual] || "Descrição em desenvolvimento..."}
+                        </div>
+                        <button class="btn-ler-mais" onclick="abrirArcano(${arcanoInfo.arcanoAtual})">
+                            📖 Ler Mais Sobre Este Arcano
+                        </button>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                        <div style="text-align: center;">
+                            <h3 style="color: var(--sage); margin-bottom: 15px;">Arcano Dominante</h3>
+                            <div style="font-size: 2rem; color: var(--gold);">${arcanoInfo.arcanoDominante}</div>
+                            <div style="color: var(--parch);">${obterNomeArcano(arcanoInfo.arcanoDominante)}</div>
+                        </div>
+                        <div style="text-align: center;">
+                            <h3 style="color: var(--sage); margin-bottom: 15px;">Tempo de Vigência</h3>
+                            <div style="font-size: 2rem; color: var(--gold);">${arcanoInfo.tempoVigencia}</div>
+                            <div style="color: var(--parch);">anos por arcano</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="result-card">
+                    <h2 class="result-title">🔺 Pirâmide Invertida dos 90 Anos</h2>
+                    <div class="piramide-container">
+                        ${piramideData.piramide.map(linha => `
+                            <div style="text-align: center; margin-bottom: 20px;">
+                                <div style="color: var(--sage); margin-bottom: 10px; font-weight: 600;">
+                                    Década ${linha.decada} anos
+                                </div>
+                                <div class="piramide-linha">
+                                    ${linha.arcanos.map(arcano => {
+                                        const isAtual = arcano === arcanoInfo.arcanoAtual;
+                                        const isNegativo = arcano.toString().match(/^(\d)\1\1$/);
+                                        return `<div class="piramide-arcano ${isAtual ? 'atual' : ''} ${isNegativo ? 'negativo' : ''}" 
+                                                     onclick="mostrarDetalhesArcano(${arcano})" 
+                                                     title="${obterNomeArcano(arcano)}">
+                                                    ${arcano}
+                                                </div>`;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                ${sequenciasNegativas.length > 0 ? `
+                    <div class="result-card">
+                        <h2 class="result-title">⚠️ Sequências Negativas Identificadas</h2>
+                        <div class="sequencias-negativas">
+                            ${sequenciasNegativas.map(seq => `
+                                <div class="sequencia-item">
+                                    <h3 class="sequencia-titulo">${seq.titulo}</h3>
+                                    <div class="sequencia-texto">${seq.descricao}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                ` : ''}
+            `;
+            
+            document.getElementById('resultados').innerHTML = html;
+            document.getElementById('resultados').classList.add('active');
+        }
+
+        function calcularPiramide() {
+            const nome = document.getElementById('nomeCompleto').value.trim();
+            const idade = parseInt(document.getElementById('idadeAtual').value);
+            
+            if (!nome || isNaN(idade)) {
+                alert('Por favor, preencha o nome completo e a idade.');
+                return;
+            }
+            
+            const arcanos = converterNomeParaArcanos(nome);
+            const piramideData = construirPiramideInvertida(arcanos);
+            const arcanoInfo = calcularArcanoAtual(arcanos, idade);
+            const sequenciasNegativas = identificarSequenciasNegativas(arcanos);
+            
+            renderizarResultados({
+                arcanos,
+                idade,
+                piramideData,
+                arcanoInfo,
+                sequenciasNegativas
+            });
+        }
+
+        function preencherExemplo() {
+            document.getElementById('nomeCompleto').value = 'JOAQUIM MARIA MACHADO DE ASSIS';
+            document.getElementById('idadeAtual').value = '69';
+            document.getElementById('assinaturaAtual').value = 'Machado de Assis';
+        }
+
+        function limparFormulario() {
+            document.getElementById('nomeCompleto').value = '';
+            document.getElementById('idadeAtual').value = '';
+            document.getElementById('assinaturaAtual').value = '';
+            document.getElementById('resultados').classList.remove('active');
+        }
+
+        function mostrarDetalhesArcano(numero) {
+            const nome = obterNomeArcano(numero);
+            const descricao = DESCRICOES_ARCANOS[numero] || "Descrição em desenvolvimento...";
+            
+            alert(`Arcano ${numero} - ${nome}\n\n${descricao}`);
+        }
+
+        function abrirArcano(numero) {
+            // Aqui você pode implementar a navegação para a pasta assets
+            const nomeArquivo = obterNomeArcano(numero).toLowerCase()
+                .replace(/\s+/g, '_')
+                .replace(/[^a-z0-9_]/g, '');
+            
+            const url = `assets/img/cartas/${nomeArquivo}.html`;
+            
+            // Tentar abrir em nova aba
+            window.open(url, '_blank');
+        }
+
+        // Inicialização
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🔺 Pirâmide Invertida Cabalística carregada!');
+        });
+    </script>
+</body>
+</html>
+
