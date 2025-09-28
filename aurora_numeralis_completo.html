@@ -1397,10 +1397,346 @@
       document.getElementById('data2').value = '1990-05-15';
     }
 
-    function preencherExemploPiramide() {
-      document.getElementById('nomePiramide').value = 'JOAQUIM MARIA MACHADO DE ASSIS';
-      document.getElementById('idadePiramide').value = '69';
-      document.getElementById('assinaturaPiramide').value = 'Machado de Assis';
+    function calcularPiramide() {
+      const nomeCompleto = document.getElementById('nomePiramide').value.trim().toUpperCase();
+      const idade = parseInt(document.getElementById('idadePiramide').value);
+      const assinatura = document.getElementById('assinaturaPiramide').value.trim().toUpperCase();
+
+      if (!nomeCompleto || !idade) {
+        alert('Por favor, preencha o nome completo e a idade.');
+        return;
+      }
+
+      // Converter nome em números cabalísticos
+      const numerosNome = converterNomeCabalistico(nomeCompleto);
+      
+      // Construir pirâmide invertida
+      const piramide = construirPiramideInvertida(numerosNome);
+      
+      // Calcular tempo de vigência
+      const tempoVigencia = 90 / numerosNome.length;
+      
+      // Descobrir arcano atual
+      const posicaoAtual = Math.floor(idade / tempoVigencia);
+      const arcanoAtual = numerosNome[posicaoAtual] || numerosNome[numerosNome.length - 1];
+      
+      // Descobrir arcano dominante (último completo)
+      const arcanoDominante = numerosNome[Math.max(0, posicaoAtual - 1)];
+      
+      // Identificar sequências negativas
+      const sequenciasNegativas = identificarSequenciasNegativas(numerosNome);
+      
+      // Organizar pirâmide por décadas
+      const piramidePorDecadas = organizarPorDecadas(numerosNome, tempoVigencia);
+      
+      renderResultadosPiramide({
+        nomeCompleto,
+        idade,
+        assinatura,
+        numerosNome,
+        piramide,
+        tempoVigencia,
+        arcanoAtual,
+        arcanoDominante,
+        sequenciasNegativas,
+        piramidePorDecadas,
+        posicaoAtual
+      });
+    }
+
+    function converterNomeCabalistico(nome) {
+      const tabelaCabalistica = {
+        'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+        'J': 10, 'K': 11, 'L': 12, 'M': 13, 'N': 14, 'O': 15, 'P': 16, 'Q': 17, 'R': 18,
+        'S': 19, 'T': 20, 'U': 21, 'V': 22, 'W': 23, 'X': 24, 'Y': 25, 'Z': 26
+      };
+      
+      return nome.replace(/\s+/g, '').split('').map(letra => {
+        // Remover acentos
+        const letraNormalizada = letra.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+        return tabelaCabalistica[letraNormalizada] || 0;
+      }).filter(num => num > 0);
+    }
+
+    function construirPiramideInvertida(numeros) {
+      const piramide = [numeros];
+      let linhaAtual = numeros;
+      
+      while (linhaAtual.length > 1) {
+        const novaLinha = [];
+        for (let i = 0; i < linhaAtual.length - 1; i++) {
+          const soma = linhaAtual[i] + linhaAtual[i + 1];
+          novaLinha.push(soma > 78 ? soma - 78 : soma);
+        }
+        piramide.push(novaLinha);
+        linhaAtual = novaLinha;
+      }
+      
+      return piramide;
+    }
+
+    function organizarPorDecadas(numeros, tempoVigencia) {
+      const decadas = [];
+      
+      for (let decada = 0; decada < 9; decada++) {
+        const idadeInicio = decada * 10;
+        const idadeFim = (decada + 1) * 10 - 1;
+        
+        const arcanosDecada = [];
+        
+        for (let i = 0; i < numeros.length; i++) {
+          const idadeInicioArcano = i * tempoVigencia;
+          const idadeFimArcano = (i + 1) * tempoVigencia;
+          
+          // Verificar se o arcano está ativo nesta década
+          if (idadeInicioArcano < idadeFim && idadeFimArcano > idadeInicio) {
+            arcanosDecada.push({
+              numero: numeros[i],
+              posicao: i,
+              idadeInicio: Math.max(idadeInicio, idadeInicioArcano),
+              idadeFim: Math.min(idadeFim, idadeFimArcano)
+            });
+          }
+        }
+        
+        if (arcanosDecada.length > 0) {
+          decadas.push({
+            decada: `${idadeInicio}-${idadeFim}`,
+            arcanos: arcanosDecada
+          });
+        }
+      }
+      
+      return decadas;
+    }
+
+    function identificarSequenciasNegativas(numeros) {
+      const sequencias = [];
+      const numerosStr = numeros.join('');
+      
+      // Padrões negativos comuns
+      const padroes = [
+        { padrao: /111+/g, nome: 'Sequência de 1s', significado: 'Excesso de individualismo e egocentrismo. Dificuldade de trabalhar em equipe.' },
+        { padrao: /222+/g, nome: 'Sequência de 2s', significado: 'Dependência excessiva dos outros. Falta de iniciativa própria.' },
+        { padrao: /333+/g, nome: 'Sequência de 3s', significado: 'Dispersão de energia criativa. Dificuldade de foco e concentração.' },
+        { padrao: /444+/g, nome: 'Sequência de 4s', significado: 'Rigidez excessiva. Resistência a mudanças necessárias.' },
+        { padrao: /555+/g, nome: 'Sequência de 5s', significado: 'Instabilidade constante. Dificuldade de comprometimento.' },
+        { padrao: /666+/g, nome: 'Sequência de 6s', significado: 'Responsabilidade excessiva. Tendência ao martírio.' },
+        { padrao: /777+/g, nome: 'Sequência de 7s', significado: 'Isolamento excessivo. Dificuldade de conexão emocional.' },
+        { padrao: /888+/g, nome: 'Sequência de 8s', significado: 'Materialismo excessivo. Obsessão por poder e status.' },
+        { padrao: /999+/g, nome: 'Sequência de 9s', significado: 'Idealismo utópico. Dificuldade de lidar com a realidade prática.' }
+      ];
+      
+      padroes.forEach(({ padrao, nome, significado }) => {
+        const matches = numerosStr.match(padrao);
+        if (matches) {
+          matches.forEach(match => {
+            sequencias.push({ nome, sequencia: match, significado });
+          });
+        }
+      });
+      
+      return sequencias;
+    }
+
+    function renderResultadosPiramide(dados) {
+      const resultadosDiv = document.getElementById('resultados-piramide');
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center mb-2">🔺 Pirâmide Cabalística: ${dados.nomeCompleto}</h3>
+          
+          <div class="piramide-info">
+            <div class="info-item">
+              <strong>Idade Atual:</strong> ${dados.idade} anos
+            </div>
+            <div class="info-item">
+              <strong>Tempo de Vigência:</strong> ${dados.tempoVigencia.toFixed(1)} anos por arcano
+            </div>
+            <div class="info-item">
+              <strong>Total de Arcanos:</strong> ${dados.numerosNome.length}
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h3 class="text-center mb-2">🎯 Arcanos Atuais</h3>
+          
+          <div class="results-grid">
+            <div class="numero-card ${dados.posicaoAtual < dados.numerosNome.length ? 'arcano-atual' : ''}">
+              <div class="numero">${dados.arcanoAtual}</div>
+              <div class="titulo">Arcano Atual</div>
+              <div class="descricao">Energia predominante na idade atual</div>
+              <button class="btn-ler-mais" onclick="lerMaisArcano(${dados.arcanoAtual})">📖 Ler Mais</button>
+            </div>
+            
+            <div class="numero-card">
+              <div class="numero">${dados.arcanoDominante || 'N/A'}</div>
+              <div class="titulo">Arcano Dominante</div>
+              <div class="descricao">Última energia completamente integrada</div>
+              ${dados.arcanoDominante ? `<button class="btn-ler-mais" onclick="lerMaisArcano(${dados.arcanoDominante})">📖 Ler Mais</button>` : ''}
+            </div>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h3 class="text-center mb-2">🔺 Pirâmide Invertida por Décadas</h3>
+          <div class="piramide-container">
+      `;
+      
+      dados.piramidePorDecadas.forEach((decada, index) => {
+        html += `
+          <div class="decada-linha">
+            <div class="decada-label">${decada.decada} anos:</div>
+            <div class="arcanos-linha">
+        `;
+        
+        decada.arcanos.forEach(arcano => {
+          const isAtual = dados.idade >= arcano.idadeInicio && dados.idade <= arcano.idadeFim;
+          html += `
+            <div class="arcano-piramide ${isAtual ? 'arcano-atual-piramide' : ''}" 
+                 onclick="lerMaisArcano(${arcano.numero})"
+                 title="Arcano ${arcano.numero} - Ativo dos ${arcano.idadeInicio.toFixed(1)} aos ${arcano.idadeFim.toFixed(1)} anos">
+              ${arcano.numero}
+            </div>
+          `;
+        });
+        
+        html += `
+            </div>
+          </div>
+        `;
+      });
+      
+      html += `
+          </div>
+        </div>
+      `;
+      
+      // Adicionar sequências negativas se existirem
+      if (dados.sequenciasNegativas.length > 0) {
+        html += `
+          <div class="card">
+            <h3 class="text-center mb-2">⚠️ Sequências Negativas Identificadas</h3>
+            <div class="sequencias-negativas">
+        `;
+        
+        dados.sequenciasNegativas.forEach(seq => {
+          html += `
+            <div class="sequencia-negativa">
+              <h4>${seq.nome} (${seq.sequencia})</h4>
+              <p>${seq.significado}</p>
+              <div class="expandir-sequencia">
+                <button onclick="expandirSequencia(this)">📖 Ler Análise Completa</button>
+                <div class="analise-completa hidden">
+                  ${gerarAnaliseCompletaSequencia(seq)}
+                </div>
+              </div>
+            </div>
+          `;
+        });
+        
+        html += `
+            </div>
+          </div>
+        `;
+      }
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+      resultadosDiv.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function lerMaisArcano(numero) {
+      // Mapear número para nome do arquivo
+      const mapeamentoArcanos = {
+        1: 'o_mago', 2: 'a_sacerdotisa', 3: 'a_imperatriz', 4: 'o_imperador', 5: 'o_papa',
+        6: 'os_enamorados', 7: 'o_carro', 8: 'a_forca', 9: 'o_eremita', 10: 'a_roda_da_fortuna',
+        11: 'a_justica', 12: 'o_enforcado', 13: 'a_morte', 14: 'a_temperanca', 15: 'o_diabo',
+        16: 'a_torre', 17: 'a_estrela', 18: 'a_lua', 19: 'o_sol', 20: 'o_julgamento',
+        21: 'o_mundo', 22: 'o_louco'
+      };
+      
+      // Para arcanos menores (23-78), usar mapeamento das cartas
+      let nomeArquivo;
+      if (numero <= 22) {
+        nomeArquivo = mapeamentoArcanos[numero];
+      } else {
+        // Lógica para arcanos menores
+        nomeArquivo = mapearArcanoMenor(numero);
+      }
+      
+      if (nomeArquivo) {
+        window.open(`assets/cartas/${nomeArquivo}.html`, '_blank');
+      } else {
+        alert(`Informações detalhadas do Arcano ${numero} em breve!`);
+      }
+    }
+
+    function mapearArcanoMenor(numero) {
+      // Mapeamento simplificado para arcanos menores
+      const cartas = [
+        'as_de_paus', 'dois_de_paus', 'tres_de_paus', 'quatro_de_paus', 'cinco_de_paus',
+        'seis_de_paus', 'sete_de_paus', 'oito_de_paus', 'nove_de_paus', 'dez_de_paus',
+        'valete_de_paus', 'cavaleiro_de_paus', 'rainha_de_paus', 'rei_de_paus',
+        'as_de_copas', 'dois_de_copas', 'tres_de_copas', 'quatro_de_copas', 'cinco_de_copas',
+        'seis_de_copas', 'sete_de_copas', 'oito_de_copas', 'nove_de_copas', 'dez_de_copas',
+        'valete_de_copas', 'cavaleiro_de_copas', 'rainha_de_copas', 'rei_de_copas',
+        'as_de_espadas', 'dois_de_espadas', 'tres_de_espadas', 'quatro_de_espadas', 'cinco_de_espadas',
+        'seis_de_espadas', 'sete_de_espadas', 'oito_de_espadas', 'nove_de_espadas', 'dez_de_espadas',
+        'valete_de_espadas', 'cavaleiro_de_espadas', 'rainha_de_espadas', 'rei_de_espadas',
+        'as_de_ouros', 'dois_de_ouros', 'tres_de_ouros', 'quatro_de_ouros', 'cinco_de_ouros',
+        'seis_de_ouros', 'sete_de_ouros', 'oito_de_ouros', 'nove_de_ouros', 'dez_de_ouros',
+        'valete_de_ouros', 'cavaleiro_de_ouros', 'rainha_de_ouros', 'rei_de_ouros'
+      ];
+      
+      const index = numero - 23; // Ajustar para índice do array
+      return cartas[index] || null;
+    }
+
+    function gerarAnaliseCompletaSequencia(sequencia) {
+      const analises = {
+        'Sequência de 1s': `
+          <h5>Análise Psicológica Profunda:</h5>
+          <p>A repetição excessiva do número 1 indica uma personalidade com forte tendência ao individualismo extremo. Esta configuração sugere uma pessoa que pode ter dificuldades significativas em trabalhar colaborativamente, preferindo sempre liderar ou trabalhar sozinha.</p>
+          
+          <h5>Impactos na Vida Pessoal:</h5>
+          <p>Relacionamentos podem ser desafiadores, pois há uma tendência a dominar conversas e situações. A pessoa pode ser vista como egocêntrica ou insensível às necessidades dos outros, mesmo quando suas intenções são boas.</p>
+          
+          <h5>Desafios Profissionais:</h5>
+          <p>No ambiente de trabalho, pode haver conflitos com colegas e superiores devido à dificuldade de aceitar feedback ou seguir diretrizes que não foram criadas por ela mesma. A delegação de tarefas também pode ser problemática.</p>
+          
+          <h5>Caminhos de Transformação:</h5>
+          <p>É essencial desenvolver a escuta ativa e a empatia. Práticas de meditação em grupo, trabalhos voluntários e atividades que exijam cooperação podem ajudar a equilibrar essa energia. O desenvolvimento da humildade é fundamental para o crescimento pessoal.</p>
+        `,
+        'Sequência de 2s': `
+          <h5>Análise Psicológica Profunda:</h5>
+          <p>O excesso de energia do número 2 cria uma personalidade excessivamente dependente da aprovação e validação externa. Esta pessoa pode ter dificuldades em tomar decisões independentes e frequentemente busca a opinião dos outros antes de agir.</p>
+          
+          <h5>Padrões Comportamentais:</h5>
+          <p>Há uma tendência a evitar conflitos a todo custo, mesmo quando isso significa sacrificar suas próprias necessidades. A pessoa pode se tornar um "people pleaser", sempre tentando agradar os outros em detrimento de seu próprio bem-estar.</p>
+          
+          <h5>Impactos Emocionais:</h5>
+          <p>Pode desenvolver ansiedade social e baixa autoestima, especialmente quando não recebe a validação esperada. A identidade pessoal pode ficar confusa, pois está muito baseada na percepção dos outros.</p>
+          
+          <h5>Estratégias de Fortalecimento:</h5>
+          <p>É crucial desenvolver a autoconfiança através de pequenas decisões independentes. Terapia psicológica, journaling e práticas de autoafirmação podem ser muito benéficas. Aprender a dizer "não" é uma habilidade essencial a ser desenvolvida.</p>
+        `
+        // Adicionar mais análises conforme necessário
+      };
+      
+      return analises[sequencia.nome] || '<p>Análise detalhada em desenvolvimento.</p>';
+    }
+
+    function expandirSequencia(botao) {
+      const analiseCompleta = botao.nextElementSibling;
+      if (analiseCompleta.classList.contains('hidden')) {
+        analiseCompleta.classList.remove('hidden');
+        botao.textContent = '📖 Ocultar Análise';
+      } else {
+        analiseCompleta.classList.add('hidden');
+        botao.textContent = '📖 Ler Análise Completa';
+      }
     }
 
     // Funções de limpeza
@@ -1643,3 +1979,205 @@
       document.getElementById('sistemaEmpresarial').value = 'pitagorico';
       document.getElementById('resultados-empresarial').classList.add('hidden');
     }
+    // Função para navegação entre abas
+    function showTab(tabName) {
+      // Remover classe ativa de todas as abas
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // Ocultar todas as seções
+      document.querySelectorAll('.tab-content').forEach(section => {
+        section.classList.add('hidden');
+      });
+      
+      // Ativar aba clicada
+      const activeTab = document.querySelector(`[onclick="showTab('${tabName}')"]`);
+      if (activeTab) {
+        activeTab.parentElement.classList.add('active');
+      }
+      
+      // Mostrar seção correspondente
+      const targetSection = document.getElementById(tabName);
+      if (targetSection) {
+        targetSection.classList.remove('hidden');
+      }
+      
+      // Limpar resultados ao trocar de aba
+      const resultadosIds = ['resultados-mapa', 'resultados-compatibilidade', 'resultados-piramide', 'resultados-empresarial'];
+      resultadosIds.forEach(id => {
+        const elemento = document.getElementById(id);
+        if (elemento) {
+          elemento.classList.add('hidden');
+          elemento.innerHTML = '';
+        }
+      });
+    }
+
+    // Inicializar primeira aba como ativa
+    document.addEventListener('DOMContentLoaded', function() {
+      showTab('meu-mapa');
+    });
+  </script>
+</body>
+</html>
+
+
+    /* CSS para Pirâmide Cabalística */
+    .piramide-info {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .info-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--sage);
+      text-align: center;
+    }
+    
+    .piramide-container {
+      max-width: 100%;
+      overflow-x: auto;
+      padding: 1rem;
+    }
+    
+    .decada-linha {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      min-height: 50px;
+    }
+    
+    .decada-label {
+      min-width: 120px;
+      font-weight: bold;
+      color: var(--gold);
+      margin-right: 1rem;
+    }
+    
+    .arcanos-linha {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .arcano-piramide {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, var(--wine), var(--navy));
+      border: 2px solid var(--sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .arcano-piramide:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px var(--gold);
+      border-color: var(--gold);
+    }
+    
+    .arcano-atual-piramide {
+      background: linear-gradient(135deg, var(--gold), #ff6b35) !important;
+      border-color: var(--gold) !important;
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 20px var(--gold);
+    }
+    
+    .sequencias-negativas {
+      display: grid;
+      gap: 1rem;
+    }
+    
+    .sequencia-negativa {
+      background: rgba(255, 0, 0, 0.1);
+      border: 2px solid #ff4444;
+      border-radius: 12px;
+      padding: 1rem;
+    }
+    
+    .sequencia-negativa h4 {
+      color: #ff4444;
+      margin-bottom: 0.5rem;
+    }
+    
+    .expandir-sequencia button {
+      background: linear-gradient(135deg, #ff4444, #cc0000);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .expandir-sequencia button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(255, 68, 68, 0.3);
+    }
+    
+    .analise-completa {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      border-left: 4px solid #ff4444;
+    }
+    
+    .analise-completa h5 {
+      color: var(--gold);
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .analise-completa p {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+    
+    .btn-ler-mais {
+      background: linear-gradient(135deg, var(--sage), #4a9b8e);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .btn-ler-mais:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(178, 209, 177, 0.3);
+    }
+    
+    @media (max-width: 768px) {
+      .decada-linha {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .decada-label {
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+      }
+      
+      .arcano-piramide {
+        width: 40px;
+        height: 40px;
+        font-size: 0.8rem;
+      }
+    }
+
