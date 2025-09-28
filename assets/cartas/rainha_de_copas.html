@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainha de Copas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Rainha de Copas</h1>
+            <p class="subtitulo">62 - A Soberana das Emoções</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/62QueenofCups.jpg" alt="Rainha de Copas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Intuição</span>
+                        <span class="palavra-chave">Empatia</span>
+                        <span class="palavra-chave">Amor Incondicional</span>
+                        <span class="palavra-chave">Cura</span>
+                        <span class="palavra-chave">Sensibilidade</span>
+                        <span class="palavra-chave">Sabedoria Emocional</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>A Rainha de Copas representa a energia receptiva em seu estado mais maduro e consciente no naipe de Copas. Ela não é a explosão inicial do Ás, nem a dualidade do Dois, mas a mestra das emoções, aquela que governa o reino do coração com sabedoria e compaixão. Sua energia é a da água profunda e calma, que reflete a lua e as estrelas, simbolizando a conexão com o inconsciente, a intuição e os sonhos. Ela indica um domínio sobre o fluxo emocional, a capacidade de sentir profundamente sem se afogar, de nutrir e ser nutrida pelo amor em todas as suas formas. A Rainha de Copas é a personificação do amor incondicional, da empatia e da cura. Ela simboliza a força que reside na vulnerabilidade e a sabedoria que brota da experiência emocional. Sua presença em uma leitura aponta para a necessidade de se conectar com a própria intuição, de ouvir a voz do coração e de agir com compaixão, tanto consigo mesmo quanto com os outros.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, as figuras da corte não possuem um número direto, mas encarnam a energia de um naipe em um determinado grau de maestria. A Rainha, como a figura feminina que governa, representa a plena realização da energia receptiva do naipe. Ela é a contraparte do Rei, que representa a energia ativa. No caso da Rainha de Copas, ela é a mestra do elemento Água, o que a associa ao número Dois (a dualidade, a parceria, a receptividade) em um nível superior. Ela não é apenas receptiva, mas também geradora de emoções, como um lago que recebe a água da chuva e a transforma em vida. A sua simbologia numerológica está ligada à ideia de completude emocional, de um ciclo que se fecha para que outro possa começar. Ela é o resultado da jornada emocional do naipe de Copas, a soma de todas as experiências, desde a alegria do Três até a dor do Cinco, culminando em uma sabedoria que transcende a dualidade.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>As cores na Rainha de Copas, segundo a visão de Jodorowsky, são fundamentais para a compreensão de sua energia. O azul, onipresente em suas vestes e no cenário, é a cor da intuição, da espiritualidade e da profundidade emocional. É a cor do céu e do mar, do consciente e do inconsciente, indicando a capacidade da Rainha de transitar entre esses dois mundos. O branco, que pode aparecer em detalhes de sua roupa ou no lírio que ela segura, simboliza a pureza de suas intenções, a clareza de seus sentimentos e a paz que ela emana. O amarelo ou dourado de sua coroa ou do cálice que ela segura representa a sabedoria divina, a iluminação espiritual e a conexão com o sagrado. O vermelho, se presente, aponta para a paixão contida, a força vital que alimenta suas emoções, mas que é controlada pela sua sabedoria. A combinação dessas cores cria uma imagem de equilíbrio e harmonia, de uma rainha que governa suas emoções com a mesma autoridade com que governa seu reino.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Em seus aspectos positivos, a Rainha de Copas indica um período de grande sensibilidade, intuição e conexão emocional. Ela representa a capacidade de amar incondicionalmente, de perdoar, de curar feridas emocionais e de criar um ambiente de paz e harmonia. Sua presença pode indicar o surgimento de um amor maduro e verdadeiro, ou a necessidade de se tornar essa figura amorosa e compassiva para si mesmo e para os outros. Ela é a conselheira sábia, a amiga leal, a mãe que nutre e protege. A Rainha de Copas em seu aspecto positivo é um convite para mergulhar no mundo das emoções sem medo, para confiar na intuição e para expressar o amor de forma autêntica e generosa. Ela simboliza a cura através da arte, da música, da poesia e de todas as formas de expressão que brotam do coração.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando a Rainha de Copas se apresenta em seus aspectos negativos, sua energia pode se manifestar como excesso de sensibilidade, instabilidade emocional e dependência afetiva. A água que antes era calma e profunda pode se tornar um pântano de emoções estagnadas, de ressentimentos e de mágoas não resolvidas. Ela pode indicar uma tendência ao escapismo, à fantasia e à dificuldade de lidar com a realidade. Em seu aspecto sombrio, a Rainha de Copas pode ser manipuladora, ciumenta e possessiva, usando o amor como uma arma para controlar os outros. Sua compaixão pode se transformar em autopiedade, e sua intuição pode ser distorcida por medos e inseguranças. É um alerta para não se afogar nas próprias emoemoções, para buscar o equilíbrio entre o sentir e o agir, e para não permitir que a sensibilidade se torne uma fraqueza.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

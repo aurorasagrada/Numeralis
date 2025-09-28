@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 Aurora Sagrada - Sistema Numerológico Completo</title>
+    <meta name="description" content="Sistema completo de numerologia pitagórica e cabalística com análise de arcanos temporais e compatibilidade amorosa.">
+    <meta name="keywords" content="numerologia, tarô, arcanos, compatibilidade, pitagórica, cabalística, mapa numerológico">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌟</text></svg>">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/theme-aurora.css">
+    <link rel="stylesheet" href="css/print.css" media="print">
+    
+    <!-- Preload das fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://aurora-sagrada.github.io/">
+    <meta property="og:title" content="Aurora Sagrada - Sistema Numerológico Completo">
+    <meta property="og:description" content="Descubra sua numerologia completa com análise de arcanos temporais e compatibilidade amorosa.">
+    <meta property="og:image" content="assets/img/og-image.jpg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://aurora-sagrada.github.io/">
+    <meta property="twitter:title" content="Aurora Sagrada - Sistema Numerológico Completo">
+    <meta property="twitter:description" content="Descubra sua numerologia completa com análise de arcanos temporais e compatibilidade amorosa.">
+    <meta property="twitter:image" content="assets/img/og-image.jpg">
+</head>
+<body>
+    <div class="as-container">
+        <!-- Header -->
+        <header class="as-header">
+            <h1>🌟 Aurora Sagrada 🌟</h1>
+            <p>Sistema Numerológico Completo</p>
+        </header>
+
+        <!-- Navegação por Tabs -->
+        <nav class="as-tabs" role="tablist">
+            <button class="as-tab-btn active" onclick="mostrarSecao('meu-mapa')" role="tab" aria-selected="true" aria-controls="meu-mapa">
+                🗺️ Meu Mapa
+            </button>
+            <button class="as-tab-btn" onclick="mostrarSecao('compatibilidade')" role="tab" aria-selected="false" aria-controls="compatibilidade">
+                💕 Compatibilidade
+            </button>
+        </nav>
+
+        <!-- Seção: Meu Mapa Numerológico -->
+        <section id="meu-mapa" class="as-section active" role="tabpanel" aria-labelledby="tab-meu-mapa">
+            <!-- Formulário -->
+            <div class="as-form-card">
+                <form id="form-mapa" novalidate>
+                    <div class="as-form-grid">
+                        <div class="as-form-group">
+                            <label for="nome-mapa">Nome Completo</label>
+                            <input type="text" id="nome-mapa" name="nome" placeholder="Digite seu nome completo" required 
+                                   autocomplete="name" maxlength="100">
+                        </div>
+                        <div class="as-form-group">
+                            <label for="data-mapa">Data de Nascimento</label>
+                            <input type="date" id="data-mapa" name="data" required 
+                                   autocomplete="bday" max="2024-12-31">
+                        </div>
+                        <div class="as-form-group">
+                            <label for="tabela-mapa">Sistema</label>
+                            <select id="tabela-mapa" name="tabela">
+                                <option value="pitagorica">Pitagórica</option>
+                                <option value="cabalistica">Cabalística</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="as-btn">✨ Calcular</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Resultados do Mapa -->
+            <div id="resultados-mapa" class="as-results" style="display: none;">
+                <!-- Números Fundamentais -->
+                <div class="as-card">
+                    <h3>
+                        🔢 Números Fundamentais 
+                        <button type="button" class="as-btn-export" onclick="imprimirSecao('numeros-fundamentais')" title="Exportar para PDF">
+                            📄 PDF
+                        </button>
+                    </h3>
+                    <div id="numeros-fundamentais" class="as-numeros-grid"></div>
+                </div>
+
+                <!-- Arcanos Temporais -->
+                <div class="as-card">
+                    <h3>
+                        🌟 Arcanos Temporais 
+                        <button type="button" class="as-btn-export" onclick="imprimirSecao('arcanos-temporais')" title="Exportar para PDF">
+                            📄 PDF
+                        </button>
+                    </h3>
+                    <div id="arcanos-temporais" class="as-arcanos-grid"></div>
+                </div>
+
+                <!-- Pirâmide Cabalística -->
+                <div class="as-card">
+                    <h3>
+                        🔺 Pirâmide Cabalística 
+                        <button type="button" class="as-btn-export" onclick="imprimirSecao('piramide-cabalistica')" title="Exportar para PDF">
+                            📄 PDF
+                        </button>
+                    </h3>
+                    <div id="piramide-cabalistica" class="as-piramide-container"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Compatibilidade Amorosa -->
+        <section id="compatibilidade" class="as-section" role="tabpanel" aria-labelledby="tab-compatibilidade">
+            <!-- Formulário -->
+            <div class="as-form-card">
+                <form id="form-compatibilidade" novalidate>
+                    <div class="as-form-grid-compat">
+                        <div class="as-form-group">
+                            <label for="nome1">Nome da Primeira Pessoa</label>
+                            <input type="text" id="nome1" name="nome1" placeholder="Nome completo" required 
+                                   autocomplete="off" maxlength="100">
+                        </div>
+                        <div class="as-form-group">
+                            <label for="data1">Data de Nascimento</label>
+                            <input type="date" id="data1" name="data1" required 
+                                   autocomplete="off" max="2024-12-31">
+                        </div>
+                        <div class="as-form-group">
+                            <label for="nome2">Nome da Segunda Pessoa</label>
+                            <input type="text" id="nome2" name="nome2" placeholder="Nome completo" required 
+                                   autocomplete="off" maxlength="100">
+                        </div>
+                        <div class="as-form-group">
+                            <label for="data2">Data de Nascimento</label>
+                            <input type="date" id="data2" name="data2" required 
+                                   autocomplete="off" max="2024-12-31">
+                        </div>
+                        <div class="as-form-group">
+                            <label for="tabela-compat">Sistema</label>
+                            <select id="tabela-compat" name="tabela">
+                                <option value="pitagorica">Pitagórica</option>
+                                <option value="cabalistica">Cabalística</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="as-btn">💕 Analisar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Resultado da Compatibilidade -->
+            <div id="resultado-compatibilidade" class="as-results" style="display: none;">
+                <!-- Conteúdo será inserido dinamicamente -->
+            </div>
+        </section>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/utils.js"></script>
+    <script src="js/perfil.js"></script>
+    <script src="js/arcanos.js"></script>
+    <script src="js/piramide.js"></script>
+    <script src="js/compat.js"></script>
+    <script src="js/render.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Analytics (opcional) -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'GA_MEASUREMENT_ID');
+    </script>
+    -->
+
+    <!-- Service Worker para PWA (opcional) -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) {
+                        console.log('SW registrado com sucesso: ', registration.scope);
+                    }, function(err) {
+                        console.log('Falha ao registrar SW: ', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,1602 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aurora Sagrada – Sistema Numerológico Completo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{ 
+      --wine:#3e0a29; 
+      --sage:#b2d1b1; 
+      --navy:#0b1836; 
+      --gold:#f0aa53; 
+      --parch:#f2eaff;
+    }
+    
+    * { box-sizing: border-box; }
+    
+    html,body{height:100%; margin:0; padding:0;}
+    
+    body{ 
+      font-family:"Cormorant Garamond",serif; 
+      background: var(--navy);
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(240,170,83,0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(178,209,177,0.03) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f2eaff' fill-opacity='0.02'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      color:var(--parch); 
+      min-height:100vh;
+      position: relative;
+    }
+    
+    /* Ornamentos místicos */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 10 L60 40 L90 40 L68 58 L78 88 L50 70 L22 88 L32 58 L10 40 L40 40 Z' fill='%23f0aa53' opacity='0.05'/%3E%3C/svg%3E"),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='20' fill='none' stroke='%23b2d1b1' stroke-width='1' opacity='0.03'/%3E%3Ccircle cx='50' cy='50' r='30' fill='none' stroke='%23b2d1b1' stroke-width='1' opacity='0.02'/%3E%3C/svg%3E");
+      background-size: 200px 200px, 150px 150px;
+      background-position: 10% 20%, 80% 70%;
+      background-repeat: no-repeat;
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .wrap{
+      max-width:1200px; 
+      margin:0 auto; 
+      padding:40px 24px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Cabeçalho místico */
+    .header {
+      text-align: center;
+      margin-bottom: 60px;
+      position: relative;
+    }
+    
+    .header::before {
+      content: '✦';
+      position: absolute;
+      top: -20px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: var(--gold);
+      opacity: 0.7;
+    }
+    
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    
+    .title{
+      font-family:"Cinzel",serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      color:var(--gold); 
+      margin:0 0 20px 0;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      letter-spacing: 2px;
+      position: relative;
+    }
+    
+    .title::before,
+    .title::after {
+      content: '◆';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.5rem;
+      color: var(--sage);
+      opacity: 0.6;
+    }
+    
+    .title::before { left: -60px; }
+    .title::after { right: -60px; }
+    
+    .badge{
+      background: var(--wine);
+      color: var(--gold); 
+      padding:12px 24px; 
+      border: 2px solid var(--gold);
+      border-radius: 0;
+      font-size:14px; 
+      font-weight:500;
+      letter-spacing:3px;
+      text-transform: uppercase;
+      position: relative;
+      display: inline-block;
+      margin-top: 16px;
+    }
+    
+    .badge::before,
+    .badge::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+    
+    .badge::before { top: -4px; left: -4px; }
+    .badge::after { bottom: -4px; right: -4px; }
+    
+    .subtitle {
+      font-size: 18px;
+      color: var(--sage);
+      margin-top: 32px;
+      line-height: 1.8;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      font-style: italic;
+    }
+
+    /* Navegação por tabs */
+    .tabs {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .tab-btn {
+      background: transparent;
+      border: 2px solid var(--sage);
+      color: var(--sage);
+      padding: 12px 24px;
+      font-family: "Cinzel", serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tab-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--sage);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .tab-btn:hover::before,
+    .tab-btn.active::before {
+      left: 0;
+    }
+
+    .tab-btn:hover,
+    .tab-btn.active {
+      color: var(--navy);
+      border-color: var(--sage);
+    }
+
+    .tab-btn.active {
+      border-color: var(--gold);
+      color: var(--navy);
+    }
+
+    .tab-btn.active::before {
+      background: var(--gold);
+    }
+
+    /* Seções */
+    .section {
+      display: none;
+    }
+
+    .section.active {
+      display: block;
+    }
+    
+    /* Cards místicos */
+    .card{
+      background: var(--wine);
+      border: 3px solid var(--sage);
+      border-radius: 0;
+      box-shadow: 
+        0 0 30px rgba(240,170,83,0.1),
+        inset 0 0 20px rgba(0,0,0,0.3);
+      padding: 32px;
+      margin-bottom: 32px;
+      position: relative;
+      color: var(--parch);
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: -3px;
+      right: -3px;
+      bottom: -3px;
+      background: linear-gradient(45deg, var(--gold), var(--sage), var(--gold));
+      z-index: -1;
+      border-radius: 0;
+    }
+    
+    .card::after {
+      content: '✧';
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      color: var(--gold);
+      font-size: 18px;
+      opacity: 0.4;
+    }
+    
+    /* Ornamentos nos cantos dos cards */
+    .card-ornament {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--gold);
+    }
+    
+    .card-ornament.top-left {
+      top: 12px;
+      left: 12px;
+      border-right: none;
+      border-bottom: none;
+    }
+    
+    .card-ornament.top-right {
+      top: 12px;
+      right: 12px;
+      border-left: none;
+      border-bottom: none;
+    }
+    
+    .card-ornament.bottom-left {
+      bottom: 12px;
+      left: 12px;
+      border-right: none;
+      border-top: none;
+    }
+    
+    .card-ornament.bottom-right {
+      bottom: 12px;
+      right: 12px;
+      border-left: none;
+      border-top: none;
+    }
+    
+    .grid{display:grid; gap:24px}
+    .grid.cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .grid.cols-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+    @media (max-width:900px){.grid.cols-2,.grid.cols-3,.grid.cols-4{grid-template-columns:1fr}}
+    
+    label{
+      display:block; 
+      font-size:16px; 
+      color:var(--sage); 
+      margin-bottom:8px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+    
+    input[type="text"], input[type="date"], select{
+      width:100%; 
+      padding:16px 20px; 
+      border: 2px solid var(--sage);
+      border-radius: 0;
+      font-family:"Cormorant Garamond",serif; 
+      font-size:18px;
+      background: var(--parch);
+      color:var(--navy);
+      transition: all 0.3s ease;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    input[type="text"]:focus, input[type="date"]:focus, select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 
+        0 0 0 3px rgba(240,170,83,0.2),
+        inset 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .hint{
+      font-size:13px; 
+      color:var(--sage); 
+      margin-top:8px;
+      opacity: 0.8;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    
+    .row{
+      display:flex; 
+      gap:16px; 
+      flex-wrap:wrap; 
+      align-items:center;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(178, 209, 177, 0.3);
+      position: relative;
+    }
+    
+    .row::before {
+      content: '◊';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--wine);
+      color: var(--gold);
+      padding: 0 12px;
+      font-size: 16px;
+    }
+    
+    .btn{
+      appearance:none; 
+      border: 2px solid var(--gold);
+      background: var(--wine);
+      color:var(--gold); 
+      padding:16px 32px; 
+      border-radius: 0;
+      cursor:pointer; 
+      font-family:"Cinzel",serif; 
+      font-size:14px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gold);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+    
+    .btn:hover::before {
+      left: 0;
+    }
+    
+    .btn:hover {
+      color: var(--navy);
+    }
+    
+    .btn.ghost{
+      background: transparent;
+      color:var(--gold); 
+      border:2px solid var(--gold);
+    }
+    
+    .section-title{
+      font-family:"Cinzel",serif;
+      font-size:24px; 
+      color:var(--gold); 
+      margin:0 0 24px 0;
+      font-weight: 600;
+      text-align: center;
+      position: relative;
+      padding-bottom: 16px;
+      letter-spacing: 1px;
+    }
+    
+    .section-title::before {
+      content: '❋';
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      color: var(--sage);
+      font-size: 16px;
+    }
+
+    /* Cards de números */
+    .numero-card {
+      background: rgba(242, 234, 255, 0.1);
+      border: 2px solid var(--sage);
+      padding: 24px;
+      text-align: center;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .numero-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(240,170,83,0.2);
+    }
+
+    .numero-valor {
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-family: "Cinzel", serif;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .numero-nome {
+      font-family: "Cinzel", serif;
+      font-size: 18px;
+      color: var(--sage);
+      margin-bottom: 8px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    .numero-desc {
+      font-size: 14px;
+      color: var(--parch);
+      opacity: 0.9;
+      line-height: 1.4;
+    }
+
+    .numero-especial {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .numero-especial.karmico {
+      background: var(--wine);
+      color: var(--gold);
+    }
+
+    /* Cards de arcanos */
+    .arcano-card {
+      background: rgba(242, 234, 255, 0.05);
+      border: 2px solid var(--sage);
+      overflow: hidden;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .arcano-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 0 25px rgba(240,170,83,0.2);
+    }
+
+    .arcano-imagem {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+      border-bottom: 2px solid var(--sage);
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+    }
+
+    .arcano-info {
+      padding: 20px;
+    }
+
+    .arcano-numero {
+      background: var(--wine);
+      color: var(--gold);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      margin-bottom: 12px;
+      font-family: "Cinzel", serif;
+    }
+
+    .arcano-nome {
+      font-family: "Cinzel", serif;
+      font-size: 16px;
+      color: var(--gold);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .arcano-titulo {
+      font-size: 18px;
+      color: var(--sage);
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .arcano-desc {
+      font-size: 14px;
+      color: var(--parch);
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+
+    /* Pirâmide cabalística */
+    .piramide-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 24px 0;
+      padding: 20px;
+      background: rgba(242, 234, 255, 0.05);
+      border: 1px solid var(--sage);
+    }
+
+    .piramide-linha {
+      display: flex;
+      gap: 12px;
+      margin: 6px 0;
+    }
+
+    .piramide-numero {
+      background: var(--sage);
+      color: var(--navy);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-family: "Cinzel", serif;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .piramide-numero:hover {
+      background: var(--gold);
+      color: var(--navy);
+      transform: scale(1.1);
+    }
+
+    .piramide-numero.regente {
+      background: var(--wine);
+      color: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 15px rgba(240,170,83,0.5);
+    }
+
+    /* Compatibilidade */
+    .score-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--wine) 0%, var(--navy) 100%);
+      color: var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 600;
+      font-family: "Cinzel", serif;
+      margin: 0 auto 24px;
+      border: 3px solid var(--gold);
+      box-shadow: 0 0 30px rgba(240,170,83,0.3);
+    }
+
+    .perfil-resumo {
+      background: rgba(242, 234, 255, 0.1);
+      border: 1px solid var(--sage);
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .perfil-nome {
+      font-family: "Cinzel", serif;
+      font-size: 18px;
+      color: var(--gold);
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+
+    .perfil-numeros {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .perfil-numero {
+      display: flex;
+      justify-content: space-between;
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(178, 209, 177, 0.2);
+    }
+
+    .perfil-numero:last-child {
+      border-bottom: none;
+    }
+
+    .score-detalhado {
+      margin: 20px 0;
+    }
+
+    .score-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(178, 209, 177, 0.2);
+    }
+
+    .score-item:last-child {
+      border-bottom: none;
+    }
+
+    .score-valor {
+      font-weight: 600;
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+    }
+
+    /* Loading e erro */
+    .loading {
+      text-align: center;
+      padding: 40px;
+      color: var(--gold);
+      font-size: 18px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .error {
+      background: rgba(240, 170, 83, 0.1);
+      border: 2px solid var(--gold);
+      color: var(--gold);
+      padding: 16px;
+      margin: 16px 0;
+      text-align: center;
+    }
+
+    /* Animações místicas */
+    @keyframes mysticalGlow {
+      0%, 100% { 
+        box-shadow: 0 0 30px rgba(240,170,83,0.1);
+      }
+      50% { 
+        box-shadow: 0 0 40px rgba(240,170,83,0.2);
+      }
+    }
+    
+    .card {
+      animation: mysticalGlow 4s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-3px); }
+    }
+    
+    .title {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .wrap { 
+        padding: 20px 16px; 
+      }
+      
+      .title { 
+        font-size: 2.5rem; 
+        letter-spacing: 1px;
+      }
+      
+      .title::before,
+      .title::after { 
+        display: none; 
+      }
+      
+      .tabs {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      
+      .tab-btn {
+        width: 200px;
+        text-align: center;
+      }
+      
+      .card { 
+        padding: 20px 16px; 
+      }
+      
+      .grid.cols-2,
+      .grid.cols-3,
+      .grid.cols-4 { 
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      
+      .row { 
+        flex-direction: column; 
+        align-items: stretch;
+        gap: 12px;
+      }
+      
+      .btn { 
+        width: 100%; 
+        margin-bottom: 8px; 
+      }
+
+      .numero-valor {
+        font-size: 2.5rem;
+      }
+
+      .arcano-imagem {
+        height: 250px;
+      }
+    }
+
+    /* Ocultar resultados inicialmente */
+    .results {
+      display: none;
+    }
+
+    .results.show {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="header">
+      <h1 class="title">Aurora Sagrada</h1>
+      <span class="badge">Sistema Numerológico Completo</span>
+      <p class="subtitle">Desvende os mistérios dos números através da numerologia pitagórica e cabalística. Descubra sua essência, propósito e os arcanos que regem sua jornada.</p>
+    </div>
+
+    <!-- Navegação por tabs -->
+    <div class="tabs">
+      <button class="tab-btn active" onclick="mostrarSecao('meu-mapa')">
+        🗺️ Meu Mapa Numerológico
+      </button>
+      <button class="tab-btn" onclick="mostrarSecao('compatibilidade')">
+        💕 Compatibilidade Amorosa
+      </button>
+    </div>
+
+    <!-- Seção: Meu Mapa Numerológico -->
+    <div id="meu-mapa" class="section active">
+      <div class="card">
+        <div class="card-ornament top-left"></div>
+        <div class="card-ornament top-right"></div>
+        <div class="card-ornament bottom-left"></div>
+        <div class="card-ornament bottom-right"></div>
+        
+        <form id="form-mapa" onsubmit="calcularMapa(event)">
+          <div class="grid cols-3">
+            <div>
+              <label>Nome Completo</label>
+              <input type="text" id="nome-mapa" placeholder="Digite seu nome completo" required />
+              <div class="hint">Use seu nome completo de nascimento ou como prefere ser chamado.</div>
+            </div>
+            <div>
+              <label>Data de Nascimento</label>
+              <input type="date" id="data-mapa" required />
+              <div class="hint">Sua data de nascimento completa para cálculos precisos.</div>
+            </div>
+            <div>
+              <label>Sistema Numerológico</label>
+              <select id="sistema-mapa">
+                <option value="pitagorica">Pitagórica (1-9)</option>
+                <option value="cabalistica">Cabalística (1-8)</option>
+              </select>
+              <div class="hint">Escolha o sistema de cálculo numerológico.</div>
+            </div>
+          </div>
+          <div class="row">
+            <button type="submit" class="btn">✨ Revelar Meu Mapa</button>
+            <button type="button" class="btn ghost" onclick="exemploMapa()">Exemplo</button>
+            <button type="button" class="btn ghost" onclick="limparMapa()">Limpar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Resultados do Mapa -->
+      <div id="resultados-mapa" class="results"></div>
+    </div>
+
+    <!-- Seção: Compatibilidade Amorosa -->
+    <div id="compatibilidade" class="section">
+      <div class="card">
+        <div class="card-ornament top-left"></div>
+        <div class="card-ornament top-right"></div>
+        <div class="card-ornament bottom-left"></div>
+        <div class="card-ornament bottom-right"></div>
+        
+        <form id="form-compatibilidade" onsubmit="calcularCompatibilidade(event)">
+          <div class="grid cols-2">
+            <div>
+              <h4 class="section-title" style="font-size: 18px; margin-bottom: 16px;">Primeira Pessoa</h4>
+              <div style="margin-bottom: 16px;">
+                <label>Nome Completo</label>
+                <input type="text" id="nome1" placeholder="Nome da primeira pessoa" required />
+              </div>
+              <div>
+                <label>Data de Nascimento</label>
+                <input type="date" id="data1" required />
+              </div>
+            </div>
+            <div>
+              <h4 class="section-title" style="font-size: 18px; margin-bottom: 16px;">Segunda Pessoa</h4>
+              <div style="margin-bottom: 16px;">
+                <label>Nome Completo</label>
+                <input type="text" id="nome2" placeholder="Nome da segunda pessoa" required />
+              </div>
+              <div>
+                <label>Data de Nascimento</label>
+                <input type="date" id="data2" required />
+              </div>
+            </div>
+          </div>
+          <div class="grid cols-1" style="margin-top: 24px;">
+            <div>
+              <label>Sistema Numerológico</label>
+              <select id="sistema-compat">
+                <option value="pitagorica">Pitagórica (1-9)</option>
+                <option value="cabalistica">Cabalística (1-8)</option>
+              </select>
+              <div class="hint">Sistema usado para calcular a compatibilidade entre os perfis.</div>
+            </div>
+          </div>
+          <div class="row">
+            <button type="submit" class="btn">💕 Analisar Compatibilidade</button>
+            <button type="button" class="btn ghost" onclick="exemploCompatibilidade()">Exemplo</button>
+            <button type="button" class="btn ghost" onclick="limparCompatibilidade()">Limpar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Resultados da Compatibilidade -->
+      <div id="resultados-compatibilidade" class="results"></div>
+    </div>
+  </div>
+
+  <script>
+    // 🌟 AURORA SAGRADA - SISTEMA NUMEROLÓGICO COMPLETO
+
+    // Constantes e Tabelas
+    const TABELAS = {
+      pitagorica: {
+        A: 1, B: 2, C: 3, D: 4, E: 5, F: 6, G: 7, H: 8, I: 9,
+        J: 1, K: 2, L: 3, M: 4, N: 5, O: 6, P: 7, Q: 8, R: 9,
+        S: 1, T: 2, U: 3, V: 4, W: 5, X: 6, Y: 7, Z: 8
+      },
+      cabalistica: {
+        A: 1, B: 2, C: 3, D: 4, E: 5, F: 6, G: 7, H: 8, I: 9,
+        J: 1, K: 2, L: 3, M: 4, N: 5, O: 6, P: 7, Q: 8, R: 9,
+        S: 1, T: 2, U: 3, V: 4, W: 5, X: 6, Y: 7, Z: 8
+      }
+    };
+
+    const VOGAIS = ['A', 'E', 'I', 'O', 'U'];
+    const NUMEROS_MESTRES = [11, 22, 33];
+    const NUMEROS_KARMICOS = [13, 14, 16, 19];
+
+    const ARCANOS_MAIORES = {
+      0: 'O Louco', 1: 'O Mago', 2: 'A Sacerdotisa', 3: 'A Imperatriz', 4: 'O Imperador',
+      5: 'O Papa', 6: 'Os Enamorados', 7: 'O Carro', 8: 'A Justiça', 9: 'O Eremita',
+      10: 'A Roda da Fortuna', 11: 'A Força', 12: 'O Enforcado', 13: 'A Morte',
+      14: 'A Temperança', 15: 'O Diabo', 16: 'A Torre', 17: 'A Estrela',
+      18: 'A Lua', 19: 'O Sol', 20: 'O Julgamento', 21: 'O Mundo', 22: 'O Louco'
+    };
+
+    const IMAGENS_ARCANOS = {
+      0: 'assets/img/cartas/00-0-TheFool.jpg',
+      1: 'assets/img/cartas/01-I-TheMagician.jpg',
+      2: 'assets/img/cartas/02-II-TheHighPriestess.jpg',
+      3: 'assets/img/cartas/03-III-TheEmpress.jpg',
+      4: 'assets/img/cartas/04-IV-TheEmperor.jpg',
+      5: 'assets/img/cartas/05-V-TheHierophant.jpg',
+      6: 'assets/img/cartas/06-VI-TheLovers.jpg',
+      7: 'assets/img/cartas/07-VII-TheChariot.jpg',
+      8: 'assets/img/cartas/08-VIII-Strength.jpg',
+      9: 'assets/img/cartas/09-IX-TheHermit.jpg',
+      10: 'assets/img/cartas/10-X-WheelofFortune.jpg',
+      11: 'assets/img/cartas/11-XI-Justice.jpg',
+      12: 'assets/img/cartas/12-XII-TheHangedMan.jpg',
+      13: 'assets/img/cartas/13-XIII-Death.jpg',
+      14: 'assets/img/cartas/14-XIV-Temperance.jpg',
+      15: 'assets/img/cartas/15-XV-TheDevil.jpg',
+      16: 'assets/img/cartas/16-XVI-TheTower.jpg',
+      17: 'assets/img/cartas/17-XVII-TheStar.jpg',
+      18: 'assets/img/cartas/18-XVIII-TheMoon.jpg',
+      19: 'assets/img/cartas/19-XIX-TheSun.jpg',
+      20: 'assets/img/cartas/20-XX-Judgement.jpg',
+      21: 'assets/img/cartas/21-XXI-TheWorld.jpg',
+      22: 'assets/img/cartas/00-0-TheFool.jpg'
+    };
+
+    // Funções Utilitárias
+    function normalizarNome(nome) {
+      return nome.toUpperCase()
+        .replace(/[ÁÀÂÃÄ]/g, 'A')
+        .replace(/[ÉÈÊË]/g, 'E')
+        .replace(/[ÍÌÎÏ]/g, 'I')
+        .replace(/[ÓÒÔÕÖ]/g, 'O')
+        .replace(/[ÚÙÛÜ]/g, 'U')
+        .replace(/Ç/g, 'C')
+        .replace(/[^A-Z\s]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function calcularValorNome(nome, tabela, filtro = null) {
+      const nomeNormalizado = normalizarNome(nome);
+      let soma = 0;
+      
+      for (let char of nomeNormalizado) {
+        if (char === ' ') continue;
+        
+        if (filtro === 'vogais' && !VOGAIS.includes(char)) continue;
+        if (filtro === 'consoantes' && VOGAIS.includes(char)) continue;
+        
+        soma += TABELAS[tabela][char] || 0;
+      }
+      
+      return soma;
+    }
+
+    function reduzirNumero(numero, preservarMestres = true) {
+      if (preservarMestres && NUMEROS_MESTRES.includes(numero)) {
+        return numero;
+      }
+      
+      while (numero > 9) {
+        numero = numero.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+        if (preservarMestres && NUMEROS_MESTRES.includes(numero)) {
+          break;
+        }
+      }
+      
+      return numero;
+    }
+
+    function reduzirParaArcano(numero) {
+      while (numero > 22) {
+        numero = numero.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+      }
+      return numero === 0 ? 22 : numero;
+    }
+
+    function calcularIdade(dataNascimento) {
+      const hoje = new Date();
+      const nascimento = new Date(dataNascimento);
+      let idade = hoje.getFullYear() - nascimento.getFullYear();
+      
+      if (hoje.getMonth() < nascimento.getMonth() || 
+          (hoje.getMonth() === nascimento.getMonth() && hoje.getDate() < nascimento.getDate())) {
+        idade--;
+      }
+      
+      return idade;
+    }
+
+    function obterSemanaISO(data) {
+      const d = new Date(data);
+      d.setHours(0, 0, 0, 0);
+      d.setDate(d.getDate() + 3 - (d.getDay() + 6) % 7);
+      const week1 = new Date(d.getFullYear(), 0, 4);
+      return 1 + Math.round(((d.getTime() - week1.getTime()) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+    }
+
+    // Cálculos Numerológicos Principais
+    function calcularNumerosFundamentais(nome, dataNascimento, tabela) {
+      const alma = reduzirNumero(calcularValorNome(nome, tabela, 'vogais'));
+      const personalidade = reduzirNumero(calcularValorNome(nome, tabela, 'consoantes'));
+      const expressao = reduzirNumero(calcularValorNome(nome, tabela));
+      
+      const [ano, mes, dia] = dataNascimento.split('-').map(Number);
+      const somaData = dia + mes + ano;
+      const destino = reduzirNumero(somaData);
+      
+      const maturidade = reduzirNumero(expressao + destino);
+      
+      const nomeNormalizado = normalizarNome(nome);
+      const primeiraLetra = TABELAS[tabela][nomeNormalizado[0]] || 0;
+      const ultimaLetra = TABELAS[tabela][nomeNormalizado[nomeNormalizado.length - 1]] || 0;
+      const equilibrio = reduzirNumero(primeiraLetra + ultimaLetra);
+      
+      return {
+        alma,
+        personalidade,
+        expressao,
+        destino,
+        maturidade,
+        equilibrio
+      };
+    }
+
+    function calcularArcanosTemporais(destino, dataNascimento) {
+      const [ano, mes, dia] = dataNascimento.split('-').map(Number);
+      const hoje = new Date();
+      const anoAtual = hoje.getFullYear();
+      const mesAtual = hoje.getMonth() + 1;
+      
+      const pessoal = reduzirParaArcano(destino);
+      const anoArcano = reduzirParaArcano(dia + mes + anoAtual);
+      const mesArcano = reduzirParaArcano(anoArcano + mesAtual);
+      const semanaArcano = reduzirParaArcano(obterSemanaISO(hoje));
+      const diaArcano = reduzirParaArcano(hoje.getDate() + mesAtual + anoAtual);
+      
+      return {
+        pessoal,
+        ano: anoArcano,
+        mes: mesArcano,
+        semana: semanaArcano,
+        dia: diaArcano
+      };
+    }
+
+    function construirPiramideCabalistica(nome, dataNascimento, tabela) {
+      if (tabela !== 'cabalistica') return null;
+      
+      const nomeNormalizado = normalizarNome(nome);
+      const numeros = [];
+      
+      for (let char of nomeNormalizado) {
+        if (char !== ' ') {
+          numeros.push(TABELAS.cabalistica[char] || 0);
+        }
+      }
+      
+      const piramide = [numeros];
+      let linhaAtual = numeros;
+      
+      while (linhaAtual.length > 1) {
+        const novaLinha = [];
+        for (let i = 0; i < linhaAtual.length - 1; i++) {
+          novaLinha.push(reduzirParaArcano(linhaAtual[i] + linhaAtual[i + 1]));
+        }
+        piramide.push(novaLinha);
+        linhaAtual = novaLinha;
+      }
+      
+      const idade = calcularIdade(dataNascimento);
+      const totalLetras = numeros.length;
+      const anosPorLetra = Math.floor(90 / totalLetras);
+      const faseAtual = Math.floor(idade / anosPorLetra);
+      const arcanoRegente = piramide[0][faseAtual] || piramide[piramide.length - 1][0];
+      
+      return {
+        piramide,
+        arcanoRegente: reduzirParaArcano(arcanoRegente),
+        idade,
+        faseAtual,
+        anosPorLetra
+      };
+    }
+
+    function verificarNumerosEspeciais(numeros) {
+      const especiais = {};
+      
+      for (let [tipo, numero] of Object.entries(numeros)) {
+        especiais[tipo] = {
+          ehMestre: NUMEROS_MESTRES.includes(numero),
+          ehKarmico: NUMEROS_KARMICOS.includes(numero)
+        };
+      }
+      
+      return especiais;
+    }
+
+    // Funções de Renderização
+    function renderNumeroCard(numero, nome, descricao, especiais, tipo) {
+      const ehMestre = especiais[tipo]?.ehMestre || false;
+      const ehKarmico = especiais[tipo]?.ehKarmico || false;
+      
+      let badge = '';
+      if (ehMestre) {
+        badge = '<div class="numero-especial">Mestre</div>';
+      } else if (ehKarmico) {
+        badge = '<div class="numero-especial karmico">Kármico</div>';
+      }
+      
+      return `
+        <div class="numero-card">
+          <div class="numero-valor">${numero}</div>
+          <div class="numero-nome">${nome}</div>
+          <div class="numero-desc">${descricao}</div>
+          ${badge}
+        </div>
+      `;
+    }
+
+    function renderArcanoCard(numero, titulo, descricao) {
+      const nomeArcano = ARCANOS_MAIORES[numero] || 'Desconhecido';
+      const imagemSrc = IMAGENS_ARCANOS[numero] || IMAGENS_ARCANOS[0];
+      
+      return `
+        <div class="arcano-card">
+          <img src="${imagemSrc}" alt="${nomeArcano}" class="arcano-imagem" 
+               onerror="this.style.display='none'" loading="lazy">
+          <div class="arcano-info">
+            <div class="arcano-numero">${numero}</div>
+            <div class="arcano-titulo">${titulo}</div>
+            <div class="arcano-nome">${nomeArcano}</div>
+            <div class="arcano-desc">${descricao}</div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderPiramide(piramideData) {
+      if (!piramideData) {
+        return '<div class="loading">🔮 Pirâmide cabalística disponível apenas no sistema cabalístico.</div>';
+      }
+      
+      const { piramide, arcanoRegente, idade, anosPorLetra } = piramideData;
+      
+      let html = '<div class="piramide-visual">';
+      
+      piramide.forEach((linha, index) => {
+        html += '<div class="piramide-linha">';
+        linha.forEach(numero => {
+          const isRegente = numero === arcanoRegente;
+          const classe = isRegente ? 'piramide-numero regente' : 'piramide-numero';
+          html += `<div class="${classe}" title="Arcano ${numero}: ${ARCANOS_MAIORES[numero]}">${numero}</div>`;
+        });
+        html += '</div>';
+      });
+      
+      html += '</div>';
+      
+      html += `
+        <div style="text-align: center; margin-top: 20px; padding: 20px; background: rgba(242, 234, 255, 0.1); border: 1px solid var(--sage);">
+          <h4 style="color: var(--gold); margin-bottom: 12px; font-family: 'Cinzel', serif;">🔮 Arcano Regente Atual</h4>
+          <p style="font-size: 18px; color: var(--sage); margin-bottom: 8px; font-weight: 600;">${ARCANOS_MAIORES[arcanoRegente]}</p>
+          <p style="margin-bottom: 4px;"><strong>Idade:</strong> ${idade} anos</p>
+          <p style="margin-bottom: 4px;"><strong>Ciclo:</strong> Cada letra rege ${anosPorLetra} anos de vida</p>
+          <p style="font-style: italic; opacity: 0.9;">Este arcano rege sua fase atual de vida, trazendo suas energias e lições específicas.</p>
+        </div>
+      `;
+      
+      return html;
+    }
+
+    // Compatibilidade Amorosa
+    function calcularCompatibilidadeNumerica(perfil1, perfil2) {
+      const scores = {
+        alma: calcularScoreCompatibilidade(perfil1.numeros.alma, perfil2.numeros.alma),
+        personalidade: calcularScoreCompatibilidade(perfil1.numeros.personalidade, perfil2.numeros.personalidade),
+        expressao: calcularScoreCompatibilidade(perfil1.numeros.expressao, perfil2.numeros.expressao),
+        destino: calcularScoreCompatibilidade(perfil1.numeros.destino, perfil2.numeros.destino)
+      };
+      
+      const scoreGeral = Math.round(
+        (scores.alma * 0.3) + 
+        (scores.personalidade * 0.25) + 
+        (scores.expressao * 0.25) + 
+        (scores.destino * 0.2)
+      );
+      
+      return {
+        scoreGeral,
+        scores,
+        perfil1,
+        perfil2,
+        analise: gerarAnaliseCompatibilidade(scoreGeral, scores)
+      };
+    }
+
+    function calcularScoreCompatibilidade(num1, num2) {
+      const diferenca = Math.abs(num1 - num2);
+      
+      if (diferenca === 0) return 100;
+      if (diferenca === 1) return 85;
+      if (diferenca === 2) return 70;
+      if (diferenca === 3) return 60;
+      if (diferenca === 4) return 50;
+      if (diferenca === 5) return 40;
+      return 30;
+    }
+
+    function gerarAnaliseCompatibilidade(scoreGeral, scores) {
+      let resumo = '';
+      let pontosFavoraveis = [];
+      let desafios = [];
+      let conselhos = [];
+      
+      if (scoreGeral >= 80) {
+        resumo = 'Compatibilidade excelente! Vocês têm uma conexão natural muito forte.';
+        pontosFavoraveis.push('Harmonia natural entre personalidades');
+        pontosFavoraveis.push('Objetivos de vida alinhados');
+        conselhos.push('Mantenham a comunicação aberta');
+        conselhos.push('Celebrem suas semelhanças');
+      } else if (scoreGeral >= 60) {
+        resumo = 'Boa compatibilidade com potencial para crescimento mútuo.';
+        pontosFavoraveis.push('Base sólida para relacionamento');
+        desafios.push('Algumas diferenças a serem trabalhadas');
+        conselhos.push('Pratiquem a paciência e compreensão');
+        conselhos.push('Vejam as diferenças como oportunidades de crescimento');
+      } else if (scoreGeral >= 40) {
+        resumo = 'Compatibilidade moderada que requer esforço de ambas as partes.';
+        desafios.push('Diferenças significativas de personalidade');
+        desafios.push('Necessidade de maior comunicação');
+        conselhos.push('Invistam tempo em se conhecer melhor');
+        conselhos.push('Busquem pontos em comum');
+      } else {
+        resumo = 'Compatibilidade desafiadora que exige muito trabalho e compreensão.';
+        desafios.push('Personalidades muito diferentes');
+        desafios.push('Objetivos de vida distintos');
+        conselhos.push('Considerem se os desafios valem o esforço');
+        conselhos.push('Busquem ajuda profissional se necessário');
+      }
+      
+      return {
+        resumo,
+        pontosFavoraveis,
+        desafios,
+        conselhos,
+        areas: {
+          emocional: { titulo: 'Conexão Emocional', score: scores.alma },
+          social: { titulo: 'Harmonia Social', score: scores.personalidade },
+          criativa: { titulo: 'Expressão Criativa', score: scores.expressao },
+          proposito: { titulo: 'Propósito Compartilhado', score: scores.destino }
+        }
+      };
+    }
+
+    function renderCompatibilidade(compatData) {
+      const { scoreGeral, scores, analise, perfil1, perfil2 } = compatData;
+      
+      return `
+        <div class="card">
+          <div class="card-ornament top-left"></div>
+          <div class="card-ornament top-right"></div>
+          <div class="card-ornament bottom-left"></div>
+          <div class="card-ornament bottom-right"></div>
+          
+          <div class="score-circle">${scoreGeral}%</div>
+          <h3 class="section-title">Análise de Compatibilidade</h3>
+          <p style="text-align: center; font-size: 18px; margin-bottom: 32px; color: var(--sage); font-style: italic;">${analise.resumo}</p>
+          
+          <div class="grid cols-2">
+            <div class="perfil-resumo">
+              <div class="perfil-nome">${perfil1.info.nome}</div>
+              <div class="perfil-numeros">
+                <div class="perfil-numero">
+                  <span>Alma:</span>
+                  <span style="color: var(--gold); font-weight: 600;">${perfil1.numeros.alma}</span>
+                </div>
+                <div class="perfil-numero">
+                  <span>Personalidade:</span>
+                  <span style="color: var(--gold); font-weight: 600;">${perfil1.numeros.personalidade}</span>
+                </div>
+                <div class="perfil-numero">
+                  <span>Expressão:</span>
+                  <span style="color: var(--gold); font-weight: 600;">${perfil1.numeros.expressao}</span>
+                </div>
+                <div class="perfil-numero">
+                  <span>Destino:</span>
+                  <span style="color: var(--gold); font-weight: 600;">${perfil1.numeros.destino}</span>
+                </div>
+              </div>
+            </div>
+            <div class="perfil-resumo">
+              <div class="perfil-nome">${perfil2.info.nome}</div>
+              <div class="perfil-numeros">
+                <div class="perfil-numero">
+                  <span>Alma:</span>
+                  <span style="color: var(--gold); font-weight: 600;">${perfil2.numeros.alma}</span>
+                </div>
+                <div class="perfil-numero">
+                  <span>Personalidade:</span>
+                  <span style="color: var(--gold); font-weight: 600;">${perfil2.numeros.personalidade}</span>
+                </div>
+                <div class="perfil-numero">
+                  <span>Expressão:</span>
+                  <span style="color: var(--gold); font-weight: 600;">${perfil2.numeros.expressao}</span>
+                </div>
+                <div class="perfil-numero">
+                  <span>Destino:</span>
+                  <span style="color: var(--gold); font-weight: 600;">${perfil2.numeros.destino}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="score-detalhado">
+            <h4 style="color: var(--gold); margin-bottom: 16px; font-family: 'Cinzel', serif; text-align: center;">📊 Análise Detalhada por Área</h4>
+            ${Object.entries(analise.areas).map(([key, area]) => `
+              <div class="score-item">
+                <span>${area.titulo}:</span>
+                <span class="score-valor">${area.score}%</span>
+              </div>
+            `).join('')}
+          </div>
+          
+          ${analise.pontosFavoraveis.length > 0 ? `
+            <div style="margin: 24px 0;">
+              <h4 style="color: var(--sage); margin-bottom: 12px; font-family: 'Cinzel', serif;">✅ Pontos Favoráveis</h4>
+              <ul style="color: var(--parch); line-height: 1.6;">
+                ${analise.pontosFavoraveis.map(ponto => `<li>${ponto}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+          
+          ${analise.desafios.length > 0 ? `
+            <div style="margin: 24px 0;">
+              <h4 style="color: var(--gold); margin-bottom: 12px; font-family: 'Cinzel', serif;">⚠️ Desafios a Superar</h4>
+              <ul style="color: var(--parch); line-height: 1.6;">
+                ${analise.desafios.map(desafio => `<li>${desafio}</li>`).join('')}
+              </ul>
+            </div>
+          ` : ''}
+          
+          <div style="margin: 24px 0;">
+            <h4 style="color: var(--sage); margin-bottom: 12px; font-family: 'Cinzel', serif;">💡 Conselhos para o Relacionamento</h4>
+            <ul style="color: var(--parch); line-height: 1.6;">
+              ${analise.conselhos.map(conselho => `<li>${conselho}</li>`).join('')}
+            </ul>
+          </div>
+        </div>
+      `;
+    }
+
+    // Funções Principais
+    function calcularMapa(event) {
+      event.preventDefault();
+      
+      try {
+        const nome = document.getElementById('nome-mapa').value.trim();
+        const data = document.getElementById('data-mapa').value;
+        const tabela = document.getElementById('sistema-mapa').value;
+        
+        if (!nome || !data) {
+          mostrarErro('Por favor, preencha todos os campos.');
+          return;
+        }
+        
+        mostrarCarregamento();
+        
+        // Calcular todos os números
+        const numeros = calcularNumerosFundamentais(nome, data, tabela);
+        const arcanos = calcularArcanosTemporais(numeros.destino, data);
+        const piramide = construirPiramideCabalistica(nome, data, tabela);
+        const especiais = verificarNumerosEspeciais(numeros);
+        
+        // Renderizar resultados
+        renderResultados({
+          info: { nome, data, tabela },
+          numeros,
+          arcanos,
+          piramide,
+          especiais
+        });
+        
+      } catch (error) {
+        console.error('Erro ao calcular mapa:', error);
+        mostrarErro('Erro ao calcular o mapa numerológico. Tente novamente.');
+      }
+    }
+
+    function calcularCompatibilidade(event) {
+      event.preventDefault();
+      
+      try {
+        const nome1 = document.getElementById('nome1').value.trim();
+        const data1 = document.getElementById('data1').value;
+        const nome2 = document.getElementById('nome2').value.trim();
+        const data2 = document.getElementById('data2').value;
+        const tabela = document.getElementById('sistema-compat').value;
+        
+        if (!nome1 || !data1 || !nome2 || !data2) {
+          mostrarErroCompatibilidade('Por favor, preencha todos os campos.');
+          return;
+        }
+        
+        mostrarCarregamentoCompatibilidade();
+        
+        // Calcular perfis
+        const perfil1 = {
+          info: { nome: nome1, data: data1, tabela },
+          numeros: calcularNumerosFundamentais(nome1, data1, tabela)
+        };
+        
+        const perfil2 = {
+          info: { nome: nome2, data: data2, tabela },
+          numeros: calcularNumerosFundamentais(nome2, data2, tabela)
+        };
+        
+        // Calcular compatibilidade
+        const compatibilidade = calcularCompatibilidadeNumerica(perfil1, perfil2);
+        
+        // Renderizar resultado
+        renderResultadoCompatibilidade(compatibilidade);
+        
+      } catch (error) {
+        console.error('Erro ao calcular compatibilidade:', error);
+        mostrarErroCompatibilidade('Erro ao calcular a compatibilidade. Tente novamente.');
+      }
+    }
+
+    function renderResultados(perfil) {
+      const { numeros, arcanos, piramide, especiais } = perfil;
+      
+      // Criar HTML completo dos resultados
+      const resultadosHTML = `
+        <!-- Números Fundamentais -->
+        <div class="card">
+          <div class="card-ornament top-left"></div>
+          <div class="card-ornament top-right"></div>
+          <div class="card-ornament bottom-left"></div>
+          <div class="card-ornament bottom-right"></div>
+          <h3 class="section-title">Números Fundamentais</h3>
+          <div class="grid cols-3">
+            ${renderNumeroCard(numeros.alma, 'Alma', 'Motivação interior e desejos profundos', especiais, 'alma')}
+            ${renderNumeroCard(numeros.personalidade, 'Personalidade', 'Como os outros te veem', especiais, 'personalidade')}
+            ${renderNumeroCard(numeros.expressao, 'Expressão', 'Seus talentos e habilidades naturais', especiais, 'expressao')}
+            ${renderNumeroCard(numeros.destino, 'Destino', 'Seu propósito de vida e missão', especiais, 'destino')}
+            ${renderNumeroCard(numeros.maturidade, 'Maturidade', 'Energia que se manifesta após os 35 anos', especiais, 'maturidade')}
+            ${renderNumeroCard(numeros.equilibrio, 'Equilíbrio', 'Como encontrar harmonia interior', especiais, 'equilibrio')}
+          </div>
+        </div>
+
+        <!-- Arcanos Temporais -->
+        <div class="card">
+          <div class="card-ornament top-left"></div>
+          <div class="card-ornament top-right"></div>
+          <div class="card-ornament bottom-left"></div>
+          <div class="card-ornament bottom-right"></div>
+          <h3 class="section-title">Arcanos Temporais</h3>
+          <div class="grid cols-2">
+            ${renderArcanoCard(arcanos.pessoal, 'Arcano Pessoal', 'Seu guia espiritual permanente, a essência de sua alma')}
+            ${renderArcanoCard(arcanos.ano, 'Arcano do Ano', 'A energia que rege todo o seu ano atual')}
+            ${renderArcanoCard(arcanos.mes, 'Arcano do Mês', 'A vibração predominante do mês atual')}
+            ${renderArcanoCard(arcanos.semana, 'Arcano da Semana', 'Os aprendizados e desafios da semana')}
+            ${renderArcanoCard(arcanos.dia, 'Arcano do Dia', 'A atmosfera espiritual que rege este dia específico')}
+          </div>
+        </div>
+
+        <!-- Pirâmide Cabalística -->
+        <div class="card">
+          <div class="card-ornament top-left"></div>
+          <div class="card-ornament top-right"></div>
+          <div class="card-ornament bottom-left"></div>
+          <div class="card-ornament bottom-right"></div>
+          <h3 class="section-title">Pirâmide Cabalística</h3>
+          ${renderPiramide(piramide)}
+        </div>
+      `;
+      
+      // Inserir no DOM
+      document.getElementById('resultados-mapa').innerHTML = resultadosHTML;
+      
+      // Mostrar resultados
+      const resultados = document.getElementById('resultados-mapa');
+      resultados.classList.add('show');
+      
+      // Scroll suave
+      resultados.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function renderResultadoCompatibilidade(compatData) {
+      document.getElementById('resultados-compatibilidade').innerHTML = renderCompatibilidade(compatData);
+      
+      const resultado = document.getElementById('resultados-compatibilidade');
+      resultado.classList.add('show');
+      
+      resultado.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Funções de UI
+    function mostrarSecao(secaoId) {
+      // Ocultar todas as seções
+      document.querySelectorAll('.section').forEach(secao => {
+        secao.classList.remove('active');
+      });
+      
+      // Mostrar seção ativa
+      document.getElementById(secaoId).classList.add('active');
+      
+      // Atualizar botões de tab
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      
+      event.target.classList.add('active');
+    }
+
+    function mostrarCarregamento() {
+      document.getElementById('resultados-mapa').innerHTML = 
+        '<div class="loading">🔮 Revelando os mistérios de sua numerologia...</div>';
+      document.getElementById('resultados-mapa').classList.add('show');
+    }
+
+    function mostrarCarregamentoCompatibilidade() {
+      document.getElementById('resultados-compatibilidade').innerHTML = 
+        '<div class="loading">💕 Analisando a harmonia entre as almas...</div>';
+      document.getElementById('resultados-compatibilidade').classList.add('show');
+    }
+
+    function mostrarErro(mensagem) {
+      document.getElementById('resultados-mapa').innerHTML = 
+        `<div class="error">${mensagem}</div>`;
+      document.getElementById('resultados-mapa').classList.add('show');
+    }
+
+    function mostrarErroCompatibilidade(mensagem) {
+      document.getElementById('resultados-compatibilidade').innerHTML = 
+        `<div class="error">${mensagem}</div>`;
+      document.getElementById('resultados-compatibilidade').classList.add('show');
+    }
+
+    // Funções de exemplo e limpeza
+    function exemploMapa() {
+      document.getElementById('nome-mapa').value = 'Maria Silva Santos';
+      document.getElementById('data-mapa').value = '1990-05-15';
+      document.getElementById('sistema-mapa').value = 'pitagorica';
+    }
+
+    function limparMapa() {
+      document.getElementById('form-mapa').reset();
+      document.getElementById('resultados-mapa').classList.remove('show');
+    }
+
+    function exemploCompatibilidade() {
+      document.getElementById('nome1').value = 'João Silva';
+      document.getElementById('data1').value = '1988-03-20';
+      document.getElementById('nome2').value = 'Maria Santos';
+      document.getElementById('data2').value = '1990-07-15';
+      document.getElementById('sistema-compat').value = 'pitagorica';
+    }
+
+    function limparCompatibilidade() {
+      document.getElementById('form-compatibilidade').reset();
+      document.getElementById('resultados-compatibilidade').classList.remove('show');
+    }
+
+    // Inicialização
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🌟 Aurora Sagrada - Sistema Numerológico Completo carregado!');
+    });
+  </script>
+</body>
+</html>
+

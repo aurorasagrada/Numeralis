@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Avançada Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Alice:wght@400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cor-primaria: #3e0a29;
+            --cor-secundaria: #b2d1b1;
+            --cor-terciaria: #0b1836;
+            --cor-acento: #f0aa53;
+            --cor-fundo: #f2eaff;
+            --cor-texto: #2c1810;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, var(--cor-fundo) 0%, #e8d5f0 100%);
+            color: var(--cor-texto);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-terciaria) 100%);
+            border-radius: 20px;
+            color: var(--cor-fundo);
+            box-shadow: 0 10px 30px rgba(62, 10, 41, 0.3);
+        }
+
+        .header h1 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid var(--cor-secundaria);
+        }
+
+        .card h2 {
+            font-family: 'Cinzel Decorative', serif;
+            color: var(--cor-primaria);
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--cor-primaria);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--cor-secundaria);
+            border-radius: 10px;
+            font-family: 'Alice', serif;
+            font-size: 1em;
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--cor-primaria) 0%, var(--cor-terciaria) 100%);
+            color: var(--cor-fundo);
+            border: none;
+            padding: 15px 25px;
+            border-radius: 15px;
+            font-family: 'Alice', serif;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(62, 10, 41, 0.5);
+        }
+
+        .resultado {
+            background: linear-gradient(135deg, var(--cor-fundo) 0%, #e8d5f0 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            border: 2px solid var(--cor-acento);
+            display: none;
+        }
+
+        .resultado.show {
+            display: block;
+        }
+
+        .numero-destaque {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--cor-acento);
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .arcano-info {
+            background: var(--cor-primaria);
+            color: var(--cor-fundo);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        .piramide-visual {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .piramide-linha {
+            margin: 8px 0;
+        }
+
+        .piramide-numero {
+            display: inline-block;
+            background: var(--cor-acento);
+            color: var(--cor-primaria);
+            padding: 8px 12px;
+            margin: 0 3px;
+            border-radius: 50%;
+            min-width: 35px;
+            font-weight: bold;
+        }
+
+        .compatibilidade-resultado {
+            background: linear-gradient(135deg, var(--cor-secundaria) 0%, #9bc49b 100%);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 15px 0;
+            color: var(--cor-primaria);
+        }
+
+        .score-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--cor-acento);
+            color: var(--cor-primaria);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 auto 15px;
+        }
+
+        .full-width {
+            grid-column: 1 / -1;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            background: var(--cor-secundaria);
+            color: var(--cor-primaria);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Alice', serif;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: var(--cor-acento);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌟 Calculadora Avançada Aurora Sagrada 🌟</h1>
+            <p>Sistema completo de numerologia, arcanos e compatibilidade</p>
+        </div>
+
+        <div class="main-grid">
+            <!-- Calculadora Numerológica -->
+            <div class="card">
+                <h2>🔢 Numerologia Completa</h2>
+                <div class="form-group">
+                    <label for="nome-num">Nome Completo:</label>
+                    <input type="text" id="nome-num" placeholder="Digite seu nome completo">
+                </div>
+                <div class="form-group">
+                    <label for="data-num">Data de Nascimento:</label>
+                    <input type="date" id="data-num">
+                </div>
+                <button class="btn" onclick="calcularNumerologiaCompleta()">✨ Calcular Numerologia</button>
+                
+                <div id="resultado-numerologia" class="resultado">
+                    <div id="numeros-principais"></div>
+                </div>
+            </div>
+
+            <!-- Pirâmide Cabalística -->
+            <div class="card">
+                <h2>🔺 Pirâmide Cabalística</h2>
+                <div class="form-group">
+                    <label for="nome-piramide">Nome de Batismo:</label>
+                    <input type="text" id="nome-piramide" placeholder="Nome completo sem abreviações">
+                </div>
+                <div class="form-group">
+                    <label for="idade-piramide">Idade Atual:</label>
+                    <input type="number" id="idade-piramide" placeholder="Sua idade">
+                </div>
+                <button class="btn" onclick="calcularPiramideCompleta()">🔺 Construir Pirâmide</button>
+                
+                <div id="resultado-piramide-completa" class="resultado">
+                    <div id="piramide-display"></div>
+                    <div id="arcano-regente-info"></div>
+                </div>
+            </div>
+
+            <!-- Arcanos Temporais -->
+            <div class="card">
+                <h2>🌟 Arcanos Temporais</h2>
+                <div class="form-group">
+                    <label for="data-nasc-arcanos">Data de Nascimento:</label>
+                    <input type="date" id="data-nasc-arcanos">
+                </div>
+                <div class="form-group">
+                    <label for="data-consulta">Data para Consulta:</label>
+                    <input type="date" id="data-consulta">
+                </div>
+                <button class="btn" onclick="calcularArcanosCompletos()">🌟 Calcular Arcanos</button>
+                
+                <div id="resultado-arcanos-completos" class="resultado">
+                    <div id="arcanos-temporais"></div>
+                </div>
+            </div>
+
+            <!-- Compatibilidade Amorosa -->
+            <div class="card">
+                <h2>💕 Compatibilidade Amorosa</h2>
+                <div class="form-group">
+                    <label for="nome1">Primeiro Nome:</label>
+                    <input type="text" id="nome1" placeholder="Nome da primeira pessoa">
+                </div>
+                <div class="form-group">
+                    <label for="data1">Data de Nascimento:</label>
+                    <input type="date" id="data1">
+                </div>
+                <div class="form-group">
+                    <label for="nome2">Segundo Nome:</label>
+                    <input type="text" id="nome2" placeholder="Nome da segunda pessoa">
+                </div>
+                <div class="form-group">
+                    <label for="data2">Data de Nascimento:</label>
+                    <input type="date" id="data2">
+                </div>
+                <button class="btn" onclick="calcularCompatibilidade()">💕 Analisar Compatibilidade</button>
+                
+                <div id="resultado-compatibilidade" class="resultado">
+                    <div id="compatibilidade-display"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seção de Interpretações Detalhadas -->
+        <div class="card full-width">
+            <h2>🔮 Interpretações Detalhadas</h2>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="mostrarTab('ciclos90')">Ciclos de 90 Anos</button>
+                <button class="tab-btn" onclick="mostrarTab('significados')">Significados dos Números</button>
+                <button class="tab-btn" onclick="mostrarTab('arcanos')">Arcanos Maiores</button>
+            </div>
+
+            <div id="ciclos90" class="tab-content active">
+                <div id="interpretacao-ciclos"></div>
+            </div>
+
+            <div id="significados" class="tab-content">
+                <div id="interpretacao-numeros"></div>
+            </div>
+
+            <div id="arcanos" class="tab-content">
+                <div id="interpretacao-arcanos"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="base_dados_ciclos_90_corrigida.js"></script>
+    <script>
+        // Carregar dados de compatibilidade
+        let combinacoesAmorosas = {};
+        
+        fetch('completar_combinacoes_amorosas.json')
+            .then(response => response.json())
+            .then(data => {
+                // Processar dados de compatibilidade
+                data.results.forEach(item => {
+                    if (item.output && item.output.combinacao_completa) {
+                        try {
+                            const combinacao = JSON.parse(item.output.combinacao_completa);
+                            const chave = item.input;
+                            combinacoesAmorosas[chave] = combinacao[chave] || combinacao;
+                        } catch (e) {
+                            console.log('Erro ao processar:', item.input);
+                        }
+                    }
+                });
+            })
+            .catch(error => console.log('Erro ao carregar compatibilidade:', error));
+
+        // Tabelas de conversão
+        const tabelaPitagorica = {
+            'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+            'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 6, 'P': 7, 'Q': 8, 'R': 9,
+            'S': 1, 'T': 2, 'U': 3, 'V': 4, 'W': 5, 'X': 6, 'Y': 7, 'Z': 8
+        };
+
+        const tabelaCabalistica = {
+            'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+            'J': 10, 'K': 11, 'L': 12, 'M': 13, 'N': 14, 'O': 15, 'P': 16, 'Q': 17, 'R': 18,
+            'S': 19, 'T': 20, 'U': 21, 'V': 22, 'W': 23, 'X': 24, 'Y': 25, 'Z': 26
+        };
+
+        const arcanosMaiores = {
+            0: "O Louco", 1: "O Mago", 2: "A Sacerdotisa", 3: "A Imperatriz", 4: "O Imperador",
+            5: "O Papa", 6: "Os Enamorados", 7: "O Carro", 8: "A Justiça", 9: "O Eremita",
+            10: "A Roda da Fortuna", 11: "A Força", 12: "O Enforcado", 13: "A Morte",
+            14: "A Temperança", 15: "O Diabo", 16: "A Torre", 17: "A Estrela",
+            18: "A Lua", 19: "O Sol", 20: "O Julgamento", 21: "O Mundo", 22: "O Louco"
+        };
+
+        // Funções auxiliares
+        function reduzirNumero(numero) {
+            while (numero > 9 && numero !== 11 && numero !== 22 && numero !== 33) {
+                numero = numero.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+            }
+            return numero;
+        }
+
+        function reduzirParaArcano(numero) {
+            while (numero > 22) {
+                numero = numero.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+            }
+            return numero === 0 ? 22 : numero;
+        }
+
+        function calcularComTabelaPitagorica(texto) {
+            return texto.toUpperCase().split('').reduce((soma, letra) => {
+                return soma + (tabelaPitagorica[letra] || 0);
+            }, 0);
+        }
+
+        function calcularComTabelaCabalistica(texto) {
+            return texto.toUpperCase().split('').map(letra => tabelaCabalistica[letra] || 0);
+        }
+
+        // Função principal de numerologia
+        function calcularNumerologiaCompleta() {
+            const nome = document.getElementById('nome-num').value.trim();
+            const dataNascimento = document.getElementById('data-num').value;
+            
+            if (!nome || !dataNascimento) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Separar vogais e consoantes
+            const vogais = nome.replace(/[^AEIOUÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙÃÕ]/gi, '');
+            const consoantes = nome.replace(/[AEIOUÁÉÍÓÚÂÊÎÔÛÀÈÌÒÙÃÕ\s]/gi, '');
+            
+            // Calcular números principais
+            const numeroAlma = reduzirNumero(calcularComTabelaPitagorica(vogais));
+            const numeroPersonalidade = reduzirNumero(calcularComTabelaPitagorica(consoantes));
+            const numeroExpressao = reduzirNumero(calcularComTabelaPitagorica(nome.replace(/\s/g, '')));
+            const numeroDestino = reduzirNumero(calcularNumeroDestino(dataNascimento));
+            const anoAtual = new Date().getFullYear();
+            const anoPessoal = calcularAnoPessoal(dataNascimento, anoAtual);
+            
+            // Exibir resultados
+            const resultadoDiv = document.getElementById('resultado-numerologia');
+            const numerosDiv = document.getElementById('numeros-principais');
+            
+            numerosDiv.innerHTML = `
+                <div class="arcano-info">
+                    <div class="numero-destaque">${numeroAlma}</div>
+                    <h4>Número da Alma</h4>
+                    <p>Sua motivação interior e desejos mais profundos</p>
+                </div>
+                
+                <div class="arcano-info">
+                    <div class="numero-destaque">${numeroPersonalidade}</div>
+                    <h4>Número da Personalidade</h4>
+                    <p>Como os outros te veem e sua impressão exterior</p>
+                </div>
+                
+                <div class="arcano-info">
+                    <div class="numero-destaque">${numeroExpressao}</div>
+                    <h4>Número da Expressão</h4>
+                    <p>Seus talentos naturais e forma de se expressar</p>
+                </div>
+                
+                <div class="arcano-info">
+                    <div class="numero-destaque">${numeroDestino}</div>
+                    <h4>Número do Destino</h4>
+                    <p>Seu propósito de vida e lições a aprender</p>
+                </div>
+                
+                <div class="arcano-info">
+                    <div class="numero-destaque">${anoPessoal}</div>
+                    <h4>Ano Pessoal ${anoAtual}</h4>
+                    <p>A energia que rege seu ano atual</p>
+                </div>
+            `;
+            
+            resultadoDiv.classList.add('show');
+        }
+
+        // Função para calcular pirâmide cabalística
+        function calcularPiramideCompleta() {
+            const nome = document.getElementById('nome-piramide').value.trim().replace(/\s/g, '');
+            const idade = parseInt(document.getElementById('idade-piramide').value);
+            
+            if (!nome || !idade) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Converter nome para números cabalísticos
+            const numerosCabalisticos = calcularComTabelaCabalistica(nome);
+            
+            // Construir pirâmide
+            const piramide = construirPiramide(numerosCabalisticos);
+            
+            // Calcular arcano regente
+            const numArcanos = numerosCabalisticos.length;
+            const periodoArcano = Math.round(90 / numArcanos);
+            const posicaoAtual = Math.ceil(idade / periodoArcano);
+            
+            // Encontrar arcano na posição calculada
+            let contador = 0;
+            let arcanoRegente = 0;
+            
+            for (let linha of piramide) {
+                for (let numero of linha) {
+                    contador++;
+                    if (contador === posicaoAtual) {
+                        arcanoRegente = reduzirParaArcano(numero);
+                        break;
+                    }
+                }
+                if (arcanoRegente > 0) break;
+            }
+            
+            // Exibir resultados
+            exibirPiramideCompleta(piramide, arcanoRegente, numArcanos, periodoArcano, posicaoAtual, idade);
+        }
+
+        function construirPiramide(numeros) {
+            const piramide = [numeros];
+            let linhaAtual = numeros;
+            
+            while (linhaAtual.length > 1) {
+                const novaLinha = [];
+                for (let i = 0; i < linhaAtual.length - 1; i++) {
+                    const soma = linhaAtual[i] + linhaAtual[i + 1];
+                    novaLinha.push(reduzirParaArcano(soma));
+                }
+                piramide.push(novaLinha);
+                linhaAtual = novaLinha;
+            }
+            
+            return piramide;
+        }
+
+        function exibirPiramideCompleta(piramide, arcanoRegente, numArcanos, periodoArcano, posicaoAtual, idade) {
+            const resultadoDiv = document.getElementById('resultado-piramide-completa');
+            const piramideDiv = document.getElementById('piramide-display');
+            const arcanoDiv = document.getElementById('arcano-regente-info');
+            
+            let piramideHTML = '<div class="piramide-visual"><h4>Sua Pirâmide Cabalística</h4>';
+            piramide.forEach((linha, index) => {
+                piramideHTML += '<div class="piramide-linha">';
+                linha.forEach(numero => {
+                    piramideHTML += `<span class="piramide-numero">${numero}</span>`;
+                });
+                piramideHTML += '</div>';
+            });
+            piramideHTML += '</div>';
+            
+            piramideDiv.innerHTML = piramideHTML;
+            
+            // Buscar interpretação do arcano nos ciclos de 90 anos
+            let interpretacao = '';
+            if (textosCiclos90Anos && textosCiclos90Anos[arcanoRegente]) {
+                const dados = textosCiclos90Anos[arcanoRegente];
+                interpretacao = `
+                    <h4>${dados.titulo}</h4>
+                    <p><em>${dados.subtitulo}</em></p>
+                    <p><strong>Síntese:</strong> ${dados.sintese}</p>
+                `;
+            }
+            
+            arcanoDiv.innerHTML = `
+                <div class="arcano-info">
+                    <div class="numero-destaque">${arcanoRegente}</div>
+                    <h4>Arcano Regente: ${arcanosMaiores[arcanoRegente]}</h4>
+                    <p><strong>Arcanos Pessoais:</strong> ${numArcanos}</p>
+                    <p><strong>Período de cada Arcano:</strong> ${periodoArcano} anos</p>
+                    <p><strong>Posição Atual:</strong> ${posicaoAtual}º Arcano (${idade} anos)</p>
+                    ${interpretacao}
+                </div>
+            `;
+            
+            resultadoDiv.classList.add('show');
+        }
+
+        // Função para calcular arcanos temporais
+        function calcularArcanosCompletos() {
+            const dataNascimento = document.getElementById('data-nasc-arcanos').value;
+            const dataConsulta = document.getElementById('data-consulta').value;
+            
+            if (!dataNascimento || !dataConsulta) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Calcular todos os arcanos
+            const arcanoPessoal = calcularArcanoPessoal(dataNascimento);
+            const arcanoAno = calcularArcanoAno(dataNascimento, dataConsulta);
+            const arcanoMes = calcularArcanoMes(arcanoAno, dataConsulta);
+            const arcanoSemana = calcularArcanoSemana(dataConsulta);
+            const arcanoDia = calcularArcanoDia(dataConsulta);
+            
+            // Exibir resultados
+            exibirArcanosCompletos(arcanoPessoal, arcanoAno, arcanoMes, arcanoSemana, arcanoDia);
+        }
+
+        function calcularArcanoPessoal(dataNascimento) {
+            const [ano, mes, dia] = dataNascimento.split('-').map(Number);
+            const soma = dia + mes + ano;
+            return reduzirParaArcano(reduzirNumero(soma));
+        }
+
+        function calcularArcanoAno(dataNascimento, dataConsulta) {
+            const [anoNasc, mesNasc, diaNasc] = dataNascimento.split('-').map(Number);
+            const anoConsulta = parseInt(dataConsulta.split('-')[0]);
+            const soma = diaNasc + mesNasc + anoConsulta;
+            return reduzirParaArcano(reduzirNumero(soma));
+        }
+
+        function calcularArcanoMes(arcanoAno, dataConsulta) {
+            const mes = parseInt(dataConsulta.split('-')[1]);
+            const soma = arcanoAno + mes;
+            return reduzirParaArcano(reduzirNumero(soma));
+        }
+
+        function calcularArcanoSemana(dataConsulta) {
+            const data = new Date(dataConsulta);
+            const inicioAno = new Date(data.getFullYear(), 0, 1);
+            const diasPassados = Math.floor((data - inicioAno) / (24 * 60 * 60 * 1000));
+            const semana = Math.ceil(diasPassados / 7);
+            return reduzirParaArcano(reduzirNumero(semana));
+        }
+
+        function calcularArcanoDia(dataConsulta) {
+            const [ano, mes, dia] = dataConsulta.split('-').map(Number);
+            const soma = dia + mes + ano;
+            return reduzirParaArcano(reduzirNumero(soma));
+        }
+
+        function exibirArcanosCompletos(pessoal, ano, mes, semana, dia) {
+            const resultadoDiv = document.getElementById('resultado-arcanos-completos');
+            const arcanosDiv = document.getElementById('arcanos-temporais');
+            
+            arcanosDiv.innerHTML = `
+                <div class="arcano-info">
+                    <div class="numero-destaque">${pessoal}</div>
+                    <h4>Arcano Pessoal</h4>
+                    <p>${arcanosMaiores[pessoal]} - Seu guia espiritual permanente</p>
+                </div>
+                
+                <div class="arcano-info">
+                    <div class="numero-destaque">${ano}</div>
+                    <h4>Arcano do Ano</h4>
+                    <p>${arcanosMaiores[ano]} - Energia que rege todo o ano</p>
+                </div>
+                
+                <div class="arcano-info">
+                    <div class="numero-destaque">${mes}</div>
+                    <h4>Arcano do Mês</h4>
+                    <p>${arcanosMaiores[mes]} - Vibração predominante do mês</p>
+                </div>
+                
+                <div class="arcano-info">
+                    <div class="numero-destaque">${semana}</div>
+                    <h4>Arcano da Semana</h4>
+                    <p>${arcanosMaiores[semana]} - Aprendizados semanais</p>
+                </div>
+                
+                <div class="arcano-info">
+                    <div class="numero-destaque">${dia}</div>
+                    <h4>Arcano do Dia</h4>
+                    <p>${arcanosMaiores[dia]} - Atmosfera espiritual do dia</p>
+                </div>
+            `;
+            
+            resultadoDiv.classList.add('show');
+        }
+
+        // Função para calcular compatibilidade
+        function calcularCompatibilidade() {
+            const nome1 = document.getElementById('nome1').value.trim();
+            const data1 = document.getElementById('data1').value;
+            const nome2 = document.getElementById('nome2').value.trim();
+            const data2 = document.getElementById('data2').value;
+            
+            if (!nome1 || !data1 || !nome2 || !data2) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Calcular números de destino
+            const destino1 = reduzirNumero(calcularNumeroDestino(data1));
+            const destino2 = reduzirNumero(calcularNumeroDestino(data2));
+            
+            // Buscar compatibilidade
+            const chave = `${destino1}-${destino2}`;
+            const chaveInversa = `${destino2}-${destino1}`;
+            
+            let compatibilidade = combinacoesAmorosas[chave] || combinacoesAmorosas[chaveInversa];
+            
+            if (!compatibilidade) {
+                // Calcular compatibilidade básica se não encontrar nos dados
+                const score = calcularScoreBasico(destino1, destino2);
+                compatibilidade = {
+                    score: score,
+                    titulo: `Compatibilidade ${destino1}-${destino2}`,
+                    descricao: `Análise numerológica entre os números ${destino1} e ${destino2}.`,
+                    pontos_fortes: ["Conexão numerológica única"],
+                    desafios: ["Necessidade de compreensão mútua"],
+                    conselhos: "Cultivem a comunicação e o respeito às diferenças."
+                };
+            }
+            
+            exibirCompatibilidade(nome1, nome2, destino1, destino2, compatibilidade);
+        }
+
+        function calcularNumeroDestino(data) {
+            const [ano, mes, dia] = data.split('-').map(Number);
+            return ano + mes + dia;
+        }
+
+        function calcularAnoPessoal(dataNascimento, ano) {
+            const [anoNasc, mes, dia] = dataNascimento.split('-').map(Number);
+            const soma = dia + mes + ano;
+            return reduzirNumero(soma);
+        }
+
+        function calcularScoreBasico(num1, num2) {
+            const diferenca = Math.abs(num1 - num2);
+            return Math.max(50, 100 - (diferenca * 10));
+        }
+
+        function exibirCompatibilidade(nome1, nome2, destino1, destino2, compatibilidade) {
+            const resultadoDiv = document.getElementById('resultado-compatibilidade');
+            const compatibilidadeDiv = document.getElementById('compatibilidade-display');
+            
+            compatibilidadeDiv.innerHTML = `
+                <div class="compatibilidade-resultado">
+                    <div class="score-circle">${compatibilidade.score}%</div>
+                    <h3>${compatibilidade.titulo}</h3>
+                    <p><strong>${nome1} (${destino1}) + ${nome2} (${destino2})</strong></p>
+                    <p>${compatibilidade.descricao}</p>
+                    
+                    <h4>💪 Pontos Fortes:</h4>
+                    <ul>
+                        ${compatibilidade.pontos_fortes.map(ponto => `<li>${ponto}</li>`).join('')}
+                    </ul>
+                    
+                    <h4>⚠️ Desafios:</h4>
+                    <ul>
+                        ${compatibilidade.desafios.map(desafio => `<li>${desafio}</li>`).join('')}
+                    </ul>
+                    
+                    <h4>💡 Conselhos:</h4>
+                    <p>${compatibilidade.conselhos}</p>
+                </div>
+            `;
+            
+            resultadoDiv.classList.add('show');
+        }
+
+        // Função para mostrar tabs
+        function mostrarTab(tabId) {
+            // Esconder todas as tabs
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            // Remover active de todos os botões
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Mostrar tab selecionada
+            document.getElementById(tabId).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Carregar conteúdo se necessário
+            if (tabId === 'ciclos90') {
+                carregarCiclos90();
+            } else if (tabId === 'significados') {
+                carregarSignificados();
+            } else if (tabId === 'arcanos') {
+                carregarArcanos();
+            }
+        }
+
+        function carregarCiclos90() {
+            const div = document.getElementById('interpretacao-ciclos');
+            if (div.innerHTML) return; // Já carregado
+            
+            let html = '<h3>🔮 Interpretações dos Ciclos de 90 Anos</h3>';
+            
+            if (textosCiclos90Anos) {
+                for (let i = 0; i <= 21; i++) {
+                    if (textosCiclos90Anos[i]) {
+                        const dados = textosCiclos90Anos[i];
+                        html += `
+                            <div class="arcano-info">
+                                <h4>${i} - ${dados.titulo}</h4>
+                                <p><em>${dados.subtitulo}</em></p>
+                                <p><strong>Palavras-chave:</strong> ${dados.palavrasChave}</p>
+                                <p>${dados.sintese}</p>
+                            </div>
+                        `;
+                    }
+                }
+            }
+            
+            div.innerHTML = html;
+        }
+
+        function carregarSignificados() {
+            const div = document.getElementById('interpretacao-numeros');
+            if (div.innerHTML) return; // Já carregado
+            
+            const significados = {
+                1: { nome: "O Pioneiro", desc: "Liderança, independência, iniciativa" },
+                2: { nome: "O Cooperador", desc: "Diplomacia, cooperação, sensibilidade" },
+                3: { nome: "O Comunicador", desc: "Expressão, criatividade, otimismo" },
+                4: { nome: "O Construtor", desc: "Estabilidade, organização, trabalho" },
+                5: { nome: "O Aventureiro", desc: "Liberdade, mudança, versatilidade" },
+                6: { nome: "O Cuidador", desc: "Responsabilidade, amor, harmonia" },
+                7: { nome: "O Místico", desc: "Espiritualidade, análise, sabedoria" },
+                8: { nome: "O Executivo", desc: "Poder material, ambição, sucesso" },
+                9: { nome: "O Humanitário", desc: "Serviço universal, compaixão, generosidade" }
+            };
+            
+            let html = '<h3>🔢 Significados dos Números 1-9</h3>';
+            
+            for (let i = 1; i <= 9; i++) {
+                html += `
+                    <div class="arcano-info">
+                        <div class="numero-destaque">${i}</div>
+                        <h4>${significados[i].nome}</h4>
+                        <p>${significados[i].desc}</p>
+                    </div>
+                `;
+            }
+            
+            div.innerHTML = html;
+        }
+
+        function carregarArcanos() {
+            const div = document.getElementById('interpretacao-arcanos');
+            if (div.innerHTML) return; // Já carregado
+            
+            let html = '<h3>🌟 Arcanos Maiores do Tarô</h3>';
+            
+            for (let i = 0; i <= 21; i++) {
+                html += `
+                    <div class="arcano-info">
+                        <div class="numero-destaque">${i}</div>
+                        <h4>${arcanosMaiores[i]}</h4>
+                    </div>
+                `;
+            }
+            
+            div.innerHTML = html;
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', function() {
+            const hoje = new Date().toISOString().split('T')[0];
+            document.getElementById('data-consulta').value = hoje;
+        });
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ás de Ouros - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Dez de Espadas</h1>
+            <p class="subtitulo">73 - O Fim Inevitável e o Novo Começo</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/73TenofSwords.jpg" alt="Dez de Espadas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Fim</span>
+                        <span class="palavra-chave">Renovação</span>
+                        <span class="palavra-chave">Libertação</span>
+                        <span class="palavra-chave">Crise</span>
+                        <span class="palavra-chave">Transformação</span>
+                        <span class="palavra-chave">Aceitação</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Dez de Espadas representa o ponto final de um ciclo, a culminação de uma jornada que, embora dolorosa, é necessária para a renovação. Este arcano simboliza o fim de uma situação, de uma crença ou de um estado de ser, indicando que o que foi construído chegou ao seu limite e precisa ser desmantelado para que algo novo possa surgir. A energia do Dez de Espadas é de uma libertação através da aceitação do inevitável. Não se trata de uma derrota, mas de uma transição, um portal para um novo começo. A imagem da carta, com as dez espadas fincadas, pode parecer brutal, mas é precisamente essa clareza e finalidade que permitem a purificação e a abertura para novas possibilidades. É o momento de soltar o que não serve mais, de se desapegar do passado e de abraçar a incerteza do futuro com coragem. A numerologia do Dez, que representa a totalidade e o fechamento de um ciclo, reforça a ideia de que este é um ponto de virada, um momento de conclusão que precede uma nova fase de crescimento e evolução. A dor do fim é, na verdade, a dor do parto de algo novo, algo que ainda não se manifestou, mas que já está em gestação. É a escuridão antes do amanhecer, a quietude antes da tempestade, a pausa necessária para que a vida se reorganize e se manifeste de uma forma mais autêntica e alinhada com o verdadeiro propósito do ser. Este arcano nos convida a olhar para o fim não como uma tragédia, mas como uma oportunidade de renascimento, de purificação e de alinhamento com a nossa essência mais profunda. É a morte simbólica que precede a ressurreição, a entrega que abre espaço para a graça. A sua mensagem é clara: para que o novo possa entrar, o velho precisa partir. E nessa partida, há uma beleza e uma força que só podem ser encontradas na aceitação plena do ciclo da vida e da morte, da destruição e da criação.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, a numerologia do Dez de Espadas é crucial para compreender sua mensagem de finalização e transição. O número Dez, em sua essência, simboliza a totalidade, a conclusão de um ciclo e o ponto culminante de uma experiência. É o número que encerra uma fase para que outra possa começar. No contexto das Espadas, que representam o intelecto, a mente e os desafios mentais, o Dez indica o esgotamento completo de uma linha de pensamento, de um conflito mental ou de uma situação que causou grande angústia. A energia do Dez é de um fechamento inevitável, mas também de uma libertação. Não há mais para onde ir, não há mais o que lutar; a mente atingiu seu limite e agora precisa se render para encontrar a paz. Este arcano simboliza a aceitação do fim como um pré-requisito para o renascimento. A numerologia do Dez, portanto, não é apenas sobre o fim, mas sobre a promessa de um novo começo que surge da completa desintegração do antigo. É a escuridão mais profunda que precede a aurora, a quietude que permite a germinação de novas ideias e perspectivas. O Dez de Espadas, numerologicamente, representa a sabedoria que vem da experiência completa de um ciclo, a compreensão de que a destruição é, muitas vezes, um ato criativo disfarçado. É o número da totalidade que se desfaz para se refazer, da plenitude que se esvazia para se preencher novamente com uma nova energia e um novo propósito.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No universo simbólico de Jodorowsky, as cores no Dez de Espadas carregam um peso significativo, refletindo a intensidade e a finalidade deste arcano. Embora as Espadas estejam associadas ao elemento Ar e, por extensão, à mente e ao intelecto, a representação visual do Dez de Espadas frequentemente incorpora tons que evocam a escuridão, o fim e a transição. O preto e o cinza, por exemplo, simbolizam o luto, a perda e a conclusão de um ciclo. No entanto, a presença de um nascer do sol ou de um horizonte claro em algumas representações, com tons de azul pálido ou dourado, indica a promessa de um novo dia, de um novo começo que surge após a escuridão mais profunda. O vermelho, se presente, pode simbolizar a paixão que se esvaiu ou a energia vital que foi drenada, mas também a força necessária para enfrentar o fim. A ausência de cores vibrantes e a predominância de tons sombrios reforçam a mensagem de que este é um momento de introspecção, de aceitação e de preparação para a renovação. A simbologia das cores no Dez de Espadas, portanto, não é apenas sobre a dor do fim, mas sobre a beleza e a esperança que podem ser encontradas na aceitação da impermanência e na crença de que, mesmo após a noite mais escura, o sol sempre volta a brilhar.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Dez de Espadas, na visão de Jodorowsky, residem na sua capacidade de promover uma libertação radical e um renascimento profundo. Embora a carta simbolize um fim, é precisamente nessa conclusão que reside a oportunidade para uma transformação genuína. A aceitação do inevitável, a rendição ao que não pode mais ser sustentado, abre espaço para uma clareza mental e emocional sem precedentes. Este arcano indica a coragem de enfrentar a verdade, por mais dolorosa que seja, e de se desapegar de ilusões e padrões que já não servem ao crescimento. A energia do Dez de Espadas, quando bem compreendida, permite que o indivíduo se liberte de fardos mentais e emocionais, purificando o campo da consciência para novas sementes. É o fim de uma batalha interna, a paz que surge após a tempestade, a compreensão de que a verdadeira força reside na capacidade de se reconstruir a partir das cinzas. A sua mensagem é de esperança, pois mesmo na escuridão mais profunda, há a promessa de um novo amanhecer, de uma nova perspectiva que só pode ser alcançada após a completa desintegração do antigo. É a sabedoria que vem da experiência do limite, a força que se encontra na vulnerabilidade e a renovação que brota da aceitação do ciclo da vida e da morte.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Dez de Espadas se manifesta em seus aspectos negativos, segundo Jodorowsky, ele pode indicar uma resistência teimosa ao fim inevitável, prolongando o sofrimento e a agonia. A recusa em aceitar a conclusão de um ciclo pode levar a um estado de estagnação, onde o indivíduo se apega a situações, crenças ou relacionamentos que já estão mortos, impedindo o próprio crescimento e a renovação. Este arcano, em sua sombra, pode simbolizar a desesperança, a sensação de derrota esmagadora e a incapacidade de ver a luz no fim do túnel. A mente, exausta e sobrecarregada, pode cair em um ciclo de pensamentos negativos, autopiedade e vitimização. A dor do fim, que deveria ser um catalisador para a libertação, torna-se uma prisão. A imagem das espadas fincadas pode representar a rigidez mental, a incapacidade de se adaptar e a teimosia em manter velhas estruturas, mesmo que elas estejam causando grande sofrimento. O Dez de Espadas negativo é um convite à reflexão sobre a importância de soltar, de se render e de confiar no processo de transformação. A lição aqui é que, por mais doloroso que seja o fim, a resistência a ele é ainda mais prejudicial. É preciso coragem para aceitar a morte simbólica e permitir que o novo surja, mesmo que o caminho à frente pareça incerto. A negação do fim é a negação da própria vida, que é um ciclo constante de nascimentos e mortes, de começos e fins.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌟 Aurora Sagrada - Design Review</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Alice:wght@400&family=Cinzel+Decorative:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* 🎨 Aurora Sagrada - Design System */
+        :root {
+            --aurora-vinho: #3e0a29;
+            --aurora-verde: #b2d1b1;
+            --aurora-azul: #0b1836;
+            --aurora-dourado: #f0aa53;
+            --aurora-lilas: #f2eaff;
+            --aurora-branco: #ffffff;
+            --aurora-cinza: #666666;
+            
+            --font-title: 'Cinzel Decorative', serif;
+            --font-body: 'Alice', serif;
+            
+            --shadow-soft: 0 4px 20px rgba(62, 10, 41, 0.1);
+            --shadow-medium: 0 8px 30px rgba(62, 10, 41, 0.15);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: linear-gradient(135deg, var(--aurora-lilas) 0%, #e8d5ff 100%);
+            min-height: 100vh;
+            color: var(--aurora-azul);
+            line-height: 1.6;
+        }
+
+        .as-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .as-header {
+            background: linear-gradient(135deg, var(--aurora-vinho) 0%, var(--aurora-azul) 100%);
+            color: var(--aurora-branco);
+            text-align: center;
+            padding: 40px 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .as-header h1 {
+            font-family: var(--font-title);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .as-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Tabs */
+        .as-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .as-tab-btn {
+            background: var(--aurora-branco);
+            border: 3px solid var(--aurora-verde);
+            color: var(--aurora-azul);
+            padding: 15px 30px;
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .as-tab-btn:hover {
+            background: var(--aurora-verde);
+            color: var(--aurora-branco);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .as-tab-btn.active {
+            background: var(--aurora-dourado);
+            border-color: var(--aurora-dourado);
+            color: var(--aurora-azul);
+        }
+
+        /* Form Card */
+        .as-form-card {
+            background: var(--aurora-branco);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            margin-bottom: 30px;
+        }
+
+        .as-form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr auto;
+            gap: 20px;
+            align-items: end;
+        }
+
+        .as-form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .as-form-group label {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--aurora-azul);
+            font-size: 0.95rem;
+            padding: 5px 10px;
+            border-radius: 6px;
+            background: var(--aurora-lilas);
+            border-left: 4px solid var(--aurora-vinho);
+        }
+
+        .as-form-group input,
+        .as-form-group select {
+            padding: 12px 15px;
+            border: 2px solid var(--aurora-verde);
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--aurora-branco);
+        }
+
+        .as-form-group input:focus,
+        .as-form-group select:focus {
+            outline: none;
+            border-color: var(--aurora-dourado);
+            box-shadow: 0 0 0 3px rgba(240, 170, 83, 0.2);
+        }
+
+        .as-btn {
+            background: linear-gradient(135deg, var(--aurora-vinho) 0%, var(--aurora-azul) 100%);
+            color: var(--aurora-branco);
+            border: none;
+            padding: 15px 25px;
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .as-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Results */
+        .as-results {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .as-results.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .as-card {
+            background: var(--aurora-branco);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-medium);
+            margin-bottom: 30px;
+            border-left: 6px solid var(--aurora-dourado);
+        }
+
+        .as-card h3 {
+            font-family: var(--font-title);
+            color: var(--aurora-vinho);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .as-btn-export {
+            background: var(--aurora-verde);
+            color: var(--aurora-azul);
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .as-btn-export:hover {
+            background: var(--aurora-dourado);
+            color: var(--aurora-branco);
+        }
+
+        /* Grid Layouts */
+        .as-numeros-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .as-arcanos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Number Cards */
+        .as-numero-card {
+            background: linear-gradient(135deg, var(--aurora-lilas) 0%, var(--aurora-branco) 100%);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            border: 2px solid var(--aurora-verde);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .as-numero-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--aurora-dourado);
+        }
+
+        .as-numero-valor {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--aurora-vinho);
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .as-numero-nome {
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            color: var(--aurora-azul);
+            margin-bottom: 10px;
+        }
+
+        .as-numero-desc {
+            color: var(--aurora-cinza);
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+
+        .as-numeros-mestres {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--aurora-dourado);
+            color: var(--aurora-azul);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        .as-numero-karmico {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--aurora-vinho);
+            color: var(--aurora-branco);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.7rem;
+            font-weight: bold;
+        }
+
+        /* Arcano Cards */
+        .as-arcano-card {
+            background: var(--aurora-branco);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            border: 2px solid var(--aurora-lilas);
+        }
+
+        .as-arcano-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+            border-color: var(--aurora-dourado);
+        }
+
+        .as-arcano-imagem {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--aurora-verde);
+        }
+
+        .as-arcano-info {
+            padding: 20px;
+        }
+
+        .as-arcano-numero {
+            background: var(--aurora-vinho);
+            color: var(--aurora-branco);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .as-arcano-nome {
+            font-family: var(--font-title);
+            font-size: 1.1rem;
+            color: var(--aurora-azul);
+            margin-bottom: 10px;
+        }
+
+        .as-arcano-desc {
+            color: var(--aurora-cinza);
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Loading & Error */
+        .as-loading {
+            text-align: center;
+            padding: 40px;
+            color: var(--aurora-vinho);
+            font-size: 1.2rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .as-error {
+            background: #ffebee;
+            color: #c62828;
+            padding: 15px;
+            border-radius: var(--border-radius);
+            border-left: 4px solid #c62828;
+            margin: 20px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .as-form-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .as-header h1 {
+                font-size: 2rem;
+            }
+            
+            .as-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .as-numeros-grid,
+            .as-arcanos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Section Management */
+        .as-section {
+            display: none;
+        }
+
+        .as-section.active {
+            display: block;
+        }
+
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .as-tabs,
+            .as-btn-export {
+                display: none;
+            }
+            
+            .as-card {
+                break-inside: avoid;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="as-container">
+        <!-- Header -->
+        <header class="as-header">
+            <h1>🌟 Aurora Sagrada 🌟</h1>
+            <p>Sistema Numerológico Completo - Design Review</p>
+        </header>
+
+        <!-- Navegação por Tabs -->
+        <nav class="as-tabs">
+            <button class="as-tab-btn active" onclick="mostrarSecao('meu-mapa')">
+                🗺️ Meu Mapa
+            </button>
+            <button class="as-tab-btn" onclick="mostrarSecao('compatibilidade')">
+                💕 Compatibilidade
+            </button>
+        </nav>
+
+        <!-- Seção: Meu Mapa Numerológico -->
+        <section id="meu-mapa" class="as-section active">
+            <!-- Formulário -->
+            <div class="as-form-card">
+                <form id="form-mapa" onsubmit="calcularMapa(event)">
+                    <div class="as-form-grid">
+                        <div class="as-form-group">
+                            <label for="nome-mapa">Nome Completo</label>
+                            <input type="text" id="nome-mapa" placeholder="Digite seu nome completo" required>
+                        </div>
+                        <div class="as-form-group">
+                            <label for="data-mapa">Data de Nascimento</label>
+                            <input type="date" id="data-mapa" required>
+                        </div>
+                        <div class="as-form-group">
+                            <label for="tabela-mapa">Sistema</label>
+                            <select id="tabela-mapa">
+                                <option value="pitagorica">Pitagórica</option>
+                                <option value="cabalistica">Cabalística</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="as-btn">✨ Calcular</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Resultados do Mapa -->
+            <div id="resultados-mapa" class="as-results">
+                <!-- Números Fundamentais -->
+                <div class="as-card">
+                    <h3>
+                        🔢 Números Fundamentais 
+                        <button type="button" class="as-btn-export" onclick="window.print()">
+                            📄 PDF
+                        </button>
+                    </h3>
+                    <div id="numeros-fundamentais" class="as-numeros-grid">
+                        <!-- Exemplo de cards -->
+                        <div class="as-numero-card">
+                            <div class="as-numero-valor">7</div>
+                            <div class="as-numero-nome">Alma</div>
+                            <div class="as-numero-desc">Motivação interior e desejos profundos</div>
+                        </div>
+                        <div class="as-numero-card">
+                            <div class="as-numero-valor">3</div>
+                            <div class="as-numero-nome">Personalidade</div>
+                            <div class="as-numero-desc">Como os outros te veem</div>
+                        </div>
+                        <div class="as-numero-card">
+                            <div class="as-numero-valor">1</div>
+                            <div class="as-numero-nome">Expressão</div>
+                            <div class="as-numero-desc">Seus talentos e habilidades naturais</div>
+                        </div>
+                        <div class="as-numero-card">
+                            <div class="as-numero-valor">22</div>
+                            <div class="as-numero-nome">Destino</div>
+                            <div class="as-numero-desc">Seu propósito de vida e missão</div>
+                            <div class="as-numeros-mestres">Número Mestre</div>
+                        </div>
+                        <div class="as-numero-card">
+                            <div class="as-numero-valor">5</div>
+                            <div class="as-numero-nome">Maturidade</div>
+                            <div class="as-numero-desc">Energia que se manifesta após os 35 anos</div>
+                        </div>
+                        <div class="as-numero-card">
+                            <div class="as-numero-valor">4</div>
+                            <div class="as-numero-nome">Equilíbrio</div>
+                            <div class="as-numero-desc">Como encontrar harmonia interior</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Arcanos Temporais -->
+                <div class="as-card">
+                    <h3>
+                        🌟 Arcanos Temporais 
+                        <button type="button" class="as-btn-export" onclick="window.print()">
+                            📄 PDF
+                        </button>
+                    </h3>
+                    <div id="arcanos-temporais" class="as-arcanos-grid">
+                        <!-- Exemplo de cards -->
+                        <div class="as-arcano-card">
+                            <img src="assets/img/cartas/00-0-TheFool.jpg" alt="O Louco" class="as-arcano-imagem" 
+                                 onerror="this.style.display='none'">
+                            <div class="as-arcano-info">
+                                <div class="as-arcano-numero">0</div>
+                                <div class="as-arcano-nome">Arcano Pessoal</div>
+                                <div class="as-arcano-desc">
+                                    <strong>O Louco</strong><br>
+                                    Seu guia espiritual permanente, a essência de sua alma
+                                </div>
+                            </div>
+                        </div>
+                        <div class="as-arcano-card">
+                            <img src="assets/img/cartas/19-XIX-TheSun.jpg" alt="O Sol" class="as-arcano-imagem"
+                                 onerror="this.style.display='none'">
+                            <div class="as-arcano-info">
+                                <div class="as-arcano-numero">19</div>
+                                <div class="as-arcano-nome">Arcano do Ano</div>
+                                <div class="as-arcano-desc">
+                                    <strong>O Sol</strong><br>
+                                    A energia que rege todo o seu ano atual
+                                </div>
+                            </div>
+                        </div>
+                        <div class="as-arcano-card">
+                            <img src="assets/img/cartas/06-VI-TheLovers.jpg" alt="Os Enamorados" class="as-arcano-imagem"
+                                 onerror="this.style.display='none'">
+                            <div class="as-arcano-info">
+                                <div class="as-arcano-numero">6</div>
+                                <div class="as-arcano-nome">Arcano do Mês</div>
+                                <div class="as-arcano-desc">
+                                    <strong>Os Enamorados</strong><br>
+                                    A vibração predominante do mês atual
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pirâmide Cabalística -->
+                <div class="as-card">
+                    <h3>
+                        🔺 Pirâmide Cabalística 
+                        <button type="button" class="as-btn-export" onclick="window.print()">
+                            📄 PDF
+                        </button>
+                    </h3>
+                    <div id="piramide-cabalistica">
+                        <div class="as-loading">🔮 Pirâmide cabalística disponível apenas no sistema cabalístico.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Compatibilidade Amorosa -->
+        <section id="compatibilidade" class="as-section">
+            <!-- Formulário -->
+            <div class="as-form-card">
+                <form id="form-compatibilidade" onsubmit="calcularCompatibilidade(event)">
+                    <div class="as-form-grid">
+                        <div class="as-form-group">
+                            <label for="nome1">Nome da Primeira Pessoa</label>
+                            <input type="text" id="nome1" placeholder="Nome completo" required>
+                        </div>
+                        <div class="as-form-group">
+                            <label for="data1">Data de Nascimento</label>
+                            <input type="date" id="data1" required>
+                        </div>
+                        <div class="as-form-group">
+                            <label for="nome2">Nome da Segunda Pessoa</label>
+                            <input type="text" id="nome2" placeholder="Nome completo" required>
+                        </div>
+                        <div class="as-form-group">
+                            <label for="data2">Data de Nascimento</label>
+                            <input type="date" id="data2" required>
+                        </div>
+                        <div class="as-form-group">
+                            <label for="tabela-compat">Sistema</label>
+                            <select id="tabela-compat">
+                                <option value="pitagorica">Pitagórica</option>
+                                <option value="cabalistica">Cabalística</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="as-btn">💕 Analisar</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Resultado da Compatibilidade -->
+            <div id="resultado-compatibilidade" class="as-results">
+                <div class="as-loading">💕 Funcionalidade de compatibilidade em desenvolvimento...</div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Funções básicas para demonstração
+        function mostrarSecao(secaoId) {
+            // Ocultar todas as seções
+            document.querySelectorAll('.as-section').forEach(secao => {
+                secao.classList.remove('active');
+            });
+            
+            // Mostrar seção ativa
+            document.getElementById(secaoId).classList.add('active');
+            
+            // Atualizar botões de tab
+            document.querySelectorAll('.as-tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            event.target.classList.add('active');
+        }
+
+        function calcularMapa(event) {
+            event.preventDefault();
+            
+            const nome = document.getElementById('nome-mapa').value;
+            const data = document.getElementById('data-mapa').value;
+            
+            if (!nome || !data) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Mostrar resultados
+            const resultados = document.getElementById('resultados-mapa');
+            resultados.classList.add('show');
+            resultados.style.display = 'block';
+            
+            // Scroll suave para os resultados
+            resultados.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function calcularCompatibilidade(event) {
+            event.preventDefault();
+            
+            const nome1 = document.getElementById('nome1').value;
+            const data1 = document.getElementById('data1').value;
+            const nome2 = document.getElementById('nome2').value;
+            const data2 = document.getElementById('data2').value;
+            
+            if (!nome1 || !data1 || !nome2 || !data2) {
+                alert('Por favor, preencha todos os campos.');
+                return;
+            }
+            
+            // Mostrar resultados
+            const resultados = document.getElementById('resultado-compatibilidade');
+            resultados.classList.add('show');
+            resultados.style.display = 'block';
+            
+            // Scroll suave para os resultados
+            resultados.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Preencher dados de exemplo
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('nome-mapa').value = 'Maria Silva';
+            document.getElementById('data-mapa').value = '1990-05-15';
+            
+            // Mostrar resultados automaticamente para demonstração
+            setTimeout(() => {
+                const resultados = document.getElementById('resultados-mapa');
+                resultados.classList.add('show');
+                resultados.style.display = 'block';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
+

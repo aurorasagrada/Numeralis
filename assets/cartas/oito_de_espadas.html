@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oito de Espadas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Oito de Espadas</h1>
+            <p class="subtitulo">71 - A Prisão da Mente</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/71EightofSwords.jpg" alt="Oito de Espadas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Limitação</span>
+                        <span class="palavra-chave">Restrição</span>
+                        <span class="palavra-chave">Medo</span>
+                        <span class="palavra-chave">Dúvida</span>
+                        <span class="palavra-chave">Prisão Mental</span>
+                        <span class="palavra-chave">Inibição</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Oito de Espadas representa a energia ativa que se manifesta no elemento ar, simbolizando a mente e o intelecto. Este arcano indica um estado de aprisionamento mental, onde a pessoa se sente limitada por suas próprias crenças, medos e dúvidas. A energia do Oito de Espadas não é de uma prisão física, mas sim de uma construção interna, uma teia de pensamentos que impede o movimento e a clareza. A figura central da carta, muitas vezes vendada e cercada por espadas, simboliza a incapacidade de ver a saída, mesmo que ela esteja ao alcance. A mente, neste contexto, se torna tanto a cela quanto o carcereiro. É um arcano que fala sobre as restrições autoimpostas, a paralisia diante de escolhas e a dificuldade de romper com padrões de pensamento que geram sofrimento. A energia receptiva do ar, que deveria trazer liberdade e novas ideias, aqui se encontra distorcida, gerando um ciclo vicioso de ansiedade e inação. A numerologia do oito, que representa equilíbrio e ciclos, neste arcano se manifesta de forma invertida, indicando um desequilíbrio que impede o fluxo natural da vida. A ausência de um caminho claro e a sensação de estar encurralado são as marcas distintivas deste arcano, que convida à introspecção para desvendar as amarras invisíveis que prendem a alma. A sua mensagem é um convite à libertação através da consciência, um chamado para desatar os nós mentais que impedem o progresso e a realização plena. A jornada do Oito de Espadas é a de reconhecer a própria força para romper com as ilusões e encontrar a verdadeira liberdade interior.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o número oito representa o equilíbrio, a justiça e a capacidade de integrar opostos. No entanto, no Oito de Espadas, essa energia se manifesta de forma distorcida, indicando um desequilíbrio que leva à estagnação e à limitação. O oito, em sua forma, simboliza o infinito, um ciclo contínuo de causa e efeito. No contexto das espadas, que representam o intelecto e a razão, o oito pode indicar um excesso de análise, uma ruminação constante que impede a ação. A mente se torna um labirinto, onde os pensamentos se repetem sem encontrar uma saída. A energia do oito, que deveria trazer harmonia e fluidez, aqui se converte em um emaranhado de dúvidas e incertezas. A repetição dos padrões mentais negativos cria uma prisão invisível, onde a pessoa se sente incapaz de avançar. A numerologia do oito, portanto, neste arcano, aponta para a necessidade de romper com esses ciclos viciosos e buscar um novo equilíbrio. É um convite a transcender a dualidade e a encontrar a unidade dentro de si mesmo. A busca pela clareza mental e a libertação das amarras do pensamento são os desafios propostos pelo Oito de Espadas, que convida a uma profunda reflexão sobre a natureza da mente e o poder da escolha. A capacidade de discernir entre a realidade e a ilusão é fundamental para superar as limitações impostas por este arcano.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No universo simbólico de Jodorowsky, as cores nos arcanos do Tarot são portadoras de significados que complementam e enriquecem a interpretação de cada carta. Para o Oito de Espadas, a paleta de cores presente em sua representação visual revela nuances importantes. O azul, cor predominante no naipe de Espadas, simboliza a mente, a comunicação e a clareza. No entanto, no Oito de Espadas, o azul pode aparecer em tons mais escuros ou acinzentados, indicando uma mente nublada por medos e dúvidas. O cinza, muitas vezes presente, representa a neutralidade, a indecisão e a falta de clareza. Pode indicar uma mente que se recusa a tomar partido, que se mantém em um estado de suspensão, incapaz de avançar. O preto, se presente, simboliza o desconhecido, o inconsciente e as sombras que aprisionam a mente. Pode indicar medos profundos, traumas não resolvidos e a sensação de estar perdido em um labirinto. O branco, se presente, pode representar a esperança, a pureza e a possibilidade de libertação. No entanto, no Oito de Espadas, o branco pode ser ofuscado pelas sombras, indicando que a luz da consciência ainda não conseguiu penetrar na escuridão da mente. A ausência de cores vibrantes e a predominância de tons opacos reforçam a ideia de aprisionamento e estagnação. A simbologia das cores, portanto, neste arcano, aponta para a necessidade de trazer luz à mente, de clarear os pensamentos e de romper com as ilusões que impedem o progresso. A busca pela verdade e a libertação das amarras do pensamento são os desafios propostos pelo Oito de Espadas, que convida a uma profunda reflexão sobre a natureza da mente e o poder da escolha.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Oito de Espadas, na ótica de Jodorowsky, indicam a capacidade de introspecção profunda e a oportunidade de confrontar e superar as próprias limitações mentais. Este arcano, embora desafiador, oferece um caminho para a autoconsciência e a libertação. A prisão mental, uma vez reconhecida, se torna o ponto de partida para a transformação. A energia do Oito de Espadas, quando bem direcionada, pode levar a uma profunda análise dos padrões de pensamento, permitindo que a pessoa identifique as crenças limitantes e as substitua por outras mais construtivas. É um convite a desenvolver a resiliência mental, a capacidade de enfrentar os medos e as dúvidas com coragem e determinação. A superação das restrições autoimpostas leva a uma maior clareza mental e a uma sensação de liberdade interior. A figura vendada, que antes simbolizava a cegueira, pode se tornar um símbolo de introspecção, onde a visão interior se aguça e revela novos caminhos. A energia do Oito de Espadas, portanto, é um catalisador para o crescimento pessoal, um convite a desvendar os mistérios da mente e a encontrar a força para romper com as amarras invisíveis. A libertação das ilusões e a busca pela verdade são os caminhos para a plenitude e a realização. A capacidade de transformar a adversidade em oportunidade é a grande lição deste arcano, que convida a uma jornada de autodescoberta e empoderamento.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Oito de Espadas apresenta aspectos negativos, segundo Jodorowsky, indica um estado de paralisia mental, onde a pessoa se sente completamente aprisionada por seus medos e dúvidas. A mente se torna um campo de batalha, onde os pensamentos negativos se multiplicam e impedem qualquer ação. A figura vendada, neste contexto, simboliza a incapacidade de ver a saída, mesmo que ela esteja ao alcance. A pessoa se sente impotente, incapaz de tomar decisões ou de encontrar soluções para seus problemas. A energia do Oito de Espadas, quando distorcida, leva à procrastinação, à inação e a um ciclo vicioso de ansiedade e sofrimento. A mente se torna um labirinto sem saída, onde a pessoa se perde em suas próprias ruminações. A falta de clareza e a sensação de estar encurralado são as marcas distintivas deste arcano, que convida à introspecção para desvendar as amarras invisíveis que prendem a alma. A incapacidade de romper com padrões de pensamento negativos leva a um estado de estagnação e desesperança. A energia do Oito de Espadas, portanto, é um alerta para os perigos da mente aprisionada, um convite a buscar ajuda e a encontrar a força para romper com as ilusões. A libertação das amarras mentais é fundamental para o progresso e a realização plena. A busca pela verdade e a superação dos medos são os caminhos para a plenitude e a liberdade. A capacidade de reconhecer a própria força e de buscar a ajuda necessária são os primeiros passos para superar as limitações impostas por este arcano.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

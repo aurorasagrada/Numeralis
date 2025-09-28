@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sete de Ouros - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Sete de Ouros</h1>
+            <p class="subtitulo">28 - A Contemplação da Colheita</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/28SevenofPentacles.jpg" alt="Sete de Ouros" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Paciência</span>
+                        <span class="palavra-chave">Avaliação</span>
+                        <span class="palavra-chave">Recompensa</span>
+                        <span class="palavra-chave">Espera</span>
+                        <span class="palavra-chave">Investimento</span>
+                        <span class="palavra-chave">Frutos</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        O Sete de Ouros representa um momento de pausa e contemplação no meio de um ciclo de trabalho e esforço. A energia deste arcano não é de conclusão, mas de avaliação. O número sete, em si, simboliza um ponto de virada, um momento de introspecção e análise antes da colheita final, que é representada pelo dez. Aqui, o indivíduo que plantou suas sementes (iniciou seus projetos, investiu seu tempo e recursos) para e observa o crescimento. Não há ação, mas uma espera paciente e reflexiva. É a energia da terra em seu estado mais maduro, onde o crescimento ocorre de forma lenta e constante, exigindo do agricultor a sabedoria de saber quando agir e quando simplesmente observar. A carta indica que o trabalho duro foi feito, e agora é preciso confiar no processo natural das coisas. É um convite para avaliar o progresso, verificar se os frutos que estão a nascer correspondem às sementes que foram plantadas. Simboliza a paciência recompensada e a importância de dar um passo atrás para ganhar perspectiva antes de continuar a jornada.
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        O número sete, no contexto do Tarot de Jodorowsky, representa a introspecção, a análise e a busca por um significado mais profundo. No Sete de Ouros, essa energia se manifesta na necessidade de avaliar o que foi construído e o que ainda precisa ser desenvolvido. É um número que convida à reflexão sobre o valor do trabalho realizado e a paciência necessária para aguardar os resultados. O sete é um número de transição, um portal entre o mundo material e o espiritual, indicando que a colheita não é apenas física, mas também de aprendizado e crescimento interior. A numerologia do sete sugere que o sucesso não é apenas medido pela quantidade, mas pela qualidade e pelo significado que se atribui aos frutos do trabalho. É um convite a olhar para além do óbvio, a questionar o propósito e a direção, e a se preparar para a próxima fase do ciclo.
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        No Sete de Ouros, as cores presentes na ilustração, mesmo que sutis, indicam a natureza da energia em questão. O verde, cor predominante do naipe de Ouros, representa o crescimento, a fertilidade e a abundância. A presença de tons terrosos, como o marrom e o ocre, reforça a conexão com o elemento terra, a materialidade e a concretização. O azul, se presente, pode indicar a introspecção e a sabedoria necessárias para a avaliação. O dourado, frequentemente associado aos ouros, simboliza a riqueza, o valor e a recompensa. A combinação dessas cores sugere um processo de amadurecimento, onde a paciência e a observação são recompensadas com a manifestação dos resultados. A paleta de cores do Sete de Ouros, portanto, reflete a natureza da espera produtiva e da contemplação dos frutos do trabalho.
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        Os aspectos positivos do Sete de Ouros, na perspectiva de Jodorowsky, representam a virtude da paciência e a capacidade de avaliação estratégica. Esta carta indica que o indivíduo possui a sabedoria de não apressar os processos, compreendendo que o crescimento e a maturação exigem tempo. A figura que observa as moedas penduradas nas plantas simboliza a atitude de quem sabe esperar o momento certo para colher, sem ansiedade ou precipitação. Há uma profunda conexão com a terra e seus ciclos naturais, o que se traduz em uma aceitação serena do ritmo da vida. A capacidade de discernimento é acentuada, permitindo que a pessoa avalie com clareza o progresso de seus empreendimentos, identificando o que está prosperando e o que necessita de mais atenção ou ajuste. Este arcano reflete a confiança no processo, a fé de que o esforço dedicado trará os resultados esperados, desde que haja persistência e uma observação atenta. A recompensa, neste contexto, não é apenas material, mas também a satisfação de ver o próprio trabalho frutificar, a sensação de que o investimento de tempo e energia foi bem direcionado. É a manifestação da colheita abundante, resultado de um planejamento cuidadoso e de uma execução paciente. A energia receptiva do Sete de Ouros permite que o indivíduo absorva as lições do tempo, transformando a espera em um período de aprendizado e fortalecimento. A contemplação dos frutos simboliza a gratidão e o reconhecimento do valor do próprio esforço, sem a necessidade de validação externa. É um arcano que representa a maturidade e a sabedoria de quem compreende que a verdadeira riqueza reside na capacidade de cultivar e nutrir, aguardando com serenidade o desabrochar de cada sementes plantadas com intenção e propósito.
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        Quando o Sete de Ouros se manifesta em seus aspectos negativos, ele representa a estagnação e a frustração decorrentes da impaciência ou da falta de discernimento. A figura que observa as moedas pode se tornar um símbolo de inação, onde a espera se transforma em passividade, e a contemplação se torna uma desculpa para não agir. Pode indicar uma tendência a colher os frutos antes do tempo, resultando em perdas ou em resultados insatisfatórios. A falta de paciência pode levar a decisões precipitadas, comprometendo o investimento e o esforço dedicados. Por outro lado, a excessiva cautela ou a incapacidade de reconhecer o momento certo para a colheita pode levar à perda de oportunidades, deixando que os frutos apodreçam na árvore. A energia negativa do Sete de Ouros também pode se manifestar como uma obsessão pelo resultado material, negligenciando o processo e o aprendizado. A pessoa pode se sentir presa em um ciclo de espera, sem conseguir avançar ou tomar as decisões necessárias para progredir. Há um risco de desilusão, caso as expectativas não sejam atendidas, ou de amargura, se o esforço não for recompensado como se esperava. A falta de confiança no processo natural da vida pode levar à ansiedade e ao desespero, minando a capacidade de desfrutar do presente e de planejar o futuro com sabedoria. É um arcano que, em seu lado sombrio, alerta para os perigos da inércia, da impaciência e da falta de fé no próprio trabalho e no tempo divino. A lição aqui é que a paciência não é passividade, mas uma ação consciente de esperar o momento certo, e que a contemplação deve levar à ação, e não à paralisia.
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

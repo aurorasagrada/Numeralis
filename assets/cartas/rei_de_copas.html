@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rei de Copas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Rei de Copas</h1>
+            <p class="subtitulo">63 - O Mestre das Emoções e da Compaixão</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/63KingofCups.jpg" alt="Rei de Copas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Maestria Emocional</span>
+                        <span class="palavra-chave">Compaixão</span>
+                        <span class="palavra-chave">Controle</span>
+                        <span class="palavra-chave">Sabedoria</span>
+                        <span class="palavra-chave">Intuição</span>
+                        <span class="palavra-chave">Generosidade</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Rei de Copas simboliza a maestria completa sobre o reino das emoções, a energia ativa que governa o elemento água. Este arcano representa a culminação da jornada emocional do naipe de Copas, indicando um estado de equilíbrio, controle e profunda compreensão dos sentimentos. Ele não é mais levado pelas ondas da paixão ou da instabilidade; ao contrário, ele as comanda de seu trono, que muitas vezes flutua sobre um mar calmo. O Rei de Copas detém o poder de sentir profundamente sem se afogar, de amar sem perder a si mesmo e de oferecer compaixão sem se esgotar. Sua energia é a de um pai, um conselheiro ou um líder que guia com o coração, mas com a sabedoria que a experiência lhe conferiu. Ele é a autoridade máxima no que diz respeito à inteligência emocional, um porto seguro em meio à tempestade dos sentimentos humanos.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, as figuras da corte não possuem um número explícito, mas sua posição hierárquica lhes confere uma vibração numerológica. O Rei, como a figura masculina mais elevada do naipe, representa a perfeição e a realização da energia de Copas. Ele pode ser associado ao número 4 (a estrutura, a estabilidade) e ao 10 (a totalidade, o fim de um ciclo e o começo de outro em um nível superior). O Rei de Copas simboliza a estabilização das emoções (4) e a maestria total sobre elas (10). Ele já percorreu todo o caminho do naipe, desde a semente do Ás até a plenitude do Dez. Sua sabedoria não é teórica, mas sim o resultado de ter vivido e integrado cada uma das etapas emocionais. Ele é a estrutura sólida que contém o fluxo da água, a consciência que dá forma e direção ao sentimento. Sua numerologia é a da autoridade emocional conquistada através da jornada interior.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>A paleta de cores no Rei de Copas de Jodorowsky é rica em simbolismo. O azul, cor predominante em suas vestes e no mar ao seu redor, representa a intuição, a sabedoria e a profundidade do inconsciente. É a cor da receptividade e da calma, indicando seu domínio sobre as águas emocionais. O vermelho, frequentemente presente em detalhes de sua roupa ou em seu trono, simboliza a paixão, a ação e a vitalidade. A combinação do azul (receptividade) com o vermelho (ação) indica o equilíbrio perfeito entre sentir e agir, a capacidade de canalizar a força emocional para a ação consciente. O amarelo ou dourado de sua coroa e de seu cálice aponta para a inteligência superior, a consciência solar e a nobreza de espírito. Essas cores, em conjunto, pintam o retrato de um homem que unificou coração e mente, paixão e sabedoria, tornando-se um verdadeiro mestre de si mesmo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Em seus aspectos positivos, o Rei de Copas indica maturidade emocional, compaixão e autocontrole. Ele é a figura que oferece um ombro amigo, um conselho sábio e um apoio incondicional. Representa a capacidade de tomar decisões equilibradas, onde a lógica e a intuição andam de mãos dadas. Este arcano aponta para um momento de grande estabilidade afetiva, seja em relacionamentos, na família ou consigo mesmo. Ele simboliza a generosidade, a tolerância e a diplomacia. Quando esta carta aparece, ela sugere que o consulente possui ou deve buscar desenvolver essas qualidades: a habilidade de liderar com empatia, de acalmar conflitos e de criar um ambiente de harmonia e segurança emocional. É a energia da cura, do perdão e do amor incondicional que se manifesta de forma consciente e madura no mundo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Rei de Copas se apresenta em seus aspectos negativos, sua maestria emocional pode se transformar em manipulação ou frieza. O controle sobre os sentimentos pode levar a um distanciamento emocional, à repressão ou à incapacidade de se conectar verdadeiramente com os outros. Ele pode se tornar um manipulador sutil, usando sua compreensão das emoções alheias para benefício próprio. Em outros casos, pode indicar instabilidade emocional, escândalos, vícios ou desonestidade. O Rei de Copas negativo pode ser aquele que, por trás de uma fachada calma, esconde um turbilhão de emoções reprimidas que ameaçam explodir. Pode também representar um homem emocionalmente indisponível, um tirano sentimental ou alguém que usa a chantagem emocional como forma de controle. É o poder do coração usado de forma desequilibrada, seja pela repressão ou pelo excesso descontrolado.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

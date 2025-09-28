@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sete de Espadas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Sete de Espadas</h1>
+            <p class="subtitulo">70 - A Astúcia da Mente</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/70SevenofSwords.jpg" alt="Sete de Espadas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Estratégia</span>
+                        <span class="palavra-chave">Furtividade</span>
+                        <span class="palavra-chave">Engano</span>
+                        <span class="palavra-chave">Intelecto</span>
+                        <span class="palavra-chave">Lógica</span>
+                        <span class="palavra-chave">Planejamento</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Sete de Espadas simboliza a mente estratégica em sua expressão mais astuta, por vezes, ambígua. Este arcano representa a energia ativa do intelecto, que se utiliza da lógica e do planejamento para navegar por situações complexas. A energia do número sete, associada à introspecção e ao conhecimento, combina-se com a natureza cortante do naipe de Espadas, indicando um momento de análise cuidadosa e de ação calculada. A figura que se afasta com as espadas não representa necessariamente um ato de traição, mas a necessidade de usar a inteligência para se retirar de um conflito ou para proteger os próprios interesses. É a mente que opera de forma independente, buscando soluções que nem sempre são convencionais. Este arcano aponta para a importância de avaliar o cenário, de reconhecer as próprias limitações e de agir com discrição. A sua mensagem é um convite à reflexão sobre as próprias táticas e sobre a honestidade das próprias intenções.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o número sete é um número de grande poder espiritual e mental. Ele representa a perfeição do ciclo, a totalidade e a introspecção. No Sete de Espadas, o sete indica um ponto de virada no desenvolvimento intelectual. Após a instabilidade do cinco e a harmonia do seis, o sete traz a necessidade de uma análise mais profunda, de um mergulho na própria mente para encontrar respostas. É o número do solitário, do pensador que se afasta do ruído externo para ouvir a própria voz interior. Esta energia numerológica, combinada com o naipe de Espadas, sugere um momento de planejamento estratégico, de avaliação das próprias forças e fraquezas. O sete não é um número de ação impulsiva, mas de movimento calculado. Ele indica a necessidade de usar a inteligência de forma astuta, de pensar antes de agir e de considerar todas as consequências. É a mente que se torna um laboratório de ideias, onde as estratégias são forjadas e os planos são traçados em segredo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>A paleta de cores no Sete de Espadas, sob a ótica de Jodorowsky, reforça a sua simbologia de astúcia e de pensamento estratégico. O amarelo, frequentemente presente nas vestes da figura, simboliza a inteligência, a clareza mental e a consciência. É a cor do sol, da luz que ilumina as sombras da ignorância. No entanto, o amarelo também pode indicar a traição e o engano, refletindo a dualidade deste arcano. O cinza do acampamento ao fundo representa a neutralidade, a objetividade e a necessidade de uma análise fria e imparcial. É a cor da mente que se distancia das emoções para tomar decisões lógicas. O azul do céu, por sua vez, aponta para a espiritualidade, para a busca da verdade e para a comunicação. Ele sugere que, por trás da aparente desonestidade, pode haver uma intenção maior, uma estratégia que visa um bem superior. As cores, portanto, não oferecem um julgamento moral, mas um espectro de possibilidades, convidando o consulente a explorar as nuances de sua própria situação.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Em seus aspectos positivos, o Sete de Espadas indica uma mente brilhante e estratégica. Ele representa a capacidade de encontrar soluções criativas para problemas complexos, de pensar fora da caixa e de usar a inteligência para superar obstáculos. Este arcano simboliza o planejamento cuidadoso, a análise detalhada e a habilidade de antecipar os movimentos do adversário. É a mente do estrategista, do diplomata, do cientista que busca a verdade por caminhos não convencionais. O Sete de Espadas em sua luz aponta para a importância da independência de pensamento, da coragem de seguir a própria intuição e da necessidade de se proteger de influências negativas. Ele não é um convite à desonestidade, mas à prudência e à autoconfiança. É a mente que se torna uma ferramenta poderosa para a realização dos próprios objetivos, desde que usada com sabedoria e com um propósito claro.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Sete de Espadas se manifesta em seus aspectos negativos, ele pode indicar engano, traição e desonestidade. A astúcia se transforma em manipulação, e a estratégia se torna um meio para fins egoístas. Este arcano pode apontar para a fuga de responsabilidades, para a incapacidade de enfrentar os problemas de frente e para a tendência de agir pelas costas dos outros. A figura que carrega as espadas pode representar o ladrão, o mentiroso, aquele que se aproveita da confiança alheia. No entanto, Jodorowsky nos lembra que o Tarot não julga, mas descreve energias. O aspecto negativo do Sete de Espadas pode ser um alerta para o próprio consulente, para que ele examine as suas próprias motivações e para que não caia na armadilha da autoilusão. Pode também ser um aviso sobre pessoas ou situações ao seu redor, que exigem cautela e discernimento. É um convite a confrontar a verdade, por mais desconfortável que ela seja, e a buscar a integridade em todas as ações.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+
