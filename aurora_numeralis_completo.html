@@ -1246,36 +1246,412 @@
       const perfil1 = calcularPerfil(nome1, data1);
       const perfil2 = calcularPerfil(nome2, data2);
       
-      // Cálculo simples de compatibilidade
-      const nums1 = Object.values(perfil1.numerosFundamentais);
-      const nums2 = Object.values(perfil2.numerosFundamentais);
+      // Análise expandida de compatibilidade
+      const analiseCompatibilidade = analisarCompatibilidadeExpandida(perfil1, perfil2);
       
-      let compatibilidade = 0;
-      for (let i = 0; i < nums1.length; i++) {
-        const diff = Math.abs(nums1[i] - nums2[i]);
-        compatibilidade += (9 - diff) * 10;
+      renderResultadosCompatibilidadeExpandida(perfil1, perfil2, analiseCompatibilidade);
+    }
+
+    function analisarCompatibilidadeExpandida(perfil1, perfil2) {
+      const analises = [];
+      
+      // Compatibilidade de Alma (Conexão Emocional)
+      const compatAlma = calcularCompatibilidadeNumeros(perfil1.numerosFundamentais.alma, perfil2.numerosFundamentais.alma);
+      analises.push({
+        area: 'Conexão Emocional',
+        score: compatAlma.score,
+        descricao: compatAlma.descricao,
+        conselhos: compatAlma.conselhos,
+        icone: '💖'
+      });
+      
+      // Compatibilidade de Personalidade (Harmonia Social)
+      const compatPersonalidade = calcularCompatibilidadeNumeros(perfil1.numerosFundamentais.personalidade, perfil2.numerosFundamentais.personalidade);
+      analises.push({
+        area: 'Harmonia Social',
+        score: compatPersonalidade.score,
+        descricao: compatPersonalidade.descricao,
+        conselhos: compatPersonalidade.conselhos,
+        icone: '🤝'
+      });
+      
+      // Compatibilidade de Expressão (Comunicação)
+      const compatExpressao = calcularCompatibilidadeNumeros(perfil1.numerosFundamentais.expressao, perfil2.numerosFundamentais.expressao);
+      analises.push({
+        area: 'Comunicação',
+        score: compatExpressao.score,
+        descricao: compatExpressao.descricao,
+        conselhos: compatExpressao.conselhos,
+        icone: '💬'
+      });
+      
+      // Compatibilidade de Destino (Objetivos de Vida)
+      const compatDestino = calcularCompatibilidadeNumeros(perfil1.numerosFundamentais.destino, perfil2.numerosFundamentais.destino);
+      analises.push({
+        area: 'Objetivos de Vida',
+        score: compatDestino.score,
+        descricao: compatDestino.descricao,
+        conselhos: compatDestino.conselhos,
+        icone: '🎯'
+      });
+      
+      // Score geral
+      const scoreGeral = Math.round(analises.reduce((sum, a) => sum + a.score, 0) / analises.length);
+      
+      return {
+        scoreGeral,
+        analises,
+        classificacao: classificarRelacionamento(scoreGeral)
+      };
+    }
+
+    function calcularCompatibilidadeNumeros(num1, num2) {
+      const diferenca = Math.abs(num1 - num2);
+      let score, descricao, conselhos;
+      
+      if (diferenca === 0) {
+        score = 95;
+        descricao = 'Sintonia perfeita! Vocês compartilham a mesma vibração energética nesta área.';
+        conselhos = ['Aproveitem esta harmonia natural', 'Cuidado para não se tornarem muito similares', 'Busquem crescimento conjunto'];
+      } else if (diferenca === 1) {
+        score = 85;
+        descricao = 'Excelente compatibilidade com diferenças complementares que se equilibram.';
+        conselhos = ['As diferenças são pontos fortes', 'Aprendam um com o outro', 'Mantenham o respeito mútuo'];
+      } else if (diferenca === 2) {
+        score = 75;
+        descricao = 'Boa compatibilidade que requer compreensão e adaptação mútua.';
+        conselhos = ['Pratiquem a paciência', 'Comuniquem-se abertamente', 'Foquem nos pontos em comum'];
+      } else if (diferenca === 3) {
+        score = 65;
+        descricao = 'Compatibilidade moderada com desafios que podem ser superados com esforço.';
+        conselhos = ['Trabalhem nas diferenças', 'Busquem pontos de encontro', 'Desenvolvam empatia mútua'];
+      } else if (diferenca === 4) {
+        score = 55;
+        descricao = 'Relacionamento desafiador que exige muito trabalho e compreensão.';
+        conselhos = ['Invistam em comunicação', 'Aceitem as diferenças', 'Busquem ajuda profissional se necessário'];
+      } else {
+        score = 45;
+        descricao = 'Grandes diferenças que requerem maturidade e dedicação extrema.';
+        conselhos = ['Avaliem a compatibilidade geral', 'Foquem no amor e respeito', 'Considerem terapia de casal'];
       }
       
-      const score = Math.min(100, Math.max(0, Math.round(compatibilidade / nums1.length)));
-      
+      return { score, descricao, conselhos };
+    }
+
+    function classificarRelacionamento(score) {
+      if (score >= 90) return { nivel: 'Alma Gêmea', cor: '#ff6b35', descricao: 'Conexão rara e especial' };
+      if (score >= 80) return { nivel: 'Altamente Compatível', cor: '#4ecdc4', descricao: 'Excelente potencial de relacionamento' };
+      if (score >= 70) return { nivel: 'Boa Compatibilidade', cor: '#45b7d1', descricao: 'Relacionamento promissor' };
+      if (score >= 60) return { nivel: 'Compatibilidade Moderada', cor: '#f9ca24', descricao: 'Requer trabalho e dedicação' };
+      if (score >= 50) return { nivel: 'Desafiador', cor: '#f0932b', descricao: 'Muitos obstáculos a superar' };
+      return { nivel: 'Incompatível', cor: '#eb4d4b', descricao: 'Grandes diferenças fundamentais' };
+    }
+
+    function renderResultadosCompatibilidadeExpandida(perfil1, perfil2, analise) {
       const resultadosDiv = document.getElementById('resultados-compatibilidade');
+      
       resultadosDiv.innerHTML = `
         <div class="card">
-          <h3 class="text-center mb-2">💕 Resultado da Compatibilidade</h3>
-          <div class="compatibility-score">
-            <div class="score-circle" style="--score: ${score}">
-              <div class="score-value">${score}%</div>
+          <h3 class="text-center mb-3">💕 Análise de Compatibilidade Expandida</h3>
+          
+          <!-- Score Geral -->
+          <div class="compatibility-score mb-4">
+            <div class="score-circle" style="--score: ${analise.scoreGeral}; border-color: ${analise.classificacao.cor}">
+              <div class="score-value" style="color: ${analise.classificacao.cor}">${analise.scoreGeral}%</div>
             </div>
-            <p class="text-center">
-              ${score >= 80 ? 'Excelente compatibilidade!' : 
-                score >= 60 ? 'Boa compatibilidade com potencial.' :
-                score >= 40 ? 'Compatibilidade moderada.' :
-                'Desafios a serem trabalhados.'}
-            </p>
+            <div class="text-center mt-2">
+              <h4 style="color: ${analise.classificacao.cor}">${analise.classificacao.nivel}</h4>
+              <p>${analise.classificacao.descricao}</p>
+            </div>
+          </div>
+
+          <!-- Perfis Comparativos -->
+          <div class="perfis-comparativos mb-4">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="perfil-card">
+                  <h5>👤 ${perfil1.nome}</h5>
+                  <div class="numeros-grid">
+                    <div class="numero-item">
+                      <span class="numero">${perfil1.numerosFundamentais.alma}</span>
+                      <span class="label">Alma</span>
+                    </div>
+                    <div class="numero-item">
+                      <span class="numero">${perfil1.numerosFundamentais.personalidade}</span>
+                      <span class="label">Personalidade</span>
+                    </div>
+                    <div class="numero-item">
+                      <span class="numero">${perfil1.numerosFundamentais.expressao}</span>
+                      <span class="label">Expressão</span>
+                    </div>
+                    <div class="numero-item">
+                      <span class="numero">${perfil1.numerosFundamentais.destino}</span>
+                      <span class="label">Destino</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="perfil-card">
+                  <h5>👤 ${perfil2.nome}</h5>
+                  <div class="numeros-grid">
+                    <div class="numero-item">
+                      <span class="numero">${perfil2.numerosFundamentais.alma}</span>
+                      <span class="label">Alma</span>
+                    </div>
+                    <div class="numero-item">
+                      <span class="numero">${perfil2.numerosFundamentais.personalidade}</span>
+                      <span class="label">Personalidade</span>
+                    </div>
+                    <div class="numero-item">
+                      <span class="numero">${perfil2.numerosFundamentais.expressao}</span>
+                      <span class="label">Expressão</span>
+                    </div>
+                    <div class="numero-item">
+                      <span class="numero">${perfil2.numerosFundamentais.destino}</span>
+                      <span class="label">Destino</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Análises por Área -->
+          <div class="analises-areas">
+            <h4 class="mb-3">📊 Análise por Áreas</h4>
+            ${analise.analises.map(area => `
+              <div class="area-analise mb-3">
+                <div class="area-header">
+                  <span class="area-icone">${area.icone}</span>
+                  <span class="area-nome">${area.area}</span>
+                  <div class="area-score">
+                    <div class="progress-bar" style="width: ${area.score}%; background-color: ${getCorScore(area.score)}"></div>
+                    <span class="score-text">${area.score}%</span>
+                  </div>
+                </div>
+                <div class="area-descricao">
+                  <p>${area.descricao}</p>
+                  <div class="conselhos">
+                    <strong>💡 Conselhos:</strong>
+                    <ul>
+                      ${area.conselhos.map(conselho => `<li>${conselho}</li>`).join('')}
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Resumo e Recomendações -->
+          <div class="resumo-final mt-4">
+            <h4>🌟 Resumo Final</h4>
+            <p>Com base na análise numerológica completa, este relacionamento apresenta <strong>${analise.classificacao.nivel.toLowerCase()}</strong>. ${analise.classificacao.descricao}</p>
+            
+            <div class="recomendacoes mt-3">
+              <h5>🎯 Recomendações Gerais:</h5>
+              <ul>
+                ${analise.scoreGeral >= 80 ? 
+                  '<li>Aproveitem a harmonia natural entre vocês</li><li>Mantenham a comunicação aberta</li><li>Celebrem as conquistas juntos</li>' :
+                  analise.scoreGeral >= 60 ?
+                  '<li>Trabalhem nas diferenças com paciência</li><li>Foquem nos pontos fortes da relação</li><li>Busquem atividades que os unam</li>' :
+                  '<li>Considerem terapia de casal</li><li>Avaliem se os objetivos são compatíveis</li><li>Invistam muito em comunicação</li>'
+                }
+              </ul>
+            </div>
           </div>
         </div>
       `;
+      
       resultadosDiv.classList.remove('hidden');
+    }
+
+    function identificarNumeroEspecial(numero) {
+      const numerosMestres = [11, 22, 33];
+      const numerosKarmicos = [13, 14, 16, 19];
+      
+      if (numerosMestres.includes(numero)) {
+        return {
+          tipo: 'mestre',
+          nome: getNomeMestre(numero),
+          significado: getSignificadoMestre(numero),
+          cor: '#ff6b35'
+        };
+      }
+      
+      if (numerosKarmicos.includes(numero)) {
+        return {
+          tipo: 'karmico',
+          nome: getNomeKarmico(numero),
+          significado: getSignificadoKarmico(numero),
+          cor: '#eb4d4b'
+        };
+      }
+      
+      return null;
+    }
+
+    function getNomeMestre(numero) {
+      const nomes = {
+        11: 'Mestre Iluminador',
+        22: 'Mestre Construtor',
+        33: 'Mestre Professor'
+      };
+      return nomes[numero] || 'Número Mestre';
+    }
+
+    function getSignificadoMestre(numero) {
+      const significados = {
+        11: 'Intuição elevada, inspiração espiritual, liderança visionária. Pessoa com grande sensibilidade psíquica e capacidade de iluminar outros.',
+        22: 'Materialização de grandes projetos, construção de legados duradouros. Combina visão espiritual com habilidade prática excepcional.',
+        33: 'Compaixão universal, cura através do amor, ensino espiritual. Dedicação ao serviço da humanidade e elevação da consciência coletiva.'
+      };
+      return significados[numero] || 'Número com vibração elevada e responsabilidades especiais.';
+    }
+
+    function getNomeKarmico(numero) {
+      const nomes = {
+        13: 'Transformação através do Trabalho',
+        14: 'Temperança e Moderação',
+        16: 'Despertar Espiritual',
+        19: 'Independência e Liderança'
+      };
+      return nomes[numero] || 'Número Kármico';
+    }
+
+    function getSignificadoKarmico(numero) {
+      const significados = {
+        13: 'Lições sobre disciplina, organização e perseverança. Necessidade de superar preguiça e desenvolver ética de trabalho sólida.',
+        14: 'Aprendizado sobre equilíbrio, moderação e liberdade responsável. Evitar excessos e desenvolver autocontrole.',
+        16: 'Transformação profunda através de crises. Necessidade de humildade e reconstrução sobre bases mais sólidas.',
+        19: 'Lições sobre independência saudável e liderança responsável. Evitar egoísmo e desenvolver compaixão.'
+      };
+      return significados[numero] || 'Número que traz lições kármicas importantes para o crescimento espiritual.';
+    }
+
+    function analisarNumerosEspeciais(perfil) {
+      const numerosEspeciais = [];
+      
+      Object.entries(perfil.numerosFundamentais).forEach(([tipo, numero]) => {
+        const especial = identificarNumeroEspecial(numero);
+        if (especial) {
+          numerosEspeciais.push({
+            tipo: tipo,
+            numero: numero,
+            especial: especial
+          });
+        }
+      });
+      
+      return numerosEspeciais;
+    }
+
+    function calcularCiclosVida(perfil) {
+      const dataNasc = new Date(perfil.dataNascimento);
+      const dia = dataNasc.getDate();
+      const mes = dataNasc.getMonth() + 1;
+      const ano = dataNasc.getFullYear();
+      
+      // Ciclos de Vida (baseados na data de nascimento)
+      const ciclo1 = reduzirNumero(mes);
+      const ciclo2 = reduzirNumero(dia);
+      const ciclo3 = reduzirNumero(ano);
+      const ciclo4 = reduzirNumero(ciclo1 + ciclo3);
+      
+      // Idades de transição
+      const transicao1 = 36 - ciclo1;
+      const transicao2 = transicao1 + 9;
+      const transicao3 = transicao2 + 9;
+      
+      return {
+        ciclos: [
+          {
+            numero: ciclo1,
+            periodo: `0 - ${transicao1} anos`,
+            fase: 'Formação',
+            descricao: getCicloDescricao(ciclo1, 'formacao')
+          },
+          {
+            numero: ciclo2,
+            periodo: `${transicao1 + 1} - ${transicao2} anos`,
+            fase: 'Produtividade',
+            descricao: getCicloDescricao(ciclo2, 'produtividade')
+          },
+          {
+            numero: ciclo3,
+            periodo: `${transicao2 + 1} - ${transicao3} anos`,
+            fase: 'Colheita',
+            descricao: getCicloDescricao(ciclo3, 'colheita')
+          },
+          {
+            numero: ciclo4,
+            periodo: `${transicao3 + 1}+ anos`,
+            fase: 'Sabedoria',
+            descricao: getCicloDescricao(ciclo4, 'sabedoria')
+          }
+        ]
+      };
+    }
+
+    function getCicloDescricao(numero, fase) {
+      const descricoes = {
+        1: {
+          formacao: 'Desenvolvimento da independência e liderança. Aprender a ser pioneiro.',
+          produtividade: 'Período de iniciativas e novos começos. Liderança em projetos.',
+          colheita: 'Reconhecimento pela originalidade e inovação. Posição de destaque.',
+          sabedoria: 'Mentor e inspirador de outros. Legado de pioneirismo.'
+        },
+        2: {
+          formacao: 'Aprendizado sobre cooperação e diplomacia. Desenvolvimento da sensibilidade.',
+          produtividade: 'Trabalho em equipe e parcerias. Mediação e harmonização.',
+          colheita: 'Reconhecimento pelas habilidades diplomáticas. Relacionamentos sólidos.',
+          sabedoria: 'Conselheiro sábio. Promotor da paz e harmonia.'
+        },
+        3: {
+          formacao: 'Desenvolvimento da criatividade e expressão. Comunicação e arte.',
+          produtividade: 'Carreira criativa e comunicativa. Inspiração e alegria.',
+          colheita: 'Reconhecimento artístico ou comunicativo. Influência positiva.',
+          sabedoria: 'Mestre da expressão criativa. Inspirador de gerações.'
+        },
+        4: {
+          formacao: 'Aprendizado sobre disciplina e organização. Construção de bases sólidas.',
+          produtividade: 'Trabalho sistemático e construção. Realizações práticas.',
+          colheita: 'Reconhecimento pela confiabilidade. Estruturas duradouras.',
+          sabedoria: 'Exemplo de perseverança e organização. Legado sólido.'
+        },
+        5: {
+          formacao: 'Desenvolvimento da liberdade e aventura. Experiências diversas.',
+          produtividade: 'Carreira dinâmica e variada. Viagens e mudanças.',
+          colheita: 'Reconhecimento pela versatilidade. Experiências ricas.',
+          sabedoria: 'Contador de histórias. Promotor da liberdade responsável.'
+        },
+        6: {
+          formacao: 'Aprendizado sobre responsabilidade e cuidado. Família e comunidade.',
+          produtividade: 'Serviço à família e comunidade. Cuidado e proteção.',
+          colheita: 'Reconhecimento pelo serviço prestado. Família unida.',
+          sabedoria: 'Patriarca/Matriarca sábio. Guardião dos valores familiares.'
+        },
+        7: {
+          formacao: 'Desenvolvimento da espiritualidade e análise. Busca interior.',
+          produtividade: 'Pesquisa e desenvolvimento espiritual. Conhecimento profundo.',
+          colheita: 'Reconhecimento pela sabedoria. Autoridade espiritual.',
+          sabedoria: 'Mestre espiritual. Guia para a iluminação.'
+        },
+        8: {
+          formacao: 'Aprendizado sobre poder e materialização. Ambição e conquista.',
+          produtividade: 'Carreira executiva e empreendedora. Sucesso material.',
+          colheita: 'Reconhecimento pelo sucesso. Posição de poder.',
+          sabedoria: 'Mentor de negócios. Exemplo de sucesso ético.'
+        },
+        9: {
+          formacao: 'Desenvolvimento da compaixão e serviço. Visão humanitária.',
+          produtividade: 'Serviço à humanidade. Causas nobres e filantropia.',
+          colheita: 'Reconhecimento pelo serviço humanitário. Impacto global.',
+          sabedoria: 'Sábio humanitário. Inspiração para o bem comum.'
+        }
+      };
+      
+      return descricoes[numero]?.[fase] || 'Período de crescimento e aprendizado específico.';
     }
 
     function calcularPiramide() {
@@ -1728,15 +2104,17 @@
       return analises[sequencia.nome] || '<p>Análise detalhada em desenvolvimento.</p>';
     }
 
-    function expandirSequencia(botao) {
-      const analiseCompleta = botao.nextElementSibling;
-      if (analiseCompleta.classList.contains('hidden')) {
-        analiseCompleta.classList.remove('hidden');
-        botao.textContent = '📖 Ocultar Análise';
-      } else {
-        analiseCompleta.classList.add('hidden');
-        botao.textContent = '📖 Ler Análise Completa';
-      }
+    function preencherExemploPiramide() {
+      document.getElementById('nomePiramide').value = 'JOAQUIM MARIA MACHADO DE ASSIS';
+      document.getElementById('idadePiramide').value = 69;
+      document.getElementById('assinaturaPiramide').value = 'Machado de Assis';
+    }
+
+    function limparPiramide() {
+      document.getElementById('nomePiramide').value = '';
+      document.getElementById('idadePiramide').value = '';
+      document.getElementById('assinaturaPiramide').value = '';
+      document.getElementById('resultados-piramide').classList.add('hidden');
     }
 
     // Funções de limpeza
@@ -2178,6 +2556,184 @@
         width: 40px;
         height: 40px;
         font-size: 0.8rem;
+      }
+    }
+
+
+    
+    /* CSS para Compatibilidade Expandida */
+    .perfis-comparativos {
+      margin: 1.5rem 0;
+    }
+    
+    .perfil-card {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid var(--sage);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .perfil-card h5 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    
+    .numeros-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+    
+    .numero-item {
+      text-align: center;
+      padding: 0.5rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      border: 1px solid rgba(178, 209, 177, 0.3);
+    }
+    
+    .numero-item .numero {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--gold);
+      margin-bottom: 0.2rem;
+    }
+    
+    .numero-item .label {
+      font-size: 0.8rem;
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .analises-areas {
+      margin-top: 2rem;
+    }
+    
+    .area-analise {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(178, 209, 177, 0.3);
+      border-radius: 12px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    
+    .area-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      gap: 1rem;
+    }
+    
+    .area-icone {
+      font-size: 1.5rem;
+      min-width: 30px;
+    }
+    
+    .area-nome {
+      font-weight: bold;
+      color: var(--gold);
+      flex: 1;
+    }
+    
+    .area-score {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      min-width: 120px;
+    }
+    
+    .progress-bar {
+      height: 8px;
+      border-radius: 4px;
+      transition: width 0.3s ease;
+      flex: 1;
+    }
+    
+    .score-text {
+      font-weight: bold;
+      color: var(--gold);
+      min-width: 40px;
+      text-align: right;
+    }
+    
+    .area-descricao {
+      color: var(--parch);
+      line-height: 1.6;
+    }
+    
+    .conselhos {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      border-left: 4px solid var(--sage);
+    }
+    
+    .conselhos strong {
+      color: var(--gold);
+    }
+    
+    .conselhos ul {
+      margin: 0.5rem 0 0 1rem;
+      padding: 0;
+    }
+    
+    .conselhos li {
+      margin-bottom: 0.3rem;
+      color: var(--sage);
+    }
+    
+    .resumo-final {
+      background: linear-gradient(135deg, rgba(62, 10, 41, 0.3), rgba(11, 24, 54, 0.3));
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .resumo-final h4 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+    
+    .recomendacoes {
+      margin-top: 1rem;
+    }
+    
+    .recomendacoes h5 {
+      color: var(--sage);
+      margin-bottom: 0.8rem;
+    }
+    
+    .recomendacoes ul {
+      margin: 0 0 0 1rem;
+      padding: 0;
+    }
+    
+    .recomendacoes li {
+      margin-bottom: 0.5rem;
+      color: var(--parch);
+      line-height: 1.5;
+    }
+    
+    @media (max-width: 768px) {
+      .numeros-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .area-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      .area-score {
+        width: 100%;
+        min-width: auto;
       }
     }
 
