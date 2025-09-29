@@ -1651,7 +1651,492 @@
         }
       };
       
-      return descricoes[numero]?.[fase] || 'Período de crescimento e aprendizado específico.';
+    function calcularTransitosPinaculos(perfil) {
+      const dataNasc = new Date(perfil.dataNascimento);
+      const dia = dataNasc.getDate();
+      const mes = dataNasc.getMonth() + 1;
+      const ano = dataNasc.getFullYear();
+      
+      // Cálculo dos Pináculos (4 períodos da vida)
+      const pinaculo1 = reduzirNumero(mes + dia);
+      const pinaculo2 = reduzirNumero(dia + ano);
+      const pinaculo3 = reduzirNumero(pinaculo1 + pinaculo2);
+      const pinaculo4 = reduzirNumero(mes + ano);
+      
+      // Idades de transição dos pináculos
+      const caminhoVida = perfil.numerosFundamentais.destino;
+      const transicao1 = 36 - caminhoVida;
+      const transicao2 = transicao1 + 9;
+      const transicao3 = transicao2 + 9;
+      
+      // Cálculo dos Desafios (4 períodos correspondentes)
+      const desafio1 = Math.abs(mes - dia);
+      const desafio2 = Math.abs(dia - ano);
+      const desafio3 = Math.abs(desafio1 - desafio2);
+      const desafio4 = Math.abs(mes - ano);
+      
+      // Idade atual para determinar período ativo
+      const hoje = new Date();
+      const idade = hoje.getFullYear() - ano;
+      
+      let periodoAtivo = 1;
+      if (idade > transicao3) periodoAtivo = 4;
+      else if (idade > transicao2) periodoAtivo = 3;
+      else if (idade > transicao1) periodoAtivo = 2;
+      
+      return {
+        pinaculos: [
+          {
+            numero: pinaculo1,
+            periodo: `0 - ${transicao1} anos`,
+            fase: 'Juventude e Formação',
+            ativo: periodoAtivo === 1,
+            descricao: getPinaculoDescricao(pinaculo1, 'juventude'),
+            energia: 'Descoberta e aprendizado inicial'
+          },
+          {
+            numero: pinaculo2,
+            periodo: `${transicao1 + 1} - ${transicao2} anos`,
+            fase: 'Maturidade e Produtividade',
+            ativo: periodoAtivo === 2,
+            descricao: getPinaculoDescricao(pinaculo2, 'maturidade'),
+            energia: 'Construção e realização'
+          },
+          {
+            numero: pinaculo3,
+            periodo: `${transicao2 + 1} - ${transicao3} anos`,
+            fase: 'Colheita e Reconhecimento',
+            ativo: periodoAtivo === 3,
+            descricao: getPinaculoDescricao(pinaculo3, 'colheita'),
+            energia: 'Frutos do trabalho e sabedoria'
+          },
+          {
+            numero: pinaculo4,
+            periodo: `${transicao3 + 1}+ anos`,
+            fase: 'Sabedoria e Legado',
+            ativo: periodoAtivo === 4,
+            descricao: getPinaculoDescricao(pinaculo4, 'sabedoria'),
+            energia: 'Transmissão de conhecimento'
+          }
+        ],
+        desafios: [
+          {
+            numero: desafio1,
+            periodo: `0 - ${transicao1} anos`,
+            fase: 'Desafio da Juventude',
+            ativo: periodoAtivo === 1,
+            descricao: getDesafioDescricao(desafio1),
+            licao: getDesafioLicao(desafio1)
+          },
+          {
+            numero: desafio2,
+            periodo: `${transicao1 + 1} - ${transicao2} anos`,
+            fase: 'Desafio da Maturidade',
+            ativo: periodoAtivo === 2,
+            descricao: getDesafioDescricao(desafio2),
+            licao: getDesafioLicao(desafio2)
+          },
+          {
+            numero: desafio3,
+            periodo: `${transicao2 + 1} - ${transicao3} anos`,
+            fase: 'Desafio da Colheita',
+            ativo: periodoAtivo === 3,
+            descricao: getDesafioDescricao(desafio3),
+            licao: getDesafioLicao(desafio3)
+          },
+          {
+            numero: desafio4,
+            periodo: `${transicao3 + 1}+ anos`,
+            fase: 'Desafio da Sabedoria',
+            ativo: periodoAtivo === 4,
+            descricao: getDesafioDescricao(desafio4),
+            licao: getDesafioLicao(desafio4)
+          }
+        ],
+        periodoAtivo,
+        idade
+      };
+    }
+
+    function getPinaculoDescricao(numero, fase) {
+      const descricoes = {
+        1: {
+          juventude: 'Período de desenvolvimento da independência e liderança. Aprender a ser pioneiro e tomar iniciativas.',
+          maturidade: 'Fase de liderança em projetos e carreiras. Tempo de ser o primeiro em sua área.',
+          colheita: 'Reconhecimento pela originalidade e inovação. Posição de destaque e influência.',
+          sabedoria: 'Mentor e inspirador de outros. Legado de pioneirismo e coragem.'
+        },
+        2: {
+          juventude: 'Desenvolvimento da sensibilidade e cooperação. Aprender a trabalhar em equipe.',
+          maturidade: 'Período de parcerias importantes e trabalho colaborativo. Diplomacia e mediação.',
+          colheita: 'Reconhecimento pelas habilidades diplomáticas. Relacionamentos sólidos e duradouros.',
+          sabedoria: 'Conselheiro sábio e promotor da paz. Exemplo de harmonia e cooperação.'
+        },
+        3: {
+          juventude: 'Desenvolvimento da criatividade e expressão. Descoberta de talentos artísticos.',
+          maturidade: 'Carreira criativa e comunicativa. Período de inspiração e alegria.',
+          colheita: 'Reconhecimento artístico ou comunicativo. Influência positiva através da arte.',
+          sabedoria: 'Mestre da expressão criativa. Inspirador de gerações através da arte.'
+        },
+        4: {
+          juventude: 'Aprendizado sobre disciplina e organização. Construção de bases sólidas.',
+          maturidade: 'Trabalho sistemático e construção de estruturas. Realizações práticas duradouras.',
+          colheita: 'Reconhecimento pela confiabilidade e competência. Estruturas que perduram.',
+          sabedoria: 'Exemplo de perseverança e organização. Legado sólido e confiável.'
+        },
+        5: {
+          juventude: 'Desenvolvimento da liberdade e aventura. Experiências diversas e viagens.',
+          maturidade: 'Carreira dinâmica e variada. Período de mudanças e expansão.',
+          colheita: 'Reconhecimento pela versatilidade e adaptabilidade. Experiências ricas.',
+          sabedoria: 'Contador de histórias e promotor da liberdade responsável.'
+        },
+        6: {
+          juventude: 'Aprendizado sobre responsabilidade e cuidado. Desenvolvimento do senso familiar.',
+          maturidade: 'Serviço à família e comunidade. Período de cuidado e proteção.',
+          colheita: 'Reconhecimento pelo serviço prestado. Família unida e comunidade forte.',
+          sabedoria: 'Patriarca/Matriarca sábio. Guardião dos valores familiares.'
+        },
+        7: {
+          juventude: 'Desenvolvimento da espiritualidade e análise. Busca interior e questionamentos.',
+          maturidade: 'Pesquisa e desenvolvimento espiritual. Aprofundamento do conhecimento.',
+          colheita: 'Reconhecimento pela sabedoria e conhecimento. Autoridade espiritual.',
+          sabedoria: 'Mestre espiritual e guia para a iluminação.'
+        },
+        8: {
+          juventude: 'Aprendizado sobre poder e materialização. Desenvolvimento da ambição.',
+          maturidade: 'Carreira executiva e empreendedora. Período de conquistas materiais.',
+          colheita: 'Reconhecimento pelo sucesso e realizações. Posição de poder e influência.',
+          sabedoria: 'Mentor de negócios e exemplo de sucesso ético.'
+        },
+        9: {
+          juventude: 'Desenvolvimento da compaixão e visão humanitária. Sensibilidade social.',
+          maturidade: 'Serviço à humanidade e causas nobres. Período de filantropia.',
+          colheita: 'Reconhecimento pelo serviço humanitário. Impacto global positivo.',
+          sabedoria: 'Sábio humanitário e inspiração para o bem comum.'
+        }
+      };
+      
+      return descricoes[numero]?.[fase] || 'Período de crescimento e desenvolvimento específico.';
+    }
+
+    function getDesafioDescricao(numero) {
+      const descricoes = {
+        0: 'Desafio da Escolha: Aprender a fazer escolhas conscientes e assumir responsabilidade por elas. Evitar a indecisão e procrastinação.',
+        1: 'Desafio da Independência: Desenvolver autoconfiança e liderança. Superar a dependência excessiva dos outros e o medo de tomar iniciativas.',
+        2: 'Desafio da Cooperação: Aprender a trabalhar em equipe e desenvolver sensibilidade. Superar a timidez excessiva e a tendência ao isolamento.',
+        3: 'Desafio da Expressão: Desenvolver habilidades comunicativas e criativas. Superar a autocrítica excessiva e o medo de se expressar.',
+        4: 'Desafio da Disciplina: Aprender organização e perseverança. Superar a preguiça, desorganização e falta de foco.',
+        5: 'Desafio da Liberdade: Encontrar equilíbrio entre liberdade e responsabilidade. Superar a impulsividade e instabilidade.',
+        6: 'Desafio da Responsabilidade: Aprender a cuidar sem se sacrificar excessivamente. Equilibrar família e vida pessoal.',
+        7: 'Desafio da Fé: Desenvolver confiança interior e espiritualidade. Superar o ceticismo excessivo e o isolamento.',
+        8: 'Desafio do Poder: Aprender a usar o poder de forma ética. Superar a ganância e o materialismo excessivo.'
+      };
+      
+      return descricoes[numero] || 'Desafio específico de crescimento pessoal.';
+    }
+
+    function getDesafioLicao(numero) {
+      const licoes = {
+        0: 'Desenvolver discernimento e capacidade de decisão. Aprender que não escolher também é uma escolha.',
+        1: 'Cultivar autoconfiança e coragem para liderar. Aprender a confiar em si mesmo e tomar iniciativas.',
+        2: 'Desenvolver empatia e habilidades sociais. Aprender o valor da cooperação e do trabalho em equipe.',
+        3: 'Expressar criatividade e comunicar-se com clareza. Aprender a valorizar seus talentos únicos.',
+        4: 'Desenvolver disciplina e organização. Aprender que o trabalho consistente leva ao sucesso.',
+        5: 'Equilibrar liberdade com responsabilidade. Aprender que verdadeira liberdade vem da autodisciplina.',
+        6: 'Cuidar dos outros sem se esquecer de si mesmo. Aprender limites saudáveis no cuidado.',
+        7: 'Desenvolver fé e confiança interior. Aprender que algumas respostas vêm de dentro.',
+        8: 'Usar poder e recursos de forma ética. Aprender que verdadeiro sucesso inclui integridade.'
+      };
+      
+      return licoes[numero] || 'Lição específica de desenvolvimento pessoal.';
+    }
+
+    function calcularCiclosTemporais(perfil) {
+      const hoje = new Date();
+      const anoAtual = hoje.getFullYear();
+      const mesAtual = hoje.getMonth() + 1;
+      const diaAtual = hoje.getDate();
+      
+      const dataNasc = new Date(perfil.dataNascimento);
+      const diaNasc = dataNasc.getDate();
+      const mesNasc = dataNasc.getMonth() + 1;
+      
+      // Ano Pessoal
+      const anoPessoal = reduzirNumero(diaNasc + mesNasc + anoAtual);
+      
+      // Mês Pessoal
+      const mesPessoal = reduzirNumero(anoPessoal + mesAtual);
+      
+      // Dia Pessoal
+      const diaPessoal = reduzirNumero(mesPessoal + diaAtual);
+      
+      return {
+        anoPessoal: {
+          numero: anoPessoal,
+          descricao: getAnoPessoalDescricao(anoPessoal),
+          energia: getAnoPessoalEnergia(anoPessoal),
+          foco: getAnoPessoalFoco(anoPessoal)
+        },
+        mesPessoal: {
+          numero: mesPessoal,
+          descricao: getMesPessoalDescricao(mesPessoal, anoPessoal),
+          energia: getMesPessoalEnergia(mesPessoal),
+          acao: getMesPessoalAcao(mesPessoal)
+        },
+        diaPessoal: {
+          numero: diaPessoal,
+          descricao: getDiaPessoalDescricao(diaPessoal),
+          energia: getDiaPessoalEnergia(diaPessoal),
+          recomendacao: getDiaPessoalRecomendacao(diaPessoal)
+        }
+      };
+    }
+
+    function getAnoPessoalDescricao(numero) {
+      const descricoes = {
+        1: 'Ano de novos começos, iniciativas e liderança. Tempo de plantar sementes para o futuro.',
+        2: 'Ano de cooperação, parcerias e desenvolvimento de relacionamentos. Paciência e diplomacia.',
+        3: 'Ano de criatividade, expressão e comunicação. Tempo de inspiração e alegria.',
+        4: 'Ano de trabalho duro, organização e construção de bases sólidas. Disciplina e perseverança.',
+        5: 'Ano de mudanças, liberdade e novas experiências. Tempo de expansão e aventura.',
+        6: 'Ano de responsabilidade, família e serviço. Foco no lar e relacionamentos próximos.',
+        7: 'Ano de introspecção, espiritualidade e desenvolvimento interior. Tempo de reflexão.',
+        8: 'Ano de conquistas materiais, reconhecimento e sucesso profissional. Poder e autoridade.',
+        9: 'Ano de conclusões, finalização de ciclos e serviço humanitário. Tempo de dar e compartilhar.'
+      };
+      
+      return descricoes[numero] || 'Ano de crescimento e desenvolvimento específico.';
+    }
+
+    function getAnoPessoalEnergia(numero) {
+      const energias = {
+        1: 'Energia pioneira e inovadora',
+        2: 'Energia cooperativa e harmoniosa',
+        3: 'Energia criativa e comunicativa',
+        4: 'Energia construtiva e organizadora',
+        5: 'Energia dinâmica e libertadora',
+        6: 'Energia cuidadora e responsável',
+        7: 'Energia introspectiva e espiritual',
+        8: 'Energia ambiciosa e realizadora',
+        9: 'Energia compassiva e universal'
+      };
+      
+      return energias[numero] || 'Energia específica do ano';
+    }
+
+    function getAnoPessoalFoco(numero) {
+      const focos = {
+        1: 'Independência, liderança, novos projetos',
+        2: 'Relacionamentos, cooperação, paciência',
+        3: 'Criatividade, comunicação, expressão artística',
+        4: 'Trabalho, organização, construção de bases',
+        5: 'Liberdade, mudanças, novas experiências',
+        6: 'Família, responsabilidade, cuidado com outros',
+        7: 'Espiritualidade, estudo, desenvolvimento interior',
+        8: 'Carreira, finanças, reconhecimento profissional',
+        9: 'Serviço, conclusões, preparação para novo ciclo'
+      };
+      
+      return focos[numero] || 'Foco específico do ano';
+    }
+
+    function getMesPessoalDescricao(numero, anoPessoal) {
+      const base = {
+        1: 'Mês de novos começos e iniciativas dentro do contexto do ano.',
+        2: 'Mês de cooperação e desenvolvimento de parcerias.',
+        3: 'Mês de expressão criativa e comunicação.',
+        4: 'Mês de trabalho focado e organização.',
+        5: 'Mês de mudanças e novas experiências.',
+        6: 'Mês de responsabilidade e cuidado com família.',
+        7: 'Mês de introspecção e desenvolvimento espiritual.',
+        8: 'Mês de foco em carreira e conquistas materiais.',
+        9: 'Mês de conclusões e serviço aos outros.'
+      };
+      
+      return base[numero] || 'Mês de desenvolvimento específico.';
+    }
+
+    function getMesPessoalEnergia(numero) {
+      const energias = {
+        1: 'Energia iniciadora e pioneira',
+        2: 'Energia colaborativa e diplomática',
+        3: 'Energia criativa e comunicativa',
+        4: 'Energia organizadora e construtiva',
+        5: 'Energia dinâmica e aventureira',
+        6: 'Energia cuidadora e responsável',
+        7: 'Energia reflexiva e espiritual',
+        8: 'Energia ambiciosa e realizadora',
+        9: 'Energia compassiva e conclusiva'
+      };
+      
+      return energias[numero] || 'Energia específica do mês';
+    }
+
+    function getMesPessoalAcao(numero) {
+      const acoes = {
+        1: 'Iniciar novos projetos, tomar liderança',
+        2: 'Fortalecer relacionamentos, praticar paciência',
+        3: 'Expressar criatividade, comunicar ideias',
+        4: 'Organizar, trabalhar com disciplina',
+        5: 'Explorar mudanças, buscar liberdade',
+        6: 'Cuidar da família, assumir responsabilidades',
+        7: 'Meditar, estudar, buscar conhecimento interior',
+        8: 'Focar na carreira, buscar reconhecimento',
+        9: 'Finalizar projetos, ajudar outros'
+      };
+      
+      return acoes[numero] || 'Ação específica do mês';
+    }
+
+    function getDiaPessoalDescricao(numero) {
+      const descricoes = {
+        1: 'Dia ideal para começar algo novo, tomar iniciativas e liderar.',
+        2: 'Dia para cooperar, ser diplomático e trabalhar em equipe.',
+        3: 'Dia criativo, bom para se expressar e comunicar.',
+        4: 'Dia para trabalhar com disciplina e organizar tarefas.',
+        5: 'Dia dinâmico, bom para mudanças e novas experiências.',
+        6: 'Dia para cuidar da família e assumir responsabilidades.',
+        7: 'Dia introspectivo, ideal para meditação e estudo.',
+        8: 'Dia focado em negócios e conquistas materiais.',
+        9: 'Dia para finalizar tarefas e ajudar outras pessoas.'
+      };
+      
+      return descricoes[numero] || 'Dia de energia específica.';
+    }
+
+    function getDiaPessoalEnergia(numero) {
+      const energias = {
+        1: 'Energia de liderança e pioneirismo',
+        2: 'Energia de cooperação e harmonia',
+        3: 'Energia de criatividade e alegria',
+        4: 'Energia de trabalho e organização',
+        5: 'Energia de liberdade e aventura',
+        6: 'Energia de cuidado e responsabilidade',
+        7: 'Energia de reflexão e espiritualidade',
+        8: 'Energia de ambição e realização',
+        9: 'Energia de compaixão e conclusão'
+      };
+      
+      return energias[numero] || 'Energia específica do dia';
+    }
+
+    function getDiaPessoalRecomendacao(numero) {
+      const recomendacoes = {
+        1: 'Seja corajoso, tome a iniciativa em projetos importantes.',
+        2: 'Pratique a paciência, ouça mais do que fale.',
+        3: 'Expresse sua criatividade, compartilhe suas ideias.',
+        4: 'Mantenha o foco, organize suas tarefas prioritárias.',
+        5: 'Esteja aberto a mudanças, explore novas possibilidades.',
+        6: 'Dedique tempo à família, seja prestativo com outros.',
+        7: 'Reserve tempo para reflexão, busque conhecimento interior.',
+        8: 'Foque em seus objetivos profissionais, seja ambicioso.',
+        9: 'Finalize pendências, pratique a generosidade.'
+      };
+      
+      return recomendacoes[numero] || 'Recomendação específica do dia';
+    }
+
+    function calcularNumerosOcultos(perfil) {
+      const nome = perfil.nome.toUpperCase();
+      const letras = nome.replace(/[^A-Z]/g, '').split('');
+      
+      // Número de Intensidade (letra mais repetida)
+      const contadorLetras = {};
+      letras.forEach(letra => {
+        const num = obterValorLetra(letra, perfil.sistema);
+        contadorLetras[num] = (contadorLetras[num] || 0) + 1;
+      });
+      
+      let numeroIntensidade = 0;
+      let maxRepeticoes = 0;
+      for (const [num, count] of Object.entries(contadorLetras)) {
+        if (count > maxRepeticoes) {
+          maxRepeticoes = count;
+          numeroIntensidade = parseInt(num);
+        }
+      }
+      
+      // Número de Carência (números que faltam de 1-9)
+      const numerosPresentes = new Set(Object.keys(contadorLetras).map(n => parseInt(n)));
+      const numerosCarencia = [];
+      for (let i = 1; i <= 9; i++) {
+        if (!numerosPresentes.has(i)) {
+          numerosCarencia.push(i);
+        }
+      }
+      
+      // Número de Equilíbrio Mental (primeira + última consoante)
+      const consoantes = nome.replace(/[AEIOU\s]/g, '').split('');
+      const primeiraConsoante = consoantes[0] || '';
+      const ultimaConsoante = consoantes[consoantes.length - 1] || '';
+      const equilibrioMental = reduzirNumero(
+        obterValorLetra(primeiraConsoante, perfil.sistema) + 
+        obterValorLetra(ultimaConsoante, perfil.sistema)
+      );
+      
+      // Número de Realização (expressão + destino)
+      const realizacao = reduzirNumero(
+        perfil.numerosFundamentais.expressao + 
+        perfil.numerosFundamentais.destino
+      );
+      
+      return {
+        intensidade: {
+          numero: numeroIntensidade,
+          repeticoes: maxRepeticoes,
+          descricao: getIntensidadeDescricao(numeroIntensidade, maxRepeticoes),
+          significado: getIntensidadeSignificado(numeroIntensidade)
+        },
+        carencia: {
+          numeros: numerosCarencia,
+          descricao: getCarenciaDescricao(numerosCarencia),
+          impacto: getCarenciaImpacto(numerosCarencia)
+        },
+        equilibrioMental: {
+          numero: equilibrioMental,
+          descricao: getEquilibrioMentalDescricao(equilibrioMental),
+          estrategia: getEquilibrioMentalEstrategia(equilibrioMental)
+        },
+        realizacao: {
+          numero: realizacao,
+          descricao: getRealizacaoDescricao(realizacao),
+          potencial: getRealizacaoPotencial(realizacao)
+        }
+      };
+    }
+
+    function getIntensidadeDescricao(numero, repeticoes) {
+      if (repeticoes <= 1) return 'Personalidade equilibrada sem intensidades extremas.';
+      
+      const base = {
+        1: `Intensidade em liderança e independência (${repeticoes}x). Forte necessidade de ser pioneiro.`,
+        2: `Intensidade em cooperação e sensibilidade (${repeticoes}x). Extrema necessidade de harmonia.`,
+        3: `Intensidade em expressão e criatividade (${repeticoes}x). Forte impulso artístico.`,
+        4: `Intensidade em organização e trabalho (${repeticoes}x). Extrema necessidade de ordem.`,
+        5: `Intensidade em liberdade e aventura (${repeticoes}x). Forte impulso por mudanças.`,
+        6: `Intensidade em responsabilidade e cuidado (${repeticoes}x). Extrema necessidade de servir.`,
+        7: `Intensidade em espiritualidade e análise (${repeticoes}x). Forte busca interior.`,
+        8: `Intensidade em ambição e materialização (${repeticoes}x). Extrema necessidade de sucesso.`,
+        9: `Intensidade em compaixão e universalidade (${repeticoes}x). Forte impulso humanitário.`
+      };
+      
+      return base[numero] || `Intensidade específica (${repeticoes}x).`;
+    }
+
+    function getIntensidadeSignificado(numero) {
+      const significados = {
+        1: 'Pode indicar egoísmo excessivo ou liderança natural muito forte.',
+        2: 'Pode indicar dependência excessiva ou habilidades diplomáticas excepcionais.',
+        3: 'Pode indicar dispersão criativa ou talento artístico excepcional.',
+        4: 'Pode indicar rigidez excessiva ou capacidade organizacional excepcional.',
+        5: 'Pode indicar instabilidade ou adaptabilidade excepcional.',
+        6: 'Pode indicar sacrifício excessivo ou capacidade de cuidado excepcional.',
+        7: 'Pode indicar isolamento excessivo ou sabedoria espiritual excepcional.',
+        8: 'Pode indicar materialismo excessivo ou capacidade de realização excepcional.',
+        9: 'Pode indicar idealismo excessivo ou compaixão excepcional.'
+      };
+      
+      return significados[numero] || 'Significado específico da intensidade.';
     }
 
     function calcularPiramide() {
