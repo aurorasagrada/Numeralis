@@ -719,6 +719,223 @@
       border-radius: 0 8px 8px 0;
     }
 
+    /* CSS para Análises Avançadas */
+    .analise-section {
+      margin: 2rem 0;
+      padding: 1.5rem;
+      background: rgba(11,24,54,0.3);
+      border-radius: 12px;
+      border: 1px solid rgba(240,170,83,0.2);
+    }
+
+    .analise-section h4 {
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      text-align: center;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 0.5rem;
+    }
+
+    .ciclos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .ciclo-card {
+      background: linear-gradient(135deg, rgba(62,10,41,0.8), rgba(11,24,54,0.8));
+      border: 2px solid var(--sage);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .ciclo-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(240,170,83,0.3);
+      border-color: var(--gold);
+    }
+
+    .ciclo-numero {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      margin-bottom: 0.5rem;
+    }
+
+    .ciclo-titulo {
+      font-size: 1.1rem;
+      color: var(--sage);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .ciclo-energia {
+      font-size: 1rem;
+      color: var(--parch);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .ciclo-descricao {
+      font-size: 0.9rem;
+      color: var(--parch);
+      line-height: 1.4;
+      margin-bottom: 0.8rem;
+    }
+
+    .ciclo-foco, .ciclo-acao, .ciclo-recomendacao {
+      font-size: 0.85rem;
+      color: var(--sage);
+      background: rgba(178,209,177,0.1);
+      padding: 0.5rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--sage);
+    }
+
+    .pinaculos-container, .desafios-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .pinaculo-card, .desafio-card {
+      background: linear-gradient(135deg, rgba(178,209,177,0.1), rgba(11,24,54,0.3));
+      border: 1px solid var(--sage);
+      border-radius: 10px;
+      padding: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .pinaculo-card.ativo, .desafio-card.ativo {
+      border: 2px solid var(--gold);
+      background: linear-gradient(135deg, rgba(240,170,83,0.1), rgba(62,10,41,0.2));
+      box-shadow: 0 5px 15px rgba(240,170,83,0.2);
+    }
+
+    .pinaculo-header, .desafio-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .pinaculo-numero, .desafio-numero {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      margin-right: 1rem;
+      min-width: 50px;
+    }
+
+    .pinaculo-info, .desafio-info {
+      flex: 1;
+    }
+
+    .pinaculo-fase, .desafio-fase {
+      font-size: 1.1rem;
+      color: var(--sage);
+      font-weight: 600;
+    }
+
+    .pinaculo-periodo, .desafio-periodo {
+      font-size: 0.9rem;
+      color: var(--parch);
+      opacity: 0.8;
+    }
+
+    .pinaculo-energia {
+      font-size: 1rem;
+      color: var(--gold);
+      font-style: italic;
+      margin-bottom: 0.8rem;
+    }
+
+    .pinaculo-descricao, .desafio-descricao {
+      font-size: 0.9rem;
+      color: var(--parch);
+      line-height: 1.4;
+      margin-bottom: 0.8rem;
+    }
+
+    .desafio-licao {
+      font-size: 0.85rem;
+      color: var(--sage);
+      background: rgba(178,209,177,0.1);
+      padding: 0.5rem;
+      border-radius: 6px;
+      border-left: 3px solid var(--sage);
+    }
+
+    .idade-atual {
+      text-align: center;
+      font-size: 1.1rem;
+      color: var(--gold);
+      font-weight: 600;
+      background: rgba(240,170,83,0.1);
+      padding: 0.8rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .ocultos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .oculto-card {
+      background: linear-gradient(135deg, rgba(62,10,41,0.6), rgba(11,24,54,0.6));
+      border: 1px solid var(--wine);
+      border-radius: 10px;
+      padding: 1.2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .oculto-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(62,10,41,0.3);
+      border-color: var(--gold);
+    }
+
+    .oculto-card h5 {
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 0.5rem;
+    }
+
+    .oculto-numero, .oculto-numeros {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--sage);
+      font-family: "Cinzel", serif;
+      margin-bottom: 0.5rem;
+    }
+
+    .oculto-repeticoes {
+      font-size: 0.9rem;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .oculto-descricao, .oculto-significado, .oculto-impacto, .oculto-estrategia, .oculto-potencial {
+      font-size: 0.85rem;
+      color: var(--parch);
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+    }
+
     /* Responsividade */
     @media (max-width: 768px) {     .header h1 { font-size: 2rem; }
       .nav-tabs { flex-direction: column; }
@@ -778,6 +995,12 @@
         <button data-section="empresarial">
           <span class="tab-icon">🏢</span>
           Numerologia Empresarial
+        </button>
+      </li>
+      <li class="nav-tab">
+        <button data-section="avancadas">
+          <span class="tab-icon">🔮</span>
+          Análises Avançadas
         </button>
       </li>
     </ul>
@@ -952,6 +1175,41 @@
       
       <div id="resultados-empresarial" class="hidden">
         <!-- Resultados serão inseridos aqui -->
+      </div>
+    </section>
+
+    <!-- Seção Análises Avançadas -->
+    <section id="avancadas" class="content-section">
+      <div class="card">
+        <h2 class="text-center mb-2">🔮 Análises Avançadas</h2>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Nome Completo</label>
+            <input type="text" id="nomeAvancado" placeholder="Digite seu nome completo de nascimento">
+          </div>
+          <div class="form-group">
+            <label>Data de Nascimento</label>
+            <input type="date" id="dataAvancada">
+          </div>
+          <div class="form-group">
+            <label>Sistema Numerológico</label>
+            <select id="sistemaAvancado">
+              <option value="pitagorico">Pitagórico (1-9)</option>
+              <option value="cabalistico">Cabalístico (1-8)</option>
+            </select>
+          </div>
+        </div>
+        
+        <div class="button-group">
+          <button class="btn-primary" onclick="calcularAnaliseAvancada()">🔮 Revelar Análises</button>
+          <button class="btn-secondary" onclick="preencherExemploAvancado()">📝 Exemplo</button>
+          <button class="btn-tertiary" onclick="limparAvancado()">🗑️ Limpar</button>
+        </div>
+      </div>
+      
+      <div id="resultados-avancados" class="hidden">
+        <!-- Resultados das análises avançadas serão inseridos aqui -->
       </div>
     </section>
   </main>
@@ -2136,7 +2394,158 @@
         9: 'Pode indicar idealismo excessivo ou compaixão excepcional.'
       };
       
-      return significados[numero] || 'Significado específico da intensidade.';
+    function calcularAnaliseAvancada() {
+      const nome = document.getElementById('nomeAvancado').value.trim();
+      const dataNascimento = document.getElementById('dataAvancada').value;
+      const sistema = document.getElementById('sistemaAvancado').value;
+      
+      if (!nome || !dataNascimento) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+      }
+      
+      const perfil = calcularPerfil(nome, dataNascimento, sistema);
+      
+      // Calcular análises avançadas
+      const transitosPinaculos = calcularTransitosPinaculos(perfil);
+      const ciclosTemporais = calcularCiclosTemporais(perfil);
+      const numerosOcultos = calcularNumerosOcultos(perfil);
+      
+      renderAnaliseAvancada(perfil, transitosPinaculos, ciclosTemporais, numerosOcultos);
+    }
+
+    function renderAnaliseAvancada(perfil, transitos, ciclos, ocultos) {
+      const resultadosDiv = document.getElementById('resultados-avancados');
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center">🔮 Análises Avançadas para ${perfil.nome}</h3>
+          
+          <!-- Ciclos Temporais Atuais -->
+          <div class="analise-section">
+            <h4>⏰ Ciclos Temporais Atuais</h4>
+            <div class="ciclos-grid">
+              <div class="ciclo-card">
+                <div class="ciclo-numero">${ciclos.anoPessoal.numero}</div>
+                <div class="ciclo-titulo">Ano Pessoal ${new Date().getFullYear()}</div>
+                <div class="ciclo-energia">${ciclos.anoPessoal.energia}</div>
+                <div class="ciclo-descricao">${ciclos.anoPessoal.descricao}</div>
+                <div class="ciclo-foco"><strong>Foco:</strong> ${ciclos.anoPessoal.foco}</div>
+              </div>
+              
+              <div class="ciclo-card">
+                <div class="ciclo-numero">${ciclos.mesPessoal.numero}</div>
+                <div class="ciclo-titulo">Mês Pessoal</div>
+                <div class="ciclo-energia">${ciclos.mesPessoal.energia}</div>
+                <div class="ciclo-descricao">${ciclos.mesPessoal.descricao}</div>
+                <div class="ciclo-acao"><strong>Ação:</strong> ${ciclos.mesPessoal.acao}</div>
+              </div>
+              
+              <div class="ciclo-card">
+                <div class="ciclo-numero">${ciclos.diaPessoal.numero}</div>
+                <div class="ciclo-titulo">Dia Pessoal</div>
+                <div class="ciclo-energia">${ciclos.diaPessoal.energia}</div>
+                <div class="ciclo-descricao">${ciclos.diaPessoal.descricao}</div>
+                <div class="ciclo-recomendacao"><strong>Recomendação:</strong> ${ciclos.diaPessoal.recomendacao}</div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Trânsitos e Pináculos -->
+          <div class="analise-section">
+            <h4>🏔️ Trânsitos e Pináculos da Vida</h4>
+            <p class="idade-atual">Idade atual: ${transitos.idade} anos - Período ativo: ${transitos.periodoAtivo}º</p>
+            
+            <div class="pinaculos-container">
+              ${transitos.pinaculos.map((pinaculo, index) => `
+                <div class="pinaculo-card ${pinaculo.ativo ? 'ativo' : ''}">
+                  <div class="pinaculo-header">
+                    <div class="pinaculo-numero">${pinaculo.numero}</div>
+                    <div class="pinaculo-info">
+                      <div class="pinaculo-fase">${pinaculo.fase}</div>
+                      <div class="pinaculo-periodo">${pinaculo.periodo}</div>
+                    </div>
+                  </div>
+                  <div class="pinaculo-energia">${pinaculo.energia}</div>
+                  <div class="pinaculo-descricao">${pinaculo.descricao}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          
+          <!-- Desafios Pessoais -->
+          <div class="analise-section">
+            <h4>⚡ Desafios Pessoais</h4>
+            <div class="desafios-container">
+              ${transitos.desafios.map((desafio, index) => `
+                <div class="desafio-card ${desafio.ativo ? 'ativo' : ''}">
+                  <div class="desafio-header">
+                    <div class="desafio-numero">${desafio.numero}</div>
+                    <div class="desafio-info">
+                      <div class="desafio-fase">${desafio.fase}</div>
+                      <div class="desafio-periodo">${desafio.periodo}</div>
+                    </div>
+                  </div>
+                  <div class="desafio-descricao">${desafio.descricao}</div>
+                  <div class="desafio-licao"><strong>Lição:</strong> ${desafio.licao}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          
+          <!-- Números Ocultos -->
+          <div class="analise-section">
+            <h4>🔍 Números Ocultos</h4>
+            
+            <div class="ocultos-grid">
+              <div class="oculto-card">
+                <h5>🔥 Intensidade</h5>
+                <div class="oculto-numero">${ocultos.intensidade.numero}</div>
+                <div class="oculto-repeticoes">${ocultos.intensidade.repeticoes} repetições</div>
+                <div class="oculto-descricao">${ocultos.intensidade.descricao}</div>
+                <div class="oculto-significado">${ocultos.intensidade.significado}</div>
+              </div>
+              
+              <div class="oculto-card">
+                <h5>❌ Carência</h5>
+                <div class="oculto-numeros">${ocultos.carencia.numeros.length > 0 ? ocultos.carencia.numeros.join(', ') : 'Nenhuma'}</div>
+                <div class="oculto-descricao">${ocultos.carencia.descricao}</div>
+                <div class="oculto-impacto">${ocultos.carencia.impacto}</div>
+              </div>
+              
+              <div class="oculto-card">
+                <h5>🧠 Equilíbrio Mental</h5>
+                <div class="oculto-numero">${ocultos.equilibrioMental.numero}</div>
+                <div class="oculto-descricao">${ocultos.equilibrioMental.descricao}</div>
+                <div class="oculto-estrategia">${ocultos.equilibrioMental.estrategia}</div>
+              </div>
+              
+              <div class="oculto-card">
+                <h5>🎯 Realização</h5>
+                <div class="oculto-numero">${ocultos.realizacao.numero}</div>
+                <div class="oculto-descricao">${ocultos.realizacao.descricao}</div>
+                <div class="oculto-potencial">${ocultos.realizacao.potencial}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    function preencherExemploAvancado() {
+      document.getElementById('nomeAvancado').value = 'Maria Silva Santos';
+      document.getElementById('dataAvancada').value = '1990-05-15';
+      document.getElementById('sistemaAvancado').value = 'pitagorico';
+    }
+
+    function limparAvancado() {
+      document.getElementById('nomeAvancado').value = '';
+      document.getElementById('dataAvancada').value = '';
+      document.getElementById('sistemaAvancado').value = 'pitagorico';
+      document.getElementById('resultados-avancados').classList.add('hidden');
     }
 
     function calcularPiramide() {
