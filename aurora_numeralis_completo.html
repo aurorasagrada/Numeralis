@@ -973,7 +973,7 @@
 
   <nav class="nav-container">
     <ul class="nav-tabs">
-      <li class="nav-tab active">
+          <li class="nav-tab">
         <button data-section="mapa">
           <span class="tab-icon">🌟</span>
           Meu Mapa
@@ -3251,45 +3251,43 @@
       document.getElementById('sistemaEmpresarial').value = 'pitagorico';
       document.getElementById('resultados-empresarial').classList.add('hidden');
     }
-    // Função para navegação entre abas
-    function showTab(tabName) {
+    // Sistema de navegação entre abas
+    document.addEventListener('DOMContentLoaded', function() {
+      // Adicionar event listeners para os botões de navegação
+      document.querySelectorAll('.nav-tab button').forEach(button => {
+        button.addEventListener('click', function() {
+          const section = this.getAttribute('data-section');
+          showTab(section);
+        });
+      });
+      
+      // Mostrar primeira aba por padrão
+      showTab('mapa');
+    });
+
+    function showTab(sectionName) {
       // Remover classe ativa de todas as abas
       document.querySelectorAll('.nav-tab').forEach(tab => {
         tab.classList.remove('active');
       });
       
       // Ocultar todas as seções
-      document.querySelectorAll('.tab-content').forEach(section => {
-        section.classList.add('hidden');
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
       });
       
       // Ativar aba clicada
-      const activeTab = document.querySelector(`[onclick="showTab('${tabName}')"]`);
-      if (activeTab) {
-        activeTab.parentElement.classList.add('active');
+      const activeButton = document.querySelector(`[data-section="${sectionName}"]`);
+      if (activeButton) {
+        activeButton.parentElement.classList.add('active');
       }
       
       // Mostrar seção correspondente
-      const targetSection = document.getElementById(tabName);
+      const targetSection = document.getElementById(sectionName);
       if (targetSection) {
-        targetSection.classList.remove('hidden');
+        targetSection.classList.add('active');
       }
-      
-      // Limpar resultados ao trocar de aba
-      const resultadosIds = ['resultados-mapa', 'resultados-compatibilidade', 'resultados-piramide', 'resultados-empresarial'];
-      resultadosIds.forEach(id => {
-        const elemento = document.getElementById(id);
-        if (elemento) {
-          elemento.classList.add('hidden');
-          elemento.innerHTML = '';
-        }
-      });
     }
-
-    // Inicializar primeira aba como ativa
-    document.addEventListener('DOMContentLoaded', function() {
-      showTab('meu-mapa');
-    });
   </script>
 </body>
 </html>
