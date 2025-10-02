@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numeralis - Sistema Numerológico Essencial</title>
+  <style>
+    :root {
+      --navy: #191970;
+      --wine: #8B0000;
+      --gold: #DAA520;
+      --sage: #9CAF88;
+      --cream: #F5F5DC;
+      --charcoal: #36454F;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--charcoal) 50%, var(--wine) 100%);
+      color: var(--cream);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: rgba(0,0,0,0.3);
+      border-radius: 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: var(--gold);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--sage);
+      font-style: italic;
+    }
+
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      background: rgba(0,0,0,0.2);
+      border-radius: 15px;
+      padding: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-tab {
+      background: transparent;
+      border: none;
+      color: var(--cream);
+      padding: 1rem 1.5rem;
+      margin: 0.25rem;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    .nav-tab:hover {
+      background: rgba(218, 165, 32, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .nav-tab.active {
+      background: var(--gold);
+      color: var(--navy);
+      font-weight: bold;
+    }
+
+    .content-section {
+      display: none;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    .content-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card {
+      background: rgba(0,0,0,0.3);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+
+    input, select {
+      padding: 1rem;
+      border: 2px solid rgba(218, 165, 32, 0.3);
+      border-radius: 10px;
+      background: rgba(0,0,0,0.2);
+      color: var(--cream);
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--gold);
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--gold), var(--wine));
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      margin: 0.5rem;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--sage), var(--navy));
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .result-card {
+      background: linear-gradient(135deg, rgba(218, 165, 32, 0.2), rgba(139, 0, 0, 0.2));
+      border-radius: 15px;
+      padding: 2rem;
+      text-align: center;
+      border: 2px solid rgba(218, 165, 32, 0.3);
+    }
+
+    .result-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--gold);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .result-title {
+      font-size: 1.2rem;
+      color: var(--wine);
+      font-weight: bold;
+      margin-top: 0.5rem;
+    }
+
+    .interpretation-text {
+      background: rgba(0,0,0,0.2);
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      border-left: 4px solid var(--gold);
+    }
+
+    .arcano-card {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(25, 25, 112, 0.1));
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 1rem 0;
+      border: 2px solid rgba(218, 165, 32, 0.3);
+    }
+
+    .arcano-imagem {
+      width: 120px;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    }
+
+    .arcano-info {
+      flex: 1;
+    }
+
+    .arcano-numero {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--gold);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .arcano-nome {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--wine);
+      margin-bottom: 1rem;
+    }
+
+    .piramide-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, rgba(139, 69, 19, 0.1), rgba(25, 25, 112, 0.1));
+      border-radius: 15px;
+      margin: 1rem 0;
+    }
+
+    .piramide-linha {
+      display: flex;
+      justify-content: center;
+      margin: 0.5rem 0;
+      gap: 0.5rem;
+    }
+
+    .piramide-numero {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--wine));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .piramide-numero:hover {
+      transform: scale(1.1);
+    }
+
+    .mt-4 {
+      margin-top: 2rem;
+    }
+
+    .mb-3 {
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .nav-tabs {
+        flex-direction: column;
+      }
+
+      .arcano-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>✨ NUMERALIS ✨</h1>
+      <p class="subtitle">Sistema Numerológico Essencial para Autoconhecimento</p>
+    </header>
+
+    <nav class="nav-tabs">
+      <button class="nav-tab active" onclick="showSection('mapa')">🗺️ Mapa Pitagórico</button>
+      <button class="nav-tab" onclick="showSection('piramide')">🔺 Pirâmide Cabalística</button>
+      <button class="nav-tab" onclick="showSection('pinaculos')">⛰️ Pináculos da Vida</button>
+      <button class="nav-tab" onclick="showSection('arcanos')">🌟 Arcanos Regentes</button>
+    </nav>
+
+    <main>
+      <!-- Seção Mapa Pitagórico -->
+      <section id="mapa" class="content-section active">
+        <div class="card">
+          <h2 class="text-center mb-3">🗺️ Mapa Numerológico Pitagórico</h2>
+          <p class="text-center">Descubra os números fundamentais que regem sua personalidade e destino</p>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Nome Completo</label>
+              <input type="text" id="nomeCompleto" placeholder="Digite seu nome completo de nascimento">
+            </div>
+            <div class="form-group">
+              <label>Data de Nascimento</label>
+              <input type="date" id="dataNascimento">
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <button class="btn" onclick="calcularMapa()">🗺️ Calcular Mapa</button>
+            <button class="btn btn-secondary" onclick="preencherExemplo()">📝 Exemplo</button>
+            <button class="btn btn-secondary" onclick="limparMapa()">🗑️ Limpar</button>
+          </div>
+        </div>
+        
+        <div id="resultados-mapa" class="hidden">
+          <!-- Resultados serão inseridos aqui -->
+        </div>
+      </section>
+
+      <!-- Seção Pirâmide Cabalística -->
+      <section id="piramide" class="content-section">
+        <div class="card">
+          <h2 class="text-center mb-3">🔺 Pirâmide Invertida Cabalística</h2>
+          <p class="text-center">Ciclo de 90 Anos - Arcanos Regentes da Vida</p>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Nome Completo</label>
+              <input type="text" id="nomePiramide" placeholder="Digite seu nome completo de nascimento">
+            </div>
+            <div class="form-group">
+              <label>Idade Atual</label>
+              <input type="number" id="idadePiramide" placeholder="Digite sua idade atual" min="1" max="120">
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <button class="btn" onclick="calcularPiramide()">🔺 Calcular Pirâmide</button>
+            <button class="btn btn-secondary" onclick="preencherExemploPiramide()">📝 Exemplo</button>
+            <button class="btn btn-secondary" onclick="limparPiramide()">🗑️ Limpar</button>
+          </div>
+        </div>
+        
+        <div id="resultados-piramide" class="hidden">
+          <!-- Resultados serão inseridos aqui -->
+        </div>
+      </section>
+
+      <!-- Seção Pináculos -->
+      <section id="pinaculos" class="content-section">
+        <div class="card">
+          <h2 class="text-center mb-3">⛰️ Pináculos da Vida</h2>
+          <p class="text-center">Os quatro grandes ciclos evolutivos da sua jornada</p>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Data de Nascimento</label>
+              <input type="date" id="dataPinaculos">
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <button class="btn" onclick="calcularPinaculos()">⛰️ Calcular Pináculos</button>
+            <button class="btn btn-secondary" onclick="limparPinaculos()">🗑️ Limpar</button>
+          </div>
+        </div>
+        
+        <div id="resultados-pinaculos" class="hidden">
+          <!-- Resultados serão inseridos aqui -->
+        </div>
+      </section>
+
+      <!-- Seção Arcanos Regentes -->
+      <section id="arcanos" class="content-section">
+        <div class="card">
+          <h2 class="text-center mb-3">🌟 Arcanos Regentes</h2>
+          <p class="text-center">Descubra os Arcanos que regem diferentes aspectos da sua vida</p>
+          
+          <div class="form-grid">
+            <div class="form-group">
+              <label>Data de Nascimento</label>
+              <input type="date" id="dataArcanos">
+            </div>
+          </div>
+          
+          <div class="text-center">
+            <button class="btn" onclick="calcularArcanos()">🌟 Calcular Arcanos</button>
+            <button class="btn btn-secondary" onclick="limparArcanos()">🗑️ Limpar</button>
+          </div>
+        </div>
+        
+        <div id="resultados-arcanos" class="hidden">
+          <!-- Resultados serão inseridos aqui -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="data/textos_mapa_pessoal.js"></script>
+  <script>
+    // Tabelas de conversão
+    const tabelaPitagorica = {
+      'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+      'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 6, 'P': 7, 'Q': 8, 'R': 9,
+      'S': 1, 'T': 2, 'U': 3, 'V': 4, 'W': 5, 'X': 6, 'Y': 7, 'Z': 8
+    };
+
+    const tabelaCabalistica = {
+      'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+      'J': 10, 'K': 11, 'L': 12, 'M': 13, 'N': 14, 'O': 15, 'P': 16, 'Q': 17, 'R': 18,
+      'S': 19, 'T': 20, 'U': 21, 'V': 22, 'W': 23, 'X': 24, 'Y': 25, 'Z': 26
+    };
+
+    // Nomes dos arcanos
+    const nomesArcanos = {
+      1: "O Mago", 2: "A Sacerdotisa", 3: "A Imperatriz", 4: "O Imperador", 5: "O Papa",
+      6: "Os Enamorados", 7: "O Carro", 8: "A Justiça", 9: "O Eremita", 10: "A Roda da Fortuna",
+      11: "A Força", 12: "O Enforcado", 13: "A Morte", 14: "A Temperança", 15: "O Diabo",
+      16: "A Torre", 17: "A Estrela", 18: "A Lua", 19: "O Sol", 20: "O Julgamento",
+      21: "O Mundo", 22: "O Louco"
+    };
+
+    // Mapeamento das imagens dos arcanos
+    function getImagemArcano(numero) {
+      const mapeamentoImagens = {
+        1: "01-I-TheMagician.jpg",
+        2: "02-II-TheHighPriestess.jpg", 
+        3: "03-III-TheEmpress.jpg",
+        4: "04-IV-TheEmperor.jpg",
+        5: "05-V-TheHierophant.jpg",
+        6: "06-VI-TheLovers.jpg",
+        7: "07-VII-TheChariot.jpg",
+        8: "08-VIII-Strength.jpg",
+        9: "09-IX-TheHermit.jpg",
+        10: "10-X-WheelofFortune.jpg",
+        11: "11-XI-Justice.jpg",
+        12: "12-XII-TheHangedMan.jpg",
+        13: "13-XIII-Death.jpg",
+        14: "14-XIV-Temperance.jpg",
+        15: "15-XV-TheDevil.jpg",
+        16: "16-XVI-TheTower.jpg",
+        17: "17-XVII-TheStar.jpg",
+        18: "18-XVIII-TheMoon.jpg",
+        19: "19-XIX-TheSun.jpg",
+        20: "20-XX-Judgement.jpg",
+        21: "21-XXI-TheWorld.jpg",
+        22: "00-0-TheFool.jpg"
+      };
+      
+      return `assets/img/cartas/${mapeamentoImagens[numero] || '00-0-Back.jpg'}`;
+    }
+
+    // Funções utilitárias
+    function reduzirNumero(numero) {
+      while (numero > 9 && numero !== 11 && numero !== 22 && numero !== 33) {
+        numero = numero.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+      }
+      return numero;
+    }
+
+    function reduzirParaArcano(numero) {
+      while (numero > 22) {
+        numero = numero.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+      }
+      return numero === 0 ? 22 : numero;
+    }
+
+    function calcularNumeroNome(nome, tabela) {
+      return nome.toUpperCase().split('').reduce((sum, char) => {
+        return sum + (tabela[char] || 0);
+      }, 0);
+    }
+
+    function calcularIdade(dataNascimento) {
+      const hoje = new Date();
+      const nascimento = new Date(dataNascimento);
+      let idade = hoje.getFullYear() - nascimento.getFullYear();
+      const mes = hoje.getMonth() - nascimento.getMonth();
+      
+      if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) {
+        idade--;
+      }
+      
+      return idade;
+    }
+
+    // Navegação entre seções
+    function showSection(sectionId) {
+      // Esconder todas as seções
+      document.querySelectorAll('.content-section').forEach(section => {
+        section.classList.remove('active');
+      });
+      
+      // Remover classe active de todas as abas
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        tab.classList.remove('active');
+      });
+      
+      // Mostrar seção selecionada
+      document.getElementById(sectionId).classList.add('active');
+      
+      // Adicionar classe active à aba clicada
+      event.target.classList.add('active');
+    }
+
+    // Função para calcular o Mapa Pitagórico
+    function calcularMapa() {
+      const nome = document.getElementById('nomeCompleto').value.trim();
+      const dataNascimento = document.getElementById('dataNascimento').value;
+      
+      if (!nome || !dataNascimento) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      
+      const nascimento = new Date(dataNascimento);
+      const dia = nascimento.getDate();
+      const mes = nascimento.getMonth() + 1;
+      const ano = nascimento.getFullYear();
+      
+      // Calcular números fundamentais
+      const alma = reduzirNumero(dia);
+      const personalidade = reduzirNumero(calcularNumeroNome(nome.split(' ').map(n => n[0]).join(''), tabelaPitagorica));
+      const expressao = reduzirNumero(calcularNumeroNome(nome.replace(/\s/g, ''), tabelaPitagorica));
+      const destino = reduzirNumero(dia + mes + ano);
+      
+      renderResultadosMapa(nome, { alma, personalidade, expressao, destino });
+    }
+
+    function renderResultadosMapa(nome, numeros) {
+      const resultadosDiv = document.getElementById('resultados-mapa');
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center mb-3">🗺️ Seu Mapa Numerológico Pitagórico</h3>
+          <p class="text-center"><strong>Nome:</strong> ${nome}</p>
+          
+          <div class="result-grid">
+            <div class="result-card">
+              <div class="result-number">${numeros.alma}</div>
+              <div class="result-title">Número da Alma</div>
+            </div>
+            <div class="result-card">
+              <div class="result-number">${numeros.personalidade}</div>
+              <div class="result-title">Número da Personalidade</div>
+            </div>
+            <div class="result-card">
+              <div class="result-number">${numeros.expressao}</div>
+              <div class="result-title">Número da Expressão</div>
+            </div>
+            <div class="result-card">
+              <div class="result-number">${numeros.destino}</div>
+              <div class="result-title">Número do Destino</div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Adicionar interpretações detalhadas
+      for (let [tipo, numero] of Object.entries(numeros)) {
+        const textoTipo = textosMapaPessoal[tipo];
+        if (textoTipo && textoTipo[numero]) {
+          html += `
+            <div class="card mt-4">
+              <h4 class="text-center mb-3" style="color: var(--gold);">${textoTipo[numero].titulo}</h4>
+              <div class="interpretation-text">
+                ${textoTipo[numero].texto}
+              </div>
+            </div>
+          `;
+        }
+      }
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    // Função para calcular a Pirâmide Cabalística
+    function calcularPiramide() {
+      const nome = document.getElementById('nomePiramide').value.toUpperCase().trim();
+      const idade = parseInt(document.getElementById('idadePiramide').value);
+      
+      if (!nome || !idade) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      
+      // Converter nome para números cabalísticos
+      const numerosNome = [];
+      for (let char of nome) {
+        if (tabelaCabalistica[char]) {
+          let valor = tabelaCabalistica[char];
+          // Reduzir para arcanos (1-22)
+          valor = reduzirParaArcano(valor);
+          numerosNome.push(valor);
+        }
+      }
+      
+      // Construir pirâmide
+      const piramide = [numerosNome];
+      let linhaAtual = numerosNome;
+      
+      while (linhaAtual.length > 1) {
+        const novaLinha = [];
+        for (let i = 0; i < linhaAtual.length - 1; i++) {
+          let soma = linhaAtual[i] + linhaAtual[i + 1];
+          soma = reduzirParaArcano(soma);
+          novaLinha.push(soma);
+        }
+        piramide.push(novaLinha);
+        linhaAtual = novaLinha;
+      }
+      
+      // Calcular arcano regente atual
+      const totalArcanos = numerosNome.length;
+      const periodoArcano = Math.ceil(90 / totalArcanos);
+      const posicaoAtual = Math.ceil(idade / periodoArcano);
+      const arcanoRegente = numerosNome[Math.min(posicaoAtual - 1, totalArcanos - 1)];
+      
+      renderResultadosPiramide(nome, idade, piramide, arcanoRegente, periodoArcano);
+    }
+
+    function renderResultadosPiramide(nome, idade, piramide, arcanoRegente, periodoArcano) {
+      const resultadosDiv = document.getElementById('resultados-piramide');
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center mb-3">🔺 Sua Pirâmide Cabalística</h3>
+          <p class="text-center"><strong>Nome:</strong> ${nome}</p>
+          <p class="text-center"><strong>Idade:</strong> ${idade} anos</p>
+          <p class="text-center"><strong>Período por Arcano:</strong> ${periodoArcano} anos</p>
+        </div>
+        
+        <div class="card mt-4">
+          <h4 class="text-center mb-3">Estrutura da Pirâmide</h4>
+          <div class="piramide-container">
+      `;
+      
+      // Renderizar pirâmide
+      piramide.forEach((linha, index) => {
+        html += `<div class="piramide-linha nivel-${index}">`;
+        linha.forEach(numero => {
+          html += `<div class="piramide-numero">${numero}</div>`;
+        });
+        html += `</div>`;
+      });
+      
+      html += `
+          </div>
+        </div>
+        
+        <div class="card mt-4">
+          <h4 class="text-center mb-3">🌟 Seu Arcano Regente Atual</h4>
+          <div class="arcano-card">
+            <img src="${getImagemArcano(arcanoRegente)}" alt="${nomesArcanos[arcanoRegente]}" class="arcano-imagem">
+            <div class="arcano-info">
+              <div class="arcano-numero">${arcanoRegente}</div>
+              <div class="arcano-nome">${nomesArcanos[arcanoRegente]}</div>
+              <p>Este é o Arcano que rege sua vida atual, trazendo suas energias e lições específicas para este período de sua jornada.</p>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    // Função para calcular Pináculos
+    function calcularPinaculos() {
+      const dataNascimento = document.getElementById('dataPinaculos').value;
+      
+      if (!dataNascimento) {
+        alert('Por favor, preencha a data de nascimento.');
+        return;
+      }
+      
+      const nascimento = new Date(dataNascimento);
+      const dia = nascimento.getDate();
+      const mes = nascimento.getMonth() + 1;
+      const ano = nascimento.getFullYear();
+      
+      // Calcular pináculos
+      const pináculo1 = reduzirNumero(mes + dia);
+      const pináculo2 = reduzirNumero(dia + ano);
+      const pináculo3 = reduzirNumero(pináculo1 + pináculo2);
+      const pináculo4 = reduzirNumero(mes + ano);
+      
+      // Calcular idades dos pináculos
+      const numeroVida = reduzirNumero(dia + mes + ano);
+      const idade1 = 36 - numeroVida;
+      const idade2 = idade1 + 9;
+      const idade3 = idade2 + 9;
+      
+      renderResultadosPinaculos({ pináculo1, pináculo2, pináculo3, pináculo4 }, { idade1, idade2, idade3 });
+    }
+
+    function renderResultadosPinaculos(pinaculos, idades) {
+      const resultadosDiv = document.getElementById('resultados-pinaculos');
+      
+      const html = `
+        <div class="card">
+          <h3 class="text-center mb-3">⛰️ Seus Pináculos da Vida</h3>
+          
+          <div class="result-grid">
+            <div class="result-card">
+              <div class="result-number">${pinaculos.pináculo1}</div>
+              <div class="result-title">1º Pináculo</div>
+              <p>Nascimento até ${idades.idade1} anos</p>
+            </div>
+            <div class="result-card">
+              <div class="result-number">${pinaculos.pináculo2}</div>
+              <div class="result-title">2º Pináculo</div>
+              <p>${idades.idade1 + 1} até ${idades.idade2} anos</p>
+            </div>
+            <div class="result-card">
+              <div class="result-number">${pinaculos.pináculo3}</div>
+              <div class="result-title">3º Pináculo</div>
+              <p>${idades.idade2 + 1} até ${idades.idade3} anos</p>
+            </div>
+            <div class="result-card">
+              <div class="result-number">${pinaculos.pináculo4}</div>
+              <div class="result-title">4º Pináculo</div>
+              <p>${idades.idade3 + 1} anos em diante</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="card mt-4">
+          <h4 class="text-center mb-3">Interpretação dos Pináculos</h4>
+          <div class="interpretation-text">
+            <p><strong>Primeiro Pináculo (${pinaculos.pináculo1}):</strong> Representa os desafios e oportunidades da juventude e formação da personalidade.</p>
+            <p><strong>Segundo Pináculo (${pinaculos.pináculo2}):</strong> Governa o período de estabelecimento profissional e construção da vida adulta.</p>
+            <p><strong>Terceiro Pináculo (${pinaculos.pináculo3}):</strong> O período de maior produtividade e realização pessoal.</p>
+            <p><strong>Quarto Pináculo (${pinaculos.pináculo4}):</strong> A fase da sabedoria, legado e contribuição para as gerações futuras.</p>
+          </div>
+        </div>
+      `;
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    // Função para calcular Arcanos Regentes
+    function calcularArcanos() {
+      const dataNascimento = document.getElementById('dataArcanos').value;
+      
+      if (!dataNascimento) {
+        alert('Por favor, preencha a data de nascimento.');
+        return;
+      }
+      
+      const nascimento = new Date(dataNascimento);
+      const hoje = new Date();
+      
+      const dia = nascimento.getDate();
+      const mes = nascimento.getMonth() + 1;
+      const ano = nascimento.getFullYear();
+      
+      // Calcular arcanos
+      const arcanoNascimento = reduzirParaArcano(dia + mes + ano);
+      const arcanoAno = reduzirParaArcano(dia + mes + hoje.getFullYear());
+      const arcanoMes = reduzirParaArcano(arcanoAno + hoje.getMonth() + 1);
+      
+      // Calcular semana do ano
+      const inicioAno = new Date(hoje.getFullYear(), 0, 1);
+      const diasPassados = Math.floor((hoje - inicioAno) / (24 * 60 * 60 * 1000));
+      const semanaAno = Math.ceil((diasPassados + inicioAno.getDay() + 1) / 7);
+      const arcanoSemana = reduzirParaArcano(semanaAno);
+      
+      const arcanoDia = reduzirParaArcano(hoje.getDate() + hoje.getMonth() + 1 + hoje.getFullYear());
+      
+      renderResultadosArcanos({
+        nascimento: arcanoNascimento,
+        ano: arcanoAno,
+        mes: arcanoMes,
+        semana: arcanoSemana,
+        dia: arcanoDia
+      });
+    }
+
+    function renderResultadosArcanos(arcanos) {
+      const resultadosDiv = document.getElementById('resultados-arcanos');
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center mb-3">🌟 Seus Arcanos Regentes</h3>
+        </div>
+      `;
+      
+      const tipos = {
+        nascimento: 'Arcano Pessoal (Nascimento)',
+        ano: 'Arcano do Ano',
+        mes: 'Arcano do Mês',
+        semana: 'Arcano da Semana',
+        dia: 'Arcano do Dia'
+      };
+      
+      for (let [tipo, numero] of Object.entries(arcanos)) {
+        html += `
+          <div class="card mt-4">
+            <h4 class="text-center mb-3" style="color: var(--gold);">${tipos[tipo]}</h4>
+            <div class="arcano-card">
+              <img src="${getImagemArcano(numero)}" alt="${nomesArcanos[numero]}" class="arcano-imagem">
+              <div class="arcano-info">
+                <div class="arcano-numero">${numero}</div>
+                <div class="arcano-nome">${nomesArcanos[numero]}</div>
+                <p>Este arcano influencia as energias e experiências relacionadas a este período específico da sua vida.</p>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    // Funções de exemplo e limpeza
+    function preencherExemplo() {
+      document.getElementById('nomeCompleto').value = 'Maria Silva Santos';
+      document.getElementById('dataNascimento').value = '1985-03-15';
+    }
+
+    function preencherExemploPiramide() {
+      document.getElementById('nomePiramide').value = 'MARIA SILVA SANTOS';
+      document.getElementById('idadePiramide').value = '38';
+    }
+
+    function limparMapa() {
+      document.getElementById('nomeCompleto').value = '';
+      document.getElementById('dataNascimento').value = '';
+      document.getElementById('resultados-mapa').classList.add('hidden');
+    }
+
+    function limparPiramide() {
+      document.getElementById('nomePiramide').value = '';
+      document.getElementById('idadePiramide').value = '';
+      document.getElementById('resultados-piramide').classList.add('hidden');
+    }
+
+    function limparPinaculos() {
+      document.getElementById('dataPinaculos').value = '';
+      document.getElementById('resultados-pinaculos').classList.add('hidden');
+    }
+
+    function limparArcanos() {
+      document.getElementById('dataArcanos').value = '';
+      document.getElementById('resultados-arcanos').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

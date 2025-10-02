@@ -1003,6 +1003,30 @@
           Análises Avançadas
         </button>
       </li>
+      <li class="nav-tab">
+        <button data-section="residencial">
+          <span class="tab-icon">🏠</span>
+          Numerologia Residencial
+        </button>
+      </li>
+      <li class="nav-tab">
+        <button data-section="veicular">
+          <span class="tab-icon">🚗</span>
+          Numerologia Veicular
+        </button>
+      </li>
+      <li class="nav-tab">
+        <button data-section="digital">
+          <span class="tab-icon">📱</span>
+          Numerologia Digital
+        </button>
+      </li>
+      <li class="nav-tab">
+        <button data-section="pedras">
+          <span class="tab-icon">💎</span>
+          Numerologia das Pedras
+        </button>
+      </li>
     </ul>
   </nav>
 
@@ -1089,19 +1113,18 @@
       <div class="card">
         <h2 class="text-center mb-2">🔺 Pirâmide Invertida Cabalística</h2>
         <p class="text-center">Ciclo de 90 Anos - Arcanos Regentes da Vida</p>
+        <p class="text-center" style="font-size: 0.9rem; color: var(--sage); margin-bottom: 1.5rem;">
+          Descubra seu Arcano Regente atual e compreenda as energias que governam sua jornada de vida
+        </p>
         
         <div class="form-grid">
           <div class="form-group">
             <label>Nome Completo</label>
-            <input type="text" id="nomePiramide" placeholder="Digite o nome completo de nascimento">
+            <input type="text" id="nomePiramide" placeholder="Digite seu nome completo de nascimento">
           </div>
           <div class="form-group">
             <label>Idade Atual</label>
-            <input type="number" id="idadePiramide" placeholder="Digite a idade atual" min="0" max="90">
-          </div>
-          <div class="form-group">
-            <label>Assinatura Atual (Opcional)</label>
-            <input type="text" id="assinaturaPiramide" placeholder="Como assina atualmente">
+            <input type="number" id="idadePiramide" placeholder="Digite sua idade atual" min="1" max="120">
           </div>
         </div>
         
@@ -1114,6 +1137,10 @@
       
       <div id="resultados-piramide" class="hidden">
         <!-- Resultados serão inseridos aqui -->
+      </div>
+      
+      <div id="sequencias-negativas" class="hidden">
+        <!-- Análise de sequências negativas -->
       </div>
     </section>
 
@@ -1212,9 +1239,183 @@
         <!-- Resultados das análises avançadas serão inseridos aqui -->
       </div>
     </section>
+
+    <!-- Seção Numerologia Residencial -->
+        <!-- Seção Numerologia Residencial -->
+    <section id="residencial" class="content-section">
+      <div class="card">
+        <h2 class="text-center mb-2">🏠 Numerologia Residencial</h2>
+        <p class="text-center">Descubra a energia do seu lar e como ela influencia sua vida</p>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Endereço Completo (Rua, Av., etc.)</label>
+            <input type="text" id="endereco" placeholder="Ex: Rua das Flores">
+          </div>
+          <div class="form-group">
+            <label>Número</label>
+            <input type="text" id="numeroCasa" placeholder="Ex: 123">
+          </div>
+          <div class="form-group">
+            <label>Complemento (Apto, Bloco, etc.)</label>
+            <input type="text" id="complementoCasa" placeholder="Ex: Apto 4B">
+          </div>
+        </div>
+        
+        <div class="text-center">
+          <button class="btn btn-primary" onclick="calcularNumerologiaResidencial()">🏠 Analisar Meu Lar</button>
+          <button class="btn" onclick="limparNumerologiaResidencial()">🗑️ Limpar</button>
+        </div>
+      </div>
+      
+      <div id="resultados-residencial" class="hidden">
+        <!-- Resultados da análise residencial serão inseridos aqui -->
+      </div>
+    </section>
+
+    <!-- Seção Numerologia Veicular -->
+    <section id="veicular" class="content-section">
+      <div class="card">
+        <h2 class="text-center mb-2">🚗 Numerologia Veicular</h2>
+        <p class="text-center">Descubra a energia da placa do seu veículo</p>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Placa do Veículo</label>
+            <input type="text" id="placaVeiculo" placeholder="Ex: ABC1234">
+          </div>
+        </div>
+        
+        <div class="text-center">
+          <button class="btn btn-primary" onclick="calcularNumerologiaVeicular()">🚗 Analisar Placa</button>
+          <button class="btn" onclick="limparNumerologiaVeicular()">🗑️ Limpar</button>
+        </div>
+      </div>
+      
+      <div id="resultados-veicular" class="hidden">
+        <!-- Resultados da análise veicular serão inseridos aqui -->
+      </div>
+    </section>
+
+    <!-- Seção Numerologia Digital -->
+    <section id="digital" class="content-section">
+      <div class="card">
+        <h2 class="text-center mb-2">📱 Numerologia Digital</h2>
+        <p class="text-center">Analise a vibração do seu número de telefone ou perfil de rede social</p>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Número de Telefone ou Nome de Usuário</label>
+            <input type="text" id="identificadorDigital" placeholder="Ex: 5511999999999 ou @seu_usuario">
+          </div>
+        </div>
+        
+        <div class="text-center">
+          <button class="btn btn-primary" onclick="calcularNumerologiaDigital()">📱 Analisar</button>
+          <button class="btn" onclick="limparNumerologiaDigital()">🗑️ Limpar</button>
+        </div>
+      </div>
+      
+      <div id="resultados-digital" class="hidden">
+        <!-- Resultados da análise digital serão inseridos aqui -->
+      </div>
+    </section>
+
+    <!-- Seção Numerologia das Pedras -->
+    <section id="pedras" class="content-section">
+      <div class="card">
+        <h2 class="text-center mb-2">💎 Numerologia das Pedras</h2>
+        <p class="text-center">Encontre a pedra preciosa que vibra com o seu número de destino</p>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Data de Nascimento</label>
+            <input type="date" id="dataNascimentoPedras">
+          </div>
+        </div>
+        
+        <div class="text-center">
+          <button class="btn btn-primary" onclick="calcularNumerologiaPedras()">💎 Encontrar Minha Pedra</button>
+          <button class="btn" onclick="limparNumerologiaPedras()">🗑️ Limpar</button>
+        </div>
+      </div>
+      
+      <div id="resultados-pedras" class="hidden">
+        <!-- Resultados da análise de pedras serão inseridos aqui -->
+      </div>
+    </section>
   </main>
 
   <script>
+    // Textos do Mapa Pessoal
+    const textosMapaPessoal = {};
+    
+    textosMapaPessoal.alma = {
+      1: {
+        titulo: "A Alma do Pioneiro: A Chama da Individualidade",
+        texto: `
+          <p>No âmago do seu ser, reside a alma de um pioneiro, uma centelha divina de pura individualidade e liderança. Ter o <strong>Número 1 na Alma</strong> significa que sua essência mais profunda anseia por originalidade, independência e a coragem de trilhar caminhos nunca antes explorados. Você não nasceu para seguir, mas para guiar, para ser a vanguarda em tudo o que faz.</p>
+          <p>Sua alma vibra com uma energia de autoconfiança e uma necessidade intrínseca de se afirmar no mundo. Desde cedo, você pode ter sentido um chamado para se destacar, para deixar sua marca única. Essa força interior o impulsiona a buscar a excelência e a não se contentar com a mediocridade. A sua jornada é uma busca constante pela autodescoberta e pela manifestação do seu potencial ilimitado.</p>
+          <p>O desafio para uma alma 1 é aprender a equilibrar sua poderosa individualidade com a necessidade de se conectar com os outros. A solidão pode ser uma companheira constante se você não aprender a compartilhar sua luz e a inspirar aqueles ao seu redor. Lembre-se de que um verdadeiro líder não caminha sozinho, mas à frente, iluminando o caminho para os demais.</p>
+          <p><strong>Em essência, sua alma é uma chama que nunca se apaga, uma força motriz que o convida a ser o autor da sua própria história. Abrace sua singularidade, confie na sua intuição e não tenha medo de ser o primeiro.</strong></p>
+        `
+      },
+      2: {
+        titulo: "A Alma do Diplomata: A Dança da Cooperação",
+        texto: `
+          <p>Sua alma é a de um diplomata, um ser cuja essência mais profunda anseia por harmonia, cooperação e união. Ter o <strong>Número 2 na Alma</strong> significa que você é um pacificador nato, alguém que busca instintivamente o equilíbrio e a concórdia em todos os aspectos da vida. Sua sensibilidade é uma das suas maiores forças, permitindo-lhe perceber as nuances das emoções humanas e atuar como uma ponte entre as pessoas.</p>
+          <p>Desde a infância, você provavelmente demonstrou uma notável capacidade de compreender os outros e de se adaptar a diferentes situações. Sua alma não busca o confronto, mas a colaboração. Você se sente mais realizado quando está em parceria, seja em relacionamentos amorosos, amizades ou no ambiente de trabalho. A sua jornada é uma dança delicada, onde cada passo é dado com a intenção de criar beleza e harmonia.</p>
+          <p>O desafio para uma alma 2 é aprender a não se anular em prol dos outros. Sua empatia e desejo de agradar podem, por vezes, levá-lo a esquecer de suas próprias necessidades. É fundamental que você aprenda a estabelecer limites saudáveis e a expressar suas opiniões, mesmo que isso possa gerar algum desconforto momentâneo. Lembre-se de que a verdadeira harmonia só pode ser alcançada quando todas as vozes são ouvidas, inclusive a sua.</p>
+          <p><strong>Em essência, sua alma é um elo de ligação, uma força suave que une os corações e acalma as tempestades. Abrace sua natureza compassiva, confie na sua intuição para mediar conflitos e celebre a beleza que você traz ao mundo através da sua capacidade de amar e cooperar.</strong></p>
+        `
+      },
+      3: {
+        titulo: "A Alma do Artista: A Celebração da Vida",
+        texto: `
+          <p>Sua alma é a de um artista, uma fonte inesgotável de criatividade, alegria e comunicação. Ter o <strong>Número 3 na Alma</strong> significa que sua essência mais profunda anseia por se expressar de forma original e a celebrar a vida em todas as suas cores. Você é um ser naturalmente otimista e sociável, alguém que ilumina o ambiente com sua presença magnética e seu entusiasmo contagiante.</p>
+          <p>Desde criança, você provavelmente demonstrou um talento especial para a comunicação, seja através da fala, da escrita, da música ou de qualquer outra forma de expressão artística. Sua mente é fértil e borbulha com ideias, e você sente uma necessidade visceral de compartilhar sua visão de mundo com os outros. A sua jornada é uma festa, uma celebração constante da beleza e da alegria de viver.</p>
+          <p>O desafio para uma alma 3 é aprender a focar sua energia criativa e a não se dispersar em meio a tantos interesses e projetos. A superficialidade pode ser uma armadilha se você não se aprofundar em seus dons e não levar seus talentos a sério. É importante que você encontre um canal para a sua autoexpressão que lhe traga um sentimento de realização e propósito.</p>
+          <p><strong>Em essência, sua alma é um manancial de inspiração, uma força vibrante que o convida a pintar o mundo com as cores da sua imaginação. Abrace sua criatividade, use sua voz para inspirar e elevar os outros, e nunca perca a sua capacidade de se maravilhar com a vida.</strong></p>
+        `
+      }
+    };
+    
+    textosMapaPessoal.personalidade = {
+      1: {
+        titulo: "A Personalidade do Líder: Presença Magnética",
+        texto: `
+          <p>Sua personalidade irradia a força e a confiança de um verdadeiro líder. Com o <strong>Número 1 na Personalidade</strong>, você projeta uma imagem de independência, determinação e originalidade que naturalmente atrai a atenção e o respeito dos outros. Sua presença é magnética e inspiradora, e as pessoas instintivamente se voltam para você em busca de direção e orientação.</p>
+          <p>Você se apresenta ao mundo como alguém que sabe o que quer e não tem medo de ir atrás dos seus objetivos. Sua postura é confiante, sua fala é assertiva e sua energia é dinâmica. Você não passa despercebido em multidões e tem uma habilidade natural para assumir o controle de situações e liderar grupos. Sua personalidade é a de um pioneiro, alguém que não tem medo de trilhar caminhos inexplorados.</p>
+          <p>O desafio da personalidade 1 é evitar parecer arrogante ou dominador. Sua forte presença pode, às vezes, intimidar pessoas mais sensíveis ou fazer com que você seja percebido como inflexível. É importante cultivar a humildade e a capacidade de ouvir os outros, mostrando que sua liderança vem do desejo de servir e inspirar, não de controlar.</p>
+          <p><strong>Sua personalidade é um farol que guia e inspira. Use sua presença natural para elevar os outros e criar um impacto positivo no mundo ao seu redor.</strong></p>
+        `
+      }
+    };
+    
+    textosMapaPessoal.expressao = {
+      1: {
+        titulo: "A Expressão do Inovador: Manifestando a Originalidade",
+        texto: `
+          <p>Sua expressão no mundo é a de um verdadeiro inovador, alguém destinado a abrir novos caminhos e estabelecer precedentes. Com o <strong>Número 1 na Expressão</strong>, você está aqui para manifestar originalidade, liderança e independência através de suas ações e realizações. Seu nome carrega a vibração da iniciativa e do pioneirismo, indicando que você tem o potencial de ser um líder em sua área de atuação.</p>
+          <p>Você é naturalmente dotado para iniciar projetos, criar soluções inovadoras e inspirar outros através do seu exemplo. Sua expressão no mundo é marcada pela coragem de ser diferente e pela determinação de transformar suas visões em realidade. Você não foi feito para seguir fórmulas prontas, mas para criar suas próprias regras e métodos.</p>
+          <p>O desafio da expressão 1 é aprender a trabalhar com outros sem perder sua individualidade. Embora você seja um líder nato, é importante desenvolver habilidades de colaboração e aprender a valorizar as contribuições dos outros. Sua missão é liderar pelo exemplo, mostrando que é possível ser bem-sucedido mantendo-se fiel aos próprios princípios.</p>
+          <p><strong>Sua expressão é um convite para o mundo conhecer novas possibilidades. Use seus talentos únicos para abrir portas que outros nem sabiam que existiam.</strong></p>
+        `
+      }
+    };
+    
+    textosMapaPessoal.destino = {
+      1: {
+        titulo: "O Destino do Pioneiro: Liderando o Caminho",
+        texto: `
+          <p>Seu destino é ser um pioneiro, um líder que abre caminhos para que outros possam seguir. Com o <strong>Número 1 no Destino</strong>, você veio a este mundo para desenvolver sua individualidade, sua capacidade de liderança e sua coragem para enfrentar desafios únicos. Sua jornada de vida é sobre descobrir e manifestar seu potencial de liderança de forma autêntica e inspiradora.</p>
+          <p>Ao longo da vida, você será constantemente chamado a tomar a iniciativa, a ser o primeiro a tentar algo novo ou a assumir responsabilidades que outros hesitam em aceitar. Seu destino envolve aprender a confiar em si mesmo, a tomar decisões independentes e a manter sua integridade mesmo quando isso significa ficar sozinho.</p>
+          <p>O crescimento do destino 1 vem através da superação do medo do fracasso e da rejeição. Você aprenderá que a verdadeira liderança não é sobre dominar outros, mas sobre inspirá-los a descobrir seu próprio potencial. Sua jornada o ensinará a equilibrar ambição com compaixão, força com sensibilidade.</p>
+          <p><strong>Seu destino é iluminar o caminho para outros através do seu exemplo de coragem, integridade e determinação. Abrace sua singularidade e use-a para fazer a diferença no mundo.</strong></p>
+        `
+      }
+    };
+
     // Tabelas de conversão
     const tabelaPitagorica = {
       'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
@@ -1402,84 +1603,52 @@
 
     function renderResultados(perfil) {
       const resultadosDiv = document.getElementById('resultados-mapa');
-      
-      let html = `
+      const { nome, dataNascimento, sistema } = document.getElementById('nome').value.trim();
+
+      const { alma, personalidade, expressao, destino } = perfil.numerosFundamentais;
+
+      resultadosDiv.innerHTML = `
         <div class="card">
-          <h3 class="text-center mb-2">📊 Números Fundamentais</h3>
-          <div class="results-grid">
-      `;
-      
-      const numeros = perfil.numerosFundamentais;
-      const titulos = {
-        alma: "Número da Alma",
-        personalidade: "Número da Personalidade", 
-        expressao: "Número da Expressão",
-        destino: "Número do Destino",
-        maturidade: "Número da Maturidade",
-        equilibrio: "Número do Equilíbrio"
-      };
-      
-      for (let [key, valor] of Object.entries(numeros)) {
-        const isMestre = [11, 22, 33].includes(valor);
-        const isKarmico = [13, 14, 16, 19].includes(valor);
-        const classe = isMestre ? 'numero-mestre' : (isKarmico ? 'numero-karmico' : '');
-        
-        html += `
-          <div class="result-card ${classe}">
-            <div class="result-number">${valor}</div>
-            <div class="result-title">${titulos[key]}</div>
-            <div class="result-description">${descricoesNumeros[valor] || 'Número especial'}</div>
-          </div>
-        `;
-      }
-      
-      html += `
-          </div>
+          <h3 class="text-center">Seu Perfil Numerológico</h3>
+          <p class="text-center"><strong>Nome:</strong> ${document.getElementById('nome').value}</p>
+          <p class="text-center"><strong>Data de Nascimento:</strong> ${new Date(document.getElementById('dataNascimento').value + 'T00:00:00').toLocaleDateString('pt-BR')}</p>
+          <p class="text-center"><strong>Idade:</strong> ${perfil.idade} anos</p>
+          <p class="text-center"><strong>Sistema:</strong> ${document.getElementById('sistema').value.charAt(0).toUpperCase() + document.getElementById('sistema').value.slice(1)}</p>
         </div>
-        
-        <div class="card">
-          <h3 class="text-center mb-2">🔮 Arcanos Temporais</h3>
+
+        <div class="card mt-4">
+            <h4 class="text-center result-title">Número de Alma: ${alma}</h4>
+            <h5 class="text-center mb-3">${textosMapaPessoal.alma[alma].titulo}</h5>
+            <div class="result-description">${textosMapaPessoal.alma[alma].texto}</div>
+        </div>
+
+        <div class="card mt-4">
+            <h4 class="text-center result-title">Número de Personalidade: ${personalidade}</h4>
+            <h5 class="text-center mb-3">${textosMapaPessoal.personalidade[personalidade].titulo}</h5>
+            <div class="result-description">${textosMapaPessoal.personalidade[personalidade].texto}</div>
+        </div>
+
+        <div class="card mt-4">
+            <h4 class="text-center result-title">Número de Expressão: ${expressao}</h4>
+            <h5 class="text-center mb-3">${textosMapaPessoal.expressao[expressao].titulo}</h5>
+            <div class="result-description">${textosMapaPessoal.expressao[expressao].texto}</div>
+        </div>
+
+        <div class="card mt-4">
+            <h4 class="text-center result-title">Número de Destino: ${destino}</h4>
+            <h5 class="text-center mb-3">${textosMapaPessoal.destino[destino].titulo}</h5>
+            <div class="result-description">${textosMapaPessoal.destino[destino].texto}</div>
+        </div>
       `;
-      
-      const arcanos = perfil.arcanosTemporais;
-      const titulosArcanos = {
-        pessoal: "Arcano Pessoal",
-        ano: "Arcano do Ano",
-        mes: "Arcano do Mês", 
-        semana: "Arcano da Semana",
-        dia: "Arcano do Dia"
-      };
-      
-      for (let [key, numero] of Object.entries(arcanos)) {
-        const nomeArcano = nomesArcanos[numero] || `Arcano ${numero}`;
-        const imagemPath = `assets/img/cartas/${String(numero).padStart(2, '0')}-${nomeArcano.replace(/\s+/g, '')}.jpg`;
-        
-        html += `
-          <div class="arcano-card">
-            <img src="${imagemPath}" alt="${nomeArcano}" class="arcano-imagem" 
-                 onerror="this.style.display='none'">
-            <div class="arcano-info">
-              <div class="arcano-numero">${numero}</div>
-              <div class="arcano-nome">${nomeArcano}</div>
-              <div class="arcano-descricao">
-                ${titulosArcanos[key]} - Representa a energia que rege este período da sua vida.
-              </div>
-            </div>
-          </div>
-        `;
-      }
-      
-      html += `</div>`;
-      
-      resultadosDiv.innerHTML = html;
+
       resultadosDiv.classList.remove('hidden');
     }
 
     // Funções principais
     function calcularMapa() {
-      const nome = document.getElementById('nome').value.trim();
+      const nome = document.getElementById('nomeCompleto').value.trim();
       const dataNascimento = document.getElementById('dataNascimento').value;
-      const sistema = document.getElementById('sistema').value;
+      const sistema = document.getElementById('sistemaNumerico').value;
       
       if (!nome || !dataNascimento) {
         alert('Por favor, preencha todos os campos obrigatórios.');
@@ -2656,7 +2825,7 @@
 
     // Funções de exemplo
     function preencherExemplo() {
-      document.getElementById('nome').value = 'Maria Silva Santos';
+      document.getElementById('nomeCompleto').value = 'Maria Silva Santos';
       document.getElementById('dataNascimento').value = '1990-05-15';
     }
 
@@ -3291,341 +3460,3 @@
   </script>
 </body>
 </html>
-
-
-    /* CSS para Pirâmide Cabalística */
-    .piramide-info {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .info-item {
-      background: rgba(255, 255, 255, 0.1);
-      padding: 0.8rem;
-      border-radius: 8px;
-      border: 1px solid var(--sage);
-      text-align: center;
-    }
-    
-    .piramide-container {
-      max-width: 100%;
-      overflow-x: auto;
-      padding: 1rem;
-    }
-    
-    .decada-linha {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-      min-height: 50px;
-    }
-    
-    .decada-label {
-      min-width: 120px;
-      font-weight: bold;
-      color: var(--gold);
-      margin-right: 1rem;
-    }
-    
-    .arcanos-linha {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-    
-    .arcano-piramide {
-      width: 45px;
-      height: 45px;
-      background: linear-gradient(135deg, var(--wine), var(--navy));
-      border: 2px solid var(--sage);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-    
-    .arcano-piramide:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px var(--gold);
-      border-color: var(--gold);
-    }
-    
-    .arcano-atual-piramide {
-      background: linear-gradient(135deg, var(--gold), #ff6b35) !important;
-      border-color: var(--gold) !important;
-      animation: pulse 2s infinite;
-      box-shadow: 0 0 20px var(--gold);
-    }
-    
-    .sequencias-negativas {
-      display: grid;
-      gap: 1rem;
-    }
-    
-    .sequencia-negativa {
-      background: rgba(255, 0, 0, 0.1);
-      border: 2px solid #ff4444;
-      border-radius: 12px;
-      padding: 1rem;
-    }
-    
-    .sequencia-negativa h4 {
-      color: #ff4444;
-      margin-bottom: 0.5rem;
-    }
-    
-    .expandir-sequencia button {
-      background: linear-gradient(135deg, #ff4444, #cc0000);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 0.5rem;
-      transition: all 0.3s ease;
-    }
-    
-    .expandir-sequencia button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(255, 68, 68, 0.3);
-    }
-    
-    .analise-completa {
-      margin-top: 1rem;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      border-left: 4px solid #ff4444;
-    }
-    
-    .analise-completa h5 {
-      color: var(--gold);
-      margin-top: 1rem;
-      margin-bottom: 0.5rem;
-    }
-    
-    .analise-completa p {
-      margin-bottom: 0.8rem;
-      line-height: 1.6;
-    }
-    
-    .btn-ler-mais {
-      background: linear-gradient(135deg, var(--sage), #4a9b8e);
-      color: white;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 6px;
-      cursor: pointer;
-      margin-top: 0.5rem;
-      transition: all 0.3s ease;
-      font-size: 0.9rem;
-    }
-    
-    .btn-ler-mais:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 8px rgba(178, 209, 177, 0.3);
-    }
-    
-    @media (max-width: 768px) {
-      .decada-linha {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      .decada-label {
-        margin-bottom: 0.5rem;
-        margin-right: 0;
-      }
-      
-      .arcano-piramide {
-        width: 40px;
-        height: 40px;
-        font-size: 0.8rem;
-      }
-    }
-
-
-    
-    /* CSS para Compatibilidade Expandida */
-    .perfis-comparativos {
-      margin: 1.5rem 0;
-    }
-    
-    .perfil-card {
-      background: rgba(255, 255, 255, 0.1);
-      border: 1px solid var(--sage);
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .perfil-card h5 {
-      color: var(--gold);
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    
-    .numeros-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 0.8rem;
-    }
-    
-    .numero-item {
-      text-align: center;
-      padding: 0.5rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      border: 1px solid rgba(178, 209, 177, 0.3);
-    }
-    
-    .numero-item .numero {
-      display: block;
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: var(--gold);
-      margin-bottom: 0.2rem;
-    }
-    
-    .numero-item .label {
-      font-size: 0.8rem;
-      color: var(--sage);
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    
-    .analises-areas {
-      margin-top: 2rem;
-    }
-    
-    .area-analise {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(178, 209, 177, 0.3);
-      border-radius: 12px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .area-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 1rem;
-      gap: 1rem;
-    }
-    
-    .area-icone {
-      font-size: 1.5rem;
-      min-width: 30px;
-    }
-    
-    .area-nome {
-      font-weight: bold;
-      color: var(--gold);
-      flex: 1;
-    }
-    
-    .area-score {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      min-width: 120px;
-    }
-    
-    .progress-bar {
-      height: 8px;
-      border-radius: 4px;
-      transition: width 0.3s ease;
-      flex: 1;
-    }
-    
-    .score-text {
-      font-weight: bold;
-      color: var(--gold);
-      min-width: 40px;
-      text-align: right;
-    }
-    
-    .area-descricao {
-      color: var(--parch);
-      line-height: 1.6;
-    }
-    
-    .conselhos {
-      margin-top: 1rem;
-      padding: 1rem;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 8px;
-      border-left: 4px solid var(--sage);
-    }
-    
-    .conselhos strong {
-      color: var(--gold);
-    }
-    
-    .conselhos ul {
-      margin: 0.5rem 0 0 1rem;
-      padding: 0;
-    }
-    
-    .conselhos li {
-      margin-bottom: 0.3rem;
-      color: var(--sage);
-    }
-    
-    .resumo-final {
-      background: linear-gradient(135deg, rgba(62, 10, 41, 0.3), rgba(11, 24, 54, 0.3));
-      border: 2px solid var(--gold);
-      border-radius: 12px;
-      padding: 1.5rem;
-      margin-top: 2rem;
-    }
-    
-    .resumo-final h4 {
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-    
-    .recomendacoes {
-      margin-top: 1rem;
-    }
-    
-    .recomendacoes h5 {
-      color: var(--sage);
-      margin-bottom: 0.8rem;
-    }
-    
-    .recomendacoes ul {
-      margin: 0 0 0 1rem;
-      padding: 0;
-    }
-    
-    .recomendacoes li {
-      margin-bottom: 0.5rem;
-      color: var(--parch);
-      line-height: 1.5;
-    }
-    
-    @media (max-width: 768px) {
-      .numeros-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .area-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-      }
-      
-      .area-score {
-        width: 100%;
-        min-width: auto;
-      }
-    }
-
