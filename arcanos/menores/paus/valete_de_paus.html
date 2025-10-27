@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valete de Paus - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Valete de Paus</h1>
+            <p class="subtitulo">46 - O Mensageiro da Ação</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/46PageofClubs.jpg" alt="Valete de Paus" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Início</span>
+                        <span class="palavra-chave">Entusiasmo</span>
+                        <span class="palavra-chave">Aventura</span>
+                        <span class="palavra-chave">Criatividade</span>
+                        <span class="palavra-chave">Coragem</span>
+                        <span class="palavra-chave">Fogo</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Valete de Paus representa a energia ativa que se manifesta no elemento fogo. Este arcano indica o impulso inicial, a centelha de uma nova paixão, projeto ou aventura. A sua energia é a de um começo entusiasmado, um chamado à ação que brota de um desejo profundo. O Valete simboliza a individualidade que se lança no mundo com coragem e otimismo, um ser jovem que personifica a energia criativa em seu estado mais puro. A sua posição como mensageiro ou aprendiz do fogo reforça a ideia de uma jornada que se inicia, uma fase de exploração e descoberta do próprio potencial. Ele é o portador da chama, o catalisador de novas possibilidades, o ponto de partida para a expressão da vontade.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o Valete, como figura da corte, não possui um número fixo, mas encarna a energia do número 1, o princípio, a semente, a força primordial. Ele representa o primeiro passo na jornada do naipe de Paus, o elemento do fogo, da ação e da criatividade. A sua energia é a da potencialidade pura, a força que precede a manifestação. O Valete de Paus é o impulso que dá início a um ciclo de crescimento e expansão, a vontade que se projeta no mundo para criar e transformar. Ele é a representação da individualidade que se afirma através da ação, da coragem de ser e de fazer.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>As cores no Valete de Paus, segundo a visão de Jodorowsky, são vibrantes e quentes, refletindo a natureza ígnea do arcano. O vermelho e o laranja dominam a sua vestimenta, simbolizando a paixão, a energia, a coragem e a criatividade. O amarelo, cor do sol, representa a consciência, a clareza de propósito e a alegria de viver. O verde, que pode aparecer em detalhes, indica a conexão com a natureza e o potencial de crescimento. As cores do Valete de Paus são um convite à ação, à expressão da vitalidade e à celebração da vida em sua plenitude.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Em seus aspectos positivos, o Valete de Paus indica entusiasmo, otimismo, coragem e criatividade. Ele representa a disposição para assumir riscos, para explorar novos territórios e para seguir a própria paixão. Este arcano simboliza a energia da juventude, a curiosidade insaciável e a vontade de aprender e de experimentar. O Valete de Paus é um convite para abraçar novas oportunidades, para dar o primeiro passo em direção a um sonho e para confiar na própria intuição. Ele é a centelha que acende a fogueira da transformação pessoal e da realização.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando em seus aspectos negativos, o Valete de Paus pode indicar impulsividade, impaciência, falta de direção e inconstância. A sua energia de fogo, quando não canalizada de forma construtiva, pode se tornar destrutiva e caótica. Este arcano pode representar a tendência a começar projetos sem terminá-los, a agir sem pensar nas consequências e a se deixar levar por entusiasmos passageiros. O Valete de Paus em desequilíbrio é um alerta para a necessidade de cultivar a disciplina, a perseverança e a clareza de propósito, para que a chama da criatividade não se apague em meio à dispersão.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+</html>
+</html>
+

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainha de Espadas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Rainha de Espadas</h1>
+            <p class="subtitulo">76 - A Soberana do Discernimento Afiado</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/76QueenofSwords.jpg" alt="Rainha de Espadas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Discernimento</span>
+                        <span class="palavra-chave">Clareza</span>
+                        <span class="palavra-chave">Verdade</span>
+                        <span class="palavra-chave">Independência</span>
+                        <span class="palavra-chave">Objetividade</span>
+                        <span class="palavra-chave">Razão</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>A Rainha de Espadas representa a energia ativa e receptiva que se manifesta no elemento ar, um domínio de intelecto, clareza e verdade. Esta figura indica a maestria sobre o pensamento, a capacidade de discernir com precisão e de comunicar com eloquência. A sua energia é a da mente que opera com lógica implacável, cortando as ilusões e as falsidades com a espada da razão. Ela simboliza a individualidade que alcançou um nível elevado de compreensão intelectual, capaz de ver além das aparências e de enfrentar a realidade com coragem e honestidade. A Rainha de Espadas não se deixa enganar por sentimentalismos ou por meias-verdades; a sua busca é pela verdade nua e crua, mesmo que esta seja dolorosa. Ela é a guardiã da integridade intelectual, a defensora da clareza mental e a promotora da comunicação direta e sem rodeios. A sua presença no Tarot indica um momento de necessidade de objetividade, de análise crítica e de tomada de decisões baseadas na lógica e na razão, e não na emoção. Ela representa a mulher que, através da experiência e do sofrimento, alcançou a sabedoria e a capacidade de se libertar das amarras emocionais, tornando-se uma figura de autoridade intelectual e de independência. A sua numerologia, embora não explícita como nos arcanos maiores, está intrinsecamente ligada ao número 5 (Rainha = 5), que simboliza a mudança, a liberdade e a inteligência, características que definem a sua essência. A Rainha de Espadas é, portanto, um convite à introspecção, à autoanálise e ao desenvolvimento de uma mente afiada e perspicaz, capaz de navegar pelas complexidades da vida com discernimento e sabedoria. Ela indica a necessidade de se desapegar do que não serve mais, de cortar laços que aprisionam e de buscar a liberdade através do conhecimento e da verdade. A sua energia é de uma força silenciosa, mas poderosa, que guia o indivíduo na busca pela sua própria verdade interior e pela sua autonomia intelectual. Ela não teme a solidão, pois sabe que a verdadeira sabedoria reside na capacidade de se bastar e de encontrar as respostas dentro de si. A Rainha de Espadas é a personificação da inteligência prática, da capacidade de resolver problemas e de encontrar soluções inovadoras para os desafios da vida. Ela é a estrategista, a pensadora, a filósofa que questiona tudo e que não se contenta com respostas superficiais. A sua mente é um jardim fértil de ideias, onde a lógica e a intuição se unem para criar um caminho de clareza e de discernimento. Ela é a luz que dissipa as sombras da ignorância e que ilumina o caminho da verdade. A Rainha de Espadas é a representação da mulher que se tornou mestra de si mesma, que conquistou a sua liberdade através do conhecimento e que inspira os outros a fazerem o mesmo. Ela é a voz da razão em meio ao caos, a bússola que guia o indivíduo na tempestade da vida. A sua sabedoria é um farol que ilumina o caminho da verdade e que conduz à libertação. Ela é a Rainha que governa com a mente, com a lógica e com a verdade, e que inspira os outros a seguirem o seu exemplo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No sistema de Jodorowsky, a numerologia é a espinha dorsal da interpretação do Tarot, e a Rainha de Espadas, como figura da corte, carrega a energia do número 5. Este número simboliza a mudança, a liberdade, a inteligência e a busca por conhecimento. A Rainha de Espadas, portanto, encarna a inteligência em movimento, a mente que não se contenta com o estático, mas que busca constantemente novas perspectivas e compreensões. O número 5 representa a capacidade de adaptação, a versatilidade e a agilidade mental, qualidades que a Rainha de Espadas demonstra em sua busca incessante pela verdade. Ela não se prende a dogmas ou a ideias pré-concebidas; a sua mente está sempre aberta a novas informações e a novas formas de pensar. A sua numerologia indica uma figura que está em constante evolução intelectual, que não teme questionar o status quo e que busca a liberdade através do conhecimento. O número 5 também está associado à comunicação e à expressão, o que reforça a capacidade da Rainha de Espadas de articular seus pensamentos com clareza e de influenciar os outros com sua lógica afiada. Ela é a personificação da mente que se liberta das amarras da ignorância e que se eleva acima das limitações do pensamento convencional. A sua numerologia, portanto, é a do intelecto livre, da mente que voa alto em busca da verdade e que não se detém diante de nenhum obstáculo. Ela é a Rainha que governa com a inteligência, com a razão e com a liberdade, e que inspira os outros a seguirem o seu exemplo. A presença do número 5 na Rainha de Espadas também indica uma certa inquietude, uma necessidade de movimento e de exploração. Ela não é uma figura estática, mas dinâmica, sempre em busca de novos desafios intelectuais e de novas formas de expandir a sua compreensão do mundo. A sua numerologia, portanto, é a da mente que nunca para, que está sempre em busca de novas descobertas e de novas verdades. Ela é a Rainha que governa com a inteligência, com a razão e com a liberdade, e que inspira os outros a seguirem o seu exemplo. A sua energia é de uma força silenciosa, mas poderosa, que guia o indivíduo na busca pela sua própria verdade interior e pela sua autonomia intelectual. Ela não teme a solidão, pois sabe que a verdadeira sabedoria reside na capacidade de se bastar e de encontrar as respostas dentro de si. A Rainha de Espadas é a personificação da inteligência prática, da capacidade de resolver problemas e de encontrar soluções inovadoras para os desafios da vida. Ela é a estrategista, a pensadora, a filósofa que questiona tudo e que não se contenta com respostas superficiais. A sua mente é um jardim fértil de ideias, onde a lógica e a intuição se unem para criar um caminho de clareza e de discernimento. Ela é a luz que dissipa as sombras da ignorância e que ilumina o caminho da verdade. A Rainha de Espadas é a representação da mulher que se tornou mestra de si mesma, que conquistou a sua liberdade através do conhecimento e que inspira os outros a fazerem o mesmo. Ela é a voz da razão em meio ao caos, a bússola que guia o indivíduo na tempestade da vida. A sua sabedoria é um farol que ilumina o caminho da verdade e que conduz à libertação. Ela é a Rainha que governa com a mente, com a lógica e com a verdade, e que inspira os outros a seguirem o seu exemplo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No Tarot de Jodorowsky, as cores são linguagens silenciosas que revelam as profundezas do inconsciente e as nuances da psique. Para a Rainha de Espadas, a paleta cromática que a envolve e a define é de suma importância para a sua compreensão. O azul, cor predominante no naipe de Espadas, simboliza a mente, a clareza, a comunicação e a verdade. É a cor do céu, do intelecto puro e da razão desapaixonada. O azul na Rainha de Espadas indica a sua capacidade de pensar com objetividade, de analisar situações sem se deixar levar por emoções e de comunicar suas ideias com precisão cirúrgica. O branco, frequentemente presente em elementos como a espada ou a vestimenta, representa a pureza, a neutralidade e a busca pela verdade absoluta. É a cor da luz que dissipa as sombras da ignorância, da clareza que emerge após a análise minuciosa. O branco na Rainha de Espadas simboliza a sua imparcialidade, a sua capacidade de ver as coisas como elas são, sem distorções ou preconceitos. O cinza, por vezes sutilmente presente, pode indicar a fusão entre o preto e o branco, a transição entre a ignorância e o conhecimento, a complexidade do pensamento que não se limita a dicotomias. O cinza na Rainha de Espadas representa a sua sabedoria, a sua capacidade de lidar com as ambiguidades da vida e de encontrar a verdade em meio à incerteza. O amarelo, se presente, pode simbolizar a inteligência, a iluminação e a criatividade mental. É a cor do sol, da consciência e da capacidade de gerar novas ideias. O amarelo na Rainha de Espadas indica a sua mente brilhante, a sua capacidade de inovar e de encontrar soluções originais para os problemas. O roxo, em menor escala, pode representar a espiritualidade, a intuição e a sabedoria oculta. É a cor da transmutação, da transformação e da conexão com o divino. O roxo na Rainha de Espadas simboliza a sua capacidade de ir além da lógica, de acessar conhecimentos profundos e de integrar a intuição em seu processo de discernimento. A combinação dessas cores na Rainha de Espadas cria um retrato visual de uma mente poderosa, perspicaz e em constante busca pela verdade. Ela é a personificação da inteligência que se manifesta em todas as suas formas, desde a lógica mais fria até a intuição mais sutil. A sua paleta cromática é um espelho da sua alma, um reflexo da sua busca incessante pela clareza e pela sabedoria. Ela é a Rainha que governa com a mente, com a lógica e com a verdade, e que inspira os outros a seguirem o seu exemplo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos da Rainha de Espadas, na visão de Jodorowsky, indicam uma mente aguçada e um discernimento impecável. Ela representa a capacidade de analisar situações com clareza, de tomar decisões lógicas e de comunicar-se com precisão e honestidade. Esta figura simboliza a independência intelectual, a autonomia de pensamento e a coragem de enfrentar a verdade, por mais dura que seja. A Rainha de Espadas é a personificação da justiça, da imparcialidade e da objetividade. Ela não se deixa levar por emoções ou por preconceitos, mas busca a verdade através da razão e da lógica. A sua presença indica um momento de clareza mental, de resolução de problemas e de superação de obstáculos através do intelecto. Ela é a estrategista, a pensadora, a conselheira que oferece soluções práticas e eficazes. A Rainha de Espadas é a voz da razão em meio ao caos, a bússola que guia o indivíduo na tempestade da vida. A sua sabedoria é um farol que ilumina o caminho da verdade e que conduz à libertação. Ela é a Rainha que governa com a mente, com a lógica e com a verdade, e que inspira os outros a seguirem o seu exemplo. A sua capacidade de cortar o que é desnecessário, de se desapegar do que não serve mais, é uma virtude que a torna livre e poderosa. Ela é a libertadora, a que abre caminho para o novo, para o progresso e para a evolução. A Rainha de Espadas é a guardiã da integridade intelectual, a defensora da clareza mental e a promotora da comunicação direta e sem rodeios. Ela é a personificação da mulher que, através da experiência e do sofrimento, alcançou a sabedoria e a capacidade de se libertar das amarras emocionais, tornando-se uma figura de autoridade intelectual e de independência. A sua energia é de uma força silenciosa, mas poderosa, que guia o indivíduo na busca pela sua própria verdade interior e pela sua autonomia intelectual. Ela não teme a solidão, pois sabe que a verdadeira sabedoria reside na capacidade de se bastar e de encontrar as respostas dentro de si. A Rainha de Espadas é a personificação da inteligência prática, da capacidade de resolver problemas e de encontrar soluções inovadoras para os desafios da vida. Ela é a estrategista, a pensadora, a filósofa que questiona tudo e que não se contenta com respostas superficiais. A sua mente é um jardim fértil de ideias, onde a lógica e a intuição se unem para criar um caminho de clareza e de discernimento. Ela é a luz que dissipa as sombras da ignorância e que ilumina o caminho da verdade. A Rainha de Espadas é a representação da mulher que se tornou mestra de si mesma, que conquistou a sua liberdade através do conhecimento e que inspira os outros a fazerem o mesmo. Ela é a voz da razão em meio ao caos, a bússola que guia o indivíduo na tempestade da vida. A sua sabedoria é um farol que ilumina o caminho da verdade e que conduz à libertação. Ela é a Rainha que governa com a mente, com a lógica e com a verdade, e que inspira os outros a seguirem o seu exemplo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando a Rainha de Espadas se manifesta em seus aspectos negativos, segundo Jodorowsky, ela indica uma mente que se tornou excessivamente crítica, fria e distante. A sua busca pela verdade pode se transformar em ceticismo destrutivo, onde a razão é usada para demolir, e não para construir. Ela pode se tornar uma figura implacável, que julga sem compaixão e que se isola emocionalmente, incapaz de se conectar com os outros em um nível mais profundo. A sua espada, que deveria cortar as ilusões, pode se voltar contra si mesma ou contra os outros, causando feridas emocionais e intelectuais. A Rainha de Espadas negativa pode representar a rigidez mental, a inflexibilidade e a incapacidade de aceitar diferentes pontos de vista. Ela pode se tornar arrogante em sua inteligência, desprezando aqueles que não compartilham de sua clareza mental. A sua comunicação, que deveria ser precisa e honesta, pode se tornar cortante, sarcástica e ofensiva, usada para humilhar e diminuir os outros. A sua independência pode se transformar em isolamento, e a sua autonomia em solidão. Ela pode se tornar uma figura amarga, ressentida e desiludida, que vê o mundo com pessimismo e que não acredita na bondade humana. A Rainha de Espadas negativa é a personificação da mente que se tornou prisioneira de sua própria lógica, incapaz de sentir, de amar e de se conectar com a vida em sua plenitude. A sua busca pela verdade pode se transformar em uma obsessão, onde a razão se torna um tirano que oprime a alma. Ela é a Rainha que governa com a mente, mas que perdeu o coração, e que inspira medo e distanciamento em vez de admiração e respeito. A sua energia é de uma força destrutiva, que aniquila a esperança e que sufoca a alegria. Ela é a sombra que se projeta sobre a luz da verdade, e que conduz à escuridão da desesperança. A Rainha de Espadas negativa é a representação da mulher que se tornou escrava de sua própria mente, que perdeu a sua liberdade através do conhecimento e que inspira os outros a se afastarem dela. Ela é a voz da razão que se tornou um grito de desespero, a bússola que guia o indivíduo para o abismo da solidão. A sua sabedoria é um veneno que corrói a alma, e que conduz à destruição. Ela é a Rainha que governa com a mente, mas que perdeu a sua humanidade, e que inspira os outros a não seguirem o seu exemplo.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Três de Ouros - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Três de Ouros</h1>
+            <p class="subtitulo">24 - A Obra em Colaboração</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/24ThreeofPentacles.jpg" alt="Três de Ouros" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Colaboração</span>
+                        <span class="palavra-chave">Trabalho em equipe</span>
+                        <span class="palavra-chave">Maestria</span>
+                        <span class="palavra-chave">Planejamento</span>
+                        <span class="palavra-chave">Implementação</span>
+                        <span class="palavra-chave">Reconhecimento</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Três de Ouros representa a energia ativa da concretização e da colaboração no domínio material. Este arcano indica a fase em que a ideia inicial, simbolizada pelo Ás, e o desenvolvimento dualístico, representado pelo Dois, encontram sua manifestação no plano físico. A sua energia é de construção, de trabalho em equipe e de reconhecimento do esforço. O Três de Ouros simboliza a habilidade de transformar conceitos em realidade tangível, a perícia que se materializa em obras concretas. A presença de três figuras na carta, frequentemente um mestre, um aprendiz e um cliente ou patrono, indica a dinâmica da criação colaborativa, onde o conhecimento é compartilhado e a execução é aprimorada através da interação. É a carta do artesão, do arquiteto, do construtor, que com dedicação e técnica, edifica o mundo. A numerologia do três, neste contexto, representa a síntese, a união de opostos que gera algo novo e sólido. É a força da tríade que impulsiona a realização, a materialização de um projeto que antes existia apenas no plano das ideias. O Três de Ouros, portanto, é um símbolo da capacidade humana de moldar a matéria, de deixar uma marca duradoura no mundo através do trabalho e da cooperação. Ele representa a energia da criação que se manifesta em forma, a concretização de um propósito que se revela através da ação. É a celebração do processo de construção, onde cada etapa é um passo em direção à perfeição da obra. A sua mensagem é clara: o sucesso material é alcançado através do esforço conjunto, da dedicação e da aplicação de talentos individuais em prol de um objetivo comum. É a carta que nos lembra que a verdadeira riqueza reside na capacidade de criar e de contribuir para o bem-estar coletivo, transformando o potencial em realidade visível e palpável.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o número três no Três de Ouros é um símbolo potente de síntese, criação e manifestação. Ele representa a união da dualidade (o dois) com a unidade (o um), resultando em uma nova entidade, uma forma concreta. No naipe de Ouros, que governa o plano material, o três indica a materialização de projetos e ideias. É o número da fertilidade, do crescimento e da expansão. O Três de Ouros, portanto, simboliza a conclusão de um ciclo inicial de planejamento e o início da fase de execução, onde a energia criativa se manifesta em resultados tangíveis. A presença de três elementos na carta, seja em figuras humanas ou em objetos, reforça a ideia de colaboração e de um processo construtivo que envolve diferentes partes. É a numerologia da ação que gera frutos, da energia que se transforma em matéria, da intenção que se concretiza em forma. O três também pode ser visto como a tríade divina, a representação da perfeição e da totalidade, indicando que o trabalho realizado sob a influência deste arcano é completo e bem-sucedido. A sua mensagem numerológica é clara: a realização material é alcançada através da união de forças, da aplicação de talentos e da dedicação ao processo de criação. É a carta que nos lembra que a verdadeira abundância não é apenas o acúmulo de bens, mas a capacidade de gerar e de compartilhar a riqueza criada através do trabalho e da colaboração. É a numerologia da prosperidade que se manifesta através da ação e da interação, da energia que se transforma em forma e da intenção que se concretiza em resultados visíveis e palpáveis.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No Três de Ouros, as cores desempenham um papel crucial na interpretação de sua energia e significado. O naipe de Ouros está intrinsecamente ligado ao elemento Terra, e as cores presentes na carta refletem essa conexão com o mundo material e a concretização. Tons terrosos como marrons, verdes e dourados são predominantes, simbolizando a fertilidade, o crescimento, a estabilidade e a riqueza. O marrom representa a solidez e a base, o verde a vitalidade e a abundância, e o dourado a prosperidade e o valor. A presença de cores vibrantes, como o azul e o roxo, pode indicar a dimensão espiritual e intuitiva que permeia o trabalho material. O azul, cor da comunicação e da verdade, sugere a importância da clareza e da honestidade nas colaborações. O roxo, cor da espiritualidade e da intuição, indica que o trabalho material não é desprovido de um propósito maior, de uma conexão com o divino. A combinação dessas cores cria um equilíbrio entre o material e o espiritual, o terreno e o celestial, indicando que a verdadeira realização material é alcançada quando há um alinhamento com os valores mais elevados. A simbologia das cores no Três de Ouros, portanto, reforça a ideia de que o trabalho material é uma forma de expressão da alma, uma manifestação da criatividade divina no plano físico. É a arte de transformar a matéria em algo belo e significativo, de infundir o espírito na forma, de criar com propósito e com paixão. É a paleta de cores que nos lembra que a verdadeira riqueza não é apenas o acúmulo de bens, mas a capacidade de criar e de compartilhar a beleza e o valor com o mundo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Três de Ouros, na perspectiva de Jodorowsky, indicam a capacidade de concretização, a habilidade de transformar ideias em realidade tangível. Este arcano simboliza o reconhecimento do trabalho bem feito, a valorização do esforço e da dedicação. É a carta da colaboração frutífera, onde diferentes talentos se unem para alcançar um objetivo comum. O Três de Ouros representa a maestria, a perícia que se manifesta em obras de arte, em projetos bem-sucedidos, em construções sólidas. É a energia da prosperidade que se manifesta através do trabalho árduo e da aplicação de conhecimentos. A sua influência indica um período de crescimento, de expansão e de abundância, onde os frutos do trabalho são colhidos e compartilhados. É a carta que nos lembra que a verdadeira riqueza não é apenas o acúmulo de bens, mas a capacidade de criar, de inovar e de contribuir para o bem-estar coletivo. É a celebração do processo de construção, onde cada etapa é um passo em direção à perfeição da obra. A sua mensagem é clara: o sucesso material é alcançado através do esforço conjunto, da dedicação e da aplicação de talentos individuais em prol de um objetivo comum. É a carta que nos lembra que a verdadeira riqueza reside na capacidade de criar e de contribuir para o bem-estar coletivo, transformando o potencial em realidade visível e palpável.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Três de Ouros se manifesta em seus aspectos negativos, pode indicar uma falta de reconhecimento do próprio valor ou do valor do trabalho alheio. Pode haver uma tendência à procrastinação, à falta de comprometimento ou à dificuldade em colaborar com outros. A energia de construção pode se tornar estagnação, onde projetos não avançam devido à inércia ou à falta de direção. Pode haver também uma supervalorização do aspecto material, levando à ganância, ao acúmulo excessivo ou à exploração. A busca por reconhecimento pode se tornar uma necessidade insaciável, levando à frustração e à insatisfação. O Três de Ouros invertido ou em desequilíbrio pode simbolizar a falta de habilidade em transformar ideias em realidade, a incapacidade de concretizar projetos ou a dificuldade em trabalhar em equipe. Pode haver uma tendência a se isolar, a não compartilhar conhecimentos ou a não aceitar a ajuda de outros. A sua mensagem, neste caso, é um alerta para a necessidade de reavaliar as prioridades, de buscar o equilíbrio entre o material e o espiritual, e de reconhecer que o verdadeiro sucesso reside na colaboração e no compartilhamento. É a carta que nos lembra que a verdadeira riqueza não é apenas o acúmulo de bens, mas a capacidade de criar e de contribuir para o bem-estar coletivo, transformando o potencial em realidade visível e palpável. É a numerologia da prosperidade que se manifesta através da ação e da interação, da energia que se transforma em forma e da intenção que se concretiza em resultados visíveis e palpáveis.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

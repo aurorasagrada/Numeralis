@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cinco de Ouros - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Cinco de Ouros</h1>
+            <p class="subtitulo">26 - A Prova da Resiliência</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/26FiveofPentacles.jpg" alt="Cinco de Ouros" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Perda</span>
+                        <span class="palavra-chave">Adversidade</span>
+                        <span class="palavra-chave">Exclusão</span>
+                        <span class="palavra-chave">Resiliência</span>
+                        <span class="palavra-chave">Superação</span>
+                        <span class="palavra-chave">Solidariedade</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Cinco de Ouros representa a energia ativa que se manifesta no elemento terrestre, indicando um período de prova e desafio. Este arcano simboliza a experiência da perda, da carência e da exclusão, mas também a oportunidade de encontrar a força interior e a solidariedade em meio à adversidade. A sua energia é de um ciclo de transição, onde as estruturas materiais podem ser abaladas, forçando o indivíduo a reavaliar seus valores e a buscar novas formas de segurança. O Cinco de Ouros indica a necessidade de reconhecer a própria vulnerabilidade e de aceitar a ajuda que pode surgir de fontes inesperadas. Ele representa a individualidade que se confronta com a escassez, mas que, ao mesmo tempo, é impelida a desenvolver a resiliência e a compaixão. A sua numerologia, portanto, é a do desafio que conduz ao crescimento, da crise que abre caminho para a renovação.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o número cinco indica movimento, mudança e, muitas vezes, crise. No naipe de Ouros, essa energia se manifesta no plano material, financeiro e da segurança. O Cinco de Ouros representa a instabilidade que surge após um período de aparente estabilidade, um desequilíbrio que exige adaptação e superação. A sua energia é de um teste, onde a fé e a perseverança são postas à prova. O número cinco simboliza a quebra de padrões, a necessidade de abandonar o que não serve mais e de buscar novas soluções. Ele indica a transição entre o quatro (estabilidade) e o seis (harmonia), um período de turbulência que, se bem gerenciado, pode levar a um novo patamar de equilíbrio. A presença do número cinco neste arcano sugere que a perda e a adversidade não são fins em si mesmas, mas catalisadores para o crescimento e a transformação.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No Cinco de Ouros, as cores desempenham um papel crucial na transmissão de sua mensagem. O azul-escuro e o cinza, frequentemente presentes na representação da cena, simbolizam a tristeza, a melancolia e a dificuldade. O branco da neve ou do frio indica a rigidez, a falta de calor e a sensação de isolamento. No entanto, a presença de cores mais quentes, como o vermelho ou o dourado, mesmo que em detalhes sutis, pode indicar a chama da esperança, a capacidade de superação e a presença de auxílio. O dourado, em particular, representa a riqueza interior, a sabedoria e a iluminação que podem ser alcançadas mesmo em tempos de escassez. A paleta de cores do Cinco de Ouros, portanto, reflete a dualidade entre a adversidade e a resiliência, a escuridão e a luz que coexistem na experiência humana.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Cinco de Ouros, na ótica de Jodorowsky, indicam a capacidade de encontrar a força interior em meio à adversidade. Este arcano representa a oportunidade de desenvolver a resiliência, a compaixão e a solidariedade. A perda material pode levar a um enriquecimento espiritual, a uma reavaliação dos valores e a uma conexão mais profunda com o próprio ser. O Cinco de Ouros simboliza a capacidade de pedir e aceitar ajuda, de reconhecer a interdependência humana e de construir laços de apoio mútuo. Ele indica a superação de obstáculos, a transformação de crises em oportunidades de crescimento e a descoberta de novas fontes de segurança e abundância. A sua energia é de um renascimento, onde a escassez material pode abrir caminho para a riqueza interior e para a plenitude espiritual.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Cinco de Ouros apresenta aspectos negativos, segundo Jodorowsky, pode indicar a persistência na vitimização, a recusa em aceitar ajuda e a incapacidade de superar a perda. Este arcano representa o isolamento, a desesperança e a autocomiseração. A energia negativa do Cinco de Ouros pode levar à estagnação, à falta de iniciativa e à perda de fé na própria capacidade de superação. Ele simboliza a resistência à mudança, o apego ao passado e a dificuldade em se adaptar a novas circunstâncias. A sua energia é de um ciclo vicioso, onde a carência material se reflete na pobreza espiritual e na ausência de propósito. O Cinco de Ouros, em seu aspecto negativo, indica a necessidade de romper com padrões destrutivos, de buscar apoio e de cultivar a esperança para transformar a adversidade em oportunidade de crescimento.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

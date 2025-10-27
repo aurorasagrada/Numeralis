@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ás de Copas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Ás de Copas</h1>
+            <p class="subtitulo">50 - A Semente da Emoção</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/50OneofCups.jpg" alt="Ás de Copas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Amor</span>
+                        <span class="palavra-chave">Compaixão</span>
+                        <span class="palavra-chave">Intuição</span>
+                        <span class="palavra-chave">Início</span>
+                        <span class="palavra-chave">Água</span>
+                        <span class="palavra-chave">Emoção</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Ás de Copas representa a energia receptiva que se concentra no elemento aquático. Este arcano indica o primeiro contato com as qualidades do naipe de Copas. A sua energia é de um novo ciclo, de um ponto de partida para a exploração emocional. O Ás simboliza a individualidade que se abre para o coletivo dos sentimentos, um ser que, embora jovem, carrega em si a totalidade do naipe. A sua posição como mensageiro ou aprendiz reforça a ideia de um começo, de uma fase de assimilação e de experimentação. A ausência de um número fixo no Ás permite que ele transite entre as energias de todos os números, absorvendo e refletindo as suas qualidades. Ele é o portal para o mundo das emoções, o ponto de entrada para a jornada do coração. A sua numerologia, portanto, é a do potencial ilimitado, da página em branco que espera ser preenchida com as experiências da vida. Este arcano indica a abertura do coração, a receptividade para o amor, a compaixão e a intuição. É a semente de um novo ciclo emocional, um convite para mergulhar nas profundezas do ser e explorar as águas da alma. A taça, símbolo central do naipe de Copas, representa o recipiente da emoção, a capacidade de dar e receber amor. O Ás de Copas, em sua essência, é a pura manifestação do amor incondicional, da alegria e da plenitude emocional. Ele simboliza a fonte primordial de todas as emoções, o ponto de origem de onde fluem todos os sentimentos. É a promessa de um novo começo no campo afetivo, um convite para se reconectar com a própria essência e com o fluxo da vida. A energia do Ás de Copas é suave, acolhedora e nutritiva, como a água que irriga a terra e faz brotar a vida. Ele representa a fertilidade emocional, a capacidade de criar e nutrir relacionamentos saudáveis e significativos. É a carta da esperança, da renovação e da cura emocional. A sua presença em uma leitura indica um momento propício para se abrir ao amor, para perdoar e para se libertar de velhas mágoas. É a oportunidade de recomeçar, de se permitir sentir e de viver plenamente as emoções. O Ás de Copas é a chave para a felicidade e a realização emocional, um lembrete de que o amor é a força mais poderosa do universo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, a numerologia é um pilar fundamental para a compreensão dos arcanos, e o Ás de Copas, como todas as cartas de corte, carrega em si a energia do número 1. Ele indica o primeiro contato com as qualidades do naipe de Copas. A sua energia é de um novo ciclo, de um ponto de partida para a exploração emocional. O Ás simboliza a individualidade que se abre para o coletivo dos sentimentos, um ser que, embora jovem, carrega em si a totalidade do naipe. A sua posição como mensageiro ou aprendiz reforça a ideia de um começo, de uma fase de assimilação e de experimentação. A ausência de um número fixo no Ás permite que ele transite entre as energias de todos os números, absorvendo e refletindo as suas qualidades. O número 1, associado ao Ás, representa o início, a unidade, a semente, a potencialidade pura. É o ponto de partida para a manifestação de algo novo, a faísca inicial que impulsiona a criação. No contexto do Ás de Copas, o número 1 simboliza o nascimento de uma nova emoção, o despertar de um sentimento profundo, a origem de um fluxo de amor e compaixão. Ele indica a singularidade da experiência emocional, a individualidade que se conecta com o universo dos sentimentos. A numerologia do Ás de Copas é a do potencial ilimitado, da página em branco que espera ser preenchida com as experiências da vida. É a energia primordial que dá origem a todas as formas de amor e afeto. O número 1, em sua essência, é a representação da totalidade, da completude, da perfeição. Ele simboliza a união do masculino e do feminino, do céu e da terra, do espírito e da matéria. No Ás de Copas, essa união se manifesta na fusão do indivíduo com o universo emocional, na capacidade de se conectar com o divino através do amor. É a energia que impulsiona a busca pela plenitude, pela harmonia e pela felicidade. A numerologia do Ás de Copas é um convite para se reconectar com a própria essência, para se abrir ao amor e para viver plenamente as emoções. É a promessa de um novo começo, de uma nova jornada no campo afetivo, onde a individualidade se expande e se integra ao coletivo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No universo simbólico de Jodorowsky, as cores nos arcanos do Tarot não são meros adornos, mas portadoras de significados que complementam e enriquecem a interpretação de cada carta. Para o Ás de Copas, a paleta de cores presente em sua representação visual para Jodorowsky revela nuances profundas. O Ás de Copas está ligado ao elemento água, por isso sua vestimenta e o ambiente ao redor frequentemente associam-se a tons de azul, verde-água e branco. Estas cores refletem a natureza emocional, a fluidez dos sentimentos e a intuição que o naipe de Copas representa. O azul, em particular, é a cor da profundidade, da espiritualidade, da calma e da introspecção, qualidades que o Ás de Copas busca desenvolver em sua jornada. Ele simboliza a conexão com o inconsciente, com os sonhos e com a sabedoria interior. O verde-água representa a cura, a renovação, a esperança e o crescimento emocional. É a cor da natureza, da vida que brota e se renova. O branco pode representar a pureza, a inocência, a clareza e a verdade. No Ás de Copas, o branco simboliza a pureza dos sentimentos, a inocência do amor e a clareza da intuição. A presença de tons dourados ou amarelados pode indicar a luz da consciência que ilumina as profundezas do inconsciente, a sabedoria que surge da experiência emocional. O vermelho, se presente, pode simbolizar a paixão, o amor ardente, a energia vital que impulsiona os sentimentos. A combinação dessas cores no Ás de Copas cria uma tapeçaria visual que expressa a complexidade e a riqueza do mundo emocional. Elas indicam a capacidade de se adaptar às mudanças, de fluir com a vida e de se conectar com a própria essência. A simbologia das cores no Ás de Copas é um convite para explorar as profundezas do ser, para se abrir ao amor e para viver plenamente as emoções. É a promessa de um novo começo, de uma nova jornada no campo afetivo, onde a individualidade se expande e se integra ao coletivo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Ás de Copas, na ótica de Jodorowsky, indicam a capacidade de discernimento aguçado, a habilidade de ver através das ilusões e de questionar verdades estabelecidas. Essa não é uma crítica destrutiva, mas uma busca genuína pela clareza e pela verdade, um desejo de desmantelar estruturas obsoletas para construir algo mais sólido e autêntico. A sua postura indica uma disposição para o amor e para a compaixão, sem as defesas ou as complexidades que a experiência pode trazer. O Ás de Copas, portanto, é um símbolo de renovação emocional e de um novo começo no domínio dos sentimentos, onde a inocência e a curiosidade são as forças motrizes. Ele representa a abertura do coração, a receptividade para o amor incondicional, a alegria e a plenitude emocional. É a semente de um novo ciclo afetivo, um convite para mergulhar nas profundezas do ser e explorar as águas da alma. A taça, símbolo central do naipe de Copas, representa o recipiente da emoção, a capacidade de dar e receber amor. O Ás de Copas, em sua essência, é a pura manifestação do amor incondicional, da alegria e da plenitude emocional. Ele simboliza a fonte primordial de todas as emoções, o ponto de origem de onde fluem todos os sentimentos. É a promessa de um novo começo no campo afetivo, um convite para se reconectar com a própria essência e com o fluxo da vida. A energia do Ás de Copas é suave, acolhedora e nutritiva, como a água que irriga a terra e faz brotar a vida. Ele representa a fertilidade emocional, a capacidade de criar e nutrir relacionamentos saudáveis e significativos. É a carta da esperança, da renovação e da cura emocional. A sua presença em uma leitura indica um momento propício para se abrir ao amor, para perdoar e para se libertar de velhas mágoas. É a oportunidade de recomeçar, de se permitir sentir e de viver plenamente as emoções. O Ás de Copas é a chave para a felicidade e a realização emocional, um lembrete de que o amor é a força mais poderosa do universo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Ás de Copas apresenta aspectos negativos, segundo Jodorowsky, pode indicar uma tendência à crítica excessiva, ao ceticismo destrutivo ou à frieza emocional. A taça que ele empunha não é para o combate, mas para transbordar emoções, para se entregar ao fluxo da vida e para abrir caminho através da ignorância emocional. Ela é o sopro inicial de uma nova emoção, a curiosidade que se acende na alma jovem, pronta para começar a dominar o elemento água, o reino das novas perspectivas emocionais. Ele é o primeiro passo na jornada do coração, um passo cheio de potencial e pronto para iniciar sua jornada de descoberta e discernimento emocional. É a energia do novo, do começo, da individualidade emocional que se manifesta no mundo. No entanto, em seu aspecto negativo, o Ás de Copas pode simbolizar uma superabundância de emoções que leva à instabilidade, à dependência emocional ou à incapacidade de lidar com a realidade. Pode indicar uma tendência a se afogar em sentimentos, a se deixar levar por ilusões ou a se tornar excessivamente sensível e vulnerável. A taça, que deveria ser um recipiente de amor e compaixão, pode se tornar um fardo, um peso que impede o indivíduo de avançar. Em seu lado sombrio, o Ás de Copas pode representar a manipulação emocional, a chantagem afetiva, a vitimização ou a incapacidade de estabelecer limites saudáveis nos relacionamentos. Pode indicar uma tendência a se apegar ao passado, a reviver mágoas antigas ou a se recusar a perdoar. É a energia do desequilíbrio emocional, da falta de controle sobre os próprios sentimentos, da incapacidade de se adaptar às mudanças e de fluir com a vida. O Ás de Copas, em seu aspecto negativo, é um alerta para a necessidade de buscar o equilíbrio, de aprender a lidar com as emoções de forma saudável e de se libertar de padrões destrutivos. É um convite para a introspecção, para a autoanálise e para a busca de ajuda profissional, se necessário. A sua presença em uma leitura, quando em aspecto negativo, indica um momento de desafio, de superação e de transformação. É a oportunidade de aprender com os erros, de crescer e de se fortalecer emocionalmente. O Ás de Copas, mesmo em seu lado sombrio, é um lembrete de que a vida é um constante aprendizado, e que as emoções, sejam elas positivas ou negativas, são parte essencial da jornada humana.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+
