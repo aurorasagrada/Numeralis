@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Numeralis - Sistema Numerológico Completo Aurora Sagrada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{ 
+      --wine:#3e0a29; 
+      --sage:#b2d1b1; 
+      --navy:#0b1836; 
+      --gold:#f0aa53; 
+      --parch:#f2eaff;
+    }
+    
+    * { box-sizing: border-box; }
+    
+    html,body{height:100%; margin:0; padding:0;}
+    
+    body{ 
+      font-family:"Cormorant Garamond",serif; 
+      background: var(--navy);
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(240,170,83,0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(178,209,177,0.03) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23f2eaff' fill-opacity='0.02'%3E%3Cpath d='M30 30c0-11.046-8.954-20-20-20s-20 8.954-20 20 8.954 20 20 20 20-8.954 20-20zm0 0c0 11.046 8.954 20 20 20s20-8.954 20-20-8.954-20-20-20-20 8.954-20 20z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      color:var(--parch); 
+      min-height:100vh;
+      position: relative;
+    }
+    
+    /* Header */
+    .header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: linear-gradient(135deg, var(--wine) 0%, var(--navy) 100%);
+      border-bottom: 2px solid var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: '✦';
+      position: absolute;
+      top: 1rem;
+      left: 2rem;
+      font-size: 1.5rem;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+    
+    .header::after {
+      content: '✦';
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      font-size: 1.5rem;
+      color: var(--gold);
+      opacity: 0.6;
+    }
+    
+    .header h1 {
+      font-family: "Cinzel", serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      margin: 0;
+      background: linear-gradient(45deg, var(--gold), var(--parch));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 0 20px rgba(240,170,83,0.3);
+    }
+    
+    .header p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0 0 0;
+      color: var(--sage);
+      font-style: italic;
+    }
+    
+    /* Navigation Tabs */
+    .nav-container {
+      background: rgba(62,10,41,0.8);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--gold);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    
+    .nav-tabs {
+      display: flex;
+      justify-content: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    
+    .nav-tab {
+      margin: 0;
+    }
+    
+    .nav-tab button {
+      background: transparent;
+      border: none;
+      color: var(--parch);
+      padding: 1rem 1.5rem;
+      font-family: "Cinzel", serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-bottom: 2px solid transparent;
+      position: relative;
+    }
+    
+    .nav-tab button:hover {
+      color: var(--gold);
+      background: rgba(240,170,83,0.1);
+    }
+    
+    .nav-tab.active button {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+      background: rgba(240,170,83,0.1);
+    }
+    
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    
+    .section {
+      display: none;
+    }
+    
+    .section.active {
+      display: block;
+    }
+    
+    /* Cards */
+    .card {
+      background: rgba(62,10,41,0.6);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(240,170,83,0.3);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    
+    .card h2 {
+      font-family: "Cinzel", serif;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      font-size: 1.8rem;
+    }
+    
+    .card h3 {
+      font-family: "Cinzel", serif;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    
+    /* Form Elements */
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .form-row .form-group {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: var(--sage);
+      font-weight: 500;
+    }
+    
+    input, select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 1px solid rgba(240,170,83,0.3);
+      border-radius: 8px;
+      background: rgba(11,24,54,0.8);
+      color: var(--parch);
+      font-family: "Cormorant Garamond", serif;
+      font-size: 1rem;
+    }
+    
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 10px rgba(240,170,83,0.3);
+    }
+    
+    /* Buttons */
+    .btn {
+      background: linear-gradient(135deg, var(--gold) 0%, #e09142 100%);
+      color: var(--navy);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-family: "Cinzel", serif;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin: 0.25rem;
+    }
+    
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(240,170,83,0.4);
+    }
+    
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--sage) 0%, #9bc49a 100%);
+    }
+    
+    .btn-danger {
+      background: linear-gradient(135deg, var(--wine) 0%, #5a1238 100%);
+      color: var(--parch);
+    }
+    
+    .button-group {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    
+    /* Results */
+    .results {
+      margin-top: 2rem;
+    }
+    
+    .result-item {
+      background: rgba(11,24,54,0.6);
+      border: 1px solid rgba(178,209,177,0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .result-item h4 {
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      font-family: "Cinzel", serif;
+    }
+    
+    .number-display {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--gold);
+      text-align: center;
+      margin: 1rem 0;
+    }
+    
+    /* Pyramid Styles */
+    .pyramid-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem 0;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+    
+    .pyramid-row {
+      display: flex;
+      justify-content: center;
+      margin: 0.25rem 0;
+      flex-wrap: nowrap;
+    }
+    
+    .pyramid-cell {
+      width: 35px;
+      height: 35px;
+      border: 1px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 1px;
+      background: rgba(62,10,41,0.6);
+      color: var(--parch);
+      font-weight: bold;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+    
+    .pyramid-cell.highlight {
+      background: var(--gold);
+      color: var(--navy);
+      box-shadow: 0 0 15px rgba(240,170,83,0.6);
+    }
+    
+    .pyramid-cell.negative-sequence {
+      background: var(--wine);
+      color: var(--parch);
+      box-shadow: 0 0 10px rgba(62,10,41,0.8);
+    }
+    
+    /* Interpretations */
+    .interpretation {
+      background: rgba(11,24,54,0.4);
+      border-left: 4px solid var(--gold);
+      padding: 1.5rem;
+      margin: 1rem 0;
+      border-radius: 0 10px 10px 0;
+    }
+    
+    .interpretation h4 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-family: "Cinzel", serif;
+    }
+    
+    .interpretation p {
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    
+    /* Negative Sequences Alert */
+    .negative-alert {
+      background: rgba(62,10,41,0.8);
+      border: 2px solid var(--wine);
+      border-radius: 10px;
+      padding: 1.5rem;
+      margin: 1rem 0;
+      color: var(--parch);
+    }
+    
+    .negative-alert h4 {
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-family: "Cinzel", serif;
+    }
+    
+    /* Compatibility Grid */
+    .compatibility-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .compatibility-card {
+      background: rgba(11,24,54,0.6);
+      border: 1px solid rgba(178,209,177,0.3);
+      border-radius: 10px;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    
+    .compatibility-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    
+    .compatibility-type {
+      font-family: "Cinzel", serif;
+      color: var(--sage);
+      margin-bottom: 1rem;
+    }
+    
+    .text-center {
+      text-align: center;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+      
+      .nav-tabs {
+        flex-direction: column;
+      }
+      
+      .nav-tab button {
+        padding: 0.8rem 1rem;
+        font-size: 0.8rem;
+      }
+      
+      .form-row {
+        flex-direction: column;
+      }
+      
+      .main-content {
+        padding: 1rem;
+      }
+      
+      .card {
+        padding: 1.5rem;
+      }
+      
+      .pyramid-cell {
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+      }
+    }
+    
+    /* Hidden class */
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>NUMERALIS</h1>
+    <p>Sistema Numerológico Completo Aurora Sagrada</p>
+  </div>
+
+  <nav class="nav-container">
+    <ul class="nav-tabs">
+        <li class="nav-tab active">
+          <button onclick="showSection(event,'mapa-pitagorico')">🌟 Mapa Pitagórico</button>
+        </li>
+        <li class="nav-tab">
+          <button onclick="showSection(event,'piramide-cabalistica')">🔺 Pirâmide Cabalística</button>
+        </li>
+        <li class="nav-tab">
+          <button onclick="showSection(event,'pinaculos-vida')">🏔️ Pináculos da Vida</button>
+        </li>
+        <li class="nav-tab">
+          <button onclick="showSection(event,'sinastria-numerologica')">💕 Sinastria Numerológica</button>
+        </li>
+    </ul>
+  </nav>
+
+  <main class="main-content">
+    <!-- Mapa Pitagórico -->
+    <section id="mapa-pitagorico" class="section active">
+      <div class="card">
+        <h2>🌟 Mapa Pitagórico Completo</h2>
+        <p style="text-align: center; color: var(--sage); margin-bottom: 2rem;">
+          Descubra os números que regem sua personalidade, destino e lições cármicas através da sabedoria pitagórica ancestral
+        </p>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nomeCompleto">Nome Completo de Nascimento</label>
+            <input type="text" id="nomeCompleto" placeholder="Digite seu nome completo de nascimento">
+          </div>
+          <div class="form-group">
+            <label for="dataNascimento">Data de Nascimento</label>
+            <input type="date" id="dataNascimento">
+          </div>
+        </div>
+        
+        <div class="button-group">
+          <button class="btn" onclick="calcularMapaCompleto()">🌟 Calcular Mapa Completo</button>
+          <button class="btn btn-secondary" onclick="preencherExemploMapa()">📝 Exemplo</button>
+          <button class="btn btn-danger" onclick="limparMapa()">🗑️ Limpar</button>
+        </div>
+        
+        <div id="resultados-mapa" class="results hidden"></div>
+      </div>
+    </section>
+
+    <!-- Pirâmide Cabalística -->
+    <section id="piramide-cabalistica" class="section">
+      <div class="card">
+        <h2>🔺 Pirâmide Invertida Cabalística</h2>
+        <p style="text-align: center; color: var(--sage); margin-bottom: 2rem;">
+          Ciclo de 90 Anos - Arcanos Regentes da Vida e Sequências Negativas<br>
+          Descubra seu Arcano Regente atual e identifique padrões que influenciam sua jornada
+        </p>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nomePiramide">Nome Completo de Nascimento</label>
+            <input type="text" id="nomePiramide" placeholder="Digite seu nome completo de nascimento">
+          </div>
+          <div class="form-group">
+            <label for="idadePiramide">Idade Atual</label>
+            <input type="number" id="idadePiramide" placeholder="Sua idade atual" min="0" max="120">
+          </div>
+        </div>
+        
+        <div class="button-group">
+          <button class="btn" onclick="calcularPiramideCompleta()">🔺 Calcular Pirâmide</button>
+          <button class="btn btn-secondary" onclick="preencherExemploPiramide()">📝 Exemplo</button>
+          <button class="btn btn-danger" onclick="limparPiramide()">🗑️ Limpar</button>
+        </div>
+        
+        <div id="resultados-piramide" class="results hidden"></div>
+      </div>
+    </section>
+
+    <!-- Pináculos da Vida -->
+    <section id="pinaculos-vida" class="section">
+      <div class="card">
+        <h2>🏔️ Pináculos da Vida</h2>
+        <p style="text-align: center; color: var(--sage); margin-bottom: 2rem;">
+          Os quatro grandes ciclos de aprendizado e crescimento da sua jornada terrena
+        </p>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nomePinaculos">Nome Completo</label>
+            <input type="text" id="nomePinaculos" placeholder="Digite seu nome completo">
+          </div>
+          <div class="form-group">
+            <label for="dataPinaculos">Data de Nascimento</label>
+            <input type="date" id="dataPinaculos">
+          </div>
+        </div>
+        
+        <div class="button-group">
+          <button class="btn" onclick="calcularPinaculosCompletos()">🏔️ Calcular Pináculos</button>
+          <button class="btn btn-secondary" onclick="preencherExemploPinaculos()">📝 Exemplo</button>
+          <button class="btn btn-danger" onclick="limparPinaculos()">🗑️ Limpar</button>
+        </div>
+        
+        <div id="resultados-pinaculos" class="results hidden"></div>
+      </div>
+    </section>
+
+    <!-- Sinastria Numerológica -->
+    <section id="sinastria-numerologica" class="section">
+      <div class="card">
+        <h2>💕 Sinastria Numerológica</h2>
+        <p style="text-align: center; color: var(--sage); margin-bottom: 2rem;">
+          Análise completa de compatibilidade amorosa através dos números sagrados
+        </p>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nomePessoa1">Nome Completo - Pessoa 1</label>
+            <input type="text" id="nomePessoa1" placeholder="Digite o nome da primeira pessoa">
+          </div>
+          <div class="form-group">
+            <label for="dataPessoa1">Data de Nascimento - Pessoa 1</label>
+            <input type="date" id="dataPessoa1">
+          </div>
+        </div>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nomePessoa2">Nome Completo - Pessoa 2</label>
+            <input type="text" id="nomePessoa2" placeholder="Digite o nome da segunda pessoa">
+          </div>
+          <div class="form-group">
+            <label for="dataPessoa2">Data de Nascimento - Pessoa 2</label>
+            <input type="date" id="dataPessoa2">
+          </div>
+        </div>
+        
+        <div class="button-group">
+          <button class="btn" onclick="calcularSinastria()">💕 Calcular Compatibilidade</button>
+          <button class="btn btn-secondary" onclick="preencherExemploSinastria()">📝 Exemplo</button>
+          <button class="btn btn-danger" onclick="limparSinastria()">🗑️ Limpar</button>
+        </div>
+        
+        <div id="resultados-sinastria" class="results hidden"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="interpretacoes_completas_extraidas.js"></script>
+  <script src="textos_pinaculos_completos.js"></script>
+    <script src="sinastria_completa_extraida.js"></script>
+    <script src="correspondencias_arcanos_numerologia.js"></script>
+  <script>
+    // Tabelas numerológicasompletos baseados nas fontes
+    
+    // Tabelas numerológicas
+    const tabelaPitagorica = {
+      'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+      'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 6, 'P': 7, 'Q': 8, 'R': 9,
+      'S': 1, 'T': 2, 'U': 3, 'V': 4, 'W': 5, 'X': 6, 'Y': 7, 'Z': 8
+    };
+
+    const tabelaCabalistica = {
+      'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8,
+      'I': 1, 'J': 2, 'K': 3, 'L': 4, 'M': 5, 'N': 6, 'O': 7, 'P': 8,
+      'Q': 1, 'R': 2, 'S': 3, 'T': 4, 'U': 5, 'V': 6, 'W': 7, 'X': 8,
+      'Y': 1, 'Z': 2
+    };
+
+    const vogais = ['A', 'E', 'I', 'O', 'U'];
+    const numerosMestres = [11, 22, 33];
+    const numerosKarmicos = [13, 14, 16, 19];
+
+    // Nomes dos Arcanos
+    const nomesArcanos = {
+      0: "O Louco", 1: "O Mago", 2: "A Sacerdotisa", 3: "A Imperatriz", 4: "O Imperador",
+      5: "O Papa", 6: "Os Enamorados", 7: "O Carro", 8: "A Força", 9: "O Eremita",
+      10: "A Roda da Fortuna", 11: "A Justiça", 12: "O Enforcado", 13: "A Morte",
+      14: "A Temperança", 15: "O Diabo", 16: "A Torre", 17: "A Estrela", 18: "A Lua",
+      19: "O Sol", 20: "O Julgamento", 21: "O Mundo", 22: "O Louco"
+    };
+
+    // Sequências Negativas da Pirâmide Cabalística
+    const sequenciasNegativasInfo = {
+      111: {
+        titulo: "Sequência 111 - O Bloqueio da Iniciativa Primordial",
+        texto: "A manifestação da sequência 111 na pirâmide cabalística representa um dos padrões mais desafiadores da numerologia esotérica, criando uma estagnação profunda que afeta a capacidade fundamental de iniciar movimentos na vida. Esta configuração numérica atua como um bloqueio energético que impede o fluxo natural da força vital, criando uma resistência inconsciente a qualquer forma de mudança ou progresso. Pessoas que carregam esta sequência em sua pirâmide frequentemente experimentam longos períodos de paralisia existencial, onde mesmo as decisões mais simples se tornam monumentalmente difíceis. A energia estagnada do 111 cria um campo de inércia que se manifesta tanto no plano físico quanto no emocional, resultando em uma sensação constante de estar 'preso' ou 'travado' em situações que não oferecem crescimento ou satisfação. No aspecto da saúde, esta sequência está diretamente relacionada com distúrbios circulatórios graves, pois a estagnação energética se reflete literalmente no sistema cardiovascular. Aneurismas, embolias, tromboses e infartos são manifestações físicas comuns desta configuração, representando simbolicamente a incapacidade do sangue - e da energia vital - de fluir livremente pelo organismo. A superação desta influência requer um trabalho consciente e gradual de desbloqueio energético, começando com pequenas ações diárias que quebrem o padrão de inércia e restabeleçam o fluxo natural da vida."
+      },
+      222: {
+        titulo: "Sequência 222 - A Prisão da Indecisão e o Labirinto da Dependência",
+        texto: "A sequência 222 na pirâmide cabalística revela uma das configurações mais sutilmente destrutivas da numerologia esotérica, criando um padrão de indecisão crônica que se infiltra em todos os aspectos da existência como uma névoa paralisante. Esta configuração numérica atua como um campo magnético que atrai situações onde a pessoa se vê constantemente forçada a escolher entre opções que parecem igualmente válidas ou igualmente problemáticas, criando um estado perpétuo de ansiedade decisória. Indivíduos que carregam esta sequência desenvolvem uma dependência patológica da opinião e aprovação de outros, perdendo gradualmente a conexão com sua própria voz interior e capacidade de discernimento. A energia do 222 cria uma dinâmica viciosa onde cada decisão adiada fortalece o padrão de indecisão, tornando as próximas escolhas ainda mais difíceis e angustiantes. Esta configuração frequentemente resulta em relacionamentos codependentes onde a pessoa assume o papel de vítima ou salvador, sempre buscando validação externa para sua própria existência. No aspecto da saúde física, a sequência 222 manifesta-se através de distúrbios que refletem a instabilidade emocional: vícios em substâncias, comportamentos compulsivos, hipocondria e uma tendência a desenvolver dependências que proporcionem alívio temporário da ansiedade constante. A transformação desta energia requer um trabalho corajoso de reconexão com a intuição pessoal e o desenvolvimento gradual da confiança nas próprias percepções e julgamentos."
+      },
+      333: {
+        titulo: "Sequência 333 - O Silêncio Forçado e a Prisão da Expressão",
+        texto: "A sequência 333 na pirâmide cabalística representa uma das configurações mais tragicamente irônicas da numerologia esotérica, criando indivíduos que possuem uma riqueza interior extraordinária mas que se encontram cronicamente incapazes de compartilhar seus tesouros com o mundo. Esta configuração numérica atua como uma barreira energética que bloqueia os canais de comunicação, criando uma prisão invisível onde pensamentos brilhantes, insights profundos e sentimentos intensos permanecem eternamente aprisionados no mundo interior da pessoa. A energia do 333 gera uma frustração crescente que se alimenta de si mesma: quanto mais a pessoa tenta se expressar e falha, mais se fecha e se isola, criando um ciclo vicioso de incompreensão e solidão. Indivíduos com esta sequência frequentemente desenvolvem uma rica vida interior compensatória, tornando-se observadores aguçados da natureza humana, filósofos silenciosos ou artistas incompreendidos que lutam para traduzir suas visões em formas que outros possam compreender. Esta configuração cria uma dinâmica onde a pessoa se torna progressivamente mais seletiva em suas tentativas de comunicação, eventualmente desistindo de se expressar em muitas situações, o que resulta em um isolamento crescente e uma sensação de alienação do mundo. No aspecto físico, a sequência 333 manifesta-se através de distúrbios respiratórios crônicos que simbolizam literalmente a dificuldade de 'dar voz' aos conteúdos internos: asma, bronquite, problemas de garganta, e até mesmo gagueira ou outros distúrbios da fala. A cura desta configuração requer um trabalho paciente e gradual de desbloqueio dos canais expressivos, frequentemente através de terapias artísticas, escrita, música ou outras formas de expressão não-verbal que permitam à pessoa encontrar gradualmente sua voz única."
+      },
+      444: {
+        titulo: "Sequência 444 - Desorganização Profissional e Rigidez Estrutural",
+        texto: "A sequência 444 manifesta-se como um padrão destrutivo de desorganização crônica e rigidez estrutural que torna qualquer atividade profissional ou produtiva extremamente árdua e desgastante. Pessoas sob esta influência enfrentam uma contradição interna onde simultaneamente necessitam de estrutura e ordem, mas são incapazes de criá-las ou mantê-las de forma eficiente. A energia do 444 transforma tarefas simples em empreendimentos hercúleos, criando uma experiência de trabalho caracterizada pela frieza, indiferença e uma sensação constante de estar lutando contra forças invisíveis. Esta configuração frequentemente resulta em múltiplas mudanças de emprego, baixa remuneração e uma reputação profissional instável. A pessoa pode desenvolver uma aversão inconsciente ao trabalho estruturado, alternando entre períodos de hiperatividade desorganizada e completa paralisia produtiva. No aspecto da saúde física, a sequência 444 está associada a problemas articulares, enrijecimento das artérias e reumatismo, refletindo a rigidez energética que caracteriza esta configuração. O processo de cura envolve o desenvolvimento de flexibilidade mental, técnicas de organização gradual e a descoberta de formas de trabalho que honrem tanto a necessidade de estrutura quanto a necessidade de fluidez."
+      },
+      555: {
+        titulo: "Sequência 555 - Instabilidade Perpétua e Insatisfação Crônica",
+        texto: "A sequência 555 cria um padrão de vida caracterizado por uma instabilidade perpétua e uma insatisfação crônica que impede a pessoa de encontrar paz ou contentamento duradouros em qualquer situação. Esta configuração gera indivíduos que vivem em uma montanha-russa emocional e circunstancial constante, alternando entre picos de euforia e vales de desespero sem nunca encontrar um ponto de equilíbrio sustentável. A energia do 555 alimenta uma necessidade compulsiva de mudança que não nasce de uma visão clara ou propósito definido, mas de uma inquietação interna que nunca se satisfaz. Pessoas com esta sequência frequentemente mudam de residência, emprego, relacionamentos e até mesmo de identidade pessoal em uma busca desesperada por algo que não conseguem definir claramente. Esta instabilidade constante cria um padrão de vida onde nada se consolida ou amadurece adequadamente, resultando em uma existência fragmentada e superficial. No aspecto da saúde, a sequência 555 predispõe a doenças que inicialmente parecem menores ou superficiais, mas que podem evoluir para condições destrutivas se não forem adequadamente tratadas. A cura desta configuração requer o desenvolvimento de práticas de ancoragem, meditação e a descoberta de valores fundamentais que possam servir como âncora em meio à tempestade da mudança constante."
+      },
+      666: {
+        titulo: "Sequência 666 - Feridas Afetivas Profundas e Incompreensão Emocional",
+        texto: "A sequência 666 representa uma das configurações mais dolorosas no âmbito emocional, criando um padrão de feridas afetivas profundas e incompreensão emocional que permeia todos os relacionamentos significativos da pessoa. Esta energia gera indivíduos que, paradoxalmente, possuem uma capacidade imensa de amar e se conectar emocionalmente, mas que sistematicamente experimentam decepções devastadoras em suas relações mais importantes. A energia do 666 cria uma dinâmica onde a pessoa atrai ou se envolve com indivíduos que, conscientemente ou não, reproduzem padrões de abandono, traição ou incompreensão emocional. Esta sequência frequentemente resulta em uma série de relacionamentos que começam com grande promessa e intensidade, mas que inevitavelmente terminam em desilusão e dor emocional profunda. A pessoa pode desenvolver uma desconfiança crescente em relação ao amor e à intimidade, alternando entre períodos de isolamento emocional e tentativas desesperadas de conexão. No aspecto físico, a sequência 666 está intimamente conectada com problemas cardíacos, tanto funcionais quanto estruturais, refletindo as feridas emocionais que literalmente 'partem o coração'. A transformação desta energia requer um trabalho profundo de cura emocional, desenvolvimento de discernimento nos relacionamentos e a aprendizagem de como amar sem se perder no processo."
+      },
+      777: {
+        titulo: "Sequência 777 - Egoísmo Espiritual e Isolamento Intelectual",
+        texto: "A sequência 777 manifesta-se como um padrão complexo de egoísmo espiritual e isolamento intelectual que, paradoxalmente, surge de uma busca genuína por conhecimento e transcendência. Esta configuração cria indivíduos que desenvolvem uma arrogância sutil baseada em suas conquistas intelectuais ou espirituais, tornando-se progressivamente intolerantes com aqueles que consideram menos evoluídos ou conscientes. A energia do 777 alimenta uma dinâmica onde a pessoa se coloca em um pedestal mental ou espiritual, julgando constantemente os outros e encontrando defeitos em praticamente todas as interações humanas. Esta atitude superior, embora muitas vezes mascarada por uma fachada de sabedoria ou espiritualidade, na verdade nasce de medos profundos de inadequação e vulnerabilidade. A pessoa com esta sequência frequentemente experimenta crises de autoconfiança que são imediatamente compensadas por uma postura ainda mais arrogante e distante. O resultado é uma vida progressivamente mais solitária, onde a pessoa se afasta de relacionamentos genuínos em favor de uma superioridade imaginária. No aspecto da saúde, a sequência 777 está associada a distúrbios nervosos, ansiedade crônica e problemas relacionados ao sistema nervoso central. A cura desta configuração requer um trabalho humilde de reconexão com a humanidade comum, desenvolvimento de compaixão genuína e a compreensão de que a verdadeira sabedoria sempre inclui humildade."
+      },
+      888: {
+        titulo: "Sequência 888 - Descontrole Emocional e Instabilidade Material",
+        texto: "A sequência 888 representa uma das configurações mais intensas e desafiadoras, criando um padrão de descontrole emocional extremo combinado com uma instabilidade material que transforma a vida em uma experiência de montanha-russa constante. Esta energia gera indivíduos que experimentam emoções com uma intensidade avassaladora, alternando entre estados de euforia maníaca e depressão profunda sem conseguir encontrar um ponto de equilíbrio emocional sustentável. A energia do 888 cria uma dinâmica onde a pessoa perde completamente o controle sobre suas reações emocionais, tornando-se imprevisível tanto para si mesma quanto para outros. Esta instabilidade emocional se reflete diretamente na vida material e financeira, criando um padrão onde a pessoa experimenta períodos de abundância extrema seguidos por fases de escassez igualmente dramáticas. A incapacidade de manter estabilidade emocional impede o desenvolvimento de estratégias consistentes para a segurança material. No aspecto social, a sequência 888 torna a pessoa progressivamente mais arredia e isolada, pois outros começam a evitar a imprevisibilidade e intensidade de suas reações. No âmbito da saúde, esta configuração está associada a doenças graves e crônicas, frequentemente relacionadas ao estresse extremo e ao desgaste do sistema nervoso. A transformação desta energia requer intervenção terapêutica profissional, desenvolvimento de técnicas de regulação emocional e, possivelmente, suporte médico para estabilizar os aspectos mais extremos desta configuração."
+      },
+      999: {
+        titulo: "Sequência 999 - Perdas Materiais Cíclicas e Provações Financeiras",
+        texto: "A sequência 999 representa um padrão kármico profundo de perdas materiais cíclicas e provações financeiras que parecem se repetir independentemente dos esforços conscientes da pessoa para criar estabilidade econômica. Esta configuração cria indivíduos que experimentam uma relação complexa e desafiadora com o mundo material, onde conquistas financeiras são sistematicamente seguidas por perdas devastadoras que podem reduzir a pessoa à miséria literal. A energia do 999 opera como um teste constante do apego material e da capacidade de encontrar valor e propósito além das posses materiais. Pessoas com esta sequência frequentemente passam por múltiplos ciclos de construção e destruição financeira, como se estivessem sendo forçadas a aprender lições profundas sobre o verdadeiro significado da abundância e da segurança. Esta configuração pode resultar em períodos prolongados de inatividade forçada, onde a pessoa se encontra incapaz de gerar renda através dos meios convencionais. O padrão do 999 frequentemente força a pessoa a desenvolver recursos internos e formas alternativas de sobrevivência que não dependem do sistema econômico tradicional. A transformação desta energia requer uma reavaliação fundamental da relação com o dinheiro e os bens materiais, o desenvolvimento de uma espiritualidade prática que honre tanto as necessidades materiais quanto os valores transcendentes, e a descoberta de formas de contribuição que alinhem propósito pessoal com sustentabilidade material."
+      }
+    };
+
+    // Interpretações dos números do Mapa Pitagórico
+    // Carregar interpretações completas extraídas das fontes
+    const interpretacoesPitagoricas = interpretacoesPitagoricasCompletas;
+
+    // Compatibilidades de Sinastria
+    const compatibilidadesSinastria = {
+      "1-1": {
+        tipo: "Pareja Natural",
+        titulo: "Dois Líderes, Uma Visão Compartilhada",
+        texto: "A união de duas energias 1 cria uma dinâmica fascinante de liderança compartilhada, onde ambos os parceiros possuem uma compreensão intuitiva da necessidade de independência e originalidade do outro. Esta combinação pode resultar em uma parceria extraordinariamente produtiva e inovadora, onde cada pessoa inspira a outra a alcançar níveis ainda maiores de excelência e autenticidade. Ambos compartilham uma paixão natural pela iniciativa, pela criação de novos projetos e pela busca constante de crescimento pessoal. A conexão entre dois números 1 é caracterizada por um respeito mútuo profundo pelas conquistas individuais e uma capacidade de celebrar os sucessos do parceiro sem sentir ameaça à própria identidade. No entanto, esta combinação também apresenta desafios únicos, particularmente quando ambos os parceiros estão simultaneamente em fases de intensa ambição ou quando precisam tomar decisões que requerem que um deles assuma um papel mais receptivo. A chave para o sucesso desta união reside na capacidade de estabelecer territórios claros de liderança, alternando entre quem lidera em diferentes aspectos da vida compartilhada, e mantendo sempre o foco na visão comum que transcende as ambições individuais."
+      },
+      "1-2": {
+        tipo: "Pareja Compatible",
+        titulo: "Liderança e Diplomacia em Harmonia Perfeita",
+        texto: "A combinação entre a energia pioneira do 1 e a natureza diplomática do 2 cria uma das parcerias mais equilibradas e complementares possíveis na numerologia amorosa. O número 1 traz a iniciativa, a visão e a coragem necessárias para abrir novos caminhos, enquanto o número 2 contribui com a sensibilidade, a capacidade de harmonização e as habilidades interpessoais que transformam ideias em realidades sustentáveis. Esta união funciona como uma dança perfeita entre ação e reflexão, entre impulso criativo e consideração cuidadosa das consequências. O parceiro 1 frequentemente se sente inspirado pela capacidade do parceiro 2 de ver nuances e possibilidades que ele poderia ter negligenciado em sua pressa de avançar, enquanto o parceiro 2 se sente energizado e motivado pela confiança e determinação do parceiro 1. Juntos, eles criam uma dinâmica onde grandes visões são temperadas com sabedoria prática, onde ambições pessoais são equilibradas com consideração pelos outros, e onde o sucesso é medido não apenas por conquistas individuais, mas pela qualidade dos relacionamentos e pelo impacto positivo que conseguem criar juntos. Esta combinação tem o potencial de criar tanto uma parceria amorosa profundamente satisfatória quanto colaborações profissionais extraordinariamente bem-sucedidas."
+      }
+    };
+
+    // Funções de navegação
+    function showSection(ev, sectionId) {
+      // Remove active de todas as abas
+      document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+      
+      // Remove active de todas as seções
+      document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+      
+      // Adiciona active na aba clicada
+      ev.target.closest('.nav-tab').classList.add('active');
+      
+      // Mostra a seção correspondente
+      document.getElementById(sectionId).classList.add('active');
+    }
+
+    // Funções utilitárias
+    function normalizarTexto(texto) {
+      return texto.toUpperCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^A-Z]/g, '');
+    }
+
+    function reduzirNumero(numero, { preservaMestres = true, preservaKarmicos = false } = {}) {
+      const mestres = [11, 22, 33];
+      const karmicos = [13, 14, 16, 19];
+      
+      while (numero > 9) {
+        if (preservaMestres && mestres.includes(numero)) return numero;
+        if (preservaKarmicos && karmicos.includes(numero)) return numero;
+        numero = numero.toString().split('').reduce((s, d) => s + parseInt(d), 0);
+      }
+      
+      return numero;
+    }
+
+    function calcularNumeroNome(nome, tabela, filtro = null) {
+      const nomeNormalizado = normalizarTexto(nome);
+      let soma = 0;
+      
+      for (let letra of nomeNormalizado) {
+        if (filtro && !filtro.includes(letra)) continue;
+        if (filtro === null || filtro.includes(letra)) {
+          soma += tabela[letra] || 0;
+        }
+      }
+      
+      return soma;
+    }
+
+    function reduzirParaArcano(numero) {
+      while (numero > 22) {
+        numero = numero.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+      }
+      return numero === 0 ? 22 : numero;
+    }
+
+    // Função para construir a pirâmide cabalística
+    function construirPiramide(nome) {
+      const nomeNormalizado = normalizarTexto(nome);
+      const piramide = [];
+      let linha = nomeNormalizado.split('').map(letra => tabelaCabalistica[letra] || 0);
+      piramide.push([...linha]);
+      
+      while (linha.length > 1) {
+        const novaLinha = [];
+        for (let i = 0; i < linha.length - 1; i++) {
+          let soma = linha[i] + linha[i + 1];
+          while (soma > 22) {
+            soma = soma.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+          }
+          novaLinha.push(soma);
+        }
+        linha = novaLinha;
+        piramide.push([...linha]);
+      }
+      
+      return piramide;
+    }
+
+    // Função para detectar sequências negativas
+    function detectarSequenciasNegativas(piramide) {
+      const sequenciasEncontradas = [];
+      
+      for (let i = 0; i < piramide.length; i++) {
+        const linha = piramide[i];
+        for (let j = 0; j < linha.length - 2; j++) {
+          if (linha[j] === linha[j + 1] && linha[j + 1] === linha[j + 2]) {
+            const sequencia = linha[j].toString().repeat(3);
+            if (!sequenciasEncontradas.some(s => s.sequencia === sequencia)) {
+              sequenciasEncontradas.push({
+                sequencia: sequencia,
+                linha: i,
+                posicao: j,
+                numero: linha[j]
+              });
+            }
+          }
+        }
+      }
+      
+      return sequenciasEncontradas;
+    }
+
+    // Função principal para calcular o mapa pitagórico completo
+    function calcularMapaCompleto() {
+      const nome = document.getElementById('nomeCompleto').value.trim();
+      const dataNascimento = document.getElementById('dataNascimento').value;
+      
+      if (!nome || !dataNascimento) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      
+      const perfil = calcularPerfilNumerologico(nome, dataNascimento);
+      renderResultadosMapaCompleto(perfil);
+    }
+
+    function calcularPerfilNumerologico(nome, dataNascimento) {
+      const vogais = ['A', 'E', 'I', 'O', 'U'];
+      
+      const somaVogais = calcularNumeroNome(nome, tabelaPitagorica, vogais);
+      const motivacao = reduzirNumero(somaVogais, { preservaMestres: true });
+      
+      const somaConsoantes = calcularNumeroNome(nome, tabelaPitagorica, 
+        Object.keys(tabelaPitagorica).filter(letra => !vogais.includes(letra)));
+      const impressao = reduzirNumero(somaConsoantes, { preservaMestres: true });
+      
+      const somaTotal = calcularNumeroNome(nome, tabelaPitagorica);
+      const expressao = reduzirNumero(somaTotal, { preservaMestres: true });
+      
+      const dataNumeros = dataNascimento.replace(/-/g, '').split('').map(Number);
+      const somaData = dataNumeros.reduce((sum, num) => sum + num, 0);
+      const destino = reduzirNumero(somaData, { preservaMestres: true });
+      
+      // Números repetidos e kármicos
+      const numerosRepetidos = analisarNumerosRepetidos(nome);
+      const licoesKarmicas = identificarLicoesKarmicas(nome, dataNascimento);
+      
+      return {
+        motivacao, impressao, expressao, destino,
+        numerosRepetidos, licoesKarmicas
+      };
+    }
+
+    function analisarNumerosRepetidos(nome) {
+      const nomeNormalizado = normalizarTexto(nome);
+      const contagem = {};
+      
+      for (let letra of nomeNormalizado) {
+        const numero = tabelaPitagorica[letra];
+        contagem[numero] = (contagem[numero] || 0) + 1;
+      }
+      
+      return contagem;
+    }
+
+    function identificarLicoesKarmicas(nome, dataNascimento) {
+      const nomeNormalizado = normalizarTexto(nome);
+      const numerosPresentes = new Set();
+      
+      for (let letra of nomeNormalizado) {
+        numerosPresentes.add(tabelaPitagorica[letra]);
+      }
+      
+      const licoesKarmicas = [];
+      for (let i = 1; i <= 9; i++) {
+        if (!numerosPresentes.has(i)) {
+          licoesKarmicas.push(i);
+        }
+      }
+      
+      return licoesKarmicas;
+    }
+
+    function renderResultadosMapaCompleto(perfil) {
+      const resultadosDiv = document.getElementById('resultados-mapa');
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center">Seu Mapa Numerológico Pitagórico Completo</h3>
+          <div class="results">
+      `;
+      
+      // Motivação
+      if (interpretacoesPitagoricas.motivacao[perfil.motivacao]) {
+        html += `
+          <div class="interpretation">
+            <div class="number-display">${perfil.motivacao}</div>
+            <h4>${interpretacoesPitagoricas.motivacao[perfil.motivacao].titulo}</h4>
+            <p>${interpretacoesPitagoricas.motivacao[perfil.motivacao].texto}</p>
+          </div>
+        `;
+      }
+      
+      // Impressão
+      if (interpretacoesPitagoricas.impressao[perfil.impressao]) {
+        html += `
+          <div class="interpretation">
+            <div class="number-display">${perfil.impressao}</div>
+            <h4>${interpretacoesPitagoricas.impressao[perfil.impressao].titulo}</h4>
+            <p>${interpretacoesPitagoricas.impressao[perfil.impressao].texto}</p>
+          </div>
+        `;
+      }
+      
+      // Expressão
+      if (interpretacoesPitagoricas.expressao[perfil.expressao]) {
+        html += `
+          <div class="interpretation">
+            <div class="number-display">${perfil.expressao}</div>
+            <h4>${interpretacoesPitagoricas.expressao[perfil.expressao].titulo}</h4>
+            <p>${interpretacoesPitagoricas.expressao[perfil.expressao].texto}</p>
+          </div>
+        `;
+      }
+      
+      // Destino
+      if (interpretacoesPitagoricas.destino[perfil.destino]) {
+        html += `
+          <div class="interpretation">
+            <div class="number-display">${perfil.destino}</div>
+            <h4>${interpretacoesPitagoricas.destino[perfil.destino].titulo}</h4>
+            <p>${interpretacoesPitagoricas.destino[perfil.destino].texto}</p>
+          </div>
+        `;
+      }
+      
+      // Números repetidos
+      html += `
+        <div class="interpretation">
+          <h4>Análise dos Números Repetidos</h4>
+          <p>Os números que aparecem com maior frequência em seu nome revelam talentos naturais e áreas de foco em sua vida:</p>
+      `;
+      
+      for (let [numero, quantidade] of Object.entries(perfil.numerosRepetidos)) {
+        if (quantidade > 1) {
+          html += `<p><strong>Número ${numero}</strong>: Aparece ${quantidade} vezes - Indica forte influência desta energia em sua personalidade.</p>`;
+        }
+      }
+      
+      html += `</div>`;
+      
+      // Lições Kármicas
+      if (perfil.licoesKarmicas.length > 0) {
+        html += `
+          <div class="interpretation">
+            <h4>Lições Kármicas a Desenvolver</h4>
+            <p>Os números ausentes em seu nome indicam qualidades que você veio desenvolver nesta vida:</p>
+        `;
+        
+        for (let numero of perfil.licoesKarmicas) {
+          html += `<p><strong>Número ${numero}</strong>: Energia a ser desenvolvida e integrada em sua personalidade.</p>`;
+        }
+        
+        html += `</div>`;
+      }
+      
+      html += `
+          </div>
+        </div>
+      `;
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    // Função para calcular a pirâmide completa
+    function calcularPiramideCompleta() {
+      const nome = document.getElementById('nomePiramide').value.trim();
+      const idade = parseInt(document.getElementById('idadePiramide').value);
+      
+      if (!nome || isNaN(idade)) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      
+      const piramide = construirPiramide(nome);
+      const achadosSequenciasNeg = detectarSequenciasNegativas(piramide);
+      const arcanoAtual = calcularArcanoAtual(piramide, idade);
+      
+      renderResultadosPiramideCompleta(piramide, achadosSequenciasNeg, arcanoAtual, idade);
+    }
+
+    function calcularArcanoAtual(piramide, idade) {
+      const celulas = [];
+      for (let i = 0; i < piramide.length; i++) {
+        for (let j = 0; j < piramide[i].length; j++) {
+          celulas.push({ num: piramide[i][j], i, j });
+        }
+      }
+      const anosPorCelula = 90 / celulas.length; // ciclo total de 90 anos
+      const idx = Math.min(Math.floor(idade / anosPorCelula), celulas.length - 1);
+      const c = celulas[idx];
+      return { numero: c.num, linha: c.i, coluna: c.j, anosPorCelula: anosPorCelula.toFixed(2) };
+    }
+
+    function getImagemArcano(numero) {
+      const imagensArcanos = {
+        0: 'assets/img/cartas/0_the_fool.jpg',
+        1: 'assets/img/cartas/1_the_magician.jpg',
+        2: 'assets/img/cartas/2_the_high_priestess.jpg',
+        3: 'assets/img/cartas/3_the_empress.jpg',
+        4: 'assets/img/cartas/4_the_emperor.jpg',
+        5: 'assets/img/cartas/5_the_hierophant.jpg',
+        6: 'assets/img/cartas/6_the_lovers.jpg',
+        7: 'assets/img/cartas/7_the_chariot.jpg',
+        8: 'assets/img/cartas/8_strength.jpg',
+        9: 'assets/img/cartas/9_the_hermit.jpg',
+        10: 'assets/img/cartas/10_wheel_of_fortune.jpg',
+        11: 'assets/img/cartas/11_justice.jpg',
+        12: 'assets/img/cartas/12_the_hanged_man.jpg',
+        13: 'assets/img/cartas/13_death.jpg',
+        14: 'assets/img/cartas/14_temperance.jpg',
+        15: 'assets/img/cartas/15_the_devil.jpg',
+        16: 'assets/img/cartas/16_the_tower.jpg',
+        17: 'assets/img/cartas/17_the_star.jpg',
+        18: 'assets/img/cartas/18_the_moon.jpg',
+        19: 'assets/img/cartas/19_the_sun.jpg',
+        20: 'assets/img/cartas/20_judgement.jpg',
+        21: 'assets/img/cartas/21_the_world.jpg',
+        22: 'assets/img/cartas/0_the_fool.jpg' // O Louco pode ser 0 ou 22
+      };
+      return imagensArcanos[numero] || 'assets/img/cartas/arcanos_completo.png';
+    }
+
+    function renderResultadosPiramideCompleta(piramide, sequenciasNegativasEncontradas, arcanoAtual, idade) {
+      const resultadosDiv = document.getElementById('resultados-piramide');
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center">Sua Pirâmide Cabalística Completa</h3>
+          
+          <div style="text-align: center; margin: 2rem 0;">
+            <img src="${getImagemArcano(arcanoAtual.numero)}" alt="${nomesArcanos[arcanoAtual.numero]}" 
+                 style="width: 150px; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); margin-bottom: 1rem;" 
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+            <div class="number-display" style="display: none;">${arcanoAtual.numero}</div>
+            <h4>${nomesArcanos[arcanoAtual.numero] || 'Arcano ' + arcanoAtual.numero}</h4>
+            <p style="color: var(--sage);">Arcano Regente aos ${idade} anos</p>
+          </div>
+      `;
+      
+      // Sequências Negativas
+      if (sequenciasNegativasEncontradas.length > 0) {
+        html += `<h3 style="color: var(--wine); text-align: center;">⚠️ Sequências Negativas Detectadas na Pirâmide</h3>`;
+        
+        for (let seq of sequenciasNegativasEncontradas) {
+          const info = sequenciasNegativasInfo[seq.sequencia];
+          if (info) {
+            html += `
+              <div class="negative-alert">
+                <h4>${info.titulo}</h4>
+                <p>${info.texto}</p>
+              </div>
+            `;
+          }
+        }
+      } else {
+        html += `
+          <div style="background: rgba(178,209,177,0.2); border: 2px solid var(--sage); border-radius: 10px; padding: 1.5rem; margin: 1rem 0; text-align: center;">
+            <h4 style="color: var(--sage);">✨ Pirâmide Harmoniosa</h4>
+            <p>Seu nome não apresenta sequências negativas, indicando um fluxo energético equilibrado.</p>
+          </div>
+        `;
+      }
+      
+      // Pirâmide Visual
+      html += `
+          <h3 class="text-center" style="margin-top: 2rem;">Pirâmide Cabalística - Ciclo de 90 Anos</h3>
+          <div class="pyramid-container">
+      `;
+      
+      for (let i = 0; i < piramide.length; i++) {
+        html += '<div class="pyramid-row">';
+        for (let j = 0; j < piramide[i].length; j++) {
+          const isHighlight = (i === arcanoAtual.linha && j === arcanoAtual.coluna);
+          let classe = 'pyramid-cell';
+          
+          if (isHighlight) {
+            classe += ' highlight';
+          }
+          
+          // Verificar se faz parte de sequência negativa
+          for (let seq of sequenciasNegativasEncontradas) {
+            if (seq.linha === i && j >= seq.posicao && j < seq.posicao + 3) {
+              classe += ' negative-sequence';
+            }
+          }
+          
+          html += `<div class="${classe}">${piramide[i][j]}</div>`;
+        }
+        html += '</div>';
+      }
+      
+      html += `
+          </div>
+        </div>
+      `;
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    // Função para calcular sinastria
+    function calcularSinastria() {
+      const nome1 = document.getElementById('nomePessoa1').value.trim();
+      const data1 = document.getElementById('dataPessoa1').value;
+      const nome2 = document.getElementById('nomePessoa2').value.trim();
+      const data2 = document.getElementById('dataPessoa2').value;
+      
+      if (!nome1 || !data1 || !nome2 || !data2) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      
+      // Calcular números básicos de cada pessoa
+      const perfil1 = calcularPerfilBasico(nome1, data1);
+      const perfil2 = calcularPerfilBasico(nome2, data2);
+      
+      // Calcular compatibilidade
+      const compatibilidade = analisarCompatibilidade(perfil1, perfil2);
+      
+      renderResultadosSinastria(perfil1, perfil2, compatibilidade, nome1, nome2);
+    }
+
+    function calcularPerfilBasico(nome, data) {
+      const somaVogais = calcularNumeroNome(nome, tabelaPitagorica, vogais);
+      const motivacao = reduzirNumero(somaVogais);
+      
+      const somaConsoantes = calcularNumeroNome(nome, tabelaPitagorica, 
+        Object.keys(tabelaPitagorica).filter(letra => !vogais.includes(letra)));
+      const impressao = reduzirNumero(somaConsoantes);
+      
+      const dataNumeros = data.replace(/-/g, '').split('').map(Number);
+      const somaData = dataNumeros.reduce((sum, num) => sum + num, 0);
+      const destino = reduzirNumero(somaData);
+      
+      const dia = parseInt(data.split('-')[2]);
+      const diaReduzido = reduzirNumero(dia);
+      
+      return { motivacao, impressao, destino, diaReduzido };
+    }
+
+    function analisarCompatibilidade(perfil1, perfil2) {
+      const numeroPareja = reduzirNumero(perfil1.diaReduzido + perfil2.diaReduzido);
+      const chaveCompatibilidade = `${Math.min(perfil1.motivacao, perfil2.motivacao)}-${Math.max(perfil1.motivacao, perfil2.motivacao)}`;
+      
+      return {
+        numeroPareja,
+        chaveCompatibilidade,
+        detalhes: compatibilidadesSinastria[chaveCompatibilidade] || {
+          tipo: "Combinação Única",
+          titulo: "Combinação Especial a Ser Explorada",
+          texto: "Esta é uma combinação única que requer análise personalizada das energias envolvidas."
+        }
+      };
+    }
+
+    // Função para calcular Pináculos da Vida
+    function calcularPinaculosCompletos() {
+      const nome = document.getElementById('nomePinaculos').value.trim();
+      const data = document.getElementById('dataPinaculos').value;
+      
+      if (!nome || !data) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      
+      const [ano, mes, dia] = data.split('-').map(Number);
+      
+      // Calcular os 4 pináculos
+      const pináculo1 = reduzirNumero(mes + dia);
+      const pináculo2 = reduzirNumero(dia + ano);
+      const pináculo3 = reduzirNumero(pináculo1 + pináculo2);
+      const pináculo4 = reduzirNumero(mes + ano);
+      
+      // Calcular idades dos pináculos
+      const numeroDestino = reduzirNumero(dia + mes + ano);
+      const idade1 = 36 - numeroDestino;
+      const idade2 = idade1 + 9;
+      const idade3 = idade2 + 9;
+      
+      const pináculos = [
+        { numero: pináculo1, idade: `0 - ${idade1} anos`, fase: "Formação" },
+        { numero: pináculo2, idade: `${idade1 + 1} - ${idade2} anos`, fase: "Produtividade" },
+        { numero: pináculo3, idade: `${idade2 + 1} - ${idade3} anos`, fase: "Colheita" },
+        { numero: pináculo4, idade: `${idade3 + 1} anos em diante`, fase: "Sabedoria" }
+      ];
+      
+      renderResultadosPinaculos(pináculos, nome);
+    }
+    
+    function renderResultadosPinaculos(pináculos, nome) {
+      const resultadosDiv = document.getElementById('resultados-pinaculos');
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center">Pináculos da Vida de ${nome}</h3>
+          <p class="text-center" style="margin-bottom: 2rem; color: #d4af37;">
+            Os quatro grandes ciclos de aprendizado e crescimento da sua jornada terrena
+          </p>
+      `;
+      
+      pináculos.forEach((pináculo, index) => {
+        const interpretacao = interpretacoesPinaculos[pináculo.numero];
+        if (interpretacao) {
+          html += `
+            <div class="pináculo-section" style="margin-bottom: 2rem; padding: 1.5rem; border-left: 4px solid #d4af37; background: rgba(212, 175, 55, 0.1);">
+              <h4 style="color: #d4af37; margin-bottom: 1rem;">
+                ${index + 1}º Pináculo - ${pináculo.fase} (${pináculo.idade})
+              </h4>
+              <h5 style="color: #e8dcc6; margin-bottom: 1rem;">
+                ${interpretacao.titulo}
+              </h5>
+              <p style="line-height: 1.8; text-align: justify; color: #e8dcc6;">
+                ${interpretacao.texto}
+              </p>
+            </div>
+          `;
+        }
+      });
+      
+      html += `</div>`;
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    function renderResultadosSinastria(perfil1, perfil2, compatibilidade, nome1, nome2) {
+      const resultadosDiv = document.getElementById('resultados-sinastria');
+      
+      const interpretacao = interpretacoesSinastria[compatibilidade.chaveCompatibilidade];
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center">Análise de Compatibilidade Numerológica</h3>
+          <p class="text-center" style="margin-bottom: 2rem; color: #d4af37;">
+            ${nome1} & ${nome2}
+          </p>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+            <div style="text-align: center; padding: 1rem; background: rgba(212, 175, 55, 0.1); border-radius: 8px;">
+              <h4 style="color: #d4af37; margin-bottom: 0.5rem;">${nome1}</h4>
+              <p style="color: #e8dcc6;">Motivação: ${perfil1.motivacao} | Impressão: ${perfil1.impressao} | Destino: ${perfil1.destino}</p>
+            </div>
+            <div style="text-align: center; padding: 1rem; background: rgba(212, 175, 55, 0.1); border-radius: 8px;">
+              <h4 style="color: #d4af37; margin-bottom: 0.5rem;">${nome2}</h4>
+              <p style="color: #e8dcc6;">Motivação: ${perfil2.motivacao} | Impressão: ${perfil2.impressao} | Destino: ${perfil2.destino}</p>
+            </div>
+          </div>
+          
+          <div style="text-align: center; margin: 2rem 0;">
+            <div class="number-display">${compatibilidade.numeroPareja}</div>
+            <h4 style="color: #d4af37;">Número da Pareja</h4>
+          </div>
+      `;
+      
+      if (interpretacao) {
+        html += `
+          <div style="margin-top: 2rem; padding: 1.5rem; border-left: 4px solid #d4af37; background: rgba(212, 175, 55, 0.1);">
+            <h4 style="color: #d4af37; margin-bottom: 1rem;">
+              ${interpretacao.titulo}
+            </h4>
+            <p style="line-height: 1.8; text-align: justify; color: #e8dcc6;">
+              ${interpretacao.texto}
+            </p>
+          </div>
+        `;
+      }
+      
+      html += `
+        </div>
+      `;
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    // Funções de exemplo
+    function preencherExemploMapa() {
+      document.getElementById('nomeCompleto').value = 'Maria Silva Santos';
+      document.getElementById('dataNascimento').value = '1990-05-15';
+    }
+
+    function preencherExemploPiramide() {
+      document.getElementById('nomePiramide').value = 'Maria Silva Santos';
+      document.getElementById('idadePiramide').value = '33';
+    }
+
+    function preencherExemploPinaculos() {
+      document.getElementById('nomePinaculos').value = 'Maria Silva Santos';
+      document.getElementById('dataPinaculos').value = '1990-05-15';
+    }
+
+    function preencherExemploSinastria() {
+      document.getElementById('nomePessoa1').value = 'Maria Silva Santos';
+      document.getElementById('dataPessoa1').value = '1990-05-15';
+      document.getElementById('nomePessoa2').value = 'João Carlos Oliveira';
+      document.getElementById('dataPessoa2').value = '1988-08-22';
+    }
+
+    // Funções de limpeza
+    function limparMapa() {
+      document.getElementById('nomeCompleto').value = '';
+      document.getElementById('dataNascimento').value = '';
+      document.getElementById('resultados-mapa').classList.add('hidden');
+    }
+
+    function limparPiramide() {
+      document.getElementById('nomePiramide').value = '';
+      document.getElementById('idadePiramide').value = '';
+      document.getElementById('resultados-piramide').classList.add('hidden');
+    }
+
+    function limparSinastria() {
+      document.getElementById('nomePessoa1').value = '';
+      document.getElementById('dataPessoa1').value = '';
+      document.getElementById('nomePessoa2').value = '';
+      document.getElementById('dataPessoa2').value = '';
+      document.getElementById('resultados-sinastria').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
