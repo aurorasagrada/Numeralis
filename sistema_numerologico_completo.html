@@ -1435,7 +1435,7 @@
     function renderResultadosSinastria(perfil1, perfil2, compatibilidade, nome1, nome2) {
       const resultadosDiv = document.getElementById('resultados-sinastria');
       
-      const interpretacao = interpretacoesSinastria[compatibilidade.chaveCompatibilidade];
+      const interpretacao = compatibilidadesSinastria[compatibilidade.chaveCompatibilidade];
       const analiseExpandida = obterAnaliseExpandida(compatibilidade.numeroPareja);
       
       let html = `
