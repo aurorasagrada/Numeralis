@@ -2,7 +2,7 @@
 // Mapeamento de arcanos com imagens e caminhos corretos
 
 const arcanosImagens = {
-  "O Louco": "assets/img/cartas/0TheFool.jpg",
+  "O Louco": "assets/img/cartas/00-0-TheFool.jpg",
   "O Mago": "assets/img/cartas/01-I-TheMagician.jpg", 
   "A Sacerdotisa": "assets/img/cartas/02-II-TheHighPriestess.jpg",
   "A Imperatriz": "assets/img/cartas/03-III-TheEmpress.jpg",
@@ -10,20 +10,20 @@ const arcanosImagens = {
   "O Papa": "assets/img/cartas/05-V-TheHierophant.jpg",
   "Os Enamorados": "assets/img/cartas/06-VI-TheLovers.jpg",
   "O Carro": "assets/img/cartas/07-VII-TheChariot.jpg",
-  "A Justiça": "assets/img/cartas/11Strength.jpg",
+  "A Justiça": "assets/img/cartas/11-XI-Justice.jpg",
   "O Eremita": "assets/img/cartas/09-IX-TheHermit.jpg",
-  "A Roda da Fortuna": "assets/img/cartas/10TheWheelofFortune.jpg",
-  "A Força": "assets/img/cartas/11-XI-Justice.jpg",
-  "O Enforcado": "assets/img/cartas/12TheHangedMan.jpg",
-  "A Morte": "assets/img/cartas/13Death.jpg",
-  "A Temperança": "assets/img/cartas/14Temperance.jpg",
-  "O Diabo": "assets/img/cartas/15TheDevil.jpg",
-  "A Torre": "assets/img/cartas/16TheTower.jpg",
-  "A Estrela": "assets/img/cartas/17TheStar.jpg",
-  "A Lua": "assets/img/cartas/18TheMoon.jpg",
-  "O Sol": "assets/img/cartas/19TheSun.jpg",
-  "O Julgamento": "assets/img/cartas/20Judgement.jpg",
-  "O Mundo": "assets/img/cartas/21TheWorld.jpg"
+  "A Roda da Fortuna": "assets/img/cartas/10-X-WheelofFortune.jpg",
+  "A Força": "assets/img/cartas/08-VIII-Strength.jpg",
+  "O Enforcado": "assets/img/cartas/12-XII-TheHangedMan.jpg",
+  "A Morte": "assets/img/cartas/13-XIII-Death.jpg",
+  "A Temperança": "assets/img/cartas/14-XIV-Temperance.jpg",
+  "O Diabo": "assets/img/cartas/15-XV-TheDevil.jpg",
+  "A Torre": "assets/img/cartas/16-XVI-TheTower.jpg",
+  "A Estrela": "assets/img/cartas/17-XVII-TheStar.jpg",
+  "A Lua": "assets/img/cartas/18-XVIII-TheMoon.jpg",
+  "O Sol": "assets/img/cartas/19-XIX-TheSun.jpg",
+  "O Julgamento": "assets/img/cartas/20-XX-Judgement.jpg",
+  "O Mundo": "assets/img/cartas/21-XXI-TheWorld.jpg"
 };
 
 const arcanosLinks = {
@@ -60,8 +60,8 @@ function renderArcanoComImagem(arcano, idades) {
     <div style="background: rgba(11,24,54,0.3); border: 2px solid var(--sage); border-radius: 15px; padding: 1.5rem; margin: 1rem; text-align: center; min-width: 200px;">
       <h5 style="color: var(--gold); margin-bottom: 1rem; font-size: 1.1rem;">${arcano}</h5>
       
-      <div style="margin-bottom: 1rem;">
-        <img src="${imagem}" alt="${arcano}" style="width: 80px; height: 120px; object-fit: cover; border-radius: 8px; border: 2px solid var(--gold);">
+      <div style="margin-bottom: 1rem; cursor: pointer;" onclick="window.open('${link}', '_blank')">
+        <img src="${imagem}" alt="${arcano}" style="width: 100px; height: 150px; object-fit: cover; border-radius: 12px; border: 3px solid var(--gold); box-shadow: 0 6px 15px rgba(0,0,0,0.4); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(212,175,55,0.6)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.4)'">
       </div>
       
       <p style="color: var(--sage); margin-bottom: 1rem; font-size: 0.9rem;">
