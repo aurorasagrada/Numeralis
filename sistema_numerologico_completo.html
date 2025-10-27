@@ -583,6 +583,7 @@
     <script src="mapeamento_arcanos_completo.js"></script>
     <script src="sequencias_repetidas_expandidas.js"></script>
     <script src="sequencias_negativas_expandidas.js"></script>
+    <script src="desafios_carmicos_expandidos.js"></script>
   <script>
     // Tabelas numerológicasompletos baseados nas fontes
     
@@ -1023,6 +1024,9 @@
       // Calcular sequências repetidas expandidas
       const sequenciasExpandidas = calcularIdadesSequencias(piramide);
       
+      // Detectar desafios cármicos
+      const desafiosCarmicos = detectarDesafiosCarmicos(piramide);
+      
       let html = `
         <div class="card">
           <h3 class="text-center">Sua Pirâmide Cabalística Completa</h3>
@@ -1226,6 +1230,77 @@
           </div>
         </div>
       `;
+      
+      // Desafios Cármicos
+      if (desafiosCarmicos.length > 0) {
+        html += `
+          <div class="card" style="margin: 2rem 0; background: rgba(62,10,41,0.1); border: 2px solid var(--wine);">
+            <h3 style="color: var(--wine); text-align: center; margin-bottom: 2rem;">🔥 Desafios Cármicos Identificados</h3>
+            <p style="text-align: center; color: var(--sage); margin-bottom: 2rem; font-style: italic;">
+              Lições de vida que sua alma escolheu desenvolver nesta encarnação
+            </p>
+        `;
+        
+        for (let desafio of desafiosCarmicos) {
+          const info = desafio.desafio;
+          html += `
+            <div style="background: rgba(11,24,54,0.3); border-radius: 15px; padding: 2.5rem; margin: 2rem 0; border: 1px solid var(--sage);">
+              <h4 style="color: var(--gold); margin-bottom: 1.5rem; font-size: 1.3rem;">${info.titulo}</h4>
+              
+              <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
+                <h5 style="color: var(--sage); margin-bottom: 1rem;">🌱 Significado do Desafio:</h5>
+                <p style="line-height: 1.7; text-align: justify;">${info.significado}</p>
+              </div>
+              
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <div style="background: rgba(240,170,83,0.1); padding: 1.5rem; border-radius: 10px;">
+                  <h5 style="color: var(--gold); margin-bottom: 1rem;">✨ Lições Principais:</h5>
+                  <ul style="margin: 0; padding-left: 1.2rem;">
+                    ${info.licoesPrincipais.map(licao => `<li style="margin-bottom: 0.8rem; line-height: 1.6;">${licao}</li>`).join('')}
+                  </ul>
+                </div>
+                
+                <div style="background: rgba(62,10,41,0.1); padding: 1.5rem; border-radius: 10px;">
+                  <h5 style="color: var(--wine); margin-bottom: 1rem;">⚠️ Padrões Disfuncionais:</h5>
+                  <ul style="margin: 0; padding-left: 1.2rem;">
+                    ${info.padroesDisfuncionais.map(padrao => `<li style="margin-bottom: 0.8rem; line-height: 1.6;">${padrao}</li>`).join('')}
+                  </ul>
+                </div>
+              </div>
+              
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                <div style="background: rgba(11,24,54,0.2); padding: 1.5rem; border-radius: 10px;">
+                  <h5 style="color: var(--parch); margin-bottom: 1rem;">🔍 Sinais de Manifestação:</h5>
+                  <ul style="margin: 0; padding-left: 1.2rem;">
+                    ${info.sinaisManifestacao.map(sinal => `<li style="margin-bottom: 0.8rem; line-height: 1.6;">${sinal}</li>`).join('')}
+                  </ul>
+                </div>
+                
+                <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px;">
+                  <h5 style="color: var(--sage); margin-bottom: 1rem;">🛠️ Estratégias de Transformação:</h5>
+                  <ul style="margin: 0; padding-left: 1.2rem;">
+                    ${info.estrategiasTransformacao.map(estrategia => `<li style="margin-bottom: 0.8rem; line-height: 1.6;">${estrategia}</li>`).join('')}
+                  </ul>
+                </div>
+              </div>
+              
+              <div style="background: rgba(240,170,83,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
+                <h5 style="color: var(--gold); margin-bottom: 1rem;">🌅 Oportunidades de Crescimento:</h5>
+                <ul style="margin: 0; padding-left: 1.2rem;">
+                  ${info.oportunidadesCrescimento.map(oportunidade => `<li style="margin-bottom: 0.8rem; line-height: 1.6;">${oportunidade}</li>`).join('')}
+                </ul>
+              </div>
+              
+              <div style="background: linear-gradient(135deg, rgba(240,170,83,0.2), rgba(178,209,177,0.2)); padding: 2rem; border-radius: 10px; text-align: center;">
+                <h5 style="color: var(--gold); margin-bottom: 1rem;">🎆 Transformação Esperada:</h5>
+                <p style="line-height: 1.7; font-style: italic; font-size: 1.05rem;">${info.transformacaoEsperada}</p>
+              </div>
+            </div>
+          `;
+        }
+        
+        html += `</div>`;
+      }
       
       resultadosDiv.innerHTML = html;
       resultadosDiv.classList.remove('hidden');
