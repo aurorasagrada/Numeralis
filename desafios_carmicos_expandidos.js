@@ -485,9 +485,9 @@ function detectarDesafiosCarmicos(piramide) {
     }
   }
   
-  // Identificar números que aparecem 3 ou mais vezes como possíveis desafios cármicos
+  // Identificar números que aparecem 2 ou mais vezes como possíveis desafios cármicos
   for (let num in contagem) {
-    if (contagem[num] >= 3 && desafiosCarmicosExpandidos[num]) {
+    if (contagem[num] >= 2 && desafiosCarmicosExpandidos[num]) {
       desafiosEncontrados.push({
         numero: parseInt(num),
         frequencia: contagem[num],
@@ -509,6 +509,28 @@ function detectarDesafiosCarmicos(piramide) {
           desafio: desafiosCarmicosExpandidos[numeroTopo]
         });
       }
+    }
+  }
+  
+  // Se nenhum desafio foi encontrado, adicionar o número mais frequente (se válido)
+  if (desafiosEncontrados.length === 0) {
+    let numeroMaisFrequente = null;
+    let maiorFrequencia = 0;
+    
+    for (let num in contagem) {
+      if (contagem[num] > maiorFrequencia && desafiosCarmicosExpandidos[num]) {
+        maiorFrequencia = contagem[num];
+        numeroMaisFrequente = parseInt(num);
+      }
+    }
+    
+    if (numeroMaisFrequente) {
+      desafiosEncontrados.push({
+        numero: numeroMaisFrequente,
+        frequencia: maiorFrequencia,
+        posicao: 'mais_frequente',
+        desafio: desafiosCarmicosExpandidos[numeroMaisFrequente]
+      });
     }
   }
   
