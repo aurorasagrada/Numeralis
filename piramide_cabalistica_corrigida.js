@@ -184,23 +184,23 @@ function renderResultadosPiramideCompleta(piramide, arcanoAtual, sequenciasNegat
       if (info) {
         html += `
           <div style="background: rgba(11,24,54,0.3); border-radius: 15px; padding: 2rem; margin: 1.5rem 0; border: 2px solid var(--wine);">
-            <h4 style="color: var(--gold); margin-bottom: 1.5rem; text-align: center;">${info.titulo}</h4>
+            <h4 style="color: #d4af37; margin-bottom: 1.5rem; text-align: center; font-size: 1.8rem; font-weight: bold;">${info.titulo}</h4>
             
             <div style="background: rgba(62,10,41,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
-              <h5 style="color: var(--sage); margin-bottom: 1rem;">SIGNIFICADO PROFUNDO</h5>
+              <h5 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.3rem; font-weight: bold;">📋 SIGNIFICADO PROFUNDO</h5>
               <p style="line-height: 1.7; text-align: justify;">${info.significado}</p>
             </div>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
               <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px;">
-                <h6 style="color: var(--sage); margin-bottom: 1rem;">PONTOS POSITIVOS</h6>
+                <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">✅ PONTOS POSITIVOS</h6>
                 <ul style="margin: 0; padding-left: 1.2rem;">
                   ${info.pontosPositivos.map(ponto => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${ponto}</li>`).join('')}
                 </ul>
               </div>
               
               <div style="background: rgba(240,170,83,0.1); padding: 1.5rem; border-radius: 10px;">
-                <h6 style="color: var(--gold); margin-bottom: 1rem;">PONTOS NEGATIVOS</h6>
+                <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">⚠️ PONTOS NEGATIVOS</h6>
                 <ul style="margin: 0; padding-left: 1.2rem;">
                   ${info.pontosNegativos.map(ponto => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${ponto}</li>`).join('')}
                 </ul>
@@ -209,14 +209,14 @@ function renderResultadosPiramideCompleta(piramide, arcanoAtual, sequenciasNegat
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
               <div style="background: rgba(62,10,41,0.1); padding: 1.5rem; border-radius: 10px;">
-                <h6 style="color: var(--wine); margin-bottom: 1rem;">O QUE EVITAR</h6>
+                <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">🚫 O QUE EVITAR</h6>
                 <ul style="margin: 0; padding-left: 1.2rem;">
                   ${info.oQueEvitar.map(item => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${item}</li>`).join('')}
                 </ul>
               </div>
               
               <div style="background: rgba(11,24,54,0.2); padding: 1.5rem; border-radius: 10px;">
-                <h6 style="color: var(--parch); margin-bottom: 1rem;">O QUE TRABALHAR</h6>
+                <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">🛠️ O QUE TRABALHAR</h6>
                 <ul style="margin: 0; padding-left: 1.2rem;">
                   ${info.oQueTrabalhar.map(item => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${item}</li>`).join('')}
                 </ul>
@@ -224,14 +224,14 @@ function renderResultadosPiramideCompleta(piramide, arcanoAtual, sequenciasNegat
             </div>
             
             <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
-              <h6 style="color: var(--sage); margin-bottom: 1rem;">COMO SUPERAR</h6>
+              <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">🌟 COMO SUPERAR</h6>
               <ul style="margin: 0; padding-left: 1.2rem;">
                 ${info.comoSuperar.map(item => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${item}</li>`).join('')}
               </ul>
             </div>
             
             <div style="background: linear-gradient(135deg, rgba(240,170,83,0.2), rgba(178,209,177,0.2)); padding: 1.5rem; border-radius: 10px; text-align: center;">
-              <h6 style="color: var(--gold); margin-bottom: 1rem;">TRANSFORMAÇÃO ESPERADA</h6>
+              <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">✨ TRANSFORMAÇÃO ESPERADA</h6>
               <p style="line-height: 1.7; font-style: italic;">${info.transformacao}</p>
             </div>
           </div>
@@ -256,15 +256,15 @@ function renderResultadosPiramideCompleta(piramide, arcanoAtual, sequenciasNegat
       const info = desafio.desafio;
       html += `
         <div style="background: rgba(11,24,54,0.3); border-radius: 15px; padding: 2rem; margin: 1.5rem 0; border: 2px solid var(--gold);">
-          <h4 style="color: var(--wine); margin-bottom: 1.5rem; text-align: center;">${info.titulo}</h4>
+          <h4 style="color: #d4af37; margin-bottom: 1.5rem; text-align: center; font-size: 1.8rem; font-weight: bold;">${info.titulo}</h4>
           
           <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
-            <h5 style="color: var(--sage); margin-bottom: 1rem;">SIGNIFICADO DO DESAFIO</h5>
+            <h5 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.3rem; font-weight: bold;">🎯 SIGNIFICADO DO DESAFIO</h5>
             <p style="line-height: 1.7; text-align: justify;">${info.significado}</p>
           </div>
           
           <div style="background: linear-gradient(135deg, rgba(240,170,83,0.2), rgba(178,209,177,0.2)); padding: 1.5rem; border-radius: 10px; text-align: center;">
-            <h5 style="color: var(--gold); margin-bottom: 1rem;">TRANSFORMAÇÃO ESPERADA</h5>
+            <h5 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.3rem; font-weight: bold;">✨ TRANSFORMAÇÃO ESPERADA</h5>
             <p style="line-height: 1.7; font-style: italic;">${info.transformacaoEsperada}</p>
           </div>
         </div>
