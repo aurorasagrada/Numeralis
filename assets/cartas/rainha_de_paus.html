@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rainha de Paus - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Rainha de Paus</h1>
+            <p class="subtitulo">48 - A Soberana da Vontade Ígnea</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/48QueenofClubs.jpg" alt="Rainha de Paus" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Liderança</span>
+                        <span class="palavra-chave">Carisma</span>
+                        <span class="palavra-chave">Independência</span>
+                        <span class="palavra-chave">Otimismo</span>
+                        <span class="palavra-chave">Paixão</span>
+                        <span class="palavra-chave">Determinação</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>A Rainha de Paus representa a manifestação da energia ígnea do naipe de Paus em sua forma mais madura e consciente. Ela simboliza a mulher que domina a sua própria vontade, que age com paixão e determinação, e que inspira aqueles ao seu redor. A sua presença indica uma força interior que se traduz em ação, em criatividade e em um otimismo contagiante. Esta Rainha não é passiva; ela é ativa, proativa, e busca constantemente a realização de seus desejos e projetos. Ela representa a individualidade que se afirma no mundo, que não teme desafios e que utiliza a sua energia para construir e para liderar. A Rainha de Paus é a personificação da autoconfiança e da capacidade de transformar ideias em realidade. Ela é a chama que ilumina o caminho, a força que impulsiona o progresso. A sua energia é de um fogo controlado, que aquece e que ilumina, mas que também pode consumir se não for bem direcionado. Ela é a soberana da vontade, a mestra da ação, e a guardiã da paixão. A sua essência é a da mulher que sabe o que quer e que não mede esforços para alcançar os seus objetivos, sempre com um sorriso no rosto e uma atitude positiva diante da vida. Ela é a rainha que governa com o coração, mas que também age com a mente, combinando a intuição com a razão para tomar as melhores decisões. A Rainha de Paus é a força motriz que impulsiona a vida, a energia que nos faz seguir em frente, mesmo diante dos obstáculos. Ela é a representação da mulher que se reinventa, que se adapta, e que sempre encontra uma maneira de superar os desafios. A sua energia é de um fogo que nunca se apaga, que sempre arde, e que nos lembra da nossa própria capacidade de criar e de transformar o mundo ao nosso redor. Ela é a rainha que nos ensina a viver com paixão, com propósito, e com alegria.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, a Rainha de Paus, como todas as cartas de corte, não possui um número direto, mas simboliza a energia do número 4, que se associa à estabilidade, à estrutura e à concretização. O número 4 indica a materialização da energia ígnea, a transformação da paixão em algo tangível e duradouro. A Rainha de Paus, portanto, representa a capacidade de construir, de organizar e de dar forma aos projetos e ideias. Ela é a força que estrutura a criatividade, que organiza a paixão, e que transforma a vontade em realidade. O número 4 também simboliza a segurança, a solidez e a base, qualidades que a Rainha de Paus incorpora em sua liderança. Ela é a rainha que constrói impérios, que estabelece bases sólidas, e que garante a estabilidade de seus domínios. A sua energia é de um fogo que constrói, que solidifica, e que cria estruturas duradouras. Ela é a personificação da mulher que sabe como transformar a sua paixão em algo concreto, que sabe como organizar a sua energia para alcançar os seus objetivos. A Rainha de Paus é a força que nos ajuda a construir a nossa própria realidade, a criar a nossa própria estrutura, e a dar forma aos nossos sonhos. Ela é a rainha que nos ensina a ser práticos, a ser organizados, e a ser eficientes na busca dos nossos objetivos. A sua numerologia, portanto, é a da concretização, da estabilidade e da construção. Ela é a força que nos ajuda a transformar a nossa paixão em algo real, em algo que podemos tocar, em algo que podemos ver. Ela é a rainha que nos lembra da importância de ter uma base sólida, de ter uma estrutura, e de ter um plano para alcançar os nossos objetivos. A Rainha de Paus é a energia que nos impulsiona a construir, a criar, e a transformar o mundo ao nosso redor.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>A Rainha de Paus, em sua representação no Tarot de Jodorowsky, é um arcano que vibra com a energia do fogo, e suas cores refletem essa intensidade e paixão. O vermelho, cor predominante no naipe de Paus, simboliza a vitalidade, a ação, a coragem e a força de vontade. Na Rainha de Paus, o vermelho indica uma paixão controlada, uma energia que é direcionada para a criação e para a liderança. O amarelo, presente em detalhes e no fundo, representa a inteligência, a criatividade, o otimismo e a iluminação. O amarelo na Rainha de Paus simboliza a sua capacidade de inspirar, de inovar e de trazer luz para as situações. O laranja, que é a mistura do vermelho e do amarelo, indica a alegria, o entusiasmo, a sociabilidade e a capacidade de comunicação. O laranja na Rainha de Paus representa o seu carisma, a sua habilidade de se conectar com as pessoas e de motivá-las. O verde, presente em elementos da natureza, simboliza o crescimento, a renovação, a esperança e a fertilidade. O verde na Rainha de Paus indica a sua capacidade de nutrir projetos, de desenvolver ideias e de trazer prosperidade. O azul, em menor proporção, pode simbolizar a intuição, a sabedoria e a espiritualidade. O azul na Rainha de Paus representa a sua capacidade de ouvir a sua voz interior, de confiar na sua intuição e de agir com sabedoria. A combinação dessas cores na Rainha de Paus cria uma imagem de uma mulher poderosa, carismática, criativa e inspiradora, que domina a sua própria vontade e que utiliza a sua energia para construir e para liderar. Ela é a personificação da paixão que se transforma em ação, da criatividade que se materializa em projetos, e da liderança que inspira e motiva. A Rainha de Paus é a força que nos impulsiona a viver com paixão, com propósito, e com alegria, sempre com um sorriso no rosto e uma atitude positiva diante da vida. Ela é a rainha que nos ensina a ser autênticos, a ser corajosos, e a ser determinados na busca dos nossos objetivos. A sua simbologia das cores é um convite a explorar a nossa própria energia ígnea, a nossa própria paixão, e a nossa própria capacidade de criar e de transformar o mundo ao nosso redor.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos da Rainha de Paus, na perspectiva de Jodorowsky, indicam uma personalidade vibrante, carismática e cheia de iniciativa. Ela simboliza a mulher que é uma líder nata, que inspira confiança e que tem a capacidade de motivar aqueles ao seu redor. A sua energia é de um otimismo contagiante, que a impulsiona a superar desafios e a transformar obstáculos em oportunidades. A Rainha de Paus representa a criatividade em ação, a capacidade de inovar e de trazer novas ideias para o mundo. Ela é a personificação da autoconfiança, da independência e da determinação. Esta Rainha não teme expressar a sua individualidade, e a sua autenticidade é uma fonte de inspiração para os outros. Ela é a força que impulsiona o progresso, que estimula a inovação e que promove o crescimento. A Rainha de Paus é a mulher que sabe o que quer e que não mede esforços para alcançar os seus objetivos, sempre com um sorriso no rosto e uma atitude positiva diante da vida. Ela é a rainha que governa com o coração, mas que também age com a mente, combinando a intuição com a razão para tomar as melhores decisões. A sua presença indica sucesso em empreendimentos criativos, liderança eficaz e a capacidade de inspirar e de motivar as pessoas. Ela é a força que nos ajuda a realizar os nossos sonhos, a transformar as nossas ideias em realidade, e a viver com paixão e com propósito. A Rainha de Paus é a energia que nos impulsiona a ser a melhor versão de nós mesmos, a explorar o nosso potencial máximo, e a viver uma vida plena e significativa. Ela é a rainha que nos ensina a ser corajosos, a ser determinados, e a ser autênticos na busca dos nossos objetivos. A sua energia é de um fogo que nunca se apaga, que sempre arde, e que nos lembra da nossa própria capacidade de criar e de transformar o mundo ao nosso redor.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando a Rainha de Paus se manifesta em seus aspectos negativos, segundo a interpretação de Jodorowsky, ela pode indicar uma energia ígnea descontrolada, que se traduz em impulsividade, arrogância ou autoritarismo. A paixão que a caracteriza pode se tornar excessiva, levando a atitudes impensadas e a decisões precipitadas. A sua autoconfiança pode se transformar em prepotência, e a sua determinação em teimosia. A Rainha de Paus, em seu lado sombrio, pode simbolizar a mulher que busca o controle excessivo, que não aceita a opinião dos outros e que age de forma dominadora. A sua criatividade pode se tornar destrutiva, e a sua liderança, opressora. Ela pode se tornar impaciente, intolerante e até mesmo agressiva, utilizando a sua energia para manipular e para dominar. A sua independência pode se transformar em isolamento, e o seu otimismo em ingenuidade. A Rainha de Paus, em seus aspectos negativos, representa a mulher que não consegue controlar a sua própria vontade, que se deixa levar pelas emoções e que age de forma irresponsável. Ela pode se tornar uma figura tirânica, que impõe a sua vontade aos outros e que não respeita os limites. A sua presença indica conflitos, desentendimentos e a incapacidade de trabalhar em equipe. Ela é a força que destrói, que desorganiza e que causa o caos. A Rainha de Paus, em seus aspectos negativos, é a personificação da paixão que se torna cega, da criatividade que se torna vazia, e da liderança que se torna tirânica. Ela é a rainha que nos ensina a importância do equilíbrio, do autocontrole e da humildade. A sua energia é de um fogo que queima, que destrói, e que nos lembra da nossa própria capacidade de nos perdermos se não soubermos direcionar a nossa energia. Ela é a rainha que nos alerta para os perigos da impulsividade, da arrogância e do autoritarismo, e que nos convida a buscar a harmonia e o equilíbrio em nossas vidas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

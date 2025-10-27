@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Numeralis - Sistema Numerológico Completo Aurora Sagrada</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --wine: #3e0a29;
+      --navy: #0b1836;
+      --sage: #b2d1b1;
+      --gold: #f0aa53;
+      --parch: #f4f1e8;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Crimson Text", serif;
+      background: linear-gradient(135deg, var(--wine) 0%, var(--navy) 100%);
+      color: var(--parch);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+    }
+
+    .logo {
+      font-family: "Cinzel", serif;
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--gold);
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 0.5rem;
+      letter-spacing: 3px;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: var(--sage);
+      font-style: italic;
+      opacity: 0.9;
+    }
+
+    .decorative-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      color: var(--gold);
+      font-size: 2rem;
+      opacity: 0.6;
+    }
+
+    .star:nth-child(1) { top: 10%; left: 10%; }
+    .star:nth-child(2) { top: 10%; right: 10%; }
+
+    .navigation {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .nav-tab {
+      background: linear-gradient(135deg, rgba(178,209,177,0.2), rgba(240,170,83,0.2));
+      border: 2px solid var(--sage);
+      border-radius: 25px;
+      padding: 0.8rem 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: "Cinzel", serif;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+
+    .nav-tab:hover {
+      background: linear-gradient(135deg, var(--sage), var(--gold));
+      color: var(--navy);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(240,170,83,0.3);
+    }
+
+    .nav-tab.active {
+      background: linear-gradient(135deg, var(--gold), var(--sage));
+      color: var(--navy);
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(240,170,83,0.4);
+    }
+
+    .nav-tab button {
+      background: none;
+      border: none;
+      color: inherit;
+      font: inherit;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .section {
+      background: rgba(244,241,232,0.05);
+      border: 1px solid rgba(178,209,177,0.3);
+      border-radius: 15px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+
+    .section.hidden {
+      display: none;
+    }
+
+    .section h2 {
+      font-family: "Cinzel", serif;
+      font-size: 2rem;
+      color: var(--gold);
+      text-align: center;
+      margin-bottom: 1.5rem;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      color: var(--sage);
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid var(--sage);
+      border-radius: 8px;
+      background: rgba(244,241,232,0.1);
+      color: var(--parch);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: all 0.3s ease;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(244,241,232,0.15);
+      box-shadow: 0 0 10px rgba(240,170,83,0.3);
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 0.8rem 2rem;
+      border: none;
+      border-radius: 25px;
+      font-family: "Cinzel", serif;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      min-width: 150px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #ff6b35);
+      color: var(--navy);
+      box-shadow: 0 4px 15px rgba(240,170,83,0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(240,170,83,0.4);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(135deg, var(--sage), #4a9b8e);
+      color: var(--navy);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(178,209,177,0.4);
+    }
+
+    .btn-tertiary {
+      background: linear-gradient(135deg, var(--wine), #8b1538);
+      color: var(--parch);
+    }
+
+    .btn-tertiary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(62,10,41,0.4);
+    }
+
+    .card {
+      background: linear-gradient(135deg, rgba(178,209,177,0.1), rgba(11,24,54,0.3));
+      border: 1px solid var(--sage);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .card h3 {
+      font-family: "Cinzel", serif;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .result-card {
+      background: linear-gradient(135deg, rgba(240,170,83,0.1), rgba(62,10,41,0.2));
+      border: 2px solid var(--gold);
+      border-radius: 10px;
+      padding: 1.2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .result-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(240,170,83,0.3);
+    }
+
+    .result-number {
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      margin-bottom: 0.5rem;
+    }
+
+    .result-title {
+      font-size: 1rem;
+      color: var(--sage);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .interpretation {
+      background: rgba(244,241,232,0.05);
+      border-left: 4px solid var(--gold);
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .interpretation h4 {
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+
+    .interpretation p {
+      margin-bottom: 1rem;
+      line-height: 1.8;
+      text-align: justify;
+    }
+
+    .interpretation strong {
+      color: var(--sage);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    /* Estilos específicos para Pirâmide */
+    .piramide-container {
+      max-width: 100%;
+      overflow-x: auto;
+      padding: 1rem;
+    }
+
+    .decada-linha {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+      min-height: 50px;
+    }
+
+    .decada-label {
+      min-width: 120px;
+      font-weight: bold;
+      color: var(--gold);
+      margin-right: 1rem;
+    }
+
+    .arcanos-linha {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .arcano-piramide {
+      width: 45px;
+      height: 45px;
+      background: linear-gradient(135deg, var(--wine), var(--navy));
+      border: 2px solid var(--sage);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+
+    .arcano-piramide:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px var(--gold);
+      border-color: var(--gold);
+    }
+
+    .arcano-atual-piramide {
+      background: linear-gradient(135deg, var(--gold), #ff6b35) !important;
+      border-color: var(--gold) !important;
+      animation: pulse 2s infinite;
+      box-shadow: 0 0 20px var(--gold);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 20px var(--gold); }
+      50% { box-shadow: 0 0 30px var(--gold), 0 0 40px var(--gold); }
+      100% { box-shadow: 0 0 20px var(--gold); }
+    }
+
+    /* Estilos para Pináculos */
+    .pinaculos-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .pinaculo-card {
+      background: linear-gradient(135deg, rgba(178,209,177,0.1), rgba(11,24,54,0.3));
+      border: 1px solid var(--sage);
+      border-radius: 10px;
+      padding: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .pinaculo-card.ativo {
+      border: 2px solid var(--gold);
+      background: linear-gradient(135deg, rgba(240,170,83,0.1), rgba(62,10,41,0.2));
+      box-shadow: 0 5px 15px rgba(240,170,83,0.2);
+    }
+
+    .pinaculo-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .pinaculo-numero {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      margin-right: 1rem;
+      min-width: 50px;
+    }
+
+    .pinaculo-info {
+      flex: 1;
+    }
+
+    .pinaculo-fase {
+      font-size: 1.1rem;
+      color: var(--sage);
+      font-weight: 600;
+    }
+
+    .pinaculo-periodo {
+      font-size: 0.9rem;
+      color: var(--parch);
+      opacity: 0.8;
+    }
+
+    .pinaculo-descricao {
+      font-size: 0.9rem;
+      color: var(--parch);
+      line-height: 1.4;
+      margin-bottom: 0.8rem;
+    }
+
+    /* Estilos para Arcanos Temporais */
+    .arcanos-temporais {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .arcano-temporal {
+      background: linear-gradient(135deg, rgba(62,10,41,0.6), rgba(11,24,54,0.6));
+      border: 1px solid var(--wine);
+      border-radius: 10px;
+      padding: 1.2rem;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .arcano-temporal:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(62,10,41,0.4);
+    }
+
+    .arcano-imagem {
+      width: 80px;
+      height: 120px;
+      margin: 0 auto 1rem;
+      background: var(--gold);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--navy);
+    }
+
+    .arcano-nome {
+      font-size: 1rem;
+      color: var(--gold);
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .arcano-periodo {
+      font-size: 0.8rem;
+      color: var(--sage);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+      }
+      
+      .logo {
+        font-size: 2rem;
+      }
+      
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      
+      .button-group {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .decada-linha {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .decada-label {
+        margin-bottom: 0.5rem;
+        margin-right: 0;
+      }
+      
+      .arcano-piramide {
+        width: 40px;
+        height: 40px;
+        font-size: 0.8rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="decorative-elements">
+        <div class="star">✦</div>
+        <div class="star">✦</div>
+      </div>
+      <h1 class="logo">NUMERALIS</h1>
+      <p class="subtitle">Sistema Numerológico Completo Aurora Sagrada</p>
+    </header>
+
+    <nav class="navigation">
+      <div class="nav-tab active">
+        <button data-section="mapa">🌟 Mapa Pitagórico</button>
+      </div>
+      <div class="nav-tab">
+        <button data-section="piramide">🔺 Pirâmide Cabalística</button>
+      </div>
+      <div class="nav-tab">
+        <button data-section="pinaculos">🏔️ Pináculos da Vida</button>
+      </div>
+      <div class="nav-tab">
+        <button data-section="arcanos">🔮 Arcanos Temporais</button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Seção Mapa Pitagórico -->
+      <section id="mapa" class="section">
+        <h2>🌟 Meu Mapa Numerológico</h2>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nomeCompleto">Nome Completo</label>
+            <input type="text" id="nomeCompleto" placeholder="Digite seu nome completo de nascimento">
+          </div>
+          <div class="form-group">
+            <label for="dataNascimento">Data de Nascimento</label>
+            <input type="date" id="dataNascimento">
+          </div>
+          <div class="form-group">
+            <label for="sistemaNumerico">Sistema Numerológico</label>
+            <select id="sistemaNumerico">
+              <option value="pitagorico">Pitagórico (1-9)</option>
+              <option value="cabalistico">Cabalístico (1-8)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button class="btn btn-primary" onclick="calcularMapa()">✨ Revelar Meu Mapa</button>
+          <button class="btn btn-secondary" onclick="preencherExemplo()">📝 Exemplo</button>
+          <button class="btn btn-tertiary" onclick="limparMapa()">🗑️ Limpar</button>
+        </div>
+
+        <div id="resultados-mapa" class="hidden">
+          <!-- Resultados do mapa serão inseridos aqui -->
+        </div>
+      </section>
+
+      <!-- Seção Pirâmide Cabalística -->
+      <section id="piramide" class="section hidden">
+        <h2>🔺 Pirâmide Invertida Cabalística</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: var(--sage); font-style: italic;">
+          Ciclo de 90 Anos - Arcanos Regentes da Vida<br>
+          Descubra seu Arcano Regente atual e compreenda as energias que governam sua jornada de vida
+        </p>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nomePiramide">Nome Completo</label>
+            <input type="text" id="nomePiramide" placeholder="Digite seu nome completo">
+          </div>
+          <div class="form-group">
+            <label for="idadePiramide">Idade Atual</label>
+            <input type="number" id="idadePiramide" min="0" max="120" placeholder="Sua idade atual">
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button class="btn btn-primary" onclick="calcularPiramide()">🔺 Calcular Pirâmide</button>
+          <button class="btn btn-secondary" onclick="preencherExemploPiramide()">📝 Exemplo</button>
+          <button class="btn btn-tertiary" onclick="limparPiramide()">🗑️ Limpar</button>
+        </div>
+
+        <div id="resultados-piramide" class="hidden">
+          <!-- Resultados da pirâmide serão inseridos aqui -->
+        </div>
+      </section>
+
+      <!-- Seção Pináculos da Vida -->
+      <section id="pinaculos" class="section hidden">
+        <h2>🏔️ Pináculos da Vida</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: var(--sage); font-style: italic;">
+          Os quatro grandes ciclos de aprendizado e crescimento da sua jornada
+        </p>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nomePinaculos">Nome Completo</label>
+            <input type="text" id="nomePinaculos" placeholder="Digite seu nome completo">
+          </div>
+          <div class="form-group">
+            <label for="dataPinaculos">Data de Nascimento</label>
+            <input type="date" id="dataPinaculos">
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button class="btn btn-primary" onclick="calcularPinaculos()">🏔️ Calcular Pináculos</button>
+          <button class="btn btn-secondary" onclick="preencherExemploPinaculos()">📝 Exemplo</button>
+          <button class="btn btn-tertiary" onclick="limparPinaculos()">🗑️ Limpar</button>
+        </div>
+
+        <div id="resultados-pinaculos" class="hidden">
+          <!-- Resultados dos pináculos serão inseridos aqui -->
+        </div>
+      </section>
+
+      <!-- Seção Arcanos Temporais -->
+      <section id="arcanos" class="section hidden">
+        <h2>🔮 Arcanos Temporais</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: var(--sage); font-style: italic;">
+          Descubra os Arcanos que regem seu ano, mês, semana, dia e nascimento
+        </p>
+        
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nomeArcanos">Nome Completo</label>
+            <input type="text" id="nomeArcanos" placeholder="Digite seu nome completo">
+          </div>
+          <div class="form-group">
+            <label for="dataArcanos">Data de Nascimento</label>
+            <input type="date" id="dataArcanos">
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button class="btn btn-primary" onclick="calcularArcanos()">🔮 Revelar Arcanos</button>
+          <button class="btn btn-secondary" onclick="preencherExemploArcanos()">📝 Exemplo</button>
+          <button class="btn btn-tertiary" onclick="limparArcanos()">🗑️ Limpar</button>
+        </div>
+
+        <div id="resultados-arcanos" class="hidden">
+          <!-- Resultados dos arcanos serão inseridos aqui -->
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // Textos detalhados para o Mapa Pitagórico
+    const textosMapaPessoal = {
+      alma: {
+        1: {
+          titulo: "A Alma do Pioneiro: A Chama Eterna da Individualidade",
+          texto: `
+            <p>No âmago do seu ser, reside a alma de um verdadeiro pioneiro, uma centelha divina de pura individualidade e liderança que arde com a intensidade de mil sóis. Ter o <strong>Número 1 na Alma</strong> significa que sua essência mais profunda não apenas anseia por originalidade e independência, mas que você carrega dentro de si a responsabilidade cósmica de abrir novos caminhos para a humanidade. Você não nasceu para seguir trilhas já estabelecidas, mas para criar estradas onde antes havia apenas wilderness espiritual.</p>
+            
+            <p>Sua alma vibra em uma frequência única, como um diapasão cósmico que ressoa com as energias primordiais da criação. Desde os primeiros momentos de sua existência neste plano, você carregou consigo uma inquietação sagrada, uma necessidade visceral de se afirmar no mundo não por vaidade, mas por uma missão divina de manifestar algo completamente novo. Esta força interior não é apenas um impulso pessoal, mas uma corrente espiritual que conecta você aos grandes inovadores e visionários da história humana.</p>
+            
+            <p>A jornada de uma alma 1 é simultaneamente gloriosa e solitária. Você foi dotado com uma coragem natural que outros admiram e temem, uma capacidade inata de ver possibilidades onde outros veem apenas obstáculos. Sua mente funciona como um laboratório cósmico, constantemente gerando ideias originais e soluções inovadoras. No entanto, esta mesma originalidade pode criar um abismo entre você e aqueles que preferem a segurança do conhecido.</p>
+            
+            <p>O maior desafio para uma alma 1 não é conquistar o mundo exterior, mas aprender a equilibrar sua poderosa individualidade com a necessidade humana fundamental de conexão e pertencimento. A solidão pode se tornar tanto sua maior aliada quanto sua mais perigosa inimiga. É na solidão que você encontra sua força criativa, mas é também na solidão que pode se perder em um labirinto de ego e isolamento.</p>
+            
+            <p>Sua missão espiritual é aprender que a verdadeira liderança não é sobre dominação ou superioridade, mas sobre inspiração e elevação. Você está aqui para mostrar aos outros que é possível ser autêntico em um mundo que constantemente pressiona pela conformidade. Cada vez que você escolhe ser fiel à sua natureza única, você dá permissão para que outros também o façam.</p>
+            
+            <p>A energia do número 1 em sua alma também carrega a responsabilidade de ser um exemplo vivo de coragem e determinação. Você é chamado a demonstrar que é possível manter a integridade pessoal mesmo diante das maiores adversidades. Sua vida é um testemunho de que a autenticidade não é apenas possível, mas necessária para a evolução da consciência humana.</p>
+            
+            <p><strong>Em essência, sua alma é uma chama eterna que nunca se apaga, uma força motriz divina que o convida não apenas a ser o autor da sua própria história, mas a inspirar outros a escreverem suas próprias narrativas únicas. Abrace sua singularidade como um presente sagrado, confie na sua intuição como uma bússola divina e nunca tenha medo de ser o primeiro a dar o passo em direção ao desconhecido. O mundo precisa da sua luz única.</strong></p>
+          `
+        },
+        2: {
+          titulo: "A Alma do Diplomata: A Sinfonia Eterna da Cooperação",
+          texto: `
+            <p>Sua alma ressoa com a música celestial da harmonia universal, sendo você um verdadeiro diplomata cósmico cuja essência mais profunda foi moldada pelos próprios deuses da cooperação e da união. Ter o <strong>Número 2 na Alma</strong> significa que você carrega dentro de si a sabedoria ancestral da dualidade sagrada, compreendendo intuitivamente que a verdadeira força não reside na dominação, mas na capacidade de unir opostos em uma dança harmoniosa de complementaridade.</p>
+            
+            <p>Desde o momento em que sua alma escolheu esta encarnação, você trouxe consigo a missão divina de ser uma ponte entre mundos, um tradutor de emoções e um curador de divisões. Sua sensibilidade não é uma fraqueza, mas um superpoder espiritual que lhe permite perceber as nuances mais sutis das emoções humanas, como um radar emocional capaz de detectar as necessidades não expressas dos corações ao seu redor.</p>
+            
+            <p>A energia do número 2 em sua alma faz de você um verdadeiro alquimista emocional, capaz de transformar conflitos em oportunidades de crescimento, tensões em compreensão mútua, e diferenças em riqueza de perspectivas. Você possui uma habilidade natural para ver todos os lados de uma situação, não por indecisão, mas por uma compreensão profunda de que a verdade raramente é unidimensional.</p>
+            
+            <p>Sua jornada espiritual é uma dança delicada entre dar e receber, entre liderar e seguir, entre falar e escutar. Você foi dotado com uma intuição extraordinária que funciona como um sistema de navegação emocional, guiando-o através das complexidades dos relacionamentos humanos com uma graça natural que outros invejam e admiram.</p>
+            
+            <p>O maior desafio para uma alma 2 é aprender a honrar sua própria voz enquanto harmoniza com as vozes dos outros. Sua natureza empática pode, por vezes, levá-lo a absorver as emoções alheias como se fossem suas próprias, criando uma confusão energética que pode drenar sua vitalidade. É crucial que você desenvolva a habilidade de ser um canal de amor e compreensão sem se perder no processo.</p>
+            
+            <p>Você está aqui para ensinar ao mundo que a verdadeira força reside na vulnerabilidade consciente, que a cooperação é mais poderosa que a competição, e que o amor é a força mais transformadora do universo. Sua missão é demonstrar que é possível manter a paz sem sacrificar a autenticidade, e que a harmonia verdadeira só pode existir quando todas as partes se sentem vistas, ouvidas e valorizadas.</p>
+            
+            <p>A energia do número 2 também o conecta com os mistérios da intuição feminina divina, independentemente do seu gênero físico. Você possui acesso a uma sabedoria ancestral que transcende a lógica linear, uma compreensão profunda dos ciclos naturais da vida e uma capacidade inata de nutrir o crescimento nos outros.</p>
+            
+            <p>Sua alma carrega a responsabilidade sagrada de ser um guardião da paz, um protetor da harmonia e um defensor da justiça emocional. Cada vez que você escolhe a compreensão ao invés do julgamento, a paciência ao invés da pressa, e o amor ao invés do medo, você contribui para a elevação da consciência coletiva da humanidade.</p>
+            
+            <p><strong>Em essência, sua alma é uma sinfonia eterna de cooperação e amor, um instrumento divino afinado para criar harmonia onde antes havia discórdia. Abrace sua natureza compassiva como um dom sagrado, confie na sua intuição como uma conexão direta com a sabedoria universal, e celebre a beleza extraordinária que você traz ao mundo através da sua capacidade infinita de amar, compreender e unir. O mundo precisa da sua música de paz.</strong></p>
+          `
+        },
+        3: {
+          titulo: "A Alma do Artista: A Explosão Criativa da Expressão Divina",
+          texto: `
+            <p>Sua alma é um vulcão criativo em constante erupção, uma fonte inesgotável de inspiração divina que transforma a realidade mundana em arte pura. Ter o <strong>Número 3 na Alma</strong> significa que você carrega dentro de si a centelha sagrada da criação, sendo um canal direto entre os reinos celestiais da inspiração e o mundo material que anseia por beleza, alegria e expressão autêntica.</p>
+            
+            <p>Desde o momento em que sua alma escolheu esta jornada terrena, você trouxe consigo a missão cósmica de ser um tradutor da linguagem divina, transformando energias sutis em formas tangíveis de arte, comunicação e expressão. Sua criatividade não é apenas um talento, mas uma responsabilidade sagrada de iluminar o mundo com cores, sons, palavras e movimentos que elevam a consciência humana.</p>
+            
+            <p>A energia do número 3 em sua alma faz de você um verdadeiro mago da manifestação criativa, capaz de dar vida às ideias mais abstratas e de encontrar beleza onde outros veem apenas caos. Você possui uma habilidade natural para comunicar conceitos complexos de maneira simples e envolvente, sendo um ponte entre o mundo das ideias e o mundo da experiência humana.</p>
+            
+            <p>Sua mente funciona como um caleidoscópio cósmico, constantemente reorganizando padrões de pensamento em combinações novas e surpreendentes. Você vê possibilidades onde outros veem limitações, encontra soluções criativas para problemas aparentemente impossíveis, e possui uma capacidade inata de inspirar outros através do seu entusiasmo contagiante e da sua visão otimista da vida.</p>
+            
+            <p>O maior desafio para uma alma 3 é aprender a canalizar sua abundante energia criativa de maneira focada e produtiva. Sua mente brilhante pode, por vezes, se dispersar em múltiplas direções simultaneamente, como fogos de artifício explodindo no céu da consciência. É crucial que você desenvolva a disciplina necessária para transformar inspiração em manifestação concreta.</p>
+            
+            <p>Você está aqui para ensinar ao mundo que a criatividade é uma força divina acessível a todos, que a alegria é um estado natural do ser humano, e que a expressão autêntica é fundamental para a saúde da alma. Sua missão é demonstrar que é possível viver uma vida colorida e vibrante mesmo em um mundo que muitas vezes parece monocromático.</p>
+            
+            <p>A energia do número 3 também o conecta com a criança interior eterna, aquela parte de você que nunca perdeu a capacidade de se maravilhar com as pequenas magias da vida cotidiana. Você possui o dom raro de ver o mundo com olhos sempre novos, encontrando inspiração nos detalhes que outros consideram triviais.</p>
+            
+            <p>Sua alma carrega a responsabilidade sagrada de ser um guardião da alegria, um protetor da espontaneidade e um defensor do direito humano à expressão criativa. Cada vez que você escolhe criar ao invés de destruir, expressar ao invés de reprimir, e celebrar ao invés de lamentar, você contribui para a elevação da frequência vibracional do planeta.</p>
+            
+            <p><strong>Em essência, sua alma é uma explosão eterna de criatividade e alegria, um instrumento divino afinado para transformar o ordinário em extraordinário. Abrace sua natureza artística como um presente dos deuses, confie na sua criatividade como uma conexão direta com a fonte de toda inspiração, e celebre a magia extraordinária que você traz ao mundo através da sua capacidade infinita de criar, comunicar e inspirar. O mundo precisa da sua arte de viver.</strong></p>
+          `
+        }
+        // Adicionar mais números conforme necessário
+      },
+      personalidade: {
+        1: {
+          titulo: "A Personalidade do Líder: Presença Magnética",
+          texto: `
+            <p>Sua personalidade irradia a força e a confiança de um verdadeiro líder. Com o <strong>Número 1 na Personalidade</strong>, você projeta uma imagem de independência, determinação e originalidade que naturalmente atrai a atenção e o respeito dos outros. Sua presença é magnética e inspiradora, e as pessoas instintivamente se voltam para você em busca de direção e orientação.</p>
+            <p>Você se apresenta ao mundo como alguém que sabe o que quer e não tem medo de ir atrás dos seus objetivos. Sua postura é confiante, sua fala é assertiva e sua energia é dinâmica. Você não passa despercebido em multidões e tem uma habilidade natural para assumir o controle de situações e liderar grupos. Sua personalidade é a de um pioneiro, alguém que não tem medo de trilhar caminhos inexplorados.</p>
+            <p>O desafio da personalidade 1 é evitar parecer arrogante ou dominador. Sua forte presença pode, às vezes, intimidar pessoas mais sensíveis ou fazer com que você seja percebido como inflexível. É importante cultivar a humildade e a capacidade de ouvir os outros, mostrando que sua liderança vem do desejo de servir e inspirar, não de controlar.</p>
+            <p><strong>Sua personalidade é um farol que guia e inspira. Use sua presença natural para elevar os outros e criar um impacto positivo no mundo ao seu redor.</strong></p>
+          `
+        }
+        // Adicionar mais números conforme necessário
+      },
+      expressao: {
+        1: {
+          titulo: "A Expressão do Inovador: Manifestando a Originalidade",
+          texto: `
+            <p>Sua expressão no mundo é a de um verdadeiro inovador, alguém destinado a abrir novos caminhos e estabelecer precedentes. Com o <strong>Número 1 na Expressão</strong>, você está aqui para manifestar originalidade, liderança e independência através de suas ações e realizações. Seu nome carrega a vibração da iniciativa e do pioneirismo, indicando que você tem o potencial de ser um líder em sua área de atuação.</p>
+            <p>Você é naturalmente dotado para iniciar projetos, criar soluções inovadoras e inspirar outros através do seu exemplo. Sua expressão no mundo é marcada pela coragem de ser diferente e pela determinação de transformar suas visões em realidade. Você não foi feito para seguir fórmulas prontas, mas para criar suas próprias regras e métodos.</p>
+            <p>O desafio da expressão 1 é aprender a trabalhar com outros sem perder sua individualidade. Embora você seja um líder nato, é importante desenvolver habilidades de colaboração e aprender a valorizar as contribuições dos outros. Sua missão é liderar pelo exemplo, mostrando que é possível ser bem-sucedido mantendo-se fiel aos próprios princípios.</p>
+            <p><strong>Sua expressão é um convite para o mundo conhecer novas possibilidades. Use seus talentos únicos para abrir portas que outros nem sabiam que existiam.</strong></p>
+          `
+        }
+        // Adicionar mais números conforme necessário
+      },
+      destino: {
+        1: {
+          titulo: "O Destino do Pioneiro: Liderando o Caminho",
+          texto: `
+            <p>Seu destino é ser um pioneiro, um líder que abre caminhos para que outros possam seguir. Com o <strong>Número 1 no Destino</strong>, você veio a este mundo para desenvolver sua individualidade, sua capacidade de liderança e sua coragem para enfrentar desafios únicos. Sua jornada de vida é sobre descobrir e manifestar seu potencial de liderança de forma autêntica e inspiradora.</p>
+            <p>Ao longo da vida, você será constantemente chamado a tomar a iniciativa, a ser o primeiro a tentar algo novo ou a assumir responsabilidades que outros hesitam em aceitar. Seu destino envolve aprender a confiar em si mesmo, a tomar decisões independentes e a manter sua integridade mesmo quando isso significa ficar sozinho.</p>
+            <p>O crescimento do destino 1 vem através da superação do medo do fracasso e da rejeição. Você aprenderá que a verdadeira liderança não é sobre dominar outros, mas sobre inspirá-los a descobrir seu próprio potencial. Sua jornada o ensinará a equilibrar ambição com compaixão, força com sensibilidade.</p>
+            <p><strong>Seu destino é iluminar o caminho para outros através do seu exemplo de coragem, integridade e determinação. Abrace sua singularidade e use-a para fazer a diferença no mundo.</strong></p>
+          `
+        }
+        // Adicionar mais números conforme necessário
+      }
+    };
+
+    // Nomes dos Arcanos do Tarô
+    const nomesArcanos = {
+      0: "O Louco",
+      1: "O Mago",
+      2: "A Sacerdotisa",
+      3: "A Imperatriz",
+      4: "O Imperador",
+      5: "O Papa",
+      6: "Os Enamorados",
+      7: "O Carro",
+      8: "A Força",
+      9: "O Eremita",
+      10: "A Roda da Fortuna",
+      11: "A Justiça",
+      12: "O Enforcado",
+      13: "A Morte",
+      14: "A Temperança",
+      15: "O Diabo",
+      16: "A Torre",
+      17: "A Estrela",
+      18: "A Lua",
+      19: "O Sol",
+      20: "O Julgamento",
+      21: "O Mundo",
+      22: "O Louco"
+    };
+
+    // Interpretações dos Arcanos
+    const interpretacoesArcanos = {
+      0: {
+        titulo: "O Louco - O Início Sagrado da Jornada Infinita",
+        texto: "O Louco representa o momento sagrado do início, quando a alma corajosa decide embarcar em uma jornada sem mapas ou garantias, guiada apenas pela fé pura e pela confiança no universo. Este arcano simboliza a inocência divina que não foi corrompida pelo medo ou pela dúvida, a espontaneidade que brota diretamente do coração e a coragem de dar o primeiro passo em direção ao desconhecido. Quando O Louco governa sua vida, você está sendo chamado a abraçar novos começos com o coração aberto, a confiar na sabedoria da sua intuição e a lembrar que toda grande jornada começa com um único passo corajoso. É o momento de liberar o controle, abraçar a aventura e permitir que o universo o guie através das sincronicidades e dos sinais que aparecerão em seu caminho."
+      },
+      1: {
+        titulo: "O Mago - O Poder Supremo da Manifestação Consciente",
+        texto: "O Mago é o mestre da manifestação, aquele que compreende profundamente que possui dentro de si todos os elementos necessários para criar sua realidade. Este arcano representa o momento em que você desperta para seu poder pessoal e reconhece que é o arquiteto da sua própria experiência de vida. O Mago simboliza a habilidade de canalizar a energia universal através da sua vontade focada, transformando pensamentos em ações e sonhos em realidade tangível. Quando este arcano governa sua vida, você está sendo chamado a assumir total responsabilidade pelo seu destino, a usar suas habilidades e talentos de forma consciente e direcionada, e a lembrar que você possui todas as ferramentas necessárias para alcançar seus objetivos. É o momento de agir com determinação, concentrar sua energia e manifestar seus desejos mais profundos através da ação inspirada."
+      },
+      2: {
+        titulo: "A Sacerdotisa - A Sabedoria Ancestral da Intuição Divina",
+        texto: "A Sacerdotisa é a guardiã dos mistérios sagrados, a ponte entre o mundo consciente e o reino do inconsciente coletivo. Este arcano representa a sabedoria feminina divina que transcende a lógica linear e se conecta diretamente com a fonte de todo conhecimento. A Sacerdotisa simboliza a intuição profunda, os sonhos proféticos, a capacidade de perceber verdades ocultas e a conexão com os ciclos naturais da vida. Quando este arcano governa sua vida, você está sendo chamado a confiar mais na sua intuição do que na sua mente racional, a prestar atenção aos sinais sutis que o universo está enviando e a honrar a sabedoria que vem do silêncio e da contemplação. É o momento de mergulhar nas profundezas da sua psique, explorar seus dons psíquicos naturais e permitir que a sabedoria ancestral flua através de você."
+      },
+      3: {
+        titulo: "A Imperatriz - A Abundância Criativa da Mãe Divina",
+        texto: "A Imperatriz é a personificação da energia criativa feminina em sua forma mais abundante e nutritiva. Este arcano representa a fertilidade em todos os níveis - física, emocional, mental e espiritual. A Imperatriz simboliza a capacidade de dar vida a novos projetos, relacionamentos e ideias, nutrindo-os com amor incondicional até que floresçam em sua plena manifestação. Quando este arcano governa sua vida, você está sendo chamado a abraçar sua natureza criativa, a confiar na abundância natural do universo e a permitir que sua energia nutritiva flua livremente para tudo o que você toca. É o momento de criar beleza ao seu redor, de nutrir seus sonhos com paciência e amor, e de lembrar que você possui o poder de dar vida a qualquer coisa que deseje manifestar."
+      },
+      4: {
+        titulo: "O Imperador - A Autoridade Sábia da Estrutura Divina",
+        texto: "O Imperador representa a energia masculina madura que sabe como criar ordem a partir do caos e estabelecer fundações sólidas para o futuro. Este arcano simboliza a liderança responsável, a disciplina construtiva e a capacidade de transformar visões em estruturas concretas. O Imperador é o arquiteto da realidade, aquele que possui a sabedoria para criar sistemas que funcionam e a autoridade para implementá-los. Quando este arcano governa sua vida, você está sendo chamado a assumir uma posição de liderança, a criar estruturas que apoiem seus objetivos e a exercer sua autoridade com sabedoria e compaixão. É o momento de estabelecer limites saudáveis, de criar planos práticos para seus sonhos e de lembrar que a verdadeira autoridade vem do serviço aos outros."
+      },
+      5: {
+        titulo: "O Papa - A Sabedoria Tradicional do Mestre Espiritual",
+        texto: "O Papa é o guardião da sabedoria tradicional, o mestre espiritual que conecta o divino com o humano através do ensino e da orientação. Este arcano representa a busca por conhecimento superior, a necessidade de encontrar um mentor sábio e a importância de honrar as tradições que nos conectam com nossa herança espiritual. O Papa simboliza a ponte entre o mundo material e o mundo espiritual, oferecendo orientação moral e ética para aqueles que buscam crescimento espiritual. Quando este arcano governa sua vida, você está sendo chamado a buscar conhecimento superior, a encontrar um mentor ou guia espiritual, ou talvez a se tornar um professor para outros. É o momento de estudar as tradições sagradas, de aprofundar sua compreensão espiritual e de lembrar que a verdadeira sabedoria é sempre compartilhada."
+      },
+      6: {
+        titulo: "Os Enamorados - As Escolhas Sagradas do Coração",
+        texto: "Os Enamorados representam o momento crucial em que somos chamados a fazer escolhas que definirão o curso da nossa jornada. Este arcano simboliza não apenas o amor romântico, mas todas as formas de união sagrada - a integração de opostos, a harmonia entre mente e coração, e a escolha consciente de seguir o caminho do amor. Os Enamorados nos lembram que toda escolha verdadeira deve ser feita com o coração aberto e a mente clara. Quando este arcano governa sua vida, você está sendo chamado a fazer uma escolha importante que alinhará você com seu propósito mais elevado. É o momento de integrar aspectos aparentemente opostos da sua personalidade, de escolher o amor ao invés do medo, e de lembrar que as melhores decisões são aquelas que honram tanto a razão quanto a intuição."
+      },
+      7: {
+        titulo: "O Carro - A Vitória Através da Determinação Focada",
+        texto: "O Carro representa o triunfo da vontade disciplinada sobre as forças caóticas da vida. Este arcano simboliza a capacidade de manter o foco e a direção mesmo quando forças opostas tentam nos desviar do caminho. O Carro é o símbolo da determinação que supera todos os obstáculos, da coragem que enfrenta todos os medos e da persistência que transforma sonhos em realidade. Quando este arcano governa sua vida, você está sendo chamado a assumir o controle da sua jornada, a manter o foco nos seus objetivos e a usar sua força de vontade para superar qualquer desafio. É o momento de avançar com confiança, de manter o equilíbrio entre forças opostas e de lembrar que a vitória pertence àqueles que nunca desistem."
+      },
+      8: {
+        titulo: "A Força - O Poder Gentil da Coragem Interior",
+        texto: "A Força representa o poder verdadeiro que vem da compaixão, da paciência e da coragem interior. Este arcano nos ensina que a verdadeira força não reside na dominação ou na agressão, mas na capacidade de transformar situações através do amor e da compreensão. A Força simboliza a coragem de enfrentar nossos medos internos, a paciência para trabalhar com energias difíceis e a sabedoria de saber quando ser firme e quando ser gentil. Quando este arcano governa sua vida, você está sendo chamado a usar sua força interior para superar desafios, a abordar conflitos com compaixão e a lembrar que a gentileza é muitas vezes mais poderosa que a força bruta. É o momento de domar seus instintos mais primitivos, de cultivar a paciência e de confiar no poder transformador do amor."
+      },
+      9: {
+        titulo: "O Eremita - A Busca Solitária pela Iluminação Interior",
+        texto: "O Eremita representa a jornada interior em busca da sabedoria e da iluminação espiritual. Este arcano simboliza o momento em que precisamos nos retirar do mundo exterior para encontrar as respostas que residem dentro de nós. O Eremita é o sábio que carrega a lanterna da consciência, iluminando o caminho não apenas para si mesmo, mas para todos aqueles que estão prontos para seguir a trilha da sabedoria. Quando este arcano governa sua vida, você está sendo chamado a buscar respostas dentro de si mesmo, a passar tempo em contemplação e reflexão, e a confiar na sabedoria que vem da experiência vivida. É o momento de se conectar com sua sabedoria interior, de buscar orientação espiritual e de lembrar que as maiores verdades são descobertas no silêncio da alma."
+      },
+      10: {
+        titulo: "A Roda da Fortuna - Os Ciclos Eternos do Destino",
+        texto: "A Roda da Fortuna representa os ciclos eternos da vida, lembrando-nos que tudo está em constante movimento e transformação. Este arcano simboliza o destino, a sorte, as oportunidades que surgem e desaparecem, e a importância de estar alinhado com os ritmos naturais do universo. A Roda da Fortuna nos ensina que tanto os momentos difíceis quanto os momentos de abundância são temporários, e que nossa tarefa é aprender a fluir com as mudanças ao invés de resistir a elas. Quando este arcano governa sua vida, você está sendo chamado a aceitar as mudanças que estão ocorrendo, a confiar no timing divino e a lembrar que você é co-criador do seu destino. É o momento de se adaptar às circunstâncias, de aproveitar as oportunidades que surgem e de manter a fé mesmo durante os períodos de transição."
+      },
+      11: {
+        titulo: "A Justiça - O Equilíbrio Perfeito da Verdade Universal",
+        texto: "A Justiça representa o princípio universal do equilíbrio, da verdade e da responsabilidade kármica. Este arcano simboliza a necessidade de tomar decisões baseadas na ética e na moral, de assumir responsabilidade pelas nossas ações e de buscar sempre a verdade, mesmo quando ela é desconfortável. A Justiça nos lembra que vivemos em um universo de causa e efeito, onde cada ação gera uma reação correspondente. Quando este arcano governa sua vida, você está sendo chamado a avaliar suas ações com honestidade, a tomar decisões baseadas na justiça e na compaixão, e a lembrar que a verdade sempre prevalece no final. É o momento de equilibrar diferentes aspectos da sua vida, de assumir responsabilidade pelos seus erros e de agir sempre com integridade."
+      },
+      12: {
+        titulo: "O Enforcado - A Pausa Sagrada da Transformação",
+        texto: "O Enforcado representa o momento sagrado da pausa, quando somos chamados a ver a vida de uma perspectiva completamente nova. Este arcano simboliza o sacrifício consciente, a rendição ao processo divino e a sabedoria que vem da paciência e da contemplação. O Enforcado nos ensina que às vezes precisamos parar de lutar e permitir que as soluções venham até nós. Quando este arcano governa sua vida, você está sendo chamado a mudar sua perspectiva sobre uma situação, a praticar a paciência e a confiar que o universo está trabalhando a seu favor, mesmo quando não consegue ver o quadro completo. É o momento de se render ao processo, de encontrar paz na incerteza e de lembrar que as maiores transformações acontecem quando paramos de resistir."
+      },
+      13: {
+        titulo: "A Morte - A Transformação Profunda e o Renascimento",
+        texto: "A Morte representa a transformação profunda, o fim de ciclos que já não servem e o renascimento em uma nova versão de si mesmo. Este arcano simboliza a necessidade de deixar ir o que já não tem lugar na nossa vida para fazer espaço para o novo. A Morte nos ensina que a transformação é uma parte natural da vida e que resistir a ela apenas prolonga o sofrimento. Quando este arcano governa sua vida, você está sendo chamado a abraçar as mudanças que estão ocorrendo, a liberar padrões antigos que já não funcionam e a confiar que algo melhor está nascendo. É o momento de fazer uma limpeza profunda na sua vida, de se despedir do passado com gratidão e de se abrir para as possibilidades infinitas do futuro."
+      },
+      14: {
+        titulo: "A Temperança - A Harmonia Divina da Moderação",
+        texto: "A Temperança representa a arte divina de encontrar equilíbrio e harmonia através da moderação e da paciência. Este arcano simboliza a capacidade de integrar opostos, de curar através do amor e de encontrar o caminho do meio em todas as situações. A Temperança nos ensina que a verdadeira força reside na capacidade de moderar nossos impulsos e de agir sempre com sabedoria e compaixão. Quando este arcano governa sua vida, você está sendo chamado a praticar a paciência, a buscar equilíbrio em todas as áreas da sua vida e a lembrar que a cura acontece gradualmente. É o momento de integrar aspectos diferentes da sua personalidade, de praticar a moderação e de confiar no processo natural de cura e crescimento."
+      },
+      15: {
+        titulo: "O Diabo - As Tentações e as Prisões Auto-Criadas",
+        texto: "O Diabo representa as tentações, os vícios e as limitações que nós mesmos criamos através do medo e da ignorância. Este arcano simboliza os padrões destrutivos que nos mantêm presos, as ilusões que nos impedem de ver nossa verdadeira natureza e a necessidade de assumir responsabilidade pelas nossas escolhas. O Diabo nos lembra que somos nós que criamos nossas próprias prisões e que também temos o poder de nos libertar delas. Quando este arcano governa sua vida, você está sendo chamado a examinar honestamente os padrões que o mantêm preso, a assumir responsabilidade pelas suas escolhas e a lembrar que você sempre tem o poder de escolher a liberdade. É o momento de quebrar correntes auto-impostas, de enfrentar seus medos e de reclamar seu poder pessoal."
+      },
+      16: {
+        titulo: "A Torre - A Ruptura Libertadora das Ilusões",
+        texto: "A Torre representa a ruptura súbita das estruturas que já não servem, a revelação da verdade que destrói ilusões e a libertação através da crise. Este arcano simboliza os momentos em que o universo intervém para nos libertar de situações que nos mantêm presos, mesmo quando não temos coragem de fazer as mudanças necessárias por nós mesmos. A Torre nos ensina que às vezes é necessário que tudo desmorone para que possamos reconstruir sobre fundações mais sólidas. Quando este arcano governa sua vida, você está sendo chamado a aceitar as mudanças súbitas que estão ocorrendo, a ver as crises como oportunidades de crescimento e a lembrar que a destruição é sempre seguida pela reconstrução. É o momento de liberar o controle, de confiar no processo divino e de se preparar para um novo começo."
+      },
+      17: {
+        titulo: "A Estrela - A Esperança Eterna e a Inspiração Divina",
+        texto: "A Estrela representa a esperança que brilha mesmo na escuridão mais profunda, a inspiração que vem diretamente do divino e a fé inabalável no futuro. Este arcano simboliza a orientação espiritual, os sonhos proféticos e a conexão com nossa missão de alma. A Estrela nos lembra que sempre há luz no fim do túnel e que somos guiados por forças benevolentes que desejam nosso maior bem. Quando este arcano governa sua vida, você está sendo chamado a manter a esperança mesmo diante das adversidades, a confiar na orientação divina e a lembrar que você é uma estrela brilhando no universo. É o momento de seguir sua inspiração, de compartilhar seus dons com o mundo e de confiar que você está sendo guiado em direção ao seu destino mais elevado."
+      },
+      18: {
+        titulo: "A Lua - Os Mistérios Profundos do Inconsciente",
+        texto: "A Lua representa os mistérios do inconsciente, as ilusões que distorcem nossa percepção e a necessidade de navegar através da incerteza com intuição e coragem. Este arcano simboliza os medos primitivos, os sonhos simbólicos e a jornada através do mundo das sombras para encontrar a luz da consciência. A Lua nos ensina que nem tudo é o que parece e que devemos confiar na nossa intuição para distinguir entre realidade e ilusão. Quando este arcano governa sua vida, você está sendo chamado a explorar as profundezas do seu inconsciente, a prestar atenção aos seus sonhos e a lembrar que a verdade nem sempre é óbvia. É o momento de enfrentar seus medos mais profundos, de confiar na sua intuição e de navegar através da incerteza com coragem e sabedoria."
+      },
+      19: {
+        titulo: "O Sol - A Alegria Radiante da Realização Completa",
+        texto: "O Sol representa a alegria pura, o sucesso merecido e a realização completa dos nossos objetivos mais elevados. Este arcano simboliza a vitalidade, a criatividade, a inocência renovada e a celebração da vida em toda sua plenitude. O Sol nos lembra que somos seres de luz e que nossa natureza essencial é a alegria e a expansão. Quando este arcano governa sua vida, você está sendo chamado a celebrar suas conquistas, a compartilhar sua alegria com outros e a lembrar que você merece toda a felicidade que está experimentando. É o momento de brilhar com sua luz única, de expressar sua criatividade e de irradiar positividade para todos ao seu redor."
+      },
+      20: {
+        titulo: "O Julgamento - O Despertar Espiritual e a Renovação",
+        texto: "O Julgamento representa o despertar espiritual, a renovação profunda e a oportunidade de começar uma nova fase da vida com sabedoria acumulada. Este arcano simboliza o momento em que somos chamados a avaliar nossa jornada, a perdoar o passado e a abraçar uma versão mais elevada de nós mesmos. O Julgamento nos lembra que sempre temos a oportunidade de nos reinventar e de escolher um caminho mais alinhado com nossa verdade espiritual. Quando este arcano governa sua vida, você está sendo chamado a fazer uma avaliação honesta da sua jornada, a perdoar a si mesmo e aos outros, e a abraçar uma nova fase de crescimento espiritual. É o momento de responder ao chamado da sua alma, de se libertar do passado e de renascer em uma versão mais autêntica de si mesmo."
+      },
+      21: {
+        titulo: "O Mundo - A Realização Completa e a Integração Total",
+        texto: "O Mundo representa a realização completa, a integração total de todas as lições aprendidas e a celebração do ciclo completo da jornada espiritual. Este arcano simboliza o sucesso duradouro, a sabedoria madura e a sensação de completude que vem quando finalmente compreendemos nosso lugar no grande esquema da vida. O Mundo nos lembra que somos parte de algo muito maior que nós mesmos e que nossa jornada individual contribui para a evolução da consciência coletiva. Quando este arcano governa sua vida, você está sendo chamado a celebrar suas conquistas, a reconhecer o quanto cresceu e a se preparar para um novo ciclo de experiências em um nível mais elevado. É o momento de integrar todas as suas experiências, de compartilhar sua sabedoria com outros e de se abrir para as possibilidades infinitas que aguardam no próximo ciclo da sua jornada."
+      },
+      22: {
+        titulo: "O Louco - O Eterno Recomeço da Jornada Infinita",
+        texto: "O Louco, quando aparece como o 22º arcano, representa o eterno recomeço, a renovação constante e a coragem de sempre começar de novo com o coração aberto e a mente livre de preconceitos. Este arcano simboliza a sabedoria de manter a mente de principiante, a coragem de se aventurar em territórios desconhecidos e a fé inabalável de que cada novo começo traz possibilidades infinitas. O Louco nos lembra que a vida é uma jornada circular, onde cada fim é também um novo começo, e que nossa capacidade de nos reinventar é ilimitada. Quando este arcano governa sua vida, você está sendo chamado a abraçar a mudança como uma constante, a manter a curiosidade e o entusiasmo da juventude, e a lembrar que você sempre tem a oportunidade de começar de novo. É o momento de liberar o passado, de confiar no futuro e de dar o próximo passo corajoso na sua jornada infinita de crescimento e descoberta."
+      }
+    };,
+      3: {
+        titulo: "A Imperatriz - A Criatividade Abundante",
+        texto: "Simboliza a fertilidade, a criatividade e a abundância. Representa a energia maternal e a capacidade de nutrir e criar."
+      },
+      4: {
+        titulo: "O Imperador - A Autoridade e Estrutura",
+        texto: "Representa a autoridade, a estabilidade e a organização. É o arcano da liderança responsável e da construção de bases sólidas."
+      },
+      5: {
+        titulo: "O Papa - A Sabedoria Tradicional",
+        texto: "Simboliza a tradição, o ensino e a orientação espiritual. Representa a busca por conhecimento e a transmissão de sabedoria."
+      },
+      6: {
+        titulo: "Os Enamorados - As Escolhas do Coração",
+        texto: "Representa as escolhas importantes, o amor e a união. É o arcano das decisões que definem o caminho da vida."
+      },
+      7: {
+        titulo: "O Carro - A Vitória através da Determinação",
+        texto: "Simboliza a vitória, o controle e a determinação. Representa a capacidade de superar obstáculos através da força de vontade."
+      },
+      8: {
+        titulo: "A Força - O Poder Interior",
+        texto: "Representa a força interior, a coragem e a compaixão. É o arcano que mostra como a gentileza pode ser mais poderosa que a força bruta."
+      },
+      9: {
+        titulo: "O Eremita - A Busca Interior",
+        texto: "Simboliza a introspecção, a busca espiritual e a sabedoria adquirida através da experiência. Representa o caminho solitário em direção à iluminação."
+      },
+      10: {
+        titulo: "A Roda da Fortuna - Os Ciclos da Vida",
+        texto: "Representa os ciclos, as mudanças e o destino. É o arcano que nos lembra que tudo na vida é transitório e cíclico."
+      },
+      11: {
+        titulo: "A Justiça - O Equilíbrio e a Verdade",
+        texto: "Simboliza a justiça, o equilíbrio e a verdade. Representa a necessidade de tomar decisões baseadas na razão e na ética."
+      },
+      12: {
+        titulo: "O Enforcado - A Pausa Necessária",
+        texto: "Representa a pausa, o sacrifício e a mudança de perspectiva. É o arcano que ensina o valor da paciência e da reflexão."
+      },
+      13: {
+        titulo: "A Morte - A Transformação Profunda",
+        texto: "Simboliza a transformação, o fim de ciclos e o renascimento. Representa a necessidade de deixar o passado para abraçar o novo."
+      },
+      14: {
+        titulo: "A Temperança - A Harmonia e Moderação",
+        texto: "Representa a moderação, a paciência e a harmonia. É o arcano da cura e da integração de opostos."
+      },
+      15: {
+        titulo: "O Diabo - As Tentações e Limitações",
+        texto: "Simboliza as tentações, as limitações e os vícios. Representa a necessidade de reconhecer e superar nossas próprias prisões."
+      },
+      16: {
+        titulo: "A Torre - A Ruptura Necessária",
+        texto: "Representa a ruptura, a revelação súbita e a destruição do que é falso. É o arcano da libertação através da crise."
+      },
+      17: {
+        titulo: "A Estrela - A Esperança e Inspiração",
+        texto: "Simboliza a esperança, a inspiração e a orientação espiritual. Representa a luz que guia através da escuridão."
+      },
+      18: {
+        titulo: "A Lua - Os Mistérios e Ilusões",
+        texto: "Representa os mistérios, as ilusões e o subconsciente. É o arcano dos sonhos e das verdades ocultas."
+      },
+      19: {
+        titulo: "O Sol - A Alegria e Vitalidade",
+        texto: "Simboliza a alegria, a vitalidade e o sucesso. Representa a energia positiva e a realização dos objetivos."
+      },
+      20: {
+        titulo: "O Julgamento - O Despertar Espiritual",
+        texto: "Representa o despertar, a renovação e o julgamento final. É o arcano da ressurreição e da segunda chance."
+      },
+      21: {
+        titulo: "O Mundo - A Realização Completa",
+        texto: "Simboliza a realização, a completude e o sucesso total. Representa o fim bem-sucedido de uma jornada e o início de uma nova."
+      },
+      22: {
+        titulo: "O Louco - O Eterno Recomeço",
+        texto: "Representa o eterno recomeço, a renovação constante e a coragem de sempre começar de novo."
+      }
+    };
+
+    // Tabelas de conversão numerológica
+    const tabelaPitagorica = {
+      'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
+      'J': 1, 'K': 2, 'L': 3, 'M': 4, 'N': 5, 'O': 6, 'P': 7, 'Q': 8, 'R': 9,
+      'S': 1, 'T': 2, 'U': 3, 'V': 4, 'W': 5, 'X': 6, 'Y': 7, 'Z': 8
+    };
+
+    const tabelaCabalistica = {
+      'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8,
+      'I': 1, 'J': 2, 'K': 3, 'L': 4, 'M': 5, 'N': 6, 'O': 7, 'P': 8,
+      'Q': 1, 'R': 2, 'S': 3, 'T': 4, 'U': 5, 'V': 6, 'W': 7, 'X': 8,
+      'Y': 1, 'Z': 2
+    };
+
+    const vogais = ['A', 'E', 'I', 'O', 'U'];
+    const numerosMestres = [11, 22, 33];
+    const numerosKarmicos = [13, 14, 16, 19];
+
+    // Navegação entre abas
+    document.querySelectorAll('.nav-tab button').forEach(button => {
+      button.addEventListener('click', () => {
+        const targetSection = button.dataset.section;
+        
+        // Remove active das abas
+        document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+        button.parentElement.classList.add('active');
+        
+        // Remove active das seções
+        document.querySelectorAll('.section').forEach(section => section.classList.add('hidden'));
+        document.getElementById(targetSection).classList.remove('hidden');
+      });
+    });
+
+    // Funções utilitárias
+    function normalizarTexto(texto) {
+      return texto.toUpperCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^A-Z]/g, '');
+    }
+
+    function reduzirNumero(numero, sistema = 'pitagorico') {
+      if (numerosMestres.includes(numero) || numerosKarmicos.includes(numero)) {
+        return numero;
+      }
+      
+      while (numero > 9 && (sistema === 'pitagorico' || numero > 8)) {
+        numero = numero.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+        if (numerosMestres.includes(numero) || numerosKarmicos.includes(numero)) {
+          break;
+        }
+      }
+      
+      return numero;
+    }
+
+    function calcularNumeroNome(nome, tabela, filtro = null) {
+      const nomeNormalizado = normalizarTexto(nome);
+      let soma = 0;
+      
+      for (let letra of nomeNormalizado) {
+        if (filtro && !filtro.includes(letra)) continue;
+        if (filtro === null || filtro.includes(letra)) {
+          soma += tabela[letra] || 0;
+        }
+      }
+      
+      return soma;
+    }
+
+    function reduzirParaArcano(numero) {
+      while (numero > 22) {
+        numero = numero.toString().split('').reduce((sum, digit) => sum + parseInt(digit), 0);
+      }
+      return numero === 0 ? 22 : numero;
+    }
+
+    function calcularIdade(dataNascimento) {
+      const hoje = new Date();
+      const nascimento = new Date(dataNascimento);
+      let idade = hoje.getFullYear() - nascimento.getFullYear();
+      const mesAtual = hoje.getMonth();
+      const mesNascimento = nascimento.getMonth();
+      
+      if (mesAtual < mesNascimento || (mesAtual === mesNascimento && hoje.getDate() < nascimento.getDate())) {
+        idade--;
+      }
+      
+      return idade;
+    }
+
+    // Função principal para calcular o mapa numerológico
+    function calcularMapa() {
+      const nome = document.getElementById('nomeCompleto').value.trim();
+      const dataNascimento = document.getElementById('dataNascimento').value;
+      const sistema = document.getElementById('sistemaNumerico').value;
+      
+      if (!nome || !dataNascimento) {
+        alert('Por favor, preencha todos os campos obrigatórios.');
+        return;
+      }
+      
+      const perfil = calcularPerfil(nome, dataNascimento, sistema);
+      renderResultadosMapa(perfil);
+    }
+
+    function calcularPerfil(nome, dataNascimento, sistema = 'pitagorico') {
+      const tabela = sistema === 'pitagorico' ? tabelaPitagorica : tabelaCabalistica;
+      const consoantes = Object.keys(tabela).filter(letra => !vogais.includes(letra));
+      
+      // Números fundamentais
+      const somaVogais = calcularNumeroNome(nome, tabela, vogais);
+      const somaConsoantes = calcularNumeroNome(nome, tabela, consoantes);
+      const somaTotal = calcularNumeroNome(nome, tabela);
+      
+      const alma = reduzirNumero(somaVogais, sistema);
+      const personalidade = reduzirNumero(somaConsoantes, sistema);
+      const expressao = reduzirNumero(somaTotal, sistema);
+      
+      // Número do destino (data de nascimento)
+      const dataNumeros = dataNascimento.replace(/-/g, '').split('').map(Number);
+      const somaData = dataNumeros.reduce((sum, num) => sum + num, 0);
+      const destino = reduzirNumero(somaData, sistema);
+      
+      return {
+        numerosFundamentais: {
+          alma,
+          personalidade,
+          expressao,
+          destino
+        },
+        sistema,
+        nome,
+        dataNascimento
+      };
+    }
+
+    function renderResultadosMapa(perfil) {
+      const resultadosDiv = document.getElementById('resultados-mapa');
+      const { alma, personalidade, expressao, destino } = perfil.numerosFundamentais;
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center">Seus Números Fundamentais</h3>
+          <div class="result-grid">
+            <div class="result-card">
+              <div class="result-number">${alma}</div>
+              <div class="result-title">Número da Alma</div>
+            </div>
+            <div class="result-card">
+              <div class="result-number">${personalidade}</div>
+              <div class="result-title">Número da Personalidade</div>
+            </div>
+            <div class="result-card">
+              <div class="result-number">${expressao}</div>
+              <div class="result-title">Número da Expressão</div>
+            </div>
+            <div class="result-card">
+              <div class="result-number">${destino}</div>
+              <div class="result-title">Número do Destino</div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      // Adicionar interpretações detalhadas
+      if (textosMapaPessoal.alma[alma]) {
+        html += `
+          <div class="interpretation">
+            <h4>${textosMapaPessoal.alma[alma].titulo}</h4>
+            ${textosMapaPessoal.alma[alma].texto}
+          </div>
+        `;
+      }
+      
+      if (textosMapaPessoal.personalidade[personalidade]) {
+        html += `
+          <div class="interpretation">
+            <h4>${textosMapaPessoal.personalidade[personalidade].titulo}</h4>
+            ${textosMapaPessoal.personalidade[personalidade].texto}
+          </div>
+        `;
+      }
+      
+      if (textosMapaPessoal.expressao[expressao]) {
+        html += `
+          <div class="interpretation">
+            <h4>${textosMapaPessoal.expressao[expressao].titulo}</h4>
+            ${textosMapaPessoal.expressao[expressao].texto}
+          </div>
+        `;
+      }
+      
+      if (textosMapaPessoal.destino[destino]) {
+        html += `
+          <div class="interpretation">
+            <h4>${textosMapaPessoal.destino[destino].titulo}</h4>
+            ${textosMapaPessoal.destino[destino].texto}
+          </div>
+        `;
+      }
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    // Função para calcular a Pirâmide Cabalística
+    function calcularPiramide() {
+      const nome = document.getElementById('nomePiramide').value.trim();
+      const idade = parseInt(document.getElementById('idadePiramide').value);
+      
+      if (!nome || !idade) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      
+      const piramide = gerarPiramideCabalistica(nome, idade);
+      renderResultadosPiramide(piramide, idade);
+    }
+
+    function gerarPiramideCabalistica(nome, idade) {
+      const nomeNormalizado = normalizarTexto(nome);
+      const numerosNome = nomeNormalizado.split('').map(letra => tabelaCabalistica[letra] || 0);
+      
+      const piramide = [];
+      let linhaAtual = numerosNome;
+      
+      while (linhaAtual.length > 1) {
+        piramide.push([...linhaAtual]);
+        const novaLinha = [];
+        
+        for (let i = 0; i < linhaAtual.length - 1; i++) {
+          let soma = linhaAtual[i] + linhaAtual[i + 1];
+          soma = reduzirParaArcano(soma);
+          novaLinha.push(soma);
+        }
+        
+        linhaAtual = novaLinha;
+      }
+      
+      piramide.push(linhaAtual);
+      
+      // Calcular arcanos por década
+      const arcanosPorDecada = calcularArcanosPorDecada(piramide, idade);
+      
+      return {
+        piramide,
+        arcanosPorDecada,
+        arcanoAtual: obterArcanoAtual(arcanosPorDecada, idade)
+      };
+    }
+
+    function calcularArcanosPorDecada(piramide, idade) {
+      const arcanosPorDecada = [];
+      const totalLinhas = piramide.length;
+      
+      for (let decada = 0; decada < 9; decada++) {
+        const arcanos = [];
+        const inicioDecada = decada * 10;
+        const fimDecada = inicioDecada + 9;
+        
+        for (let ano = inicioDecada; ano <= fimDecada; ano++) {
+          const linhaIndex = Math.floor((ano / 90) * totalLinhas);
+          const posicaoNaLinha = Math.floor((ano % 10) / 10 * (piramide[linhaIndex]?.length || 1));
+          const arcano = piramide[linhaIndex]?.[posicaoNaLinha] || 1;
+          
+          arcanos.push({
+            ano,
+            numero: arcano,
+            atual: ano === idade
+          });
+        }
+        
+        arcanosPorDecada.push({
+          decada: `${inicioDecada}-${fimDecada}`,
+          arcanos
+        });
+      }
+      
+      return arcanosPorDecada;
+    }
+
+    function obterArcanoAtual(arcanosPorDecada, idade) {
+      for (let decada of arcanosPorDecada) {
+        for (let arcano of decada.arcanos) {
+          if (arcano.ano === idade) {
+            return arcano.numero;
+          }
+        }
+      }
+      return 1;
+    }
+
+    function renderResultadosPiramide(resultado, idade) {
+      const resultadosDiv = document.getElementById('resultados-piramide');
+      const { arcanosPorDecada, arcanoAtual } = resultado;
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center">Seu Arcano Regente Atual</h3>
+          <div class="result-grid">
+            <div class="result-card" style="background: var(--gold); color: var(--navy);">
+              <div class="result-number" style="color: var(--navy);">${arcanoAtual}</div>
+              <div class="result-title" style="color: var(--wine);">${nomesArcanos[arcanoAtual]}</div>
+            </div>
+          </div>
+          <div class="interpretation">
+            <h4>${interpretacoesArcanos[arcanoAtual]?.titulo || `Arcano ${arcanoAtual}`}</h4>
+            <p>${interpretacoesArcanos[arcanoAtual]?.texto || 'Interpretação em desenvolvimento.'}</p>
+          </div>
+        </div>
+        
+        <div class="card">
+          <h3 class="text-center">Pirâmide Cabalística - Ciclo de 90 Anos</h3>
+          <div class="piramide-container">
+      `;
+      
+      for (let linha of arcanosPorDecada) {
+        html += `
+          <div class="decada-linha">
+            <div class="decada-label">Década ${linha.decada} anos</div>
+            <div class="arcanos-linha">
+        `;
+        
+        for (let arcano of linha.arcanos) {
+          const classeAtual = arcano.atual ? 'arcano-atual-piramide' : '';
+          html += `
+            <div class="arcano-piramide ${classeAtual}" title="${nomesArcanos[arcano.numero] || `Arcano ${arcano.numero}`}">
+              ${arcano.numero}
+            </div>
+          `;
+        }
+        
+        html += `</div></div>`;
+      }
+      
+      html += `
+          </div>
+        </div>
+      `;
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    // Função para calcular os Pináculos da Vida
+    function calcularPinaculos() {
+      const nome = document.getElementById('nomePinaculos').value.trim();
+      const dataNascimento = document.getElementById('dataPinaculos').value;
+      
+      if (!nome || !dataNascimento) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      
+      const pinaculos = calcularPinaculosVida(dataNascimento);
+      renderResultadosPinaculos(pinaculos);
+    }
+
+    function calcularPinaculosVida(dataNascimento) {
+      const [ano, mes, dia] = dataNascimento.split('-').map(Number);
+      const idade = calcularIdade(dataNascimento);
+      
+      // Reduzir componentes da data
+      const diaReduzido = reduzirNumero(dia);
+      const mesReduzido = reduzirNumero(mes);
+      const anoReduzido = reduzirNumero(ano);
+      
+      // Calcular os 4 pináculos
+      const pinaculo1 = reduzirNumero(diaReduzido + mesReduzido);
+      const pinaculo2 = reduzirNumero(diaReduzido + anoReduzido);
+      const pinaculo3 = reduzirNumero(pinaculo1 + pinaculo2);
+      const pinaculo4 = reduzirNumero(mesReduzido + anoReduzido);
+      
+      // Calcular períodos dos pináculos
+      const numeroVida = reduzirNumero(diaReduzido + mesReduzido + anoReduzido);
+      const primeiroPeriodo = 36 - numeroVida;
+      const segundoPeriodo = primeiroPeriodo + 9;
+      const terceiroPeriodo = segundoPeriodo + 9;
+      
+      return [
+        {
+          numero: pinaculo1,
+          fase: "Primeiro Pináculo",
+          periodo: `Nascimento até ${primeiroPeriodo} anos`,
+          ativo: idade <= primeiroPeriodo,
+          descricao: "Período de formação da personalidade e descoberta dos talentos básicos."
+        },
+        {
+          numero: pinaculo2,
+          fase: "Segundo Pináculo",
+          periodo: `${primeiroPeriodo + 1} até ${segundoPeriodo} anos`,
+          ativo: idade > primeiroPeriodo && idade <= segundoPeriodo,
+          descricao: "Período de desenvolvimento profissional e estabelecimento na sociedade."
+        },
+        {
+          numero: pinaculo3,
+          fase: "Terceiro Pináculo",
+          periodo: `${segundoPeriodo + 1} até ${terceiroPeriodo} anos`,
+          ativo: idade > segundoPeriodo && idade <= terceiroPeriodo,
+          descricao: "Período de maior produtividade e realização dos objetivos principais."
+        },
+        {
+          numero: pinaculo4,
+          fase: "Quarto Pináculo",
+          periodo: `${terceiroPeriodo + 1} anos em diante`,
+          ativo: idade > terceiroPeriodo,
+          descricao: "Período de sabedoria, transmissão de conhecimento e legado."
+        }
+      ];
+    }
+
+    function renderResultadosPinaculos(pinaculos) {
+      const resultadosDiv = document.getElementById('resultados-pinaculos');
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center">Os Quatro Pináculos da Sua Vida</h3>
+          <div class="pinaculos-container">
+      `;
+      
+      for (let pinaculo of pinaculos) {
+        const classeAtivo = pinaculo.ativo ? 'ativo' : '';
+        html += `
+          <div class="pinaculo-card ${classeAtivo}">
+            <div class="pinaculo-header">
+              <div class="pinaculo-numero">${pinaculo.numero}</div>
+              <div class="pinaculo-info">
+                <div class="pinaculo-fase">${pinaculo.fase}</div>
+                <div class="pinaculo-periodo">${pinaculo.periodo}</div>
+              </div>
+            </div>
+            <div class="pinaculo-descricao">${pinaculo.descricao}</div>
+            ${pinaculo.ativo ? '<div style="color: var(--gold); font-weight: bold; margin-top: 0.5rem;">✨ Pináculo Atual</div>' : ''}
+          </div>
+        `;
+      }
+      
+      html += `
+          </div>
+        </div>
+      `;
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    // Função para calcular os Arcanos Temporais
+    function calcularArcanos() {
+      const nome = document.getElementById('nomeArcanos').value.trim();
+      const dataNascimento = document.getElementById('dataArcanos').value;
+      
+      if (!nome || !dataNascimento) {
+        alert('Por favor, preencha todos os campos.');
+        return;
+      }
+      
+      const arcanos = calcularArcanosTemporais(nome, dataNascimento);
+      renderResultadosArcanos(arcanos);
+    }
+
+    function calcularArcanosTemporais(nome, dataNascimento) {
+      const hoje = new Date();
+      const nascimento = new Date(dataNascimento);
+      
+      // Arcano Pessoal (baseado na data de nascimento)
+      const dataNumeros = dataNascimento.replace(/-/g, '').split('').map(Number);
+      const somaData = dataNumeros.reduce((sum, num) => sum + num, 0);
+      const arcanoPessoal = reduzirParaArcano(somaData);
+      
+      // Arcano do Ano
+      const arcanoAno = reduzirParaArcano(nascimento.getDate() + nascimento.getMonth() + 1 + hoje.getFullYear());
+      
+      // Arcano do Mês
+      const arcanoMes = reduzirParaArcano(arcanoAno + hoje.getMonth() + 1);
+      
+      // Arcano da Semana
+      const inicioAno = new Date(hoje.getFullYear(), 0, 1);
+      const diasPassados = Math.floor((hoje - inicioAno) / (24 * 60 * 60 * 1000));
+      const semanaAno = Math.ceil(diasPassados / 7);
+      const arcanoSemana = reduzirParaArcano(semanaAno);
+      
+      // Arcano do Dia
+      const arcanoDia = reduzirParaArcano(hoje.getDate() + hoje.getMonth() + 1 + hoje.getFullYear());
+      
+      return {
+        pessoal: { numero: arcanoPessoal, periodo: "Nascimento" },
+        ano: { numero: arcanoAno, periodo: "Ano Atual" },
+        mes: { numero: arcanoMes, periodo: "Mês Atual" },
+        semana: { numero: arcanoSemana, periodo: "Semana Atual" },
+        dia: { numero: arcanoDia, periodo: "Dia Atual" }
+      };
+    }
+
+    function renderResultadosArcanos(arcanos) {
+      const resultadosDiv = document.getElementById('resultados-arcanos');
+      
+      let html = `
+        <div class="card">
+          <h3 class="text-center">Seus Arcanos Temporais</h3>
+          <div class="arcanos-temporais">
+      `;
+      
+      for (let [tipo, arcano] of Object.entries(arcanos)) {
+        html += `
+          <div class="arcano-temporal">
+            <div class="arcano-imagem">
+              <img src="assets/img/cartas/${arcano.numero}.jpg" alt="${nomesArcanos[arcano.numero]}" 
+                   style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div style="display: none; width: 100%; height: 100%; background: var(--gold); border-radius: 8px; align-items: center; justify-content: center; font-size: 1.2rem; font-weight: bold; color: var(--navy);">
+                ${arcano.numero}
+              </div>
+            </div>
+            <div class="arcano-nome">${nomesArcanos[arcano.numero]}</div>
+            <div class="arcano-periodo">${arcano.periodo}</div>
+          </div>
+        `;
+      }
+      
+      html += `
+          </div>
+        </div>
+      `;
+      
+      // Adicionar interpretações detalhadas
+      for (let [tipo, arcano] of Object.entries(arcanos)) {
+        if (interpretacoesArcanos[arcano.numero]) {
+          html += `
+            <div class="interpretation">
+              <h4>${interpretacoesArcanos[arcano.numero].titulo} - ${arcano.periodo}</h4>
+              <p>${interpretacoesArcanos[arcano.numero].texto}</p>
+            </div>
+          `;
+        }
+      }
+      
+      resultadosDiv.innerHTML = html;
+      resultadosDiv.classList.remove('hidden');
+    }
+
+    // Funções de exemplo
+    function preencherExemplo() {
+      document.getElementById('nomeCompleto').value = 'Maria Silva Santos';
+      document.getElementById('dataNascimento').value = '1990-05-15';
+    }
+
+    function preencherExemploPiramide() {
+      document.getElementById('nomePiramide').value = 'Maria Silva Santos';
+      document.getElementById('idadePiramide').value = '33';
+    }
+
+    function preencherExemploPinaculos() {
+      document.getElementById('nomePinaculos').value = 'Maria Silva Santos';
+      document.getElementById('dataPinaculos').value = '1990-05-15';
+    }
+
+    function preencherExemploArcanos() {
+      document.getElementById('nomeArcanos').value = 'Maria Silva Santos';
+      document.getElementById('dataArcanos').value = '1990-05-15';
+    }
+
+    // Funções de limpeza
+    function limparMapa() {
+      document.getElementById('nomeCompleto').value = '';
+      document.getElementById('dataNascimento').value = '';
+      document.getElementById('sistemaNumerico').value = 'pitagorico';
+      document.getElementById('resultados-mapa').classList.add('hidden');
+    }
+
+    function limparPiramide() {
+      document.getElementById('nomePiramide').value = '';
+      document.getElementById('idadePiramide').value = '';
+      document.getElementById('resultados-piramide').classList.add('hidden');
+    }
+
+    function limparPinaculos() {
+      document.getElementById('nomePinaculos').value = '';
+      document.getElementById('dataPinaculos').value = '';
+      document.getElementById('resultados-pinaculos').classList.add('hidden');
+    }
+
+    function limparArcanos() {
+      document.getElementById('nomeArcanos').value = '';
+      document.getElementById('dataArcanos').value = '';
+      document.getElementById('resultados-arcanos').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>

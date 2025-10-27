@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dois de Paus - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Dois de Paus</h1>
+            <p class="subtitulo">37 - A Encruzilhada da Vontade</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/37TwoofClubs.jpg" alt="Dois de Paus" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Planejamento</span>
+                        <span class="palavra-chave">Decisão</span>
+                        <span class="palavra-chave">Potencial</span>
+                        <span class="palavra-chave">Ambição</span>
+                        <span class="palavra-chave">Escolha</span>
+                        <span class="palavra-chave">Inovação</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Dois de Paus representa a energia ativa que se manifesta como uma escolha fundamental, um momento de pausa antes da ação. Este arcano indica a dualidade da vontade, o ponto onde o impulso inicial do Ás de Paus se divide em duas possibilidades. A sua energia é a de um planejamento cuidadoso, de uma avaliação das opções antes de se comprometer com um caminho. O Dois simboliza a parceria, a colaboração e o equilíbrio, mas também a tensão da indecisão. Ele é o arquiteto que contempla a planta baixa, o general que estuda o mapa antes da batalha. A sua posição no início da jornada do naipe de Paus reforça a ideia de um momento crucial de decisão, onde a semente da vontade começa a tomar forma. A sua numerologia, portanto, é a da dualidade, da escolha e da cooperação, um portal para a manifestação da energia criativa.</p>
+                    </div>
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o número Dois, especialmente no naipe de Paus, simboliza a dualidade, a polaridade e a necessidade de escolha. Após a unidade e o impulso inicial do Ás, o Dois de Paus nos confronta com a existência de duas direções possíveis, dois caminhos, duas vontades. Não se trata de uma oposição, mas de uma complementariedade que exige discernimento. A energia do Dois de Paus representa a reflexão antes da ação, a ponderação das alternativas. É o momento em que a força criativa se depara com a necessidade de definir seu foco, de escolher entre as múltiplas possibilidades que se apresentam. Este arcano indica a capacidade de formar parcerias, de buscar o equilíbrio entre forças opostas e de encontrar a harmonia através da interação. A numerologia do Dois de Paus ressalta a importância da colaboração e da diplomacia para alcançar os objetivos, reconhecendo que a união de duas energias pode gerar um poder maior do que a soma de suas partes. É a semente da cooperação e da decisão consciente.</p>
+                    </div>
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No universo cromático do Tarot de Jodorowsky, as cores no Dois de Paus não são meros detalhes, mas elementos que comunicam a essência e as nuances deste arcano. A predominância de tons quentes, como o vermelho e o laranja, representa a paixão, a energia e a força vital que impulsionam a vontade. O vermelho, em particular, simboliza a ação, o desejo e a coragem, enquanto o laranja indica a criatividade, o entusiasmo e a adaptabilidade. O verde, presente em alguns detalhes, representa o crescimento, a renovação e a esperança, sugerindo que as escolhas feitas neste momento podem levar a um futuro próspero. O azul, se presente, pode indicar a introspecção e a clareza mental necessárias para a tomada de decisões. A combinação dessas cores no Dois de Paus simboliza a necessidade de equilibrar a paixão e a ação com a reflexão e a sabedoria. É a dança entre o impulso e a ponderação, onde a energia criativa se manifesta através de escolhas conscientes e coloridas pela vitalidade da existência.</p>
+                    </div>
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Dois de Paus, na perspectiva de Jodorowsky, indicam uma fase de grande potencial e de escolhas conscientes. Este arcano representa a capacidade de planejar com sabedoria, de ponderar as opções antes de agir, e de tomar decisões que conduzem ao crescimento e à expansão. A energia do Dois de Paus simboliza a ambição construtiva, a visão de futuro e a habilidade de transformar ideias em realidade através de um planejamento estratégico. É o momento em que a vontade se alinha com a inteligência, permitindo que o indivíduo construa seu próprio destino. A presença do Dois de Paus em uma leitura sugere que o consulente possui a capacidade de discernir entre as diversas possibilidades, escolhendo o caminho que melhor serve aos seus propósitos e ao seu desenvolvimento. Indica também a habilidade de formar parcerias benéficas, de colaborar com outros para alcançar objetivos comuns, e de encontrar o equilíbrio entre a individualidade e a coletividade. Este arcano representa a coragem de explorar novos horizontes, de sair da zona de conforto e de abraçar o desconhecido com confiança. É a semente da inovação, da criatividade e da manifestação de um futuro promissor, onde a vontade se torna um instrumento de construção e de realização.</p>
+                    </div>
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Dois de Paus se manifesta em seus aspectos negativos, segundo a visão de Jodorowsky, ele pode indicar indecisão paralisante, excesso de planejamento sem ação, ou a incapacidade de se comprometer com um caminho. A dualidade inerente a este arcano pode se transformar em um dilema constante, onde a pessoa se perde na análise das opções, sem nunca dar o passo decisivo. A energia criativa pode ser dissipada em múltiplos projetos inacabados, ou em ambições que nunca se concretizam devido à falta de foco. O Dois de Paus negativo também pode simbolizar a arrogância intelectual, a crença de que se sabe tudo e, portanto, não há necessidade de ouvir ou colaborar com os outros. Pode representar a dificuldade em formar parcerias, a desconfiança em relação ao outro, ou a tendência a manipular situações para benefício próprio. A busca por controle excessivo pode levar à rigidez e à inflexibilidade, impedindo o fluxo natural da vida e a aceitação do inesperado. Este arcano, em sua sombra, alerta para o perigo de se perder na teoria, esquecendo-se da prática, e de se isolar em sua própria mente, perdendo a conexão com o mundo exterior e com as oportunidades que surgem. É a semente da estagnação, da frustração e da solidão, onde a vontade se torna um fardo em vez de uma força motriz.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

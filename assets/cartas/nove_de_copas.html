@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nove de Copas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Nove de Copas</h1>
+            <p class="subtitulo">58 - A Satisfação dos Desejos</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/58NineofCups.jpg" alt="Nove de Copas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Satisfação</span>
+                        <span class="palavra-chave">Contentamento</span>
+                        <span class="palavra-chave">Realização</span>
+                        <span class="palavra-chave">Gratidão</span>
+                        <span class="palavra-chave">Prazer</span>
+                        <span class="palavra-chave">Abundância</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Nove de Copas representa a energia receptiva que se manifesta como satisfação e contentamento. Este arcano indica a culminação de um ciclo emocional, um momento de realização e de alegria. A sua energia é de gratidão, de reconhecimento das bênçãos recebidas e de partilha da felicidade com os outros. O Nove simboliza a quase conclusão, a um passo da totalidade do Dez, indicando um estado de plenitude que, embora não seja o fim da jornada, é um porto seguro de felicidade e bem-estar. Ele representa a materialização dos desejos do coração, a concretização dos sonhos e a celebração da vida.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o número Nove é o número da sabedoria, da introspeção e da conclusão. Ele representa o fim de um ciclo e a preparação para um novo começo. O Nove de Copas, portanto, carrega a energia da sabedoria emocional, da compreensão profunda dos sentimentos e da capacidade de encontrar a felicidade dentro de si mesmo. Ele indica um momento de reflexão sobre as experiências vividas, de integração dos aprendizados e de celebração das conquistas. O Nove é o número do eremita, daquele que se retira para meditar e para encontrar a sua luz interior, e no naipe de Copas, essa busca se dá no plano das emoções e dos relacionamentos.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>As cores no Nove de Copas, segundo a visão de Jodorowsky, são vibrantes e alegres, refletindo a energia de satisfação e de contentamento do arcano. O dourado das copas simboliza a riqueza espiritual, a abundância e a prosperidade. O azul do fundo representa a tranquilidade, a serenidade e a paz de espírito. O vermelho das vestes do personagem central indica a paixão, a vitalidade e a energia da vida. As cores, em conjunto, criam uma atmosfera de celebração, de alegria e de gratidão, reforçando a mensagem de que a felicidade é um estado de espírito que pode ser cultivado e partilhado.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Nove de Copas indicam a capacidade de sentir e de expressar a gratidão, de reconhecer as bênçãos da vida e de partilhar a felicidade com os outros. Ele representa a generosidade, a hospitalidade e a alegria de viver. Este arcano simboliza a realização dos desejos, a concretização dos sonhos e a celebração das conquistas. Ele indica um momento de contentamento, de satisfação e de bem-estar, onde a pessoa se sente plena e realizada em todos os aspetos da sua vida. O Nove de Copas é um convite para celebrar a vida, para desfrutar dos prazeres simples e para partilhar a sua alegria com o mundo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Nove de Copas apresenta aspectos negativos, pode indicar uma tendência à complacência, à autoindulgência e ao excesso de prazeres. A satisfação pode se transformar em estagnação, a alegria em superficialidade e a generosidade em ostentação. Ele pode indicar um momento de excessos, de falta de moderação e de busca incessante por prazeres materiais, esquecendo-se da dimensão espiritual da vida. O Nove de Copas em desequilíbrio pode representar a arrogância, a vaidade e a incapacidade de encontrar a verdadeira felicidade, que não reside na posse de bens materiais, mas na riqueza do coração e na partilha com os outros.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+
+

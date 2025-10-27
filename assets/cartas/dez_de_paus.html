@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dez de Paus - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Dez de Paus</h1>
+            <p class="subtitulo">45 - O Fardo da Conclusão</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/45TenofClubs.jpg" alt="Dez de Paus" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Sobrecarga</span>
+                        <span class="palavra-chave">Fardo</span>
+                        <span class="palavra-chave">Esgotamento</span>
+                        <span class="palavra-chave">Responsabilidade</span>
+                        <span class="palavra-chave">Excesso</span>
+                        <span class="palavra-chave">Libertação</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Dez de Paus representa a energia ativa que atinge seu ponto de saturação, um excesso de força que se torna um fardo. Este arcano indica o fim de um ciclo de ação, onde o acúmulo de experiências e responsabilidades chega a um limite. A sua energia é a de um esgotamento, de uma sobrecarga que impede o movimento e a clareza. O Dez simboliza a totalidade da ação, mas uma totalidade que, em seu excesso, se torna aprisionadora. Ele representa o ponto em que a vontade, levada ao extremo, se volta contra si mesma, criando uma estagnação. A sua posição no final do naipe de Paus reforça a ideia de um culminar, mas um culminar que exige uma reavaliação e uma libertação para que um novo ciclo possa começar.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot de Jodorowsky, o número dez simboliza a totalidade, o fim de um ciclo e o retorno à unidade. No Dez de Paus, essa totalidade se manifesta como um acúmulo de energia de ação que se torna excessivo. O dez é o número que contém todos os números de um a nove, representando a plenitude da experiência. No entanto, no naipe de Paus, essa plenitude se traduz em um excesso de bastões, um fardo de responsabilidades e projetos que se tornam insustentáveis. O número dez aqui não indica uma conclusão harmoniosa, mas sim um ponto de crise, onde a energia acumulada precisa ser liberada ou transformada. É o fim de um caminho que, se não for abandonado, leva à exaustão e à paralisia.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No universo simbólico de Jodorowsky, as cores no Dez de Paus refletem a sua energia de sobrecarga e estagnação. Os bastões, frequentemente representados em tons de madeira escura ou avermelhada, simbolizam a energia vital e a ação, mas aqui, a sua multiplicidade e entrelaçamento criam uma imagem de confusão e peso. As cores do cenário, muitas vezes áridas ou sombrias, reforçam a sensação de um ambiente opressivo e sem saída. A ausência de cores vibrantes ou luminosas indica uma falta de esperança e de novas perspectivas. A paleta de cores do Dez de Paus é a de um crepúsculo, de um fim de dia onde a energia se esgota e a escuridão se aproxima, simbolizando o fim de um ciclo de ação que se tornou infrutífero.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Dez de Paus, na ótica de Jodorowsky, indicam a tomada de consciência do próprio fardo. É o momento em que o indivíduo percebe que está carregando um peso desnecessário e que precisa se libertar. Este arcano, em seu aspecto positivo, representa a coragem de abandonar projetos, responsabilidades e padrões de comportamento que se tornaram opressivos. É a força que surge da exaustão, a clareza que nasce da confusão. O Dez de Paus positivo é o primeiro passo para a libertação, o reconhecimento de que a verdadeira força não está em carregar o mundo nas costas, mas em saber o que deixar para trás.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Dez de Paus apresenta aspectos negativos, segundo Jodorowsky, ele indica a teimosia em carregar um fardo insustentável. É a recusa em admitir a derrota, a insistência em projetos que já se mostraram inviáveis. A energia negativa deste arcano é a da auto-opressão, da vitimização e da incapacidade de pedir ajuda. O indivíduo se sente sobrecarregado, mas ao mesmo tempo, se apega ao seu fardo como uma forma de identidade. O Dez de Paus negativo é a estagnação completa, a paralisia causada pelo excesso de ação, um beco sem saída onde a única perspectiva é a da exaustão contínua.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sete de Paus - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Sete de Paus</h1>
+            <p class="subtitulo">42 - A Coragem da Defesa Justa</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/42SevenofClubs.jpg" alt="Sete de Paus" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Defesa</span>
+                        <span class="palavra-chave">Coragem</span>
+                        <span class="palavra-chave">Desafio</span>
+                        <span class="palavra-chave">Posição</span>
+                        <span class="palavra-chave">Integridade</span>
+                        <span class="palavra-chave">Convicção</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Sete de Paus simboliza a energia ativa da coragem e da defesa de uma posição conquistada. Este arcano representa um momento de desafio, onde o indivíduo se encontra em uma posição de vantagem, mas precisa lutar para mantê-la. A energia do Sete indica uma prova, um teste de convicção e força interior. Não é uma agressão gratuita, mas uma resposta necessária a uma oposição. O bastão que a figura central empunha é a manifestação da sua vontade e da sua verdade, defendida com vigor contra as adversidades que surgem de baixo. É a energia da autoafirmação, da luta por aquilo em que se acredita, mantendo a integridade e a honra mesmo sob pressão. Este arcano indica a necessidade de se manter firme, de não ceder terreno e de usar a força criativa (Paus) para proteger o seu espaço e os seus ideais.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>No Tarot, o número Sete representa a perfeição do ciclo, a totalidade e a espiritualidade, mas também o desafio e a necessidade de superação. É o número da vitória após a batalha, da sabedoria adquirida através da experiência. No Sete de Paus, essa energia se manifesta como a luta para manter o equilíbrio conquistado no Seis. Se o Seis de Paus representa a harmonia e o reconhecimento social, o Sete é o momento em que essa posição é contestada. A numerologia do Sete aqui indica a necessidade de uma ação individual e corajosa. É a energia de um guerreiro solitário que, de uma posição elevada, defende seu território. O Sete é um número que exige introspecção e autoconfiança, pois a vitória depende unicamente da força interior e da clareza de propósito do indivíduo. Ele simboliza a passagem de um estado de equilíbrio para um teste que forjará um caráter mais forte e resiliente.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>As cores no Sete de Paus reforçam a sua mensagem de luta e convicção. A figura central geralmente veste-se com tons de verde e marrom, cores que simbolizam a conexão com a terra, a estabilidade e o crescimento. O verde representa a vitalidade e a perseverança, a força da natureza que se defende para sobreviver. O marrom indica a solidez da posição, o terreno firme sobre o qual a figura se apoia. Os bastões, elementos de Fogo, são representados em tons de madeira natural, simbolizando a energia criativa e a paixão que impulsionam a ação. O céu, muitas vezes claro, indica que a luta é travada com clareza de consciência, sem enganos ou ilusões. A ausência de cores escuras ou sombrias sugere que a batalha é justa, uma defesa legítima e não um ato de agressão cega. A paleta de cores, portanto, constrói uma cena de coragem fundamentada e de defesa honrada.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Em seus aspectos positivos, o Sete de Paus indica coragem, determinação e a capacidade de defender as próprias convicções com sucesso. Representa a força para superar desafios e a resiliência diante da adversidade. Este arcano aponta para um momento em que a pessoa tem a vantagem e a força necessárias para proteger seus interesses, projetos ou valores. Simboliza a integridade, a autoconfiança e a habilidade de se manter firme em uma posição de liderança ou autoridade. É a carta da vitória em uma competição ou debate, da superação de obstáculos através da perseverança e da ação assertiva. O Sete de Paus em uma leitura positiva é um sinal para não desistir, para lutar pelo que é justo e para confiar na própria capacidade de vencer as oposições que se apresentam.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Sete de Paus se manifesta em seus aspectos negativos, ele pode indicar teimosia, paranoia e uma postura excessivamente defensiva. A pessoa pode se sentir constantemente atacada, mesmo quando não há uma ameaça real, levando a um estado de exaustão e isolamento. Pode simbolizar uma luta perdida, a sensação de estar sobrecarregado pela oposição e a incapacidade de manter a própria posição. Este arcano em negativo também pode apontar para a arrogância, a recusa em ouvir outras perspectivas e a agressividade desnecessária. A energia de defesa se transforma em beligerância, e a luta por uma causa justa se perde em um conflito de egos. Pode indicar a necessidade de reavaliar a batalha, questionando se a posição defendida é verdadeiramente válida ou se é apenas um ato de orgulho. É um aviso contra o esgotamento de energias em conflitos infrutíferos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+

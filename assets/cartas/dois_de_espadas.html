@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dois de Espadas - Aurora Sagrada</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Alice:wght@400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Alice', serif;
+            background: linear-gradient(135deg, #0e1732 0%, #1a2456 25%, #2d3a7a 50%, #4a5c9e 75%, #6b7bc2 100%);
+            min-height: 100vh;
+            color: #f2eaff;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .carta-principal {
+            background: rgba(62, 10, 41, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border: 2px solid #b2d1b1;
+            backdrop-filter: blur(10px);
+        }
+
+        .titulo-principal {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            text-align: center;
+            color: #f0aa53;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .subtitulo {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.5rem;
+            text-align: center;
+            color: #b2d1b1;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .carta-layout {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .carta-imagem {
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        .carta-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+            border: 3px solid #f0aa53;
+            transition: transform 0.3s ease;
+        }
+
+        .carta-img:hover {
+            transform: scale(1.05);
+        }
+
+        .palavras-chave {
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .palavra-chave {
+            background: linear-gradient(45deg, #f0aa53, #b2d1b1);
+            color: #0e1732;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .palavra-chave:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .carta-info {
+            padding-left: 20px;
+        }
+
+        .secao {
+            margin-bottom: 30px;
+            background: rgba(11, 24, 54, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #f0aa53;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .secao h2 {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 2rem;
+            color: #f0aa53;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .secao p {
+            font-size: 1.1rem;
+            text-align: justify;
+            color: #f2eaff;
+            line-height: 1.8;
+            text-indent: 20px;
+        }
+
+        .botao-voltar {
+            display: inline-block;
+            background: linear-gradient(45deg, #3e0a29, #770543);
+            color: #f2eaff;
+            padding: 15px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: bold;
+            margin: 30px auto;
+            display: block;
+            width: fit-content;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            border: 2px solid #b2d1b1;
+        }
+
+        .botao-voltar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+            background: linear-gradient(45deg, #4a0c32, #8a0650);
+        }
+
+        @media (max-width: 768px) {
+            .carta-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .carta-imagem {
+                position: static;
+            }
+            
+            .titulo-principal {
+                font-size: 2.5rem;
+            }
+            
+            .carta-info {
+                padding-left: 0;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="carta-principal">
+            <h1 class="titulo-principal">Dois de Espadas</h1>
+            <p class="subtitulo">65 - O Equilíbrio da Escolha</p>
+            
+            <div class="carta-layout">
+                <div class="carta-imagem">
+                    <img src="/home/ubuntu/images/65TwoofSwords.jpg" alt="Dois de Espadas" class="carta-img">
+                    <div class="palavras-chave">
+                        <span class="palavra-chave">Dilema</span>
+                        <span class="palavra-chave">Decisão</span>
+                        <span class="palavra-chave">Equilíbrio</span>
+                        <span class="palavra-chave">Conflito Interno</span>
+                        <span class="palavra-chave">Paz Temporária</span>
+                        <span class="palavra-chave">Intuição</span>
+                    </div>
+                </div>
+                
+                <div class="carta-info">
+                    <div class="secao">
+                        <h2>Essência do Arcano</h2>
+                        <p>O Dois de Espadas simboliza um momento de impasse e equilíbrio precário. A energia deste arcano é de uma dualidade mental, um conflito interno que resulta em uma paralisia temporária. As duas espadas cruzadas representam forças opostas em equilíbrio, uma trégua frágil antes de uma decisão inevitável. A figura central, muitas vezes vendada, indica a necessidade de olhar para dentro, de buscar respostas na intuição em vez de se basear apenas na lógica ou na percepção sensorial. Este arcano não representa a ignorância, mas sim uma escolha deliberada de se afastar do conflito externo para encontrar clareza interior. É um momento de pausa, de contenção, onde a paz é mantida através da inação. A energia é de uma neutralidade forçada, um ponto de estagnação que precede uma ação decisiva. A mente está dividida, e a única saída é encontrar um ponto de equilíbrio, mesmo que momentâneo, para avaliar as opções antes de seguir em frente.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia Numerológica</h2>
+                        <p>O número 2, no contexto do Dois de Espadas, representa a dualidade, o equilíbrio e a escolha. É o ponto onde duas forças se encontram, gerando uma tensão que exige uma decisão. Na numerologia de Jodorowsky, o 2 indica a necessidade de ponderação, de considerar ambos os lados de uma questão antes de agir. Este número simboliza a parceria, a reflexão e a capacidade de manter a harmonia entre opostos. No arcano, o 2 se manifesta na presença das duas espadas, que, embora apontem em direções diferentes, estão em um estado de suspensão, aguardando a resolução. A numerologia do 2 também pode indicar a necessidade de cooperação ou de encontrar um ponto comum em situações de conflito. É um número que convida à introspecção e à busca por uma solução que integre as polaridades, em vez de as confrontar diretamente. A ausência de movimento na carta reforça a ideia de que a energia do 2, neste contexto, é de pausa e deliberação, não de ação impulsiva.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Simbologia das Cores</h2>
+                        <p>No Dois de Espadas, as cores desempenham um papel crucial na interpretação de Jodorowsky. O azul, frequentemente presente no fundo ou nas vestes da figura, simboliza a espiritualidade, a intuição e a profundidade do pensamento. Contudo, a tonalidade pode indicar uma frieza emocional ou uma distância da realidade, refletindo o isolamento da figura. O branco da venda nos olhos não é apenas a ausência de visão, mas a pureza da intenção de se desconectar do mundo exterior para buscar a verdade interior. Pode também representar a neutralidade, a imparcialidade necessária para tomar uma decisão difícil. O cinza, se presente, pode indicar a incerteza, a ambiguidade da situação em que a figura se encontra. A ausência de cores vibrantes e a predominância de tons mais sóbrios reforçam a atmosfera de introspecção e a seriedade do dilema. As cores, portanto, não apenas adornam, mas comunicam o estado mental e emocional da carta, aprofundando a compreensão do seu simbolismo.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Positivos</h2>
+                        <p>Os aspectos positivos do Dois de Espadas, na perspectiva de Jodorowsky, indicam a capacidade de manter a calma e a serenidade em meio a um conflito ou dilema. A figura vendada simboliza a habilidade de se desconectar das distrações externas e de focar na intuição, buscando a verdade interior. Este arcano representa a paz alcançada através da suspensão do julgamento e da aceitação da dualidade. É um convite à introspecção, à meditação e à busca por um equilíbrio interno antes de tomar qualquer decisão. A inação, neste caso, não é passividade, mas uma escolha ativa de contenção, permitindo que a clareza se estabeleça. O Dois de Espadas, portanto, simboliza a sabedoria de esperar, de ponderar todas as opções e de confiar na própria bússola interna para guiar o caminho. Indica a força de quem consegue manter a neutralidade e a objetividade, mesmo diante de situações complexas.</p>
+                    </div>
+                    
+                    <div class="secao">
+                        <h2>Aspectos Negativos</h2>
+                        <p>Quando o Dois de Espadas se manifesta em seus aspectos negativos, segundo Jodorowsky, pode indicar uma paralisia prolongada, uma incapacidade de tomar decisões, ou uma fuga da realidade através da negação. A venda nos olhos, que em seu aspecto positivo representa a introspecção, aqui pode simbolizar a cegueira voluntária, o medo de encarar a verdade ou de enfrentar as consequências de uma escolha. A paz aparente pode ser uma fachada para um conflito interno não resolvido, levando à estagnação e à perda de oportunidades. Este arcano, em sua sombra, pode representar a indecisão crônica, a tendência a evitar confrontos e a adiar soluções, resultando em um acúmulo de problemas. A dualidade se torna um fardo, e o equilíbrio se transforma em imobilidade. A energia mental, em vez de ser usada para discernir, é consumida pela ansiedade e pela dúvida, impedindo qualquer progresso. É um convite a reconhecer a necessidade de ação e a superar o medo da escolha.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <a href="../index.html" class="botao-voltar">← Voltar ao Sistema Aurora Sagrada</a>
+        </div>
+    </div>
+</body>
+</html>
+
+
