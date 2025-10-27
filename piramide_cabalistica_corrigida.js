@@ -68,7 +68,7 @@ function renderArcanoComImagem(arcano, idades) {
         Idades: ${idades}
       </p>
       
-      <a href="${link}" target="_blank" style="background: linear-gradient(135deg, var(--gold), #d4a574); color: var(--wine); padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: inline-block; transition: all 0.3s ease;">
+      <a href="${link}" target="_blank" style="background: linear-gradient(135deg, var(--gold), #d4a574); color: #000; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: inline-block; transition: all 0.3s ease;">
         📖 Ler Mais
       </a>
     </div>
@@ -106,10 +106,10 @@ function renderResultadosPiramideCompleta(piramide, arcanoAtual, sequenciasNegat
           <img src="${imagemArcano}" alt="${arcanoAtual.arcano}" style="width: 150px; height: 225px; object-fit: cover; border-radius: 12px; border: 3px solid var(--gold); box-shadow: 0 8px 20px rgba(0,0,0,0.3);">
         </div>
         
-        <h4 style="color: var(--wine); margin-bottom: 1rem; font-size: 1.4rem;">${arcanoAtual.arcano}</h4>
+        <h4 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.8rem; font-weight: bold;">${arcanoAtual.arcano}</h4>
         <p style="color: var(--sage); margin-bottom: 1.5rem;">Arcano Regente aos ${idade} anos</p>
         
-        <a href="${linkArcano}" target="_blank" style="background: linear-gradient(135deg, var(--gold), #d4a574); color: var(--wine); padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 1.1rem; display: inline-block; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+        <a href="${linkArcano}" target="_blank" style="background: linear-gradient(135deg, var(--gold), #d4a574); color: #000; padding: 1rem 2rem; border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 1.1rem; display: inline-block; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
           📖 LER MAIS SOBRE ESTE ARCANO
         </a>
       </div>
