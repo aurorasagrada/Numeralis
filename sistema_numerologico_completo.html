@@ -431,16 +431,16 @@
   <nav class="nav-container">
     <ul class="nav-tabs">
         <li class="nav-tab active">
-          <button>🌟 Mapa Pitagórico</button>
+          <button onclick="switchTab(this, 'mapa-pitagorico')">🌟 Mapa Pitagórico</button>
         </li>
         <li class="nav-tab">
-          <button>🔺 Pirâmide Cabalística</button>
+          <button onclick="switchTab(this, 'piramide-cabalistica')">🔺 Pirâmide Cabalística</button>
         </li>
         <li class="nav-tab">
-          <button>🏔️ Pináculos da Vida</button>
+          <button onclick="switchTab(this, 'pinaculos-vida')">🏔️ Pináculos da Vida</button>
         </li>
         <li class="nav-tab">
-          <button>💕 Sinastria Numerológica</button>
+          <button onclick="switchTab(this, 'sinastria-numerologica')">💕 Sinastria Numerológica</button>
         </li>
     </ul>
   </nav>
@@ -673,70 +673,25 @@
       }
     };
 
-    // Funções de navegação
-    function showSection(ev, sectionId) {
-      try {
-        // Remove active de todas as abas
-        document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
-        
-        // Remove active de todas as seções
-        document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
-        
-        // Adiciona active na aba clicada
-        if (ev && ev.target) {
-          ev.target.closest('.nav-tab').classList.add('active');
-        }
-        
-        // Mostra a seção correspondente
-        const targetSection = document.getElementById(sectionId);
-        if (targetSection) {
-          targetSection.classList.add('active');
-        }
-        
-        console.log('Seção ativada:', sectionId);
-      } catch (error) {
-        console.error('Erro ao trocar seção:', error);
+    // Função simples para trocar abas
+    function switchTab(button, sectionId) {
+      // Remove active de todas as abas
+      document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+      
+      // Remove active de todas as seções
+      document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+      
+      // Ativa a aba clicada
+      button.closest('.nav-tab').classList.add('active');
+      
+      // Ativa a seção correspondente
+      const targetSection = document.getElementById(sectionId);
+      if (targetSection) {
+        targetSection.classList.add('active');
       }
     }
     
-    // Função simples para inicializar abas
-    function setupTabs() {
-      const buttons = document.querySelectorAll('.nav-tab button');
-      
-      buttons.forEach((button, index) => {
-        button.onclick = function(event) {
-          event.preventDefault();
-          
-          // Remover active de todas as abas e seções
-          document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
-          document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
-          
-          // Ativar aba clicada
-          button.closest('.nav-tab').classList.add('active');
-          
-          // Determinar e ativar seção correspondente
-          const text = button.textContent.trim();
-          let sectionId;
-          
-          if (text.includes('Mapa Pitagórico')) {
-            sectionId = 'mapa-pitagorico';
-          } else if (text.includes('Pirâmide Cabalística')) {
-            sectionId = 'piramide-cabalistica';
-          } else if (text.includes('Pináculos da Vida')) {
-            sectionId = 'pinaculos-vida';
-          } else if (text.includes('Sinastria Numerológica')) {
-            sectionId = 'sinastria-numerologica';
-          }
-          
-          if (sectionId) {
-            const targetSection = document.getElementById(sectionId);
-            if (targetSection) {
-              targetSection.classList.add('active');
-            }
-          }
-        };
-      });
-    }
+
 
     // Função para criar botão clicável dos arcanos
     function criarBotaoLerMais(numeroArcano) {
@@ -1703,12 +1658,7 @@
       document.getElementById('resultados-sinastria').classList.add('hidden');
     }
     
-    // Inicializar abas quando a página carregar
-    document.addEventListener('DOMContentLoaded', setupTabs);
-    window.addEventListener('load', setupTabs);
-    
-    // Inicialização imediata como fallback
-    setTimeout(setupTabs, 100);
+
     
   </script>
 </body>
