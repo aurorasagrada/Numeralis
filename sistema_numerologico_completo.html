@@ -576,7 +576,7 @@
   </main>
 
   <script src="interpretacoes_completas_extraidas.js"></script>
-  <script src="textos_pinaculos_completos.js"></script>
+  <script src="textos_pinaculos_expandidos.js"></script>
     <script src="sinastria_completa_extraida.js"></script>
     <script src="sinastria_expandida_completa.js"></script>
     <script src="correspondencias_arcanos_numerologia.js"></script>
@@ -1244,7 +1244,7 @@
       `;
       
       pináculos.forEach((pináculo, index) => {
-        const interpretacao = interpretacoesPinaculos[pináculo.numero];
+        const interpretacao = interpretacoesPinaculosExpandidos[pináculo.numero];
         if (interpretacao) {
           html += `
             <div class="pináculo-section" style="margin-bottom: 2rem; padding: 1.5rem; border-left: 4px solid #d4af37; background: rgba(212, 175, 55, 0.1);">
