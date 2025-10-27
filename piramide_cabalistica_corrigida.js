@@ -76,7 +76,9 @@ function renderArcanoComImagem(arcano, idades) {
 }
 
 // Função corrigida para renderizar resultados da pirâmide
-function renderResultadosPiramideCompleta(piramide, arcanoAtual, sequenciasNegativasEncontradas, desafiosCarmicos, nome, idade) {
+function renderResultadosPiramideCompleta_Corrigida(piramide, arcanoAtual, sequenciasNegativasEncontradas, desafiosCarmicos, nome, idade) {
+  // Disponibilizar globalmente
+  window.renderResultadosPiramideCompleta_Corrigida = renderResultadosPiramideCompleta_Corrigida;
   const resultadosDiv = document.getElementById('resultados-piramide');
   
   let html = `

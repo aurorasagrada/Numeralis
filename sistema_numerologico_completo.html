@@ -1019,44 +1019,50 @@
       return imagensArcanos[numero] || 'assets/img/cartas/arcanos_completo.png';
     }
 
+    // Usar a função corrigida do arquivo piramide_cabalistica_corrigida.js
     function renderResultadosPiramideCompleta(piramide, sequenciasNegativasEncontradas, arcanoAtual, idade) {
-      const resultadosDiv = document.getElementById('resultados-piramide');
-      
-      // Calcular sequências repetidas expandidas
-      const sequenciasExpandidas = calcularIdadesSequencias(piramide);
-      
-      // Detectar desafios cármicos
-      const desafiosCarmicos = detectarDesafiosCarmicos(piramide);
-      
-      let html = `
-        <div class="card">
-          <h3 class="text-center">Sua Pirâmide Cabalística Completa</h3>
-          
-          <div style="text-align: center; margin: 2rem 0;">
-            <img src="${getCaminhoImagemArcano(arcanoAtual.numero)}" alt="${nomesArcanos[arcanoAtual.numero]}" 
-                 style="width: 150px; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); margin-bottom: 1rem;" 
-                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-            <div class="number-display" style="display: none;">${arcanoAtual.numero}</div>
-            <h4>${nomesArcanos[arcanoAtual.numero] || 'Arcano ' + arcanoAtual.numero}</h4>
-            <p style="color: var(--sage);">Arcano Regente aos ${idade} anos</p>
-            ${criarBotaoLerMais(arcanoAtual.numero)}
-          </div>
-          
-          <!-- Mapeamento de Idades dos Arcanos -->
-          <div class="card" style="margin: 2rem 0; background: rgba(178,209,177,0.1);">
-            <h3 style="color: var(--sage); text-align: center;">🎯 Idades dos Arcanos no Ciclo de 90 Anos</h3>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
-      `;
-      
-      // Adicionar mapeamento de idades dos arcanos
-      Object.values(idadesArcanos).forEach(info => {
-        const isAtual = info.arcano === arcanoAtual.numero;
-        html += `
-          <div style="background: ${isAtual ? 'rgba(240,170,83,0.2)' : 'rgba(11,24,54,0.3)'}; 
-                      border: 2px solid ${isAtual ? 'var(--gold)' : 'var(--sage)'}; 
-                      border-radius: 8px; padding: 0.8rem; text-align: center;">
-            <h5 style="margin: 0 0 0.5rem 0; color: ${isAtual ? 'var(--gold)' : 'var(--parch)'};">Arcano ${info.arcano}</h5>
-            <p style="margin: 0 0 0.5rem 0; font-weight: 500; cursor: pointer;" onclick="window.open('arcanos/${{
+      // Chamar a função corrigida que inclui as imagens das cartas
+      if (typeof window.renderResultadosPiramideCompleta_Corrigida === 'function') {
+        window.renderResultadosPiramideCompleta_Corrigida(piramide, arcanoAtual, sequenciasNegativasEncontradas, [], 'Maria Silva Santos', idade);
+      } else {
+        // Fallback para a versão original se a corrigida não estiver disponível
+        const resultadosDiv = document.getElementById('resultados-piramide');
+        
+        // Calcular sequências repetidas expandidas
+        const sequenciasExpandidas = calcularIdadesSequencias(piramide);
+        
+        // Detectar desafios cármicos
+        const desafiosCarmicos = detectarDesafiosCarmicos(piramide);
+        
+        let html = `
+          <div class="card">
+            <h3 class="text-center">Sua Pirâmide Cabalística Completa</h3>
+            
+            <div style="text-align: center; margin: 2rem 0;">
+              <img src="${getCaminhoImagemArcano(arcanoAtual.numero)}" alt="${nomesArcanos[arcanoAtual.numero]}" 
+                   style="width: 150px; height: auto; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); margin-bottom: 1rem;" 
+                   onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+              <div class="number-display" style="display: none;">${arcanoAtual.numero}</div>
+              <h4>${nomesArcanos[arcanoAtual.numero] || 'Arcano ' + arcanoAtual.numero}</h4>
+              <p style="color: var(--sage);">Arcano Regente aos ${idade} anos</p>
+              ${criarBotaoLerMais(arcanoAtual.numero)}
+            </div>
+            
+            <!-- Mapeamento de Idades dos Arcanos -->
+            <div class="card" style="margin: 2rem 0; background: rgba(178,209,177,0.1);">
+              <h3 style="color: var(--sage); text-align: center;">🎯 Idades dos Arcanos no Ciclo de 90 Anos</h3>
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+        `;
+        
+        // Adicionar mapeamento de idades dos arcanos
+        Object.values(idadesArcanos).forEach(info => {
+          const isAtual = info.arcano === arcanoAtual.numero;
+          html += `
+            <div style="background: ${isAtual ? 'rgba(240,170,83,0.2)' : 'rgba(11,24,54,0.3)'}; 
+                        border: 2px solid ${isAtual ? 'var(--gold)' : 'var(--sage)'}; 
+                        border-radius: 8px; padding: 0.8rem; text-align: center;">
+              <h5 style="margin: 0 0 0.5rem 0; color: ${isAtual ? 'var(--gold)' : 'var(--parch)'};">Arcano ${info.arcano}</h5>
+              <p style="margin: 0 0 0.5rem 0; font-weight: 500; cursor: pointer;" onclick="window.open('arcanos/${{
               0: 'o_louco.html', 1: 'o_mago.html', 2: 'a_sacerdotisa.html', 3: 'a_imperatriz.html',
               4: 'o_imperador.html', 5: 'o_hierofante.html', 6: 'os_enamorados.html', 7: 'o_carro.html',
               8: 'a_forca.html', 9: 'o_ermitao.html', 10: 'a_roda_da_fortuna.html', 11: 'a_justica.html',
