@@ -582,6 +582,7 @@
     <script src="correspondencias_arcanos_numerologia.js"></script>
     <script src="mapeamento_arcanos_completo.js"></script>
     <script src="sequencias_repetidas_expandidas.js"></script>
+    <script src="sequencias_negativas_expandidas.js"></script>
   <script>
     // Tabelas numerológicasompletos baseados nas fontes
     
@@ -683,6 +684,26 @@
       
       // Mostra a seção correspondente
       document.getElementById(sectionId).classList.add('active');
+    }
+
+    // Função para criar botão clicável dos arcanos
+    function criarBotaoLerMais(numeroArcano) {
+      const nomeArquivo = {
+        0: 'o_louco.html', 1: 'o_mago.html', 2: 'a_sacerdotisa.html', 3: 'a_imperatriz.html',
+        4: 'o_imperador.html', 5: 'o_hierofante.html', 6: 'os_enamorados.html', 7: 'o_carro.html',
+        8: 'a_forca.html', 9: 'o_ermitao.html', 10: 'a_roda_da_fortuna.html', 11: 'a_justica.html',
+        12: 'o_enforcado.html', 13: 'a_morte.html', 14: 'a_temperanca.html', 15: 'o_diabo.html',
+        16: 'a_torre.html', 17: 'a_estrela.html', 18: 'a_lua.html', 19: 'o_sol.html',
+        20: 'o_julgamento.html', 21: 'o_mundo.html', 22: 'o_louco.html'
+      };
+      
+      const arquivo = nomeArquivo[numeroArcano];
+      if (arquivo) {
+        return `<button class="btn" onclick="window.open('arcanos/${arquivo}', '_blank')" style="margin-top: 1rem; background: var(--gold); color: var(--ink);">
+                  📖 Ler Mais sobre este Arcano
+                </button>`;
+      }
+      return '';
     }
 
     // Funções utilitárias
@@ -1030,7 +1051,14 @@
                       border: 2px solid ${isAtual ? 'var(--gold)' : 'var(--sage)'}; 
                       border-radius: 8px; padding: 0.8rem; text-align: center;">
             <h5 style="margin: 0 0 0.5rem 0; color: ${isAtual ? 'var(--gold)' : 'var(--parch)'};">Arcano ${info.arcano}</h5>
-            <p style="margin: 0 0 0.5rem 0; font-weight: 500;">${info.nome}</p>
+            <p style="margin: 0 0 0.5rem 0; font-weight: 500; cursor: pointer;" onclick="window.open('arcanos/${{
+              0: 'o_louco.html', 1: 'o_mago.html', 2: 'a_sacerdotisa.html', 3: 'a_imperatriz.html',
+              4: 'o_imperador.html', 5: 'o_hierofante.html', 6: 'os_enamorados.html', 7: 'o_carro.html',
+              8: 'a_forca.html', 9: 'o_ermitao.html', 10: 'a_roda_da_fortuna.html', 11: 'a_justica.html',
+              12: 'o_enforcado.html', 13: 'a_morte.html', 14: 'a_temperanca.html', 15: 'o_diabo.html',
+              16: 'a_torre.html', 17: 'a_estrela.html', 18: 'a_lua.html', 19: 'o_sol.html',
+              20: 'o_julgamento.html', 21: 'o_mundo.html', 22: 'o_louco.html'
+            }}[${info.arcano}]', '_blank')" title="Clique para ler mais sobre este arcano">${info.nome} 📖</p>
             <p style="margin: 0; font-size: 0.9rem; color: var(--sage);">Idades: ${info.idades.join(', ')}</p>
           </div>
         `;
@@ -1087,12 +1115,72 @@
         html += `<h3 style="color: var(--wine); text-align: center;">⚠️ Sequências Negativas Detectadas na Pirâmide</h3>`;
         
         for (let seq of sequenciasNegativasEncontradas) {
-          const info = sequenciasNegativasInfo[seq.sequencia];
+          const info = sequenciasNegativasExpandidas[seq.sequencia];
           if (info) {
             html += `
-              <div class="negative-alert">
-                <h4>${info.titulo}</h4>
-                <p>${info.texto}</p>
+              <div style="background: rgba(62,10,41,0.2); border: 2px solid var(--wine); border-radius: 15px; padding: 2.5rem; margin: 2rem 0; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                <h4 style="color: var(--gold); margin-bottom: 1.5rem; font-size: 1.3rem;">${info.titulo}</h4>
+                
+                <div style="background: rgba(11,24,54,0.4); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
+                  <h5 style="color: var(--sage); margin-bottom: 1rem; font-size: 1.1rem;">📖 Significado Profundo:</h5>
+                  <p style="line-height: 1.7; text-align: justify; margin-bottom: 1.5rem;">${info.significado}</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;">
+                  <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--sage);">
+                    <h6 style="color: var(--sage); margin-bottom: 1rem;">✨ Pontos Positivos:</h6>
+                    <ul style="margin: 0; padding-left: 1.2rem;">
+                      ${info.pontosPositivos.map(ponto => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${ponto}</li>`).join('')}
+                    </ul>
+                  </div>
+                  
+                  <div style="background: rgba(240,170,83,0.1); padding: 1.5rem; border-radius: 10px; border-left: 4px solid var(--gold);">
+                    <h6 style="color: var(--gold); margin-bottom: 1rem;">⚠️ Pontos Negativos:</h6>
+                    <ul style="margin: 0; padding-left: 1.2rem;">
+                      ${info.pontosNegativos.map(ponto => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${ponto}</li>`).join('')}
+                    </ul>
+                  </div>
+                </div>
+                
+                <div style="background: rgba(62,10,41,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                  <h6 style="color: var(--wine); margin-bottom: 1rem;">🚫 O que Evitar:</h6>
+                  <ul style="margin: 0; padding-left: 1.2rem;">
+                    ${info.oQueEvitar.map(item => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${item}</li>`).join('')}
+                  </ul>
+                </div>
+                
+                <div style="background: rgba(11,24,54,0.2); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                  <h6 style="color: var(--parch); margin-bottom: 1rem;">🎯 O que Trabalhar:</h6>
+                  <ul style="margin: 0; padding-left: 1.2rem;">
+                    ${info.oQueTrabalhar.map(item => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${item}</li>`).join('')}
+                  </ul>
+                </div>
+                
+                <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                  <h6 style="color: var(--sage); margin-bottom: 1rem;">🔧 Como Superar:</h6>
+                  <ul style="margin: 0; padding-left: 1.2rem;">
+                    ${info.comoSuperar.map(item => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${item}</li>`).join('')}
+                  </ul>
+                </div>
+                
+                <div style="background: rgba(240,170,83,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                  <h6 style="color: var(--gold); margin-bottom: 1rem;">👁️ O que Enxergar:</h6>
+                  <ul style="margin: 0; padding-left: 1.2rem;">
+                    ${info.oQueEnxergar.map(item => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${item}</li>`).join('')}
+                  </ul>
+                </div>
+                
+                <div style="background: rgba(62,10,41,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 2rem;">
+                  <h6 style="color: var(--wine); margin-bottom: 1rem;">📚 O que Aprender:</h6>
+                  <ul style="margin: 0; padding-left: 1.2rem;">
+                    ${info.oQueAprender.map(item => `<li style="margin-bottom: 0.5rem; line-height: 1.5;">${item}</li>`).join('')}
+                  </ul>
+                </div>
+                
+                <div style="background: linear-gradient(135deg, rgba(178,209,177,0.2), rgba(240,170,83,0.2)); padding: 2rem; border-radius: 15px; border: 2px solid var(--gold);">
+                  <h6 style="color: var(--gold); margin-bottom: 1rem; font-size: 1.1rem;">🌟 Transformação:</h6>
+                  <p style="line-height: 1.7; text-align: justify; margin: 0; font-style: italic;">${info.transformacao}</p>
+                </div>
               </div>
             `;
           }
