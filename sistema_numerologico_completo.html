@@ -1051,7 +1051,7 @@
             <!-- Mapeamento de Idades dos Arcanos -->
             <div class="card" style="margin: 2rem 0; background: rgba(178,209,177,0.1);">
               <h3 style="color: var(--sage); text-align: center;">🎯 Idades dos Arcanos no Ciclo de 90 Anos</h3>
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.8rem; margin: 1rem 0;">
         `;
         
         // Mapeamento de imagens dos arcanos
@@ -1088,11 +1088,11 @@
           html += `
             <div style="background: ${isAtual ? 'rgba(240,170,83,0.2)' : 'rgba(11,24,54,0.3)'}; 
                         border: 2px solid ${isAtual ? 'var(--gold)' : 'var(--sage)'}; 
-                        border-radius: 15px; padding: 1.5rem; text-align: center; min-width: 200px;">
+                        border-radius: 12px; padding: 1rem; text-align: center; min-width: 160px; max-width: 220px;">
               <h5 style="margin: 0 0 1rem 0; color: ${isAtual ? 'var(--gold)' : 'var(--gold)'}; font-size: 1.1rem;">Arcano ${info.arcano}</h5>
               <h6 style="margin: 0 0 1rem 0; color: ${isAtual ? 'var(--gold)' : 'var(--gold)'}; font-size: 1rem;">${info.nome}</h6>
               
-              <div style="margin-bottom: 1rem; cursor: pointer;" onclick="window.open('arcanos/${{
+              <div style="margin-bottom: 0.8rem; cursor: pointer; display: flex; justify-content: center; align-items: center; height: 120px;" onclick="window.open('arcanos/${{
               0: 'o_louco.html', 1: 'o_mago.html', 2: 'a_sacerdotisa.html', 3: 'a_imperatriz.html',
               4: 'o_imperador.html', 5: 'o_hierofante.html', 6: 'os_enamorados.html', 7: 'o_carro.html',
               8: 'a_forca.html', 9: 'o_ermitao.html', 10: 'a_roda_da_fortuna.html', 11: 'a_justica.html',
@@ -1100,7 +1100,7 @@
               16: 'a_torre.html', 17: 'a_estrela.html', 18: 'a_lua.html', 19: 'o_sol.html',
               20: 'o_julgamento.html', 21: 'o_mundo.html', 22: 'o_louco.html'
             }}[${info.arcano}]', '_blank')" title="Clique para ver a carta">
-                <img src="${imagemCarta}" alt="${info.nome}" style="width: 100px; height: 150px; object-fit: cover; border-radius: 12px; border: 3px solid var(--gold); box-shadow: 0 6px 15px rgba(0,0,0,0.4); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(212,175,55,0.6)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.4)'">
+                <img src="${imagemCarta}" alt="${info.nome}" style="width: 70px; height: 105px; object-fit: cover; border-radius: 8px; border: 2px solid var(--gold); box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.3s ease; cursor: pointer; flex-shrink: 0;" onmouseover="this.style.transform='scale(1.03)'; this.style.boxShadow='0 6px 15px rgba(212,175,55,0.5)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 10px rgba(0,0,0,0.3)'">
               </div>
               
               <p style="color: var(--sage); margin-bottom: 1rem; font-size: 0.9rem;">
