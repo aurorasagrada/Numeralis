@@ -1054,24 +1054,70 @@
               <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
         `;
         
-        // Adicionar mapeamento de idades dos arcanos
+        // Mapeamento de imagens dos arcanos
+        const imagensArcanos = {
+          1: 'assets/img/cartas/01-I-TheMagician.jpg',
+          2: 'assets/img/cartas/02-II-TheHighPriestess.jpg', 
+          3: 'assets/img/cartas/03-III-TheEmpress.jpg',
+          4: 'assets/img/cartas/04-IV-TheEmperor.jpg',
+          5: 'assets/img/cartas/05-V-TheHierophant.jpg',
+          6: 'assets/img/cartas/06-VI-TheLovers.jpg',
+          7: 'assets/img/cartas/07-VII-TheChariot.jpg',
+          8: 'assets/img/cartas/08-VIII-Strength.jpg',
+          9: 'assets/img/cartas/09-IX-TheHermit.jpg',
+          10: 'assets/img/cartas/10-X-WheelofFortune.jpg',
+          11: 'assets/img/cartas/11-XI-Justice.jpg',
+          12: 'assets/img/cartas/12-XII-TheHangedMan.jpg',
+          13: 'assets/img/cartas/13-XIII-Death.jpg',
+          14: 'assets/img/cartas/14-XIV-Temperance.jpg',
+          15: 'assets/img/cartas/15-XV-TheDevil.jpg',
+          16: 'assets/img/cartas/16-XVI-TheTower.jpg',
+          17: 'assets/img/cartas/17-XVII-TheStar.jpg',
+          18: 'assets/img/cartas/18-XVIII-TheMoon.jpg',
+          19: 'assets/img/cartas/19-XIX-TheSun.jpg',
+          20: 'assets/img/cartas/20-XX-Judgement.jpg',
+          21: 'assets/img/cartas/21-XXI-TheWorld.jpg',
+          0: 'assets/img/cartas/00-0-TheFool.jpg',
+          22: 'assets/img/cartas/00-0-TheFool.jpg'
+        };
+        
+        // Adicionar mapeamento de idades dos arcanos com miniaturas das cartas
         Object.values(idadesArcanos).forEach(info => {
           const isAtual = info.arcano === arcanoAtual.numero;
+          const imagemCarta = imagensArcanos[info.arcano] || 'assets/img/cartas/00-0-Back.jpg';
           html += `
             <div style="background: ${isAtual ? 'rgba(240,170,83,0.2)' : 'rgba(11,24,54,0.3)'}; 
                         border: 2px solid ${isAtual ? 'var(--gold)' : 'var(--sage)'}; 
-                        border-radius: 8px; padding: 0.8rem; text-align: center;">
-              <h5 style="margin: 0 0 0.5rem 0; color: ${isAtual ? 'var(--gold)' : 'var(--parch)'};">Arcano ${info.arcano}</h5>
-              <p style="margin: 0 0 0.5rem 0; font-weight: 500; cursor: pointer;" onclick="window.open('arcanos/${{
+                        border-radius: 15px; padding: 1.5rem; text-align: center; min-width: 200px;">
+              <h5 style="margin: 0 0 1rem 0; color: ${isAtual ? 'var(--gold)' : 'var(--gold)'}; font-size: 1.1rem;">Arcano ${info.arcano}</h5>
+              <h6 style="margin: 0 0 1rem 0; color: ${isAtual ? 'var(--gold)' : 'var(--gold)'}; font-size: 1rem;">${info.nome}</h6>
+              
+              <div style="margin-bottom: 1rem; cursor: pointer;" onclick="window.open('arcanos/${{
               0: 'o_louco.html', 1: 'o_mago.html', 2: 'a_sacerdotisa.html', 3: 'a_imperatriz.html',
               4: 'o_imperador.html', 5: 'o_hierofante.html', 6: 'os_enamorados.html', 7: 'o_carro.html',
               8: 'a_forca.html', 9: 'o_ermitao.html', 10: 'a_roda_da_fortuna.html', 11: 'a_justica.html',
               12: 'o_enforcado.html', 13: 'a_morte.html', 14: 'a_temperanca.html', 15: 'o_diabo.html',
               16: 'a_torre.html', 17: 'a_estrela.html', 18: 'a_lua.html', 19: 'o_sol.html',
               20: 'o_julgamento.html', 21: 'o_mundo.html', 22: 'o_louco.html'
-            }}[${info.arcano}]', '_blank')" title="Clique para ler mais sobre este arcano">${info.nome} 📖</p>
-            <p style="margin: 0; font-size: 0.9rem; color: var(--sage);">Idades: ${info.idades.join(', ')}</p>
-          </div>
+            }}[${info.arcano}]', '_blank')" title="Clique para ver a carta">
+                <img src="${imagemCarta}" alt="${info.nome}" style="width: 100px; height: 150px; object-fit: cover; border-radius: 12px; border: 3px solid var(--gold); box-shadow: 0 6px 15px rgba(0,0,0,0.4); transition: all 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 20px rgba(212,175,55,0.6)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 6px 15px rgba(0,0,0,0.4)'">
+              </div>
+              
+              <p style="color: var(--sage); margin-bottom: 1rem; font-size: 0.9rem;">
+                Idades: ${info.idades.join(', ')}
+              </p>
+              
+              <a href="arcanos/${{  
+                0: 'o_louco.html', 1: 'o_mago.html', 2: 'a_sacerdotisa.html', 3: 'a_imperatriz.html',
+                4: 'o_imperador.html', 5: 'o_hierofante.html', 6: 'os_enamorados.html', 7: 'o_carro.html',
+                8: 'a_forca.html', 9: 'o_ermitao.html', 10: 'a_roda_da_fortuna.html', 11: 'a_justica.html',
+                12: 'o_enforcado.html', 13: 'a_morte.html', 14: 'a_temperanca.html', 15: 'o_diabo.html',
+                16: 'a_torre.html', 17: 'a_estrela.html', 18: 'a_lua.html', 19: 'o_sol.html',
+                20: 'o_julgamento.html', 21: 'o_mundo.html', 22: 'o_louco.html'
+              }}[${info.arcano}]" target="_blank" style="background: linear-gradient(135deg, var(--gold), #d4a574); color: #000; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; display: inline-block; transition: all 0.3s ease;">
+                📖 Ler Mais
+              </a>
+            </div>
         `;
       });
       
