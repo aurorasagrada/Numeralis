@@ -1475,13 +1475,13 @@
               <div style="padding: 1.5rem; background: rgba(178,209,177,0.1); border-radius: 8px; border-left: 4px solid #8B9D83;">
                 <h4 style="color: #8B9D83; margin-bottom: 1rem;">✅ Pontos Positivos</h4>
                 <ul style="color: #e8dcc6; line-height: 1.6;">
-                  ${analiseExpandida.pontos_positivos.map(ponto => `<li>${ponto}</li>`).join('')}
+                  ${(analiseExpandida.pontos_positivos || []).map(ponto => `<li>${ponto}</li>`).join('')}
                 </ul>
               </div>
               <div style="padding: 1.5rem; background: rgba(240,170,83,0.1); border-radius: 8px; border-left: 4px solid #f0aa53;">
                 <h4 style="color: #f0aa53; margin-bottom: 1rem;">⚠️ Pontos de Atenção</h4>
                 <ul style="color: #e8dcc6; line-height: 1.6;">
-                  ${analiseExpandida.pontos_negativos.map(ponto => `<li>${ponto}</li>`).join('')}
+                  ${(analiseExpandida.pontos_negativos || []).map(ponto => `<li>${ponto}</li>`).join('')}
                 </ul>
               </div>
             </div>
@@ -1490,13 +1490,13 @@
               <div style="padding: 1.5rem; background: rgba(212, 175, 55, 0.1); border-radius: 8px; border-left: 4px solid #d4af37;">
                 <h4 style="color: #d4af37; margin-bottom: 1rem;">🌟 O que Aproveitar</h4>
                 <ul style="color: #e8dcc6; line-height: 1.6;">
-                  ${analiseExpandida.o_que_aproveitar.map(item => `<li>${item}</li>`).join('')}
+                  ${(analiseExpandida.o_que_aproveitar || []).map(item => `<li>${item}</li>`).join('')}
                 </ul>
               </div>
               <div style="padding: 1.5rem; background: rgba(242, 234, 255, 0.1); border-radius: 8px; border-left: 4px solid #f2eaff;">
                 <h4 style="color: #f2eaff; margin-bottom: 1rem;">🚫 O que Evitar</h4>
                 <ul style="color: #e8dcc6; line-height: 1.6;">
-                  ${analiseExpandida.o_que_evitar.map(item => `<li>${item}</li>`).join('')}
+                  ${(analiseExpandida.o_que_evitar || []).map(item => `<li>${item}</li>`).join('')}
                 </ul>
               </div>
             </div>
@@ -1507,27 +1507,27 @@
               <div style="display: grid; gap: 1.5rem;">
                 <div style="padding: 1.5rem; background: rgba(62,10,41,0.2); border-radius: 8px;">
                   <h4 style="color: #d4af37; margin-bottom: 1rem;">🏠 Cotidiano</h4>
-                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.cotidiano}</p>
+                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.cotidiano || 'Análise não disponível.'}</p>
                 </div>
                 
                 <div style="padding: 1.5rem; background: rgba(62,10,41,0.2); border-radius: 8px;">
                   <h4 style="color: #d4af37; margin-bottom: 1rem;">💰 Financeiro</h4>
-                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.financeiro}</p>
+                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.financeiro || 'Análise não disponível.'}</p>
                 </div>
                 
                 <div style="padding: 1.5rem; background: rgba(62,10,41,0.2); border-radius: 8px;">
                   <h4 style="color: #d4af37; margin-bottom: 1rem;">🌱 Crescimento Pessoal</h4>
-                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.pessoal}</p>
+                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.pessoal || 'Análise não disponível.'}</p>
                 </div>
                 
                 <div style="padding: 1.5rem; background: rgba(62,10,41,0.2); border-radius: 8px;">
                   <h4 style="color: #d4af37; margin-bottom: 1rem;">🙏 Espiritualidade</h4>
-                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.espiritual}</p>
+                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.espiritual || 'Análise não disponível.'}</p>
                 </div>
                 
                 <div style="padding: 1.5rem; background: rgba(62,10,41,0.2); border-radius: 8px;">
                   <h4 style="color: #d4af37; margin-bottom: 1rem;">💎 Crenças e Valores</h4>
-                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.crencas_valores}</p>
+                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.crencas_valores || 'Análise não disponível.'}</p>
                 </div>
               </div>
             </div>
