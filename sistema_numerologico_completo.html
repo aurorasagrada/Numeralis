@@ -431,16 +431,36 @@
   <nav class="nav-container">
     <ul class="nav-tabs">
         <li class="nav-tab active">
-          <button onclick="switchTab(this, 'mapa-pitagorico')">🌟 Mapa Pitagórico</button>
+          <button onclick="
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            this.closest('.nav-tab').classList.add('active');
+            document.getElementById('mapa-pitagorico').classList.add('active');
+          ">🌟 Mapa Pitagórico</button>
         </li>
         <li class="nav-tab">
-          <button onclick="switchTab(this, 'piramide-cabalistica')">🔺 Pirâmide Cabalística</button>
+          <button onclick="
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            this.closest('.nav-tab').classList.add('active');
+            document.getElementById('piramide-cabalistica').classList.add('active');
+          ">🔺 Pirâmide Cabalística</button>
         </li>
         <li class="nav-tab">
-          <button onclick="switchTab(this, 'pinaculos-vida')">🏔️ Pináculos da Vida</button>
+          <button onclick="
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            this.closest('.nav-tab').classList.add('active');
+            document.getElementById('pinaculos-vida').classList.add('active');
+          ">🏔️ Pináculos da Vida</button>
         </li>
         <li class="nav-tab">
-          <button onclick="switchTab(this, 'sinastria-numerologica')">💕 Sinastria Numerológica</button>
+          <button onclick="
+            document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            this.closest('.nav-tab').classList.add('active');
+            document.getElementById('sinastria-numerologica').classList.add('active');
+          ">💕 Sinastria Numerológica</button>
         </li>
     </ul>
   </nav>
@@ -673,23 +693,7 @@
       }
     };
 
-    // Função simples para trocar abas
-    function switchTab(button, sectionId) {
-      // Remove active de todas as abas
-      document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
-      
-      // Remove active de todas as seções
-      document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
-      
-      // Ativa a aba clicada
-      button.closest('.nav-tab').classList.add('active');
-      
-      // Ativa a seção correspondente
-      const targetSection = document.getElementById(sectionId);
-      if (targetSection) {
-        targetSection.classList.add('active');
-      }
-    }
+    // Funções de navegação das abas agora estão inline no HTML para garantir funcionamento
     
 
 
