@@ -540,3 +540,8 @@ function obterAnaliseExpandida(numeroPareja) {
     crencas_valores: "Seus valores centrais incluem amor universal, compaixão, sabedoria e serviço à humanidade. Vocês valorizam a unidade na diversidade, o perdão e a capacidade de ver o bem em todos. A justiça social e a igualdade são fundamentais. Há forte crença na capacidade humana de evolução e transformação. Vocês valorizam a generosidade, a humildade e a capacidade de inspirar outros através do exemplo. O serviço desinteressado e a contribuição para o bem maior são pilares de seus valores compartilhados."
   }
 };
+
+// Função para obter análise expandida baseada no número da pareja
+function obterAnaliseExpandida(numeroPareja) {
+  return sinastria_expandida[numeroPareja.toString()] || null;
+}
