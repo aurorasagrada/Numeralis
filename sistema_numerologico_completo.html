@@ -675,17 +675,66 @@
 
     // Funções de navegação
     function showSection(ev, sectionId) {
-      // Remove active de todas as abas
-      document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+      try {
+        // Remove active de todas as abas
+        document.querySelectorAll('.nav-tab').forEach(tab => tab.classList.remove('active'));
+        
+        // Remove active de todas as seções
+        document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+        
+        // Adiciona active na aba clicada
+        if (ev && ev.target) {
+          ev.target.closest('.nav-tab').classList.add('active');
+        }
+        
+        // Mostra a seção correspondente
+        const targetSection = document.getElementById(sectionId);
+        if (targetSection) {
+          targetSection.classList.add('active');
+        }
+        
+        console.log('Seção ativada:', sectionId);
+      } catch (error) {
+        console.error('Erro ao trocar seção:', error);
+      }
+    }
+    
+    // Inicialização robusta das abas
+    function initializeTabs() {
+      const tabButtons = document.querySelectorAll('.nav-tab button');
       
-      // Remove active de todas as seções
-      document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+      tabButtons.forEach((button, index) => {
+        // Remover event listeners existentes
+        button.removeEventListener('click', handleTabClick);
+        
+        // Adicionar novo event listener
+        button.addEventListener('click', handleTabClick);
+      });
       
-      // Adiciona active na aba clicada
-      ev.target.closest('.nav-tab').classList.add('active');
+      console.log('Abas inicializadas:', tabButtons.length);
+    }
+    
+    // Handler robusto para cliques nas abas
+    function handleTabClick(event) {
+      event.preventDefault();
       
-      // Mostra a seção correspondente
-      document.getElementById(sectionId).classList.add('active');
+      const button = event.target;
+      const text = button.textContent.trim();
+      
+      let sectionId;
+      if (text.includes('Mapa Pitagórico')) {
+        sectionId = 'mapa-pitagorico';
+      } else if (text.includes('Pirâmide Cabalística')) {
+        sectionId = 'piramide-cabalistica';
+      } else if (text.includes('Pináculos da Vida')) {
+        sectionId = 'pinaculos-vida';
+      } else if (text.includes('Sinastria Numerológica')) {
+        sectionId = 'sinastria-numerologica';
+      }
+      
+      if (sectionId) {
+        showSection(event, sectionId);
+      }
     }
 
     // Função para criar botão clicável dos arcanos
@@ -1652,6 +1701,19 @@
       document.getElementById('dataPessoa2').value = '';
       document.getElementById('resultados-sinastria').classList.add('hidden');
     }
+    
+    // Inicializar quando a página carregar
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOM carregado - inicializando abas...');
+      initializeTabs();
+    });
+    
+    // Fallback para garantir inicialização
+    window.addEventListener('load', function() {
+      console.log('Página totalmente carregada - verificando abas...');
+      setTimeout(initializeTabs, 100);
+    });
+    
   </script>
 </body>
 </html>
