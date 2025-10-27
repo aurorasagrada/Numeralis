@@ -578,6 +578,7 @@
   <script src="interpretacoes_completas_extraidas.js"></script>
   <script src="textos_pinaculos_completos.js"></script>
     <script src="sinastria_completa_extraida.js"></script>
+    <script src="sinastria_expandida_completa.js"></script>
     <script src="correspondencias_arcanos_numerologia.js"></script>
     <script src="mapeamento_arcanos_completo.js"></script>
     <script src="sequencias_repetidas_expandidas.js"></script>
@@ -1271,6 +1272,7 @@
       const resultadosDiv = document.getElementById('resultados-sinastria');
       
       const interpretacao = interpretacoesSinastria[compatibilidade.chaveCompatibilidade];
+      const analiseExpandida = obterAnaliseExpandida(compatibilidade.numeroPareja);
       
       let html = `
         <div class="card">
@@ -1296,6 +1298,80 @@
           </div>
       `;
       
+      // Análise expandida do número da pareja
+      if (analiseExpandida) {
+        html += `
+          <div style="margin: 2rem 0; padding: 2rem; background: rgba(62,10,41,0.3); border-radius: 12px; border: 1px solid #d4af37;">
+            <h3 style="color: #d4af37; text-align: center; margin-bottom: 1.5rem;">${analiseExpandida.significado}</h3>
+            <p style="line-height: 1.8; text-align: justify; color: #e8dcc6; margin-bottom: 2rem;">
+              ${analiseExpandida.descricao}
+            </p>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+              <div style="padding: 1.5rem; background: rgba(178,209,177,0.1); border-radius: 8px; border-left: 4px solid #8B9D83;">
+                <h4 style="color: #8B9D83; margin-bottom: 1rem;">✅ Pontos Positivos</h4>
+                <ul style="color: #e8dcc6; line-height: 1.6;">
+                  ${analiseExpandida.pontos_positivos.map(ponto => `<li>${ponto}</li>`).join('')}
+                </ul>
+              </div>
+              <div style="padding: 1.5rem; background: rgba(240,170,83,0.1); border-radius: 8px; border-left: 4px solid #f0aa53;">
+                <h4 style="color: #f0aa53; margin-bottom: 1rem;">⚠️ Pontos de Atenção</h4>
+                <ul style="color: #e8dcc6; line-height: 1.6;">
+                  ${analiseExpandida.pontos_negativos.map(ponto => `<li>${ponto}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 2rem 0;">
+              <div style="padding: 1.5rem; background: rgba(212, 175, 55, 0.1); border-radius: 8px; border-left: 4px solid #d4af37;">
+                <h4 style="color: #d4af37; margin-bottom: 1rem;">🌟 O que Aproveitar</h4>
+                <ul style="color: #e8dcc6; line-height: 1.6;">
+                  ${analiseExpandida.o_que_aproveitar.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+              </div>
+              <div style="padding: 1.5rem; background: rgba(242, 234, 255, 0.1); border-radius: 8px; border-left: 4px solid #f2eaff;">
+                <h4 style="color: #f2eaff; margin-bottom: 1rem;">🚫 O que Evitar</h4>
+                <ul style="color: #e8dcc6; line-height: 1.6;">
+                  ${analiseExpandida.o_que_evitar.map(item => `<li>${item}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+            
+            <div style="margin-top: 2rem;">
+              <h3 style="color: #d4af37; text-align: center; margin-bottom: 1.5rem;">Análise por Áreas da Vida</h3>
+              
+              <div style="display: grid; gap: 1.5rem;">
+                <div style="padding: 1.5rem; background: rgba(62,10,41,0.2); border-radius: 8px;">
+                  <h4 style="color: #d4af37; margin-bottom: 1rem;">🏠 Cotidiano</h4>
+                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.cotidiano}</p>
+                </div>
+                
+                <div style="padding: 1.5rem; background: rgba(62,10,41,0.2); border-radius: 8px;">
+                  <h4 style="color: #d4af37; margin-bottom: 1rem;">💰 Financeiro</h4>
+                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.financeiro}</p>
+                </div>
+                
+                <div style="padding: 1.5rem; background: rgba(62,10,41,0.2); border-radius: 8px;">
+                  <h4 style="color: #d4af37; margin-bottom: 1rem;">🌱 Crescimento Pessoal</h4>
+                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.pessoal}</p>
+                </div>
+                
+                <div style="padding: 1.5rem; background: rgba(62,10,41,0.2); border-radius: 8px;">
+                  <h4 style="color: #d4af37; margin-bottom: 1rem;">🙏 Espiritualidade</h4>
+                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.espiritual}</p>
+                </div>
+                
+                <div style="padding: 1.5rem; background: rgba(62,10,41,0.2); border-radius: 8px;">
+                  <h4 style="color: #d4af37; margin-bottom: 1rem;">💎 Crenças e Valores</h4>
+                  <p style="color: #e8dcc6; line-height: 1.7; text-align: justify;">${analiseExpandida.crencas_valores}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+      
+      // Interpretação original da combinação específica
       if (interpretacao) {
         html += `
           <div style="margin-top: 2rem; padding: 1.5rem; border-left: 4px solid #d4af37; background: rgba(212, 175, 55, 0.1);">
