@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Debug Cálculo Numerológico</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .debug { background: #f0f0f0; padding: 10px; margin: 10px 0; }
+        .error { background: #ffcccc; }
+        .success { background: #ccffcc; }
+    </style>
+</head>
+<body>
+    <h1>Debug - Cálculo Numerológico</h1>
+    
+    <input id="nomeCompleto" type="text" value="Maria Silva Santos" placeholder="Nome">
+    <input id="dataNascimento" type="date" value="1990-05-15">
+    <button onclick="debugCalcular()">Debug Calcular</button>
+    
+    <div id="debug-output"></div>
+    <div id="resultados-mapa" class="hidden"></div>
+    
+    <script src="interpretacoes_pitagoricas_ultra_expandidas.js"></script>
+    <script src="main.js"></script>
+    
+    <script>
+        function debugCalcular() {
+            const output = document.getElementById('debug-output');
+            output.innerHTML = '<div class="debug">Iniciando debug...</div>';
+            
+            try {
+                // Teste 1: Verificar se elementos existem
+                const nome = document.getElementById("nomeCompleto").value.trim();
+                const data = document.getElementById("dataNascimento").value;
+                output.innerHTML += `<div class="debug success">✅ Campos capturados: Nome="${nome}", Data="${data}"</div>`;
+                
+                // Teste 2: Verificar se interpretações estão carregadas
+                if (typeof interpretacoesPitagoricas !== 'undefined') {
+                    output.innerHTML += `<div class="debug success">✅ interpretacoesPitagoricas está definida</div>`;
+                } else {
+                    output.innerHTML += `<div class="debug error">❌ interpretacoesPitagoricas NÃO está definida</div>`;
+                }
+                
+                // Teste 3: Verificar se elemento resultados existe
+                const resultadosDiv = document.getElementById("resultados-mapa");
+                if (resultadosDiv) {
+                    output.innerHTML += `<div class="debug success">✅ Elemento resultados-mapa encontrado</div>`;
+                } else {
+                    output.innerHTML += `<div class="debug error">❌ Elemento resultados-mapa NÃO encontrado</div>`;
+                }
+                
+                // Teste 4: Executar cálculo passo a passo
+                output.innerHTML += `<div class="debug">Executando calcularPerfilNumerologico...</div>`;
+                const perfil = calcularPerfilNumerologico(nome, data);
+                output.innerHTML += `<div class="debug success">✅ Perfil calculado: ${JSON.stringify(perfil)}</div>`;
+                
+                // Teste 5: Tentar renderizar
+                output.innerHTML += `<div class="debug">Executando renderResultadosMapa...</div>`;
+                renderResultadosMapa(perfil);
+                output.innerHTML += `<div class="debug success">✅ Renderização executada sem erro</div>`;
+                
+            } catch (error) {
+                output.innerHTML += `<div class="debug error">❌ ERRO: ${error.message}</div>`;
+                console.error('Erro detalhado:', error);
+            }
+        }
+    </script>
+    
+    <style>
+        .hidden { display: none; }
+    </style>
+</body>
+</html>
