@@ -1,5 +1,4 @@
-<script>
-    // Mapeamento das variáveis carregadas dos arquivos externos
+// Mapeamento das variáveis carregadas dos arquivos externos
     window.addEventListener("load", function() {
       // Mapear variáveis dos arquivos JS para nomes esperados pelo código
       if (typeof interpretacoesPitagoricasUltraExpandidas !== "undefined") {
@@ -1113,6 +1112,6 @@
       document.getElementById("dataPessoa2").value = "";
       document.getElementById("resultados-sinastria").classList.add("hidden");
     }
-    
-    
-  </script>
+
+
+}
