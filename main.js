@@ -1222,3 +1222,21 @@ function renderResultadosSinastria(compatibilidade, nome1, nome2) {
   resultadosDiv.innerHTML = html;
   resultadosDiv.classList.remove("hidden");
 }
+
+
+    // Função para preencher exemplo - ESTAVA FALTANDO!
+    function preencherExemploMapa() {
+      document.getElementById("nomeCompleto").value = "Maria Silva Santos";
+      document.getElementById("dataNascimento").value = "1990-05-15";
+    }
+
+    // Função para limpar campos
+    function limparCampos() {
+      document.getElementById("nomeCompleto").value = "";
+      document.getElementById("dataNascimento").value = "";
+      const resultadosDiv = document.getElementById("resultados-mapa");
+      if (resultadosDiv) {
+        resultadosDiv.innerHTML = "";
+        resultadosDiv.classList.add("hidden");
+      }
+    }
