@@ -184,3 +184,242 @@ function calcularSinastria() {
 }
 
 console.log("✅ NUMERALIS COMPLETO CARREGADO COM SUCESSO!");
+
+
+// ========================================
+// FUNÇÕES DE INTERFACE COMPLETAS
+// ========================================
+
+// Função de navegação entre abas - IMPLEMENTAÇÃO COMPLETA
+function changeTab(tab) {
+  // Desativar todas as seções e abas
+  document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(li => li.classList.remove('active'));
+  
+  // Ativar a seção clicada
+  const sec = document.getElementById(tab);
+  if (sec) sec.classList.add('active');
+  
+  // Ativar a aba correspondente
+  const btn = document.querySelector('.nav-tab button[onclick*="' + tab + '"]');
+  if (btn) btn.parentElement.classList.add('active');
+  
+  console.log("Navegação para aba:", tab);
+}
+
+// ========================================
+// FUNÇÕES PARA MAPA PITAGÓRICO
+// ========================================
+
+// Renomear limparCampos para limparMapa para compatibilidade
+function limparMapa() {
+  limparCampos();
+}
+
+// ========================================
+// FUNÇÕES PARA PIRÂMIDE CABALÍSTICA
+// ========================================
+
+function preencherExemploPiramide() {
+  document.getElementById("nomePiramide").value = "Maria Silva Santos";
+  document.getElementById("idadePiramide").value = "33";
+}
+
+function calcularPiramideCompleta() {
+  const nome = document.getElementById("nomePiramide").value.trim();
+  const idade = document.getElementById("idadePiramide").value.trim();
+  
+  if (!nome || !idade) {
+    alert("Por favor, preencha todos os campos da Pirâmide Cabalística.");
+    return;
+  }
+  
+  // Cálculo básico da pirâmide
+  const nomeNormalizado = normalizarTexto(nome);
+  const numeroNome = calcularNumeroNome(nomeNormalizado);
+  const ciclo = Math.floor((parseInt(idade) - 1) / 9) + 1;
+  const arcano = (numeroNome + parseInt(idade)) % 22;
+  
+  const resultadosDiv = document.getElementById("resultados-piramide");
+  if (!resultadosDiv) {
+    console.error("Elemento resultados-piramide não encontrado!");
+    return;
+  }
+  
+  let html = `
+    <div class="interpretation">
+      <h3>🔺 Pirâmide Cabalística Completa</h3>
+      <div class="number-display">
+        Ciclo: ${ciclo} | Arcano Regente: ${arcano} | Idade: ${idade} anos
+      </div>
+      <div class="result-item">
+        <h4>🔮 Análise do Ciclo Atual</h4>
+        <p>Você está no <strong>${ciclo}º ciclo</strong> de sua jornada cabalística.</p>
+        <p>Seu Arcano Regente atual é o <strong>Arcano ${arcano}</strong>.</p>
+        <p>Esta configuração indica um período de transformação e crescimento espiritual.</p>
+      </div>
+    </div>
+  `;
+  
+  resultadosDiv.innerHTML = html;
+  resultadosDiv.classList.remove("hidden");
+}
+
+function limparPiramide() {
+  document.getElementById("nomePiramide").value = "";
+  document.getElementById("idadePiramide").value = "";
+  const resultadosDiv = document.getElementById("resultados-piramide");
+  if (resultadosDiv) {
+    resultadosDiv.innerHTML = "";
+    resultadosDiv.classList.add("hidden");
+  }
+}
+
+// ========================================
+// FUNÇÕES PARA PINÁCULOS DA VIDA
+// ========================================
+
+function preencherExemploPinaculos() {
+  document.getElementById("nomePinaculos").value = "Maria Silva Santos";
+  document.getElementById("dataPinaculos").value = "1990-05-15";
+}
+
+function calcularPinaculosCompletos() {
+  const nome = document.getElementById("nomePinaculos").value.trim();
+  const data = document.getElementById("dataPinaculos").value;
+  
+  if (!nome || !data) {
+    alert("Por favor, preencha todos os campos dos Pináculos da Vida.");
+    return;
+  }
+  
+  // Cálculo dos pináculos
+  const dataObj = new Date(data + 'T00:00:00');
+  const dia = dataObj.getDate();
+  const mes = dataObj.getMonth() + 1;
+  const ano = dataObj.getFullYear();
+  
+  const pinaculo1 = reduzirNumero(mes + dia);
+  const pinaculo2 = reduzirNumero(dia + ano);
+  const pinaculo3 = reduzirNumero(pinaculo1 + pinaculo2);
+  const pinaculo4 = reduzirNumero(mes + ano);
+  
+  const resultadosDiv = document.getElementById("resultados-pinaculos");
+  if (!resultadosDiv) {
+    console.error("Elemento resultados-pinaculos não encontrado!");
+    return;
+  }
+  
+  let html = `
+    <div class="interpretation">
+      <h3>🏔️ Pináculos da Vida Completos</h3>
+      <div class="number-display">
+        1º Pináculo: ${pinaculo1} | 2º Pináculo: ${pinaculo2} | 3º Pináculo: ${pinaculo3} | 4º Pináculo: ${pinaculo4}
+      </div>
+      <div class="result-item">
+        <h4>🌟 Seus Quatro Grandes Ciclos</h4>
+        <p><strong>1º Pináculo (${pinaculo1}):</strong> Ciclo da juventude e formação (0-28 anos)</p>
+        <p><strong>2º Pináculo (${pinaculo2}):</strong> Ciclo da maturidade e construção (29-36 anos)</p>
+        <p><strong>3º Pináculo (${pinaculo3}):</strong> Ciclo da realização e poder (37-45 anos)</p>
+        <p><strong>4º Pináculo (${pinaculo4}):</strong> Ciclo da sabedoria e legado (46+ anos)</p>
+      </div>
+    </div>
+  `;
+  
+  resultadosDiv.innerHTML = html;
+  resultadosDiv.classList.remove("hidden");
+}
+
+function limparPinaculos() {
+  document.getElementById("nomePinaculos").value = "";
+  document.getElementById("dataPinaculos").value = "";
+  const resultadosDiv = document.getElementById("resultados-pinaculos");
+  if (resultadosDiv) {
+    resultadosDiv.innerHTML = "";
+    resultadosDiv.classList.add("hidden");
+  }
+}
+
+// ========================================
+// FUNÇÕES PARA SINASTRIA NUMEROLÓGICA
+// ========================================
+
+function preencherExemploSinastria() {
+  document.getElementById("nomePessoa1").value = "Maria Silva Santos";
+  document.getElementById("dataPessoa1").value = "1990-05-15";
+  document.getElementById("nomePessoa2").value = "João Carlos Silva";
+  document.getElementById("dataPessoa2").value = "1988-03-22";
+}
+
+function calcularSinastria() {
+  const nome1 = document.getElementById("nomePessoa1").value.trim();
+  const data1 = document.getElementById("dataPessoa1").value;
+  const nome2 = document.getElementById("nomePessoa2").value.trim();
+  const data2 = document.getElementById("dataPessoa2").value;
+  
+  if (!nome1 || !data1 || !nome2 || !data2) {
+    alert("Por favor, preencha todos os campos da Sinastria Numerológica.");
+    return;
+  }
+  
+  // Cálculo da sinastria
+  const perfil1 = calcularPerfilNumerologico(nome1, data1);
+  const perfil2 = calcularPerfilNumerologico(nome2, data2);
+  
+  const compatibilidade = Math.abs(perfil1.destino - perfil2.destino);
+  const afinidade = Math.abs(perfil1.expressao - perfil2.expressao);
+  
+  let nivelCompatibilidade = "Média";
+  if (compatibilidade <= 2) nivelCompatibilidade = "Alta";
+  else if (compatibilidade >= 6) nivelCompatibilidade = "Desafiadora";
+  
+  const resultadosDiv = document.getElementById("resultados-sinastria");
+  if (!resultadosDiv) {
+    console.error("Elemento resultados-sinastria não encontrado!");
+    return;
+  }
+  
+  let html = `
+    <div class="interpretation">
+      <h3>💕 Sinastria Numerológica Completa</h3>
+      <div class="number-display">
+        Compatibilidade: ${nivelCompatibilidade} | Diferença de Destino: ${compatibilidade}
+      </div>
+      <div class="result-item">
+        <h4>👥 Análise do Casal</h4>
+        <p><strong>${nome1}:</strong> Destino ${perfil1.destino}, Expressão ${perfil1.expressao}</p>
+        <p><strong>${nome2}:</strong> Destino ${perfil2.destino}, Expressão ${perfil2.expressao}</p>
+        <p><strong>Compatibilidade:</strong> ${nivelCompatibilidade}</p>
+        <p>Esta união apresenta potencial para crescimento mútuo e harmonia.</p>
+      </div>
+    </div>
+  `;
+  
+  resultadosDiv.innerHTML = html;
+  resultadosDiv.classList.remove("hidden");
+}
+
+function limparSinastria() {
+  document.getElementById("nomePessoa1").value = "";
+  document.getElementById("dataPessoa1").value = "";
+  document.getElementById("nomePessoa2").value = "";
+  document.getElementById("dataPessoa2").value = "";
+  const resultadosDiv = document.getElementById("resultados-sinastria");
+  if (resultadosDiv) {
+    resultadosDiv.innerHTML = "";
+    resultadosDiv.classList.add("hidden");
+  }
+}
+
+// ========================================
+// INICIALIZAÇÃO
+// ========================================
+
+// Inicializar quando o DOM estiver pronto
+document.addEventListener('DOMContentLoaded', function() {
+  // Ativar a primeira aba por padrão
+  changeTab('mapa-pitagorico');
+  console.log("✅ INTERFACE COMPLETA INICIALIZADA COM SUCESSO!");
+});
+
+console.log("✅ TODAS AS FUNÇÕES DE INTERFACE CARREGADAS!");
