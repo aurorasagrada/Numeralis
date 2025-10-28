@@ -1115,3 +1115,110 @@
 
 
 }
+
+
+// Função para mudar abas
+function changeTab(tabName) {
+  // Esconder todas as seções
+  const sections = document.querySelectorAll('.section');
+  sections.forEach(section => section.classList.remove('active'));
+  
+  // Remover classe active de todas as abas
+  const tabs = document.querySelectorAll('.nav-tab');
+  tabs.forEach(tab => tab.classList.remove('active'));
+  
+  // Mostrar a seção selecionada
+  const targetSection = document.getElementById(tabName);
+  if (targetSection) {
+    targetSection.classList.add('active');
+  }
+  
+  // Adicionar classe active na aba clicada
+  const clickedTab = event.target.closest('.nav-tab');
+  if (clickedTab) {
+    clickedTab.classList.add('active');
+  }
+}
+
+// Função para calcular sinastria
+function calcularSinastria() {
+  const nome1 = document.getElementById("nomePessoa1").value.trim();
+  const data1 = document.getElementById("dataPessoa1").value;
+  const nome2 = document.getElementById("nomePessoa2").value.trim();
+  const data2 = document.getElementById("dataPessoa2").value;
+  
+  if (!nome1 || !data1 || !nome2 || !data2) {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
+  
+  // Calcular perfis numerológicos de ambas as pessoas
+  const perfil1 = calcularPerfilNumerologico(nome1, data1);
+  const perfil2 = calcularPerfilNumerologico(nome2, data2);
+  
+  // Calcular compatibilidade
+  const compatibilidade = calcularCompatibilidade(perfil1, perfil2);
+  
+  renderResultadosSinastria(compatibilidade, nome1, nome2);
+}
+
+// Função para calcular compatibilidade entre dois perfis
+function calcularCompatibilidade(perfil1, perfil2) {
+  const motivacaoComp = Math.abs(perfil1.motivacao - perfil2.motivacao);
+  const impressaoComp = Math.abs(perfil1.impressao - perfil2.impressao);
+  const expressaoComp = Math.abs(perfil1.expressao - perfil2.expressao);
+  const destinoComp = Math.abs(perfil1.destino - perfil2.destino);
+  
+  return {
+    motivacao: motivacaoComp,
+    impressao: impressaoComp,
+    expressao: expressaoComp,
+    destino: destinoComp,
+    geral: (motivacaoComp + impressaoComp + expressaoComp + destinoComp) / 4
+  };
+}
+
+// Função para renderizar resultados da sinastria
+function renderResultadosSinastria(compatibilidade, nome1, nome2) {
+  const resultadosDiv = document.getElementById("resultados-sinastria");
+  
+  let html = `
+    <div class="card">
+      <h3 class="text-center">Sinastria Numerológica: ${nome1} & ${nome2}</h3>
+      <div class="compatibility-grid">
+        <div class="compatibility-card">
+          <div class="compatibility-number">${compatibilidade.motivacao}</div>
+          <div class="compatibility-type">Compatibilidade Motivacional</div>
+          <p>Nível de harmonia entre os desejos íntimos e motivações profundas.</p>
+        </div>
+        
+        <div class="compatibility-card">
+          <div class="compatibility-number">${compatibilidade.impressao}</div>
+          <div class="compatibility-type">Compatibilidade de Impressão</div>
+          <p>Como vocês se apresentam ao mundo e a primeira impressão que causam.</p>
+        </div>
+        
+        <div class="compatibility-card">
+          <div class="compatibility-number">${compatibilidade.expressao}</div>
+          <div class="compatibility-type">Compatibilidade de Expressão</div>
+          <p>Harmonia na forma de se expressar e comunicar no relacionamento.</p>
+        </div>
+        
+        <div class="compatibility-card">
+          <div class="compatibility-number">${compatibilidade.destino}</div>
+          <div class="compatibility-type">Compatibilidade de Destino</div>
+          <p>Alinhamento dos propósitos de vida e caminhos evolutivos.</p>
+        </div>
+      </div>
+      
+      <div class="interpretation">
+        <h4>Análise Geral da Compatibilidade</h4>
+        <p>A compatibilidade geral entre ${nome1} e ${nome2} é de ${compatibilidade.geral.toFixed(1)} pontos.</p>
+        <p>Quanto menor o número, maior a harmonia entre os perfis numerológicos.</p>
+      </div>
+    </div>
+  `;
+  
+  resultadosDiv.innerHTML = html;
+  resultadosDiv.classList.remove("hidden");
+}
