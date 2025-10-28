@@ -3,8 +3,28 @@ console.log("Script limpo carregado!");
 
 function preencherExemploMapa() {
     console.log("Preenchendo exemplo...");
-    document.getElementById("nomeCompleto").value = "Maria Silva Santos";
-    document.getElementById("dataNascimento").value = "1990-05-15";
+    
+    // Debug: verificar se os elementos existem
+    var nomeField = document.getElementById("nomeCompleto");
+    var dataField = document.getElementById("dataNascimento");
+    
+    console.log("Campo nome:", nomeField);
+    console.log("Campo data:", dataField);
+    
+    if (nomeField) {
+        nomeField.value = "Maria Silva Santos";
+        console.log("Nome preenchido!");
+    } else {
+        console.log("ERRO: Campo nome nao encontrado!");
+    }
+    
+    if (dataField) {
+        dataField.value = "1990-05-15";
+        console.log("Data preenchida!");
+    } else {
+        console.log("ERRO: Campo data nao encontrado!");
+    }
+    
     alert("Exemplo preenchido!");
 }
 
