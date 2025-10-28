@@ -174,14 +174,7 @@ function limparCampos() {
   }
 }
 
-// Funções para outras seções (placeholder)
-function changeTab(tab) {
-  console.log("Mudando para aba:", tab);
-}
-
-function calcularSinastria() {
-  console.log("Calculando sinastria...");
-}
+// Placeholder removido - funções implementadas abaixo
 
 console.log("✅ NUMERALIS COMPLETO CARREGADO COM SUCESSO!");
 
