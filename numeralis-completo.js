@@ -3,16 +3,25 @@
 
 // Mapeamento das variáveis carregadas dos arquivos externos
 window.addEventListener("load", function() {
-  // Mapear variáveis dos arquivos JS para nomes esperados pelo código
-  if (typeof interpretacoesPitagoricasUltraExpandidas !== "undefined") {
-    window.interpretacoesPitagoricas = interpretacoesPitagoricasUltraExpandidas;
-  }
-  if (typeof interpretacoesPinaculosExpandidos !== "undefined") {
-    window.interpretacoesPinaculos = interpretacoesPinaculosExpandidos;
-  }
-  if (typeof sinastria_expandida !== "undefined") {
-    window.sinastria_expandida = sinastria_expandida;
-  }
+  // Aguardar um pequeno delay para garantir que todos os scripts foram processados
+  setTimeout(function() {
+    // Mapear variáveis dos arquivos JS para nomes esperados pelo código
+    if (typeof interpretacoesPitagoricasUltraExpandidas !== "undefined") {
+      window.interpretacoesPitagoricas = interpretacoesPitagoricasUltraExpandidas;
+      console.log("✅ Interpretações Pitagóricas mapeadas");
+    }
+    if (typeof interpretacoesPinaculosExpandidos !== "undefined") {
+      window.interpretacoesPinaculos = interpretacoesPinaculosExpandidos;
+      console.log("✅ Interpretações Pináculos mapeadas");
+    }
+    if (typeof sinastria_expandida !== "undefined") {
+      window.sinastria_expandida = sinastria_expandida;
+      console.log("✅ Sinastria expandida mapeada");
+    }
+    
+    // Inicializar sistema após mapeamento
+    console.log("🚀 SISTEMA NUMERALIS INICIALIZADO COM SUCESSO!");
+  }, 100); // Delay de 100ms para garantir carregamento completo
 });
 
 // Tabelas numerológicas
