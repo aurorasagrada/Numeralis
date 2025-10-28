@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de Navegação - Numeralis</title>
+    <style>
+        .section { display: none; padding: 20px; border: 2px solid #ccc; margin: 10px; }
+        .section.active { display: block; background: #f0f0f0; }
+        .nav-tab { display: inline-block; margin: 5px; }
+        .nav-tab.active button { background: #007bff; color: white; }
+        button { padding: 10px 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <h1>Teste de Navegação - Sistema Numeralis</h1>
+    
+    <!-- Navegação -->
+    <nav>
+        <div class="nav-tab active">
+            <button onclick="changeTab('mapa-pitagorico')">🌟 Mapa Pitagórico</button>
+        </div>
+        <div class="nav-tab">
+            <button onclick="changeTab('piramide-cabalistica')">🔺 Pirâmide Cabalística</button>
+        </div>
+        <div class="nav-tab">
+            <button onclick="changeTab('pinaculos-vida')">🏔️ Pináculos da Vida</button>
+        </div>
+        <div class="nav-tab">
+            <button onclick="changeTab('sinastria-numerologica')">💕 Sinastria Numerológica</button>
+        </div>
+    </nav>
+
+    <!-- Seções -->
+    <section id="mapa-pitagorico" class="section active">
+        <h2>🌟 Mapa Pitagórico Completo</h2>
+        <p>Esta é a seção do Mapa Pitagórico.</p>
+        <input type="text" placeholder="Nome Completo">
+        <input type="date">
+        <button onclick="alert('Mapa Pitagórico funcionando!')">Testar</button>
+    </section>
+
+    <section id="piramide-cabalistica" class="section">
+        <h2>🔺 Pirâmide Cabalística</h2>
+        <p>Esta é a seção da Pirâmide Cabalística.</p>
+        <input type="text" placeholder="Nome Completo">
+        <input type="number" placeholder="Idade">
+        <button onclick="alert('Pirâmide Cabalística funcionando!')">Testar</button>
+    </section>
+
+    <section id="pinaculos-vida" class="section">
+        <h2>🏔️ Pináculos da Vida</h2>
+        <p>Esta é a seção dos Pináculos da Vida.</p>
+        <input type="text" placeholder="Nome Completo">
+        <input type="date">
+        <button onclick="alert('Pináculos funcionando!')">Testar</button>
+    </section>
+
+    <section id="sinastria-numerologica" class="section">
+        <h2>💕 Sinastria Numerológica</h2>
+        <p>Esta é a seção da Sinastria Numerológica.</p>
+        <input type="text" placeholder="Nome Pessoa 1">
+        <input type="text" placeholder="Nome Pessoa 2">
+        <button onclick="alert('Sinastria funcionando!')">Testar</button>
+    </section>
+
+    <script>
+        console.log("✅ TESTE DE NAVEGAÇÃO CARREGADO!");
+        
+        function changeTab(tab) {
+            console.log("Mudando para aba:", tab);
+            
+            // Desativar todas as seções e abas
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.querySelectorAll('.nav-tab').forEach(li => li.classList.remove('active'));
+            
+            // Ativar a seção clicada
+            const sec = document.getElementById(tab);
+            if (sec) {
+                sec.classList.add('active');
+                console.log("Seção ativada:", tab);
+            } else {
+                console.error("Seção não encontrada:", tab);
+            }
+            
+            // Ativar a aba correspondente
+            const btn = document.querySelector('button[onclick*="' + tab + '"]');
+            if (btn) {
+                btn.parentElement.classList.add('active');
+                console.log("Aba ativada:", tab);
+            } else {
+                console.error("Aba não encontrada:", tab);
+            }
+        }
+        
+        // Teste inicial
+        console.log("Seções encontradas:", document.querySelectorAll('.section').length);
+        console.log("Abas encontradas:", document.querySelectorAll('.nav-tab').length);
+        
+        alert("JavaScript está funcionando! Teste a navegação.");
+    </script>
+</body>
+</html>
