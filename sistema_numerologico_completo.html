@@ -699,6 +699,88 @@
 
     // Funções de navegação das abas agora estão inline no HTML para garantir funcionamento
     
+    // Função para inicializar botões de cálculo
+    function initializeCalculationButtons() {
+      console.log('Inicializando botões de cálculo...');
+      
+      // Mapa Pitagórico
+      const btnMapaCalcular = document.querySelector('button[onclick="calcularMapaCompleto()"]');
+      if (btnMapaCalcular) {
+        btnMapaCalcular.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          calcularMapaCompleto();
+        });
+        console.log('Botão Mapa Pitagórico configurado');
+      }
+      
+      // Pirâmide Cabalística
+      const btnPiramideCalcular = document.querySelector('button[onclick="calcularPiramideCompleta()"]');
+      if (btnPiramideCalcular) {
+        btnPiramideCalcular.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          calcularPiramideCompleta();
+        });
+        console.log('Botão Pirâmide Cabalística configurado');
+      }
+      
+      // Pináculos da Vida
+      const btnPinaculosCalcular = document.querySelector('button[onclick="calcularPinaculosCompletos()"]');
+      if (btnPinaculosCalcular) {
+        btnPinaculosCalcular.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          calcularPinaculosCompletos();
+        });
+        console.log('Botão Pináculos da Vida configurado');
+      }
+      
+      // Sinastria Numerológica
+      const btnSinastriaCalcular = document.querySelector('button[onclick="calcularSinastria()"]');
+      if (btnSinastriaCalcular) {
+        btnSinastriaCalcular.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          calcularSinastria();
+        });
+        console.log('Botão Sinastria Numerológica configurado');
+      }
+      
+      // Botões de Exemplo
+      const btnExemplos = document.querySelectorAll('button:contains("Exemplo")');
+      btnExemplos.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          preencherExemplo();
+        });
+      });
+      
+      console.log('Todos os botões de cálculo inicializados!');
+    }
+    
+    // Função para preencher exemplos baseada na seção ativa
+    function preencherExemplo() {
+      const hash = window.location.hash;
+      
+      if (hash === '#mapa-pitagorico' || !hash) {
+        document.getElementById('nomeCompleto').value = 'Maria Silva Santos';
+        document.getElementById('dataNascimento').value = '1990-05-15';
+      } else if (hash === '#piramide-cabalistica') {
+        document.getElementById('nomePiramide').value = 'João Silva';
+        document.getElementById('idadePiramide').value = '33';
+      } else if (hash === '#pinaculos-vida') {
+        document.getElementById('nomePinaculos').value = 'Ana Costa';
+        document.getElementById('dataPinaculos').value = '1985-12-03';
+      } else if (hash === '#sinastria-numerologica') {
+        document.getElementById('nomePessoa1').value = 'Carlos Oliveira';
+        document.getElementById('dataPessoa1').value = '1988-07-22';
+        document.getElementById('nomePessoa2').value = 'Lucia Santos';
+        document.getElementById('dataPessoa2').value = '1992-03-18';
+      }
+    }
+
     // Inicialização forçada das seções
     document.addEventListener('DOMContentLoaded', function() {
       // Garantir que apenas a primeira seção esteja visível
@@ -720,6 +802,9 @@
       });
       
       console.log('Sistema de abas inicializado com força');
+      
+      // Inicializar botões de cálculo
+      initializeCalculationButtons();
     });
     
     // Fallback adicional
