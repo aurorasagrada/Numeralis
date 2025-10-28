@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Apenas Main.js</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #1a1a2e; color: white; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        input, button { padding: 10px; margin: 5px; }
+        .hidden { display: none; }
+        .results { margin-top: 20px; }
+        .debug { background: #f0f0f0; color: black; padding: 10px; margin: 10px 0; }
+        .error { background: #ffcccc; }
+        .success { background: #ccffcc; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Teste Apenas Main.js</h1>
+        
+        <input id="nomeCompleto" type="text" placeholder="Nome Completo" value="Maria Silva Santos">
+        <input id="dataNascimento" type="date" value="1990-05-15">
+        
+        <button onclick="testarFuncoes()">🔍 Testar Funções</button>
+        <button onclick="preencherExemploMapa()">📝 Exemplo</button>
+        
+        <div id="debug-output"></div>
+        <div id="resultados-mapa" class="results hidden"></div>
+    </div>
+    
+    <!-- CARREGANDO APENAS MAIN.JS -->
+    <script src="main.js"></script>
+    
+    <script>
+        function testarFuncoes() {
+            const output = document.getElementById('debug-output');
+            output.innerHTML = '<div class="debug">🧪 Testando apenas main.js...</div>';
+            
+            try {
+                // Teste 1: Verificar se funções existem
+                if (typeof preencherExemploMapa === 'function') {
+                    output.innerHTML += '<div class="debug success">✅ preencherExemploMapa existe</div>';
+                } else {
+                    output.innerHTML += '<div class="debug error">❌ preencherExemploMapa NÃO existe</div>';
+                }
+                
+                if (typeof calcularMapaCompleto === 'function') {
+                    output.innerHTML += '<div class="debug success">✅ calcularMapaCompleto existe</div>';
+                } else {
+                    output.innerHTML += '<div class="debug error">❌ calcularMapaCompleto NÃO existe</div>';
+                }
+                
+                // Teste 2: Verificar se interpretações existem
+                if (typeof interpretacoesPitagoricas !== 'undefined') {
+                    output.innerHTML += '<div class="debug success">✅ interpretacoesPitagoricas existe</div>';
+                } else {
+                    output.innerHTML += '<div class="debug error">❌ interpretacoesPitagoricas NÃO existe (esperado)</div>';
+                }
+                
+                // Teste 3: Tentar executar preencherExemploMapa
+                output.innerHTML += '<div class="debug">Executando preencherExemploMapa...</div>';
+                preencherExemploMapa();
+                output.innerHTML += '<div class="debug success">✅ preencherExemploMapa executada!</div>';
+                
+            } catch (error) {
+                output.innerHTML += `<div class="debug error">❌ ERRO: ${error.message}</div>`;
+            }
+        }
+        
+        // Testar automaticamente quando a página carregar
+        window.addEventListener('load', function() {
+            console.log('Página carregada - testando automaticamente...');
+            testarFuncoes();
+        });
+    </script>
+</body>
+</html>
