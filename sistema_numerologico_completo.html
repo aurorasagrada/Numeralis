@@ -554,6 +554,22 @@
     </section>
   </main>
 
+  <script>
+    console.log("TESTE: Script inline carregado!");
+    window.testeInline = true;
+    
+    // Função de teste simples
+    function testeSimples() {
+      console.log("TESTE: Função inline funcionando!");
+      alert("JavaScript funcionando!");
+    }
+    
+    // Adicionar evento de teste
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log("TESTE: DOM carregado!");
+    });
+  </script>
+  
   <script src="interpretacoes_pitagoricas_ultra_expandidas.js"></script>
   <script src="piramide_cabalistica_corrigida.js"></script>
   <script src="textos_pinaculos_melhorados.js"></script>
