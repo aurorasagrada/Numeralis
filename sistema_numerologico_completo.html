@@ -969,7 +969,7 @@
       }
       
       const perfil = calcularPerfilNumerologico(nome, dataNascimento);
-      renderResultadosMapaCompleto(perfil);
+      renderResultadosMapa(perfil);
     }
 
     function calcularPerfilNumerologico(nome, dataNascimento) {
@@ -1029,7 +1029,7 @@
       return licoesKarmicas;
     }
 
-    function renderResultadosMapaCompleto(perfil) {
+    function renderResultadosMapa(perfil) {
       const resultadosDiv = document.getElementById('resultados-mapa');
       
       let html = `
