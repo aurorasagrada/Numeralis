@@ -430,37 +430,41 @@
 
   <nav class="nav-container">
     <ul class="nav-tabs">
-        <li class="nav-tab active">
-          <button onclick="
+        <li class="nav-tab active" id="tab-mapa">
+          <a href="#mapa-pitagorico" onclick="
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
             this.closest('.nav-tab').classList.add('active');
-            document.getElementById('mapa-pitagorico').classList.add('active');
-          ">🌟 Mapa Pitagórico</button>
+            document.getElementById('mapa-pitagorico').style.display = 'block';
+            return true;
+          ">🌟 Mapa Pitagórico</a>
         </li>
-        <li class="nav-tab">
-          <button onclick="
+        <li class="nav-tab" id="tab-piramide">
+          <a href="#piramide-cabalistica" onclick="
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
             this.closest('.nav-tab').classList.add('active');
-            document.getElementById('piramide-cabalistica').classList.add('active');
-          ">🔺 Pirâmide Cabalística</button>
+            document.getElementById('piramide-cabalistica').style.display = 'block';
+            return true;
+          ">🔺 Pirâmide Cabalística</a>
         </li>
-        <li class="nav-tab">
-          <button onclick="
+        <li class="nav-tab" id="tab-pinaculos">
+          <a href="#pinaculos-vida" onclick="
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
             this.closest('.nav-tab').classList.add('active');
-            document.getElementById('pinaculos-vida').classList.add('active');
-          ">🏔️ Pináculos da Vida</button>
+            document.getElementById('pinaculos-vida').style.display = 'block';
+            return true;
+          ">🏔️ Pináculos da Vida</a>
         </li>
-        <li class="nav-tab">
-          <button onclick="
+        <li class="nav-tab" id="tab-sinastria">
+          <a href="#sinastria-numerologica" onclick="
             document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
             this.closest('.nav-tab').classList.add('active');
-            document.getElementById('sinastria-numerologica').classList.add('active');
-          ">💕 Sinastria Numerológica</button>
+            document.getElementById('sinastria-numerologica').style.display = 'block';
+            return true;
+          ">💕 Sinastria Numerológica</a>
         </li>
     </ul>
   </nav>
@@ -694,6 +698,38 @@
     };
 
     // Funções de navegação das abas agora estão inline no HTML para garantir funcionamento
+    
+    // Inicialização forçada das seções
+    document.addEventListener('DOMContentLoaded', function() {
+      // Garantir que apenas a primeira seção esteja visível
+      document.querySelectorAll('.section').forEach((section, index) => {
+        if (index === 0) {
+          section.style.display = 'block';
+        } else {
+          section.style.display = 'none';
+        }
+      });
+      
+      // Garantir que a primeira aba esteja ativa
+      document.querySelectorAll('.nav-tab').forEach((tab, index) => {
+        if (index === 0) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+      
+      console.log('Sistema de abas inicializado com força');
+    });
+    
+    // Fallback adicional
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.querySelectorAll('.section').forEach((section, index) => {
+          section.style.display = index === 0 ? 'block' : 'none';
+        });
+      }, 500);
+    });
     
 
 
