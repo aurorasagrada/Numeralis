@@ -680,3 +680,9 @@ const sinastria_expandida = {
 function obterAnaliseExpandida(numeroPareja) {
   return sinastria_expandida[numeroPareja.toString()] || null;
 }
+
+// Mapeamento para compatibilidade com o código principal
+if (typeof window !== 'undefined') {
+  window.sinastria_expandida = sinastria_expandida;
+  window.obterAnaliseExpandida = obterAnaliseExpandida;
+}

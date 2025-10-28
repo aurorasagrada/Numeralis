@@ -321,3 +321,9 @@ const interpretacoesPinaculosExpandidos = {
     Durante este pináculo culminante, você se tornará um verdadeiro agente de transformação planetária, alguém cuja presença, palavras e ações servem como catalisadores poderosos para o despertar espiritual, a cura emocional e a evolução da consciência em todos aqueles que têm o privilégio de cruzar seu caminho, descobrindo que sua realização pessoal máxima vem através do serviço dedicado à elevação de toda a humanidade.`
   }
 };
+
+
+// Mapeamento para compatibilidade com o código principal
+if (typeof window !== 'undefined') {
+  window.interpretacoesPinaculos = interpretacoesPinaculosExpandidos;
+}

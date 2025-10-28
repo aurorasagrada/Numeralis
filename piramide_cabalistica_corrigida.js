@@ -281,3 +281,9 @@ function renderResultadosPiramideCompleta_Corrigida(piramide, arcanoAtual, seque
   resultadosDiv.innerHTML = html;
   resultadosDiv.classList.remove('hidden');
 }
+
+// Mapeamento para compatibilidade com o código principal
+if (typeof window !== 'undefined') {
+  window.renderResultadosPiramideCompleta = renderResultadosPiramideCompleta_Corrigida;
+  window.arcanosLinks = arcanosLinks;
+}
