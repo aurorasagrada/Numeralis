@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Mapa Simples</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #1a1a2e; color: white; }
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        input, button { padding: 10px; margin: 5px; }
+        .hidden { display: none; }
+        .results { margin-top: 20px; }
+        .interpretation { background: #16213e; padding: 15px; margin: 10px 0; border-radius: 8px; }
+        .number-display { font-size: 24px; font-weight: bold; color: #d4af37; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌟 Teste Mapa Pitagórico Simples</h1>
+        
+        <input id="nomeCompleto" type="text" placeholder="Nome Completo" value="Maria Silva Santos">
+        <input id="dataNascimento" type="date" value="1990-05-15">
+        
+        <button onclick="preencherExemploMapa()">📝 Exemplo</button>
+        <button onclick="calcularMapaCompleto()">🌟 Calcular</button>
+        
+        <div id="resultados-mapa" class="results hidden"></div>
+    </div>
+    
+    <script src="interpretacoes_pitagoricas_ultra_expandidas.js"></script>
+    <script src="piramide_cabalistica_corrigida.js"></script>
+    <script src="textos_pinaculos_melhorados.js"></script>
+    <script src="sinastria_expandida_completa.js"></script>
+    <script src="main.js"></script>
+    
+    <script>
+        // Mapeamento adicional para garantir compatibilidade
+        window.addEventListener('load', function() {
+            console.log('Página carregada, verificando variáveis...');
+            
+            if (typeof interpretacoesPitagoricasUltraExpandidas !== 'undefined') {
+                window.interpretacoesPitagoricas = interpretacoesPitagoricasUltraExpandidas;
+                console.log('✅ interpretacoesPitagoricas mapeada');
+            }
+            
+            if (typeof calcularMapaCompleto === 'function') {
+                console.log('✅ calcularMapaCompleto disponível');
+            } else {
+                console.log('❌ calcularMapaCompleto NÃO disponível');
+            }
+        });
+    </script>
+</body>
+</html>
