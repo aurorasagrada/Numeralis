@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Teste Individual de Arquivos JS</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test { background: #f0f0f0; padding: 10px; margin: 10px 0; }
+        .error { background: #ffcccc; }
+        .success { background: #ccffcc; }
+        button { margin: 5px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Teste Individual de Arquivos JS</h1>
+    
+    <button onclick="testeArquivo1()">Teste 1: interpretacoes_pitagoricas_ultra_expandidas.js</button>
+    <button onclick="testeArquivo2()">Teste 2: + piramide_cabalistica_corrigida.js</button>
+    <button onclick="testeArquivo3()">Teste 3: + textos_pinaculos_melhorados.js</button>
+    <button onclick="testeArquivo4()">Teste 4: + sinastria_expandida_completa.js</button>
+    <button onclick="testeArquivo5()">Teste 5: + main.js</button>
+    
+    <div id="output"></div>
+    
+    <script>
+        function log(msg, type = 'test') {
+            const output = document.getElementById('output');
+            output.innerHTML += `<div class="${type}">${msg}</div>`;
+        }
+        
+        function testeArquivo1() {
+            document.getElementById('output').innerHTML = '';
+            log('Testando apenas interpretacoes_pitagoricas_ultra_expandidas.js...');
+            
+            // Criar script dinamicamente
+            const script = document.createElement('script');
+            script.src = 'interpretacoes_pitagoricas_ultra_expandidas.js';
+            script.onload = () => {
+                log('✅ interpretacoes_pitagoricas_ultra_expandidas.js carregado com sucesso', 'success');
+                console.log('Teste 1: OK');
+            };
+            script.onerror = () => {
+                log('❌ ERRO ao carregar interpretacoes_pitagoricas_ultra_expandidas.js', 'error');
+            };
+            document.head.appendChild(script);
+        }
+        
+        function testeArquivo2() {
+            log('Testando + piramide_cabalistica_corrigida.js...');
+            const script = document.createElement('script');
+            script.src = 'piramide_cabalistica_corrigida.js';
+            script.onload = () => {
+                log('✅ piramide_cabalistica_corrigida.js carregado com sucesso', 'success');
+                console.log('Teste 2: OK');
+            };
+            script.onerror = () => {
+                log('❌ ERRO ao carregar piramide_cabalistica_corrigida.js', 'error');
+            };
+            document.head.appendChild(script);
+        }
+        
+        function testeArquivo3() {
+            log('Testando + textos_pinaculos_melhorados.js...');
+            const script = document.createElement('script');
+            script.src = 'textos_pinaculos_melhorados.js';
+            script.onload = () => {
+                log('✅ textos_pinaculos_melhorados.js carregado com sucesso', 'success');
+                console.log('Teste 3: OK');
+            };
+            script.onerror = () => {
+                log('❌ ERRO ao carregar textos_pinaculos_melhorados.js', 'error');
+            };
+            document.head.appendChild(script);
+        }
+        
+        function testeArquivo4() {
+            log('Testando + sinastria_expandida_completa.js...');
+            const script = document.createElement('script');
+            script.src = 'sinastria_expandida_completa.js';
+            script.onload = () => {
+                log('✅ sinastria_expandida_completa.js carregado com sucesso', 'success');
+                console.log('Teste 4: OK');
+            };
+            script.onerror = () => {
+                log('❌ ERRO ao carregar sinastria_expandida_completa.js', 'error');
+            };
+            document.head.appendChild(script);
+        }
+        
+        function testeArquivo5() {
+            log('Testando + main.js...');
+            const script = document.createElement('script');
+            script.src = 'main.js';
+            script.onload = () => {
+                log('✅ main.js carregado com sucesso', 'success');
+                log('Testando função calcularMapaCompleto...');
+                if (typeof calcularMapaCompleto === 'function') {
+                    log('✅ Função calcularMapaCompleto disponível!', 'success');
+                } else {
+                    log('❌ Função calcularMapaCompleto NÃO disponível!', 'error');
+                }
+                console.log('Teste 5: OK');
+            };
+            script.onerror = () => {
+                log('❌ ERRO ao carregar main.js', 'error');
+            };
+            document.head.appendChild(script);
+        }
+    </script>
+</body>
+</html>
