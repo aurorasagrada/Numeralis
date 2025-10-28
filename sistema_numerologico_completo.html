@@ -604,7 +604,13 @@
     <script src="textos_pinaculos_melhorados.js"></script>
     <script src="sinastria_expandida_completa.js"></script>
   <script>
-    // Tabelas numerológicasompletos baseados nas fontes
+    // Mapeamento das variáveis carregadas dos arquivos externos
+    window.addEventListener('load', function() {
+      // Mapear variáveis dos arquivos JS para nomes esperados pelo código
+      if (typeof interpretacoesPitagoricasUltraExpandidas !== 'undefined') {
+        window.interpretacoesPitagoricas = interpretacoesPitagoricasUltraExpandidas;
+      }
+    });
     
     // Tabelas numerológicas
     const tabelaPitagorica = {
