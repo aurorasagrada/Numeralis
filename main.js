@@ -1240,3 +1240,5 @@ function renderResultadosSinastria(compatibilidade, nome1, nome2) {
         resultadosDiv.classList.add("hidden");
       }
     }
+
+    // FORÇAR ATUALIZAÇÃO GITHUB PAGES - $(date)
