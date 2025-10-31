@@ -156,12 +156,32 @@ function renderResultadosMapa(perfil) {
   `;
   
   // Adicionar interpretações se disponíveis
-  if (typeof interpretacoesPitagoricas !== 'undefined' && interpretacoesPitagoricas[perfil.motivacao]) {
+  if (typeof interpretacoesPitagoricasUltraExpandidas !== 'undefined' && interpretacoesPitagoricasUltraExpandidas.motivacao && interpretacoesPitagoricasUltraExpandidas.motivacao[perfil.motivacao]) {
+    const interpretacao = interpretacoesPitagoricasUltraExpandidas.motivacao[perfil.motivacao];
     html += `
       <div class="result-item">
         <h4>💫 Motivação ${perfil.motivacao}</h4>
-        <p><strong>${interpretacoesPitagoricas[perfil.motivacao].motivacao.titulo}</strong></p>
-        <p>${interpretacoesPitagoricas[perfil.motivacao].motivacao.texto}</p>
+        <p><strong>${interpretacao.titulo}</strong></p>
+        <div class="interpretation-text">${interpretacao.texto}</div>
+      </div>
+    `;
+  } else {
+    html += `
+      <div class="result-item">
+        <h4>💫 Motivação ${perfil.motivacao}</h4>
+        <p>Interpretação básica para o número ${perfil.motivacao}</p>
+      </div>
+    `;
+  }
+  
+  // Adicionar outras interpretações
+  if (typeof interpretacoesPitagoricasUltraExpandidas !== 'undefined' && interpretacoesPitagoricasUltraExpandidas.impressao && interpretacoesPitagoricasUltraExpandidas.impressao[perfil.impressao]) {
+    const interpretacao = interpretacoesPitagoricasUltraExpandidas.impressao[perfil.impressao];
+    html += `
+      <div class="result-item">
+        <h4>🎭 Impressão ${perfil.impressao}</h4>
+        <p><strong>${interpretacao.titulo}</strong></p>
+        <div class="interpretation-text">${interpretacao.texto}</div>
       </div>
     `;
   }
@@ -184,6 +204,14 @@ function limparCampos() {
 }
 
 // Placeholder removido - funções implementadas abaixo
+
+// Debug: Verificar se as interpretações estão carregadas
+if (typeof interpretacoesPitagoricasUltraExpandidas !== 'undefined') {
+  console.log("✅ Interpretações Ultra Expandidas carregadas!");
+  console.log("Motivação 1 disponível:", !!interpretacoesPitagoricasUltraExpandidas.motivacao[1]);
+} else {
+  console.log("❌ Interpretações Ultra Expandidas NÃO carregadas!");
+}
 
 console.log("✅ NUMERALIS COMPLETO CARREGADO COM SUCESSO!");
 
