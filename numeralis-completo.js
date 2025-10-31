@@ -425,3 +425,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 console.log("✅ TODAS AS FUNÇÕES DE INTERFACE CARREGADAS!");
+
+// Forçar atualização cache - versão 2.1
