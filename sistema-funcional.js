@@ -158,7 +158,13 @@ function calcularPerfilNumerologico(nomeCompleto, dataNascimento) {
     
     // Ciclos e Períodos
     ciclosVida: calcularCiclosVida(dia, mes, ano),
-    periodosAprendizado: calcularPeriodosAprendizado(dia, mes, ano)
+    periodosAprendizado: calcularPeriodosAprendizado(dia, mes, ano),
+    
+    // Novas categorias numerológicas detalhadas
+    numeroMissao: reduzirNumero(motivacao + destino),
+    euInterior: reduzirNumero(motivacao + impressao),
+    herancaFamiliar: calcularHerancaFamiliar(nomeCompleto, dia, mes, ano),
+    destinoFinal: reduzirNumero(motivacao + expressao + destino)
   };
 }
 
@@ -293,6 +299,46 @@ function calcularPeriodosAprendizado(dia, mes, ano) {
   };
 }
 
+// Calcular Herança Familiar (padrões herdados e carmas familiares)
+function calcularHerancaFamiliar(nomeCompleto, dia, mes, ano) {
+  const nomeNormalizado = normalizarTexto(nomeCompleto);
+  
+  // Analisar padrões numéricos no nome
+  const contagem = {};
+  for (let i = 1; i <= 9; i++) {
+    contagem[i] = 0;
+  }
+  
+  for (let char of nomeNormalizado) {
+    if (char !== ' ' && tabelaPitagorica[char]) {
+      contagem[tabelaPitagorica[char]]++;
+    }
+  }
+  
+  // Encontrar número mais repetido (herança dominante)
+  let numeroMaisRepetido = 1;
+  let maiorFrequencia = contagem[1];
+  
+  for (let i = 2; i <= 9; i++) {
+    if (contagem[i] > maiorFrequencia) {
+      maiorFrequencia = contagem[i];
+      numeroMaisRepetido = i;
+    }
+  }
+  
+  // Se não há repetições significativas, usar combinação nome + nascimento
+  if (maiorFrequencia <= 1) {
+    const somaTotal = calcularNumeroNome(nomeCompleto) + dia + mes + ano;
+    numeroMaisRepetido = reduzirNumero(somaTotal);
+  }
+  
+  return {
+    numero: numeroMaisRepetido,
+    frequencia: maiorFrequencia,
+    padrao: maiorFrequencia > 2 ? 'Forte' : maiorFrequencia > 1 ? 'Moderado' : 'Sutil'
+  };
+}
+
 // FUNÇÃO PRINCIPAL - EXEMPLO
 function preencherExemploMapa() {
   document.getElementById("nomeCompleto").value = "Maria Silva Santos";
@@ -332,31 +378,74 @@ function renderResultadosMapa(perfil) {
         
         <div class="fundamental-grid">
           <div class="fundamental-card destino">
-            <div class="fundamental-symbol">✦</div>
-            <div class="fundamental-label">Seu Número do Destino</div>
-            <div class="fundamental-number">${perfil.destino}</div>
-            <div class="fundamental-desc">O propósito da sua vida</div>
+              <div class="fundamental-card">
+          <div class="fundamental-symbol">☀️</div>
+          <div class="fundamental-label">Número de Destino</div>
+          <div class="fundamental-number">${perfil.destino}</div>
+          <div class="fundamental-desc">O propósito da encarnação, o caminho que a vida oferece</div>
+        </div>
+        
+        <div class="fundamental-card">
+          <div class="fundamental-symbol">🕊️</div>
+          <div class="fundamental-label">Número da Alma</div>
+          <div class="fundamental-number">${perfil.motivacao}</div>
+          <div class="fundamental-desc">Desejos internos, o que motiva e busca inconscientemente</div>
+        </div>
+        
+        <div class="fundamental-card">
+          <div class="fundamental-symbol">💎</div>
+          <div class="fundamental-label">Número da Expressão</div>
+          <div class="fundamental-number">${perfil.expressao}</div>
+          <div class="fundamental-desc">Talentos naturais e capacidades que expressa no mundo</div>
+        </div>
+        
+        <div class="fundamental-card">
+          <div class="fundamental-symbol">🌹</div>
+          <div class="fundamental-label">Número da Impressão</div>
+          <div class="fundamental-number">${perfil.impressao}</div>
+          <div class="fundamental-desc">A máscara social, primeira impressão que transmite</div>
+        </div>  </div>
+        </div>
+      </div>
+      
+      <!-- Seção dos Números Complementares -->
+      <div class="fundamental-numbers-section">
+        <h2 class="fundamental-title">✨ Números Complementares da Sua Jornada ✨</h2>
+        
+        <div class="fundamental-grid">
+          <div class="fundamental-card">
+            <div class="fundamental-symbol">🌙</div>
+            <div class="fundamental-label">Número de Missão</div>
+            <div class="fundamental-number">${perfil.numeroMissao}</div>
+            <div class="fundamental-desc">O que você veio aprender e desenvolver nesta vida</div>
           </div>
           
-          <div class="fundamental-card alma">
-            <div class="fundamental-symbol">✦</div>
-            <div class="fundamental-label">Seu Número da Alma</div>
-            <div class="fundamental-number">${perfil.motivacao}</div>
-            <div class="fundamental-desc">Seus desejos e motivações internas</div>
+          <div class="fundamental-card">
+            <div class="fundamental-symbol">🔥</div>
+            <div class="fundamental-label">Eu Interior</div>
+            <div class="fundamental-number">${perfil.euInterior}</div>
+            <div class="fundamental-desc">Harmonia entre o que sente e o que mostra ao mundo</div>
           </div>
           
-          <div class="fundamental-card expressao">
-            <div class="fundamental-symbol">✦</div>
-            <div class="fundamental-label">Seu Número da Expressão</div>
-            <div class="fundamental-number">${perfil.expressao}</div>
-            <div class="fundamental-desc">Seus talentos naturais</div>
+          <div class="fundamental-card">
+            <div class="fundamental-symbol">🌿</div>
+            <div class="fundamental-label">Herança Familiar</div>
+            <div class="fundamental-number">${perfil.herancaFamiliar.numero}</div>
+            <div class="fundamental-desc">Padrões herdados e influências ancestrais (${perfil.herancaFamiliar.padrao})</div>
+          </div>
+          
+          <div class="fundamental-card">
+            <div class="fundamental-symbol">🌟</div>
+            <div class="fundamental-label">Destino Final</div>
+            <div class="fundamental-number">${perfil.destinoFinal}</div>
+            <div class="fundamental-desc">Síntese de todas as partes do seu mapa numerológico</div>
           </div>
         </div>
       </div>
       
       <div class="number-display">
         <h4>🔍 Análise Complementar</h4>
-        Impressão: ${perfil.impressao} | Primeiro Nome: ${perfil.primeiroNome} | Sobrenome: ${perfil.sobrenome} | 
+        Primeiro Nome: ${perfil.primeiroNome} | Sobrenome: ${perfil.sobrenome} | 
         Maturidade: ${perfil.maturidade} | Ponte: ${perfil.ponte} | Ano Pessoal: ${perfil.anoPessoal}
       </div>
   `;
