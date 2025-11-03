@@ -13,6 +13,14 @@ window.addEventListener("load", function() {
       window.interpretacoesPinaculos = interpretacoesPinaculosExpandidos;
       console.log("✅ Interpretações Pináculos mapeadas");
     }
+    if (typeof arcanosImagens !== "undefined") {
+      window.arcanosImagens = arcanosImagens;
+      console.log("✅ Arcanos Imagens mapeados");
+    }
+    if (typeof arcanosLinks !== "undefined") {
+      window.arcanosLinks = arcanosLinks;
+      console.log("✅ Arcanos Links mapeados");
+    }
     if (typeof sinastria_expandida !== "undefined") {
       window.sinastria_expandida = sinastria_expandida;
       console.log("✅ Sinastria expandida mapeada");
@@ -232,7 +240,83 @@ function preencherExemploPinaculos() {
 }
 
 function calcularPinaculosCompletos() {
-  alert("Função Pináculos da Vida em desenvolvimento");
+  const nome = document.getElementById("nomePinaculos").value.trim();
+  const data = document.getElementById("dataPinaculos").value;
+  
+  if (!nome || !data) {
+    alert("Por favor, preencha nome e data de nascimento.");
+    return;
+  }
+  
+  const partesData = data.split("-");
+  if (partesData.length !== 3) {
+    alert("Formato de data inválido. Use AAAA-MM-DD");
+    return;
+  }
+  
+  const ano = parseInt(partesData[0]);
+  const mes = parseInt(partesData[1]);
+  const dia = parseInt(partesData[2]);
+  
+  // Cálculos dos Pináculos
+  const pinaculo1 = reduzirNumero(mes + dia);
+  const pinaculo2 = reduzirNumero(dia + ano);
+  const pinaculo3 = reduzirNumero(pinaculo1 + pinaculo2);
+  const pinaculo4 = reduzirNumero(mes + ano);
+  
+  // Idades dos Pináculos
+  const numeroDestino = reduzirNumero(mes + dia + ano);
+  const idade1 = 36 - numeroDestino;
+  const idade2 = idade1 + 9;
+  const idade3 = idade2 + 9;
+  
+  // Exibir resultados
+  const resultadoDiv = document.getElementById("resultadoPinaculos");
+  if (!resultadoDiv) {
+    const novoResultado = document.createElement("div");
+    novoResultado.id = "resultadoPinaculos";
+    novoResultado.className = "resultado-section";
+    document.querySelector(".pinaculos-section").appendChild(novoResultado);
+  }
+  
+  const resultado = document.getElementById("resultadoPinaculos");
+  resultado.innerHTML = `
+    <div class="resultado-header">
+      <h3>🏔️ Pináculos da Vida</h3>
+      <div class="numeros-resumo">Pináculos: ${pinaculo1} | ${pinaculo2} | ${pinaculo3} | ${pinaculo4}</div>
+    </div>
+    <div class="interpretacao-container">
+      <div class="numero-titulo">
+        <h4>🌅 1º Pináculos (Nascimento aos ${idade1} anos): ${pinaculo1}</h4>
+      </div>
+      <div class="interpretacao-texto">
+        ${window.interpretacoesPinaculos && window.interpretacoesPinaculos[pinaculo1] ? window.interpretacoesPinaculos[pinaculo1] : `<p>Interpretação para o Pináculo ${pinaculo1} em desenvolvimento.</p>`}
+      </div>
+      
+      <div class="numero-titulo">
+        <h4>🌞 2º Pináculos (${idade1 + 1} aos ${idade2} anos): ${pinaculo2}</h4>
+      </div>
+      <div class="interpretacao-texto">
+        ${window.interpretacoesPinaculos && window.interpretacoesPinaculos[pinaculo2] ? window.interpretacoesPinaculos[pinaculo2] : `<p>Interpretação para o Pináculo ${pinaculo2} em desenvolvimento.</p>`}
+      </div>
+      
+      <div class="numero-titulo">
+        <h4>🌅 3º Pináculos (${idade2 + 1} aos ${idade3} anos): ${pinaculo3}</h4>
+      </div>
+      <div class="interpretacao-texto">
+        ${window.interpretacoesPinaculos && window.interpretacoesPinaculos[pinaculo3] ? window.interpretacoesPinaculos[pinaculo3] : `<p>Interpretação para o Pináculo ${pinaculo3} em desenvolvimento.</p>`}
+      </div>
+      
+      <div class="numero-titulo">
+        <h4>🌟 4º Pináculos (${idade3 + 1} anos em diante): ${pinaculo4}</h4>
+      </div>
+      <div class="interpretacao-texto">
+        ${window.interpretacoesPinaculos && window.interpretacoesPinaculos[pinaculo4] ? window.interpretacoesPinaculos[pinaculo4] : `<p>Interpretação para o Pináculo ${pinaculo4} em desenvolvimento.</p>`}
+      </div>
+    </div>
+  `;
+  
+  resultado.scrollIntoView({ behavior: "smooth" });
 }
 
 function limparPinaculos() {
@@ -248,7 +332,105 @@ function preencherExemploSinastria() {
 }
 
 function calcularSinastria() {
-  alert("Função Sinastria Numerológica em desenvolvimento");
+  const nome1 = document.getElementById("nomePessoa1").value.trim();
+  const data1 = document.getElementById("dataPessoa1").value;
+  const nome2 = document.getElementById("nomePessoa2").value.trim();
+  const data2 = document.getElementById("dataPessoa2").value;
+  
+  if (!nome1 || !data1 || !nome2 || !data2) {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
+  
+  // Calcular números para pessoa 1
+  const motivacao1 = calcularMotivacao(nome1);
+  const impressao1 = calcularImpressao(nome1);
+  const expressao1 = calcularExpressao(nome1);
+  const destino1 = calcularDestino(data1.replace(/-/g, "/"));
+  
+  // Calcular números para pessoa 2
+  const motivacao2 = calcularMotivacao(nome2);
+  const impressao2 = calcularImpressao(nome2);
+  const expressao2 = calcularExpressao(nome2);
+  const destino2 = calcularDestino(data2.replace(/-/g, "/"));
+  
+  // Calcular compatibilidade
+  const compatibilidadeMotivacao = calcularCompatibilidade(motivacao1, motivacao2);
+  const compatibilidadeImpressao = calcularCompatibilidade(impressao1, impressao2);
+  const compatibilidadeExpressao = calcularCompatibilidade(expressao1, expressao2);
+  const compatibilidadeDestino = calcularCompatibilidade(destino1, destino2);
+  
+  const compatibilidadeGeral = Math.round((compatibilidadeMotivacao + compatibilidadeImpressao + compatibilidadeExpressao + compatibilidadeDestino) / 4);
+  
+  // Exibir resultados
+  const resultadoDiv = document.getElementById("resultadoSinastria");
+  if (!resultadoDiv) {
+    const novoResultado = document.createElement("div");
+    novoResultado.id = "resultadoSinastria";
+    novoResultado.className = "resultado-section";
+    document.querySelector(".sinastria-section").appendChild(novoResultado);
+  }
+  
+  const resultado = document.getElementById("resultadoSinastria");
+  resultado.innerHTML = `
+    <div class="resultado-header">
+      <h3>💕 Sinastria Numerológica</h3>
+      <div class="numeros-resumo">Compatibilidade Geral: ${compatibilidadeGeral}%</div>
+    </div>
+    <div class="interpretacao-container">
+      <div class="sinastria-pessoas">
+        <div class="pessoa">
+          <h4>👤 ${nome1}</h4>
+          <p>Motivação: ${motivacao1} | Impressão: ${impressao1} | Expressão: ${expressao1} | Destino: ${destino1}</p>
+        </div>
+        <div class="pessoa">
+          <h4>👤 ${nome2}</h4>
+          <p>Motivação: ${motivacao2} | Impressão: ${impressao2} | Expressão: ${expressao2} | Destino: ${destino2}</p>
+        </div>
+      </div>
+      
+      <div class="compatibilidade-detalhes">
+        <h4>💖 Análise de Compatibilidade</h4>
+        <div class="compatibilidade-item">
+          <strong>Motivação (${motivacao1} ↔ ${motivacao2}):</strong> ${compatibilidadeMotivacao}%
+          <p>Compatibilidade dos desejos internos e motivações profundas.</p>
+        </div>
+        <div class="compatibilidade-item">
+          <strong>Impressão (${impressao1} ↔ ${impressao2}):</strong> ${compatibilidadeImpressao}%
+          <p>Compatibilidade da primeira impressão e energia externa.</p>
+        </div>
+        <div class="compatibilidade-item">
+          <strong>Expressão (${expressao1} ↔ ${expressao2}):</strong> ${compatibilidadeExpressao}%
+          <p>Compatibilidade dos talentos naturais e forma de expressão.</p>
+        </div>
+        <div class="compatibilidade-item">
+          <strong>Destino (${destino1} ↔ ${destino2}):</strong> ${compatibilidadeDestino}%
+          <p>Compatibilidade dos caminhos de vida e propósitos.</p>
+        </div>
+        
+        <div class="interpretacao-geral">
+          ${window.sinastria_expandida && window.sinastria_expandida[compatibilidadeGeral] ? window.sinastria_expandida[compatibilidadeGeral] : `<p>Interpretação detalhada para ${compatibilidadeGeral}% de compatibilidade em desenvolvimento.</p>`}
+        </div>
+      </div>
+    </div>
+  `;
+  
+  resultado.scrollIntoView({ behavior: "smooth" });
+}
+
+// Função auxiliar para calcular compatibilidade entre dois números
+function calcularCompatibilidade(num1, num2) {
+  const diferenca = Math.abs(num1 - num2);
+  if (diferenca === 0) return 100;
+  if (diferenca === 1) return 85;
+  if (diferenca === 2) return 70;
+  if (diferenca === 3) return 60;
+  if (diferenca === 4) return 50;
+  if (diferenca === 5) return 45;
+  if (diferenca === 6) return 40;
+  if (diferenca === 7) return 35;
+  if (diferenca === 8) return 30;
+  return 25;
 }
 
 function limparSinastria() {
