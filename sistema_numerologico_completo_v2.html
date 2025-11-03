@@ -342,6 +342,142 @@
       margin-bottom: 1rem;
     }
     
+    /* Estilos para Seção dos Números Fundamentais */
+    .fundamental-numbers-section {
+      background: linear-gradient(135deg, rgba(62,10,41,0.4) 0%, rgba(11,24,54,0.4) 100%);
+      border: 2px solid var(--gold);
+      border-radius: 15px;
+      padding: 2rem;
+      margin: 2rem 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .fundamental-numbers-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(240,170,83,0.05) 0%, transparent 70%);
+      animation: rotate 20s linear infinite;
+    }
+    
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    
+    .fundamental-title {
+      font-family: "Cinzel", serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      margin-bottom: 2rem;
+      text-shadow: 0 0 10px rgba(240,170,83,0.5);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .fundamental-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .fundamental-card {
+      background: rgba(242,234,255,0.1);
+      border: 1px solid rgba(240,170,83,0.4);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .fundamental-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(240,170,83,0.2);
+      border-color: var(--gold);
+    }
+    
+    .fundamental-symbol {
+      font-size: 2rem;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 10px rgba(240,170,83,0.5);
+    }
+    
+    .fundamental-label {
+      font-family: "Cinzel", serif;
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--sage);
+      margin-bottom: 0.5rem;
+    }
+    
+    .fundamental-number {
+      font-size: 3rem;
+      font-weight: bold;
+      color: var(--gold);
+      margin: 0.5rem 0;
+      text-shadow: 0 0 15px rgba(240,170,83,0.4);
+    }
+    
+    .fundamental-desc {
+      font-style: italic;
+      color: var(--parch);
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+    
+    /* Estilos para Ciclos e Períodos */
+    .cycles-grid, .periods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .cycle-card, .period-card {
+      background: rgba(178,209,177,0.1);
+      border: 1px solid rgba(178,209,177,0.3);
+      border-radius: 10px;
+      padding: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .cycle-card:hover, .period-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(178,209,177,0.2);
+    }
+    
+    .period-card.active {
+      border-color: var(--gold);
+      background: rgba(240,170,83,0.1);
+      box-shadow: 0 0 15px rgba(240,170,83,0.2);
+    }
+    
+    .current-phase {
+      color: var(--gold);
+      font-weight: bold;
+      text-align: center;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+    }
+    
+    .cycle-card h5, .period-card h5 {
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    
     /* Responsive */
     @media (max-width: 768px) {
       .header h1 {

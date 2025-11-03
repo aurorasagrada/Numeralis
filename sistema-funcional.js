@@ -154,7 +154,11 @@ function calcularPerfilNumerologico(nomeCompleto, dataNascimento) {
     anoPessoal,
     licoescarmicas,
     intensidade,
-    desafios
+    desafios,
+    
+    // Ciclos e Períodos
+    ciclosVida: calcularCiclosVida(dia, mes, ano),
+    periodosAprendizado: calcularPeriodosAprendizado(dia, mes, ano)
   };
 }
 
@@ -218,6 +222,77 @@ function calcularDesafiosPessoais(dia, mes, ano) {
   };
 }
 
+// Calcular Ciclos de Vida (3 grandes ciclos baseados na data de nascimento)
+function calcularCiclosVida(dia, mes, ano) {
+  const diaReduzido = reduzirNumero(dia);
+  const mesReduzido = reduzirNumero(mes);
+  const anoReduzido = reduzirNumero(ano);
+  
+  // Ciclo 1: Baseado no mês de nascimento
+  const ciclo1 = mesReduzido;
+  
+  // Ciclo 2: Baseado no dia de nascimento  
+  const ciclo2 = diaReduzido;
+  
+  // Ciclo 3: Baseado no ano de nascimento
+  const ciclo3 = anoReduzido;
+  
+  // Calcular idades de transição
+  const idade1 = 36 - reduzirNumero(dia + mes + ano);
+  const idade2 = idade1 + 27;
+  
+  return {
+    ciclo1: {
+      numero: ciclo1,
+      periodo: `Nascimento - ${idade1} anos`,
+      fase: "Formação e Descoberta"
+    },
+    ciclo2: {
+      numero: ciclo2,
+      periodo: `${idade1 + 1} - ${idade2} anos`,
+      fase: "Produtividade e Realização"
+    },
+    ciclo3: {
+      numero: ciclo3,
+      periodo: `${idade2 + 1}+ anos`,
+      fase: "Sabedoria e Legado"
+    },
+    transicoes: {
+      primeira: idade1,
+      segunda: idade2
+    }
+  };
+}
+
+// Calcular Períodos de Aprendizado e Entrega
+function calcularPeriodosAprendizado(dia, mes, ano) {
+  const destino = reduzirNumero(dia + mes + ano);
+  const idadeAtual = new Date().getFullYear() - ano;
+  
+  // Período de Aprendizado: primeiros 36 anos
+  const periodoAprendizado = {
+    numero: reduzirNumero(mes + ano),
+    periodo: "0 - 36 anos",
+    fase: "Aprendizado e Preparação",
+    ativo: idadeAtual <= 36
+  };
+  
+  // Período de Entrega: após 36 anos
+  const periodoEntrega = {
+    numero: reduzirNumero(dia + destino),
+    periodo: "37+ anos",
+    fase: "Entrega e Serviço",
+    ativo: idadeAtual > 36
+  };
+  
+  return {
+    aprendizado: periodoAprendizado,
+    entrega: periodoEntrega,
+    idadeAtual: idadeAtual,
+    faseAtual: idadeAtual <= 36 ? "Aprendizado" : "Entrega"
+  };
+}
+
 // FUNÇÃO PRINCIPAL - EXEMPLO
 function preencherExemploMapa() {
   document.getElementById("nomeCompleto").value = "Maria Silva Santos";
@@ -251,15 +326,37 @@ function renderResultadosMapa(perfil) {
     <div class="interpretation">
       <h3>🌟 Mapa Pitagórico Completo Expandido</h3>
       
-      <div class="number-display">
-        <h4>📊 Números Fundamentais</h4>
-        Motivação: ${perfil.motivacao} | Impressão: ${perfil.impressao} | 
-        Expressão: ${perfil.expressao} | Destino: ${perfil.destino}
+      <!-- SEÇÃO ESPECIAL DOS NÚMEROS FUNDAMENTAIS -->
+      <div class="fundamental-numbers-section">
+        <h2 class="fundamental-title">✦ Números Fundamentais da Sua Alma ✦</h2>
+        
+        <div class="fundamental-grid">
+          <div class="fundamental-card destino">
+            <div class="fundamental-symbol">✦</div>
+            <div class="fundamental-label">Seu Número do Destino</div>
+            <div class="fundamental-number">${perfil.destino}</div>
+            <div class="fundamental-desc">O propósito da sua vida</div>
+          </div>
+          
+          <div class="fundamental-card alma">
+            <div class="fundamental-symbol">✦</div>
+            <div class="fundamental-label">Seu Número da Alma</div>
+            <div class="fundamental-number">${perfil.motivacao}</div>
+            <div class="fundamental-desc">Seus desejos e motivações internas</div>
+          </div>
+          
+          <div class="fundamental-card expressao">
+            <div class="fundamental-symbol">✦</div>
+            <div class="fundamental-label">Seu Número da Expressão</div>
+            <div class="fundamental-number">${perfil.expressao}</div>
+            <div class="fundamental-desc">Seus talentos naturais</div>
+          </div>
+        </div>
       </div>
       
       <div class="number-display">
         <h4>🔍 Análise Complementar</h4>
-        Primeiro Nome: ${perfil.primeiroNome} | Sobrenome: ${perfil.sobrenome} | 
+        Impressão: ${perfil.impressao} | Primeiro Nome: ${perfil.primeiroNome} | Sobrenome: ${perfil.sobrenome} | 
         Maturidade: ${perfil.maturidade} | Ponte: ${perfil.ponte} | Ano Pessoal: ${perfil.anoPessoal}
       </div>
   `;
@@ -365,6 +462,54 @@ function renderResultadosMapa(perfil) {
       <p><strong>3º Desafio (Principal):</strong> ${perfil.desafios.terceiro}</p>
       <p><strong>4º Desafio (Maturidade):</strong> ${perfil.desafios.quarto}</p>
       <p>Os desafios representam obstáculos a superar em diferentes fases da vida.</p>
+    </div>
+  `;
+  
+  // Ciclos de Vida
+  html += `
+    <div class="result-item">
+      <h4>🔄 Ciclos de Vida</h4>
+      <div class="cycles-grid">
+        <div class="cycle-card">
+          <h5>1º Ciclo - Número ${perfil.ciclosVida.ciclo1.numero}</h5>
+          <p><strong>Período:</strong> ${perfil.ciclosVida.ciclo1.periodo}</p>
+          <p><strong>Fase:</strong> ${perfil.ciclosVida.ciclo1.fase}</p>
+        </div>
+        <div class="cycle-card">
+          <h5>2º Ciclo - Número ${perfil.ciclosVida.ciclo2.numero}</h5>
+          <p><strong>Período:</strong> ${perfil.ciclosVida.ciclo2.periodo}</p>
+          <p><strong>Fase:</strong> ${perfil.ciclosVida.ciclo2.fase}</p>
+        </div>
+        <div class="cycle-card">
+          <h5>3º Ciclo - Número ${perfil.ciclosVida.ciclo3.numero}</h5>
+          <p><strong>Período:</strong> ${perfil.ciclosVida.ciclo3.periodo}</p>
+          <p><strong>Fase:</strong> ${perfil.ciclosVida.ciclo3.fase}</p>
+        </div>
+      </div>
+      <p>Os três grandes ciclos da vida representam as energias dominantes em cada fase da sua jornada.</p>
+    </div>
+  `;
+  
+  // Períodos de Aprendizado e Entrega
+  html += `
+    <div class="result-item">
+      <h4>🎓 Períodos de Aprendizado e Entrega</h4>
+      <div class="periods-grid">
+        <div class="period-card ${perfil.periodosAprendizado.aprendizado.ativo ? 'active' : ''}">
+          <h5>Período de Aprendizado - Número ${perfil.periodosAprendizado.aprendizado.numero}</h5>
+          <p><strong>Período:</strong> ${perfil.periodosAprendizado.aprendizado.periodo}</p>
+          <p><strong>Fase:</strong> ${perfil.periodosAprendizado.aprendizado.fase}</p>
+          ${perfil.periodosAprendizado.aprendizado.ativo ? '<p class="current-phase">✨ FASE ATUAL</p>' : ''}
+        </div>
+        <div class="period-card ${perfil.periodosAprendizado.entrega.ativo ? 'active' : ''}">
+          <h5>Período de Entrega - Número ${perfil.periodosAprendizado.entrega.numero}</h5>
+          <p><strong>Período:</strong> ${perfil.periodosAprendizado.entrega.periodo}</p>
+          <p><strong>Fase:</strong> ${perfil.periodosAprendizado.entrega.fase}</p>
+          ${perfil.periodosAprendizado.entrega.ativo ? '<p class="current-phase">✨ FASE ATUAL</p>' : ''}
+        </div>
+      </div>
+      <p><strong>Sua idade atual:</strong> ${perfil.periodosAprendizado.idadeAtual} anos - <strong>Fase atual:</strong> ${perfil.periodosAprendizado.faseAtual}</p>
+      <p>O período de aprendizado foca na aquisição de conhecimento e experiências. O período de entrega é quando aplicamos esse conhecimento para servir ao mundo.</p>
     </div>
   `;
   
