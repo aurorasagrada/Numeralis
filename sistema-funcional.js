@@ -375,6 +375,9 @@ function renderResultadosMapa(perfil) {
       <!-- SEÇÃO ESPECIAL DOS NÚMEROS FUNDAMENTAIS -->
       <div class="fundamental-numbers-section">
         <h2 class="fundamental-title">✦ Números Fundamentais da Sua Alma ✦</h2>
+        <div class="explanation-text">
+          <p>Estes são os quatro pilares da sua personalidade numerológica. Cada um revela um aspecto essencial de quem você é e como você se relaciona com o mundo. Juntos, eles formam o retrato completo da sua essência e do seu propósito de vida.</p>
+        </div>
         
         <div class="fundamental-grid">
           <div class="fundamental-card destino">
@@ -411,6 +414,9 @@ function renderResultadosMapa(perfil) {
       <!-- Seção dos Números Complementares -->
       <div class="fundamental-numbers-section">
         <h2 class="fundamental-title">✨ Números Complementares da Sua Jornada ✨</h2>
+        <div class="explanation-text">
+          <p>Estes números aprofundam a compreensão do seu mapa numerológico, revelando aspectos mais sutis da sua personalidade e jornada. Eles mostram como suas energias fundamentais se combinam e interagem, oferecendo insights sobre sua missão, conflitos internos e potencial de realização.</p>
+        </div>
         
         <div class="fundamental-grid">
           <div class="fundamental-card">
@@ -513,20 +519,22 @@ function renderResultadosMapa(perfil) {
   
   // Lições Cármicas
   if (perfil.licoescarmicas && perfil.licoescarmicas.length > 0) {
-    html += `
-      <div class="result-item">
+    html +      <div class="result-item">
         <h4>⚖️ Lições Cármicas</h4>
-        <p><strong>Números Ausentes:</strong> ${perfil.licoescarmicas.join(', ')}</p>
-        <p>Estas são áreas de crescimento e desenvolvimento que requerem atenção especial nesta vida. 
-        A ausência destes números indica lições importantes a serem aprendidas.</p>
-      </div>
-    `;
+        <div class="explanation-text">
+          <p>Os números ausentes no seu nome completo representam as <strong>Lições Cármicas</strong>. Estas são áreas de fraqueza ou aprendizados que sua alma não integrou em vidas passadas e que agora se apresentam como desafios a serem superados. A ausência de um número indica uma energia que você precisa desenvolver e cultivar nesta vida para alcançar um maior equilíbrio.</p>
+        </div>
+        <p><strong>Números Ausentes:</strong> ${perfil.licoescarmicas.numerosAusentes.join(', ')}</p>
+      </div>  `;
   }
   
   // Intensidade dos Números
   html += `
-    <div class="result-item">
-      <h4>📈 Intensidade dos Números</h4>
+      <div class="result-item">
+        <h4>📈 Intensidade dos Números</h4>
+        <div class="explanation-text">
+          <p>A frequência com que cada número (de 1 a 9) aparece nas letras do seu nome revela a <strong>Intensidade</strong> dessas energias em sua personalidade. Números com alta frequência indicam talentos e características fortes, enquanto números com baixa frequência (ou ausentes) apontam para as Lições Cármicas. Esta análise mostra quais energias são dominantes e quais precisam de mais atenção.</p>
+        </div>
       <div class="intensity-grid">
   `;
   
@@ -544,8 +552,11 @@ function renderResultadosMapa(perfil) {
   
   // Desafios Pessoais
   html += `
-    <div class="result-item">
-      <h4>🎯 Desafios Pessoais</h4>
+      <div class="result-item">
+        <h4>🎯 Desafios Pessoais</h4>
+        <div class="explanation-text">
+          <p>Calculados a partir de subtrações entre os números da sua data de nascimento, os <strong>Desafios Pessoais</strong> representam os obstáculos específicos que você encontrará em diferentes fases da sua vida. Eles são como "pedras no sapato" que, uma vez superadas, se transformam em grandes fontes de força e sabedoria. Existem quatro desafios principais que marcam sua jornada.</p>
+        </div>
       <p><strong>1º Desafio (Juventude):</strong> ${perfil.desafios.primeiro}</p>
       <p><strong>2º Desafio (Idade Adulta):</strong> ${perfil.desafios.segundo}</p>
       <p><strong>3º Desafio (Principal):</strong> ${perfil.desafios.terceiro}</p>
@@ -556,8 +567,11 @@ function renderResultadosMapa(perfil) {
   
   // Ciclos de Vida
   html += `
-    <div class="result-item">
-      <h4>🔄 Ciclos de Vida</h4>
+      <div class="result-item">
+        <h4>🔄 Ciclos de Vida</h4>
+        <div class="explanation-text">
+          <p>Sua vida é dividida em três grandes <strong>Ciclos</strong>, cada um governado por um número específico derivado da sua data de nascimento. O primeiro ciclo (formativo) vai do nascimento até a maturidade (por volta dos 28-35 anos), o segundo (produtivo) cobre a fase adulta, e o terceiro (colheita) abrange a fase mais madura da vida. Cada ciclo traz um tema central e um conjunto de experiências.</p>
+        </div>
       <div class="cycles-grid">
         <div class="cycle-card">
           <h5>1º Ciclo - Número ${perfil.ciclosVida.ciclo1.numero}</h5>
@@ -581,8 +595,11 @@ function renderResultadosMapa(perfil) {
   
   // Períodos de Aprendizado e Entrega
   html += `
-    <div class="result-item">
-      <h4>🎓 Períodos de Aprendizado e Entrega</h4>
+      <div class="result-item">
+        <h4>🎓 Períodos de Aprendizado e Entrega</h4>
+        <div class="explanation-text">
+          <p>Dentro dos grandes Ciclos de Vida, sua jornada é dividida em dois <strong>Períodos</strong> principais. O <strong>Período de Aprendizado</strong> foca na aquisição de conhecimento, desenvolvimento pessoal e experiências. O <strong>Período de Entrega</strong> é quando você começa a aplicar esse conhecimento acumulado para servir ao mundo e cumprir seu propósito de forma mais concreta. A transição entre eles é um marco importante.</p>
+        </div>
       <div class="periods-grid">
         <div class="period-card ${perfil.periodosAprendizado.aprendizado.ativo ? 'active' : ''}">
           <h5>Período de Aprendizado - Número ${perfil.periodosAprendizado.aprendizado.numero}</h5>
@@ -604,8 +621,11 @@ function renderResultadosMapa(perfil) {
   
   // Análise do Ano Pessoal
   html += `
-    <div class="result-item">
-      <h4>📅 Ciclo Anual Atual</h4>
+      <div class="result-item">
+        <h4>📅 Ciclo Anual Atual</h4>
+        <div class="explanation-text">
+          <p>Calculado a partir da soma do seu dia e mês de nascimento com o ano corrente, o <strong>Ano Pessoal</strong> descreve a energia dominante que influenciará sua vida durante o ano. A cada aniversário, você entra em um novo Ano Pessoal, que segue um ciclo de 9 anos. Saber seu número anual ajuda a aproveitar as oportunidades e a navegar os desafios de cada período.</p>
+        </div>
       <p><strong>Ano Pessoal ${perfil.anoPessoal}:</strong> Este é o seu ciclo numerológico atual.</p>
       <p>Cada ano pessoal traz energias e oportunidades específicas para crescimento.</p>
     </div>
