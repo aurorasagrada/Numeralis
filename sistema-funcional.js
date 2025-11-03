@@ -96,7 +96,7 @@ function calcularPerfilNumerologico(nomeCompleto, dataNascimento) {
   const nomeNormalizado = normalizarTexto(nomeCompleto);
   const data = new Date(dataNascimento + 'T00:00:00');
   
-  // Cálculos básicos
+  // Cálculos básicos existentes
   const motivacao = calcularNumeroNome(nomeNormalizado.replace(/[BCDFGHJKLMNPQRSTVWXYZ]/g, ''));
   const impressao = calcularNumeroNome(nomeNormalizado.replace(/[AEIOU]/g, ''));
   const expressao = calcularNumeroNome(nomeCompleto);
@@ -107,13 +107,114 @@ function calcularPerfilNumerologico(nomeCompleto, dataNascimento) {
   
   const destino = reduzirNumero(dia + mes + ano);
   
+  // NOVAS CATEGORIAS NUMEROLÓGICAS
+  
+  // 1. Primeiro Nome (personalidade íntima)
+  const primeiroNome = nomeCompleto.split(' ')[0];
+  const numeroprimeiroNome = calcularNumeroNome(primeiroNome);
+  
+  // 2. Sobrenome (herança familiar)
+  const partesNome = nomeCompleto.split(' ');
+  const sobrenome = partesNome[partesNome.length - 1];
+  const numeroSobrenome = calcularNumeroNome(sobrenome);
+  
+  // 3. Número de Maturidade (Expressão + Destino)
+  const maturidade = reduzirNumero(expressao + destino);
+  
+  // 4. Ponte/Equilíbrio (diferença entre Expressão e Destino)
+  const ponte = Math.abs(expressao - destino);
+  
+  // 5. Ano Pessoal atual
+  const anoAtual = new Date().getFullYear();
+  const anoPessoal = reduzirNumero(dia + mes + anoAtual);
+  
+  // 6. Lições Cármicas (números ausentes no nome)
+  const licoescarmicas = calcularLicoesCarmicas(nomeCompleto);
+  
+  // 7. Números de Intensidade (frequência de cada número)
+  const intensidade = calcularIntensidade(nomeCompleto);
+  
+  // 8. Desafios Pessoais (4 desafios baseados na data)
+  const desafios = calcularDesafiosPessoais(dia, mes, ano);
+  
   return {
+    // Categorias originais
     motivacao,
     impressao,
     expressao,
     destino,
     nomeCompleto,
-    dataNascimento
+    dataNascimento,
+    
+    // Novas categorias
+    primeiroNome: numeroprimeiroNome,
+    sobrenome: numeroSobrenome,
+    maturidade,
+    ponte,
+    anoPessoal,
+    licoescarmicas,
+    intensidade,
+    desafios
+  };
+}
+
+// FUNÇÕES AUXILIARES PARA NOVAS CATEGORIAS
+
+// Calcular Lições Cármicas (números ausentes)
+function calcularLicoesCarmicas(nomeCompleto) {
+  const nomeNormalizado = normalizarTexto(nomeCompleto);
+  const numerosPresentes = new Set();
+  
+  for (let char of nomeNormalizado) {
+    if (char !== ' ' && tabelaPitagorica[char]) {
+      numerosPresentes.add(tabelaPitagorica[char]);
+    }
+  }
+  
+  const licoes = [];
+  for (let i = 1; i <= 9; i++) {
+    if (!numerosPresentes.has(i)) {
+      licoes.push(i);
+    }
+  }
+  
+  return licoes;
+}
+
+// Calcular Intensidade (frequência dos números)
+function calcularIntensidade(nomeCompleto) {
+  const nomeNormalizado = normalizarTexto(nomeCompleto);
+  const contagem = {};
+  
+  for (let i = 1; i <= 9; i++) {
+    contagem[i] = 0;
+  }
+  
+  for (let char of nomeNormalizado) {
+    if (char !== ' ' && tabelaPitagorica[char]) {
+      contagem[tabelaPitagorica[char]]++;
+    }
+  }
+  
+  return contagem;
+}
+
+// Calcular Desafios Pessoais
+function calcularDesafiosPessoais(dia, mes, ano) {
+  const diaReduzido = reduzirNumero(dia);
+  const mesReduzido = reduzirNumero(mes);
+  const anoReduzido = reduzirNumero(ano);
+  
+  const desafio1 = Math.abs(diaReduzido - mesReduzido);
+  const desafio2 = Math.abs(diaReduzido - anoReduzido);
+  const desafio3 = Math.abs(desafio1 - desafio2);
+  const desafio4 = Math.abs(mesReduzido - anoReduzido);
+  
+  return {
+    primeiro: desafio1,
+    segundo: desafio2,
+    terceiro: desafio3,
+    quarto: desafio4
   };
 }
 
@@ -148,10 +249,18 @@ function renderResultadosMapa(perfil) {
   
   let html = `
     <div class="interpretation">
-      <h3>🌟 Mapa Pitagórico Completo</h3>
+      <h3>🌟 Mapa Pitagórico Completo Expandido</h3>
+      
       <div class="number-display">
+        <h4>📊 Números Fundamentais</h4>
         Motivação: ${perfil.motivacao} | Impressão: ${perfil.impressao} | 
         Expressão: ${perfil.expressao} | Destino: ${perfil.destino}
+      </div>
+      
+      <div class="number-display">
+        <h4>🔍 Análise Complementar</h4>
+        Primeiro Nome: ${perfil.primeiroNome} | Sobrenome: ${perfil.sobrenome} | 
+        Maturidade: ${perfil.maturidade} | Ponte: ${perfil.ponte} | Ano Pessoal: ${perfil.anoPessoal}
       </div>
   `;
   
@@ -180,6 +289,32 @@ function renderResultadosMapa(perfil) {
         </div>
       `;
     }
+    
+    // NOVAS CATEGORIAS COM INTERPRETAÇÕES
+    
+    // Expressão e Destino (se disponíveis)
+    if (interpretacoes.expressao && interpretacoes.expressao[perfil.expressao]) {
+      const expr = interpretacoes.expressao[perfil.expressao];
+      html += `
+        <div class="result-item">
+          <h4>🎯 Expressão ${perfil.expressao}</h4>
+          <p><strong>${expr.titulo}</strong></p>
+          <p>${expr.texto}</p>
+        </div>
+      `;
+    }
+    
+    if (interpretacoes.destino && interpretacoes.destino[perfil.destino]) {
+      const dest = interpretacoes.destino[perfil.destino];
+      html += `
+        <div class="result-item">
+          <h4>🛤️ Destino ${perfil.destino}</h4>
+          <p><strong>${dest.titulo}</strong></p>
+          <p>${dest.texto}</p>
+        </div>
+      `;
+    }
+    
   } else {
     html += `
       <div class="result-item">
@@ -187,6 +322,60 @@ function renderResultadosMapa(perfil) {
       </div>
     `;
   }
+  
+  // SEÇÕES ADICIONAIS
+  
+  // Lições Cármicas
+  if (perfil.licoescarmicas && perfil.licoescarmicas.length > 0) {
+    html += `
+      <div class="result-item">
+        <h4>⚖️ Lições Cármicas</h4>
+        <p><strong>Números Ausentes:</strong> ${perfil.licoescarmicas.join(', ')}</p>
+        <p>Estas são áreas de crescimento e desenvolvimento que requerem atenção especial nesta vida. 
+        A ausência destes números indica lições importantes a serem aprendidas.</p>
+      </div>
+    `;
+  }
+  
+  // Intensidade dos Números
+  html += `
+    <div class="result-item">
+      <h4>📈 Intensidade dos Números</h4>
+      <div class="intensity-grid">
+  `;
+  
+  for (let i = 1; i <= 9; i++) {
+    const count = perfil.intensidade[i] || 0;
+    const intensity = count === 0 ? 'ausente' : count === 1 ? 'normal' : count === 2 ? 'forte' : 'muito forte';
+    html += `<span class="intensity-item">Número ${i}: ${count} (${intensity})</span>`;
+  }
+  
+  html += `
+      </div>
+      <p>A intensidade mostra como cada número se manifesta em sua personalidade.</p>
+    </div>
+  `;
+  
+  // Desafios Pessoais
+  html += `
+    <div class="result-item">
+      <h4>🎯 Desafios Pessoais</h4>
+      <p><strong>1º Desafio (Juventude):</strong> ${perfil.desafios.primeiro}</p>
+      <p><strong>2º Desafio (Idade Adulta):</strong> ${perfil.desafios.segundo}</p>
+      <p><strong>3º Desafio (Principal):</strong> ${perfil.desafios.terceiro}</p>
+      <p><strong>4º Desafio (Maturidade):</strong> ${perfil.desafios.quarto}</p>
+      <p>Os desafios representam obstáculos a superar em diferentes fases da vida.</p>
+    </div>
+  `;
+  
+  // Análise do Ano Pessoal
+  html += `
+    <div class="result-item">
+      <h4>📅 Ciclo Anual Atual</h4>
+      <p><strong>Ano Pessoal ${perfil.anoPessoal}:</strong> Este é o seu ciclo numerológico atual.</p>
+      <p>Cada ano pessoal traz energias e oportunidades específicas para crescimento.</p>
+    </div>
+  `;
   
   html += `</div>`;
   
