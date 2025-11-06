@@ -755,7 +755,138 @@ function preencherExemploPiramide() {
 }
 
 function calcularPiramideCompleta() {
-  alert("Função Pirâmide Cabalística em desenvolvimento");
+  const nome = document.getElementById("nomePiramide").value.trim();
+  const idade = parseInt(document.getElementById("idadePiramide").value);
+  
+  if (!nome || !idade) {
+    alert("Por favor, preencha todos os campos!");
+    return;
+  }
+  
+  // Implementação direta da pirâmide
+  const piramide = calcularPiramideNumerologicaCompleta(nome);
+  const arcanoAtual = obterArcanoAtual(idade);
+  
+  const resultadosDiv = document.getElementById('resultados-piramide');
+  
+  let html = `
+    <div class="resultado-card" style="background: linear-gradient(135deg, rgba(62,10,41,0.1), rgba(11,24,54,0.1)); border: 2px solid var(--wine);">
+      <h3 style="text-align: center; color: var(--gold); margin-bottom: 2rem;">
+        🔺 SUA PIRÂMIDE CABALÍSTICA COMPLETA
+      </h3>
+      
+      <div style="text-align: center; margin-bottom: 2rem;">
+        <h4 style="color: var(--sage);">${nome}, ${idade} anos</h4>
+        <p style="color: var(--parch); font-style: italic;">
+          Descobra os mistérios de sua jornada através da sabedoria cabalística ancestral
+        </p>
+      </div>
+      
+      <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: rgba(240,170,83,0.1); border-radius: 15px; border: 2px solid var(--gold);">
+        <h4 style="color: var(--gold); margin-bottom: 1.5rem;">✨ SEU ARCANO REGENTE ATUAL</h4>
+        <h5 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.8rem; font-weight: bold;">${arcanoAtual.arcano}</h5>
+        <p style="color: var(--sage); margin-bottom: 1.5rem;">Arcano Regente aos ${idade} anos</p>
+        <p style="color: var(--parch); line-height: 1.6;">Este arcano rege sua energia atual e traz lições específicas para este período de sua vida.</p>
+      </div>
+      
+      <div style="margin: 2rem 0; text-align: center;">
+        <h4 style="color: var(--sage); margin-bottom: 2rem;">Pirâmide Cabalística - Ciclo de 90 Anos</h4>
+        <div style="font-family: monospace; color: #e6d7ff; line-height: 1.8;">
+  `;
+  
+  // Renderizar pirâmide
+  for (let i = 0; i < Math.min(piramide.length, 10); i++) {
+    const linha = piramide[i];
+    const espacos = '&nbsp;'.repeat((10 - linha.length) * 2);
+    
+    html += `<div style="margin: 0.5rem 0;">`;
+    html += espacos;
+    
+    for (let j = 0; j < linha.length; j++) {
+      const numero = linha[j];
+      const cor = i === piramide.length - 1 ? '#d4af37' : '#c9a96e';
+      const tamanho = i === piramide.length - 1 ? '1.5em' : '1em';
+      
+      html += `<span style="color: ${cor}; font-size: ${tamanho}; font-weight: bold; margin: 0 0.8rem;">${numero}</span>`;
+    }
+    
+    html += `</div>`;
+  }
+  
+  html += `
+        </div>
+      </div>
+      
+      <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
+        <h4 style="color: #d4af37; margin-bottom: 1rem;">📊 Análise Numerológica</h4>
+        <p style="line-height: 1.7; text-align: justify;">Sua pirâmide revela os padrões numerológicos que influenciam sua jornada atual. Cada número representa aspectos diferentes de sua personalidade e destino, criando um mapa completo de sua evolução espiritual.</p>
+      </div>
+    </div>
+  `;
+  
+  resultadosDiv.innerHTML = html;
+  resultadosDiv.classList.remove('hidden');
+}
+
+// Funções auxiliares para a Pirâmide Cabalística
+function calcularPiramideNumerologicaCompleta(nome) {
+  const nomeNumeros = nome.toUpperCase().split('').map(letra => {
+    const codigo = letra.charCodeAt(0);
+    if (codigo >= 65 && codigo <= 90) {
+      return ((codigo - 65) % 9) + 1;
+    }
+    return 0;
+  }).filter(n => n > 0);
+  
+  // Construir pirâmide completa
+  let piramide = [nomeNumeros];
+  
+  while (piramide[piramide.length - 1].length > 1) {
+    const linhaAtual = piramide[piramide.length - 1];
+    const novaLinha = [];
+    
+    for (let i = 0; i < linhaAtual.length - 1; i++) {
+      let soma = linhaAtual[i] + linhaAtual[i + 1];
+      while (soma > 9) {
+        soma = soma.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+      }
+      novaLinha.push(soma);
+    }
+    
+    piramide.push(novaLinha);
+  }
+  
+  return piramide;
+}
+
+function obterArcanoAtual(idade) {
+  const arcanos = [
+    { arcano: 'O Louco', numero: 0 },
+    { arcano: 'O Mago', numero: 1 },
+    { arcano: 'A Sacerdotisa', numero: 2 },
+    { arcano: 'A Imperatriz', numero: 3 },
+    { arcano: 'O Imperador', numero: 4 },
+    { arcano: 'O Papa', numero: 5 },
+    { arcano: 'Os Enamorados', numero: 6 },
+    { arcano: 'O Carro', numero: 7 },
+    { arcano: 'A Força', numero: 8 },
+    { arcano: 'O Eremita', numero: 9 },
+    { arcano: 'A Roda da Fortuna', numero: 10 },
+    { arcano: 'A Justiça', numero: 11 },
+    { arcano: 'O Enforcado', numero: 12 },
+    { arcano: 'A Morte', numero: 13 },
+    { arcano: 'A Temperança', numero: 14 },
+    { arcano: 'O Diabo', numero: 15 },
+    { arcano: 'A Torre', numero: 16 },
+    { arcano: 'A Estrela', numero: 17 },
+    { arcano: 'A Lua', numero: 18 },
+    { arcano: 'O Sol', numero: 19 },
+    { arcano: 'O Julgamento', numero: 20 },
+    { arcano: 'O Mundo', numero: 21 }
+  ];
+  
+  const indiceArcano = (idade - 1) % 22;
+  return arcanos[indiceArcano];
 }
 
 function limparPiramide() {
