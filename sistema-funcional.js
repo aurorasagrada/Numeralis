@@ -283,12 +283,15 @@ function limparPiramide() {
 
 function calcularPiramideCompleta() {
   const nome = document.getElementById("nomePiramide").value.trim();
-  const idade = document.getElementById("idadePiramide").value;
+  const idade = document.getElementById("idadePiramide").value.trim();
   
   if (!nome || !idade) {
-    alert("Por favor, preencha todos os campos!");
+    alert("Por favor, preencha o nome e a idade.");
     return;
   }
+  
+  // Navegar automaticamente para a seção da pirâmide
+  mostrarSecao('piramide-cabalistica');
   
   renderPiramideCompleta(nome, parseInt(idade));
 }
