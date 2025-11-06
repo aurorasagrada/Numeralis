@@ -25,11 +25,6 @@ window.addEventListener("load", function() {
       window.sinastria_expandida = sinastria_expandida;
       console.log("✅ Sinastria expandida mapeada");
     }
-    // Mapear sequências negativas expandidas para uso global, se disponíveis
-    if (typeof sequenciasNegativasExpandidas !== "undefined") {
-      window.sequenciasNegativasExpandidas = sequenciasNegativasExpandidas;
-      console.log("✅ Sequências Negativas mapeadas");
-    }
     
     // Inicializar sistema após mapeamento
     console.log("🚀 SISTEMA NUMERALIS INICIALIZADO COM SUCESSO!");
@@ -524,15 +519,13 @@ function renderResultadosMapa(perfil) {
   
   // Lições Cármicas
   if (perfil.licoescarmicas && perfil.licoescarmicas.length > 0) {
-    html += `
-      <div class="result-item">
+    html +      <div class="result-item">
         <h4>⚖️ Lições Cármicas</h4>
         <div class="explanation-text">
           <p>Os números ausentes no seu nome completo representam as <strong>Lições Cármicas</strong>. Estas são áreas de fraqueza ou aprendizados que sua alma não integrou em vidas passadas e que agora se apresentam como desafios a serem superados. A ausência de um número indica uma energia que você precisa desenvolver e cultivar nesta vida para alcançar um maior equilíbrio.</p>
         </div>
-        <p><strong>Números Ausentes:</strong> ${perfil.licoescarmicas.join(', ')}</p>
-      </div>
-    `;
+        <p><strong>Números Ausentes:</strong> ${perfil.licoescarmicas.numerosAusentes.join(', ')}</p>
+      </div>  `;
   }
   
   // Intensidade dos Números
@@ -676,43 +669,7 @@ function preencherExemploPiramide() {
 }
 
 function calcularPiramideCompleta() {
-  const nome = document.getElementById("nomePiramide").value.trim();
-  const idadeVal = parseInt(document.getElementById("idadePiramide").value, 10);
-  if (!nome || isNaN(idadeVal)) {
-    alert("Por favor, preencha nome e idade.");
-    return;
-  }
-  const resultadoDiv = document.getElementById("resultados-piramide");
-  if (!resultadoDiv) {
-    console.error("Elemento resultados-piramide não encontrado!");
-    return;
-  }
-  // Calcular número base combinando nome e idade
-  const numeroBase = reduzirNumero(calcularNumeroNome(nome) + idadeVal);
-  // Obter informações do arcano se disponíveis
-  let arcanoInfo = null;
-  if (typeof getInfoArcano === 'function') {
-    arcanoInfo = getInfoArcano(numeroBase);
-  }
-  const arcanoNome = arcanoInfo && arcanoInfo.nome ? arcanoInfo.nome : `Arcano ${numeroBase}`;
-  const imgSrc = (typeof getCaminhoImagemArcano === 'function' && arcanoInfo) ? getCaminhoImagemArcano(numeroBase) : '';
-  let html = `
-    <div class="resultado-header">
-      <h3>🔺 Pirâmide Cabalística</h3>
-      <div class="numeros-resumo">Arcano Atual: ${arcanoNome} (${numeroBase})</div>
-    </div>
-  `;
-  if (imgSrc) {
-    html += `<img src="${imgSrc}" alt="${arcanoNome}" style="max-width:150px;">`;
-  }
-  // Verificar sequências negativas expandidas
-  if (typeof sequenciasNegativasExpandidas !== 'undefined' && sequenciasNegativasExpandidas[numeroBase]) {
-    const seq = sequenciasNegativasExpandidas[numeroBase];
-    html += `<div class="result-item"><h4>⚠️ Sequência Negativa ${numeroBase}</h4><p><strong>${seq.titulo}</strong></p><p>${seq.significado}</p></div>`;
-  }
-  resultadoDiv.innerHTML = html;
-  resultadoDiv.classList.remove("hidden");
-  resultadoDiv.scrollIntoView({ behavior: "smooth" });
+  alert("Função Pirâmide Cabalística em desenvolvimento");
 }
 
 function limparPiramide() {
@@ -756,12 +713,16 @@ function calcularPinaculosCompletos() {
   const idade2 = idade1 + 9;
   const idade3 = idade2 + 9;
   
-  // Exibir resultados no contêiner correto
-  const resultado = document.getElementById("resultados-pinaculos");
-  if (!resultado) {
-    console.error("Elemento resultados-pinaculos não encontrado!");
-    return;
+  // Exibir resultados
+  const resultadoDiv = document.getElementById("resultadoPinaculos");
+  if (!resultadoDiv) {
+    const novoResultado = document.createElement("div");
+    novoResultado.id = "resultadoPinaculos";
+    novoResultado.className = "resultado-section";
+    document.querySelector(".pinaculos-section").appendChild(novoResultado);
   }
+  
+  const resultado = document.getElementById("resultadoPinaculos");
   resultado.innerHTML = `
     <div class="resultado-header">
       <h3>🏔️ Pináculos da Vida</h3>
@@ -798,7 +759,6 @@ function calcularPinaculosCompletos() {
     </div>
   `;
   
-  resultado.classList.remove("hidden");
   resultado.scrollIntoView({ behavior: "smooth" });
 }
 
@@ -845,12 +805,16 @@ function calcularSinastria() {
   
   const compatibilidadeGeral = Math.round((compatibilidadeMotivacao + compatibilidadeImpressao + compatibilidadeExpressao + compatibilidadeDestino) / 4);
   
-  // Exibir resultados no contêiner correto
-  const resultado = document.getElementById("resultados-sinastria");
-  if (!resultado) {
-    console.error("Elemento resultados-sinastria não encontrado!");
-    return;
+  // Exibir resultados
+  const resultadoDiv = document.getElementById("resultadoSinastria");
+  if (!resultadoDiv) {
+    const novoResultado = document.createElement("div");
+    novoResultado.id = "resultadoSinastria";
+    novoResultado.className = "resultado-section";
+    document.querySelector(".sinastria-section").appendChild(novoResultado);
   }
+  
+  const resultado = document.getElementById("resultadoSinastria");
   resultado.innerHTML = `
     <div class="resultado-header">
       <h3>💕 Sinastria Numerológica</h3>
@@ -894,7 +858,6 @@ function calcularSinastria() {
     </div>
   `;
   
-  resultado.classList.remove("hidden");
   resultado.scrollIntoView({ behavior: "smooth" });
 }
 
