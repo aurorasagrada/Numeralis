@@ -1,0 +1,555 @@
+*** Begin Patch
+*** Update File: sistema-funcional.js
+@@ function calcularNumeroNome(nome, tabela = tabelaPitagorica) {
+   return reduzirNumero(soma);
+ }
++
++// ================================================================
++//  Funções individuais para Motivação, Impressão, Expressão e Destino
++//
++//  Estas funções foram extraídas de calcularPerfilNumerologico para uso
++//  independente, especialmente na seção de sinastria. Elas permitem
++//  calcular separadamente cada número, garantindo compatibilidade com
++//  nomes acentuados e diferentes formatos de data.
++//
++function calcularMotivacao(nome) {
++  const nomeNorm = normalizarTexto(nome);
++  // Considerar apenas vogais (A,E,I,O,U) para motivação
++  const soVogais = nomeNorm.replace(/[BCDFGHJKLMNPQRSTVWXYZ]/g, '');
++  return calcularNumeroNome(soVogais);
++}
++
++function calcularImpressao(nome) {
++  const nomeNorm = normalizarTexto(nome);
++  // Considerar apenas consoantes para impressão
++  const soConsoantes = nomeNorm.replace(/[AEIOU]/g, '');
++  return calcularNumeroNome(soConsoantes);
++}
++
++function calcularExpressao(nome) {
++  // A expressão considera todas as letras do nome
++  const nomeNorm = normalizarTexto(nome);
++  return calcularNumeroNome(nomeNorm);
++}
++
++/**
++ * Calcula o número de Destino a partir de uma data em formato
++ * "AAAA-MM-DD", "DD/MM/AAAA" ou similar. Converte a data em
++ * números e retorna a soma reduzida.
++ *
++ * @param {string} dataStr Data de nascimento no formato ISO (AAAA-MM-DD)
++ *                         ou separado por barras/hífens.
++ * @returns {number} O número de destino reduzido (incluindo números
++ *                   mestres e kármicos se aplicável).
++ */
++function calcularDestino(dataStr) {
++  if (!dataStr) return 0;
++  let partes;
++  // Separa por barras
++  if (dataStr.includes('/')) {
++    partes = dataStr.split('/');
++    // Se a primeira parte tiver quatro dígitos, assume formato ano/mês/dia
++    if (partes[0].length === 4) {
++      const ano = parseInt(partes[0], 10);
++      const mes = parseInt(partes[1], 10);
++      const dia = parseInt(partes[2], 10);
++      return reduzirNumero(dia + mes + ano);
++    } else if (partes[2].length === 4) {
++      // dd/mm/aaaa
++      const dia = parseInt(partes[0], 10);
++      const mes = parseInt(partes[1], 10);
++      const ano = parseInt(partes[2], 10);
++      return reduzirNumero(dia + mes + ano);
++    } else {
++      // mm/dd/aa ou outro fallback
++      const mes = parseInt(partes[0], 10);
++      const dia = parseInt(partes[1], 10);
++      const ano = parseInt(partes[2], 10);
++      return reduzirNumero(dia + mes + ano);
++    }
++  } else {
++    // Formato AAAA-MM-DD ou DD-MM-AAAA
++    partes = dataStr.split('-');
++    if (partes[0].length === 4) {
++      const ano = parseInt(partes[0], 10);
++      const mes = parseInt(partes[1], 10);
++      const dia = parseInt(partes[2], 10);
++      return reduzirNumero(dia + mes + ano);
++    } else if (partes[2].length === 4) {
++      const dia = parseInt(partes[0], 10);
++      const mes = parseInt(partes[1], 10);
++      const ano = parseInt(partes[2], 10);
++      return reduzirNumero(dia + mes + ano);
++    } else {
++      // Fallback genérico se o formato não for reconhecido
++      const dia = parseInt(partes[0], 10);
++      const mes = parseInt(partes[1], 10);
++      const ano = parseInt(partes[2], 10);
++      return reduzirNumero(dia + mes + ano);
++    }
++  }
++}
+*** End Patch
+*** Update File: sistema-funcional.js
+@@ function calcularSinastria() {
+-  const nome1 = document.getElementById("nomePessoa1").value.trim();
+-  const data1 = document.getElementById("dataPessoa1").value;
+-  const nome2 = document.getElementById("nomePessoa2").value.trim();
+-  const data2 = document.getElementById("dataPessoa2").value;
+-  
+-  if (!nome1 || !data1 || !nome2 || !data2) {
+-    alert("Por favor, preencha todos os campos.");
+-    return;
+-  }
+-  
+-  // Calcular números para pessoa 1
+-  const motivacao1 = calcularMotivacao(nome1);
+-  const impressao1 = calcularImpressao(nome1);
+-  const expressao1 = calcularExpressao(nome1);
+-  const destino1 = calcularDestino(data1.replace(/-/g, "/"));
+-  
+-  // Calcular números para pessoa 2
+-  const motivacao2 = calcularMotivacao(nome2);
+-  const impressao2 = calcularImpressao(nome2);
+-  const expressao2 = calcularExpressao(nome2);
+-  const destino2 = calcularDestino(data2.replace(/-/g, "/"));
+-  
+-  // Calcular compatibilidade
+-  const compatibilidadeMotivacao = calcularCompatibilidade(motivacao1, motivacao2);
+-  const compatibilidadeImpressao = calcularCompatibilidade(impressao1, impressao2);
+-  const compatibilidadeExpressao = calcularCompatibilidade(expressao1, expressao2);
+-  const compatibilidadeDestino = calcularCompatibilidade(destino1, destino2);
+-  
+-  const compatibilidadeGeral = Math.round((compatibilidadeMotivacao + compatibilidadeImpressao + compatibilidadeExpressao + compatibilidadeDestino) / 4);
+-  
+-  // Exibir resultados no contêiner correto
+-  const resultado = document.getElementById("resultados-sinastria");
+-  if (!resultado) {
+-    console.error("Elemento resultados-sinastria não encontrado!");
+-    return;
+-  }
+-  resultado.innerHTML = `
+-    <div class="resultado-header">
+-      <h3>💕 Sinastria Numerológica</h3>
+-      <div class="numeros-resumo">Compatibilidade Geral: ${compatibilidadeGeral}%</div>
+-    </div>
+-    <div class="interpretacao-container">
+-      <div class="sinastria-pessoas">
+-        <div class="pessoa">
+-          <h4>👤 ${nome1}</h4>
+-          <p>Motivação: ${motivacao1} | Impressão: ${impressao1} | Expressão: ${expressao1} | Destino: ${destino1}</p>
+-        </div>
+-        <div class="pessoa">
+-          <h4>👤 ${nome2}</h4>
+-          <p>Motivação: ${motivacao2} | Impressão: ${impressao2} | Expressão: ${expressao2} | Destino: ${destino2}</p>
+-        </div>
+-      </div>
+-      
+-      <div class="compatibilidade-detalhes">
+-        <h4>💖 Análise de Compatibilidade</h4>
+-        <div class="compatibilidade-item">
+-          <strong>Motivação (${motivacao1} ↔ ${motivacao2}):</strong> ${compatibilidadeMotivacao}%
+-          <p>Compatibilidade dos desejos internos e motivações profundas.</p>
+-        </div>
+-        <div class="compatibilidade-item">
+-          <strong>Impressão (${impressao1} ↔ ${impressao2}):</strong> ${compatibilidadeImpressao}%
+-          <p>Compatibilidade da primeira impressão e energia externa.</p>
+-        </div>
+-        <div class="compatibilidade-item">
+-          <strong>Expressão (${expressao1} ↔ ${expressao2}):</strong> ${compatibilidadeExpressao}%
+-          <p>Compatibilidade dos talentos naturais e forma de expressão.</p>
+-        </div>
+-        <div class="compatibilidade-item">
+-          <strong>Destino (${destino1} ↔ ${destino2}):</strong> ${compatibilidadeDestino}%
+-          <p>Compatibilidade dos caminhos de vida e propósitos.</p>
+-        </div>
+-        
+-        <div class="interpretacao-geral">
+-          ${window.sinastria_expandida && window.sinastria_expandida[compatibilidadeGeral] ? window.sinastria_expandida[compatibilidadeGeral] : `<p>Interpretação detalhada para ${compatibilidadeGeral}% de compatibilidade em desenvolvimento.</p>`}
+-        </div>
+-      </div>
+-    </div>
+-  `;
+-  
+-  resultado.classList.remove("hidden");
+-  resultado.scrollIntoView({ behavior: "smooth" });
+-}
++  const nome1 = document.getElementById("nomePessoa1").value.trim();
++  const data1 = document.getElementById("dataPessoa1").value;
++  const nome2 = document.getElementById("nomePessoa2").value.trim();
++  const data2 = document.getElementById("dataPessoa2").value;
++
++  if (!nome1 || !data1 || !nome2 || !data2) {
++    alert("Por favor, preencha todos os campos.");
++    return;
++  }
++
++  // Obter perfis completos para cada pessoa
++  const perfil1 = calcularPerfilNumerologico(nome1, data1);
++  const perfil2 = calcularPerfilNumerologico(nome2, data2);
++
++  const motivacao1 = perfil1.motivacao;
++  const impressao1 = perfil1.impressao;
++  const expressao1 = perfil1.expressao;
++  const destino1 = perfil1.destino;
++
++  const motivacao2 = perfil2.motivacao;
++  const impressao2 = perfil2.impressao;
++  const expressao2 = perfil2.expressao;
++  const destino2 = perfil2.destino;
++
++  // Calcular percentuais de compatibilidade
++  const compatMotiv = calcularCompatibilidade(motivacao1, motivacao2);
++  const compatImpressao = calcularCompatibilidade(impressao1, impressao2);
++  const compatExpressao = calcularCompatibilidade(expressao1, expressao2);
++  const compatDestino = calcularCompatibilidade(destino1, destino2);
++
++  const compatibilidadeGeral = Math.round((compatMotiv + compatImpressao + compatExpressao + compatDestino) / 4);
++
++  // Determinar número para análise expandida usando a soma dos destinos
++  const numeroAnalise = reduzirNumero(destino1 + destino2);
++
++  // Formatar análise expandida, se disponível
++  let analiseHTML = '';
++  if (window.sinastria_expandida && window.sinastria_expandida[numeroAnalise]) {
++    const analise = window.sinastria_expandida[numeroAnalise];
++    // Montar HTML com campos principais
++    if (analise.significado) {
++      analiseHTML += `<p><strong>Significado:</strong> ${analise.significado}</p>`;
++    }
++    if (analise.descricao) {
++      analiseHTML += `<p>${analise.descricao}</p>`;
++    }
++    const camposLista = ['pontos_positivos','pontos_negativos','o_que_aproveitar','o_que_evitar','cotidiano','financeiro','pessoal','espiritual','crencas_valores'];
++    camposLista.forEach(chave => {
++      const valor = analise[chave];
++      if (valor) {
++        const titulo = chave.replace(/_/g, ' ');
++        if (Array.isArray(valor)) {
++          analiseHTML += `<p><strong>${titulo.charAt(0).toUpperCase() + titulo.slice(1)}:</strong> ${valor.join(', ')}</p>`;
++        } else {
++          analiseHTML += `<p><strong>${titulo.charAt(0).toUpperCase() + titulo.slice(1)}:</strong> ${valor}</p>`;
++        }
++      }
++    });
++  } else {
++    analiseHTML = `<p>Interpretação detalhada para o número ${numeroAnalise} em desenvolvimento.</p>`;
++  }
++
++  // Exibir resultados
++  const resultado = document.getElementById("resultados-sinastria");
++  if (!resultado) {
++    console.error("Elemento resultados-sinastria não encontrado!");
++    return;
++  }
++
++  resultado.innerHTML = `
++    <div class="resultado-header">
++      <h3>💕 Sinastria Numerológica</h3>
++      <div class="numeros-resumo">Compatibilidade Geral: ${compatibilidadeGeral}%</div>
++    </div>
++    <div class="interpretacao-container">
++      <div class="sinastria-pessoas">
++        <div class="pessoa">
++          <h4>👤 ${nome1}</h4>
++          <p>Motivação: ${motivacao1} | Impressão: ${impressao1} | Expressão: ${expressao1} | Destino: ${destino1}</p>
++        </div>
++        <div class="pessoa">
++          <h4>👤 ${nome2}</h4>
++          <p>Motivação: ${motivacao2} | Impressão: ${impressao2} | Expressão: ${expressao2} | Destino: ${destino2}</p>
++        </div>
++      </div>
++      
++      <div class="compatibilidade-detalhes">
++        <h4>💖 Análise de Compatibilidade</h4>
++        <div class="compatibilidade-item">
++          <strong>Motivação (${motivacao1} ↔ ${motivacao2}):</strong> ${compatMotiv}%
++          <p>Compatibilidade dos desejos internos e motivações profundas.</p>
++        </div>
++        <div class="compatibilidade-item">
++          <strong>Impressão (${impressao1} ↔ ${impressao2}):</strong> ${compatImpressao}%
++          <p>Compatibilidade da primeira impressão e energia externa.</p>
++        </div>
++        <div class="compatibilidade-item">
++          <strong>Expressão (${expressao1} ↔ ${expressao2}):</strong> ${compatExpressao}%
++          <p>Compatibilidade dos talentos naturais e forma de expressão.</p>
++        </div>
++        <div class="compatibilidade-item">
++          <strong>Destino (${destino1} ↔ ${destino2}):</strong> ${compatDestino}%
++          <p>Compatibilidade dos caminhos de vida e propósitos.</p>
++        </div>
++        <div class="interpretacao-geral">
++          ${analiseHTML}
++        </div>
++      </div>
++    </div>
++  `;
++
++  resultado.classList.remove("hidden");
++  resultado.scrollIntoView({ behavior: "smooth" });
++}
+*** End Patch
+*** Update File: sistema-funcional.js
+@@
+ console.log("✅ SISTEMA FUNCIONAL CARREGADO COM SUCESSO!");
++
++// Garantir que a primeira aba esteja ativa ao carregar a página. Isso
++// substitui a lógica inline removida do HTML e garante que o
++// sistema seja inicializado na aba do Mapa Pitagórico.
++document.addEventListener('DOMContentLoaded', function() {
++  if (typeof changeTab === 'function') {
++    changeTab('mapa-pitagorico');
++  }
++});
+*** End Patch
+*** Update File: sistema_numerologico_completo_v2.html
+@@
+-  <script>
+-    console.log("🚀 SISTEMA NUMERALIS V2 - VERSÃO FUNCIONAL CARREGADA!");
+-    
+-    // Função de navegação entre abas - INLINE para garantir funcionamento
+-    function changeTab(tab) {
+-      console.log("Tentando navegar para:", tab);
+-      
+-      // Esconder todas as seções
+-      document.querySelectorAll('.section').forEach(sec => {
+-        sec.classList.remove('active');
+-        sec.style.display = 'none';
+-      });
+-      
+-      // Remover classe active de todos os botões
+-      document.querySelectorAll('.nav-tab').forEach(btn => btn.classList.remove('active'));
+-      
+-      // Mostrar seção específica
+-      const targetSection = document.getElementById(tab);
+-      if (targetSection) {
+-        targetSection.classList.add('active');
+-        targetSection.style.display = 'block';
+-        console.log("Seção encontrada e ativada:", tab);
+-      } else {
+-        console.error("Seção não encontrada:", tab);
+-      }
+-      
+-      // Ativar botão correspondente
+-      const targetButton = document.querySelector(`button[onclick*="${tab}"]`);
+-      if (targetButton) {
+-        targetButton.parentElement.classList.add('active');
+-        console.log("Botão ativado para:", tab);
+-      }
+-    }
+-    
+-    // Inicializar primeira aba
+-    document.addEventListener('DOMContentLoaded', function() {
+-      changeTab('mapa-pitagorico');
+-    });
+-    
+-    // Funções para Pirâmide Cabalística
+-    function preencherExemploPiramide() {
+-      document.getElementById("nomePiramide").value = "Maria Silva Santos";
+-      document.getElementById("idadePiramide").value = "33";
+-    }
+-    
+-    function limparPiramide() {
+-      document.getElementById("nomePiramide").value = "";
+-      document.getElementById("idadePiramide").value = "";
+-      document.getElementById("resultados-piramide").innerHTML = "";
+-      document.getElementById("resultados-piramide").classList.add("hidden");
+-    }
+-    
+-    function calcularPiramideCompleta() {
+-      const nome = document.getElementById("nomePiramide").value.trim();
+-      const idade = parseInt(document.getElementById("idadePiramide").value);
+-      
+-      if (!nome || !idade) {
+-        alert("Por favor, preencha todos os campos!");
+-        return;
+-      }
+-      
+-      const ciclo = Math.floor((idade - 1) / 9) + 1;
+-      const arcanoRegente = ((idade - 1) % 22) + 1;
+-      
+-      const resultadosDiv = document.getElementById("resultados-piramide");
+-      resultadosDiv.innerHTML = `
+-        <div class="resultado-card">
+-          <h3>🔺 Pirâmide Cabalística Completa</h3>
+-          <div class="numeros-principais">
+-            <span>Ciclo: ${ciclo} | Arcano Regente: ${arcanoRegente} | Idade: ${idade} anos</span>
+-          </div>
+-          <div class="explicacao-box">
+-            <h4>🔮 Análise do Ciclo Atual</h4>
+-            <p>Você está no <strong>${ciclo}º ciclo</strong> de sua jornada cabalística.</p>
+-            <p>Seu Arcano Regente atual é o <strong>Arcano ${arcanoRegente}</strong>.</p>
+-            <p>Esta configuração indica um período de transformação e crescimento espiritual.</p>
+-          </div>
+-        </div>
+-      `;
+-      resultadosDiv.classList.remove("hidden");
+-    }
+-    
+-    // Funções para Pináculos da Vida
+-    function preencherExemploPinaculos() {
+-      document.getElementById("nomePinaculos").value = "Maria Silva Santos";
+-      document.getElementById("dataPinaculos").value = "1990-05-15";
+-    }
+-    
+-    function limparPinaculos() {
+-      document.getElementById("nomePinaculos").value = "";
+-      document.getElementById("dataPinaculos").value = "";
+-      document.getElementById("resultados-pinaculos").innerHTML = "";
+-      document.getElementById("resultados-pinaculos").classList.add("hidden");
+-    }
+-    
+-    function calcularPinaculosCompletos() {
+-      const nome = document.getElementById("nomePinaculos").value.trim();
+-      const data = document.getElementById("dataPinaculos").value;
+-      
+-      if (!nome || !data) {
+-        alert("Por favor, preencha todos os campos!");
+-        return;
+-      }
+-      
+-      const [ano, mes, dia] = data.split('-').map(Number);
+-      
+-      // Cálculos simplificados dos pináculos
+-      const pináculo1 = (mes + dia) % 9 || 9;
+-      const pináculo2 = (dia + ano % 100) % 9 || 9;
+-      const pináculo3 = (pináculo1 + pináculo2) % 9 || 9;
+-      const pináculo4 = (mes + ano % 100) % 9 || 9;
+-      
+-      const resultadosDiv = document.getElementById("resultados-pinaculos");
+-      resultadosDiv.innerHTML = `
+-        <div class="resultado-card">
+-          <h3>🏔️ Pináculos da Vida Completos</h3>
+-          <div class="numeros-principais">
+-            <span>1º Pináculo: ${pináculo1} | 2º Pináculo: ${pináculo2} | 3º Pináculo: ${pináculo3} | 4º Pináculo: ${pináculo4}</span>
+-          </div>
+-          <div class="explicacao-box">
+-            <h4>🌟 Seus Quatro Grandes Ciclos</h4>
+-            <p><strong>1º Pináculo (${pináculo1}):</strong> Ciclo da juventude e formação (0-28 anos)</p>
+-            <p><strong>2º Pináculo (${pináculo2}):</strong> Ciclo da maturidade e construção (29-36 anos)</p>
+-            <p><strong>3º Pináculo (${pináculo3}):</strong> Ciclo da realização e poder (37-45 anos)</p>
+-            <p><strong>4º Pináculo (${pináculo4}):</strong> Ciclo da sabedoria e legado (46+ anos)</p>
+-          </div>
+-        </div>
+-      `;
+-      resultadosDiv.classList.remove("hidden");
+-    }
+-    
+-    // Funções para Sinastria Numerológica
+-    function preencherExemploSinastria() {
+-      document.getElementById("nomePessoa1").value = "Maria Silva Santos";
+-      document.getElementById("dataPessoa1").value = "1990-05-15";
+-      document.getElementById("nomePessoa2").value = "João Carlos Silva";
+-      document.getElementById("dataPessoa2").value = "1988-03-22";
+-    }
+-    
+-    function limparSinastria() {
+-      document.getElementById("nomePessoa1").value = "";
+-      document.getElementById("dataPessoa1").value = "";
+-      document.getElementById("nomePessoa2").value = "";
+-      document.getElementById("dataPessoa2").value = "";
+-      document.getElementById("resultados-sinastria").innerHTML = "";
+-      document.getElementById("resultados-sinastria").classList.add("hidden");
+-    }
+-    
+-    function calcularSinastria() {
+-      const nome1 = document.getElementById("nomePessoa1").value.trim();
+-      const data1 = document.getElementById("dataPessoa1").value;
+-      const nome2 = document.getElementById("nomePessoa2").value.trim();
+-      const data2 = document.getElementById("dataPessoa2").value;
+-      
+-      if (!nome1 || !data1 || !nome2 || !data2) {
+-        alert("Por favor, preencha todos os campos!");
+-        return;
+-      }
+-      
+-      // Cálculos simplificados de compatibilidade
+-      const destino1 = calcularDestino(data1);
+-      const destino2 = calcularDestino(data2);
+-      const diferenca = Math.abs(destino1 - destino2);
+-      
+-      let compatibilidade = "Alta";
+-      if (diferenca > 3) compatibilidade = "Média";
+-      if (diferenca > 6) compatibilidade = "Baixa";
+-      
+-      const resultadosDiv = document.getElementById("resultados-sinastria");
+-      resultadosDiv.innerHTML = `
+-        <div class="resultado-card">
+-          <h3>💕 Sinastria Numerológica Completa</h3>
+-          <div class="numeros-principais">
+-            <span>Compatibilidade: ${compatibilidade} | Diferença de Destino: ${diferenca}</span>
+-          </div>
+-          <div class="explicacao-box">
+-            <h4>💑 Análise do Casal</h4>
+-            <p><strong>${nome1}</strong> - Destino: ${destino1}</p>
+-            <p><strong>${nome2}</strong> - Destino: ${destino2}</p>
+-            <p>Compatibilidade geral: <strong>${compatibilidade}</strong></p>
+-            <p>Esta análise indica o potencial de harmonia entre os destinos numerológicos.</p>
+-          </div>
+-        </div>
+-      `;
+-      resultadosDiv.classList.remove("hidden");
+-    }
+-    
+-    function calcularDestino(data) {
+-      const [ano, mes, dia] = data.split('-').map(Number);
+-      let soma = dia + mes + ano;
+-      while (soma > 9 && soma !== 11 && soma !== 22 && soma !== 33) {
+-        soma = soma.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
+-      }
+-      return soma;
+-    }
+-    
+-    // RESTAURAR FUNÇÕES COMPLETAS DO MAPA PITAGÓRICO
+-    function preencherExemploMapa() {
+-      document.getElementById("nomeCompleto").value = "Maria Silva Santos";
+-      document.getElementById("dataNascimento").value = "1990-05-15";
+-    }
+-    
+-    function limparMapa() {
+-      document.getElementById("nomeCompleto").value = "";
+-      document.getElementById("dataNascimento").value = "";
+-      document.getElementById("resultados-mapa").innerHTML = "";
+-      document.getElementById("resultados-mapa").classList.add("hidden");
+-    }
+-    
+-    function calcularMapaCompleto() {
+-      const nome = document.getElementById("nomeCompleto").value.trim();
+-      const data = document.getElementById("dataNascimento").value;
+-      
+-      if (!nome || !data) {
+-        alert("Por favor, preencha todos os campos!");
+-        return;
+-      }
+-      
+-      // Aguardar carregamento dos scripts e chamar função completa
+-      setTimeout(function() {
+-        if (typeof calcularPerfilNumerologico === 'function') {
+-          console.log('✅ Chamando calcularPerfilNumerologico com:', nome, data);
+-          calcularPerfilNumerologico(nome, data);
+-        } else {
+-          console.log('⚠️ Função calcularPerfilNumerologico não encontrada, usando fallback');
+-          // Fallback simples se a função principal não estiver carregada
+-          const [ano, mes, dia] = data.split('-').map(Number);
+-          const destino = calcularDestino(data);
+-        
+-        const resultadosDiv = document.getElementById("resultados-mapa");
+-        resultadosDiv.innerHTML = `
+-          <div class="resultado-card">
+-            <h3>🌟 Mapa Pitagórico Completo</h3>
+-            <div class="numeros-principais">
+-              <span>Destino: ${destino} | Nome: ${nome}</span>
+-            </div>
+-            <div class="explicacao-box">
+-              <h4>📊 Análise Básica</h4>
+-              <p>Seu número de destino é <strong>${destino}</strong>.</p>
+-              <p>Para análise completa, certifique-se de que todos os scripts estão carregados.</p>
+-            </div>
+-          </div>
+-        `;
+-        resultadosDiv.classList.remove("hidden");
+-      }
+-    }
+-  </script>
++  <!-- A lógica das seções e cálculos foi centralizada em "sistema-funcional.js" para evitar duplicidade e conflitos. -->
+*** End Patch
