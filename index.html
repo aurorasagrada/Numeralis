@@ -807,13 +807,13 @@
             return;
         }
         
-        // Implementação rica da Pirâmide Cabalística como no original
+        // Implementação definitiva da Pirâmide Cabalística baseada nas imagens originais
         const piramide = calcularPiramideNumerologica_Inline(nome);
         const arcanoAtual = obterArcanoAtual_Inline(idade);
         const sequenciasNegativas = identificarSequenciasNegativas_Inline(piramide);
         const desafiosCarmicos = identificarDesafiosCarmicos_Inline(nome);
         
-        renderPiramideRicaCompleta(piramide, arcanoAtual, sequenciasNegativas, desafiosCarmicos, nome, idade);
+        renderPiramideOriginalCompleta(piramide, arcanoAtual, sequenciasNegativas, desafiosCarmicos, nome, idade);
     }
     
     // Funções auxiliares inline
@@ -928,7 +928,8 @@
         return desafios;
     }
     
-    function renderPiramideRicaCompleta(piramide, arcanoAtual, sequenciasNegativas, desafiosCarmicos, nome, idade) {
+    // Função definitiva baseada nas imagens originais fornecidas
+    function renderPiramideOriginalCompleta(piramide, arcanoAtual, sequenciasNegativas, desafiosCarmicos, nome, idade) {
         const resultadosDiv = document.getElementById('resultados-piramide');
         
         let html = `
@@ -948,8 +949,7 @@
                 <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: rgba(240,170,83,0.1); border-radius: 15px; border: 2px solid var(--gold);">
                     <h3 style="color: var(--gold); margin-bottom: 1.5rem;">✨ SEU ARCANO REGENTE ATUAL</h3>
                     <h4 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.8rem; font-weight: bold;">${arcanoAtual.nome}</h4>
-                    <p style="color: var(--sage); margin-bottom: 1.5rem;">Arcano Regente aos ${idade} anos</p>
-                    <p style="color: var(--parch); line-height: 1.6;">${arcanoAtual.significado}</p>
+                    <p style="color: var(--sage); margin-bottom: 1.5rem;">Significado: "${arcanoAtual.significado}"</p>
                     <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(178,209,177,0.1); border-radius: 10px;">
                         <p style="color: var(--sage); font-weight: bold;">Influência Atual:</p>
                         <p style="color: var(--parch); line-height: 1.6;">${arcanoAtual.influencia}</p>
@@ -962,15 +962,15 @@
                     <div style="font-family: monospace; color: #e6d7ff; line-height: 1.8; background: rgba(11,24,54,0.2); padding: 2rem; border-radius: 15px;">
         `;
         
-        // Renderizar pirâmide sem erro de String.repeat
+        // Renderizar pirâmide visual
         for (let i = 0; i < Math.min(piramide.length, 10); i++) {
             const linha = piramide[i];
-            const maxLength = piramide[0].length;
+            const maxLength = piramide[0] ? piramide[0].length : 0;
             const espacosCount = Math.max(0, (maxLength - linha.length) * 2);
             
             html += `<div style="margin: 0.5rem 0;">`;
             
-            // Adicionar espaços manualmente sem usar repeat
+            // Adicionar espaços
             for (let k = 0; k < espacosCount; k++) {
                 html += '&nbsp;';
             }
@@ -991,7 +991,7 @@
                 </div>
         `;
         
-        // Sequências Negativas - SEÇÃO EXPANDIDA
+        // SEQUÊNCIAS NEGATIVAS DETECTADAS - EXATAMENTE COMO NAS IMAGENS
         if (sequenciasNegativas.length > 0) {
             html += `
                 <div style="margin: 2rem 0; padding: 2rem; background: rgba(62,10,41,0.1); border-radius: 15px; border: 2px solid var(--wine);">
@@ -1008,32 +1008,66 @@
                         
                         <div style="background: rgba(62,10,41,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
                             <h5 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.3rem; font-weight: bold;">📋 SIGNIFICADO PROFUNDO</h5>
-                            <p style="line-height: 1.7; text-align: justify;">Esta sequência de números repetidos indica um padrão energético que precisa ser trabalhado conscientemente. Representa uma lição cármica importante em sua jornada.</p>
+                            <p style="line-height: 1.7; text-align: justify;">Esta sequência de números repetidos indica um padrão energético que precisa ser trabalhado conscientemente. Representa uma lição cármica importante em sua jornada espiritual, conectada aos mistérios da árvore da vida cabalística.</p>
                         </div>
                         
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
                             <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px;">
                                 <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">✅ PONTOS POSITIVOS</h6>
                                 <ul style="margin: 0; padding-left: 1.2rem;">
-                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Oportunidade de crescimento espiritual</li>
-                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Desenvolvimento da consciência</li>
-                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Fortalecimento do caráter</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Oportunidade de crescimento espiritual acelerado</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Desenvolvimento da consciência superior</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Fortalecimento do caráter através dos desafios</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Conexão com energias ancestrais de cura</li>
                                 </ul>
                             </div>
                             
                             <div style="background: rgba(240,170,83,0.1); padding: 1.5rem; border-radius: 10px;">
                                 <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">⚠️ PONTOS NEGATIVOS</h6>
                                 <ul style="margin: 0; padding-left: 1.2rem;">
-                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Tendência à repetição de padrões</li>
-                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Resistência à mudança</li>
-                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Bloqueios energéticos</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Tendência à repetição de padrões limitantes</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Resistência à mudança e transformação</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Bloqueios energéticos nos chakras superiores</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Dificuldade em integrar lições cármicas</li>
                                 </ul>
                             </div>
                         </div>
                         
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="background: rgba(62,10,41,0.1); padding: 1.5rem; border-radius: 10px;">
+                                <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">🚫 O QUE EVITAR</h6>
+                                <ul style="margin: 0; padding-left: 1.2rem;">
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Ignorar os sinais do universo</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Manter-se em zona de conforto</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Negar a necessidade de mudança</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Culpar circunstâncias externas</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background: rgba(11,24,54,0.2); padding: 1.5rem; border-radius: 10px;">
+                                <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">🛠️ O QUE TRABALHAR</h6>
+                                <ul style="margin: 0; padding-left: 1.2rem;">
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Meditação e introspecção diária</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Terapias de cura energética</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Estudo da numerologia sagrada</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Práticas de perdao e libertação</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                            <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">🌟 COMO SUPERAR</h6>
+                            <ul style="margin: 0; padding-left: 1.2rem;">
+                                <li style="margin-bottom: 0.5rem; line-height: 1.5;">Aceitar conscientemente os desafios como oportunidades</li>
+                                <li style="margin-bottom: 0.5rem; line-height: 1.5;">Buscar orientação espiritual qualificada</li>
+                                <li style="margin-bottom: 0.5rem; line-height: 1.5;">Praticar gratidão pelas lições recebidas</li>
+                                <li style="margin-bottom: 0.5rem; line-height: 1.5;">Desenvolver paciência e perseverança</li>
+                            </ul>
+                        </div>
+                        
                         <div style="background: linear-gradient(135deg, rgba(240,170,83,0.2), rgba(178,209,177,0.2)); padding: 1.5rem; border-radius: 10px; text-align: center;">
                             <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">✨ TRANSFORMAÇÃO ESPERADA</h6>
-                            <p style="line-height: 1.7; font-style: italic;">Através do trabalho consciente com esta sequência, você desenvolverá maior equilíbrio e sabedoria em sua jornada espiritual.</p>
+                            <p style="line-height: 1.7; font-style: italic;">Através do trabalho consciente com esta sequência, você desenvolverá maior equilíbrio espiritual, sabedoria interior e capacidade de navegar pelos desafios da vida com graça e propósito. Esta é uma oportunidade única de acelerar sua evolução espiritual.</p>
                         </div>
                     </div>
                 `;
@@ -1042,7 +1076,7 @@
             html += `</div>`;
         }
         
-        // Desafios Cármicos - SEÇÃO EXPANDIDA
+        // DESAFIOS CÁRMICOS IDENTIFICADOS - EXATAMENTE COMO NAS IMAGENS
         if (desafiosCarmicos.length > 0) {
             html += `
                 <div style="margin: 2rem 0; padding: 2rem; background: rgba(240,170,83,0.1); border-radius: 15px; border: 2px solid var(--gold);">
@@ -1073,29 +1107,29 @@
             html += `</div>`;
         }
         
-        // Análise Numerológica Final
+        // CORRESPONDÊNCIAS CABALÍSTICAS - EXATAMENTE COMO NAS IMAGENS
         html += `
-                <div style="background: rgba(178,209,177,0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0; border: 2px solid var(--sage);">
-                    <h3 style="color: var(--sage); text-align: center; margin-bottom: 2rem;">🔮 CORRESPONDÊNCIAS CABALÍSTICAS</h3>
-                    
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
-                        <div style="background: rgba(11,24,54,0.2); padding: 1.5rem; border-radius: 10px;">
-                            <h4 style="color: #d4af37; margin-bottom: 1rem;">🌙 INFLUÊNCIA LUNAR</h4>
-                            <p style="line-height: 1.7;">Sua pirâmide revela conexões profundas com os ciclos lunares e as energias femininas do universo.</p>
-                        </div>
-                        
-                        <div style="background: rgba(62,10,41,0.1); padding: 1.5rem; border-radius: 10px;">
-                            <h4 style="color: #d4af37; margin-bottom: 1rem;">☀️ INFLUÊNCIA SOLAR</h4>
-                            <p style="line-height: 1.7;">Os números dominantes conectam você com as energias solares de manifestação e liderança.</p>
-                        </div>
+            <div style="background: rgba(178,209,177,0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0; border: 2px solid var(--sage);">
+                <h3 style="color: var(--sage); text-align: center; margin-bottom: 2rem;">🔮 CORRESPONDÊNCIAS CABALÍSTICAS</h3>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div style="background: rgba(11,24,54,0.2); padding: 1.5rem; border-radius: 10px;">
+                        <h4 style="color: #d4af37; margin-bottom: 1rem;">🌙 INFLUÊNCIA LUNAR</h4>
+                        <p style="line-height: 1.7;">Sua pirâmide revela conexões profundas com os ciclos lunares e as energias femininas do universo.</p>
                     </div>
                     
-                    <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(240,170,83,0.1), rgba(178,209,177,0.1)); border-radius: 10px; text-align: center;">
-                        <h4 style="color: #d4af37; margin-bottom: 1rem;">🌌 SÍNTESE FINAL</h4>
-                        <p style="line-height: 1.7; font-size: 1.1rem;">Sua jornada numerológica revela um caminho único de evolução espiritual. Cada número em sua pirâmide representa uma faceta de sua alma em desenvolvimento, guiando-o em direção à realização de seu propósito maior.</p>
+                    <div style="background: rgba(62,10,41,0.1); padding: 1.5rem; border-radius: 10px;">
+                        <h4 style="color: #d4af37; margin-bottom: 1rem;">☀️ INFLUÊNCIA SOLAR</h4>
+                        <p style="line-height: 1.7;">Os números dominantes conectam você com as energias solares de manifestação e liderança.</p>
                     </div>
                 </div>
+                
+                <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(240,170,83,0.1), rgba(178,209,177,0.1)); border-radius: 10px; text-align: center;">
+                    <h4 style="color: #d4af37; margin-bottom: 1rem;">🌌 SÍNTESE FINAL</h4>
+                    <p style="line-height: 1.7; font-size: 1.1rem;">Sua jornada numerológica revela um caminho único de evolução espiritual. Cada número em sua pirâmide representa uma faceta de sua alma em desenvolvimento, guiando-o em direção à realização de seu propósito maior. Esta análise cabalística oferece um mapa sagrado para sua transformação consciente e ascensão espiritual.</p>
+                </div>
             </div>
+        </div>
         `;
         
         resultadosDiv.innerHTML = html;
