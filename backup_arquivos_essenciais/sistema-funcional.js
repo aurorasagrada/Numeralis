@@ -92,92 +92,6 @@ function calcularNumeroNome(nome, tabela = tabelaPitagorica) {
   return reduzirNumero(soma);
 }
 
-// ================================================================
-//  Funções individuais para Motivação, Impressão, Expressão e Destino
-//
-//  Estas funções foram extraídas de calcularPerfilNumerologico para uso
-//  independente, especialmente na seção de sinastria. Elas permitem
-//  calcular separadamente cada número, garantindo compatibilidade com
-//  nomes acentuados e diferentes formatos de data.
-//
-function calcularMotivacao(nome) {
-  const nomeNorm = normalizarTexto(nome);
-  // Considerar apenas vogais (A,E,I,O,U) para motivação
-  const soVogais = nomeNorm.replace(/[BCDFGHJKLMNPQRSTVWXYZ]/g, '');
-  return calcularNumeroNome(soVogais);
-}
-
-function calcularImpressao(nome) {
-  const nomeNorm = normalizarTexto(nome);
-  // Considerar apenas consoantes para impressão
-  const soConsoantes = nomeNorm.replace(/[AEIOU]/g, '');
-  return calcularNumeroNome(soConsoantes);
-}
-
-function calcularExpressao(nome) {
-  // A expressão considera todas as letras do nome
-  const nomeNorm = normalizarTexto(nome);
-  return calcularNumeroNome(nomeNorm);
-}
-
-/**
- * Calcula o número de Destino a partir de uma data em formato
- * "AAAA-MM-DD", "DD/MM/AAAA" ou similar. Converte a data em
- * números e retorna a soma reduzida.
- *
- * @param {string} dataStr Data de nascimento no formato ISO (AAAA-MM-DD)
- *                         ou separado por barras/hífens.
- * @returns {number} O número de destino reduzido (incluindo números
- *                   mestres e kármicos se aplicável).
- */
-function calcularDestino(dataStr) {
-  if (!dataStr) return 0;
-  let partes;
-  // Separa por barras
-  if (dataStr.includes('/')) {
-    partes = dataStr.split('/');
-    // Se a primeira parte tiver quatro dígitos, assume formato ano/mês/dia
-    if (partes[0].length === 4) {
-      const ano = parseInt(partes[0], 10);
-      const mes = parseInt(partes[1], 10);
-      const dia = parseInt(partes[2], 10);
-      return reduzirNumero(dia + mes + ano);
-    } else if (partes[2].length === 4) {
-      // dd/mm/aaaa
-      const dia = parseInt(partes[0], 10);
-      const mes = parseInt(partes[1], 10);
-      const ano = parseInt(partes[2], 10);
-      return reduzirNumero(dia + mes + ano);
-    } else {
-      // mm/dd/aa ou outro fallback
-      const mes = parseInt(partes[0], 10);
-      const dia = parseInt(partes[1], 10);
-      const ano = parseInt(partes[2], 10);
-      return reduzirNumero(dia + mes + ano);
-    }
-  } else {
-    // Formato AAAA-MM-DD ou DD-MM-AAAA
-    partes = dataStr.split('-');
-    if (partes[0].length === 4) {
-      const ano = parseInt(partes[0], 10);
-      const mes = parseInt(partes[1], 10);
-      const dia = parseInt(partes[2], 10);
-      return reduzirNumero(dia + mes + ano);
-    } else if (partes[2].length === 4) {
-      const dia = parseInt(partes[0], 10);
-      const mes = parseInt(partes[1], 10);
-      const ano = parseInt(partes[2], 10);
-      return reduzirNumero(dia + mes + ano);
-    } else {
-      // Fallback genérico se o formato não for reconhecido
-      const dia = parseInt(partes[0], 10);
-      const mes = parseInt(partes[1], 10);
-      const ano = parseInt(partes[2], 10);
-      return reduzirNumero(dia + mes + ano);
-    }
-  }
-}
-
 function calcularPerfilNumerologico(nomeCompleto, dataNascimento) {
   const nomeNormalizado = normalizarTexto(nomeCompleto);
   const data = new Date(dataNascimento + 'T00:00:00');
@@ -865,71 +779,42 @@ function calcularSinastria() {
   const data1 = document.getElementById("dataPessoa1").value;
   const nome2 = document.getElementById("nomePessoa2").value.trim();
   const data2 = document.getElementById("dataPessoa2").value;
-
+  
   if (!nome1 || !data1 || !nome2 || !data2) {
     alert("Por favor, preencha todos os campos.");
     return;
   }
-
-  // Obter perfis completos para cada pessoa
-  const perfil1 = calcularPerfilNumerologico(nome1, data1);
-  const perfil2 = calcularPerfilNumerologico(nome2, data2);
-
-  const motivacao1 = perfil1.motivacao;
-  const impressao1 = perfil1.impressao;
-  const expressao1 = perfil1.expressao;
-  const destino1 = perfil1.destino;
-
-  const motivacao2 = perfil2.motivacao;
-  const impressao2 = perfil2.impressao;
-  const expressao2 = perfil2.expressao;
-  const destino2 = perfil2.destino;
-
-  // Calcular percentuais de compatibilidade
-  const compatMotiv = calcularCompatibilidade(motivacao1, motivacao2);
-  const compatImpressao = calcularCompatibilidade(impressao1, impressao2);
-  const compatExpressao = calcularCompatibilidade(expressao1, expressao2);
-  const compatDestino = calcularCompatibilidade(destino1, destino2);
-
-  const compatibilidadeGeral = Math.round((compatMotiv + compatImpressao + compatExpressao + compatDestino) / 4);
-
-  // Determinar número para análise expandida usando a soma dos destinos
-  const numeroAnalise = reduzirNumero(destino1 + destino2);
-
-  // Formatar análise expandida, se disponível
-  let analiseHTML = '';
-  if (window.sinastria_expandida && window.sinastria_expandida[numeroAnalise]) {
-    const analise = window.sinastria_expandida[numeroAnalise];
-    // Montar HTML com campos principais
-    if (analise.significado) {
-      analiseHTML += `<p><strong>Significado:</strong> ${analise.significado}</p>`;
-    }
-    if (analise.descricao) {
-      analiseHTML += `<p>${analise.descricao}</p>`;
-    }
-    const camposLista = ['pontos_positivos','pontos_negativos','o_que_aproveitar','o_que_evitar','cotidiano','financeiro','pessoal','espiritual','crencas_valores'];
-    camposLista.forEach(chave => {
-      const valor = analise[chave];
-      if (valor) {
-        const titulo = chave.replace(/_/g, ' ');
-        if (Array.isArray(valor)) {
-          analiseHTML += `<p><strong>${titulo.charAt(0).toUpperCase() + titulo.slice(1)}:</strong> ${valor.join(', ')}</p>`;
-        } else {
-          analiseHTML += `<p><strong>${titulo.charAt(0).toUpperCase() + titulo.slice(1)}:</strong> ${valor}</p>`;
-        }
-      }
-    });
-  } else {
-    analiseHTML = `<p>Interpretação detalhada para o número ${numeroAnalise} em desenvolvimento.</p>`;
-  }
-
+  
+  // Calcular números para pessoa 1
+  const motivacao1 = calcularMotivacao(nome1);
+  const impressao1 = calcularImpressao(nome1);
+  const expressao1 = calcularExpressao(nome1);
+  const destino1 = calcularDestino(data1.replace(/-/g, "/"));
+  
+  // Calcular números para pessoa 2
+  const motivacao2 = calcularMotivacao(nome2);
+  const impressao2 = calcularImpressao(nome2);
+  const expressao2 = calcularExpressao(nome2);
+  const destino2 = calcularDestino(data2.replace(/-/g, "/"));
+  
+  // Calcular compatibilidade
+  const compatibilidadeMotivacao = calcularCompatibilidade(motivacao1, motivacao2);
+  const compatibilidadeImpressao = calcularCompatibilidade(impressao1, impressao2);
+  const compatibilidadeExpressao = calcularCompatibilidade(expressao1, expressao2);
+  const compatibilidadeDestino = calcularCompatibilidade(destino1, destino2);
+  
+  const compatibilidadeGeral = Math.round((compatibilidadeMotivacao + compatibilidadeImpressao + compatibilidadeExpressao + compatibilidadeDestino) / 4);
+  
   // Exibir resultados
-  const resultado = document.getElementById("resultados-sinastria");
-  if (!resultado) {
-    console.error("Elemento resultados-sinastria não encontrado!");
-    return;
+  const resultadoDiv = document.getElementById("resultadoSinastria");
+  if (!resultadoDiv) {
+    const novoResultado = document.createElement("div");
+    novoResultado.id = "resultadoSinastria";
+    novoResultado.className = "resultado-section";
+    document.querySelector(".sinastria-section").appendChild(novoResultado);
   }
-
+  
+  const resultado = document.getElementById("resultadoSinastria");
   resultado.innerHTML = `
     <div class="resultado-header">
       <h3>💕 Sinastria Numerológica</h3>
@@ -950,31 +835,29 @@ function calcularSinastria() {
       <div class="compatibilidade-detalhes">
         <h4>💖 Análise de Compatibilidade</h4>
         <div class="compatibilidade-item">
-          <strong>Motivação (${motivacao1} ↔ ${motivacao2}):</strong> ${compatMotiv}%
+          <strong>Motivação (${motivacao1} ↔ ${motivacao2}):</strong> ${compatibilidadeMotivacao}%
           <p>Compatibilidade dos desejos internos e motivações profundas.</p>
         </div>
         <div class="compatibilidade-item">
-          <strong>Impressão (${impressao1} ↔ ${impressao2}):</strong> ${compatImpressao}%
+          <strong>Impressão (${impressao1} ↔ ${impressao2}):</strong> ${compatibilidadeImpressao}%
           <p>Compatibilidade da primeira impressão e energia externa.</p>
         </div>
         <div class="compatibilidade-item">
-          <strong>Expressão (${expressao1} ↔ ${expressao2}):</strong> ${compatExpressao}%
+          <strong>Expressão (${expressao1} ↔ ${expressao2}):</strong> ${compatibilidadeExpressao}%
           <p>Compatibilidade dos talentos naturais e forma de expressão.</p>
         </div>
         <div class="compatibilidade-item">
-          <strong>Destino (${destino1} ↔ ${destino2}):</strong> ${compatDestino}%
+          <strong>Destino (${destino1} ↔ ${destino2}):</strong> ${compatibilidadeDestino}%
           <p>Compatibilidade dos caminhos de vida e propósitos.</p>
         </div>
         
         <div class="interpretacao-geral">
-          <h4>🔮 Análise Expandida do Relacionamento</h4>
-          ${analiseHTML}
+          ${window.sinastria_expandida && window.sinastria_expandida[compatibilidadeGeral] ? window.sinastria_expandida[compatibilidadeGeral] : `<p>Interpretação detalhada para ${compatibilidadeGeral}% de compatibilidade em desenvolvimento.</p>`}
         </div>
       </div>
     </div>
   `;
   
-  resultado.classList.remove("hidden");
   resultado.scrollIntoView({ behavior: "smooth" });
 }
 

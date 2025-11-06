@@ -675,8 +675,41 @@
   <script src="sinastria_expandida_completa.js"></script>
   <script src="sistema-funcional.js"></script>
   
+  <!-- Aguardar carregamento completo dos scripts -->
+  <script>
+    // Aguardar que todos os scripts externos sejam carregados
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        console.log('🔄 Verificando carregamento dos scripts...');
+        
+        // Verificar se as funções principais estão disponíveis
+        if (typeof calcularPerfilNumerologico === 'function') {
+          console.log('✅ Função calcularPerfilNumerologico carregada');
+        } else {
+          console.log('⚠️ Função calcularPerfilNumerologico não encontrada');
+        }
+        
+        if (typeof interpretacoesPitagoricas !== 'undefined') {
+          console.log('✅ Interpretações pitagóricas carregadas');
+        } else {
+          console.log('⚠️ Interpretações pitagóricas não encontradas');
+        }
+        
+        console.log('🚀 Sistema inicializado!');
+      }, 500);
+    });
+  </script>
+  
   <script>
     console.log("🚀 SISTEMA NUMERALIS V2 - VERSÃO FUNCIONAL CARREGADA!");
+    
+    // Event listener para ativar automaticamente a aba inicial no carregamento da página
+    document.addEventListener('DOMContentLoaded', function() {
+      // Ativar a primeira aba (Mapa Pitagórico) por padrão
+      if (typeof changeTab === 'function') {
+        changeTab('mapa-pitagorico');
+      }
+    });
     
     // Função de navegação entre abas - INLINE para garantir funcionamento
     function changeTab(tab) {
@@ -869,6 +902,57 @@
         soma = soma.toString().split('').reduce((a, b) => parseInt(a) + parseInt(b), 0);
       }
       return soma;
+    }
+    
+    // RESTAURAR FUNÇÕES COMPLETAS DO MAPA PITAGÓRICO
+    function preencherExemploMapa() {
+      document.getElementById("nomeCompleto").value = "Maria Silva Santos";
+      document.getElementById("dataNascimento").value = "1990-05-15";
+    }
+    
+    function limparMapa() {
+      document.getElementById("nomeCompleto").value = "";
+      document.getElementById("dataNascimento").value = "";
+      document.getElementById("resultados-mapa").innerHTML = "";
+      document.getElementById("resultados-mapa").classList.add("hidden");
+    }
+    
+    function calcularMapaCompleto() {
+      const nome = document.getElementById("nomeCompleto").value.trim();
+      const data = document.getElementById("dataNascimento").value;
+      
+      if (!nome || !data) {
+        alert("Por favor, preencha todos os campos!");
+        return;
+      }
+      
+      // Aguardar carregamento dos scripts e chamar função completa
+      setTimeout(function() {
+        if (typeof calcularPerfilNumerologico === 'function') {
+          console.log('✅ Chamando calcularPerfilNumerologico com:', nome, data);
+          calcularPerfilNumerologico(nome, data);
+        } else {
+          console.log('⚠️ Função calcularPerfilNumerologico não encontrada, usando fallback');
+          // Fallback simples se a função principal não estiver carregada
+          const [ano, mes, dia] = data.split('-').map(Number);
+          const destino = calcularDestino(data);
+        
+        const resultadosDiv = document.getElementById("resultados-mapa");
+        resultadosDiv.innerHTML = `
+          <div class="resultado-card">
+            <h3>🌟 Mapa Pitagórico Completo</h3>
+            <div class="numeros-principais">
+              <span>Destino: ${destino} | Nome: ${nome}</span>
+            </div>
+            <div class="explicacao-box">
+              <h4>📊 Análise Básica</h4>
+              <p>Seu número de destino é <strong>${destino}</strong>.</p>
+              <p>Para análise completa, certifique-se de que todos os scripts estão carregados.</p>
+            </div>
+          </div>
+        `;
+        resultadosDiv.classList.remove("hidden");
+      }
     }
   </script>
 </body>
