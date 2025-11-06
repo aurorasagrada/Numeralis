@@ -762,6 +762,20 @@ function calcularPinaculosCompletos() {
     console.error("Elemento resultados-pinaculos não encontrado!");
     return;
   }
+  // Preparar HTML de interpretações detalhadas, exibindo título e texto completo
+  function gerarInterpretacao(pin) {
+    if (window.interpretacoesPinaculos && window.interpretacoesPinaculos[pin]) {
+      const inter = window.interpretacoesPinaculos[pin];
+      // Caso o texto seja um objeto com propriedades titulo/texto, exibimos ambos
+      if (typeof inter === 'object' && inter.titulo && inter.texto) {
+        return `<p><strong>${inter.titulo}</strong></p><p>${inter.texto}</p>`;
+      }
+      // Se for string ou outro tipo, retornamos diretamente
+      return inter;
+    }
+    return `<p>Interpretação para o Pináculo ${pin} em desenvolvimento.</p>`;
+  }
+  
   resultado.innerHTML = `
     <div class="resultado-header">
       <h3>🏔️ Pináculos da Vida</h3>
@@ -772,28 +786,28 @@ function calcularPinaculosCompletos() {
         <h4>🌅 1º Pináculos (Nascimento aos ${idade1} anos): ${pinaculo1}</h4>
       </div>
       <div class="interpretacao-texto">
-        ${window.interpretacoesPinaculos && window.interpretacoesPinaculos[pinaculo1] ? window.interpretacoesPinaculos[pinaculo1] : `<p>Interpretação para o Pináculo ${pinaculo1} em desenvolvimento.</p>`}
+        ${gerarInterpretacao(pinaculo1)}
       </div>
       
       <div class="numero-titulo">
         <h4>🌞 2º Pináculos (${idade1 + 1} aos ${idade2} anos): ${pinaculo2}</h4>
       </div>
       <div class="interpretacao-texto">
-        ${window.interpretacoesPinaculos && window.interpretacoesPinaculos[pinaculo2] ? window.interpretacoesPinaculos[pinaculo2] : `<p>Interpretação para o Pináculo ${pinaculo2} em desenvolvimento.</p>`}
+        ${gerarInterpretacao(pinaculo2)}
       </div>
       
       <div class="numero-titulo">
         <h4>🌅 3º Pináculos (${idade2 + 1} aos ${idade3} anos): ${pinaculo3}</h4>
       </div>
       <div class="interpretacao-texto">
-        ${window.interpretacoesPinaculos && window.interpretacoesPinaculos[pinaculo3] ? window.interpretacoesPinaculos[pinaculo3] : `<p>Interpretação para o Pináculo ${pinaculo3} em desenvolvimento.</p>`}
+        ${gerarInterpretacao(pinaculo3)}
       </div>
       
       <div class="numero-titulo">
         <h4>🌟 4º Pináculos (${idade3 + 1} anos em diante): ${pinaculo4}</h4>
       </div>
       <div class="interpretacao-texto">
-        ${window.interpretacoesPinaculos && window.interpretacoesPinaculos[pinaculo4] ? window.interpretacoesPinaculos[pinaculo4] : `<p>Interpretação para o Pináculo ${pinaculo4} em desenvolvimento.</p>`}
+        ${gerarInterpretacao(pinaculo4)}
       </div>
     </div>
   `;
