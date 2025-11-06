@@ -807,72 +807,13 @@
             return;
         }
         
-        // Implementação direta da pirâmide cabalística
+        // Implementação rica da Pirâmide Cabalística como no original
         const piramide = calcularPiramideNumerologica_Inline(nome);
         const arcanoAtual = obterArcanoAtual_Inline(idade);
+        const sequenciasNegativas = identificarSequenciasNegativas_Inline(piramide);
+        const desafiosCarmicos = identificarDesafiosCarmicos_Inline(nome);
         
-        const resultadosDiv = document.getElementById('resultados-piramide');
-        
-        let html = `
-            <div class="resultado-card" style="background: linear-gradient(135deg, rgba(62,10,41,0.1), rgba(11,24,54,0.1)); border: 2px solid var(--wine);">
-                <h3 style="text-align: center; color: var(--gold); margin-bottom: 2rem;">
-                    🔺 SUA PIRÂMIDE CABALÍSTICA COMPLETA
-                </h3>
-                
-                <div style="text-align: center; margin-bottom: 2rem;">
-                    <h4 style="color: var(--sage);">${nome}, ${idade} anos</h4>
-                    <p style="color: var(--parch); font-style: italic;">
-                        Descobra os mistérios de sua jornada através da sabedoria cabalística ancestral
-                    </p>
-                </div>
-                
-                <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: rgba(240,170,83,0.1); border-radius: 15px; border: 2px solid var(--gold);">
-                    <h4 style="color: var(--gold); margin-bottom: 1.5rem;">✨ SEU ARCANO REGENTE ATUAL</h4>
-                    <h5 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.8rem; font-weight: bold;">${arcanoAtual.nome}</h5>
-                    <p style="color: var(--sage); margin-bottom: 1.5rem;">Arcano Regente aos ${idade} anos</p>
-                    <p style="color: var(--parch); line-height: 1.6;">${arcanoAtual.significado}</p>
-                </div>
-                
-                <div style="margin: 2rem 0; text-align: center;">
-                    <h4 style="color: var(--sage); margin-bottom: 2rem;">Pirâmide Cabalística - Ciclo de 90 Anos</h4>
-                    <div style="font-family: monospace; color: #e6d7ff; line-height: 1.8;">
-        `;
-        
-        // Renderizar pirâmide
-        for (let i = 0; i < Math.min(piramide.length, 10); i++) {
-            const linha = piramide[i];
-            const maxLength = piramide[0].length;
-            const espacosCount = Math.max(0, (maxLength - linha.length) * 2);
-            const espacos = '&nbsp;'.repeat(espacosCount);
-            
-            html += `<div style="margin: 0.5rem 0;">`;
-            html += espacos;
-            
-            for (let j = 0; j < linha.length; j++) {
-                const numero = linha[j];
-                const cor = i === piramide.length - 1 ? '#d4af37' : '#c9a96e';
-                const tamanho = i === piramide.length - 1 ? '1.5em' : '1em';
-                
-                html += `<span style="color: ${cor}; font-size: ${tamanho}; font-weight: bold; margin: 0 0.8rem;">${numero}</span>`;
-            }
-            
-            html += `</div>`;
-        }
-        
-        html += `
-                    </div>
-                </div>
-                
-                <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px; margin: 1.5rem 0;">
-                    <h4 style="color: #d4af37; margin-bottom: 1rem;">📊 Análise Numerológica</h4>
-                    <p style="line-height: 1.7; text-align: justify;">Sua pirâmide revela os padrões numerológicos que influenciam sua jornada atual. Cada número representa aspectos diferentes de sua personalidade e destino, criando um mapa completo de sua evolução espiritual.</p>
-                    <p style="line-height: 1.7; margin-top: 1rem;"><strong>Arcano Regente:</strong> ${arcanoAtual.nome} - ${arcanoAtual.influencia}</p>
-                </div>
-            </div>
-        `;
-        
-        resultadosDiv.innerHTML = html;
-        resultadosDiv.classList.remove('hidden');
+        renderPiramideRicaCompleta(piramide, arcanoAtual, sequenciasNegativas, desafiosCarmicos, nome, idade);
     }
     
     // Funções auxiliares inline
@@ -934,6 +875,231 @@
         
         const indiceArcano = (idade - 1) % 22;
         return arcanos[indiceArcano];
+    }
+    
+    function identificarSequenciasNegativas_Inline(piramide) {
+        const sequencias = [];
+        
+        // Procurar por sequências de números repetidos (111, 222, 333, etc.)
+        for (let i = 0; i < piramide.length; i++) {
+            const linha = piramide[i];
+            for (let j = 0; j < linha.length - 2; j++) {
+                if (linha[j] === linha[j+1] && linha[j+1] === linha[j+2]) {
+                    sequencias.push({
+                        sequencia: linha[j].toString().repeat(3),
+                        linha: i,
+                        posicao: j,
+                        tipo: 'repetição'
+                    });
+                }
+            }
+        }
+        
+        return sequencias;
+    }
+    
+    function identificarDesafiosCarmicos_Inline(nome) {
+        const desafios = [];
+        const numeros = nome.toUpperCase().split('').map(letra => {
+            const codigo = letra.charCodeAt(0);
+            if (codigo >= 65 && codigo <= 90) {
+                return ((codigo - 65) % 9) + 1;
+            }
+            return 0;
+        }).filter(n => n > 0);
+        
+        // Verificar números ausentes (desafios cármicos)
+        const numerosPresentes = new Set(numeros);
+        const desafiosCarmicosComuns = [4, 7, 8, 9]; // Números mais desafiadores
+        
+        for (let numero of desafiosCarmicosComuns) {
+            if (!numerosPresentes.has(numero)) {
+                desafios.push({
+                    numero: numero,
+                    desafio: {
+                        titulo: `Desafio Cármico do Número ${numero}`,
+                        significado: `A ausência do número ${numero} em seu nome indica lições específicas que sua alma escolheu desenvolver nesta encarnação.`,
+                        transformacaoEsperada: `Através do trabalho consciente, você desenvolverá as qualidades associadas ao número ${numero}.`
+                    }
+                });
+            }
+        }
+        
+        return desafios;
+    }
+    
+    function renderPiramideRicaCompleta(piramide, arcanoAtual, sequenciasNegativas, desafiosCarmicos, nome, idade) {
+        const resultadosDiv = document.getElementById('resultados-piramide');
+        
+        let html = `
+            <div class="resultado-card" style="background: linear-gradient(135deg, rgba(62,10,41,0.1), rgba(11,24,54,0.1)); border: 2px solid var(--wine);">
+                <h2 style="text-align: center; color: var(--gold); margin-bottom: 2rem;">
+                    🔺 SUA PIRÂMIDE CABALÍSTICA COMPLETA
+                </h2>
+                
+                <div style="text-align: center; margin-bottom: 2rem;">
+                    <h3 style="color: var(--sage);">${nome}, ${idade} anos</h3>
+                    <p style="color: var(--parch); font-style: italic;">
+                        Descobra os mistérios de sua jornada através da sabedoria cabalística ancestral
+                    </p>
+                </div>
+                
+                <!-- Arcano Regente Atual -->
+                <div style="text-align: center; margin: 2rem 0; padding: 2rem; background: rgba(240,170,83,0.1); border-radius: 15px; border: 2px solid var(--gold);">
+                    <h3 style="color: var(--gold); margin-bottom: 1.5rem;">✨ SEU ARCANO REGENTE ATUAL</h3>
+                    <h4 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.8rem; font-weight: bold;">${arcanoAtual.nome}</h4>
+                    <p style="color: var(--sage); margin-bottom: 1.5rem;">Arcano Regente aos ${idade} anos</p>
+                    <p style="color: var(--parch); line-height: 1.6;">${arcanoAtual.significado}</p>
+                    <div style="margin-top: 1.5rem; padding: 1rem; background: rgba(178,209,177,0.1); border-radius: 10px;">
+                        <p style="color: var(--sage); font-weight: bold;">Influência Atual:</p>
+                        <p style="color: var(--parch); line-height: 1.6;">${arcanoAtual.influencia}</p>
+                    </div>
+                </div>
+                
+                <!-- Pirâmide Visual -->
+                <div style="margin: 2rem 0; text-align: center;">
+                    <h3 style="color: var(--sage); margin-bottom: 2rem;">Pirâmide Cabalística - Ciclo de 90 Anos</h3>
+                    <div style="font-family: monospace; color: #e6d7ff; line-height: 1.8; background: rgba(11,24,54,0.2); padding: 2rem; border-radius: 15px;">
+        `;
+        
+        // Renderizar pirâmide sem erro de String.repeat
+        for (let i = 0; i < Math.min(piramide.length, 10); i++) {
+            const linha = piramide[i];
+            const maxLength = piramide[0].length;
+            const espacosCount = Math.max(0, (maxLength - linha.length) * 2);
+            
+            html += `<div style="margin: 0.5rem 0;">`;
+            
+            // Adicionar espaços manualmente sem usar repeat
+            for (let k = 0; k < espacosCount; k++) {
+                html += '&nbsp;';
+            }
+            
+            for (let j = 0; j < linha.length; j++) {
+                const numero = linha[j];
+                const cor = i === piramide.length - 1 ? '#d4af37' : '#c9a96e';
+                const tamanho = i === piramide.length - 1 ? '1.5em' : '1em';
+                
+                html += `<span style="color: ${cor}; font-size: ${tamanho}; font-weight: bold; margin: 0 0.8rem;">${numero}</span>`;
+            }
+            
+            html += `</div>`;
+        }
+        
+        html += `
+                    </div>
+                </div>
+        `;
+        
+        // Sequências Negativas - SEÇÃO EXPANDIDA
+        if (sequenciasNegativas.length > 0) {
+            html += `
+                <div style="margin: 2rem 0; padding: 2rem; background: rgba(62,10,41,0.1); border-radius: 15px; border: 2px solid var(--wine);">
+                    <h3 style="color: var(--gold); text-align: center; margin-bottom: 2rem;">⚠️ SEQUÊNCIAS NEGATIVAS DETECTADAS NA PIRÂMIDE</h3>
+                    <p style="text-align: center; color: var(--sage); margin-bottom: 2rem; font-style: italic;">
+                        Padrões que requerem atenção especial e transformação consciente
+                    </p>
+            `;
+            
+            for (let seq of sequenciasNegativas) {
+                html += `
+                    <div style="background: rgba(11,24,54,0.3); border-radius: 15px; padding: 2rem; margin: 1.5rem 0; border: 2px solid var(--wine);">
+                        <h4 style="color: #d4af37; margin-bottom: 1.5rem; text-align: center; font-size: 1.8rem; font-weight: bold;">Sequência ${seq.sequencia}</h4>
+                        
+                        <div style="background: rgba(62,10,41,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                            <h5 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.3rem; font-weight: bold;">📋 SIGNIFICADO PROFUNDO</h5>
+                            <p style="line-height: 1.7; text-align: justify;">Esta sequência de números repetidos indica um padrão energético que precisa ser trabalhado conscientemente. Representa uma lição cármica importante em sua jornada.</p>
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px;">
+                                <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">✅ PONTOS POSITIVOS</h6>
+                                <ul style="margin: 0; padding-left: 1.2rem;">
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Oportunidade de crescimento espiritual</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Desenvolvimento da consciência</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Fortalecimento do caráter</li>
+                                </ul>
+                            </div>
+                            
+                            <div style="background: rgba(240,170,83,0.1); padding: 1.5rem; border-radius: 10px;">
+                                <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">⚠️ PONTOS NEGATIVOS</h6>
+                                <ul style="margin: 0; padding-left: 1.2rem;">
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Tendência à repetição de padrões</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Resistência à mudança</li>
+                                    <li style="margin-bottom: 0.5rem; line-height: 1.5;">Bloqueios energéticos</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(240,170,83,0.2), rgba(178,209,177,0.2)); padding: 1.5rem; border-radius: 10px; text-align: center;">
+                            <h6 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.2rem; font-weight: bold;">✨ TRANSFORMAÇÃO ESPERADA</h6>
+                            <p style="line-height: 1.7; font-style: italic;">Através do trabalho consciente com esta sequência, você desenvolverá maior equilíbrio e sabedoria em sua jornada espiritual.</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            html += `</div>`;
+        }
+        
+        // Desafios Cármicos - SEÇÃO EXPANDIDA
+        if (desafiosCarmicos.length > 0) {
+            html += `
+                <div style="margin: 2rem 0; padding: 2rem; background: rgba(240,170,83,0.1); border-radius: 15px; border: 2px solid var(--gold);">
+                    <h3 style="color: var(--gold); text-align: center; margin-bottom: 2rem;">🔥 DESAFIOS CÁRMICOS IDENTIFICADOS</h3>
+                    <p style="text-align: center; color: var(--sage); margin-bottom: 2rem; font-style: italic;">
+                        Lições de vida que sua alma escolheu desenvolver nesta encarnação
+                    </p>
+            `;
+            
+            for (let desafio of desafiosCarmicos) {
+                html += `
+                    <div style="background: rgba(11,24,54,0.3); border-radius: 15px; padding: 2rem; margin: 1.5rem 0; border: 2px solid var(--gold);">
+                        <h4 style="color: #d4af37; margin-bottom: 1.5rem; text-align: center; font-size: 1.8rem; font-weight: bold;">${desafio.desafio.titulo}</h4>
+                        
+                        <div style="background: rgba(178,209,177,0.1); padding: 1.5rem; border-radius: 10px; margin-bottom: 1.5rem;">
+                            <h5 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.3rem; font-weight: bold;">🎯 SIGNIFICADO DO DESAFIO</h5>
+                            <p style="line-height: 1.7; text-align: justify;">${desafio.desafio.significado}</p>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, rgba(240,170,83,0.2), rgba(178,209,177,0.2)); padding: 1.5rem; border-radius: 10px; text-align: center;">
+                            <h5 style="color: #d4af37; margin-bottom: 1rem; font-size: 1.3rem; font-weight: bold;">✨ TRANSFORMAÇÃO ESPERADA</h5>
+                            <p style="line-height: 1.7; font-style: italic;">${desafio.desafio.transformacaoEsperada}</p>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            html += `</div>`;
+        }
+        
+        // Análise Numerológica Final
+        html += `
+                <div style="background: rgba(178,209,177,0.1); padding: 2rem; border-radius: 15px; margin: 2rem 0; border: 2px solid var(--sage);">
+                    <h3 style="color: var(--sage); text-align: center; margin-bottom: 2rem;">🔮 CORRESPONDÊNCIAS CABALÍSTICAS</h3>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                        <div style="background: rgba(11,24,54,0.2); padding: 1.5rem; border-radius: 10px;">
+                            <h4 style="color: #d4af37; margin-bottom: 1rem;">🌙 INFLUÊNCIA LUNAR</h4>
+                            <p style="line-height: 1.7;">Sua pirâmide revela conexões profundas com os ciclos lunares e as energias femininas do universo.</p>
+                        </div>
+                        
+                        <div style="background: rgba(62,10,41,0.1); padding: 1.5rem; border-radius: 10px;">
+                            <h4 style="color: #d4af37; margin-bottom: 1rem;">☀️ INFLUÊNCIA SOLAR</h4>
+                            <p style="line-height: 1.7;">Os números dominantes conectam você com as energias solares de manifestação e liderança.</p>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, rgba(240,170,83,0.1), rgba(178,209,177,0.1)); border-radius: 10px; text-align: center;">
+                        <h4 style="color: #d4af37; margin-bottom: 1rem;">🌌 SÍNTESE FINAL</h4>
+                        <p style="line-height: 1.7; font-size: 1.1rem;">Sua jornada numerológica revela um caminho único de evolução espiritual. Cada número em sua pirâmide representa uma faceta de sua alma em desenvolvimento, guiando-o em direção à realização de seu propósito maior.</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        
+        resultadosDiv.innerHTML = html;
+        resultadosDiv.classList.remove('hidden');
     }
     
     // Funções para Pináculos da Vida
