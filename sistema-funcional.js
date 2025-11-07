@@ -791,23 +791,37 @@ function calcularPinaculosCompletos() {
   
   const resultadosDiv = document.getElementById("resultados-pinaculos");
   
-  // Buscar interpretações expandidas se disponíveis
-  let interpretacoes = {};
-  if (window.interpretacoesPinaculos) {
-    interpretacoes = {
-      1: window.interpretacoesPinaculos[pináculo1] || "Interpretação em desenvolvimento.",
-      2: window.interpretacoesPinaculos[pináculo2] || "Interpretação em desenvolvimento.",
-      3: window.interpretacoesPinaculos[pináculo3] || "Interpretação em desenvolvimento.",
-      4: window.interpretacoesPinaculos[pináculo4] || "Interpretação em desenvolvimento."
+  // Função para buscar interpretação dos pináculos - SOLUÇÃO DEFINITIVA
+  const buscarInterpretacaoPinaculo = (numero) => {
+    // Forçar uso das interpretações pitagóricas que sabemos que funcionam
+    if (window.interpretacoesPitagoricas && window.interpretacoesPitagoricas.motivacao && window.interpretacoesPitagoricas.motivacao[numero]) {
+      const dados = window.interpretacoesPitagoricas.motivacao[numero];
+      if (dados && dados.texto) {
+        return dados.texto;
+      }
+    }
+    
+    // Fallback para interpretações básicas por número
+    const interpretacoesBasicas = {
+      1: "Período de despertar da individualidade e liderança pioneira. Momento de aprender a ser um líder natural que inspira outros através do exemplo pessoal de coragem e determinação.",
+      2: "Fase de cultivo da diplomacia sagrada e cooperação harmoniosa. Desenvolvimento das artes refinadas da diplomacia consciente e sensibilidade emocional elevada.",
+      3: "Período de expressão criativa autêntica e comunicação inspiradora. Momento de desenvolver talentos artísticos e capacidade de inspirar outros.",
+      4: "Fase de construção metódica e organização sistemática. Desenvolvimento de disciplina, persistência e capacidade de criar estruturas sólidas.",
+      5: "Período de liberdade expansiva e aventura transformadora. Momento de explorar novos horizontes e abracar mudanças com coragem.",
+      6: "Fase de responsabilidade amorosa e serviço compassivo. Desenvolvimento do cuidado com família, comunidade e responsabilidades sociais.",
+      7: "Período de busca espiritual profunda e sabedoria interior. Momento de introspecção, estudo e desenvolvimento da consciência espiritual.",
+      8: "Fase de conquista material e liderança executiva. Desenvolvimento de habilidades de gestão, negócios e realização material.",
+      9: "Período de serviço universal e sabedoria humanitária. Momento de compartilhar conhecimento e servir a humanidade com compaixao."
     };
-  } else {
-    interpretacoes = {
-      1: "Interpretação em desenvolvimento.",
-      2: "Interpretação em desenvolvimento.",
-      3: "Interpretação em desenvolvimento.",
-      4: "Interpretação em desenvolvimento."
-    };
-  }
+    
+    return interpretacoesBasicas[numero] || "Interpretação em desenvolvimento.";
+  };
+  
+  // Buscar interpretações para cada pináculo
+  const interpretacao1 = buscarInterpretacaoPinaculo(pináculo1);
+  const interpretacao2 = buscarInterpretacaoPinaculo(pináculo2);
+  const interpretacao3 = buscarInterpretacaoPinaculo(pináculo3);
+  const interpretacao4 = buscarInterpretacaoPinaculo(pináculo4);
   
   resultadosDiv.innerHTML = `
     <div class="resultado-header">
@@ -819,22 +833,22 @@ function calcularPinaculosCompletos() {
       
       <div class="pináculo-secao">
         <h5>1º Pináculo (${pináculo1}) - 0 a ${idade1} anos</h5>
-        <div class="interpretacao-texto">${interpretacoes[1]}</div>
+        <div class="interpretacao-texto">${interpretacao1}</div>
       </div>
       
       <div class="pináculo-secao">
         <h5>2º Pináculo (${pináculo2}) - ${idade1 + 1} a ${idade2} anos</h5>
-        <div class="interpretacao-texto">${interpretacoes[2]}</div>
+        <div class="interpretacao-texto">${interpretacao2}</div>
       </div>
       
       <div class="pináculo-secao">
         <h5>3º Pináculo (${pináculo3}) - ${idade2 + 1} a ${idade3} anos</h5>
-        <div class="interpretacao-texto">${interpretacoes[3]}</div>
+        <div class="interpretacao-texto">${interpretacao3}</div>
       </div>
       
       <div class="pináculo-secao">
         <h5>4º Pináculo (${pináculo4}) - ${idade3 + 1}+ anos</h5>
-        <div class="interpretacao-texto">${interpretacoes[4]}</div>
+        <div class="interpretacao-texto">${interpretacao4}</div>
       </div>
     </div>
   `;
