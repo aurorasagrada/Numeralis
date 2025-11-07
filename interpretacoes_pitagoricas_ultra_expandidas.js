@@ -195,4 +195,5 @@ const interpretacoesPitagoricasUltraExpandidas = {
 // Exportar para uso global
 if (typeof window !== 'undefined') {
   window.interpretacoesPitagoricasUltraExpandidas = interpretacoesPitagoricasUltraExpandidas;
+  window.interpretacoesPitagoricas = interpretacoesPitagoricasUltraExpandidas; // Alias para compatibilidade
 }

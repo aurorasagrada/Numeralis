@@ -199,10 +199,37 @@ function renderResultados(nome, dataNascimento, numeros) {
   let interpretacaoDestino = "Interpretação em desenvolvimento.";
 
   if (window.interpretacoesPitagoricas) {
-    interpretacaoMotivacao = window.interpretacoesPitagoricas[numeros.motivacao]?.motivacao || interpretacaoMotivacao;
-    interpretacaoImpressao = window.interpretacoesPitagoricas[numeros.impressao]?.impressao || interpretacaoImpressao;
-    interpretacaoExpressao = window.interpretacoesPitagoricas[numeros.expressao]?.expressao || interpretacaoExpressao;
-    interpretacaoDestino = window.interpretacoesPitagoricas[numeros.destino]?.destino || interpretacaoDestino;
+    // Função para buscar interpretação, com fallback para número reduzido
+    const buscarInterpretacao = (categoria, numero) => {
+      // Primeiro tenta buscar interpretação do número original
+      let interpretacao = window.interpretacoesPitagoricas[categoria]?.[numero]?.texto;
+      
+      // Se não encontrar e o número for > 9, tenta com número reduzido
+      if (!interpretacao && numero > 9) {
+        const numeroReduzido = reduzirNumeroForcado(numero);
+        interpretacao = window.interpretacoesPitagoricas[categoria]?.[numeroReduzido]?.texto;
+      }
+      
+      return interpretacao;
+    };
+    
+    interpretacaoMotivacao = buscarInterpretacao('motivacao', numeros.motivacao) || interpretacaoMotivacao;
+    interpretacaoImpressao = buscarInterpretacao('impressao', numeros.impressao) || interpretacaoImpressao;
+    interpretacaoExpressao = buscarInterpretacao('expressao', numeros.expressao) || interpretacaoExpressao;
+    interpretacaoDestino = buscarInterpretacao('destino', numeros.destino) || interpretacaoDestino;
+  }
+  
+  // Função auxiliar para forçar redução (ignora números mestres/kármicos para busca de interpretação)
+  function reduzirNumeroForcado(numero) {
+    while (numero > 9) {
+      let soma = 0;
+      while (numero > 0) {
+        soma += numero % 10;
+        numero = Math.floor(numero / 10);
+      }
+      numero = soma;
+    }
+    return numero;
   }
 
   resultadosDiv.innerHTML = `
@@ -967,6 +994,28 @@ function limparSinastria() {
 }
 
 // Funções de navegação entre seções
+function changeTab(secaoId) {
+  // Ocultar todas as seções
+  const secoes = document.querySelectorAll('.section');
+  secoes.forEach(secao => secao.classList.remove('active'));
+  
+  // Remover classe active de todos os botões de navegação
+  const botoes = document.querySelectorAll('.nav-tab');
+  botoes.forEach(botao => botao.classList.remove('active'));
+  
+  // Mostrar seção selecionada
+  const secaoSelecionada = document.getElementById(secaoId);
+  if (secaoSelecionada) {
+    secaoSelecionada.classList.add('active');
+  }
+  
+  // Ativar botão correspondente
+  const botaoAtivo = document.querySelector(`[onclick="changeTab('${secaoId}')"]`);
+  if (botaoAtivo) {
+    botaoAtivo.parentElement.classList.add('active');
+  }
+}
+
 function mostrarSecao(secaoId) {
   // Ocultar todas as seções
   const secoes = document.querySelectorAll('.section');
@@ -992,7 +1041,7 @@ function mostrarSecao(secaoId) {
 // Inicialização do sistema
 document.addEventListener('DOMContentLoaded', function() {
   // Mostrar primeira seção por padrão
-  mostrarSecao('mapa-pitagorico');
+  changeTab('mapa-pitagorico');
   
   console.log("✅ SISTEMA FUNCIONAL CARREGADO COM SUCESSO!");
 });
