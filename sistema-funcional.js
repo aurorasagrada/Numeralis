@@ -523,7 +523,9 @@ function gerarCardsArcanos() {
          onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(157, 78, 221, 0.3)';" 
          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
       
-      <div style="font-size: 48px; margin-bottom: 15px;">${arcano.emoji}</div>
+      <div style="margin-bottom: 15px;">
+        <img src="${arcano.imagem}" alt="${arcano.nome}" style="width: 80px; height: 120px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+      </div>
       
       <h4 style="color: #FFD700; margin-bottom: 10px; font-size: 18px;">Arcano ${arcano.numero}</h4>
       <h3 style="color: #DDA0DD; margin-bottom: 15px; font-size: 20px;">${arcano.nome}</h3>
