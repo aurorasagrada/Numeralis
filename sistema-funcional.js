@@ -869,8 +869,34 @@ function obterTextoExpandidoArcano(nomeArcano) {
 }
 
 function gerarArcanosCompletos() {
+  // Mini textos explicativos para cada arcano
+  const miniTextosArcanos = {
+    0: "Período de novos começos e aventuras. Energia de espontaneidade, fé no futuro e coragem para explorar o desconhecido.",
+    1: "Fase de manifestação e liderança. Desenvolvimento de habilidades práticas, iniciativa pessoal e capacidade de transformar ideias em realidade.",
+    2: "Tempo de intuição e receptividade. Desenvolvimento da sabedoria interior, sensibilidade psíquica e conexão com o feminino sagrado.",
+    3: "Período de criatividade e abundância. Expressão artística, fertilidade criativa e capacidade de nutrir projetos até a manifestação.",
+    4: "Fase de estrutura e autoridade. Estabelecimento de ordem, disciplina, responsabilidade e construção de bases sólidas para o futuro.",
+    5: "Tempo de tradição e ensino. Busca por conhecimento espiritual, orientação de mestres e desenvolvimento da sabedoria tradicional.",
+    6: "Período de escolhas e relacionamentos. Decisões importantes sobre amor, parcerias e alinhamento com valores pessoais autênticos.",
+    7: "Fase de vitória e determinação. Superação de obstáculos através da força de vontade, foco direcionado e controle das energias pessoais.",
+    8: "Tempo de equilíbrio e justiça. Período de colher consequências de ações passadas, busca por fairness e desenvolvimento do discernimento.",
+    9: "Fase de introspecção e sabedoria. Busca interior, desenvolvimento espiritual profundo e conexão com a luz da consciência superior.",
+    10: "Período de mudanças e oportunidades. Ciclos que se completam, sorte que muda e necessidade de adaptação às transformações da vida.",
+    11: "Tempo de coragem interior e domínio. Desenvolvimento da força espiritual, controle dos instintos e expressão da verdadeira natureza.",
+    12: "Fase de sacrifício e nova perspectiva. Período de pausa, reflexão profunda e ganho de sabedoria através da mudança de ponto de vista.",
+    13: "Tempo de transformação profunda. Final de ciclos importantes, renascimento espiritual e liberação de padrões que não servem mais.",
+    14: "Período de moderação e cura. Busca por equilíbrio, integração de opostos e desenvolvimento da paciência e temperança.",
+    15: "Fase de confronto com sombras. Período de lidar com vícios, obsessões e padrões limitantes que impedem o crescimento espiritual.",
+    16: "Tempo de revelações súbitas. Quebra de estruturas obsoletas, insights transformadores e liberação de ilusões que limitavam o crescimento.",
+    17: "Período de esperança e inspiração. Conexão com propósito superior, desenvolvimento da fé e recebimento de orientação espiritual clara.",
+    18: "Fase de mistérios e ilusões. Período de navegar pelo inconsciente, desenvolver intuição e discernir entre realidade e fantasia.",
+    19: "Tempo de alegria e realização. Período de sucesso, vitalidade, clareza mental e expressão autêntica da personalidade radiante.",
+    20: "Fase de despertar e julgamento. Período de avaliação da vida, chamado espiritual e preparação para uma nova etapa evolutiva.",
+    21: "Tempo de completude e realização. Integração de todas as lições aprendidas, sucesso duradouro e conexão com o propósito cósmico."
+  };
+  
   const arcanos = [
-    { numero: 1, nome: "O Mago", idades: "0-4, 45-49, 90-94", emoji: "🎩", imagem: "assets/img/cartas/1TheMagician.jpg", arquivo: "arcanos/maiores/o_mago.html" },
+    { numero: 1, nome: "O Mago", idades: "0-4, 45-49, 90-94", emoji: "🎭", imagem: "assets/img/cartas/1TheMagician.jpg", arquivo: "arcanos/maiores/o_mago.html" },
     { numero: 2, nome: "A Sacerdotisa", idades: "5-8, 50-53, 95-98", emoji: "🌙", imagem: "assets/img/cartas/2TheHighPriestess.jpg", arquivo: "arcanos/maiores/a_sacerdotisa.html" },
     { numero: 3, nome: "A Imperatriz", idades: "9-12, 54-57", emoji: "👑", imagem: "assets/img/cartas/3TheEmpress.jpg", arquivo: "arcanos/maiores/a_imperatriz.html" },
     { numero: 4, nome: "O Imperador", idades: "13-16, 58-61", emoji: "⚡", imagem: "assets/img/cartas/4TheEmperor.jpg", arquivo: "arcanos/maiores/o_imperador.html" },
@@ -891,7 +917,7 @@ function gerarArcanosCompletos() {
     { numero: 19, nome: "O Sol", idades: "73-76, 118-121", emoji: "☀️", imagem: "assets/img/cartas/19TheSun.jpg", arquivo: "arcanos/maiores/o_sol.html" },
     { numero: 20, nome: "O Julgamento", idades: "77-80, 122-125", emoji: "📯", imagem: "assets/img/cartas/20Judgement.jpg", arquivo: "arcanos/maiores/o_julgamento.html" },
     { numero: 21, nome: "O Mundo", idades: "81-84, 126-129", emoji: "🌍", imagem: "assets/img/cartas/21TheWorld.jpg", arquivo: "arcanos/maiores/o_mundo.html" },
-    { numero: 0, nome: "O Louco", idades: "85-88, 130-133", emoji: "🃏", imagem: "assets/img/cartas/0TheFool.jpg", arquivo: "arcanos/maiores/o_louco.html" }
+    { numero: 0, nome: "O Louco", idades: "85-88, 130-133", emoji: "🀏", imagem: "assets/img/cartas/0TheFool.jpg", arquivo: "arcanos/maiores/o_louco.html" }
   ];
 
   return arcanos.map(arcano => `
@@ -907,7 +933,8 @@ function gerarArcanosCompletos() {
       <h3 style="color: #f2eaff; margin-bottom: 15px; font-size: 20px;">${arcano.nome}</h3>
       
       <div style="background: rgba(240, 170, 83, 0.1); padding: 10px; border-radius: 8px; margin-bottom: 15px;">
-        <p style="color: #f2eaff; font-size: 14px; margin: 0;">Idades ${arcano.idades}</p>
+        <p style="color: #f2eaff; font-size: 14px; margin: 0; margin-bottom: 8px;">Idades ${arcano.idades}</p>
+        <p style="color: #b2d1b1; font-size: 12px; margin: 0; line-height: 1.4; font-style: italic;">${miniTextosArcanos[arcano.numero] || 'Texto em desenvolvimento.'}</p>
       </div>
       
       <button onclick="window.open('${arcano.arquivo}', '_blank')" 
