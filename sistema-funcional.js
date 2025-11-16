@@ -1654,9 +1654,22 @@ function obterAspectosVidaPitagorico(numero, tipo) {
 }
 
 // Inicialização do sistema
-document.addEventListener('DOMContentLoaded', function() {
+function inicializarSistema() {
   // Mostrar primeira seção por padrão
-  changeTab('mapa-pitagorico');
+  if (typeof changeTab === 'function') {
+    changeTab('mapa-pitagorico');
+  }
   
   console.log("✅ SISTEMA FUNCIONAL CARREGADO COM SUCESSO!");
-});
+}
+
+// Tentar inicializar imediatamente e também no DOMContentLoaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', inicializarSistema);
+} else {
+  // DOM já está pronto, inicializar imediatamente
+  inicializarSistema();
+}
+
+// Também inicializar no window.load como backup
+window.addEventListener('load', inicializarSistema);
