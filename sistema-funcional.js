@@ -385,7 +385,7 @@ function renderPiramideCompleta(nome, idade) {
     <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #9D4EDD; margin-top: 30px;">
       <h3 style="color: #DDA0DD; text-align: center; margin-bottom: 30px;">🔮 IDADES DOS ARCANOS NO CICLO DE 90 ANOS</h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
-        ${gerarCardsArcanos()}
+        ${gerarArcanosCompletos()}
       </div>
     </div>
   `;
@@ -455,32 +455,161 @@ function calcularPiramideNumerologica(nome) {
 }
 
 function calcularArcanoRegente(idade) {
+  // Cálculo cabalístico baseado na escola francesa de Jodorowsky
+  // Ciclo de 90 anos dividido em 4 períodos de 22,5 anos cada
+  const cicloCompleto = 90;
+  const idadeNoCiclo = idade % cicloCompleto;
+  
+  // Determinar o arcano baseado na posição no ciclo de 90 anos
+  let numeroArcano;
+  if (idadeNoCiclo <= 22) {
+    numeroArcano = Math.floor(idadeNoCiclo);
+  } else if (idadeNoCiclo <= 44) {
+    numeroArcano = Math.floor(idadeNoCiclo - 22);
+  } else if (idadeNoCiclo <= 66) {
+    numeroArcano = Math.floor(idadeNoCiclo - 44);
+  } else {
+    numeroArcano = Math.floor(idadeNoCiclo - 66);
+  }
+  
+  // Ajustar para o range 0-21 dos arcanos maiores
+  if (numeroArcano > 21) numeroArcano = numeroArcano % 22;
+  
   const arcanos = {
-    0: { nome: "O Louco", significado: "Novos começos, espontaneidade", influencia: "Momento de liberdade e novas possibilidades" },
-    1: { nome: "O Mago", significado: "Manifestação, poder pessoal", influencia: "Período de realização e concretização de projetos" },
-    2: { nome: "A Sacerdotisa", significado: "Intuição, mistério", influencia: "Fase de desenvolvimento da sabedoria interior" },
-    3: { nome: "A Imperatriz", significado: "Criatividade, abundância", influencia: "Tempo de fertilidade e crescimento criativo" },
-    4: { nome: "O Imperador", significado: "Estrutura, autoridade", influencia: "Período de estabelecimento de bases sólidas" },
-    5: { nome: "O Papa", significado: "Tradição, ensino", influencia: "Fase de aprendizado e transmissão de conhecimento" },
-    6: { nome: "Os Enamorados", significado: "Escolhas, relacionamentos", influencia: "Momento de decisões importantes sobre parcerias" },
-    7: { nome: "O Carro", significado: "Vitória, determinação", influencia: "Período de conquistas através da força de vontade" },
-    8: { nome: "A Justiça", significado: "Equilíbrio, karma", influencia: "Fase de ajustes e busca por equilíbrio" },
-    9: { nome: "O Eremita", significado: "Sabedoria, introspecção", influencia: "Tempo de reflexão e busca interior" },
-    10: { nome: "A Roda da Fortuna", significado: "Ciclos, destino, mudanças", influencia: "Momento de grandes mudanças e novos ciclos" },
-    11: { nome: "A Força", significado: "Coragem, domínio interior", influencia: "Período de desenvolvimento da força interior" },
-    12: { nome: "O Enforcado", significado: "Sacrifício, nova perspectiva", influencia: "Fase de pausa e mudança de perspectiva" },
-    13: { nome: "A Morte", significado: "Transformação, renascimento", influencia: "Momento de grandes transformações" },
-    14: { nome: "A Temperança", significado: "Moderação, cura", influencia: "Período de harmonização e cura" },
-    15: { nome: "O Diabo", significado: "Tentação, materialismo", influencia: "Fase de confronto com limitações" },
-    16: { nome: "A Torre", significado: "Ruptura, revelação", influencia: "Momento de mudanças súbitas e revelações" },
-    17: { nome: "A Estrela", significado: "Esperança, inspiração", influencia: "Período de renovação e esperança" },
-    18: { nome: "A Lua", significado: "Ilusão, inconsciente", influencia: "Fase de exploração do mundo interior" },
-    19: { nome: "O Sol", significado: "Alegria, sucesso", influencia: "Momento de realização e alegria" },
-    20: { nome: "O Julgamento", significado: "Renascimento, chamado", influencia: "Período de despertar espiritual" },
-    21: { nome: "O Mundo", significado: "Completude, realização", influencia: "Fase de conclusão e realização plena" }
+    0: { 
+      nome: "O Louco", 
+      significado: "Energia primordial, potencial infinito, jornada espiritual", 
+      influencia: "Momento de liberdade absoluta e conexão com o potencial criativo universal. Período de renovação e novos começos baseados na sabedoria interior.",
+      jodorowsky: "O Louco representa a energia pura do cosmos, não domesticada pela sociedade. É o momento de seguir a intuição além da lógica."
+    },
+    1: { 
+      nome: "O Mago", 
+      significado: "Manifestação consciente, poder de criação, domínio dos elementos", 
+      influencia: "Período de grande capacidade de materialização de projetos e sonhos. Fase de liderança e iniciativa criativa.",
+      jodorowsky: "O Mago é aquele que compreende que a realidade pode ser moldada pela vontade consciente. É o arquiteto de sua própria existência."
+    },
+    2: { 
+      nome: "A Sacerdotisa", 
+      significado: "Sabedoria oculta, intuição profunda, conhecimento esotérico", 
+      influencia: "Fase de desenvolvimento da percepção sutil e conexão com os mistérios da vida. Período de aprendizado interior.",
+      jodorowsky: "A Sacerdotisa guarda os segredos do inconsciente coletivo. É o momento de ouvir a voz interior que transcende a razão."
+    },
+    3: { 
+      nome: "A Imperatriz", 
+      significado: "Criatividade abundante, fertilidade, manifestação material", 
+      influencia: "Tempo de grande fertilidade criativa e abundância material. Período de crescimento e expansão em todos os níveis.",
+      jodorowsky: "A Imperatriz é a Grande Mãe que nutre toda criação. É o momento de dar forma concreta aos impulsos criativos."
+    },
+    4: { 
+      nome: "O Imperador", 
+      significado: "Estrutura sólida, autoridade consciente, organização", 
+      influencia: "Período de estabelecimento de bases sólidas e exercício de liderança responsável. Fase de construção duradoura.",
+      jodorowsky: "O Imperador representa o poder terreno usado com sabedoria. É o momento de construir estruturas que sirvam ao bem comum."
+    },
+    5: { 
+      nome: "O Papa", 
+      significado: "Ensino sagrado, tradição espiritual, ponte entre mundos", 
+      influencia: "Fase de transmissão de conhecimento e conexão com tradições ancestrais. Período de ensino e aprendizado espiritual.",
+      jodorowsky: "O Papa é o mediador entre o humano e o divino. É o momento de compartilhar a sabedoria adquirida com humildade."
+    },
+    6: { 
+      nome: "Os Enamorados", 
+      significado: "União sagrada, escolhas conscientes, harmonia dual", 
+      influencia: "Momento de decisões importantes sobre relacionamentos e parcerias. Período de integração de polaridades.",
+      jodorowsky: "Os Enamorados representam a escolha consciente do amor sobre o medo. É o momento de unir opostos em harmonia."
+    },
+    7: { 
+      nome: "O Carro", 
+      significado: "Triunfo através da determinação, movimento direcionado", 
+      influencia: "Período de conquistas através da força de vontade disciplinada. Fase de movimento e progresso acelerado.",
+      jodorowsky: "O Carro simboliza a vitória obtida através do domínio de forças opostas. É o momento de avançar com determinação."
+    },
+    8: { 
+      nome: "A Justiça", 
+      significado: "Equilíbrio cósmico, lei universal, ajuste kármico", 
+      influencia: "Fase de ajustes necessários e busca por equilíbrio em todas as áreas da vida. Período de colheita do que foi plantado.",
+      jodorowsky: "A Justiça não é punição, mas restauração do equilíbrio universal. É o momento de aceitar as consequências com sabedoria."
+    },
+    9: { 
+      nome: "O Eremita", 
+      significado: "Sabedoria interior, busca solitária, iluminação", 
+      influencia: "Tempo de reflexão profunda e busca interior. Período de isolamento necessário para encontrar a própria luz.",
+      jodorowsky: "O Eremita carrega a lanterna da consciência nas trevas da ignorância. É o momento de buscar respostas dentro de si."
+    },
+    10: { 
+      nome: "A Roda da Fortuna", 
+      significado: "Ciclos naturais, destino em movimento, mudanças cósmicas", 
+      influencia: "Momento de grandes mudanças e novos ciclos. Período de transformação guiada pelo destino superior.",
+      jodorowsky: "A Roda da Fortuna nos lembra que tudo é transitório. É o momento de fluir com as mudanças cósmicas."
+    },
+    11: { 
+      nome: "A Força", 
+      significado: "Domínio interior, coragem espiritual, integração de instintos", 
+      influencia: "Período de desenvolvimento da verdadeira força interior. Fase de integração harmoniosa entre instinto e consciência.",
+      jodorowsky: "A Força não é violência, mas a capacidade de integrar o animal interior com amor. É o momento de domesticar o ego."
+    },
+    12: { 
+      nome: "O Enforcado", 
+      significado: "Sacrifício consciente, nova perspectiva, suspensão", 
+      influencia: "Fase de pausa necessária e mudança radical de perspectiva. Período de sacrifício que leva à iluminação.",
+      jodorowsky: "O Enforcado escolhe voluntariamente a suspensão para ver o mundo de forma diferente. É o momento de soltar o controle."
+    },
+    13: { 
+      nome: "A Morte", 
+      significado: "Transformação radical, renascimento, fim de ciclos", 
+      influencia: "Momento de grandes transformações e morte de aspectos obsoletos. Período de renascimento espiritual.",
+      jodorowsky: "A Morte é a grande transformadora que liberta do que já não serve. É o momento de morrer para renascer."
+    },
+    14: { 
+      nome: "A Temperança", 
+      significado: "Alquimia interior, moderação sábia, cura", 
+      influencia: "Período de harmonização e cura através da moderação. Fase de integração alquímica de elementos opostos.",
+      jodorowsky: "A Temperança é a arte de misturar elementos opostos para criar algo novo. É o momento da alquimia interior."
+    },
+    15: { 
+      nome: "O Diabo", 
+      significado: "Confronto com sombras, libertação de ilusões", 
+      influencia: "Fase de confronto com limitações e padrões destrutivos. Período de libertação de amarras inconscientes.",
+      jodorowsky: "O Diabo mostra as correntes que nós mesmos criamos. É o momento de reconhecer e quebrar as próprias limitações."
+    },
+    16: { 
+      nome: "A Torre", 
+      significado: "Ruptura necessária, revelação súbita, libertação", 
+      influencia: "Momento de mudanças súbitas e revelações que destroem estruturas obsoletas. Período de libertação através da crise.",
+      jodorowsky: "A Torre destrói o que foi construído sobre bases falsas. É o momento de aceitar a destruição como libertação."
+    },
+    17: { 
+      nome: "A Estrela", 
+      significado: "Esperança renovada, inspiração divina, cura", 
+      influencia: "Período de renovação e conexão com a inspiração superior. Fase de cura e esperança após as provações.",
+      jodorowsky: "A Estrela oferece a água da vida após a destruição da Torre. É o momento de renovar a fé e a esperança."
+    },
+    18: { 
+      nome: "A Lua", 
+      significado: "Exploração do inconsciente, ilusões, intuição", 
+      influencia: "Fase de exploração do mundo interior e confronto com ilusões. Período de desenvolvimento da intuição profunda.",
+      jodorowsky: "A Lua ilumina o caminho através das ilusões do inconsciente. É o momento de navegar pelas águas da psique."
+    },
+    19: { 
+      nome: "O Sol", 
+      significado: "Iluminação plena, alegria, realização", 
+      influencia: "Momento de realização plena e alegria genuína. Período de iluminação e clareza absoluta.",
+      jodorowsky: "O Sol representa a consciência plena que dissipa todas as sombras. É o momento da realização total."
+    },
+    20: { 
+      nome: "O Julgamento", 
+      significado: "Despertar espiritual, chamado superior, renascimento", 
+      influencia: "Período de despertar espiritual e resposta ao chamado superior. Fase de renascimento em um nível mais elevado.",
+      jodorowsky: "O Julgamento é o chamado para despertar para uma realidade superior. É o momento de responder ao chamado divino."
+    },
+    21: { 
+      nome: "O Mundo", 
+      significado: "Completude total, realização cósmica, unidade", 
+      influencia: "Fase de conclusão e realização plena de um ciclo evolutivo. Período de integração total e harmonia cósmica.",
+      jodorowsky: "O Mundo representa a dança cósmica da existência realizada. É o momento da união total com o universo."
+    }
   };
   
-  const numeroArcano = idade % 22;
   return arcanos[numeroArcano] || arcanos[0];
 }
 
@@ -533,30 +662,30 @@ function formatarPiramideVisual(numeros) {
   return piramide;
 }
 
-function gerarCardsArcanos() {
+function gerarArcanosCompletos() {
   const arcanos = [
-    { numero: 1, nome: "O Mago", idades: "0-4, 45-49, 90-94", emoji: "🎩" },
-    { numero: 2, nome: "A Sacerdotisa", idades: "5-8, 50-53, 95-98", emoji: "🌙" },
-    { numero: 3, nome: "A Imperatriz", idades: "9-12, 54-57", emoji: "👑" },
-    { numero: 4, nome: "O Imperador", idades: "13-16, 58-61", emoji: "⚡" },
-    { numero: 5, nome: "O Papa", idades: "17-20, 62-65", emoji: "📿" },
-    { numero: 6, nome: "Os Enamorados", idades: "21-24, 66-69", emoji: "💕" },
-    { numero: 7, nome: "O Carro", idades: "25-28, 70-73", emoji: "🏆" },
-    { numero: 8, nome: "A Justiça", idades: "29-32, 74-77", emoji: "⚖️" },
-    { numero: 9, nome: "O Eremita", idades: "33-36, 78-81", emoji: "🕯️" },
-    { numero: 10, nome: "A Roda da Fortuna", idades: "37-40, 82-85", emoji: "🎡" },
-    { numero: 11, nome: "A Força", idades: "41-44, 86-89", emoji: "🦁" },
-    { numero: 12, nome: "O Enforcado", idades: "45-48, 90-93", emoji: "🙃" },
-    { numero: 13, nome: "A Morte", idades: "49-52, 94-97", emoji: "💀" },
-    { numero: 14, nome: "A Temperança", idades: "53-56, 98-101", emoji: "🏺" },
-    { numero: 15, nome: "O Diabo", idades: "57-60, 102-105", emoji: "😈" },
-    { numero: 16, nome: "A Torre", idades: "61-64, 106-109", emoji: "🗼" },
-    { numero: 17, nome: "A Estrela", idades: "65-68, 110-113", emoji: "⭐" },
-    { numero: 18, nome: "A Lua", idades: "69-72, 114-117", emoji: "🌕" },
-    { numero: 19, nome: "O Sol", idades: "73-76, 118-121", emoji: "☀️" },
-    { numero: 20, nome: "O Julgamento", idades: "77-80, 122-125", emoji: "📯" },
-    { numero: 21, nome: "O Mundo", idades: "81-84, 126-129", emoji: "🌍" },
-    { numero: 0, nome: "O Louco", idades: "85-88, 130-133", emoji: "🃏" }
+    { numero: 1, nome: "O Mago", idades: "0-4, 45-49, 90-94", emoji: "🎩", imagem: "assets/img/cartas/1TheMagician.jpg", arquivo: "arcanos/maiores/o_mago.html" },
+    { numero: 2, nome: "A Sacerdotisa", idades: "5-8, 50-53, 95-98", emoji: "🌙", imagem: "assets/img/cartas/2TheHighPriestess.jpg", arquivo: "arcanos/maiores/a_sacerdotisa.html" },
+    { numero: 3, nome: "A Imperatriz", idades: "9-12, 54-57", emoji: "👑", imagem: "assets/img/cartas/3TheEmpress.jpg", arquivo: "arcanos/maiores/a_imperatriz.html" },
+    { numero: 4, nome: "O Imperador", idades: "13-16, 58-61", emoji: "⚡", imagem: "assets/img/cartas/4TheEmperor.jpg", arquivo: "arcanos/maiores/o_imperador.html" },
+    { numero: 5, nome: "O Papa", idades: "17-20, 62-65", emoji: "📿", imagem: "assets/img/cartas/5TheHierophant.jpg", arquivo: "arcanos/maiores/o_papa.html" },
+    { numero: 6, nome: "Os Enamorados", idades: "21-24, 66-69", emoji: "💕", imagem: "assets/img/cartas/6TheLovers.jpg", arquivo: "arcanos/maiores/os_enamorados.html" },
+    { numero: 7, nome: "O Carro", idades: "25-28, 70-73", emoji: "🏆", imagem: "assets/img/cartas/7TheChariot.jpg", arquivo: "arcanos/maiores/o_carro.html" },
+    { numero: 8, nome: "A Justiça", idades: "29-32, 74-77", emoji: "⚖️", imagem: "assets/img/cartas/8Justice.jpg", arquivo: "arcanos/maiores/a_justica.html" },
+    { numero: 9, nome: "O Eremita", idades: "33-36, 78-81", emoji: "🕯️", imagem: "assets/img/cartas/9TheHermit.jpg", arquivo: "arcanos/maiores/o_eremita.html" },
+    { numero: 10, nome: "A Roda da Fortuna", idades: "37-40, 82-85", emoji: "🎡", imagem: "assets/img/cartas/10TheWheelofFortune.jpg", arquivo: "arcanos/maiores/a_roda_da_fortuna.html" },
+    { numero: 11, nome: "A Força", idades: "41-44, 86-89", emoji: "🦁", imagem: "assets/img/cartas/11Strength.jpg", arquivo: "arcanos/maiores/a_forca.html" },
+    { numero: 12, nome: "O Enforcado", idades: "45-48, 90-93", emoji: "🙃", imagem: "assets/img/cartas/12TheHangedMan.jpg", arquivo: "arcanos/maiores/o_enforcado.html" },
+    { numero: 13, nome: "A Morte", idades: "49-52, 94-97", emoji: "💀", imagem: "assets/img/cartas/13Death.jpg", arquivo: "arcanos/maiores/a_morte.html" },
+    { numero: 14, nome: "A Temperança", idades: "53-56, 98-101", emoji: "🏺", imagem: "assets/img/cartas/14Temperance.jpg", arquivo: "arcanos/maiores/a_temperanca.html" },
+    { numero: 15, nome: "O Diabo", idades: "57-60, 102-105", emoji: "😈", imagem: "assets/img/cartas/15TheDevil.jpg", arquivo: "arcanos/maiores/o_diabo.html" },
+    { numero: 16, nome: "A Torre", idades: "61-64, 106-109", emoji: "🗼", imagem: "assets/img/cartas/16TheTower.jpg", arquivo: "arcanos/maiores/a_torre.html" },
+    { numero: 17, nome: "A Estrela", idades: "65-68, 110-113", emoji: "⭐", imagem: "assets/img/cartas/17TheStar.jpg", arquivo: "arcanos/maiores/a_estrela.html" },
+    { numero: 18, nome: "A Lua", idades: "69-72, 114-117", emoji: "🌕", imagem: "assets/img/cartas/18TheMoon.jpg", arquivo: "arcanos/maiores/a_lua.html" },
+    { numero: 19, nome: "O Sol", idades: "73-76, 118-121", emoji: "☀️", imagem: "assets/img/cartas/19TheSun.jpg", arquivo: "arcanos/maiores/o_sol.html" },
+    { numero: 20, nome: "O Julgamento", idades: "77-80, 122-125", emoji: "📯", imagem: "assets/img/cartas/20Judgement.jpg", arquivo: "arcanos/maiores/o_julgamento.html" },
+    { numero: 21, nome: "O Mundo", idades: "81-84, 126-129", emoji: "🌍", imagem: "assets/img/cartas/21TheWorld.jpg", arquivo: "arcanos/maiores/o_mundo.html" },
+    { numero: 0, nome: "O Louco", idades: "85-88, 130-133", emoji: "🃏", imagem: "assets/img/cartas/0TheFool.jpg", arquivo: "arcanos/maiores/o_louco.html" }
   ];
 
   return arcanos.map(arcano => `
@@ -575,7 +704,7 @@ function gerarCardsArcanos() {
         <p style="color: #E6E6FA; font-size: 14px; margin: 0;">Idades ${arcano.idades}</p>
       </div>
       
-      <button onclick="alert('Funcionalidade em desenvolvimento: Página individual do ${arcano.nome}')" 
+      <button onclick="window.open('${arcano.arquivo}', '_blank')" 
               style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #1A0B3D; border: none; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;"
               onmouseover="this.style.transform='scale(1.05)';" 
               onmouseout="this.style.transform='scale(1)';">
