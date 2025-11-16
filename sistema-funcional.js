@@ -356,7 +356,7 @@ function renderPiramideCompleta(nome, idade) {
   `;
   
   // Arcano Regente Atual
-  const arcanoInfo = obterInformacaoArcano(calcularNumeroArcano(idade));
+  const arcanoInfo = calcularArcanoRegente(idade);
   html += `
     <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #FFD700; margin-bottom: 30px;">
       <h3 style="color: #FFD700; text-align: center; margin-bottom: 20px;">✨ SEU ARCANO REGENTE ATUAL</h3>
@@ -486,127 +486,148 @@ function calcularArcanoRegente(idade) {
       nome: "O Louco", 
       significado: "Energia primordial, potencial infinito, jornada espiritual", 
       influencia: "Momento de liberdade absoluta e conexão com o potencial criativo universal. Período de renovação e novos começos baseados na sabedoria interior.",
-      jodorowsky: "O Louco representa a energia pura do cosmos, não domesticada pela sociedade. É o momento de seguir a intuição além da lógica."
+      jodorowsky: "O Louco representa a energia pura do cosmos, não domesticada pela sociedade. É o momento de seguir a intuição além da lógica.",
+      imagem: "assets/img/cartas/0TheFool.jpg"
     },
     1: { 
       nome: "O Mago", 
       significado: "Manifestação consciente, poder de criação, domínio dos elementos", 
       influencia: "Período de grande capacidade de materialização de projetos e sonhos. Fase de liderança e iniciativa criativa.",
-      jodorowsky: "O Mago é aquele que compreende que a realidade pode ser moldada pela vontade consciente. É o arquiteto de sua própria existência."
+      jodorowsky: "O Mago é aquele que compreende que a realidade pode ser moldada pela vontade consciente. É o arquiteto de sua própria existência.",
+      imagem: "assets/img/cartas/1TheMagician.jpg"
     },
     2: { 
       nome: "A Sacerdotisa", 
       significado: "Sabedoria oculta, intuição profunda, conhecimento esotérico", 
       influencia: "Fase de desenvolvimento da percepção sutil e conexão com os mistérios da vida. Período de aprendizado interior.",
-      jodorowsky: "A Sacerdotisa guarda os segredos do inconsciente coletivo. É o momento de ouvir a voz interior que transcende a razão."
+      jodorowsky: "A Sacerdotisa guarda os segredos do inconsciente coletivo. É o momento de ouvir a voz interior que transcende a razão.",
+      imagem: "assets/img/cartas/2TheHighPriestess.jpg"
     },
     3: { 
       nome: "A Imperatriz", 
       significado: "Criatividade abundante, fertilidade, manifestação material", 
       influencia: "Tempo de grande fertilidade criativa e abundância material. Período de crescimento e expansão em todos os níveis.",
-      jodorowsky: "A Imperatriz é a Grande Mãe que nutre toda criação. É o momento de dar forma concreta aos impulsos criativos."
+      jodorowsky: "A Imperatriz é a Grande Mãe que nutre toda criação. É o momento de dar forma concreta aos impulsos criativos.",
+      imagem: "assets/img/cartas/3TheEmpress.jpg"
     },
     4: { 
       nome: "O Imperador", 
       significado: "Estrutura sólida, autoridade consciente, organização", 
       influencia: "Período de estabelecimento de bases sólidas e exercício de liderança responsável. Fase de construção duradoura.",
-      jodorowsky: "O Imperador representa o poder terreno usado com sabedoria. É o momento de construir estruturas que sirvam ao bem comum."
+      jodorowsky: "O Imperador representa o poder terreno usado com sabedoria. É o momento de construir estruturas que sirvam ao bem comum.",
+      imagem: "assets/img/cartas/4TheEmperor.jpg"
     },
     5: { 
       nome: "O Papa", 
       significado: "Ensino sagrado, tradição espiritual, ponte entre mundos", 
       influencia: "Fase de transmissão de conhecimento e conexão com tradições ancestrais. Período de ensino e aprendizado espiritual.",
-      jodorowsky: "O Papa é o mediador entre o humano e o divino. É o momento de compartilhar a sabedoria adquirida com humildade."
+      jodorowsky: "O Papa é o mediador entre o humano e o divino. É o momento de compartilhar a sabedoria adquirida com humildade.",
+      imagem: "assets/img/cartas/5TheHierophant.jpg"
     },
     6: { 
       nome: "Os Enamorados", 
       significado: "União sagrada, escolhas conscientes, harmonia dual", 
       influencia: "Momento de decisões importantes sobre relacionamentos e parcerias. Período de integração de polaridades.",
-      jodorowsky: "Os Enamorados representam a escolha consciente do amor sobre o medo. É o momento de unir opostos em harmonia."
+      jodorowsky: "Os Enamorados representam a escolha consciente do amor sobre o medo. É o momento de unir opostos em harmonia.",
+      imagem: "assets/img/cartas/6TheLovers.jpg"
     },
     7: { 
       nome: "O Carro", 
       significado: "Triunfo através da determinação, movimento direcionado", 
       influencia: "Período de conquistas através da força de vontade disciplinada. Fase de movimento e progresso acelerado.",
-      jodorowsky: "O Carro simboliza a vitória obtida através do domínio de forças opostas. É o momento de avançar com determinação."
+      jodorowsky: "O Carro simboliza a vitória obtida através do domínio de forças opostas. É o momento de avançar com determinação.",
+      imagem: "assets/img/cartas/7TheChariot.jpg"
     },
     8: { 
       nome: "A Justiça", 
       significado: "Equilíbrio cósmico, lei universal, ajuste kármico", 
       influencia: "Fase de ajustes necessários e busca por equilíbrio em todas as áreas da vida. Período de colheita do que foi plantado.",
-      jodorowsky: "A Justiça não é punição, mas restauração do equilíbrio universal. É o momento de aceitar as consequências com sabedoria."
+      jodorowsky: "A Justiça não é punição, mas restauração do equilíbrio universal. É o momento de aceitar as consequências com sabedoria.",
+      imagem: "assets/img/cartas/8Strength.jpg"
     },
     9: { 
       nome: "O Eremita", 
       significado: "Sabedoria interior, busca solitária, iluminação", 
       influencia: "Tempo de reflexão profunda e busca interior. Período de isolamento necessário para encontrar a própria luz.",
-      jodorowsky: "O Eremita carrega a lanterna da consciência nas trevas da ignorância. É o momento de buscar respostas dentro de si."
+      jodorowsky: "O Eremita carrega a lanterna da consciência nas trevas da ignorância. É o momento de buscar respostas dentro de si.",
+      imagem: "assets/img/cartas/9TheHermit.jpg"
     },
     10: { 
       nome: "A Roda da Fortuna", 
       significado: "Ciclos naturais, destino em movimento, mudanças cósmicas", 
       influencia: "Momento de grandes mudanças e novos ciclos. Período de transformação guiada pelo destino superior.",
-      jodorowsky: "A Roda da Fortuna nos lembra que tudo é transitório. É o momento de fluir com as mudanças cósmicas."
+      jodorowsky: "A Roda da Fortuna nos lembra que tudo é transitório. É o momento de fluir com as mudanças cósmicas.",
+      imagem: "assets/img/cartas/10WheelOfFortune.jpg"
     },
     11: { 
       nome: "A Força", 
       significado: "Domínio interior, coragem espiritual, integração de instintos", 
       influencia: "Período de desenvolvimento da verdadeira força interior. Fase de integração harmoniosa entre instinto e consciência.",
-      jodorowsky: "A Força não é violência, mas a capacidade de integrar o animal interior com amor. É o momento de domesticar o ego."
+      jodorowsky: "A Força não é violência, mas a capacidade de integrar o animal interior com amor. É o momento de domesticar o ego.",
+      imagem: "assets/img/cartas/11Justice.jpg"
     },
     12: { 
       nome: "O Enforcado", 
       significado: "Sacrifício consciente, nova perspectiva, suspensão", 
       influencia: "Fase de pausa necessária e mudança radical de perspectiva. Período de sacrifício que leva à iluminação.",
-      jodorowsky: "O Enforcado escolhe voluntariamente a suspensão para ver o mundo de forma diferente. É o momento de soltar o controle."
+      jodorowsky: "O Enforcado escolhe voluntariamente a suspensão para ver o mundo de forma diferente. É o momento de soltar o controle.",
+      imagem: "assets/img/cartas/12TheHangedMan.jpg"
     },
     13: { 
       nome: "A Morte", 
       significado: "Transformação radical, renascimento, fim de ciclos", 
       influencia: "Momento de grandes transformações e morte de aspectos obsoletos. Período de renascimento espiritual.",
-      jodorowsky: "A Morte é a grande transformadora que liberta do que já não serve. É o momento de morrer para renascer."
+      jodorowsky: "A Morte é a grande transformadora que liberta do que já não serve. É o momento de morrer para renascer.",
+      imagem: "assets/img/cartas/13Death.jpg"
     },
     14: { 
       nome: "A Temperança", 
       significado: "Alquimia interior, moderação sábia, cura", 
       influencia: "Período de harmonização e cura através da moderação. Fase de integração alquímica de elementos opostos.",
-      jodorowsky: "A Temperança é a arte de misturar elementos opostos para criar algo novo. É o momento da alquimia interior."
+      jodorowsky: "A Temperança é a arte de misturar elementos opostos para criar algo novo. É o momento da alquimia interior.",
+      imagem: "assets/img/cartas/14Temperance.jpg"
     },
     15: { 
       nome: "O Diabo", 
       significado: "Confronto com sombras, libertação de ilusões", 
       influencia: "Fase de confronto com limitações e padrões destrutivos. Período de libertação de amarras inconscientes.",
-      jodorowsky: "O Diabo mostra as correntes que nós mesmos criamos. É o momento de reconhecer e quebrar as próprias limitações."
+      jodorowsky: "O Diabo mostra as correntes que nós mesmos criamos. É o momento de reconhecer e quebrar as próprias limitações.",
+      imagem: "assets/img/cartas/15TheDevil.jpg"
     },
     16: { 
       nome: "A Torre", 
       significado: "Ruptura necessária, revelação súbita, libertação", 
       influencia: "Momento de mudanças súbitas e revelações que destroem estruturas obsoletas. Período de libertação através da crise.",
-      jodorowsky: "A Torre destrói o que foi construído sobre bases falsas. É o momento de aceitar a destruição como libertação."
+      jodorowsky: "A Torre destrói o que foi construído sobre bases falsas. É o momento de aceitar a destruição como libertação.",
+      imagem: "assets/img/cartas/16TheTower.jpg"
     },
     17: { 
       nome: "A Estrela", 
       significado: "Esperança renovada, inspiração divina, cura", 
       influencia: "Período de renovação e conexão com a inspiração superior. Fase de cura e esperança após as provações.",
-      jodorowsky: "A Estrela oferece a água da vida após a destruição da Torre. É o momento de renovar a fé e a esperança."
+      jodorowsky: "A Estrela oferece a água da vida após a destruição da Torre. É o momento de renovar a fé e a esperança.",
+      imagem: "assets/img/cartas/17TheStar.jpg"
     },
     18: { 
       nome: "A Lua", 
       significado: "Exploração do inconsciente, ilusões, intuição", 
       influencia: "Fase de exploração do mundo interior e confronto com ilusões. Período de desenvolvimento da intuição profunda.",
-      jodorowsky: "A Lua ilumina o caminho através das ilusões do inconsciente. É o momento de navegar pelas águas da psique."
+      jodorowsky: "A Lua ilumina o caminho através das ilusões do inconsciente. É o momento de navegar pelas águas da psique.",
+      imagem: "assets/img/cartas/18TheMoon.jpg"
     },
     19: { 
       nome: "O Sol", 
       significado: "Iluminação plena, alegria, realização", 
       influencia: "Momento de realização plena e alegria genuína. Período de iluminação e clareza absoluta.",
-      jodorowsky: "O Sol representa a consciência plena que dissipa todas as sombras. É o momento da realização total."
+      jodorowsky: "O Sol representa a consciência plena que dissipa todas as sombras. É o momento da realização total.",
+      imagem: "assets/img/cartas/19TheSun.jpg"
     },
     20: { 
       nome: "O Julgamento", 
       significado: "Despertar espiritual, chamado superior, renascimento", 
       influencia: "Período de despertar espiritual e resposta ao chamado superior. Fase de renascimento em um nível mais elevado.",
-      jodorowsky: "O Julgamento é o chamado para despertar para uma realidade superior. É o momento de responder ao chamado divino."
+      jodorowsky: "O Julgamento é o chamado para despertar para uma realidade superior. É o momento de responder ao chamado divino.",
+      imagem: "assets/img/cartas/20Judgement.jpg"
     },
     21: { 
       nome: "O Mundo", 
