@@ -348,10 +348,10 @@ function renderPiramideCompleta(nome, idade) {
   const desafiosCarmicos = calcularDesafiosCarmicos(nome);
   
   let html = `
-    <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #9D4EDD; margin-bottom: 30px;">
-      <h3 style="color: #DDA0DD; text-align: center; margin-bottom: 10px; font-size: 24px;">🔺 SUA PIRÂMIDE CABALÍSTICA COMPLETA</h3>
-      <h4 style="color: #FFD700; text-align: center; margin-bottom: 20px; font-size: 20px;">${nome.toUpperCase()}, ${idade} ANOS</h4>
-      <p style="color: #E6E6FA; text-align: center; margin-bottom: 30px; font-style: italic;">Descubra os mistérios de sua jornada através da sabedoria cabalística ancestral</p>
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #3e0a29; margin-bottom: 30px;">
+      <h3 style="color: #f2eaff; text-align: center; margin-bottom: 10px; font-size: 24px;">🔺 SUA PIRÂMIDE CABALÍSTICA COMPLETA</h3>
+      <h4 style="color: #f0aa53; text-align: center; margin-bottom: 20px; font-size: 20px;">${nome.toUpperCase()}, ${idade} ANOS</h4>
+      <p style="color: #f2eaff; text-align: center; margin-bottom: 30px; font-style: italic;">Descubra os mistérios de sua jornada através da sabedoria cabalística ancestral</p>
     </div>
   `;
   
@@ -360,51 +360,51 @@ function renderPiramideCompleta(nome, idade) {
   const textoExpandido = obterTextoExpandidoArcano(arcanoInfo.nome);
   
   html += `
-    <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #FFD700; margin-bottom: 30px;">
-      <h3 style="color: #FFD700; text-align: center; margin-bottom: 20px;">✨ SEU ARCANO REGENTE ATUAL</h3>
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #f0aa53; margin-bottom: 30px;">
+      <h3 style="color: #f0aa53; text-align: center; margin-bottom: 20px;">✨ SEU ARCANO REGENTE ATUAL</h3>
       <div style="display: flex; align-items: flex-start; justify-content: center; gap: 30px; padding: 20px; flex-wrap: wrap;">
         <div style="flex-shrink: 0;">
-          <img src="${arcanoInfo.imagem}" alt="${arcanoInfo.nome}" style="width: 150px; height: 250px; object-fit: cover; border-radius: 10px; border: 2px solid #FFD700; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);" />
+          <img src="${arcanoInfo.imagem}" alt="${arcanoInfo.nome}" style="width: 150px; height: 250px; object-fit: cover; border-radius: 10px; border: 2px solid #f0aa53; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);" />
         </div>
         <div style="flex: 1; min-width: 400px; text-align: left;">
-          <h2 style="color: #DDA0DD; margin-bottom: 15px; font-size: 28px; text-align: center;">${arcanoInfo.nome}</h2>
-          <p style="color: #E6E6FA; font-size: 16px; margin-bottom: 20px; text-align: center; font-style: italic;">"${arcanoInfo.significado}"</p>
+          <h2 style="color: #f2eaff; margin-bottom: 15px; font-size: 28px; text-align: center;">${arcanoInfo.nome}</h2>
+          <p style="color: #f2eaff; font-size: 16px; margin-bottom: 20px; text-align: center; font-style: italic;">"${arcanoInfo.significado}"</p>
           
-          <div style="background: rgba(221, 160, 221, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
-            <h4 style="color: #FFD700; margin-bottom: 15px; font-size: 18px;">🌟 Contexto do Período Atual</h4>
-            <p style="color: #E6E6FA; font-size: 14px; line-height: 1.7; margin-bottom: 15px;">${textoExpandido.contextoAtual}</p>
+          <div style="background: rgba(242, 234, 255, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+            <h4 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">🌟 Contexto do Período Atual</h4>
+            <p style="color: #f2eaff; font-size: 14px; line-height: 1.7; margin-bottom: 15px;">${textoExpandido.contextoAtual}</p>
           </div>
           
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
             <div style="background: rgba(62, 10, 41, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #3e0a29;">
               <h5 style="color: #3e0a29; margin-bottom: 8px; font-size: 14px;">📚 APRENDIZADO</h5>
-              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.aprendizado.substring(0, 120)}...</p>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.aprendizado.substring(0, 120)}...</p>
             </div>
-            <div style="background: rgba(255, 107, 107, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FF6B6B;">
-              <h5 style="color: #FF6B6B; margin-bottom: 8px; font-size: 14px;">💕 AMOR</h5>
-              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.amor.substring(0, 120)}...</p>
+            <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+              <h5 style="color: #f0aa53; margin-bottom: 8px; font-size: 14px;">💕 AMOR</h5>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.amor.substring(0, 120)}...</p>
             </div>
-            <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FFD700;">
-              <h5 style="color: #FFD700; margin-bottom: 8px; font-size: 14px;">🙏 ESPIRITUAL</h5>
-              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.espiritual.substring(0, 120)}...</p>
+            <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+              <h5 style="color: #f0aa53; margin-bottom: 8px; font-size: 14px;">🙏 ESPIRITUAL</h5>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.espiritual.substring(0, 120)}...</p>
             </div>
-            <div style="background: rgba(0, 255, 0, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #00FF7F;">
-              <h5 style="color: #00FF7F; margin-bottom: 8px; font-size: 14px;">💰 FINANCEIRO</h5>
-              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.financeiro.substring(0, 120)}...</p>
+            <div style="background: rgba(178, 209, 177, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #b2d1b1;">
+              <h5 style="color: #b2d1b1; margin-bottom: 8px; font-size: 14px;">💰 FINANCEIRO</h5>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.financeiro.substring(0, 120)}...</p>
             </div>
-            <div style="background: rgba(255, 165, 0, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FFA500;">
-              <h5 style="color: #FFA500; margin-bottom: 8px; font-size: 14px;">💼 TRABALHO</h5>
-              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.trabalho.substring(0, 120)}...</p>
+            <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+              <h5 style="color: #f0aa53; margin-bottom: 8px; font-size: 14px;">💼 TRABALHO</h5>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.trabalho.substring(0, 120)}...</p>
             </div>
-            <div style="background: rgba(0, 191, 255, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #00BFFF;">
-              <h5 style="color: #00BFFF; margin-bottom: 8px; font-size: 14px;">👨‍👩‍👧‍👦 FAMÍLIA</h5>
-              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.familia.substring(0, 120)}...</p>
+            <div style="background: rgba(178, 209, 177, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #b2d1b1;">
+              <h5 style="color: #b2d1b1; margin-bottom: 8px; font-size: 14px;">👨‍👩‍👧‍👦 FAMÍLIA</h5>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.familia.substring(0, 120)}...</p>
             </div>
           </div>
           
           <div style="text-align: center; margin-top: 20px;">
             <button onclick="window.open('arcanos/maiores/${arcanoInfo.nome.toLowerCase().replace(/\s+/g, '_').replace('ã', 'a').replace('ç', 'c')}.html', '_blank')" 
-                    style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #1A0B3D; border: none; padding: 12px 25px; border-radius: 25px; font-weight: bold; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); transition: all 0.3s ease;"
+                    style="background: linear-gradient(135deg, #f0aa53 0%, #f0aa53 100%); color: #0b1836; border: none; padding: 12px 25px; border-radius: 25px; font-weight: bold; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); transition: all 0.3s ease;"
                     onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 215, 0, 0.4)'"
                     onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 215, 0, 0.3)'">
               📖 LER ANÁLISE COMPLETA DO ARCANO
@@ -417,9 +417,9 @@ function renderPiramideCompleta(nome, idade) {
   
   // Pirâmide Visual
   html += `
-    <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #9D4EDD; margin-bottom: 30px;">
-      <h3 style="color: #DDA0DD; text-align: center; margin-bottom: 20px;">PIRÂMIDE CABALÍSTICA - CICLO DE 90 ANOS</h3>
-      <div style="font-family: monospace; text-align: center; color: #E6E6FA; font-size: 12px; line-height: 1.6; background: rgba(157, 78, 221, 0.1); padding: 20px; border-radius: 10px; overflow-x: auto; min-width: 100%;">
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #3e0a29; margin-bottom: 30px;">
+      <h3 style="color: #f2eaff; text-align: center; margin-bottom: 20px;">PIRÂMIDE CABALÍSTICA - CICLO DE 90 ANOS</h3>
+      <div style="font-family: monospace; text-align: center; color: #f2eaff; font-size: 12px; line-height: 1.6; background: rgba(62, 10, 41, 0.1); padding: 20px; border-radius: 10px; overflow-x: auto; min-width: 100%;">
         ${formatarPiramideVisual(piramide, sequenciasNegativas)}
       </div>
     </div>
@@ -427,8 +427,8 @@ function renderPiramideCompleta(nome, idade) {
   
   // IDADES DOS ARCANOS NO CICLO DE 90 ANOS
   html += `
-    <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #9D4EDD; margin-top: 30px;">
-      <h3 style="color: #DDA0DD; text-align: center; margin-bottom: 30px;">🔮 IDADES DOS ARCANOS NO CICLO DE 90 ANOS</h3>
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #3e0a29; margin-top: 30px;">
+      <h3 style="color: #f2eaff; text-align: center; margin-bottom: 30px;">🔮 IDADES DOS ARCANOS NO CICLO DE 90 ANOS</h3>
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
         ${gerarArcanosCompletos()}
       </div>
@@ -438,9 +438,9 @@ function renderPiramideCompleta(nome, idade) {
   // Sequências Negativas Expandidas
   if (sequenciasNegativas.length > 0) {
     html += `
-      <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #FF6B6B; margin-top: 30px;">
-        <h3 style="color: #FF6B6B; text-align: center; margin-bottom: 20px;">⚠️ SEQUÊNCIAS NEGATIVAS DETECTADAS NA PIRÂMIDE</h3>
-        <p style="color: #E6E6FA; text-align: center; margin-bottom: 30px; font-style: italic;">Padrões que requerem atenção especial e transformação consciente</p>
+      <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #f0aa53; margin-top: 30px;">
+        <h3 style="color: #f0aa53; text-align: center; margin-bottom: 20px;">⚠️ SEQUÊNCIAS NEGATIVAS DETECTADAS NA PIRÂMIDE</h3>
+        <p style="color: #f2eaff; text-align: center; margin-bottom: 30px; font-style: italic;">Padrões que requerem atenção especial e transformação consciente</p>
         ${sequenciasNegativas.map(seq => gerarSequenciaNegativaExpandida(seq)).join('')}
       </div>
     `;
@@ -449,9 +449,9 @@ function renderPiramideCompleta(nome, idade) {
   // Desafios Cármicos Expandidos
   if (desafiosCarmicos.length > 0) {
     html += `
-      <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #FFD700; margin-top: 30px;">
-        <h3 style="color: #FFD700; text-align: center; margin-bottom: 20px;">🔥 DESAFIOS CÁRMICOS IDENTIFICADOS</h3>
-        <p style="color: #E6E6FA; text-align: center; margin-bottom: 30px; font-style: italic;">Lições de vida que sua alma escolheu desenvolver nesta encarnação</p>
+      <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #f0aa53; margin-top: 30px;">
+        <h3 style="color: #f0aa53; text-align: center; margin-bottom: 20px;">🔥 DESAFIOS CÁRMICOS IDENTIFICADOS</h3>
+        <p style="color: #f2eaff; text-align: center; margin-bottom: 30px; font-style: italic;">Lições de vida que sua alma escolheu desenvolver nesta encarnação</p>
         ${desafiosCarmicos.map((desafio, index) => gerarDesafioCarmico(desafio, index + 1)).join('')}
       </div>
     `;
@@ -459,23 +459,23 @@ function renderPiramideCompleta(nome, idade) {
   
   // Correspondências Cabalísticas
   html += `
-    <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #9D4EDD; margin-top: 30px;">
-      <h3 style="color: #DDA0DD; text-align: center; margin-bottom: 20px;">🔮 CORRESPONDÊNCIAS CABALÍSTICAS</h3>
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #3e0a29; margin-top: 30px;">
+      <h3 style="color: #f2eaff; text-align: center; margin-bottom: 20px;">🔮 CORRESPONDÊNCIAS CABALÍSTICAS</h3>
       
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-        <div style="background: rgba(157, 78, 221, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FFD700;">
-          <h4 style="color: #FFD700; margin-bottom: 10px;">🌙 INFLUÊNCIA LUNAR</h4>
-          <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">SuaSua pirâmide revela conexões profundas com os ciclos lunares e as energias receptivas do universo. A influência lunar em sua jornada numerológica indica uma forte conexão com os ritmos naturais, a intuición desenvolvida e a capacidade de navegar pelas dimensões mais sutis da realidade. Esta energia favorece o desenvolvimento de habilidades psíquicas, a compreensão dos mistérios femininos sagrados e a capacidade de curar através da sensibilidade emocional refinada.</p>
+        <div style="background: rgba(62, 10, 41, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h4 style="color: #f0aa53; margin-bottom: 10px;">🌙 INFLUÊNCIA LUNAR</h4>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.6;">SuaSua pirâmide revela conexões profundas com os ciclos lunares e as energias receptivas do universo. A influência lunar em sua jornada numerológica indica uma forte conexão com os ritmos naturais, a intuición desenvolvida e a capacidade de navegar pelas dimensões mais sutis da realidade. Esta energia favorece o desenvolvimento de habilidades psíquicas, a compreensão dos mistérios femininos sagrados e a capacidade de curar através da sensibilidade emocional refinada.</p>
         </div>
-        <div style="background: rgba(157, 78, 221, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FFD700;">
-          <h4 style="color: #FFD700; margin-bottom: 10px;">☀️ INFLUÊNCIA SOLAR</h4>
-          <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">Os números dominantes conectam você com as energias solares de manifestação e liderança. A influência solar em sua configuração numerológica indica um forte potencial para liderança consciente, capacidade de manifestar projetos ambiciosos e habilidade para inspirar outros através do exemplo pessoal. Esta energia favorece o desenvolvimento da autoridade espiritual, a capacidade de tomar decisões importantes com sabedoria e o poder de transformar visões em realidade concreta.</p>
+        <div style="background: rgba(62, 10, 41, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h4 style="color: #f0aa53; margin-bottom: 10px;">☀️ INFLUÊNCIA SOLAR</h4>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.6;">Os números dominantes conectam você com as energias solares de manifestação e liderança. A influência solar em sua configuração numerológica indica um forte potencial para liderança consciente, capacidade de manifestar projetos ambiciosos e habilidade para inspirar outros através do exemplo pessoal. Esta energia favorece o desenvolvimento da autoridade espiritual, a capacidade de tomar decisões importantes com sabedoria e o poder de transformar visões em realidade concreta.</p>
         </div>
       </div>
       
-      <div style="background: rgba(221, 160, 221, 0.1); padding: 20px; border-radius: 10px; border: 1px solid #DDA0DD;">
-        <h4 style="color: #DDA0DD; text-align: center; margin-bottom: 15px;">🌌 SÍNTESE FINAL</h4>
-        <p style="color: #E6E6FA; font-size: 14px; line-height: 1.8; text-align: center;">Sua jornada numerológica revela um caminho único de evolução espiritual baseado na antiga sabedoria caldeia. Cada número em sua pirâmide representa uma faceta de sua alma em desenvolvimento, conectando-o com as vibrações cósmicas que guiam sua evolução consciente. Esta análise cabalística, fundamentada em mais de 4.000 anos de observações astronômicas e vibrações sonoras documentadas pelos antigos sábios da Babilônia, oferece um mapa sagrado para sua transformação consciente. O sistema caldeu, ao considerar o número 9 como sagrado e não asigná-lo a nenhuma letra, reconhece a completude espiritual e a perfeição divina que transcende a experiência humana ordinária, guiando-o em direção à realização de seu propósito cósmico maior."</p>
+      <div style="background: rgba(242, 234, 255, 0.1); padding: 20px; border-radius: 10px; border: 1px solid #f2eaff;">
+        <h4 style="color: #f2eaff; text-align: center; margin-bottom: 15px;">🌌 SÍNTESE FINAL</h4>
+        <p style="color: #f2eaff; font-size: 14px; line-height: 1.8; text-align: center;">Sua jornada numerológica revela um caminho único de evolução espiritual baseado na antiga sabedoria caldeia. Cada número em sua pirâmide representa uma faceta de sua alma em desenvolvimento, conectando-o com as vibrações cósmicas que guiam sua evolução consciente. Esta análise cabalística, fundamentada em mais de 4.000 anos de observações astronômicas e vibrações sonoras documentadas pelos antigos sábios da Babilônia, oferece um mapa sagrado para sua transformação consciente. O sistema caldeu, ao considerar o número 9 como sagrado e não asigná-lo a nenhuma letra, reconhece a completude espiritual e a perfeição divina que transcende a experiência humana ordinária, guiando-o em direção à realização de seu propósito cósmico maior."</p>
       </div>
     </div>
   `;
@@ -757,7 +757,7 @@ function formatarPiramideVisual(numeros, sequenciasNegativas = []) {
     // Destacar sequências negativas com sublinhado
     sequenciasNegativas.forEach(seq => {
       const regex = new RegExp(seq.split('').join(' &nbsp; '), 'g');
-      linha = linha.replace(regex, `<u style="color: #FF6B6B; text-decoration: underline;">${seq.split('').join(' &nbsp; ')}</u>`);
+      linha = linha.replace(regex, `<u style="color: #f0aa53; text-decoration: underline;">${seq.split('').join(' &nbsp; ')}</u>`);
     });
     
     piramide += `<div style="white-space: nowrap; overflow: visible;">${espacos}${linha}</div>`;
@@ -828,7 +828,7 @@ function gerarArcanosCompletos() {
   ];
 
   return arcanos.map(arcano => `
-    <div style="background: rgba(157, 78, 221, 0.15); border: 1px solid #9D4EDD; border-radius: 15px; padding: 20px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;" 
+    <div style="background: rgba(62, 10, 41, 0.15); border: 1px solid #3e0a29; border-radius: 15px; padding: 20px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;" 
          onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(157, 78, 221, 0.3)';" 
          onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
       
@@ -836,15 +836,15 @@ function gerarArcanosCompletos() {
         <img src="${arcano.imagem}" alt="${arcano.nome}" style="width: 80px; height: 120px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
       </div>
       
-      <h4 style="color: #FFD700; margin-bottom: 10px; font-size: 18px;">Arcano ${arcano.numero}</h4>
-      <h3 style="color: #DDA0DD; margin-bottom: 15px; font-size: 20px;">${arcano.nome}</h3>
+      <h4 style="color: #f0aa53; margin-bottom: 10px; font-size: 18px;">Arcano ${arcano.numero}</h4>
+      <h3 style="color: #f2eaff; margin-bottom: 15px; font-size: 20px;">${arcano.nome}</h3>
       
-      <div style="background: rgba(255, 215, 0, 0.1); padding: 10px; border-radius: 8px; margin-bottom: 15px;">
-        <p style="color: #E6E6FA; font-size: 14px; margin: 0;">Idades ${arcano.idades}</p>
+      <div style="background: rgba(240, 170, 83, 0.1); padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+        <p style="color: #f2eaff; font-size: 14px; margin: 0;">Idades ${arcano.idades}</p>
       </div>
       
       <button onclick="window.open('${arcano.arquivo}', '_blank')" 
-              style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #1A0B3D; border: none; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;"
+              style="background: linear-gradient(135deg, #f0aa53 0%, #f0aa53 100%); color: #0b1836; border: none; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;"
               onmouseover="this.style.transform='scale(1.05)';" 
               onmouseout="this.style.transform='scale(1)';">
         📖 VER MAIS SOBRE ESTE ARCANO
@@ -855,27 +855,27 @@ function gerarArcanosCompletos() {
 
 function gerarSequenciaNegativaExpandida(sequencia) {
   return `
-    <div style="background: rgba(255, 107, 107, 0.1); border: 1px solid #FF6B6B; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
-      <h4 style="color: #FFD700; text-align: center; margin-bottom: 20px; font-size: 22px;">Sequência ${sequencia}</h4>
+    <div style="background: rgba(240, 170, 83, 0.1); border: 1px solid #f0aa53; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+      <h4 style="color: #f0aa53; text-align: center; margin-bottom: 20px; font-size: 22px;">Sequência ${sequencia}</h4>
       
-      <div style="background: rgba(157, 78, 221, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #FF6B6B;">
-        <h5 style="color: #FF6B6B; margin-bottom: 15px; font-size: 18px;">📜 SIGNIFICADO PROFUNDO</h5>
-        <p style="color: #E6E6FA; font-size: 14px; line-height: 1.8; text-align: justify;">Esta sequência de números repetidos indica um padrão energético que precisa ser trabalhado conscientemente. Representa uma lição cármica importante em sua jornada espiritual, conectada aos mistérios da árvore da vida cabalística.</p>
+      <div style="background: rgba(62, 10, 41, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #f0aa53;">
+        <h5 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">📜 SIGNIFICADO PROFUNDO</h5>
+        <p style="color: #f2eaff; font-size: 14px; line-height: 1.8; text-align: justify;">Esta sequência de números repetidos indica um padrão energético que precisa ser trabalhado conscientemente. Representa uma lição cármica importante em sua jornada espiritual, conectada aos mistérios da árvore da vida cabalística.</p>
       </div>
       
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-        <div style="background: rgba(178, 209, 177, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #B2D1B1;">
-          <h5 style="color: #B2D1B1; margin-bottom: 10px;">✅ PONTOS POSITIVOS</h5>
-          <ul style="color: #E6E6FA; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+        <div style="background: rgba(178, 209, 177, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #b2d1b1;">
+          <h5 style="color: #b2d1b1; margin-bottom: 10px;">✅ PONTOS POSITIVOS</h5>
+          <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
             <li>Oportunidade de crescimento espiritual acelerado</li>
             <li>Desenvolvimento da consciência superior</li>
             <li>Fortalecimento do caráter através dos desafios</li>
             <li>Conexão com energias ancestrais de cura</li>
           </ul>
         </div>
-        <div style="background: rgba(255, 107, 107, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FF6B6B;">
-          <h5 style="color: #FF6B6B; margin-bottom: 10px;">⚠️ PONTOS NEGATIVOS</h5>
-          <ul style="color: #E6E6FA; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">⚠️ PONTOS NEGATIVOS</h5>
+          <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
             <li>Tendência à repetição de padrões limitantes</li>
             <li>Resistência à mudança e transformação</li>
             <li>Bloqueios energéticos nos chakras superiores</li>
@@ -885,18 +885,18 @@ function gerarSequenciaNegativaExpandida(sequencia) {
       </div>
       
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-        <div style="background: rgba(255, 107, 107, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FF6B6B;">
-          <h5 style="color: #FF6B6B; margin-bottom: 10px;">🚫 O QUE EVITAR</h5>
-          <ul style="color: #E6E6FA; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">🚫 O QUE EVITAR</h5>
+          <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
             <li>Ignorar os sinais do universo</li>
             <li>Manter-se em zona de conforto</li>
             <li>Negar a necessidade de mudança</li>
             <li>Culpar circunstâncias externas</li>
           </ul>
         </div>
-        <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FFD700;">
-          <h5 style="color: #FFD700; margin-bottom: 10px;">🛠️ O QUE TRABALHAR</h5>
-          <ul style="color: #E6E6FA; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">🛠️ O QUE TRABALHAR</h5>
+          <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
             <li>Meditação e introspecção diária</li>
             <li>Terapias de cura energética</li>
             <li>Estudo da numerologia sagrada</li>
@@ -906,18 +906,18 @@ function gerarSequenciaNegativaExpandida(sequencia) {
       </div>
       
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-        <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FFD700;">
-          <h5 style="color: #FFD700; margin-bottom: 10px;">🌟 COMO SUPERAR</h5>
-          <ul style="color: #E6E6FA; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">🌟 COMO SUPERAR</h5>
+          <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
             <li>Aceitar conscientemente os desafios como oportunidades</li>
             <li>Buscar orientação espiritual qualificada</li>
             <li>Praticar gratidão pelas lições recebidas</li>
             <li>Desenvolver paciência e perseverança</li>
           </ul>
         </div>
-        <div style="background: rgba(221, 160, 221, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #DDA0DD;">
-          <h5 style="color: #DDA0DD; margin-bottom: 10px;">✨ TRANSFORMAÇÃO ESPERADA</h5>
-          <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">Através do trabalho consciente com esta sequência, você desenvolverá maior equilíbrio espiritual, sabedoria interior e capacidade de navegar pelos desafios da vida com graça e propósito. Esta é uma oportunidade única de acelerar sua evolução espiritual.</p>
+        <div style="background: rgba(242, 234, 255, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f2eaff;">
+          <h5 style="color: #f2eaff; margin-bottom: 10px;">✨ TRANSFORMAÇÃO ESPERADA</h5>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.6;">Através do trabalho consciente com esta sequência, você desenvolverá maior equilíbrio espiritual, sabedoria interior e capacidade de navegar pelos desafios da vida com graça e propósito. Esta é uma oportunidade única de acelerar sua evolução espiritual.</p>
         </div>
       </div>
     </div>
@@ -1003,31 +1003,31 @@ function gerarDesafioCarmico(numeroDesafio, indice) {
   };
 
   return `
-    <div style="background: rgba(255, 215, 0, 0.1); border: 1px solid #FFD700; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
-      <h4 style="color: #FFD700; text-align: center; margin-bottom: 20px; font-size: 22px;">Desafio Cármico ${indice} - ${desafio.titulo}</h4>
+    <div style="background: rgba(240, 170, 83, 0.1); border: 1px solid #f0aa53; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+      <h4 style="color: #f0aa53; text-align: center; margin-bottom: 20px; font-size: 22px;">Desafio Cármico ${indice} - ${desafio.titulo}</h4>
       
-      <div style="background: rgba(157, 78, 221, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #FF6B6B;">
-        <h5 style="color: #FF6B6B; margin-bottom: 15px; font-size: 18px;">🌟 SIGNIFICADO DO DESAFIO</h5>
-        <p style="color: #E6E6FA; font-size: 14px; line-height: 1.8; text-align: justify;">${desafio.significado}</p>
+      <div style="background: rgba(62, 10, 41, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #f0aa53;">
+        <h5 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">🌟 SIGNIFICADO DO DESAFIO</h5>
+        <p style="color: #f2eaff; font-size: 14px; line-height: 1.8; text-align: justify;">${desafio.significado}</p>
       </div>
       
-      <div style="background: rgba(221, 160, 221, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #DDA0DD;">
-        <h5 style="color: #DDA0DD; margin-bottom: 15px; font-size: 18px;">✨ LIÇÕES PRINCIPAIS</h5>
-        <ul style="color: #E6E6FA; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+      <div style="background: rgba(242, 234, 255, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #f2eaff;">
+        <h5 style="color: #f2eaff; margin-bottom: 15px; font-size: 18px;">✨ LIÇÕES PRINCIPAIS</h5>
+        <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
           ${desafio.licoes.map(licao => `<li style="margin-bottom: 8px;">${licao}</li>`).join('')}
         </ul>
       </div>
       
-      <div style="background: rgba(255, 107, 107, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #FF6B6B;">
-        <h5 style="color: #FF6B6B; margin-bottom: 15px; font-size: 18px;">⚠️ SINAIS DE MANIFESTAÇÃO</h5>
-        <ul style="color: #E6E6FA; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+      <div style="background: rgba(240, 170, 83, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #f0aa53;">
+        <h5 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">⚠️ SINAIS DE MANIFESTAÇÃO</h5>
+        <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
           ${desafio.sinais.map(sinal => `<li style="margin-bottom: 8px;">${sinal}</li>`).join('')}
         </ul>
       </div>
       
-      <div style="background: rgba(255, 215, 0, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #FFD700;">
-        <h5 style="color: #FFD700; margin-bottom: 15px; font-size: 18px;">🛠️ ESTRATÉGIAS DE TRANSFORMAÇÃO</h5>
-        <ul style="color: #E6E6FA; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+      <div style="background: rgba(240, 170, 83, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+        <h5 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">🛠️ ESTRATÉGIAS DE TRANSFORMAÇÃO</h5>
+        <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
           ${desafio.estrategias.map(estrategia => `<li style="margin-bottom: 8px;">${estrategia}</li>`).join('')}
         </ul>
       </div>
