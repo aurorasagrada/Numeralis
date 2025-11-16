@@ -420,17 +420,17 @@ function renderPiramideCompleta(nome, idade) {
       <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
         <div style="background: rgba(157, 78, 221, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FFD700;">
           <h4 style="color: #FFD700; margin-bottom: 10px;">🌙 INFLUÊNCIA LUNAR</h4>
-          <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">Sua pirâmide revela conexões profundas com os ciclos lunares e as energias femininas do universo.</p>
+          <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">SuaSua pirâmide revela conexões profundas com os ciclos lunares e as energias receptivas do universo. A influência lunar em sua jornada numerológica indica uma forte conexão com os ritmos naturais, a intuición desenvolvida e a capacidade de navegar pelas dimensões mais sutis da realidade. Esta energia favorece o desenvolvimento de habilidades psíquicas, a compreensão dos mistérios femininos sagrados e a capacidade de curar através da sensibilidade emocional refinada.</p>
         </div>
         <div style="background: rgba(157, 78, 221, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FFD700;">
           <h4 style="color: #FFD700; margin-bottom: 10px;">☀️ INFLUÊNCIA SOLAR</h4>
-          <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">Os números dominantes conectam você com as energias solares de manifestação e liderança.</p>
+          <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">Os números dominantes conectam você com as energias solares de manifestação e liderança. A influência solar em sua configuração numerológica indica um forte potencial para liderança consciente, capacidade de manifestar projetos ambiciosos e habilidade para inspirar outros através do exemplo pessoal. Esta energia favorece o desenvolvimento da autoridade espiritual, a capacidade de tomar decisões importantes com sabedoria e o poder de transformar visões em realidade concreta.</p>
         </div>
       </div>
       
       <div style="background: rgba(221, 160, 221, 0.1); padding: 20px; border-radius: 10px; border: 1px solid #DDA0DD;">
         <h4 style="color: #DDA0DD; text-align: center; margin-bottom: 15px;">🌌 SÍNTESE FINAL</h4>
-        <p style="color: #E6E6FA; font-size: 14px; line-height: 1.8; text-align: center;">Sua jornada numerológica revela um caminho único de evolução espiritual. Cada número em sua pirâmide representa uma faceta de sua alma em desenvolvimento, guiando-o em direção à realização de seu propósito maior. Esta análise cabalística oferece um mapa sagrado para sua transformação consciente e ascensão espiritual.</p>
+        <p style="color: #E6E6FA; font-size: 14px; line-height: 1.8; text-align: center;">Sua jornada numerológica revela um caminho único de evolução espiritual baseado na antiga sabedoria caldeia. Cada número em sua pirâmide representa uma faceta de sua alma em desenvolvimento, conectando-o com as vibrações cósmicas que guiam sua evolução consciente. Esta análise cabalística, fundamentada em mais de 4.000 anos de observações astronômicas e vibrações sonoras documentadas pelos antigos sábios da Babilônia, oferece um mapa sagrado para sua transformação consciente. O sistema caldeu, ao considerar o número 9 como sagrado e não asigná-lo a nenhuma letra, reconhece a completude espiritual e a perfeição divina que transcende a experiência humana ordinária, guiando-o em direção à realização de seu propósito cósmico maior."</p>
       </div>
     </div>
   `;
@@ -791,10 +791,10 @@ function gerarDesafioCarmico(numeroDesafio, indice) {
       titulo: "A Lição da Liderança Consciente e Independência Saudável",
       significado: "O desafio cármico do número 1 representa uma das lições mais fundamentais da evolução espiritual humana: aprender a equilibrar a necessidade natural de liderança e independência com a sabedoria da colaboração e humildade. Pessoas com este desafio frequentemente chegam a esta vida carregando memórias inconscientes de experiências passadas onde o poder foi mal utilizado, onde a liderança se transformou em dominação, ou onde a independência genuína não significou rejeição de toda forma de apoio ou colaboração, mas sim a capacidade de escolher conscientemente quando liderar e quando seguir, quando agir sozinho e quando buscar parceria.",
       licoes: [
-        "**Liderança Servidora**: Aprender que verdadeiro poder serve ao bem coletivo, não a interesses pessoais",
-        "**Humildade Ativa**: Desenvolver capacidade de reconhecer limitações sem diminuir autoconfiança",
-        "**Colaboração Consciente**: Equilibrar independência com capacidade de trabalhar harmoniosamente com outros",
-        "**Autoridade Inspiradora**: Transformar tendências autoritárias em capacidade de motivar e inspirar"
+        "Liderança Servidora: Aprender que verdadeiro poder serve ao bem coletivo, não a interesses pessoais",
+        "Humildade Ativa: Desenvolver capacidade de reconhecer limitações sem diminuir autoconfiança",
+        "Colaboração Consciente: Equilibrar independência com capacidade de trabalhar harmoniosamente com outros",
+        "Autoridade Inspiradora: Transformar tendências autoritárias em capacidade de motivar e inspirar"
       ],
       sinais: [
         "Necessidade compulsiva de sempre ter razão ou estar no controle de situações",
@@ -813,10 +813,10 @@ function gerarDesafioCarmico(numeroDesafio, indice) {
       titulo: "A Jornada da Sabedoria Interior e Conexão Espiritual",
       significado: "O desafio cármico do número 7 representa a necessidade de desenvolver uma conexão profunda com a sabedoria interior e os mistérios espirituais da existência. Este desafio surge quando a alma precisa aprender a equilibrar o mundo material com as dimensões mais sutis da realidade, desenvolvendo intuição, discernimento espiritual e a capacidade de encontrar significado profundo nas experiências da vida. Frequentemente, pessoas com este desafio chegam a esta encarnação com uma tendência a se perder em superficialidades ou a rejeitar completamente o aspecto espiritual da existência, necessitando aprender a integrar ambas as dimensões de forma harmoniosa.",
       licoes: [
-        "**Desenvolvimento da Intuição**: Aprender a confiar na sabedoria interior e nos insights espirituais",
-        "**Busca por Significado**: Desenvolver capacidade de encontrar propósito profundo nas experiências cotidianas",
-        "**Discernimento Espiritual**: Cultivar habilidade de distinguir entre verdade espiritual e ilusão",
-        "**Integração Sagrado-Profano**: Equilibrar necessidades materiais com crescimento espiritual"
+        "Desenvolvimento da Intuição: Aprender a confiar na sabedoria interior e nos insights espirituais",
+        "Busca por Significado: Desenvolver capacidade de encontrar propósito profundo nas experiências cotidianas",
+        "Discernimento Espiritual: Cultivar habilidade de distinguir entre verdade espiritual e ilusão",
+        "Integração Sagrado-Profano: Equilibrar necessidades materiais com crescimento espiritual"
       ],
       sinais: [
         "Sensação persistente de vazio ou falta de propósito mesmo quando objetivos materiais são alcançados",
@@ -835,10 +835,10 @@ function gerarDesafioCarmico(numeroDesafio, indice) {
       titulo: "O Domínio do Poder Material e Abundância Consciente",
       significado: "O desafio cármico do número 8 envolve aprender a navegar conscientemente pelo mundo do poder material, abundância financeira e autoridade terrena sem perder a integridade espiritual ou se tornar escravo das ambições materiais. Este desafio surge quando a alma precisa desenvolver uma relação saudável com dinheiro, sucesso e poder, aprendendo que a verdadeira abundância vem do equilíbrio entre prosperidade material e riqueza espiritual. Frequentemente, pessoas com este desafio oscilam entre extremos: ou rejeitam completamente o mundo material por considerá-lo 'não-espiritual', ou se tornam obcecadas por acumulação material perdendo de vista valores mais elevados.",
       licoes: [
-        "**Abundância Consciente**: Desenvolver capacidade de criar prosperidade material de forma ética e sustentável",
-        "**Poder Responsável**: Aprender a usar autoridade e influência para benefício coletivo, não apenas pessoal",
-        "**Equilíbrio Material-Espiritual**: Integrar sucesso mundano com valores espirituais autênticos",
-        "**Generosidade Sábia**: Cultivar capacidade de compartilhar recursos de forma que empodere outros"
+        "Abundância Consciente: Desenvolver capacidade de criar prosperidade material de forma ética e sustentável",
+        "Poder Responsável: Aprender a usar autoridade e influência para benefício coletivo, não apenas pessoal",
+        "Equilíbrio Material-Espiritual: Integrar sucesso mundano com valores espirituais autênticos",
+        "Generosidade Sábia: Cultivar capacidade de compartilhar recursos de forma que empodere outros"
       ],
       sinais: [
         "Relacionamento disfuncional com dinheiro: ou escassez crônica ou acumulação compulsiva",
