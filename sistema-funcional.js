@@ -376,8 +376,8 @@ function renderPiramideCompleta(nome, idade) {
           </div>
           
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
-            <div style="background: rgba(157, 78, 221, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #9D4EDD;">
-              <h5 style="color: #9D4EDD; margin-bottom: 8px; font-size: 14px;">📚 APRENDIZADO</h5>
+            <div style="background: rgba(62, 10, 41, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #3e0a29;">
+              <h5 style="color: #3e0a29; margin-bottom: 8px; font-size: 14px;">📚 APRENDIZADO</h5>
               <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.aprendizado.substring(0, 120)}...</p>
             </div>
             <div style="background: rgba(255, 107, 107, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FF6B6B;">
