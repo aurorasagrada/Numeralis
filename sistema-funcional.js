@@ -344,7 +344,7 @@ function renderPiramideCompleta(nome, idade) {
   // Calcular pirâmide numerológica
   const piramide = calcularPiramideNumerologica(nome);
   const arcanoRegente = calcularArcanoRegente(idade);
-  const sequenciasNegativas = detectarSequenciasNegativas(piramide);
+  const sequenciasNegativas = detectarSequenciasNegativas(piramide[0]);
   const desafiosCarmicos = calcularDesafiosCarmicos(nome);
   
   let html = `
@@ -487,8 +487,8 @@ function renderPiramideCompleta(nome, idade) {
 
 // Funções auxiliares para a Pirâmide Cabalística
 function calcularPiramideNumerologica(nome) {
-  // Implementação simplificada da pirâmide
-  const numeros = nome.toUpperCase().split('').map(letra => {
+  // Converter nome em números usando numerologia caldeia
+  const numerosIniciais = nome.toUpperCase().split('').map(letra => {
     const codigo = letra.charCodeAt(0);
     if (codigo >= 65 && codigo <= 90) {
       return ((codigo - 65) % 9) + 1;
@@ -496,7 +496,27 @@ function calcularPiramideNumerologica(nome) {
     return 0;
   }).filter(n => n > 0);
   
-  return numeros;
+  // Calcular pirâmide com somas adjacentes corretas
+  const piramide = [numerosIniciais];
+  let linhaAtual = numerosIniciais;
+  
+  // Continuar até chegar a um único número
+  while (linhaAtual.length > 1) {
+    const novaLinha = [];
+    
+    // Somar números adjacentes e reduzir a um dígito
+    for (let i = 0; i < linhaAtual.length - 1; i++) {
+      const soma = linhaAtual[i] + linhaAtual[i + 1];
+      const numeroReduzido = soma > 9 ? Math.floor(soma / 10) + (soma % 10) : soma;
+      const numeroFinal = numeroReduzido > 9 ? Math.floor(numeroReduzido / 10) + (numeroReduzido % 10) : numeroReduzido;
+      novaLinha.push(numeroFinal);
+    }
+    
+    piramide.push(novaLinha);
+    linhaAtual = novaLinha;
+  }
+  
+  return piramide;
 }
 
 function calcularArcanoRegente(idade) {
@@ -743,24 +763,25 @@ function calcularDesafiosCarmicos(nome) {
   return desafios;
 }
 
-function formatarPiramideVisual(numeros, sequenciasNegativas = []) {
+function formatarPiramideVisual(piramideCompleta, sequenciasNegativas = []) {
   // Criar uma pirâmide visual completa e responsiva - formato tradicional (grande em cima)
   let piramide = '';
-  const maxWidth = Math.min(numeros.length, 20);
-  const numeroStr = numeros.join('');
   
-  for (let i = 0; i < maxWidth; i++) {
-    // Inverter a lógica: começar com todos os números e ir diminuindo
+  // Iterar por cada linha da pirâmide calculada
+  for (let i = 0; i < piramideCompleta.length; i++) {
+    const linha = piramideCompleta[i];
     const espacos = '&nbsp;'.repeat(Math.max(0, i * 2));
-    let linha = numeros.slice(0, maxWidth - i).join(' &nbsp; ');
+    let linhaFormatada = linha.join(' &nbsp; ');
     
-    // Destacar sequências negativas com sublinhado
-    sequenciasNegativas.forEach(seq => {
-      const regex = new RegExp(seq.split('').join(' &nbsp; '), 'g');
-      linha = linha.replace(regex, `<u style="color: #f0aa53; text-decoration: underline;">${seq.split('').join(' &nbsp; ')}</u>`);
-    });
+    // Destacar sequências negativas com sublinhado (apenas na primeira linha)
+    if (i === 0) {
+      sequenciasNegativas.forEach(seq => {
+        const regex = new RegExp(seq.split('').join(' &nbsp; '), 'g');
+        linhaFormatada = linhaFormatada.replace(regex, `<u style="color: #f0aa53; text-decoration: underline;">${seq.split('').join(' &nbsp; ')}</u>`);
+      });
+    }
     
-    piramide += `<div style="white-space: nowrap; overflow: visible;">${espacos}${linha}</div>`;
+    piramide += `<div style="white-space: nowrap; overflow: visible;">${espacos}${linhaFormatada}</div>`;
   }
   
   return piramide;
