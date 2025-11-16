@@ -705,14 +705,15 @@ function calcularDesafiosCarmicos(nome) {
 }
 
 function formatarPiramideVisual(numeros, sequenciasNegativas = []) {
-  // Criar uma pirâmide visual completa e responsiva
+  // Criar uma pirâmide visual completa e responsiva - formato tradicional (grande em cima)
   let piramide = '';
   const maxWidth = Math.min(numeros.length, 20);
   const numeroStr = numeros.join('');
   
   for (let i = 0; i < maxWidth; i++) {
-    const espacos = '&nbsp;'.repeat(Math.max(0, (maxWidth - i) * 2));
-    let linha = numeros.slice(0, i + 1).join(' &nbsp; ');
+    // Inverter a lógica: começar com todos os números e ir diminuindo
+    const espacos = '&nbsp;'.repeat(Math.max(0, i * 2));
+    let linha = numeros.slice(0, maxWidth - i).join(' &nbsp; ');
     
     // Destacar sequências negativas com sublinhado
     sequenciasNegativas.forEach(seq => {
