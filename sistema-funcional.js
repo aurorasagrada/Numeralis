@@ -362,14 +362,14 @@ function renderPiramideCompleta(nome, idade) {
       <h3 style="color: #FFD700; text-align: center; margin-bottom: 20px;">✨ SEU ARCANO REGENTE ATUAL</h3>
       <div style="display: flex; align-items: center; justify-content: center; gap: 30px; padding: 20px; flex-wrap: wrap;">
         <div style="flex-shrink: 0;">
-          <img src="${arcanoInfo.imagem}" alt="${arcanoRegente.nome}" style="width: 150px; height: 250px; object-fit: cover; border-radius: 10px; border: 2px solid #FFD700; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);" />
+          <img src="${arcanoInfo.imagem}" alt="${arcanoInfo.nome}" style="width: 150px; height: 250px; object-fit: cover; border-radius: 10px; border: 2px solid #FFD700; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);" />
         </div>
         <div style="flex: 1; min-width: 300px; text-align: left;">
-          <h2 style="color: #DDA0DD; margin-bottom: 15px; font-size: 28px; text-align: center;">${arcanoRegente.nome}</h2>
-          <p style="color: #E6E6FA; font-size: 16px; margin-bottom: 10px; text-align: center;">Significado: "${arcanoRegente.significado}"</p>
+          <h2 style="color: #DDA0DD; margin-bottom: 15px; font-size: 28px; text-align: center;">${arcanoInfo.nome}</h2>
+          <p style="color: #E6E6FA; font-size: 16px; margin-bottom: 10px; text-align: center;">Significado: "${arcanoInfo.significado}"</p>
           <div style="background: rgba(221, 160, 221, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
             <h4 style="color: #DDA0DD; margin-bottom: 10px;">Influência Atual:</h4>
-            <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">${arcanoRegente.influencia}</p>
+            <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">${arcanoInfo.influencia}</p>
           </div>
         </div>
       </div>
