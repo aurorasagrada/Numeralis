@@ -246,39 +246,81 @@ function renderResultados(nome, dataNascimento, numeros) {
     return numero;
   }
 
-  resultadosDiv.innerHTML = `
-    <div class="resultado-header">
-      <h3>🌟 Mapa Pitagórico Completo</h3>
-      <div class="numeros-resumo">
-        Motivação: ${numeros.motivacao} | Impressão: ${numeros.impressao} | Expressão: ${numeros.expressao} | Destino: ${numeros.destino}
-      </div>
-    </div>
-    <div class="interpretacao-container">
-      <div class="numero-secao">
-        <h4>💫 Motivação (${numeros.motivacao})</h4>
-        <p class="vogais-info">Vogais: ${numeros.vogaisNome}</p>
-        <div class="interpretacao-texto">${interpretacaoMotivacao}</div>
-      </div>
-      
-      <div class="numero-secao">
-        <h4>👁️ Impressão (${numeros.impressao})</h4>
-        <p class="consoantes-info">Consoantes: ${numeros.consoantesNome}</p>
-        <div class="interpretacao-texto">${interpretacaoImpressao}</div>
-      </div>
-      
-      <div class="numero-secao">
-        <h4>🎭 Expressão (${numeros.expressao})</h4>
-        <p class="nome-info">Nome completo: ${numeros.nomeCompleto}</p>
-        <div class="interpretacao-texto">${interpretacaoExpressao}</div>
-      </div>
-      
-      <div class="numero-secao">
-        <h4>🎯 Destino (${numeros.destino})</h4>
-        <p class="data-info">Data: ${dataNascimento}</p>
-        <div class="interpretacao-texto">${interpretacaoDestino}</div>
+  // Criar apresentação expandida similar à Pirâmide Cabalística
+  let html = `
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #3e0a29; margin-bottom: 30px;">
+      <h3 style="color: #f2eaff; text-align: center; margin-bottom: 10px; font-size: 24px;">🌟 SEU MAPA PITAGÓRICO COMPLETO</h3>
+      <h4 style="color: #f0aa53; text-align: center; margin-bottom: 20px; font-size: 20px;">${nome.toUpperCase()}</h4>
+      <p style="color: #f2eaff; text-align: center; margin-bottom: 30px; font-style: italic;">Descubra os números que regem sua personalidade, destino e lições cármicas</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px;">
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border: 2px solid #f0aa53; text-align: center;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">💫 MOTIVAÇÃO</h5>
+          <div style="font-size: 36px; color: #f2eaff; font-weight: bold; margin-bottom: 5px;">${numeros.motivacao}</div>
+          <p style="color: #f2eaff; font-size: 12px;">Vogais: ${numeros.vogaisNome}</p>
+        </div>
+        <div style="background: rgba(178, 209, 177, 0.1); padding: 15px; border-radius: 10px; border: 2px solid #b2d1b1; text-align: center;">
+          <h5 style="color: #b2d1b1; margin-bottom: 10px;">👁️ IMPRESSÃO</h5>
+          <div style="font-size: 36px; color: #f2eaff; font-weight: bold; margin-bottom: 5px;">${numeros.impressao}</div>
+          <p style="color: #f2eaff; font-size: 12px;">Consoantes: ${numeros.consoantesNome}</p>
+        </div>
+        <div style="background: rgba(62, 10, 41, 0.1); padding: 15px; border-radius: 10px; border: 2px solid #3e0a29; text-align: center;">
+          <h5 style="color: #3e0a29; margin-bottom: 10px;">🎭 EXPRESSÃO</h5>
+          <div style="font-size: 36px; color: #f2eaff; font-weight: bold; margin-bottom: 5px;">${numeros.expressao}</div>
+          <p style="color: #f2eaff; font-size: 12px;">Nome: ${numeros.nomeCompleto}</p>
+        </div>
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border: 2px solid #f0aa53; text-align: center;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">🎯 DESTINO</h5>
+          <div style="font-size: 36px; color: #f2eaff; font-weight: bold; margin-bottom: 5px;">${numeros.destino}</div>
+          <p style="color: #f2eaff; font-size: 12px;">Data: ${dataNascimento}</p>
+        </div>
       </div>
     </div>
   `;
+  
+  // Seções detalhadas para cada número
+  const numerosDetalhes = [
+    { numero: numeros.motivacao, titulo: 'MOTIVAÇÃO', icone: '💫', cor: '#f0aa53', descricao: 'Seus desejos mais profundos e o que realmente o motiva na vida', texto: interpretacaoMotivacao },
+    { numero: numeros.impressao, titulo: 'IMPRESSÃO', icone: '👁️', cor: '#b2d1b1', descricao: 'Como os outros o veem e a primeira impressão que você causa', texto: interpretacaoImpressao },
+    { numero: numeros.expressao, titulo: 'EXPRESSÃO', icone: '🎭', cor: '#3e0a29', descricao: 'Seus talentos naturais e como você se expressa no mundo', texto: interpretacaoExpressao },
+    { numero: numeros.destino, titulo: 'DESTINO', icone: '🎯', cor: '#f0aa53', descricao: 'Sua missão de vida e o caminho que deve seguir', texto: interpretacaoDestino }
+  ];
+  
+  numerosDetalhes.forEach(item => {
+    const aspectosVida = obterAspectosVidaPitagorico(item.numero, item.titulo.toLowerCase());
+    
+    html += `
+      <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid ${item.cor}; margin-bottom: 30px;">
+        <h3 style="color: ${item.cor}; text-align: center; margin-bottom: 20px;">${item.icone} SEU NÚMERO ${item.titulo} - ${item.numero}</h3>
+        
+        <div style="background: rgba(242, 234, 255, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+          <h4 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">🌟 Significado Principal</h4>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.7; margin-bottom: 10px;">${item.descricao}</p>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.7;">${item.texto}</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+          <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+            <h5 style="color: #f0aa53; margin-bottom: 8px; font-size: 14px;">📚 APRENDIZADO</h5>
+            <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${aspectosVida.aprendizado.substring(0, 120)}...</p>
+          </div>
+          <div style="background: rgba(178, 209, 177, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #b2d1b1;">
+            <h5 style="color: #b2d1b1; margin-bottom: 8px; font-size: 14px;">💕 RELACIONAMENTOS</h5>
+            <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${aspectosVida.relacionamentos.substring(0, 120)}...</p>
+          </div>
+          <div style="background: rgba(62, 10, 41, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #3e0a29;">
+            <h5 style="color: #3e0a29; margin-bottom: 8px; font-size: 14px;">💼 CARREIRA</h5>
+            <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${aspectosVida.carreira.substring(0, 120)}...</p>
+          </div>
+          <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+            <h5 style="color: #f0aa53; margin-bottom: 8px; font-size: 14px;">🌱 CRESCIMENTO</h5>
+            <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${aspectosVida.crescimento.substring(0, 120)}...</p>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  
+  resultadosDiv.innerHTML = html;
   
   resultadosDiv.classList.remove("hidden");
   resultadosDiv.scrollIntoView({ behavior: "smooth" });
@@ -1357,6 +1399,74 @@ function mostrarSecao(secaoId) {
   if (botaoAtivo) {
     botaoAtivo.classList.add('active');
   }
+}
+
+// Função para obter aspectos da vida baseados nos números pitagóricos
+function obterAspectosVidaPitagorico(numero, tipo) {
+  const aspectos = {
+    1: {
+      aprendizado: "Desenvolver independência e liderança. Aprender a confiar em si mesmo e tomar iniciativas. O número 1 ensina sobre pioneirismo e originalidade.",
+      relacionamentos: "Buscar parceiros que respeitem sua independência. Evitar relacionamentos possessivos. Aprender a equilibrar liderança com cooperação.",
+      carreira: "Excelente em posições de liderança, empreendedorismo e inovação. Carreiras que exigem iniciativa e originalidade são ideais.",
+      crescimento: "Desenvolver autoconfiança sem arrogância. Aprender a trabalhar em equipe mantendo sua individualidade. Cultivar paciência com outros."
+    },
+    2: {
+      aprendizado: "Desenvolver cooperação e diplomacia. Aprender a trabalhar em equipe e mediar conflitos. O número 2 ensina sobre harmonia e parceria.",
+      relacionamentos: "Naturalmente inclinado a relacionamentos harmoniosos. Precisa aprender a não se anular pelo outro. Buscar equilíbrio entre dar e receber.",
+      carreira: "Excelente em trabalho em equipe, mediação, aconselhamento e áreas que envolvem cooperação e sensibilidade.",
+      crescimento: "Desenvolver assertividade sem perder a gentileza. Aprender a expressar suas necessidades. Cultivar autoestima independente da aprovação alheia."
+    },
+    3: {
+      aprendizado: "Desenvolver criatividade e comunicação. Aprender a expressar-se de forma autêntica e inspiradora. O número 3 ensina sobre alegria e otimismo.",
+      relacionamentos: "Buscar parceiros que apreciem sua criatividade e humor. Evitar relacionamentos que sufoquem sua expressão. Aprender a ser mais profundo.",
+      carreira: "Excelente em artes, comunicação, entretenimento, ensino e qualquer área que envolva criatividade e expressão.",
+      crescimento: "Desenvolver disciplina sem perder espontaneidade. Aprender a focar energia criativa. Cultivar profundidade emocional além da superfície."
+    },
+    4: {
+      aprendizado: "Desenvolver disciplina e organização. Aprender a construir bases sólidas e trabalhar com perseverança. O número 4 ensina sobre estabilidade.",
+      relacionamentos: "Buscar parceiros confiáveis e estáveis. Precisa aprender a ser mais flexível e espontâneo. Valorizar segurança emocional.",
+      carreira: "Excelente em administração, construção, contabilidade, engenharia e áreas que exigem organização e método.",
+      crescimento: "Desenvolver flexibilidade sem perder confiabilidade. Aprender a aceitar mudanças. Cultivar espontaneidade dentro da estrutura."
+    },
+    5: {
+      aprendizado: "Desenvolver liberdade e versatilidade. Aprender a abraçar mudanças e explorar novos horizontes. O número 5 ensina sobre experiência.",
+      relacionamentos: "Buscar parceiros que respeitem sua necessidade de liberdade. Evitar relacionamentos restritivos. Aprender a se comprometer.",
+      carreira: "Excelente em vendas, viagens, comunicação, marketing e áreas que oferecem variedade e movimento.",
+      crescimento: "Desenvolver compromisso sem perder liberdade. Aprender a terminar o que começa. Cultivar profundidade além da superfície."
+    },
+    6: {
+      aprendizado: "Desenvolver responsabilidade e cuidado. Aprender a nutrir e proteger outros. O número 6 ensina sobre amor incondicional e serviço.",
+      relacionamentos: "Naturalmente cuidadoso e protetor. Precisa aprender a não ser controlador. Buscar equilíbrio entre cuidar e permitir crescimento.",
+      carreira: "Excelente em saúde, educação, serviço social, artes e qualquer área que envolva cuidado e responsabilidade social.",
+      crescimento: "Desenvolver limites saudáveis no cuidado. Aprender a cuidar de si mesmo também. Cultivar amor sem possessividade."
+    },
+    7: {
+      aprendizado: "Desenvolver sabedoria e introspecção. Aprender a buscar verdades profundas e conhecimento espiritual. O número 7 ensina sobre mistério.",
+      relacionamentos: "Buscar parceiros que respeitem sua necessidade de solidão. Precisa aprender a se abrir emocionalmente. Valorizar conexões profundas.",
+      carreira: "Excelente em pesquisa, espiritualidade, análise, ciência e áreas que exigem profundidade e investigação.",
+      crescimento: "Desenvolver conexão emocional sem perder profundidade. Aprender a compartilhar sabedoria. Cultivar confiança nos outros."
+    },
+    8: {
+      aprendizado: "Desenvolver poder material e autoridade. Aprender a usar recursos de forma ética e construtiva. O número 8 ensina sobre manifestação.",
+      relacionamentos: "Buscar parceiros que respeitem suas ambições. Precisa aprender a não negligenciar relacionamentos por trabalho. Equilibrar poder e amor.",
+      carreira: "Excelente em negócios, finanças, administração executiva e áreas que envolvem poder e recursos materiais.",
+      crescimento: "Desenvolver generosidade com sucesso. Aprender a usar poder para o bem comum. Cultivar humildade com conquistas."
+    },
+    9: {
+      aprendizado: "Desenvolver compaixão universal e sabedoria. Aprender a servir a humanidade com amor incondicional. O número 9 ensina sobre completude.",
+      relacionamentos: "Buscar parceiros que compartilhem ideais humanitários. Precisa aprender a não se sacrificar excessivamente. Amar sem se perder.",
+      carreira: "Excelente em trabalho humanitário, artes, ensino, cura e qualquer área que sirva ao bem maior da humanidade.",
+      crescimento: "Desenvolver discernimento na generosidade. Aprender a receber além de dar. Cultivar amor próprio junto com amor universal."
+    }
+  };
+
+  const numeroReduzido = numero > 9 ? reduzirNumeroCompleto(numero) : numero;
+  return aspectos[numeroReduzido] || {
+    aprendizado: "Número especial com lições únicas de crescimento e desenvolvimento pessoal.",
+    relacionamentos: "Relacionamentos que oferecem oportunidades especiais de crescimento e compreensão mútua.",
+    carreira: "Caminhos profissionais únicos que permitem expressar talentos especiais e servir de forma diferenciada.",
+    crescimento: "Jornada de desenvolvimento pessoal com desafios e oportunidades especiais de evolução."
+  };
 }
 
 // Inicialização do sistema
