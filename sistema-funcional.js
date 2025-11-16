@@ -357,19 +357,58 @@ function renderPiramideCompleta(nome, idade) {
   
   // Arcano Regente Atual
   const arcanoInfo = calcularArcanoRegente(idade);
+  const textoExpandido = obterTextoExpandidoArcano(arcanoInfo.nome);
+  
   html += `
     <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #FFD700; margin-bottom: 30px;">
       <h3 style="color: #FFD700; text-align: center; margin-bottom: 20px;">✨ SEU ARCANO REGENTE ATUAL</h3>
-      <div style="display: flex; align-items: center; justify-content: center; gap: 30px; padding: 20px; flex-wrap: wrap;">
+      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 30px; padding: 20px; flex-wrap: wrap;">
         <div style="flex-shrink: 0;">
           <img src="${arcanoInfo.imagem}" alt="${arcanoInfo.nome}" style="width: 150px; height: 250px; object-fit: cover; border-radius: 10px; border: 2px solid #FFD700; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);" />
         </div>
-        <div style="flex: 1; min-width: 300px; text-align: left;">
+        <div style="flex: 1; min-width: 400px; text-align: left;">
           <h2 style="color: #DDA0DD; margin-bottom: 15px; font-size: 28px; text-align: center;">${arcanoInfo.nome}</h2>
-          <p style="color: #E6E6FA; font-size: 16px; margin-bottom: 10px; text-align: center;">Significado: "${arcanoInfo.significado}"</p>
-          <div style="background: rgba(221, 160, 221, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
-            <h4 style="color: #DDA0DD; margin-bottom: 10px;">Influência Atual:</h4>
-            <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">${arcanoInfo.influencia}</p>
+          <p style="color: #E6E6FA; font-size: 16px; margin-bottom: 20px; text-align: center; font-style: italic;">"${arcanoInfo.significado}"</p>
+          
+          <div style="background: rgba(221, 160, 221, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+            <h4 style="color: #FFD700; margin-bottom: 15px; font-size: 18px;">🌟 Contexto do Período Atual</h4>
+            <p style="color: #E6E6FA; font-size: 14px; line-height: 1.7; margin-bottom: 15px;">${textoExpandido.contextoAtual}</p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+            <div style="background: rgba(157, 78, 221, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #9D4EDD;">
+              <h5 style="color: #9D4EDD; margin-bottom: 8px; font-size: 14px;">📚 APRENDIZADO</h5>
+              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.aprendizado.substring(0, 120)}...</p>
+            </div>
+            <div style="background: rgba(255, 107, 107, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FF6B6B;">
+              <h5 style="color: #FF6B6B; margin-bottom: 8px; font-size: 14px;">💕 AMOR</h5>
+              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.amor.substring(0, 120)}...</p>
+            </div>
+            <div style="background: rgba(255, 215, 0, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FFD700;">
+              <h5 style="color: #FFD700; margin-bottom: 8px; font-size: 14px;">🙏 ESPIRITUAL</h5>
+              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.espiritual.substring(0, 120)}...</p>
+            </div>
+            <div style="background: rgba(0, 255, 0, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #00FF7F;">
+              <h5 style="color: #00FF7F; margin-bottom: 8px; font-size: 14px;">💰 FINANCEIRO</h5>
+              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.financeiro.substring(0, 120)}...</p>
+            </div>
+            <div style="background: rgba(255, 165, 0, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #FFA500;">
+              <h5 style="color: #FFA500; margin-bottom: 8px; font-size: 14px;">💼 TRABALHO</h5>
+              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.trabalho.substring(0, 120)}...</p>
+            </div>
+            <div style="background: rgba(0, 191, 255, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #00BFFF;">
+              <h5 style="color: #00BFFF; margin-bottom: 8px; font-size: 14px;">👨‍👩‍👧‍👦 FAMÍLIA</h5>
+              <p style="color: #E6E6FA; font-size: 12px; line-height: 1.5;">${textoExpandido.familia.substring(0, 120)}...</p>
+            </div>
+          </div>
+          
+          <div style="text-align: center; margin-top: 20px;">
+            <button onclick="window.open('arcanos/maiores/${arcanoInfo.nome.toLowerCase().replace(/\s+/g, '_').replace('ã', 'a').replace('ç', 'c')}.html', '_blank')" 
+                    style="background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%); color: #1A0B3D; border: none; padding: 12px 25px; border-radius: 25px; font-weight: bold; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); transition: all 0.3s ease;"
+                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 215, 0, 0.4)'"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 215, 0, 0.3)'">
+              📖 LER ANÁLISE COMPLETA DO ARCANO
+            </button>
           </div>
         </div>
       </div>
@@ -725,6 +764,41 @@ function formatarPiramideVisual(numeros, sequenciasNegativas = []) {
   }
   
   return piramide;
+}
+
+// Função para obter texto expandido do arcano
+function obterTextoExpandidoArcano(nomeArcano) {
+  const textosExpandidos = {
+    "O Louco": {
+      contextoAtual: "Você está vivenciando um momento de renovação profunda e liberdade espiritual. Este é um período onde as convenções sociais perdem força e sua alma busca expressar sua verdadeira essência. A energia do Louco traz uma sensação de leveza e possibilidades infinitas, convidando-o a confiar na sabedoria do coração e seguir caminhos não convencionais.",
+      aprendizado: "O principal aprendizado deste período é compreender que a verdadeira sabedoria vem da experiência direta, não apenas do conhecimento teórico. Você está sendo convidado a questionar crenças limitantes e abraçar uma perspectiva mais ampla da vida. A lição é aprender a equilibrar a espontaneidade com a responsabilidade.",
+      amor: "No amor, este é um momento de renovação e autenticidade. Relacionamentos baseados em convenções sociais podem passar por transformações. Para solteiros, é um período propício para encontros inesperados e conexões genuínas. Para quem está em relacionamento, é hora de redescobrir a espontaneidade e a aventura na parceria.",
+      espiritual: "Espiritualmente, você está em um momento de despertar e expansão de consciência. Práticas espirituais não convencionais podem atrair sua atenção. É um período ideal para meditação, conexão com a natureza e exploração de filosofias orientais. Sua intuição está especialmente aguçada.",
+      financeiro: "Financeiramente, pode haver instabilidade temporária, mas também oportunidades únicas. Evite investimentos baseados apenas na emoção. Este é um momento para repensar sua relação com o dinheiro e buscar formas mais criativas e autênticas de sustento. Confie na providência, mas seja prudente.",
+      trabalho: "No trabalho, você pode sentir necessidade de mudanças significativas. Carreiras criativas ou que permitam maior liberdade de expressão são favorecidas. É possível que surjam oportunidades inesperadas ou que você sinta vontade de empreender. Evite decisões impulsivas importantes.",
+      familia: "Na família, pode haver necessidade de estabelecer limites saudáveis e expressar sua individualidade. Conflitos geracionais podem surgir, mas também oportunidades de cura familiar. É importante manter o respeito mútuo enquanto afirma sua autenticidade."
+    },
+    "A Força": {
+      contextoAtual: "Você está em um período onde sua força interior e capacidade de domínio próprio estão sendo testadas e desenvolvidas. A energia da Força não se refere à força bruta, mas à coragem, determinação e habilidade de transformar desafios em oportunidades através da paciência e perseverança.",
+      aprendizado: "O aprendizado principal é desenvolver a verdadeira força, que vem da integração harmoniosa entre instinto e consciência. Você está aprendendo que a maior vitória é sobre si mesmo - seus medos, impulsos destrutivos e limitações autoimpostas. A compaixão é sua maior ferramenta de transformação.",
+      amor: "No amor, este é um período para demonstrar paciência e compreensão. Relacionamentos podem passar por testes que exigem maturidade emocional. Sua capacidade de amar incondicionalmente e transformar conflitos através da gentileza está sendo desenvolvida. O amor verdadeiro supera todos os obstáculos.",
+      espiritual: "Espiritualmente, você está desenvolvendo a força interior necessária para sua evolução. Práticas que envolvem disciplina, como yoga, meditação regular ou jejuns espirituais, são especialmente benéficas. Sua conexão com animais e a natureza pode trazer insights profundos.",
+      financeiro: "Financeiramente, este é um período que exige disciplina e paciência. Evite gastos impulsivos e mantenha foco em objetivos de longo prazo. Sua perseverança será recompensada, mas é necessário resistir à tentação de soluções rápidas. Investimentos consistentes trazem os melhores resultados.",
+      trabalho: "No trabalho, sua capacidade de lidar com pressão e manter a calma em situações desafiadoras é reconhecida. Você pode ser chamado para liderar equipes ou projetos difíceis. Sua habilidade de motivar outros através do exemplo pessoal está em destaque.",
+      familia: "Na família, você pode precisar demonstrar paciência extra com membros mais difíceis. Sua força emocional serve como âncora para outros em momentos turbulentos. Conflitos familiares são resolvidos através da compreensão e do amor incondicional."
+    }
+  };
+  
+  // Retorna texto padrão se não encontrar o arcano específico
+  return textosExpandidos[nomeArcano] || {
+    contextoAtual: "Este é um período de crescimento e transformação pessoal. Sua energia atual está alinhada com as vibrações deste arcano, trazendo oportunidades únicas de evolução.",
+    aprendizado: "O aprendizado principal deste período envolve desenvolver maior consciência sobre suas capacidades internas e como utilizá-las de forma construtiva.",
+    amor: "No amor, este é um momento de crescimento e aprofundamento das conexões. Seja consigo mesmo ou com outros, o foco está na autenticidade e na verdade emocional.",
+    espiritual: "Espiritualmente, você está em um momento de expansão de consciência e conexão com aspectos mais elevados de sua natureza.",
+    financeiro: "Financeiramente, este período pede equilíbrio entre prudência e confiança. Decisões baseadas em sabedoria interior tendem a ser mais acertadas.",
+    trabalho: "No trabalho, suas qualidades naturais estão sendo reconhecidas e valorizadas. É um momento propício para demonstrar suas habilidades únicas.",
+    familia: "Na família, você pode assumir um papel importante de apoio e orientação. Sua presença traz estabilidade e sabedoria para o grupo familiar."
+  };
 }
 
 function gerarArcanosCompletos() {
