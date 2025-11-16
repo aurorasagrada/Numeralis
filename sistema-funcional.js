@@ -53,6 +53,19 @@ function reduzirNumero(numero) {
   return numero;
 }
 
+// Função para reduzir sempre a números de 1-9 (sem preservar kármicos)
+function reduzirNumeroCompleto(numero) {
+  while (numero > 9) {
+    let soma = 0;
+    while (numero > 0) {
+      soma += numero % 10;
+      numero = Math.floor(numero / 10);
+    }
+    numero = soma;
+  }
+  return numero;
+}
+
 function calcularNumeroNome(nome, tabela = tabelaPitagorica) {
   const nomeNormalizado = normalizarTexto(nome);
   let soma = 0;
@@ -63,7 +76,8 @@ function calcularNumeroNome(nome, tabela = tabelaPitagorica) {
     }
   }
   
-  return reduzirNumero(soma);
+  // Para cálculos principais, sempre reduzir a 1-9
+  return reduzirNumeroCompleto(soma);
 }
 
 // ================================================================
