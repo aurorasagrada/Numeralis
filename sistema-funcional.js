@@ -506,10 +506,14 @@ function calcularPiramideNumerologica(nome) {
     
     // Somar números adjacentes e reduzir a um dígito
     for (let i = 0; i < linhaAtual.length - 1; i++) {
-      const soma = linhaAtual[i] + linhaAtual[i + 1];
-      const numeroReduzido = soma > 9 ? Math.floor(soma / 10) + (soma % 10) : soma;
-      const numeroFinal = numeroReduzido > 9 ? Math.floor(numeroReduzido / 10) + (numeroReduzido % 10) : numeroReduzido;
-      novaLinha.push(numeroFinal);
+      let soma = linhaAtual[i] + linhaAtual[i + 1];
+      
+      // Reduzir a um dígito: continuar somando dígitos até chegar a um único dígito
+      while (soma > 9) {
+        soma = Math.floor(soma / 10) + (soma % 10);
+      }
+      
+      novaLinha.push(soma);
     }
     
     piramide.push(novaLinha);
