@@ -356,15 +356,21 @@ function renderPiramideCompleta(nome, idade) {
   `;
   
   // Arcano Regente Atual
+  const arcanoInfo = obterInformacaoArcano(calcularNumeroArcano(idade));
   html += `
     <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #FFD700; margin-bottom: 30px;">
       <h3 style="color: #FFD700; text-align: center; margin-bottom: 20px;">✨ SEU ARCANO REGENTE ATUAL</h3>
-      <div style="text-align: center; padding: 20px;">
-        <h2 style="color: #DDA0DD; margin-bottom: 15px; font-size: 28px;">${arcanoRegente.nome}</h2>
-        <p style="color: #E6E6FA; font-size: 16px; margin-bottom: 10px;">Significado: "${arcanoRegente.significado}"</p>
-        <div style="background: rgba(221, 160, 221, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
-          <h4 style="color: #DDA0DD; margin-bottom: 10px;">Influência Atual:</h4>
-          <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">${arcanoRegente.influencia}</p>
+      <div style="display: flex; align-items: center; justify-content: center; gap: 30px; padding: 20px; flex-wrap: wrap;">
+        <div style="flex-shrink: 0;">
+          <img src="${arcanoInfo.imagem}" alt="${arcanoRegente.nome}" style="width: 150px; height: 250px; object-fit: cover; border-radius: 10px; border: 2px solid #FFD700; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);" />
+        </div>
+        <div style="flex: 1; min-width: 300px; text-align: left;">
+          <h2 style="color: #DDA0DD; margin-bottom: 15px; font-size: 28px; text-align: center;">${arcanoRegente.nome}</h2>
+          <p style="color: #E6E6FA; font-size: 16px; margin-bottom: 10px; text-align: center;">Significado: "${arcanoRegente.significado}"</p>
+          <div style="background: rgba(221, 160, 221, 0.1); padding: 15px; border-radius: 10px; margin-top: 20px;">
+            <h4 style="color: #DDA0DD; margin-bottom: 10px;">Influência Atual:</h4>
+            <p style="color: #E6E6FA; font-size: 14px; line-height: 1.6;">${arcanoRegente.influencia}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -374,8 +380,8 @@ function renderPiramideCompleta(nome, idade) {
   html += `
     <div class="resultado-card" style="background: linear-gradient(135deg, #2D1B69 0%, #1A0B3D 100%); border: 2px solid #9D4EDD; margin-bottom: 30px;">
       <h3 style="color: #DDA0DD; text-align: center; margin-bottom: 20px;">PIRÂMIDE CABALÍSTICA - CICLO DE 90 ANOS</h3>
-      <div style="font-family: monospace; text-align: center; color: #E6E6FA; font-size: 14px; line-height: 1.8; background: rgba(157, 78, 221, 0.1); padding: 20px; border-radius: 10px;">
-        ${formatarPiramideVisual(piramide)}
+      <div style="font-family: monospace; text-align: center; color: #E6E6FA; font-size: 12px; line-height: 1.6; background: rgba(157, 78, 221, 0.1); padding: 20px; border-radius: 10px; overflow-x: auto; min-width: 100%;">
+        ${formatarPiramideVisual(piramide, sequenciasNegativas)}
       </div>
     </div>
   `;
@@ -613,6 +619,35 @@ function calcularArcanoRegente(idade) {
   return arcanos[numeroArcano] || arcanos[0];
 }
 
+function obterInformacaoArcano(numeroArcano) {
+  const arcanos = [
+    { numero: 0, nome: "O Louco", imagem: "assets/img/cartas/0TheFool.jpg" },
+    { numero: 1, nome: "O Mago", imagem: "assets/img/cartas/1TheMagician.jpg" },
+    { numero: 2, nome: "A Sacerdotisa", imagem: "assets/img/cartas/2TheHighPriestess.jpg" },
+    { numero: 3, nome: "A Imperatriz", imagem: "assets/img/cartas/3TheEmpress.jpg" },
+    { numero: 4, nome: "O Imperador", imagem: "assets/img/cartas/4TheEmperor.jpg" },
+    { numero: 5, nome: "O Papa", imagem: "assets/img/cartas/5TheHierophant.jpg" },
+    { numero: 6, nome: "Os Enamorados", imagem: "assets/img/cartas/6TheLovers.jpg" },
+    { numero: 7, nome: "O Carro", imagem: "assets/img/cartas/7TheChariot.jpg" },
+    { numero: 8, nome: "A Força", imagem: "assets/img/cartas/8Strength.jpg" },
+    { numero: 9, nome: "O Eremita", imagem: "assets/img/cartas/9TheHermit.jpg" },
+    { numero: 10, nome: "A Roda da Fortuna", imagem: "assets/img/cartas/10WheelOfFortune.jpg" },
+    { numero: 11, nome: "A Justiça", imagem: "assets/img/cartas/11Justice.jpg" },
+    { numero: 12, nome: "O Enforcado", imagem: "assets/img/cartas/12TheHangedMan.jpg" },
+    { numero: 13, nome: "A Morte", imagem: "assets/img/cartas/13Death.jpg" },
+    { numero: 14, nome: "A Temperança", imagem: "assets/img/cartas/14Temperance.jpg" },
+    { numero: 15, nome: "O Diabo", imagem: "assets/img/cartas/15TheDevil.jpg" },
+    { numero: 16, nome: "A Torre", imagem: "assets/img/cartas/16TheTower.jpg" },
+    { numero: 17, nome: "A Estrela", imagem: "assets/img/cartas/17TheStar.jpg" },
+    { numero: 18, nome: "A Lua", imagem: "assets/img/cartas/18TheMoon.jpg" },
+    { numero: 19, nome: "O Sol", imagem: "assets/img/cartas/19TheSun.jpg" },
+    { numero: 20, nome: "O Julgamento", imagem: "assets/img/cartas/20Judgement.jpg" },
+    { numero: 21, nome: "O Mundo", imagem: "assets/img/cartas/21TheWorld.jpg" }
+  ];
+  
+  return arcanos[numeroArcano] || arcanos[0];
+}
+
 function detectarSequenciasNegativas(piramide) {
   // Detectar sequências repetitivas
   const sequencias = [];
@@ -648,15 +683,23 @@ function calcularDesafiosCarmicos(nome) {
   return desafios;
 }
 
-function formatarPiramideVisual(numeros) {
-  // Criar uma pirâmide visual simples
+function formatarPiramideVisual(numeros, sequenciasNegativas = []) {
+  // Criar uma pirâmide visual completa e responsiva
   let piramide = '';
-  const maxWidth = 15;
+  const maxWidth = Math.min(numeros.length, 20);
+  const numeroStr = numeros.join('');
   
-  for (let i = 0; i < Math.min(numeros.length, maxWidth); i++) {
-    const espacos = ' '.repeat(Math.max(0, maxWidth - i));
-    const linha = numeros.slice(0, i + 1).join('   ');
-    piramide += espacos + linha + '\n';
+  for (let i = 0; i < maxWidth; i++) {
+    const espacos = '&nbsp;'.repeat(Math.max(0, (maxWidth - i) * 2));
+    let linha = numeros.slice(0, i + 1).join(' &nbsp; ');
+    
+    // Destacar sequências negativas com sublinhado
+    sequenciasNegativas.forEach(seq => {
+      const regex = new RegExp(seq.split('').join(' &nbsp; '), 'g');
+      linha = linha.replace(regex, `<u style="color: #FF6B6B; text-decoration: underline;">${seq.split('').join(' &nbsp; ')}</u>`);
+    });
+    
+    piramide += `<div style="white-space: nowrap; overflow: visible;">${espacos}${linha}</div>`;
   }
   
   return piramide;
