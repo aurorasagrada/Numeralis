@@ -54,7 +54,7 @@ function preencherExemploMapa() {
   
   if (nomeInput && dataInput) {
     nomeInput.value = 'Maria Silva Santos';
-    dataInput.value = '15/08/1990';
+    dataInput.value = '1990-08-15';
     console.log("✅ Campos preenchidos com sucesso");
   } else {
     console.log("❌ Campos não encontrados");
@@ -175,13 +175,13 @@ function changeTab(tabName) {
   console.log("🧪 Executando changeTab:", tabName);
   
   // Ocultar todas as seções
-  const secoes = document.querySelectorAll('.secao');
+  const secoes = document.querySelectorAll('.section');
   secoes.forEach(secao => {
     secao.style.display = 'none';
   });
   
   // Remover classe ativa de todas as abas
-  const abas = document.querySelectorAll('.tab-button');
+  const abas = document.querySelectorAll('.nav-tab');
   abas.forEach(aba => {
     aba.classList.remove('active');
   });
