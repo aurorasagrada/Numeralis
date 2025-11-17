@@ -675,7 +675,7 @@
   <script src="mapeamento_arcanos_completo.js"></script>
   <script src="sequencias_negativas_expandidas.js"></script>
   <script src="piramide_cabalistica_corrigida.js"></script>
-  <script src="sistema-funcional-corrigido.js?v=20241117-2150" defer></script>
+  <script src="sistema-funcional-corrigido.js?v=20241117-2155"></script>
   
   <!-- Aguardar carregamento completo dos scripts -->
   <script>
@@ -683,6 +683,13 @@
     window.addEventListener('load', function() {
       setTimeout(function() {
         console.log('🔄 Verificando carregamento dos scripts...');
+        
+        // Verificar se as interpretações expandidas foram carregadas
+        if (typeof window.interpretacoesPitagoricasUltraExpandidas !== 'undefined') {
+          console.log('✅ Interpretações expandidas carregadas!');
+        } else {
+          console.log('❌ Interpretações expandidas NÃO carregadas!');
+        }
         
         // Verificar se as funções principais estão disponíveis
         if (typeof calcularPerfilNumerologico === 'function') {
