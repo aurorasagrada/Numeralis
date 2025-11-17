@@ -7,6 +7,11 @@ window.addEventListener("load", function() {
   if (typeof interpretacoesPitagoricasUltraExpandidas !== "undefined") {
     window.interpretacoesPitagoricas = interpretacoesPitagoricasUltraExpandidas;
   }
+  console.log('📜 Textos expandidos carregados:', {
+    pitagoricas: typeof interpretacoesPitagoricasUltraExpandidas,
+    pinaculos: typeof textosPinaculosMelhorados,
+    sinastria: typeof sinastria_expandida_completa
+  });
 });
 
 // Tabelas numerológicas
@@ -153,6 +158,10 @@ function exibirResultadosMapa(perfil, nome, dataNascimento) {
     return;
   }
   
+  // Obter interpretações expandidas
+  const interpretacoes = window.interpretacoesPitagoricas || window.interpretacoesPitagoricasUltraExpandidas;
+  console.log('📜 Usando interpretações:', interpretacoes ? 'EXPANDIDAS' : 'BÁSICAS');
+  
   const html = `
     <div class="resultado-completo">
       <div class="resultado-header">
@@ -165,24 +174,44 @@ function exibirResultadosMapa(perfil, nome, dataNascimento) {
           <div class="numero">${perfil.motivacao}</div>
           <div class="titulo">Motivação Interior</div>
           <p>Seus desejos mais profundos e o que realmente move sua alma.</p>
+          ${interpretacoes && interpretacoes.motivacao && interpretacoes.motivacao[perfil.motivacao] ? 
+            `<div class="interpretacao-expandida">
+              <h5>${interpretacoes.motivacao[perfil.motivacao].titulo}</h5>
+              <p class="texto-expandido">${interpretacoes.motivacao[perfil.motivacao].texto}</p>
+            </div>` : ''}
         </div>
         
         <div class="numero-card impressao">
           <div class="numero">${perfil.impressao}</div>
           <div class="titulo">Impressão Causada</div>
           <p>Como as pessoas te veem e a primeira impressão que você causa.</p>
+          ${interpretacoes && interpretacoes.impressao && interpretacoes.impressao[perfil.impressao] ? 
+            `<div class="interpretacao-expandida">
+              <h5>${interpretacoes.impressao[perfil.impressao].titulo}</h5>
+              <p class="texto-expandido">${interpretacoes.impressao[perfil.impressao].texto}</p>
+            </div>` : ''}
         </div>
         
         <div class="numero-card expressao">
           <div class="numero">${perfil.expressao}</div>
           <div class="titulo">Expressão Pessoal</div>
           <p>Seus talentos naturais e como você se expressa no mundo.</p>
+          ${interpretacoes && interpretacoes.expressao && interpretacoes.expressao[perfil.expressao] ? 
+            `<div class="interpretacao-expandida">
+              <h5>${interpretacoes.expressao[perfil.expressao].titulo}</h5>
+              <p class="texto-expandido">${interpretacoes.expressao[perfil.expressao].texto}</p>
+            </div>` : ''}
         </div>
         
         <div class="numero-card destino">
           <div class="numero">${perfil.destino}</div>
           <div class="titulo">Destino de Vida</div>
           <p>Sua missão principal nesta encarnação e propósito maior.</p>
+          ${interpretacoes && interpretacoes.destino && interpretacoes.destino[perfil.destino] ? 
+            `<div class="interpretacao-expandida">
+              <h5>${interpretacoes.destino[perfil.destino].titulo}</h5>
+              <p class="texto-expandido">${interpretacoes.destino[perfil.destino].texto}</p>
+            </div>` : ''}
         </div>
       </div>
       
@@ -411,18 +440,39 @@ function exibirResultadosPiramide(resultado, nome, idade) {
   
   // Exibir sequências negativas se houver
   if (resultado.sequenciasNegativas.length > 0) {
+    const sequenciasExpandidas = window.sequenciasNegativasExpandidas;
     html += `
       <div class="sequencias-negativas">
         <h4>⚠️ Sequências Negativas Identificadas</h4>
     `;
     
     resultado.sequenciasNegativas.forEach(seq => {
+      const sequenciaInfo = sequenciasExpandidas && sequenciasExpandidas[seq.sequencia.toString()];
       html += `
         <div class="sequencia-card">
           <div class="sequencia-numero">${seq.sequencia}</div>
           <div class="sequencia-info">
-            <h5>Sequência ${seq.sequencia}</h5>
-            <p>Esta sequência indica um padrão energético que requer atenção especial em sua vida.</p>
+            <h5>${sequenciaInfo ? sequenciaInfo.titulo : `Sequência ${seq.sequencia}`}</h5>
+            <p>${sequenciaInfo ? sequenciaInfo.significado.substring(0, 300) + '...' : 'Esta sequência indica um padrão energético que requer atenção especial em sua vida.'}</p>
+            ${sequenciaInfo ? `
+              <button class="btn-expandir" onclick="toggleTextoCompleto(this)">Ver Análise Completa</button>
+              <div class="texto-completo hidden">
+                <p><strong>Significado Completo:</strong> ${sequenciaInfo.significado}</p>
+                <div class="analise-sequencia">
+                  <h6>🎯 Setores de Impacto:</h6>
+                  <ul>${sequenciaInfo.setoresImpacto.map(setor => `<li>${setor}</li>`).join('')}</ul>
+                  
+                  <h6>✨ Pontos Positivos a Desenvolver:</h6>
+                  <ul>${sequenciaInfo.pontosPositivos.map(ponto => `<li>${ponto}</li>`).join('')}</ul>
+                  
+                  <h6>⚠️ O que Evitar:</h6>
+                  <ul>${sequenciaInfo.oQueEvitar.map(item => `<li>${item}</li>`).join('')}</ul>
+                  
+                  <h6>🌱 O que Trabalhar:</h6>
+                  <ul>${sequenciaInfo.oQueTrabalhar.map(item => `<li>${item}</li>`).join('')}</ul>
+                </div>
+              </div>
+            ` : ''}
           </div>
         </div>
       `;
@@ -489,6 +539,10 @@ function exibirResultadosPinaculos(resultado, nome, dataNascimento) {
     return;
   }
   
+  // Obter interpretações expandidas de pináculos
+  const interpretacoesPinaculos = window.interpretacoesPinaculosExpandidos || window.textosPinaculosMelhorados;
+  console.log('🏔️ Usando interpretações de pináculos:', interpretacoesPinaculos ? 'EXPANDIDAS' : 'BÁSICAS');
+  
   const html = `
     <div class="resultado-completo">
       <div class="resultado-header">
@@ -502,6 +556,13 @@ function exibirResultadosPinaculos(resultado, nome, dataNascimento) {
           <div class="pinaculo-titulo">1º Pináculo</div>
           <div class="pinaculo-idade">${resultado.idades.pinaculo1.inicio} - ${resultado.idades.pinaculo1.fim} anos</div>
           <p>Período de formação e descoberta da personalidade.</p>
+          ${interpretacoesPinaculos && interpretacoesPinaculos[resultado.pinaculos[0]] ? 
+            `<div class="interpretacao-expandida">
+              <h5>${interpretacoesPinaculos[resultado.pinaculos[0]].titulo}</h5>
+              <p class="texto-expandido">${interpretacoesPinaculos[resultado.pinaculos[0]].texto.substring(0, 500)}...</p>
+              <button class="btn-expandir" onclick="toggleTextoCompleto(this)">Ver Texto Completo</button>
+              <div class="texto-completo hidden">${interpretacoesPinaculos[resultado.pinaculos[0]].texto}</div>
+            </div>` : ''}
         </div>
         
         <div class="pinaculo-card">
@@ -581,6 +642,11 @@ function exibirResultadosSinastria(perfil1, perfil2, compatibilidade, nome1, nom
     console.error("Elemento resultados-sinastria não encontrado!");
     return;
   }
+  
+  // Calcular número da pareja para sinastria expandida
+  const numeroPareja = reduzirNumero(perfil1.destino + perfil2.destino);
+  const sinastria = window.sinastria_expandida || window.sinastria_expandida_completa;
+  console.log('💕 Usando sinastria expandida:', sinastria ? 'EXPANDIDA' : 'BÁSICA', 'Número da Pareja:', numeroPareja);
   
   const html = `
     <div class="resultado-completo">
@@ -668,6 +734,42 @@ function exibirResultadosSinastria(perfil1, perfil2, compatibilidade, nome1, nom
         <p>A compatibilidade geral entre ${nome1} e ${nome2} é de ${compatibilidade.geral.toFixed(1)} pontos.</p>
         <p>Quanto menor o número, maior a harmonia entre os perfis numerológicos.</p>
       </div>
+      
+      ${sinastria && sinastria[numeroPareja] ? 
+        `<div class="sinastria-expandida">
+          <h4>💕 Análise Expandida da Pareja - Número ${numeroPareja}</h4>
+          <div class="sinastria-detalhada">
+            <h5>${sinastria[numeroPareja].significado}</h5>
+            <p class="descricao-pareja">${sinastria[numeroPareja].descricao.substring(0, 600)}...</p>
+            <button class="btn-expandir" onclick="toggleTextoCompleto(this)">Ver Análise Completa</button>
+            <div class="texto-completo hidden">
+              <p>${sinastria[numeroPareja].descricao}</p>
+              
+              <div class="pontos-sinastria">
+                <div class="pontos-positivos">
+                  <h6>✨ Pontos Positivos da União:</h6>
+                  <ul>
+                    ${sinastria[numeroPareja].pontos_positivos.map(ponto => `<li>${ponto}</li>`).join('')}
+                  </ul>
+                </div>
+                
+                <div class="pontos-atencao">
+                  <h6>⚠️ Pontos de Atenção:</h6>
+                  <ul>
+                    ${sinastria[numeroPareja].pontos_negativos.map(ponto => `<li>${ponto}</li>`).join('')}
+                  </ul>
+                </div>
+                
+                <div class="recomendacoes">
+                  <h6>🌟 Recomendações para Aproveitar:</h6>
+                  <ul>
+                    ${sinastria[numeroPareja].o_que_aproveitar.map(rec => `<li>${rec}</li>`).join('')}
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>` : ''}
     </div>
   `;
   
@@ -696,6 +798,22 @@ function preencherExemploSinastria() {
   document.getElementById("dataPessoa1").value = "1988-07-20";
   document.getElementById("nomePessoa2").value = "Fernanda Lima";
   document.getElementById("dataPessoa2").value = "1992-03-15";
+}
+
+// Função para expandir/contrair textos
+function toggleTextoCompleto(button) {
+  const textoCompleto = button.nextElementSibling;
+  const textoExpandido = button.previousElementSibling;
+  
+  if (textoCompleto.classList.contains('hidden')) {
+    textoCompleto.classList.remove('hidden');
+    textoExpandido.style.display = 'none';
+    button.textContent = 'Ver Resumo';
+  } else {
+    textoCompleto.classList.add('hidden');
+    textoExpandido.style.display = 'block';
+    button.textContent = 'Ver Texto Completo';
+  }
 }
 
 // Funções de limpeza
@@ -811,4 +929,4 @@ setTimeout(inicializarSistema, 100);
 
 console.log("📜 Sistema Funcional Consolidado carregado!");
 
-// FORÇAR ATUALIZAÇÃO GITHUB PAGES - 2024-11-17 21:30:45 - CACHE BUSTER
+// FORÇAR ATUALIZAÇÃO GITHUB PAGES - 2024-11-17 21:35:00 - TEXTOS EXPANDIDOS RESGATADOS
