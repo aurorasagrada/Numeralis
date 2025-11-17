@@ -87,7 +87,14 @@ function calcularMapaCompleto() {
   const resultadosDiv = document.getElementById('resultados-mapa') || criarDivResultados();
   
   // Usar interpretações expandidas
+  console.log('🔍 Verificando interpretações:', {
+    expandidas: typeof window.interpretacoesPitagoricasUltraExpandidas,
+    basicas: typeof window.interpretacoesPitagoricas
+  });
+  
   const interpretacoes = window.interpretacoesPitagoricasUltraExpandidas || window.interpretacoesPitagoricas;
+  
+  console.log('📊 Interpretações selecionadas:', interpretacoes ? 'Carregadas' : 'Não encontradas');
   
   let htmlMotivacao = '';
   let htmlImpressao = '';
