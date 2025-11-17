@@ -811,4 +811,4 @@ setTimeout(inicializarSistema, 100);
 
 console.log("📜 Sistema Funcional Consolidado carregado!");
 
-// FORÇAR ATUALIZAÇÃO GITHUB PAGES - 2024-11-17 21:30
+// FORÇAR ATUALIZAÇÃO GITHUB PAGES - 2024-11-17 21:30:45 - CACHE BUSTER
