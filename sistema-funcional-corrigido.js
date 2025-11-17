@@ -86,35 +86,111 @@ function calcularMapaCompleto() {
   // Exibir resultados
   const resultadosDiv = document.getElementById('resultados-mapa') || criarDivResultados();
   
+  // Usar interpretações expandidas
+  const interpretacoes = window.interpretacoesPitagoricasUltraExpandidas || window.interpretacoesPitagoricas;
+  
+  let htmlMotivacao = '';
+  let htmlImpressao = '';
+  let htmlExpressao = '';
+  let htmlDestino = '';
+  
+  if (interpretacoes) {
+    const motivacaoData = interpretacoes.motivacao?.[motivacao];
+    const impressaoData = interpretacoes.impressao?.[impressao];
+    const expressaoData = interpretacoes.expressao?.[expressao];
+    const destinoData = interpretacoes.destino?.[destino];
+    
+    if (motivacaoData) {
+      htmlMotivacao = `
+        <h4 style="color: #b2d1b1; margin-bottom: 10px;">${motivacaoData.titulo}</h4>
+        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 15px;">${motivacaoData.texto.substring(0, 200)}...</p>
+        <button onclick="toggleTextoCompleto(this)" style="background: #f0aa53; color: #0b1836; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; cursor: pointer; font-weight: bold;">VER TEXTO COMPLETO</button>
+        <div class="hidden" style="margin-top: 15px; padding: 15px; background: rgba(178, 209, 177, 0.1); border-radius: 8px; font-size: 14px; line-height: 1.6;">${motivacaoData.texto}</div>
+      `;
+    }
+    
+    if (impressaoData) {
+      htmlImpressao = `
+        <h4 style="color: #f0aa53; margin-bottom: 10px;">${impressaoData.titulo}</h4>
+        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 15px;">${impressaoData.texto.substring(0, 200)}...</p>
+        <button onclick="toggleTextoCompleto(this)" style="background: #f0aa53; color: #0b1836; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; cursor: pointer; font-weight: bold;">VER TEXTO COMPLETO</button>
+        <div class="hidden" style="margin-top: 15px; padding: 15px; background: rgba(240, 170, 83, 0.1); border-radius: 8px; font-size: 14px; line-height: 1.6;">${impressaoData.texto}</div>
+      `;
+    }
+    
+    if (expressaoData) {
+      htmlExpressao = `
+        <h4 style="color: #3e0a29; margin-bottom: 10px;">${expressaoData.titulo}</h4>
+        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 15px;">${expressaoData.texto.substring(0, 200)}...</p>
+        <button onclick="toggleTextoCompleto(this)" style="background: #f0aa53; color: #0b1836; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; cursor: pointer; font-weight: bold;">VER TEXTO COMPLETO</button>
+        <div class="hidden" style="margin-top: 15px; padding: 15px; background: rgba(62, 10, 41, 0.1); border-radius: 8px; font-size: 14px; line-height: 1.6;">${expressaoData.texto}</div>
+      `;
+    }
+    
+    if (destinoData) {
+      htmlDestino = `
+        <h4 style="color: #0b1836; margin-bottom: 10px;">${destinoData.titulo}</h4>
+        <p style="font-size: 14px; line-height: 1.6; margin-bottom: 15px;">${destinoData.texto.substring(0, 200)}...</p>
+        <button onclick="toggleTextoCompleto(this)" style="background: #f0aa53; color: #0b1836; border: none; padding: 8px 15px; border-radius: 15px; font-size: 12px; cursor: pointer; font-weight: bold;">VER TEXTO COMPLETO</button>
+        <div class="hidden" style="margin-top: 15px; padding: 15px; background: rgba(11, 24, 54, 0.1); border-radius: 8px; font-size: 14px; line-height: 1.6;">${destinoData.texto}</div>
+      `;
+    }
+  }
+  
+  // Fallback para textos básicos se não houver interpretações expandidas
+  if (!htmlMotivacao) {
+    htmlMotivacao = `
+      <h4 style="color: #b2d1b1; margin-bottom: 10px;">💫 MOTIVAÇÃO: ${motivacao}</h4>
+      <p style="font-size: 14px; line-height: 1.6;">Sua força interior e desejos mais profundos que movem sua alma.</p>
+    `;
+  }
+  
+  if (!htmlImpressao) {
+    htmlImpressao = `
+      <h4 style="color: #f0aa53; margin-bottom: 10px;">👁️ IMPRESSÃO: ${impressao}</h4>
+      <p style="font-size: 14px; line-height: 1.6;">Como os outros te veem e a primeira impressão que você causa.</p>
+    `;
+  }
+  
+  if (!htmlExpressao) {
+    htmlExpressao = `
+      <h4 style="color: #3e0a29; margin-bottom: 10px;">🎭 EXPRESSÃO: ${expressao}</h4>
+      <p style="font-size: 14px; line-height: 1.6;">Seus talentos naturais e como você se expressa no mundo.</p>
+    `;
+  }
+  
+  if (!htmlDestino) {
+    htmlDestino = `
+      <h4 style="color: #0b1836; margin-bottom: 10px;">🎯 DESTINO: ${destino}</h4>
+      <p style="font-size: 14px; line-height: 1.6;">Sua missão de vida e o caminho que veio percorrer nesta encarnação.</p>
+    `;
+  }
+  
   resultadosDiv.innerHTML = `
     <div style="background: linear-gradient(135deg, #3e0a29, #0b1836); padding: 30px; border-radius: 15px; margin: 20px 0; color: #f2eaff;">
       <h3 style="color: #f0aa53; text-align: center; margin-bottom: 25px;">🌟 SEU MAPA PITAGÓRICO COMPLETO</h3>
       
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
         <div style="background: rgba(178, 209, 177, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #b2d1b1;">
-          <h4 style="color: #b2d1b1; margin-bottom: 10px;">💫 MOTIVAÇÃO: ${motivacao}</h4>
-          <p style="font-size: 14px; line-height: 1.6;">Sua força interior e desejos mais profundos que movem sua alma.</p>
+          ${htmlMotivacao}
         </div>
         
         <div style="background: rgba(240, 170, 83, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #f0aa53;">
-          <h4 style="color: #f0aa53; margin-bottom: 10px;">👁️ IMPRESSÃO: ${impressao}</h4>
-          <p style="font-size: 14px; line-height: 1.6;">Como os outros te veem e a primeira impressão que você causa.</p>
+          ${htmlImpressao}
         </div>
         
         <div style="background: rgba(62, 10, 41, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #3e0a29;">
-          <h4 style="color: #3e0a29; margin-bottom: 10px;">🎭 EXPRESSÃO: ${expressao}</h4>
-          <p style="font-size: 14px; line-height: 1.6;">Seus talentos naturais e como você se expressa no mundo.</p>
+          ${htmlExpressao}
         </div>
         
         <div style="background: rgba(11, 24, 54, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #0b1836;">
-          <h4 style="color: #0b1836; margin-bottom: 10px;">🎯 DESTINO: ${destino}</h4>
-          <p style="font-size: 14px; line-height: 1.6;">Sua missão de vida e o caminho que veio percorrer nesta encarnação.</p>
+          ${htmlDestino}
         </div>
       </div>
       
       <div style="text-align: center; margin-top: 25px;">
         <button onclick="gerarRelatorioCompleto()" style="background: linear-gradient(45deg, #f0aa53, #b2d1b1); color: #0b1836; border: none; padding: 12px 25px; border-radius: 25px; font-weight: bold; cursor: pointer;">
-          📖 GERAR RELATÓRIO COMPLETO
+          📜 GERAR RELATÓRIO COMPLETO
         </button>
       </div>
     </div>
@@ -255,4 +331,67 @@ if (document.readyState === 'loading') {
 // Também executar imediatamente para garantir
 setTimeout(inicializarSistema, 100);
 
-console.log("📜 Sistema Funcional Corrigido carregado!");
+// Função para expandir/contrair textos longos
+function toggleTextoCompleto(botao) {
+  const textoCompleto = botao.nextElementSibling;
+  const isHidden = textoCompleto.classList.contains('hidden');
+  
+  if (isHidden) {
+    textoCompleto.classList.remove('hidden');
+    botao.textContent = 'Ocultar Texto';
+    botao.style.backgroundColor = '#3e0a29';
+  } else {
+    textoCompleto.classList.add('hidden');
+    botao.textContent = 'VER TEXTO COMPLETO';
+    botao.style.backgroundColor = '#f0aa53';
+  }
+}
+
+// Função para expandir análises completas
+function toggleAnaliseCompleta(botao) {
+  const analiseCompleta = botao.nextElementSibling;
+  const isHidden = analiseCompleta.classList.contains('hidden');
+  
+  if (isHidden) {
+    analiseCompleta.classList.remove('hidden');
+    botao.textContent = 'Ocultar Análise';
+    botao.style.backgroundColor = '#3e0a29';
+  } else {
+    analiseCompleta.classList.add('hidden');
+    botao.textContent = 'VER ANÁLISE COMPLETA';
+    botao.style.backgroundColor = '#f0aa53';
+  }
+}
+
+// Adicionar CSS para classe hidden
+const style = document.createElement('style');
+style.textContent = `
+  .hidden {
+    display: none !important;
+  }
+  
+  .btn-expandir {
+    background: #f0aa53;
+    color: #0b1836;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 15px;
+    font-size: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-expandir:hover {
+    background: #3e0a29;
+    color: #f2eaff;
+    transform: translateY(-2px);
+  }
+`;
+document.head.appendChild(style);
+
+// Disponibilizar globalmente
+window.toggleTextoCompleto = toggleTextoCompleto;
+window.toggleAnaliseCompleta = toggleAnaliseCompleta;
+
+console.log("📜 Sistema Funcional Consolidado carregado!");

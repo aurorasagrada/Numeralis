@@ -1,0 +1,1675 @@
+// Sistema Funcional - Numeralis Aurora Sagrada
+// Arquivo centralizado com todas as funções do sistema
+
+// Tabelas numerológicas
+const tabelaPitagorica = {
+  "A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "H": 8, "I": 9,
+  "J": 1, "K": 2, "L": 3, "M": 4, "N": 5, "O": 6, "P": 7, "Q": 8, "R": 9,
+  "S": 1, "T": 2, "U": 3, "V": 4, "W": 5, "X": 6, "Y": 7, "Z": 8
+};
+
+const tabelaCabalistica = {
+  "A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "H": 8,
+  "I": 1, "J": 2, "K": 3, "L": 4, "M": 5, "N": 6, "O": 7, "P": 8,
+  "Q": 1, "R": 2, "S": 3, "T": 4, "U": 5, "V": 6, "W": 7, "X": 8,
+  "Y": 1, "Z": 2
+};
+
+const vogais = ["A", "E", "I", "O", "U"];
+const numerosMestres = [11, 22, 33];
+const numerosKarmicos = [13, 14, 16, 19];
+
+// Funções auxiliares
+function normalizarTexto(texto) {
+  return texto.toUpperCase()
+    .replace(/[ÀÁÂÃÄÅ]/g, 'A')
+    .replace(/[ÈÉÊË]/g, 'E')
+    .replace(/[ÌÍÎÏ]/g, 'I')
+    .replace(/[ÒÓÔÕÖ]/g, 'O')
+    .replace(/[ÙÚÛÜ]/g, 'U')
+    .replace(/[ÇÇ]/g, 'C')
+    .replace(/[ÑÑ]/g, 'N')
+    .replace(/[^A-Z]/g, '');
+}
+
+function reduzirNumero(numero) {
+  if (numerosMestres.includes(numero) || numerosKarmicos.includes(numero)) {
+    return numero;
+  }
+  
+  while (numero > 9) {
+    let soma = 0;
+    while (numero > 0) {
+      soma += numero % 10;
+      numero = Math.floor(numero / 10);
+    }
+    numero = soma;
+    
+    if (numerosMestres.includes(numero) || numerosKarmicos.includes(numero)) {
+      return numero;
+    }
+  }
+  
+  return numero;
+}
+
+// Função para reduzir sempre a números de 1-// Função para reduzir número a um dígito
+function reduzirNumero(numero) {
+  while (numero > 9) {
+    let soma = 0;
+    while (numero > 0) {
+      soma += numero % 10;
+      numero = Math.floor(numero / 10);
+    }
+    numero = soma;
+  }
+  return numero;
+}
+
+// Função para obter aspectos da vida da sinastria
+function obterAspectosVidaSinastria(numeroAnalise, compatibilidadeGeral) {
+  const aspectos = {
+    1: {
+      contexto: "Vocês formam uma união pioneira e independente. Este é um relacionamento baseado na liderança compartilhada, onde ambos buscam inovação e novos começos. A energia de número 1 traz iniciativa, coragem e a capacidade de abrir caminhos juntos.",
+      amor: "Paixão intensa e relacionamento dinâmico. Vocês se inspiram mutuamente a serem melhores versões de si mesmos. A atração é baseada na admiração mútua pela força e determinação do parceiro.",
+      domestica: "Casa organizada com cada um tendo seu espaço de liderança. Decisões tomadas de forma equilibrada, respeitando a independência individual. Ambiente estimulante e cheio de projetos novos.",
+      financas: "Excelente capacidade de gerar renda através de empreendimentos próprios. Investimentos em negócios inovadores e startups. Tendência a serem pioneiros em novos mercados financeiros.",
+      social: "Casal admirado pela liderança e iniciativa. Vocês são referência em seu círculo social, inspirando outros casais. Participação ativa em grupos de liderança e desenvolvimento pessoal.",
+      objetivos: "Metas ambiciosas focadas em conquistas pessoais e profissionais. Desejo de deixar um legado e serem reconhecidos como pioneiros em suas áreas. Projetos inovadores em conjunto.",
+      crescimento: "Desenvolvimento da autoconfiança e capacidade de liderança. Aprendizado sobre como equilibrar independência com parceria. Crescimento através de desafios e conquistas compartilhadas."
+    },
+    2: {
+      contexto: "Vocês formam uma união harmoniosa e cooperativa. Este relacionamento é baseado na parceria equilibrada, sensibilidade emocional e capacidade de trabalhar juntos. A energia do número 2 traz diplomacia, paciência e profunda conexão emocional.",
+      amor: "Relacionamento terno e profundamente emocional. Vocês se completam de forma natural, criando uma atmosfera de paz e harmonia. O amor é expresso através de pequenos gestos e cuidado mútuo.",
+      domestica: "Lar acolhedor e harmonioso onde a cooperação é natural. Decisões tomadas em conjunto com muito diálogo. Ambiente decorado com sensibilidade e atenção aos detalhes que trazem conforto.",
+      financas: "Gestão financeira cuidadosa e conservadora. Preferência por investimentos seguros e planejamento a longo prazo. Excelente capacidade de economizar e construir patrimônio gradualmente.",
+      social: "Casal querido e respeitado pela gentileza e diplomacia. Vocês são mediadores naturais em conflitos e sempre dispostos a ajudar amigos. Círculo social estável e duradouro.",
+      objetivos: "Metas focadas no bem-estar familiar e harmonia. Desejo de criar um ambiente estável e amoroso. Projetos que beneficiem a comunidade e promovam a paz.",
+      crescimento: "Desenvolvimento da paciência e capacidade de cooperação. Aprendizado sobre como manter a harmonia sem perder a individualidade. Crescimento através da sensibilidade emocional."
+    },
+    3: {
+      contexto: "Vocês formam uma união criativa e comunicativa. Este relacionamento é marcado pela expressão artística, otimismo e capacidade de inspirar outros. A energia do número 3 traz alegria, criatividade e excelente comunicação.",
+      amor: "Relacionamento alegre e cheio de criatividade. Vocês se divertem juntos e encontram formas únicas de expressar o amor. A comunicação é fluida e cheia de humor e carinho.",
+      domestica: "Casa colorida e cheia de vida, com espaços dedicados à criatividade. Ambiente alegre onde a música, arte e conversas animadas são constantes. Decoração única e expressiva.",
+      financas: "Renda através de atividades criativas e comunicação. Possibilidade de ganhos com arte, mídia, entretenimento ou educação. Tendência a investir em experiências e desenvolvimento pessoal.",
+      social: "Casal popular e carismático que anima qualquer ambiente. Vocês são o centro das atenções em eventos sociais. Amizades diversas e conexões através de interesses artísticos.",
+      objetivos: "Metas relacionadas à expressão criativa e comunicação. Desejo de inspirar outros através da arte, escrita ou ensino. Projetos que envolvam criatividade e inovação.",
+      crescimento: "Desenvolvimento da autoexpressão e talentos criativos. Aprendizado sobre como usar a comunicação para construir relacionamentos. Crescimento através da arte e criatividade."
+    },
+    4: {
+      contexto: "Vocês formam uma união sólida e prática. Este relacionamento é baseado na estabilidade, trabalho árduo e construção de bases sólidas para o futuro. A energia do número 4 traz organização, disciplina e confiabilidade.",
+      amor: "Relacionamento estável e confiável, construído sobre bases sólidas. O amor é demonstrado através de ações práticas e compromisso duradouro. Lealdade e dedicação são as marcas desta união.",
+      domestica: "Casa bem organizada e funcional, onde tudo tem seu lugar. Rotinas estabelecidas que trazem segurança e eficiência. Ambiente prático mas aconchegante, focado no conforto real.",
+      financas: "Excelente gestão financeira com foco em segurança e estabilidade. Investimentos conservadores e planejamento detalhado. Capacidade de construir patrimônio sólido através de trabalho árduo.",
+      social: "Casal respeitado pela confiabilidade e integridade. Amizades duradouras baseadas em confiança mútua. Participação em atividades comunitárias e grupos de trabalho voluntário.",
+      objetivos: "Metas práticas focadas em segurança e estabilidade familiar. Desejo de construir um legado duradouro. Projetos que envolvam construção, organização ou serviços essenciais.",
+      crescimento: "Desenvolvimento da disciplina e capacidade de organização. Aprendizado sobre como equilibrar trabalho e vida pessoal. Crescimento através da perseverança e dedicação."
+    },
+    5: {
+      contexto: "Vocês formam uma união dinâmica e aventureira. Este relacionamento é marcado pela liberdade, versatilidade e busca constante por novas experiências. A energia do número 5 traz movimento, curiosidade e adaptabilidade.",
+      amor: "Relacionamento excitante e cheio de surpresas. Vocês mantêm a paixão viva através de novas experiências e aventuras compartilhadas. A liberdade individual é respeitada e valorizada.",
+      domestica: "Casa flexível e adaptável, que reflete as mudanças e interesses do casal. Ambiente que facilita a mobilidade e recebe bem visitantes. Decoração variada e internacional.",
+      financas: "Renda diversificada através de múltiplas fontes e atividades. Investimentos em viagens, educação e experiências. Capacidade de se adaptar rapidamente a mudanças econômicas.",
+      social: "Casal sociável com círculo amplo e diverso de amigos. Vocês são conhecidos pela hospitalidade e histórias interessantes. Conexões internacionais e multiculturais.",
+      objetivos: "Metas relacionadas a viagens, educação e expansão de horizontes. Desejo de conhecer diferentes culturas e formas de vida. Projetos que envolvam comunicação e intercâmbio.",
+      crescimento: "Desenvolvimento da adaptabilidade e abertura mental. Aprendizado sobre como equilibrar liberdade com compromisso. Crescimento através de experiências diversas e viagens."
+    },
+    6: {
+      contexto: "Vocês formam uma união amorosa e responsável. Este relacionamento é centrado na família, cuidado mútuo e serviço aos outros. A energia do número 6 traz nurturing, responsabilidade e profundo senso de comunidade.",
+      amor: "Relacionamento profundamente amoroso e protetor. Vocês cuidam um do outro com dedicação e ternura. O amor é expresso através do cuidado, apoio e criação de um ambiente seguro.",
+      domestica: "Casa acolhedora que é o centro da vida familiar e social. Ambiente onde todos se sentem bem-vindos e cuidados. Decoração calorosa com foco no conforto e funcionalidade familiar.",
+      financas: "Gestão financeira focada no bem-estar familiar e segurança. Investimentos em educação dos filhos, saúde e propriedades. Tendência a ser generosos com família e comunidade.",
+      social: "Casal conhecido pela generosidade e disposição em ajudar outros. Vocês são o ponto de apoio para familiares e amigos. Participação ativa em atividades comunitárias e beneficentes.",
+      objetivos: "Metas centradas no bem-estar familiar e contribuição para a comunidade. Desejo de criar um ambiente harmonioso e educativo. Projetos relacionados a cuidado, educação ou saúde.",
+      crescimento: "Desenvolvimento da capacidade de nutrir e cuidar. Aprendizado sobre como equilibrar as necessidades próprias com as dos outros. Crescimento através do serviço e amor incondicional."
+    },
+    7: {
+      contexto: "Vocês formam uma união profunda e espiritual. Este relacionamento é baseado na busca por conhecimento, introspecção e crescimento espiritual. A energia do número 7 traz sabedoria, intuição e conexão com o sagrado.",
+      amor: "Relacionamento profundo e intuitivo, onde a conexão vai além do físico. Vocês se compreendem em níveis sutis e compartilham uma jornada espiritual. O amor é expresso através da compreensão mútua.",
+      domestica: "Casa tranquila e contemplativa, com espaços para meditação e estudo. Ambiente que favorece a introspecção e o crescimento espiritual. Biblioteca bem organizada e objetos sagrados.",
+      financas: "Gestão financeira intuitiva e não materialista. Investimentos em educação, livros e experiências espirituais. Tendência a valorizar mais o crescimento interior que bens materiais.",
+      social: "Casal seletivo com círculo pequeno mas profundo de amigos. Vocês são procurados por conselhos e orientação espiritual. Conexões com pessoas de interesses similares em crescimento pessoal.",
+      objetivos: "Metas relacionadas ao crescimento espiritual e busca por sabedoria. Desejo de compreender os mistérios da vida. Projetos que envolvam ensino, pesquisa ou práticas espirituais.",
+      crescimento: "Desenvolvimento da intuição e sabedoria interior. Aprendizado sobre como equilibrar vida material e espiritual. Crescimento através da meditação, estudo e autoconhecimento."
+    },
+    8: {
+      contexto: "Vocês formam uma união poderosa e ambiciosa. Este relacionamento é focado no sucesso material, liderança e construção de impérios. A energia do número 8 traz poder, organização e capacidade de realização material.",
+      amor: "Relacionamento baseado em respeito mútuo e admiração pelo sucesso do parceiro. Vocês se apoiam nas ambições e celebram as conquistas juntos. O amor é expresso através do apoio aos objetivos mútuos.",
+      domestica: "Casa luxuosa e bem organizada que reflete o sucesso do casal. Ambiente sofisticado com qualidade em todos os detalhes. Espaço para entretenimento de negócios e networking.",
+      financas: "Excelente capacidade de gerar e multiplicar riqueza. Investimentos estratégicos em negócios, imóveis e mercado financeiro. Gestão profissional das finanças com foco em crescimento.",
+      social: "Casal influente e respeitado em círculos de negócios e poder. Vocês são referência em sucesso e liderança. Networking estratégico e participação em eventos de alto nível.",
+      objetivos: "Metas ambiciosas focadas em sucesso material e reconhecimento. Desejo de construir um império e deixar um legado financeiro. Projetos de grande escala e impacto.",
+      crescimento: "Desenvolvimento da capacidade de liderança e gestão. Aprendizado sobre como usar o poder de forma ética. Crescimento através de desafios empresariais e conquistas materiais."
+    },
+    9: {
+      contexto: "Vocês formam uma união humanitária e universal. Este relacionamento é baseado na compaixão, serviço à humanidade e visão ampla do mundo. A energia do número 9 traz altruísmo, sabedoria e capacidade de inspirar outros.",
+      amor: "Relacionamento baseado em amor universal e compaixão. Vocês se amam não apenas como casal, mas como almas que servem juntas a um propósito maior. O amor transcende o pessoal.",
+      domestica: "Casa aberta e acolhedora para pessoas de todas as origens. Ambiente que reflete valores humanitários e consciência global. Decoração com elementos de diferentes culturas.",
+      financas: "Gestão financeira voltada para causas humanitárias e projetos sociais. Investimentos éticos e sustentáveis. Tendência a doar e apoiar causas importantes para a humanidade.",
+      social: "Casal admirado pela generosidade e visão humanitária. Vocês inspiram outros a serem melhores e mais conscientes. Conexões globais e participação em movimentos sociais.",
+      objetivos: "Metas focadas em fazer a diferença no mundo e ajudar a humanidade. Desejo de deixar um legado de amor e serviço. Projetos que beneficiem grandes grupos de pessoas.",
+      crescimento: "Desenvolvimento da compaixão universal e sabedoria. Aprendizado sobre como servir sem se esgotar. Crescimento através do serviço desinteressado e amor incondicional."
+    }
+  };
+
+  const aspecto = aspectos[numeroAnalise] || aspectos[1];
+  
+  // Ajustar contexto baseado na compatibilidade
+  let contextoAjustado = aspecto.contexto;
+  if (compatibilidadeGeral >= 80) {
+    contextoAjustado += " Vocês têm uma sintonia excepcional que potencializa todas essas qualidades.";
+  } else if (compatibilidadeGeral >= 60) {
+    contextoAjustado += " Com boa comunicação, vocês podem desenvolver plenamente essas características.";
+  } else {
+    contextoAjustado += " Trabalhem juntos para desenvolver essas qualidades e superar os desafios.";
+  }
+
+  return {
+    contexto: contextoAjustado,
+    amor: aspecto.amor,
+    domestica: aspecto.domestica,
+    financas: aspecto.financas,
+    social: aspecto.social,
+    objetivos: aspecto.objetivos,
+    crescimento: aspecto.crescimento
+  };
+}ion calcularNumeroNome(nome, tabela = tabelaPitagorica) {
+  const nomeNormalizado = normalizarTexto(nome);
+  let soma = 0;
+  
+  for (let char of nomeNormalizado) {
+    if (tabela[char]) {
+      soma += tabela[char];
+    }
+  }
+  
+  // Para cálculos principais, sempre reduzir a 1-9
+  return reduzirNumeroCompleto(soma);
+}
+
+// ================================================================
+//  Funções individuais para Motivação, Impressão, Expressão e Destino
+//
+//  Estas funções foram extraídas de calcularPerfilNumerologico para uso
+//  independente, especialmente na seção de sinastria. Elas permitem
+//  calcular separadamente cada número, garantindo compatibilidade com
+//  nomes acentuados e diferentes formatos de data.
+//
+function calcularMotivacao(nome) {
+  const nomeNorm = normalizarTexto(nome);
+  // Considerar apenas vogais (A,E,I,O,U) para motivação
+  const soVogais = nomeNorm.replace(/[BCDFGHJKLMNPQRSTVWXYZ]/g, '');
+  return calcularNumeroNome(soVogais);
+}
+
+function calcularImpressao(nome) {
+  const nomeNorm = normalizarTexto(nome);
+  // Considerar apenas consoantes para impressão
+  const soConsoantes = nomeNorm.replace(/[AEIOU]/g, '');
+  return calcularNumeroNome(soConsoantes);
+}
+
+function calcularExpressao(nome) {
+  // A expressão considera todas as letras do nome
+  const nomeNorm = normalizarTexto(nome);
+  return calcularNumeroNome(nomeNorm);
+}
+
+/**
+ * Calcula o número de Destino a partir de uma data em formato
+ * "AAAA-MM-DD", "DD/MM/AAAA" ou similar. Converte a data em
+ * números e retorna a soma reduzida.
+ *
+ * @param {string} dataStr Data de nascimento no formato ISO (AAAA-MM-DD)
+ *                         ou separado por barras/hífens.
+ * @returns {number} O número de destino reduzido (incluindo números
+ *                   mestres e kármicos se aplicável).
+ */
+function calcularDestino(dataStr) {
+  if (!dataStr) return 0;
+  let partes;
+  // Separa por barras
+  if (dataStr.includes('/')) {
+    partes = dataStr.split('/');
+    // Se a primeira parte tiver quatro dígitos, assume formato ano/mês/dia
+    if (partes[0].length === 4) {
+      const ano = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10);
+      const dia = parseInt(partes[2], 10);
+      return reduzirNumero(dia + mes + ano);
+    } else if (partes[2].length === 4) {
+      // dd/mm/aaaa
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10);
+      const ano = parseInt(partes[2], 10);
+      return reduzirNumero(dia + mes + ano);
+    } else {
+      // mm/dd/aa ou outro fallback
+      const mes = parseInt(partes[0], 10);
+      const dia = parseInt(partes[1], 10);
+      const ano = parseInt(partes[2], 10);
+      return reduzirNumero(dia + mes + ano);
+    }
+  } else {
+    // Formato AAAA-MM-DD ou DD-MM-AAAA
+    partes = dataStr.split('-');
+    if (partes[0].length === 4) {
+      const ano = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10);
+      const dia = parseInt(partes[2], 10);
+      return reduzirNumero(dia + mes + ano);
+    } else if (partes[2].length === 4) {
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10);
+      const ano = parseInt(partes[2], 10);
+      return reduzirNumero(dia + mes + ano);
+    } else {
+      // Fallback genérico se o formato não for reconhecido
+      const dia = parseInt(partes[0], 10);
+      const mes = parseInt(partes[1], 10);
+      const ano = parseInt(partes[2], 10);
+      return reduzirNumero(dia + mes + ano);
+    }
+  }
+}
+
+// Função principal para calcular perfil numerológico completo
+function calcularPerfilNumerologico(nome, dataNascimento) {
+  const nomeNormalizado = normalizarTexto(nome);
+  
+  // Separar vogais e consoantes
+  const vogaisNome = nomeNormalizado.split('').filter(char => vogais.includes(char)).join('');
+  const consoantesNome = nomeNormalizado.split('').filter(char => !vogais.includes(char) && char !== '').join('');
+  
+  // Calcular números principais
+  const motivacao = calcularNumeroNome(vogaisNome);
+  const impressao = calcularNumeroNome(consoantesNome);
+  const expressao = calcularNumeroNome(nomeNormalizado);
+  const destino = calcularDestino(dataNascimento);
+  
+  // Renderizar resultados
+  renderResultados(nome, dataNascimento, {
+    motivacao,
+    impressao,
+    expressao,
+    destino,
+    vogaisNome,
+    consoantesNome,
+    nomeCompleto: nomeNormalizado
+  });
+  
+  return {
+    motivacao,
+    impressao,
+    expressao,
+    destino
+  };
+}
+
+function renderResultados(nome, dataNascimento, numeros) {
+  const resultadosDiv = document.getElementById("resultados-mapa");
+  if (!resultadosDiv) {
+    console.error("Elemento resultados-mapa não encontrado!");
+    return;
+  }
+
+  // Buscar interpretações expandidas
+  let interpretacaoMotivacao = "Interpretação em desenvolvimento.";
+  let interpretacaoImpressao = "Interpretação em desenvolvimento.";
+  let interpretacaoExpressao = "Interpretação em desenvolvimento.";
+  let interpretacaoDestino = "Interpretação em desenvolvimento.";
+
+  if (window.interpretacoesPitagoricas) {
+    // Função para buscar interpretação, com fallback para número reduzido
+    const buscarInterpretacao = (categoria, numero) => {
+      // Primeiro tenta buscar interpretação do número original
+      let interpretacao = window.interpretacoesPitagoricas[categoria]?.[numero]?.texto;
+      
+      // Se não encontrar e o número for > 9, tenta com número reduzido
+      if (!interpretacao && numero > 9) {
+        const numeroReduzido = reduzirNumeroForcado(numero);
+        interpretacao = window.interpretacoesPitagoricas[categoria]?.[numeroReduzido]?.texto;
+      }
+      
+      return interpretacao;
+    };
+    
+    interpretacaoMotivacao = buscarInterpretacao('motivacao', numeros.motivacao) || interpretacaoMotivacao;
+    interpretacaoImpressao = buscarInterpretacao('impressao', numeros.impressao) || interpretacaoImpressao;
+    interpretacaoExpressao = buscarInterpretacao('expressao', numeros.expressao) || interpretacaoExpressao;
+    interpretacaoDestino = buscarInterpretacao('destino', numeros.destino) || interpretacaoDestino;
+  }
+  
+  // Função auxiliar para forçar redução (ignora números mestres/kármicos para busca de interpretação)
+  function reduzirNumeroForcado(numero) {
+    while (numero > 9) {
+      let soma = 0;
+      while (numero > 0) {
+        soma += numero % 10;
+        numero = Math.floor(numero / 10);
+      }
+      numero = soma;
+    }
+    return numero;
+  }
+
+  // Criar apresentação expandida similar à Pirâmide Cabalística
+  let html = `
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #3e0a29; margin-bottom: 30px;">
+      <h3 style="color: #f2eaff; text-align: center; margin-bottom: 10px; font-size: 24px;">🌟 SEU MAPA PITAGÓRICO COMPLETO</h3>
+      <h4 style="color: #f0aa53; text-align: center; margin-bottom: 20px; font-size: 20px;">${nome.toUpperCase()}</h4>
+      <p style="color: #f2eaff; text-align: center; margin-bottom: 30px; font-style: italic;">Descubra os números que regem sua personalidade, destino e lições cármicas</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; padding: 20px;">
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border: 2px solid #f0aa53; text-align: center;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">💫 MOTIVAÇÃO</h5>
+          <div style="font-size: 36px; color: #f2eaff; font-weight: bold; margin-bottom: 5px;">${numeros.motivacao}</div>
+          <p style="color: #f2eaff; font-size: 12px;">Vogais: ${numeros.vogaisNome}</p>
+        </div>
+        <div style="background: rgba(178, 209, 177, 0.1); padding: 15px; border-radius: 10px; border: 2px solid #b2d1b1; text-align: center;">
+          <h5 style="color: #b2d1b1; margin-bottom: 10px;">👁️ IMPRESSÃO</h5>
+          <div style="font-size: 36px; color: #f2eaff; font-weight: bold; margin-bottom: 5px;">${numeros.impressao}</div>
+          <p style="color: #f2eaff; font-size: 12px;">Consoantes: ${numeros.consoantesNome}</p>
+        </div>
+        <div style="background: rgba(62, 10, 41, 0.1); padding: 15px; border-radius: 10px; border: 2px solid #3e0a29; text-align: center;">
+          <h5 style="color: #3e0a29; margin-bottom: 10px;">🎭 EXPRESSÃO</h5>
+          <div style="font-size: 36px; color: #f2eaff; font-weight: bold; margin-bottom: 5px;">${numeros.expressao}</div>
+          <p style="color: #f2eaff; font-size: 12px;">Nome: ${numeros.nomeCompleto}</p>
+        </div>
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border: 2px solid #f0aa53; text-align: center;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">🎯 DESTINO</h5>
+          <div style="font-size: 36px; color: #f2eaff; font-weight: bold; margin-bottom: 5px;">${numeros.destino}</div>
+          <p style="color: #f2eaff; font-size: 12px;">Data: ${dataNascimento}</p>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Seções detalhadas para cada número
+  const numerosDetalhes = [
+    { numero: numeros.motivacao, titulo: 'MOTIVAÇÃO', icone: '💫', cor: '#f0aa53', descricao: 'Seus desejos mais profundos e o que realmente o motiva na vida', texto: interpretacaoMotivacao },
+    { numero: numeros.impressao, titulo: 'IMPRESSÃO', icone: '👁️', cor: '#b2d1b1', descricao: 'Como os outros o veem e a primeira impressão que você causa', texto: interpretacaoImpressao },
+    { numero: numeros.expressao, titulo: 'EXPRESSÃO', icone: '🎭', cor: '#3e0a29', descricao: 'Seus talentos naturais e como você se expressa no mundo', texto: interpretacaoExpressao },
+    { numero: numeros.destino, titulo: 'DESTINO', icone: '🎯', cor: '#f0aa53', descricao: 'Sua missão de vida e o caminho que deve seguir', texto: interpretacaoDestino }
+  ];
+  
+  numerosDetalhes.forEach(item => {
+    const aspectosVida = obterAspectosVidaPitagorico(item.numero, item.titulo.toLowerCase());
+    
+    html += `
+      <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid ${item.cor}; margin-bottom: 30px;">
+        <h3 style="color: ${item.cor}; text-align: center; margin-bottom: 20px;">${item.icone} SEU NÚMERO ${item.titulo} - ${item.numero}</h3>
+        
+        <div style="background: rgba(242, 234, 255, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+          <h4 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">🌟 Significado Principal</h4>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.7; margin-bottom: 10px;">${item.descricao}</p>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.7;">${item.texto}</p>
+        </div>
+        
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+          <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+            <h5 style="color: #f0aa53; margin-bottom: 8px; font-size: 14px;">📚 APRENDIZADO</h5>
+            <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${aspectosVida.aprendizado.substring(0, 120)}...</p>
+          </div>
+          <div style="background: rgba(178, 209, 177, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #b2d1b1;">
+            <h5 style="color: #b2d1b1; margin-bottom: 8px; font-size: 14px;">💕 RELACIONAMENTOS</h5>
+            <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${aspectosVida.relacionamentos.substring(0, 120)}...</p>
+          </div>
+          <div style="background: rgba(62, 10, 41, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #3e0a29;">
+            <h5 style="color: #3e0a29; margin-bottom: 8px; font-size: 14px;">💼 CARREIRA</h5>
+            <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${aspectosVida.carreira.substring(0, 120)}...</p>
+          </div>
+          <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+            <h5 style="color: #f0aa53; margin-bottom: 8px; font-size: 14px;">🌱 CRESCIMENTO</h5>
+            <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${aspectosVida.crescimento.substring(0, 120)}...</p>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+  
+  resultadosDiv.innerHTML = html;
+  
+  resultadosDiv.classList.remove("hidden");
+  resultadosDiv.scrollIntoView({ behavior: "smooth" });
+}
+
+// Funções de exemplo e limpeza para Mapa Pitagórico
+function preencherExemploMapa() {
+  document.getElementById("nomeCompleto").value = "Maria Silva Santos";
+  document.getElementById("dataNascimento").value = "1990-05-15";
+}
+
+function limparMapa() {
+  document.getElementById("nomeCompleto").value = "";
+  document.getElementById("dataNascimento").value = "";
+  document.getElementById("resultados-mapa").innerHTML = "";
+  document.getElementById("resultados-mapa").classList.add("hidden");
+}
+
+function calcularMapaCompleto() {
+  const nome = document.getElementById("nomeCompleto").value.trim();
+  const data = document.getElementById("dataNascimento").value;
+  
+  if (!nome || !data) {
+    alert("Por favor, preencha todos os campos!");
+    return;
+  }
+  
+  calcularPerfilNumerologico(nome, data);
+}
+
+// Funções da Pirâmide Cabalística
+function preencherExemploPiramide() {
+  document.getElementById("nomePiramide").value = "Maria Silva Santos";
+  document.getElementById("idadePiramide").value = "33";
+}
+
+function limparPiramide() {
+  document.getElementById("nomePiramide").value = "";
+  document.getElementById("idadePiramide").value = "";
+  document.getElementById("resultados-piramide").innerHTML = "";
+  document.getElementById("resultados-piramide").classList.add("hidden");
+}
+
+function calcularPiramideCompleta() {
+  const nome = document.getElementById("nomePiramide").value.trim();
+  const idade = document.getElementById("idadePiramide").value.trim();
+  
+  if (!nome || !idade) {
+    alert("Por favor, preencha o nome e a idade.");
+    return;
+  }
+  
+  // Navegar automaticamente para a seção da pirâmide
+  mostrarSecao('piramide-cabalistica');
+  
+  renderPiramideCompleta(nome, parseInt(idade));
+}
+
+// Função completa da Pirâmide Cabalística com todos os elementos
+function renderPiramideCompleta(nome, idade) {
+  const resultadosDiv = document.getElementById("resultados-piramide");
+  
+  // Calcular pirâmide numerológica
+  const piramide = calcularPiramideNumerologica(nome);
+  const arcanoRegente = calcularArcanoRegente(idade);
+  const sequenciasNegativas = detectarSequenciasNegativas(piramide[0]);
+  const desafiosCarmicos = calcularDesafiosCarmicos(nome);
+  
+  let html = `
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #3e0a29; margin-bottom: 30px;">
+      <h3 style="color: #f2eaff; text-align: center; margin-bottom: 10px; font-size: 24px;">🔺 SUA PIRÂMIDE CABALÍSTICA COMPLETA</h3>
+      <h4 style="color: #f0aa53; text-align: center; margin-bottom: 20px; font-size: 20px;">${nome.toUpperCase()}, ${idade} ANOS</h4>
+      <p style="color: #f2eaff; text-align: center; margin-bottom: 30px; font-style: italic;">Descubra os mistérios de sua jornada através da sabedoria cabalística ancestral</p>
+    </div>
+  `;
+  
+  // Arcano Regente Atual
+  const arcanoInfo = calcularArcanoRegente(idade);
+  const textoExpandido = obterTextoExpandidoArcano(arcanoInfo.nome);
+  
+  html += `
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #f0aa53; margin-bottom: 30px;">
+      <h3 style="color: #f0aa53; text-align: center; margin-bottom: 20px;">✨ SEU ARCANO REGENTE ATUAL</h3>
+      <div style="display: flex; align-items: flex-start; justify-content: center; gap: 30px; padding: 20px; flex-wrap: wrap;">
+        <div style="flex-shrink: 0;">
+          <img src="${arcanoInfo.imagem}" alt="${arcanoInfo.nome}" style="width: 150px; height: 250px; object-fit: cover; border-radius: 10px; border: 2px solid #f0aa53; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);" />
+        </div>
+        <div style="flex: 1; min-width: 400px; text-align: left;">
+          <h2 style="color: #f2eaff; margin-bottom: 15px; font-size: 28px; text-align: center;">${arcanoInfo.nome}</h2>
+          <p style="color: #f2eaff; font-size: 16px; margin-bottom: 20px; text-align: center; font-style: italic;">"${arcanoInfo.significado}"</p>
+          
+          <div style="background: rgba(242, 234, 255, 0.1); padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+            <h4 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">🌟 Contexto do Período Atual</h4>
+            <p style="color: #f2eaff; font-size: 14px; line-height: 1.7; margin-bottom: 15px;">${textoExpandido.contextoAtual}</p>
+          </div>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+            <div style="background: rgba(62, 10, 41, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #3e0a29;">
+              <h5 style="color: #3e0a29; margin-bottom: 8px; font-size: 14px;">📚 APRENDIZADO</h5>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.aprendizado.substring(0, 120)}...</p>
+            </div>
+            <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+              <h5 style="color: #f0aa53; margin-bottom: 8px; font-size: 14px;">💕 AMOR</h5>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.amor.substring(0, 120)}...</p>
+            </div>
+            <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+              <h5 style="color: #f0aa53; margin-bottom: 8px; font-size: 14px;">🙏 ESPIRITUAL</h5>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.espiritual.substring(0, 120)}...</p>
+            </div>
+            <div style="background: rgba(178, 209, 177, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #b2d1b1;">
+              <h5 style="color: #b2d1b1; margin-bottom: 8px; font-size: 14px;">💰 FINANCEIRO</h5>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.financeiro.substring(0, 120)}...</p>
+            </div>
+            <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+              <h5 style="color: #f0aa53; margin-bottom: 8px; font-size: 14px;">💼 TRABALHO</h5>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.trabalho.substring(0, 120)}...</p>
+            </div>
+            <div style="background: rgba(178, 209, 177, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #b2d1b1;">
+              <h5 style="color: #b2d1b1; margin-bottom: 8px; font-size: 14px;">👨‍👩‍👧‍👦 FAMÍLIA</h5>
+              <p style="color: #f2eaff; font-size: 12px; line-height: 1.5;">${textoExpandido.familia.substring(0, 120)}...</p>
+            </div>
+          </div>
+          
+          <div style="text-align: center; margin-top: 20px;">
+            <button onclick="window.open('arcanos/maiores/${arcanoInfo.nome.toLowerCase().replace(/\s+/g, '_').replace('ã', 'a').replace('ç', 'c')}.html', '_blank')" 
+                    style="background: linear-gradient(135deg, #f0aa53 0%, #f0aa53 100%); color: #0b1836; border: none; padding: 12px 25px; border-radius: 25px; font-weight: bold; font-size: 14px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3); transition: all 0.3s ease;"
+                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(255, 215, 0, 0.4)'"
+                    onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(255, 215, 0, 0.3)'">
+              📖 LER ANÁLISE COMPLETA DO ARCANO
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  // Pirâmide Visual
+  html += `
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #3e0a29; margin-bottom: 30px;">
+      <h3 style="color: #f2eaff; text-align: center; margin-bottom: 20px;">PIRÂMIDE CABALÍSTICA - CICLO DE 90 ANOS</h3>
+      <div style="font-family: monospace; text-align: center; color: #f2eaff; font-size: 12px; line-height: 1.6; background: rgba(62, 10, 41, 0.1); padding: 20px; border-radius: 10px; overflow-x: auto; min-width: 100%;">
+        ${formatarPiramideVisual(piramide, sequenciasNegativas)}
+      </div>
+    </div>
+  `;
+  
+  // IDADES DOS ARCANOS NO CICLO DE 90 ANOS
+  html += `
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #3e0a29; margin-top: 30px;">
+      <h3 style="color: #f2eaff; text-align: center; margin-bottom: 30px;">🔮 IDADES DOS ARCANOS NO CICLO DE 90 ANOS</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px;">
+        ${gerarArcanosCompletos()}
+      </div>
+    </div>
+  `;
+  
+  // Sequências Negativas Expandidas
+  if (sequenciasNegativas.length > 0) {
+    html += `
+      <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #f0aa53; margin-top: 30px;">
+        <h3 style="color: #f0aa53; text-align: center; margin-bottom: 20px;">⚠️ SEQUÊNCIAS NEGATIVAS DETECTADAS NA PIRÂMIDE</h3>
+        <p style="color: #f2eaff; text-align: center; margin-bottom: 30px; font-style: italic;">Padrões que requerem atenção especial e transformação consciente</p>
+        ${sequenciasNegativas.map(seq => gerarSequenciaNegativaExpandida(seq)).join('')}
+      </div>
+    `;
+  }
+  
+  // Desafios Cármicos Expandidos
+  if (desafiosCarmicos.length > 0) {
+    html += `
+      <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #f0aa53; margin-top: 30px;">
+        <h3 style="color: #f0aa53; text-align: center; margin-bottom: 20px;">🔥 DESAFIOS CÁRMICOS IDENTIFICADOS</h3>
+        <p style="color: #f2eaff; text-align: center; margin-bottom: 30px; font-style: italic;">Lições de vida que sua alma escolheu desenvolver nesta encarnação</p>
+        ${desafiosCarmicos.map((desafio, index) => gerarDesafioCarmico(desafio, index + 1)).join('')}
+      </div>
+    `;
+  }
+  
+  // Correspondências Cabalísticas
+  html += `
+    <div class="resultado-card" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); border: 2px solid #3e0a29; margin-top: 30px;">
+      <h3 style="color: #f2eaff; text-align: center; margin-bottom: 20px;">🔮 CORRESPONDÊNCIAS CABALÍSTICAS</h3>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+        <div style="background: rgba(62, 10, 41, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h4 style="color: #f0aa53; margin-bottom: 10px;">🌙 INFLUÊNCIA LUNAR</h4>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.6;">SuaSua pirâmide revela conexões profundas com os ciclos lunares e as energias receptivas do universo. A influência lunar em sua jornada numerológica indica uma forte conexão com os ritmos naturais, a intuición desenvolvida e a capacidade de navegar pelas dimensões mais sutis da realidade. Esta energia favorece o desenvolvimento de habilidades psíquicas, a compreensão dos mistérios femininos sagrados e a capacidade de curar através da sensibilidade emocional refinada.</p>
+        </div>
+        <div style="background: rgba(62, 10, 41, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h4 style="color: #f0aa53; margin-bottom: 10px;">☀️ INFLUÊNCIA SOLAR</h4>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.6;">Os números dominantes conectam você com as energias solares de manifestação e liderança. A influência solar em sua configuração numerológica indica um forte potencial para liderança consciente, capacidade de manifestar projetos ambiciosos e habilidade para inspirar outros através do exemplo pessoal. Esta energia favorece o desenvolvimento da autoridade espiritual, a capacidade de tomar decisões importantes com sabedoria e o poder de transformar visões em realidade concreta.</p>
+        </div>
+      </div>
+      
+      <div style="background: rgba(242, 234, 255, 0.1); padding: 20px; border-radius: 10px; border: 1px solid #f2eaff;">
+        <h4 style="color: #f2eaff; text-align: center; margin-bottom: 15px;">🌌 SÍNTESE FINAL</h4>
+        <p style="color: #f2eaff; font-size: 14px; line-height: 1.8; text-align: center;">Sua jornada numerológica revela um caminho único de evolução espiritual baseado na antiga sabedoria caldeia. Cada número em sua pirâmide representa uma faceta de sua alma em desenvolvimento, conectando-o com as vibrações cósmicas que guiam sua evolução consciente. Esta análise cabalística, fundamentada em mais de 4.000 anos de observações astronômicas e vibrações sonoras documentadas pelos antigos sábios da Babilônia, oferece um mapa sagrado para sua transformação consciente. O sistema caldeu, ao considerar o número 9 como sagrado e não asigná-lo a nenhuma letra, reconhece a completude espiritual e a perfeição divina que transcende a experiência humana ordinária, guiando-o em direção à realização de seu propósito cósmico maior."</p>
+      </div>
+    </div>
+  `;
+  
+  resultadosDiv.innerHTML = html;
+  resultadosDiv.classList.remove("hidden");
+  resultadosDiv.scrollIntoView({ behavior: "smooth" });
+}
+
+// Funções auxiliares para a Pirâmide Cabalística
+function calcularPiramideNumerologica(nome) {
+  // Converter nome em números usando numerologia caldeia
+  const numerosIniciais = nome.toUpperCase().split('').map(letra => {
+    const codigo = letra.charCodeAt(0);
+    if (codigo >= 65 && codigo <= 90) {
+      return ((codigo - 65) % 9) + 1;
+    }
+    return 0;
+  }).filter(n => n > 0);
+  
+  // Calcular pirâmide com somas adjacentes corretas
+  const piramide = [numerosIniciais];
+  let linhaAtual = numerosIniciais;
+  
+  // Continuar até chegar a um único número
+  while (linhaAtual.length > 1) {
+    const novaLinha = [];
+    
+    // Somar números adjacentes e reduzir a um dígito
+    for (let i = 0; i < linhaAtual.length - 1; i++) {
+      let soma = linhaAtual[i] + linhaAtual[i + 1];
+      
+      // Reduzir a um dígito: continuar somando dígitos até chegar a um único dígito
+      while (soma > 9) {
+        soma = Math.floor(soma / 10) + (soma % 10);
+      }
+      
+      novaLinha.push(soma);
+    }
+    
+    piramide.push(novaLinha);
+    linhaAtual = novaLinha;
+  }
+  
+  return piramide;
+}
+
+function calcularArcanoRegente(idade) {
+  // Cálculo cabalístico baseado na escola francesa de Jodorowsky
+  // Ciclo de 90 anos dividido em 4 períodos de 22,5 anos cada
+  const cicloCompleto = 90;
+  const idadeNoCiclo = idade % cicloCompleto;
+  
+  // Determinar o arcano baseado na posição no ciclo de 90 anos
+  let numeroArcano;
+  if (idadeNoCiclo <= 22) {
+    numeroArcano = Math.floor(idadeNoCiclo);
+  } else if (idadeNoCiclo <= 44) {
+    numeroArcano = Math.floor(idadeNoCiclo - 22);
+  } else if (idadeNoCiclo <= 66) {
+    numeroArcano = Math.floor(idadeNoCiclo - 44);
+  } else {
+    numeroArcano = Math.floor(idadeNoCiclo - 66);
+  }
+  
+  // Ajustar para o range 0-21 dos arcanos maiores
+  if (numeroArcano > 21) numeroArcano = numeroArcano % 22;
+  
+  const arcanos = {
+    0: { 
+      nome: "O Louco", 
+      significado: "Energia primordial, potencial infinito, jornada espiritual", 
+      influencia: "Momento de liberdade absoluta e conexão com o potencial criativo universal. Período de renovação e novos começos baseados na sabedoria interior.",
+      jodorowsky: "O Louco representa a energia pura do cosmos, não domesticada pela sociedade. É o momento de seguir a intuição além da lógica.",
+      imagem: "assets/img/cartas/0TheFool.jpg"
+    },
+    1: { 
+      nome: "O Mago", 
+      significado: "Manifestação consciente, poder de criação, domínio dos elementos", 
+      influencia: "Período de grande capacidade de materialização de projetos e sonhos. Fase de liderança e iniciativa criativa.",
+      jodorowsky: "O Mago é aquele que compreende que a realidade pode ser moldada pela vontade consciente. É o arquiteto de sua própria existência.",
+      imagem: "assets/img/cartas/1TheMagician.jpg"
+    },
+    2: { 
+      nome: "A Sacerdotisa", 
+      significado: "Sabedoria oculta, intuição profunda, conhecimento esotérico", 
+      influencia: "Fase de desenvolvimento da percepção sutil e conexão com os mistérios da vida. Período de aprendizado interior.",
+      jodorowsky: "A Sacerdotisa guarda os segredos do inconsciente coletivo. É o momento de ouvir a voz interior que transcende a razão.",
+      imagem: "assets/img/cartas/2TheHighPriestess.jpg"
+    },
+    3: { 
+      nome: "A Imperatriz", 
+      significado: "Criatividade abundante, fertilidade, manifestação material", 
+      influencia: "Tempo de grande fertilidade criativa e abundância material. Período de crescimento e expansão em todos os níveis.",
+      jodorowsky: "A Imperatriz é a Grande Mãe que nutre toda criação. É o momento de dar forma concreta aos impulsos criativos.",
+      imagem: "assets/img/cartas/3TheEmpress.jpg"
+    },
+    4: { 
+      nome: "O Imperador", 
+      significado: "Estrutura sólida, autoridade consciente, organização", 
+      influencia: "Período de estabelecimento de bases sólidas e exercício de liderança responsável. Fase de construção duradoura.",
+      jodorowsky: "O Imperador representa o poder terreno usado com sabedoria. É o momento de construir estruturas que sirvam ao bem comum.",
+      imagem: "assets/img/cartas/4TheEmperor.jpg"
+    },
+    5: { 
+      nome: "O Papa", 
+      significado: "Ensino sagrado, tradição espiritual, ponte entre mundos", 
+      influencia: "Fase de transmissão de conhecimento e conexão com tradições ancestrais. Período de ensino e aprendizado espiritual.",
+      jodorowsky: "O Papa é o mediador entre o humano e o divino. É o momento de compartilhar a sabedoria adquirida com humildade.",
+      imagem: "assets/img/cartas/5TheHierophant.jpg"
+    },
+    6: { 
+      nome: "Os Enamorados", 
+      significado: "União sagrada, escolhas conscientes, harmonia dual", 
+      influencia: "Momento de decisões importantes sobre relacionamentos e parcerias. Período de integração de polaridades.",
+      jodorowsky: "Os Enamorados representam a escolha consciente do amor sobre o medo. É o momento de unir opostos em harmonia.",
+      imagem: "assets/img/cartas/6TheLovers.jpg"
+    },
+    7: { 
+      nome: "O Carro", 
+      significado: "Triunfo através da determinação, movimento direcionado", 
+      influencia: "Período de conquistas através da força de vontade disciplinada. Fase de movimento e progresso acelerado.",
+      jodorowsky: "O Carro simboliza a vitória obtida através do domínio de forças opostas. É o momento de avançar com determinação.",
+      imagem: "assets/img/cartas/7TheChariot.jpg"
+    },
+    8: { 
+      nome: "A Justiça", 
+      significado: "Equilíbrio cósmico, lei universal, ajuste kármico", 
+      influencia: "Fase de ajustes necessários e busca por equilíbrio em todas as áreas da vida. Período de colheita do que foi plantado.",
+      jodorowsky: "A Justiça não é punição, mas restauração do equilíbrio universal. É o momento de aceitar as consequências com sabedoria.",
+      imagem: "assets/img/cartas/8Strength.jpg"
+    },
+    9: { 
+      nome: "O Eremita", 
+      significado: "Sabedoria interior, busca solitária, iluminação", 
+      influencia: "Tempo de reflexão profunda e busca interior. Período de isolamento necessário para encontrar a própria luz.",
+      jodorowsky: "O Eremita carrega a lanterna da consciência nas trevas da ignorância. É o momento de buscar respostas dentro de si.",
+      imagem: "assets/img/cartas/9TheHermit.jpg"
+    },
+    10: { 
+      nome: "A Roda da Fortuna", 
+      significado: "Ciclos naturais, destino em movimento, mudanças cósmicas", 
+      influencia: "Momento de grandes mudanças e novos ciclos. Período de transformação guiada pelo destino superior.",
+      jodorowsky: "A Roda da Fortuna nos lembra que tudo é transitório. É o momento de fluir com as mudanças cósmicas.",
+      imagem: "assets/img/cartas/10WheelOfFortune.jpg"
+    },
+    11: { 
+      nome: "A Força", 
+      significado: "Domínio interior, coragem espiritual, integração de instintos", 
+      influencia: "Período de desenvolvimento da verdadeira força interior. Fase de integração harmoniosa entre instinto e consciência.",
+      jodorowsky: "A Força não é violência, mas a capacidade de integrar o animal interior com amor. É o momento de domesticar o ego.",
+      imagem: "assets/img/cartas/11Justice.jpg"
+    },
+    12: { 
+      nome: "O Enforcado", 
+      significado: "Sacrifício consciente, nova perspectiva, suspensão", 
+      influencia: "Fase de pausa necessária e mudança radical de perspectiva. Período de sacrifício que leva à iluminação.",
+      jodorowsky: "O Enforcado escolhe voluntariamente a suspensão para ver o mundo de forma diferente. É o momento de soltar o controle.",
+      imagem: "assets/img/cartas/12TheHangedMan.jpg"
+    },
+    13: { 
+      nome: "A Morte", 
+      significado: "Transformação radical, renascimento, fim de ciclos", 
+      influencia: "Momento de grandes transformações e morte de aspectos obsoletos. Período de renascimento espiritual.",
+      jodorowsky: "A Morte é a grande transformadora que liberta do que já não serve. É o momento de morrer para renascer.",
+      imagem: "assets/img/cartas/13Death.jpg"
+    },
+    14: { 
+      nome: "A Temperança", 
+      significado: "Alquimia interior, moderação sábia, cura", 
+      influencia: "Período de harmonização e cura através da moderação. Fase de integração alquímica de elementos opostos.",
+      jodorowsky: "A Temperança é a arte de misturar elementos opostos para criar algo novo. É o momento da alquimia interior.",
+      imagem: "assets/img/cartas/14Temperance.jpg"
+    },
+    15: { 
+      nome: "O Diabo", 
+      significado: "Confronto com sombras, libertação de ilusões", 
+      influencia: "Fase de confronto com limitações e padrões destrutivos. Período de libertação de amarras inconscientes.",
+      jodorowsky: "O Diabo mostra as correntes que nós mesmos criamos. É o momento de reconhecer e quebrar as próprias limitações.",
+      imagem: "assets/img/cartas/15TheDevil.jpg"
+    },
+    16: { 
+      nome: "A Torre", 
+      significado: "Ruptura necessária, revelação súbita, libertação", 
+      influencia: "Momento de mudanças súbitas e revelações que destroem estruturas obsoletas. Período de libertação através da crise.",
+      jodorowsky: "A Torre destrói o que foi construído sobre bases falsas. É o momento de aceitar a destruição como libertação.",
+      imagem: "assets/img/cartas/16TheTower.jpg"
+    },
+    17: { 
+      nome: "A Estrela", 
+      significado: "Esperança renovada, inspiração divina, cura", 
+      influencia: "Período de renovação e conexão com a inspiração superior. Fase de cura e esperança após as provações.",
+      jodorowsky: "A Estrela oferece a água da vida após a destruição da Torre. É o momento de renovar a fé e a esperança.",
+      imagem: "assets/img/cartas/17TheStar.jpg"
+    },
+    18: { 
+      nome: "A Lua", 
+      significado: "Exploração do inconsciente, ilusões, intuição", 
+      influencia: "Fase de exploração do mundo interior e confronto com ilusões. Período de desenvolvimento da intuição profunda.",
+      jodorowsky: "A Lua ilumina o caminho através das ilusões do inconsciente. É o momento de navegar pelas águas da psique.",
+      imagem: "assets/img/cartas/18TheMoon.jpg"
+    },
+    19: { 
+      nome: "O Sol", 
+      significado: "Iluminação plena, alegria, realização", 
+      influencia: "Momento de realização plena e alegria genuína. Período de iluminação e clareza absoluta.",
+      jodorowsky: "O Sol representa a consciência plena que dissipa todas as sombras. É o momento da realização total.",
+      imagem: "assets/img/cartas/19TheSun.jpg"
+    },
+    20: { 
+      nome: "O Julgamento", 
+      significado: "Despertar espiritual, chamado superior, renascimento", 
+      influencia: "Período de despertar espiritual e resposta ao chamado superior. Fase de renascimento em um nível mais elevado.",
+      jodorowsky: "O Julgamento é o chamado para despertar para uma realidade superior. É o momento de responder ao chamado divino.",
+      imagem: "assets/img/cartas/20Judgement.jpg"
+    },
+    21: { 
+      nome: "O Mundo", 
+      significado: "Completude total, realização cósmica, unidade", 
+      influencia: "Fase de conclusão e realização plena de um ciclo evolutivo. Período de integração total e harmonia cósmica.",
+      jodorowsky: "O Mundo representa a dança cósmica da existência realizada. É o momento da união total com o universo."
+    }
+  };
+  
+  return arcanos[numeroArcano] || arcanos[0];
+}
+
+function obterInformacaoArcano(numeroArcano) {
+  const arcanos = [
+    { numero: 0, nome: "O Louco", imagem: "assets/img/cartas/0TheFool.jpg" },
+    { numero: 1, nome: "O Mago", imagem: "assets/img/cartas/1TheMagician.jpg" },
+    { numero: 2, nome: "A Sacerdotisa", imagem: "assets/img/cartas/2TheHighPriestess.jpg" },
+    { numero: 3, nome: "A Imperatriz", imagem: "assets/img/cartas/3TheEmpress.jpg" },
+    { numero: 4, nome: "O Imperador", imagem: "assets/img/cartas/4TheEmperor.jpg" },
+    { numero: 5, nome: "O Papa", imagem: "assets/img/cartas/5TheHierophant.jpg" },
+    { numero: 6, nome: "Os Enamorados", imagem: "assets/img/cartas/6TheLovers.jpg" },
+    { numero: 7, nome: "O Carro", imagem: "assets/img/cartas/7TheChariot.jpg" },
+    { numero: 8, nome: "A Força", imagem: "assets/img/cartas/8Strength.jpg" },
+    { numero: 9, nome: "O Eremita", imagem: "assets/img/cartas/9TheHermit.jpg" },
+    { numero: 10, nome: "A Roda da Fortuna", imagem: "assets/img/cartas/10WheelOfFortune.jpg" },
+    { numero: 11, nome: "A Justiça", imagem: "assets/img/cartas/11Justice.jpg" },
+    { numero: 12, nome: "O Enforcado", imagem: "assets/img/cartas/12TheHangedMan.jpg" },
+    { numero: 13, nome: "A Morte", imagem: "assets/img/cartas/13Death.jpg" },
+    { numero: 14, nome: "A Temperança", imagem: "assets/img/cartas/14Temperance.jpg" },
+    { numero: 15, nome: "O Diabo", imagem: "assets/img/cartas/15TheDevil.jpg" },
+    { numero: 16, nome: "A Torre", imagem: "assets/img/cartas/16TheTower.jpg" },
+    { numero: 17, nome: "A Estrela", imagem: "assets/img/cartas/17TheStar.jpg" },
+    { numero: 18, nome: "A Lua", imagem: "assets/img/cartas/18TheMoon.jpg" },
+    { numero: 19, nome: "O Sol", imagem: "assets/img/cartas/19TheSun.jpg" },
+    { numero: 20, nome: "O Julgamento", imagem: "assets/img/cartas/20Judgement.jpg" },
+    { numero: 21, nome: "O Mundo", imagem: "assets/img/cartas/21TheWorld.jpg" }
+  ];
+  
+  return arcanos[numeroArcano] || arcanos[0];
+}
+
+function detectarSequenciasNegativas(piramide) {
+  // Detectar sequências repetitivas
+  const sequencias = [];
+  const numeroStr = piramide.join('');
+  
+  // Procurar por sequências de 3 números iguais
+  for (let i = 0; i <= numeroStr.length - 3; i++) {
+    const seq = numeroStr.substr(i, 3);
+    if (seq[0] === seq[1] && seq[1] === seq[2]) {
+      sequencias.push(seq);
+    }
+  }
+  
+  return [...new Set(sequencias)];
+}
+
+function calcularDesafiosCarmicos(nome) {
+  const numerosPresentes = new Set();
+  nome.toUpperCase().split('').forEach(letra => {
+    const codigo = letra.charCodeAt(0);
+    if (codigo >= 65 && codigo <= 90) {
+      numerosPresentes.add(((codigo - 65) % 9) + 1);
+    }
+  });
+  
+  const desafios = [];
+  for (let i = 1; i <= 9; i++) {
+    if (!numerosPresentes.has(i)) {
+      desafios.push(i);
+    }
+  }
+  
+  return desafios;
+}
+
+function formatarPiramideVisual(piramideCompleta, sequenciasNegativas = []) {
+  // Criar uma pirâmide visual completa e responsiva - formato tradicional (grande em cima)
+  let piramide = '';
+  
+  // Iterar por cada linha da pirâmide calculada
+  for (let i = 0; i < piramideCompleta.length; i++) {
+    const linha = piramideCompleta[i];
+    const espacos = '&nbsp;'.repeat(Math.max(0, i * 2));
+    let linhaFormatada = linha.join(' &nbsp; ');
+    
+    // Destacar sequências negativas com sublinhado (apenas na primeira linha)
+    if (i === 0) {
+      sequenciasNegativas.forEach(seq => {
+        const regex = new RegExp(seq.split('').join(' &nbsp; '), 'g');
+        linhaFormatada = linhaFormatada.replace(regex, `<u style="color: #f0aa53; text-decoration: underline;">${seq.split('').join(' &nbsp; ')}</u>`);
+      });
+    }
+    
+    piramide += `<div style="white-space: nowrap; overflow: visible;">${espacos}${linhaFormatada}</div>`;
+  }
+  
+  return piramide;
+}
+
+// Função para obter texto expandido do arcano
+function obterTextoExpandidoArcano(nomeArcano) {
+  const textosExpandidos = {
+    "O Louco": {
+      contextoAtual: "Você está vivenciando um momento de renovação profunda e liberdade espiritual. Este é um período onde as convenções sociais perdem força e sua alma busca expressar sua verdadeira essência. A energia do Louco traz uma sensação de leveza e possibilidades infinitas, convidando-o a confiar na sabedoria do coração e seguir caminhos não convencionais.",
+      aprendizado: "O principal aprendizado deste período é compreender que a verdadeira sabedoria vem da experiência direta, não apenas do conhecimento teórico. Você está sendo convidado a questionar crenças limitantes e abraçar uma perspectiva mais ampla da vida. A lição é aprender a equilibrar a espontaneidade com a responsabilidade.",
+      amor: "No amor, este é um momento de renovação e autenticidade. Relacionamentos baseados em convenções sociais podem passar por transformações. Para solteiros, é um período propício para encontros inesperados e conexões genuínas. Para quem está em relacionamento, é hora de redescobrir a espontaneidade e a aventura na parceria.",
+      espiritual: "Espiritualmente, você está em um momento de despertar e expansão de consciência. Práticas espirituais não convencionais podem atrair sua atenção. É um período ideal para meditação, conexão com a natureza e exploração de filosofias orientais. Sua intuição está especialmente aguçada.",
+      financeiro: "Financeiramente, pode haver instabilidade temporária, mas também oportunidades únicas. Evite investimentos baseados apenas na emoção. Este é um momento para repensar sua relação com o dinheiro e buscar formas mais criativas e autênticas de sustento. Confie na providência, mas seja prudente.",
+      trabalho: "No trabalho, você pode sentir necessidade de mudanças significativas. Carreiras criativas ou que permitam maior liberdade de expressão são favorecidas. É possível que surjam oportunidades inesperadas ou que você sinta vontade de empreender. Evite decisões impulsivas importantes.",
+      familia: "Na família, pode haver necessidade de estabelecer limites saudáveis e expressar sua individualidade. Conflitos geracionais podem surgir, mas também oportunidades de cura familiar. É importante manter o respeito mútuo enquanto afirma sua autenticidade."
+    },
+    "A Força": {
+      contextoAtual: "Você está em um período onde sua força interior e capacidade de domínio próprio estão sendo testadas e desenvolvidas. A energia da Força não se refere à força bruta, mas à coragem, determinação e habilidade de transformar desafios em oportunidades através da paciência e perseverança.",
+      aprendizado: "O aprendizado principal é desenvolver a verdadeira força, que vem da integração harmoniosa entre instinto e consciência. Você está aprendendo que a maior vitória é sobre si mesmo - seus medos, impulsos destrutivos e limitações autoimpostas. A compaixão é sua maior ferramenta de transformação.",
+      amor: "No amor, este é um período para demonstrar paciência e compreensão. Relacionamentos podem passar por testes que exigem maturidade emocional. Sua capacidade de amar incondicionalmente e transformar conflitos através da gentileza está sendo desenvolvida. O amor verdadeiro supera todos os obstáculos.",
+      espiritual: "Espiritualmente, você está desenvolvendo a força interior necessária para sua evolução. Práticas que envolvem disciplina, como yoga, meditação regular ou jejuns espirituais, são especialmente benéficas. Sua conexão com animais e a natureza pode trazer insights profundos.",
+      financeiro: "Financeiramente, este é um período que exige disciplina e paciência. Evite gastos impulsivos e mantenha foco em objetivos de longo prazo. Sua perseverança será recompensada, mas é necessário resistir à tentação de soluções rápidas. Investimentos consistentes trazem os melhores resultados.",
+      trabalho: "No trabalho, sua capacidade de lidar com pressão e manter a calma em situações desafiadoras é reconhecida. Você pode ser chamado para liderar equipes ou projetos difíceis. Sua habilidade de motivar outros através do exemplo pessoal está em destaque.",
+      familia: "Na família, você pode precisar demonstrar paciência extra com membros mais difíceis. Sua força emocional serve como âncora para outros em momentos turbulentos. Conflitos familiares são resolvidos através da compreensão e do amor incondicional."
+    }
+  };
+  
+  // Retorna texto padrão se não encontrar o arcano específico
+  return textosExpandidos[nomeArcano] || {
+    contextoAtual: "Este é um período de crescimento e transformação pessoal. Sua energia atual está alinhada com as vibrações deste arcano, trazendo oportunidades únicas de evolução.",
+    aprendizado: "O aprendizado principal deste período envolve desenvolver maior consciência sobre suas capacidades internas e como utilizá-las de forma construtiva.",
+    amor: "No amor, este é um momento de crescimento e aprofundamento das conexões. Seja consigo mesmo ou com outros, o foco está na autenticidade e na verdade emocional.",
+    espiritual: "Espiritualmente, você está em um momento de expansão de consciência e conexão com aspectos mais elevados de sua natureza.",
+    financeiro: "Financeiramente, este período pede equilíbrio entre prudência e confiança. Decisões baseadas em sabedoria interior tendem a ser mais acertadas.",
+    trabalho: "No trabalho, suas qualidades naturais estão sendo reconhecidas e valorizadas. É um momento propício para demonstrar suas habilidades únicas.",
+    familia: "Na família, você pode assumir um papel importante de apoio e orientação. Sua presença traz estabilidade e sabedoria para o grupo familiar."
+  };
+}
+
+function gerarArcanosCompletos() {
+  // Mini textos explicativos para cada arcano
+  const miniTextosArcanos = {
+    0: "Período de novos começos e aventuras. Energia de espontaneidade, fé no futuro e coragem para explorar o desconhecido.",
+    1: "Fase de manifestação e liderança. Desenvolvimento de habilidades práticas, iniciativa pessoal e capacidade de transformar ideias em realidade.",
+    2: "Tempo de intuição e receptividade. Desenvolvimento da sabedoria interior, sensibilidade psíquica e conexão com o feminino sagrado.",
+    3: "Período de criatividade e abundância. Expressão artística, fertilidade criativa e capacidade de nutrir projetos até a manifestação.",
+    4: "Fase de estrutura e autoridade. Estabelecimento de ordem, disciplina, responsabilidade e construção de bases sólidas para o futuro.",
+    5: "Tempo de tradição e ensino. Busca por conhecimento espiritual, orientação de mestres e desenvolvimento da sabedoria tradicional.",
+    6: "Período de escolhas e relacionamentos. Decisões importantes sobre amor, parcerias e alinhamento com valores pessoais autênticos.",
+    7: "Fase de vitória e determinação. Superação de obstáculos através da força de vontade, foco direcionado e controle das energias pessoais.",
+    8: "Tempo de equilíbrio e justiça. Período de colher consequências de ações passadas, busca por fairness e desenvolvimento do discernimento.",
+    9: "Fase de introspecção e sabedoria. Busca interior, desenvolvimento espiritual profundo e conexão com a luz da consciência superior.",
+    10: "Período de mudanças e oportunidades. Ciclos que se completam, sorte que muda e necessidade de adaptação às transformações da vida.",
+    11: "Tempo de coragem interior e domínio. Desenvolvimento da força espiritual, controle dos instintos e expressão da verdadeira natureza.",
+    12: "Fase de sacrifício e nova perspectiva. Período de pausa, reflexão profunda e ganho de sabedoria através da mudança de ponto de vista.",
+    13: "Tempo de transformação profunda. Final de ciclos importantes, renascimento espiritual e liberação de padrões que não servem mais.",
+    14: "Período de moderação e cura. Busca por equilíbrio, integração de opostos e desenvolvimento da paciência e temperança.",
+    15: "Fase de confronto com sombras. Período de lidar com vícios, obsessões e padrões limitantes que impedem o crescimento espiritual.",
+    16: "Tempo de revelações súbitas. Quebra de estruturas obsoletas, insights transformadores e liberação de ilusões que limitavam o crescimento.",
+    17: "Período de esperança e inspiração. Conexão com propósito superior, desenvolvimento da fé e recebimento de orientação espiritual clara.",
+    18: "Fase de mistérios e ilusões. Período de navegar pelo inconsciente, desenvolver intuição e discernir entre realidade e fantasia.",
+    19: "Tempo de alegria e realização. Período de sucesso, vitalidade, clareza mental e expressão autêntica da personalidade radiante.",
+    20: "Fase de despertar e julgamento. Período de avaliação da vida, chamado espiritual e preparação para uma nova etapa evolutiva.",
+    21: "Tempo de completude e realização. Integração de todas as lições aprendidas, sucesso duradouro e conexão com o propósito cósmico."
+  };
+  
+  const arcanos = [
+    { numero: 1, nome: "O Mago", idades: "0-4, 45-49, 90-94", emoji: "🎭", imagem: "assets/img/cartas/1TheMagician.jpg", arquivo: "arcanos/maiores/o_mago.html" },
+    { numero: 2, nome: "A Sacerdotisa", idades: "5-8, 50-53, 95-98", emoji: "🌙", imagem: "assets/img/cartas/2TheHighPriestess.jpg", arquivo: "arcanos/maiores/a_sacerdotisa.html" },
+    { numero: 3, nome: "A Imperatriz", idades: "9-12, 54-57", emoji: "👑", imagem: "assets/img/cartas/3TheEmpress.jpg", arquivo: "arcanos/maiores/a_imperatriz.html" },
+    { numero: 4, nome: "O Imperador", idades: "13-16, 58-61", emoji: "⚡", imagem: "assets/img/cartas/4TheEmperor.jpg", arquivo: "arcanos/maiores/o_imperador.html" },
+    { numero: 5, nome: "O Papa", idades: "17-20, 62-65", emoji: "📿", imagem: "assets/img/cartas/5TheHierophant.jpg", arquivo: "arcanos/maiores/o_papa.html" },
+    { numero: 6, nome: "Os Enamorados", idades: "21-24, 66-69", emoji: "💕", imagem: "assets/img/cartas/6TheLovers.jpg", arquivo: "arcanos/maiores/os_enamorados.html" },
+    { numero: 7, nome: "O Carro", idades: "25-28, 70-73", emoji: "🏆", imagem: "assets/img/cartas/7TheChariot.jpg", arquivo: "arcanos/maiores/o_carro.html" },
+    { numero: 8, nome: "A Justiça", idades: "29-32, 74-77", emoji: "⚖️", imagem: "assets/img/cartas/8Justice.jpg", arquivo: "arcanos/maiores/a_justica.html" },
+    { numero: 9, nome: "O Eremita", idades: "33-36, 78-81", emoji: "🕯️", imagem: "assets/img/cartas/9TheHermit.jpg", arquivo: "arcanos/maiores/o_eremita.html" },
+    { numero: 10, nome: "A Roda da Fortuna", idades: "37-40, 82-85", emoji: "🎡", imagem: "assets/img/cartas/10TheWheelofFortune.jpg", arquivo: "arcanos/maiores/a_roda_da_fortuna.html" },
+    { numero: 11, nome: "A Força", idades: "41-44, 86-89", emoji: "🦁", imagem: "assets/img/cartas/11Strength.jpg", arquivo: "arcanos/maiores/a_forca.html" },
+    { numero: 12, nome: "O Enforcado", idades: "45-48, 90-93", emoji: "🙃", imagem: "assets/img/cartas/12TheHangedMan.jpg", arquivo: "arcanos/maiores/o_enforcado.html" },
+    { numero: 13, nome: "A Morte", idades: "49-52, 94-97", emoji: "💀", imagem: "assets/img/cartas/13Death.jpg", arquivo: "arcanos/maiores/a_morte.html" },
+    { numero: 14, nome: "A Temperança", idades: "53-56, 98-101", emoji: "🏺", imagem: "assets/img/cartas/14Temperance.jpg", arquivo: "arcanos/maiores/a_temperanca.html" },
+    { numero: 15, nome: "O Diabo", idades: "57-60, 102-105", emoji: "😈", imagem: "assets/img/cartas/15TheDevil.jpg", arquivo: "arcanos/maiores/o_diabo.html" },
+    { numero: 16, nome: "A Torre", idades: "61-64, 106-109", emoji: "🗼", imagem: "assets/img/cartas/16TheTower.jpg", arquivo: "arcanos/maiores/a_torre.html" },
+    { numero: 17, nome: "A Estrela", idades: "65-68, 110-113", emoji: "⭐", imagem: "assets/img/cartas/17TheStar.jpg", arquivo: "arcanos/maiores/a_estrela.html" },
+    { numero: 18, nome: "A Lua", idades: "69-72, 114-117", emoji: "🌕", imagem: "assets/img/cartas/18TheMoon.jpg", arquivo: "arcanos/maiores/a_lua.html" },
+    { numero: 19, nome: "O Sol", idades: "73-76, 118-121", emoji: "☀️", imagem: "assets/img/cartas/19TheSun.jpg", arquivo: "arcanos/maiores/o_sol.html" },
+    { numero: 20, nome: "O Julgamento", idades: "77-80, 122-125", emoji: "📯", imagem: "assets/img/cartas/20Judgement.jpg", arquivo: "arcanos/maiores/o_julgamento.html" },
+    { numero: 21, nome: "O Mundo", idades: "81-84, 126-129", emoji: "🌍", imagem: "assets/img/cartas/21TheWorld.jpg", arquivo: "arcanos/maiores/o_mundo.html" },
+    { numero: 0, nome: "O Louco", idades: "85-88, 130-133", emoji: "🀏", imagem: "assets/img/cartas/0TheFool.jpg", arquivo: "arcanos/maiores/o_louco.html" }
+  ];
+
+  return arcanos.map(arcano => `
+    <div style="background: rgba(62, 10, 41, 0.15); border: 1px solid #3e0a29; border-radius: 15px; padding: 20px; text-align: center; transition: transform 0.3s ease, box-shadow 0.3s ease;" 
+         onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 25px rgba(157, 78, 221, 0.3)';" 
+         onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+      
+      <div style="margin-bottom: 15px;">
+        <img src="${arcano.imagem}" alt="${arcano.nome}" style="width: 80px; height: 120px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.3);">
+      </div>
+      
+      <h4 style="color: #f0aa53; margin-bottom: 10px; font-size: 18px;">Arcano ${arcano.numero}</h4>
+      <h3 style="color: #f2eaff; margin-bottom: 15px; font-size: 20px;">${arcano.nome}</h3>
+      
+      <div style="background: rgba(240, 170, 83, 0.1); padding: 10px; border-radius: 8px; margin-bottom: 15px;">
+        <p style="color: #f2eaff; font-size: 14px; margin: 0; margin-bottom: 8px;">Idades ${arcano.idades}</p>
+        <p style="color: #b2d1b1; font-size: 12px; margin: 0; line-height: 1.4; font-style: italic;">${miniTextosArcanos[arcano.numero] || 'Texto em desenvolvimento.'}</p>
+      </div>
+      
+      <button onclick="window.open('${arcano.arquivo}', '_blank')" 
+              style="background: linear-gradient(135deg, #f0aa53 0%, #f0aa53 100%); color: #0b1836; border: none; padding: 8px 16px; border-radius: 20px; font-size: 12px; font-weight: bold; cursor: pointer; transition: all 0.3s ease;"
+              onmouseover="this.style.transform='scale(1.05)';" 
+              onmouseout="this.style.transform='scale(1)';">
+        📖 VER MAIS SOBRE ESTE ARCANO
+      </button>
+    </div>
+  `).join('');
+}
+
+function gerarSequenciaNegativaExpandida(sequencia) {
+  return `
+    <div style="background: rgba(240, 170, 83, 0.1); border: 1px solid #f0aa53; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+      <h4 style="color: #f0aa53; text-align: center; margin-bottom: 20px; font-size: 22px;">Sequência ${sequencia}</h4>
+      
+      <div style="background: rgba(62, 10, 41, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #f0aa53;">
+        <h5 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">📜 SIGNIFICADO PROFUNDO</h5>
+        <p style="color: #f2eaff; font-size: 14px; line-height: 1.8; text-align: justify;">Esta sequência de números repetidos indica um padrão energético que precisa ser trabalhado conscientemente. Representa uma lição cármica importante em sua jornada espiritual, conectada aos mistérios da árvore da vida cabalística.</p>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+        <div style="background: rgba(178, 209, 177, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #b2d1b1;">
+          <h5 style="color: #b2d1b1; margin-bottom: 10px;">✅ PONTOS POSITIVOS</h5>
+          <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+            <li>Oportunidade de crescimento espiritual acelerado</li>
+            <li>Desenvolvimento da consciência superior</li>
+            <li>Fortalecimento do caráter através dos desafios</li>
+            <li>Conexão com energias ancestrais de cura</li>
+          </ul>
+        </div>
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">⚠️ PONTOS NEGATIVOS</h5>
+          <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+            <li>Tendência à repetição de padrões limitantes</li>
+            <li>Resistência à mudança e transformação</li>
+            <li>Bloqueios energéticos nos chakras superiores</li>
+            <li>Dificuldade em integrar lições cármicas</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">🚫 O QUE EVITAR</h5>
+          <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+            <li>Ignorar os sinais do universo</li>
+            <li>Manter-se em zona de conforto</li>
+            <li>Negar a necessidade de mudança</li>
+            <li>Culpar circunstâncias externas</li>
+          </ul>
+        </div>
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">🛠️ O QUE TRABALHAR</h5>
+          <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+            <li>Meditação e introspecção diária</li>
+            <li>Terapias de cura energética</li>
+            <li>Estudo da numerologia sagrada</li>
+            <li>Práticas de perdão e libertação</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+        <div style="background: rgba(240, 170, 83, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+          <h5 style="color: #f0aa53; margin-bottom: 10px;">🌟 COMO SUPERAR</h5>
+          <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+            <li>Aceitar conscientemente os desafios como oportunidades</li>
+            <li>Buscar orientação espiritual qualificada</li>
+            <li>Praticar gratidão pelas lições recebidas</li>
+            <li>Desenvolver paciência e perseverança</li>
+          </ul>
+        </div>
+        <div style="background: rgba(242, 234, 255, 0.1); padding: 15px; border-radius: 10px; border-left: 4px solid #f2eaff;">
+          <h5 style="color: #f2eaff; margin-bottom: 10px;">✨ TRANSFORMAÇÃO ESPERADA</h5>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.6;">Através do trabalho consciente com esta sequência, você desenvolverá maior equilíbrio espiritual, sabedoria interior e capacidade de navegar pelos desafios da vida com graça e propósito. Esta é uma oportunidade única de acelerar sua evolução espiritual.</p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function gerarDesafioCarmico(numeroDesafio, indice) {
+  const desafios = {
+    1: {
+      titulo: "A Lição da Liderança Consciente e Independência Saudável",
+      significado: "O desafio cármico do número 1 representa uma das lições mais fundamentais da evolução espiritual humana: aprender a equilibrar a necessidade natural de liderança e independência com a sabedoria da colaboração e humildade. Pessoas com este desafio frequentemente chegam a esta vida carregando memórias inconscientes de experiências passadas onde o poder foi mal utilizado, onde a liderança se transformou em dominação, ou onde a independência genuína não significou rejeição de toda forma de apoio ou colaboração, mas sim a capacidade de escolher conscientemente quando liderar e quando seguir, quando agir sozinho e quando buscar parceria.",
+      licoes: [
+        "Liderança Servidora: Aprender que verdadeiro poder serve ao bem coletivo, não a interesses pessoais",
+        "Humildade Ativa: Desenvolver capacidade de reconhecer limitações sem diminuir autoconfiança",
+        "Colaboração Consciente: Equilibrar independência com capacidade de trabalhar harmoniosamente com outros",
+        "Autoridade Inspiradora: Transformar tendências autoritárias em capacidade de motivar e inspirar"
+      ],
+      sinais: [
+        "Necessidade compulsiva de sempre ter razão ou estar no controle de situações",
+        "Dificuldade em aceitar feedback construtivo ou reconhecer erros e limitações",
+        "Tendência a criar conflitos desnecessários para estabelecer dominância",
+        "Isolamento social causado por comportamentos autoritários ou individualismo excessivo"
+      ],
+      estrategias: [
+        "Praticar escuta ativa e genuína interesse pelas perspectivas de outras pessoas",
+        "Desenvolver projetos colaborativos onde o sucesso depende do trabalho em equipe",
+        "Cultivar humildade através de práticas de gratidão e reconhecimento das contribuições alheias",
+        "Buscar mentoria ou coaching para desenvolver habilidades de liderança consciente"
+      ]
+    },
+    7: {
+      titulo: "A Jornada da Sabedoria Interior e Conexão Espiritual",
+      significado: "O desafio cármico do número 7 representa a necessidade de desenvolver uma conexão profunda com a sabedoria interior e os mistérios espirituais da existência. Este desafio surge quando a alma precisa aprender a equilibrar o mundo material com as dimensões mais sutis da realidade, desenvolvendo intuição, discernimento espiritual e a capacidade de encontrar significado profundo nas experiências da vida. Frequentemente, pessoas com este desafio chegam a esta encarnação com uma tendência a se perder em superficialidades ou a rejeitar completamente o aspecto espiritual da existência, necessitando aprender a integrar ambas as dimensões de forma harmoniosa.",
+      licoes: [
+        "Desenvolvimento da Intuição: Aprender a confiar na sabedoria interior e nos insights espirituais",
+        "Busca por Significado: Desenvolver capacidade de encontrar propósito profundo nas experiências cotidianas",
+        "Discernimento Espiritual: Cultivar habilidade de distinguir entre verdade espiritual e ilusão",
+        "Integração Sagrado-Profano: Equilibrar necessidades materiais com crescimento espiritual"
+      ],
+      sinais: [
+        "Sensação persistente de vazio ou falta de propósito mesmo quando objetivos materiais são alcançados",
+        "Dificuldade em confiar na intuição ou tendência a ignorar sinais e sincronicidades",
+        "Ceticismo excessivo em relação a questões espirituais ou, inversamente, credulidade extrema",
+        "Isolamento emocional causado por dificuldade em encontrar pessoas com interesses similares"
+      ],
+      estrategias: [
+        "Desenvolver práticas meditativas regulares e técnicas de introspecção profunda",
+        "Estudar filosofias espirituais, psicologia transpessoal ou tradições místicas autênticas",
+        "Cultivar relacionamentos com pessoas que compartilham interesses em crescimento espiritual",
+        "Praticar journaling e análise de sonhos para desenvolver conexão com o inconsciente"
+      ]
+    },
+    8: {
+      titulo: "O Domínio do Poder Material e Abundância Consciente",
+      significado: "O desafio cármico do número 8 envolve aprender a navegar conscientemente pelo mundo do poder material, abundância financeira e autoridade terrena sem perder a integridade espiritual ou se tornar escravo das ambições materiais. Este desafio surge quando a alma precisa desenvolver uma relação saudável com dinheiro, sucesso e poder, aprendendo que a verdadeira abundância vem do equilíbrio entre prosperidade material e riqueza espiritual. Frequentemente, pessoas com este desafio oscilam entre extremos: ou rejeitam completamente o mundo material por considerá-lo 'não-espiritual', ou se tornam obcecadas por acumulação material perdendo de vista valores mais elevados.",
+      licoes: [
+        "Abundância Consciente: Desenvolver capacidade de criar prosperidade material de forma ética e sustentável",
+        "Poder Responsável: Aprender a usar autoridade e influência para benefício coletivo, não apenas pessoal",
+        "Equilíbrio Material-Espiritual: Integrar sucesso mundano com valores espirituais autênticos",
+        "Generosidade Sábia: Cultivar capacidade de compartilhar recursos de forma que empodere outros"
+      ],
+      sinais: [
+        "Relacionamento disfuncional com dinheiro: ou escassez crônica ou acumulação compulsiva",
+        "Tendência a medir valor próprio e alheio principalmente através de conquistas materiais",
+        "Dificuldade em delegar responsabilidades ou confiar em outros com questões importantes",
+        "Conflitos recorrentes entre ambições pessoais e considerações éticas ou espirituais"
+      ],
+      estrategias: [
+        "Desenvolver educação financeira consciente e práticas de investimento ético",
+        "Cultivar generosidade através de doações regulares e trabalho voluntário significativo",
+        "Buscar mentoria de pessoas que conseguiram equilibrar sucesso material com integridade espiritual",
+        "Praticar gratidão diária e reconhecimento da abundância já presente na vida"
+      ]
+    }
+  };
+
+  const desafio = desafios[numeroDesafio] || {
+    titulo: `A Lição do Número ${numeroDesafio}`,
+    significado: `O desafio cármico do número ${numeroDesafio} representa lições específicas que sua alma escolheu desenvolver nesta encarnação.`,
+    licoes: ["Desenvolvimento das qualidades associadas ao número"],
+    sinais: ["Padrões que indicam a necessidade de trabalhar este aspecto"],
+    estrategias: ["Práticas para desenvolver as qualidades necessárias"]
+  };
+
+  return `
+    <div style="background: rgba(240, 170, 83, 0.1); border: 1px solid #f0aa53; border-radius: 15px; padding: 25px; margin-bottom: 30px;">
+      <h4 style="color: #f0aa53; text-align: center; margin-bottom: 20px; font-size: 22px;">Desafio Cármico ${indice} - ${desafio.titulo}</h4>
+      
+      <div style="background: rgba(62, 10, 41, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #f0aa53;">
+        <h5 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">🌟 SIGNIFICADO DO DESAFIO</h5>
+        <p style="color: #f2eaff; font-size: 14px; line-height: 1.8; text-align: justify;">${desafio.significado}</p>
+      </div>
+      
+      <div style="background: rgba(242, 234, 255, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #f2eaff;">
+        <h5 style="color: #f2eaff; margin-bottom: 15px; font-size: 18px;">✨ LIÇÕES PRINCIPAIS</h5>
+        <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+          ${desafio.licoes.map(licao => `<li style="margin-bottom: 8px;">${licao}</li>`).join('')}
+        </ul>
+      </div>
+      
+      <div style="background: rgba(240, 170, 83, 0.1); padding: 20px; border-radius: 10px; margin-bottom: 20px; border-left: 4px solid #f0aa53;">
+        <h5 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">⚠️ SINAIS DE MANIFESTAÇÃO</h5>
+        <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+          ${desafio.sinais.map(sinal => `<li style="margin-bottom: 8px;">${sinal}</li>`).join('')}
+        </ul>
+      </div>
+      
+      <div style="background: rgba(240, 170, 83, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #f0aa53;">
+        <h5 style="color: #f0aa53; margin-bottom: 15px; font-size: 18px;">🛠️ ESTRATÉGIAS DE TRANSFORMAÇÃO</h5>
+        <ul style="color: #f2eaff; font-size: 14px; line-height: 1.6; padding-left: 20px;">
+          ${desafio.estrategias.map(estrategia => `<li style="margin-bottom: 8px;">${estrategia}</li>`).join('')}
+        </ul>
+      </div>
+    </div>
+  `;
+}
+
+// Funções dos Pináculos da Vida
+function preencherExemploPinaculos() {
+  document.getElementById("nomePinaculos").value = "Maria Silva Santos";
+  document.getElementById("dataPinaculos").value = "1990-05-15";
+}
+
+function limparPinaculos() {
+  document.getElementById("nomePinaculos").value = "";
+  document.getElementById("dataPinaculos").value = "";
+  document.getElementById("resultados-pinaculos").innerHTML = "";
+  document.getElementById("resultados-pinaculos").classList.add("hidden");
+}
+
+function calcularPinaculosCompletos() {
+  const nome = document.getElementById("nomePinaculos").value.trim();
+  const data = document.getElementById("dataPinaculos").value;
+  
+  if (!nome || !data) {
+    alert("Por favor, preencha todos os campos!");
+    return;
+  }
+  
+  const [ano, mes, dia] = data.split('-').map(Number);
+  
+  // Calcular os 4 pináculos
+  const pináculo1 = reduzirNumero(mes + dia);
+  const pináculo2 = reduzirNumero(dia + ano);
+  const pináculo3 = reduzirNumero(pináculo1 + pináculo2);
+  const pináculo4 = reduzirNumero(mes + ano);
+  
+  // Calcular idades dos ciclos
+  const destino = calcularDestino(data);
+  const idade1 = 36 - destino;
+  const idade2 = idade1 + 9;
+  const idade3 = idade2 + 9;
+  
+  const resultadosDiv = document.getElementById("resultados-pinaculos");
+  
+  // Função para buscar interpretação dos pináculos - SOLUÇÃO DEFINITIVA
+  const buscarInterpretacaoPinaculo = (numero) => {
+    // Forçar uso das interpretações pitagóricas que sabemos que funcionam
+    if (window.interpretacoesPitagoricas && window.interpretacoesPitagoricas.motivacao && window.interpretacoesPitagoricas.motivacao[numero]) {
+      const dados = window.interpretacoesPitagoricas.motivacao[numero];
+      if (dados && dados.texto) {
+        return dados.texto;
+      }
+    }
+    
+    // Fallback para interpretações básicas por número
+    const interpretacoesBasicas = {
+      1: "Período de despertar da individualidade e liderança pioneira. Momento de aprender a ser um líder natural que inspira outros através do exemplo pessoal de coragem e determinação.",
+      2: "Fase de cultivo da diplomacia sagrada e cooperação harmoniosa. Desenvolvimento das artes refinadas da diplomacia consciente e sensibilidade emocional elevada.",
+      3: "Período de expressão criativa autêntica e comunicação inspiradora. Momento de desenvolver talentos artísticos e capacidade de inspirar outros.",
+      4: "Fase de construção metódica e organização sistemática. Desenvolvimento de disciplina, persistência e capacidade de criar estruturas sólidas.",
+      5: "Período de liberdade expansiva e aventura transformadora. Momento de explorar novos horizontes e abracar mudanças com coragem.",
+      6: "Fase de responsabilidade amorosa e serviço compassivo. Desenvolvimento do cuidado com família, comunidade e responsabilidades sociais.",
+      7: "Período de busca espiritual profunda e sabedoria interior. Momento de introspecção, estudo e desenvolvimento da consciência espiritual.",
+      8: "Fase de conquista material e liderança executiva. Desenvolvimento de habilidades de gestão, negócios e realização material.",
+      9: "Período de serviço universal e sabedoria humanitária. Momento de compartilhar conhecimento e servir a humanidade com compaixao."
+    };
+    
+    return interpretacoesBasicas[numero] || "Interpretação em desenvolvimento.";
+  };
+  
+  // Buscar interpretações para cada pináculo
+  const interpretacao1 = buscarInterpretacaoPinaculo(pináculo1);
+  const interpretacao2 = buscarInterpretacaoPinaculo(pináculo2);
+  const interpretacao3 = buscarInterpretacaoPinaculo(pináculo3);
+  const interpretacao4 = buscarInterpretacaoPinaculo(pináculo4);
+  
+  resultadosDiv.innerHTML = `
+    <div class="resultado-header">
+      <h3>🏔️ Pináculos da Vida Completos</h3>
+      <div class="numeros-resumo">${nome} - ${data}</div>
+    </div>
+    <div class="interpretacao-container">
+      <h4>🌟 Seus Quatro Grandes Ciclos</h4>
+      
+      <div class="pináculo-secao">
+        <h5>1º Pináculo (${pináculo1}) - 0 a ${idade1} anos</h5>
+        <div class="interpretacao-texto">${interpretacao1}</div>
+      </div>
+      
+      <div class="pináculo-secao">
+        <h5>2º Pináculo (${pináculo2}) - ${idade1 + 1} a ${idade2} anos</h5>
+        <div class="interpretacao-texto">${interpretacao2}</div>
+      </div>
+      
+      <div class="pináculo-secao">
+        <h5>3º Pináculo (${pináculo3}) - ${idade2 + 1} a ${idade3} anos</h5>
+        <div class="interpretacao-texto">${interpretacao3}</div>
+      </div>
+      
+      <div class="pináculo-secao">
+        <h5>4º Pináculo (${pináculo4}) - ${idade3 + 1}+ anos</h5>
+        <div class="interpretacao-texto">${interpretacao4}</div>
+      </div>
+    </div>
+  `;
+  
+  resultadosDiv.classList.remove("hidden");
+  resultadosDiv.scrollIntoView({ behavior: "smooth" });
+}
+
+// Funções da Sinastria Numerológica
+function preencherExemploSinastria() {
+  document.getElementById("nomePessoa1").value = "Maria Silva Santos";
+  document.getElementById("dataPessoa1").value = "1990-05-15";
+  document.getElementById("nomePessoa2").value = "João Carlos Oliveira";
+  document.getElementById("dataPessoa2").value = "1988-12-03";
+}
+
+function calcularSinastria() {
+  const nome1 = document.getElementById("nomePessoa1").value.trim();
+  const data1 = document.getElementById("dataPessoa1").value;
+  const nome2 = document.getElementById("nomePessoa2").value.trim();
+  const data2 = document.getElementById("dataPessoa2").value;
+
+  if (!nome1 || !data1 || !nome2 || !data2) {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
+
+  // Obter perfis completos para cada pessoa
+  const perfil1 = calcularPerfilNumerologico(nome1, data1);
+  const perfil2 = calcularPerfilNumerologico(nome2, data2);
+
+  const motivacao1 = perfil1.motivacao;
+  const impressao1 = perfil1.impressao;
+  const expressao1 = perfil1.expressao;
+  const destino1 = perfil1.destino;
+
+  const motivacao2 = perfil2.motivacao;
+  const impressao2 = perfil2.impressao;
+  const expressao2 = perfil2.expressao;
+  const destino2 = perfil2.destino;
+
+  // Calcular percentuais de compatibilidade
+  const compatMotiv = calcularCompatibilidade(motivacao1, motivacao2);
+  const compatImpressao = calcularCompatibilidade(impressao1, impressao2);
+  const compatExpressao = calcularCompatibilidade(expressao1, expressao2);
+  const compatDestino = calcularCompatibilidade(destino1, destino2);
+
+  const compatibilidadeGeral = Math.round((compatMotiv + compatImpressao + compatExpressao + compatDestino) / 4);
+
+  // Determinar número para análise expandida usando a soma dos destinos
+  const numeroAnalise = reduzirNumero(destino1 + destino2);
+
+  // Formatar análise expandida, se disponível
+  let analiseHTML = '';
+  if (window.sinastria_expandida && window.sinastria_expandida[numeroAnalise]) {
+    const analise = window.sinastria_expandida[numeroAnalise];
+    // Montar HTML com campos principais
+    if (analise.significado) {
+      analiseHTML += `<p><strong>Significado:</strong> ${analise.significado}</p>`;
+    }
+    if (analise.descricao) {
+      analiseHTML += `<p>${analise.descricao}</p>`;
+    }
+    const camposLista = ['pontos_positivos','pontos_negativos','o_que_aproveitar','o_que_evitar','cotidiano','financeiro','pessoal','espiritual','crencas_valores'];
+    camposLista.forEach(chave => {
+      const valor = analise[chave];
+      if (valor) {
+        const titulo = chave.replace(/_/g, ' ');
+        if (Array.isArray(valor)) {
+          analiseHTML += `<p><strong>${titulo.charAt(0).toUpperCase() + titulo.slice(1)}:</strong> ${valor.join(', ')}</p>`;
+        } else {
+          analiseHTML += `<p><strong>${titulo.charAt(0).toUpperCase() + titulo.slice(1)}:</strong> ${valor}</p>`;
+        }
+      }
+    });
+  } else {
+    analiseHTML = `<p>Interpretação detalhada para o número ${numeroAnalise} em desenvolvimento.</p>`;
+  }
+
+  // Exibir resultados
+  const resultado = document.getElementById("resultados-sinastria");
+  if (!resultado) {
+    console.error("Elemento resultados-sinastria não encontrado!");
+    return;
+  }
+
+  // Obter aspectos da vida para o relacionamento
+  const aspectosVida = obterAspectosVidaSinastria(numeroAnalise, compatibilidadeGeral);
+  
+  resultado.innerHTML = `
+    <div class="resultado-header" style="background: linear-gradient(135deg, #3e0a29 0%, #0b1836 100%); padding: 20px; border-radius: 15px; margin-bottom: 20px; text-align: center;">
+      <h3 style="color: #f2eaff; margin: 0 0 10px 0; font-size: 24px;">💕 Sinastria Numerológica</h3>
+      <div style="color: #f0aa53; font-size: 18px; font-weight: bold;">Compatibilidade Geral: ${compatibilidadeGeral}%</div>
+      <div style="color: #b2d1b1; font-size: 14px; margin-top: 10px;">União ${nome1} & ${nome2} - Número da Pareja: ${numeroAnalise}</div>
+    </div>
+    
+    <div class="interpretacao-container">
+      <div class="sinastria-pessoas" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+        <div style="background: rgba(62, 10, 41, 0.1); border: 2px solid #3e0a29; border-radius: 10px; padding: 15px;">
+          <h4 style="color: #3e0a29; margin: 0 0 10px 0;">👤 ${nome1}</h4>
+          <p style="color: #f2eaff; margin: 0;">Motivação: ${motivacao1} | Impressão: ${impressao1}<br>Expressão: ${expressao1} | Destino: ${destino1}</p>
+        </div>
+        <div style="background: rgba(11, 24, 54, 0.1); border: 2px solid #0b1836; border-radius: 10px; padding: 15px;">
+          <h4 style="color: #0b1836; margin: 0 0 10px 0;">👤 ${nome2}</h4>
+          <p style="color: #f2eaff; margin: 0;">Motivação: ${motivacao2} | Impressão: ${impressao2}<br>Expressão: ${expressao2} | Destino: ${destino2}</p>
+        </div>
+      </div>
+      
+      <div style="background: rgba(62, 10, 41, 0.05); border-radius: 15px; padding: 20px; margin-bottom: 30px;">
+        <h4 style="color: #3e0a29; text-align: center; margin: 0 0 20px 0; font-size: 20px;">🌟 Contexto do Relacionamento Atual</h4>
+        <p style="color: #f2eaff; text-align: center; line-height: 1.6; font-size: 16px;">${aspectosVida.contexto}</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 30px;">
+        <div style="background: rgba(62, 10, 41, 0.1); border-left: 4px solid #3e0a29; border-radius: 8px; padding: 15px;">
+          <h5 style="color: #3e0a29; margin: 0 0 10px 0; font-size: 16px;">💕 AMOR & INTIMIDADE</h5>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.5; margin: 0;">${aspectosVida.amor.length > 120 ? aspectosVida.amor.substring(0, 120) + '...' : aspectosVida.amor}</p>
+        </div>
+        <div style="background: rgba(240, 170, 83, 0.1); border-left: 4px solid #f0aa53; border-radius: 8px; padding: 15px;">
+          <h5 style="color: #f0aa53; margin: 0 0 10px 0; font-size: 16px;">🏠 VIDA DOMÉSTICA</h5>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.5; margin: 0;">${aspectosVida.domestica.length > 120 ? aspectosVida.domestica.substring(0, 120) + '...' : aspectosVida.domestica}</p>
+        </div>
+        <div style="background: rgba(178, 209, 177, 0.1); border-left: 4px solid #b2d1b1; border-radius: 8px; padding: 15px;">
+          <h5 style="color: #b2d1b1; margin: 0 0 10px 0; font-size: 16px;">💰 FINANÇAS CONJUNTAS</h5>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.5; margin: 0;">${aspectosVida.financas.length > 120 ? aspectosVida.financas.substring(0, 120) + '...' : aspectosVida.financas}</p>
+        </div>
+        <div style="background: rgba(11, 24, 54, 0.1); border-left: 4px solid #0b1836; border-radius: 8px; padding: 15px;">
+          <h5 style="color: #0b1836; margin: 0 0 10px 0; font-size: 16px;">🤝 SOCIEDADE & AMIGOS</h5>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.5; margin: 0;">${aspectosVida.social.length > 120 ? aspectosVida.social.substring(0, 120) + '...' : aspectosVida.social}</p>
+        </div>
+        <div style="background: rgba(240, 170, 83, 0.1); border-left: 4px solid #f0aa53; border-radius: 8px; padding: 15px;">
+          <h5 style="color: #f0aa53; margin: 0 0 10px 0; font-size: 16px;">🎯 OBJETIVOS COMUNS</h5>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.5; margin: 0;">${aspectosVida.objetivos.length > 120 ? aspectosVida.objetivos.substring(0, 120) + '...' : aspectosVida.objetivos}</p>
+        </div>
+        <div style="background: rgba(178, 209, 177, 0.1); border-left: 4px solid #b2d1b1; border-radius: 8px; padding: 15px;">
+          <h5 style="color: #b2d1b1; margin: 0 0 10px 0; font-size: 16px;">🌱 CRESCIMENTO MÚTUO</h5>
+          <p style="color: #f2eaff; font-size: 14px; line-height: 1.5; margin: 0;">${aspectosVida.crescimento.length > 120 ? aspectosVida.crescimento.substring(0, 120) + '...' : aspectosVida.crescimento}</p>
+        </div>
+      </div>
+
+      <div style="text-align: center; margin: 30px 0;">
+        <button onclick="window.open('sinastria-${numeroAnalise}.html', '_blank')" 
+                style="background: linear-gradient(135deg, #f0aa53 0%, #b2d1b1 100%); 
+                       color: #0b1836; border: none; padding: 15px 30px; 
+                       border-radius: 25px; font-size: 16px; font-weight: bold; 
+                       cursor: pointer; transition: all 0.3s ease;
+                       box-shadow: 0 4px 15px rgba(240, 170, 83, 0.3);">
+          📖 LER ANÁLISE COMPLETA DA SINASTRIA
+        </button>
+      </div>
+      
+      <div class="compatibilidade-detalhes" style="background: rgba(11, 24, 54, 0.05); border-radius: 15px; padding: 20px;">
+        <h4 style="color: #0b1836; text-align: center; margin: 0 0 20px 0;">💖 Análise de Compatibilidade Numerológica</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+          <div style="background: rgba(62, 10, 41, 0.1); border-radius: 8px; padding: 15px;">
+            <strong style="color: #3e0a29;">Motivação (${motivacao1} ↔ ${motivacao2}): ${compatMotiv}%</strong>
+            <p style="color: #f2eaff; font-size: 14px; margin: 5px 0 0 0;">Compatibilidade dos desejos internos e motivações profundas.</p>
+          </div>
+          <div style="background: rgba(240, 170, 83, 0.1); border-radius: 8px; padding: 15px;">
+            <strong style="color: #f0aa53;">Impressão (${impressao1} ↔ ${impressao2}): ${compatImpressao}%</strong>
+            <p style="color: #f2eaff; font-size: 14px; margin: 5px 0 0 0;">Compatibilidade da primeira impressão e energia externa.</p>
+          </div>
+          <div style="background: rgba(178, 209, 177, 0.1); border-radius: 8px; padding: 15px;">
+            <strong style="color: #b2d1b1;">Expressão (${expressao1} ↔ ${expressao2}): ${compatExpressao}%</strong>
+            <p style="color: #f2eaff; font-size: 14px; margin: 5px 0 0 0;">Compatibilidade dos talentos naturais e forma de expressão.</p>
+          </div>
+          <div style="background: rgba(11, 24, 54, 0.1); border-radius: 8px; padding: 15px;">
+            <strong style="color: #0b1836;">Destino (${destino1} ↔ ${destino2}): ${compatDestino}%</strong>
+            <p style="color: #f2eaff; font-size: 14px; margin: 5px 0 0 0;">Compatibilidade dos caminhos de vida e propósitos.</p>
+          </div>
+        </div>
+        
+        <div style="background: rgba(62, 10, 41, 0.1); border-radius: 10px; padding: 20px; margin-top: 20px;">
+          <h4 style="color: #3e0a29; margin: 0 0 15px 0;">🔮 Análise Expandida do Relacionamento</h4>
+          <div style="color: #f2eaff; line-height: 1.6;">${analiseHTML}</div>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  resultado.classList.remove("hidden");
+  resultado.scrollIntoView({ behavior: "smooth" });
+}
+
+// Função auxiliar para calcular compatibilidade entre dois números
+function calcularCompatibilidade(num1, num2) {
+  const diferenca = Math.abs(num1 - num2);
+  if (diferenca === 0) return 100;
+  if (diferenca === 1) return 85;
+  if (diferenca === 2) return 70;
+  if (diferenca === 3) return 60;
+  if (diferenca === 4) return 50;
+  if (diferenca === 5) return 45;
+  if (diferenca === 6) return 40;
+  if (diferenca === 7) return 35;
+  if (diferenca === 8) return 30;
+  return 25;
+}
+
+function limparSinastria() {
+  document.getElementById("nomePessoa1").value = "";
+  document.getElementById("dataPessoa1").value = "";
+  document.getElementById("nomePessoa2").value = "";
+  document.getElementById("dataPessoa2").value = "";
+  document.getElementById("resultados-sinastria").innerHTML = "";
+  document.getElementById("resultados-sinastria").classList.add("hidden");
+}
+
+// Funções de navegação entre seções
+function changeTab(secaoId) {
+  // Ocultar todas as seções
+  const secoes = document.querySelectorAll('.section');
+  secoes.forEach(secao => secao.classList.remove('active'));
+  
+  // Remover classe active de todos os botões de navegação
+  const botoes = document.querySelectorAll('.nav-tab');
+  botoes.forEach(botao => botao.classList.remove('active'));
+  
+  // Mostrar seção selecionada
+  const secaoSelecionada = document.getElementById(secaoId);
+  if (secaoSelecionada) {
+    secaoSelecionada.classList.add('active');
+  }
+  
+  // Ativar botão correspondente
+  const botaoAtivo = document.querySelector(`[onclick="changeTab('${secaoId}')"]`);
+  if (botaoAtivo) {
+    botaoAtivo.parentElement.classList.add('active');
+  }
+}
+
+function mostrarSecao(secaoId) {
+  // Ocultar todas as seções
+  const secoes = document.querySelectorAll('.section');
+  secoes.forEach(secao => secao.classList.remove('active'));
+  
+  // Remover classe active de todos os botões
+  const botoes = document.querySelectorAll('.nav-button');
+  botoes.forEach(botao => botao.classList.remove('active'));
+  
+  // Mostrar seção selecionada
+  const secaoSelecionada = document.getElementById(secaoId);
+  if (secaoSelecionada) {
+    secaoSelecionada.classList.add('active');
+  }
+  
+  // Ativar botão correspondente
+  const botaoAtivo = document.querySelector(`[onclick="mostrarSecao('${secaoId}')"]`);
+  if (botaoAtivo) {
+    botaoAtivo.classList.add('active');
+  }
+}
+
+// Função para obter aspectos da vida baseados nos números pitagóricos
+function obterAspectosVidaPitagorico(numero, tipo) {
+  const aspectos = {
+    1: {
+      aprendizado: "Desenvolver independência e liderança. Aprender a confiar em si mesmo e tomar iniciativas. O número 1 ensina sobre pioneirismo e originalidade.",
+      relacionamentos: "Buscar parceiros que respeitem sua independência. Evitar relacionamentos possessivos. Aprender a equilibrar liderança com cooperação.",
+      carreira: "Excelente em posições de liderança, empreendedorismo e inovação. Carreiras que exigem iniciativa e originalidade são ideais.",
+      crescimento: "Desenvolver autoconfiança sem arrogância. Aprender a trabalhar em equipe mantendo sua individualidade. Cultivar paciência com outros."
+    },
+    2: {
+      aprendizado: "Desenvolver cooperação e diplomacia. Aprender a trabalhar em equipe e mediar conflitos. O número 2 ensina sobre harmonia e parceria.",
+      relacionamentos: "Naturalmente inclinado a relacionamentos harmoniosos. Precisa aprender a não se anular pelo outro. Buscar equilíbrio entre dar e receber.",
+      carreira: "Excelente em trabalho em equipe, mediação, aconselhamento e áreas que envolvem cooperação e sensibilidade.",
+      crescimento: "Desenvolver assertividade sem perder a gentileza. Aprender a expressar suas necessidades. Cultivar autoestima independente da aprovação alheia."
+    },
+    3: {
+      aprendizado: "Desenvolver criatividade e comunicação. Aprender a expressar-se de forma autêntica e inspiradora. O número 3 ensina sobre alegria e otimismo.",
+      relacionamentos: "Buscar parceiros que apreciem sua criatividade e humor. Evitar relacionamentos que sufoquem sua expressão. Aprender a ser mais profundo.",
+      carreira: "Excelente em artes, comunicação, entretenimento, ensino e qualquer área que envolva criatividade e expressão.",
+      crescimento: "Desenvolver disciplina sem perder espontaneidade. Aprender a focar energia criativa. Cultivar profundidade emocional além da superfície."
+    },
+    4: {
+      aprendizado: "Desenvolver disciplina e organização. Aprender a construir bases sólidas e trabalhar com perseverança. O número 4 ensina sobre estabilidade.",
+      relacionamentos: "Buscar parceiros confiáveis e estáveis. Precisa aprender a ser mais flexível e espontâneo. Valorizar segurança emocional.",
+      carreira: "Excelente em administração, construção, contabilidade, engenharia e áreas que exigem organização e método.",
+      crescimento: "Desenvolver flexibilidade sem perder confiabilidade. Aprender a aceitar mudanças. Cultivar espontaneidade dentro da estrutura."
+    },
+    5: {
+      aprendizado: "Desenvolver liberdade e versatilidade. Aprender a abraçar mudanças e explorar novos horizontes. O número 5 ensina sobre experiência.",
+      relacionamentos: "Buscar parceiros que respeitem sua necessidade de liberdade. Evitar relacionamentos restritivos. Aprender a se comprometer.",
+      carreira: "Excelente em vendas, viagens, comunicação, marketing e áreas que oferecem variedade e movimento.",
+      crescimento: "Desenvolver compromisso sem perder liberdade. Aprender a terminar o que começa. Cultivar profundidade além da superfície."
+    },
+    6: {
+      aprendizado: "Desenvolver responsabilidade e cuidado. Aprender a nutrir e proteger outros. O número 6 ensina sobre amor incondicional e serviço.",
+      relacionamentos: "Naturalmente cuidadoso e protetor. Precisa aprender a não ser controlador. Buscar equilíbrio entre cuidar e permitir crescimento.",
+      carreira: "Excelente em saúde, educação, serviço social, artes e qualquer área que envolva cuidado e responsabilidade social.",
+      crescimento: "Desenvolver limites saudáveis no cuidado. Aprender a cuidar de si mesmo também. Cultivar amor sem possessividade."
+    },
+    7: {
+      aprendizado: "Desenvolver sabedoria e introspecção. Aprender a buscar verdades profundas e conhecimento espiritual. O número 7 ensina sobre mistério.",
+      relacionamentos: "Buscar parceiros que respeitem sua necessidade de solidão. Precisa aprender a se abrir emocionalmente. Valorizar conexões profundas.",
+      carreira: "Excelente em pesquisa, espiritualidade, análise, ciência e áreas que exigem profundidade e investigação.",
+      crescimento: "Desenvolver conexão emocional sem perder profundidade. Aprender a compartilhar sabedoria. Cultivar confiança nos outros."
+    },
+    8: {
+      aprendizado: "Desenvolver poder material e autoridade. Aprender a usar recursos de forma ética e construtiva. O número 8 ensina sobre manifestação.",
+      relacionamentos: "Buscar parceiros que respeitem suas ambições. Precisa aprender a não negligenciar relacionamentos por trabalho. Equilibrar poder e amor.",
+      carreira: "Excelente em negócios, finanças, administração executiva e áreas que envolvem poder e recursos materiais.",
+      crescimento: "Desenvolver generosidade com sucesso. Aprender a usar poder para o bem comum. Cultivar humildade com conquistas."
+    },
+    9: {
+      aprendizado: "Desenvolver compaixão universal e sabedoria. Aprender a servir a humanidade com amor incondicional. O número 9 ensina sobre completude.",
+      relacionamentos: "Buscar parceiros que compartilhem ideais humanitários. Precisa aprender a não se sacrificar excessivamente. Amar sem se perder.",
+      carreira: "Excelente em trabalho humanitário, artes, ensino, cura e qualquer área que sirva ao bem maior da humanidade.",
+      crescimento: "Desenvolver discernimento na generosidade. Aprender a receber além de dar. Cultivar amor próprio junto com amor universal."
+    }
+  };
+
+  const numeroReduzido = numero > 9 ? reduzirNumeroCompleto(numero) : numero;
+  return aspectos[numeroReduzido] || {
+    aprendizado: "Número especial com lições únicas de crescimento e desenvolvimento pessoal.",
+    relacionamentos: "Relacionamentos que oferecem oportunidades especiais de crescimento e compreensão mútua.",
+    carreira: "Caminhos profissionais únicos que permitem expressar talentos especiais e servir de forma diferenciada.",
+    crescimento: "Jornada de desenvolvimento pessoal com desafios e oportunidades especiais de evolução."
+  };
+}
+
+// Inicialização do sistema
+function inicializarSistema() {
+  // Mostrar primeira seção por padrão
+  if (typeof changeTab === 'function') {
+    changeTab('mapa-pitagorico');
+  }
+  
+  console.log("✅ SISTEMA FUNCIONAL CARREGADO COM SUCESSO!");
+}
+
+// Tentar inicializar imediatamente e também no DOMContentLoaded
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', inicializarSistema);
+} else {
+  // DOM já está pronto, inicializar imediatamente
+  inicializarSistema();
+}
+
+// Também inicializar no window.load como backup
+window.addEventListener('load', inicializarSistema);
