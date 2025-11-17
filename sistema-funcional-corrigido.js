@@ -158,9 +158,9 @@ function exibirResultadosMapa(perfil, nome, dataNascimento) {
     return;
   }
   
-  // Obter interpretações expandidas
-  const interpretacoes = window.interpretacoesPitagoricas || window.interpretacoesPitagoricasUltraExpandidas;
-  console.log('📜 Usando interpretações:', interpretacoes ? 'EXPANDIDAS' : 'BÁSICAS');
+  // Usar aspectos da vida originais
+  const aspectosVida = window.obterAspectosVidaPitagorico;
+  console.log('📜 Usando aspectos da vida originais:', aspectosVida ? 'CARREGADOS' : 'NÃO ENCONTRADOS');
   
   const html = `
     <div class="resultado-completo">
@@ -174,10 +174,20 @@ function exibirResultadosMapa(perfil, nome, dataNascimento) {
           <div class="numero">${perfil.motivacao}</div>
           <div class="titulo">Motivação Interior</div>
           <p>Seus desejos mais profundos e o que realmente move sua alma.</p>
-          ${interpretacoes && interpretacoes.motivacao && interpretacoes.motivacao[perfil.motivacao] ? 
-            `<div class="interpretacao-expandida">
-              <h5>${interpretacoes.motivacao[perfil.motivacao].titulo}</h5>
-              <p class="texto-expandido">${interpretacoes.motivacao[perfil.motivacao].texto}</p>
+          ${aspectosVida ? 
+            `<div class="aspectos-vida">
+              <div class="aspecto-item">
+                <strong>🌱 Aprendizado:</strong> ${aspectosVida(perfil.motivacao, 'motivacao').aprendizado}
+              </div>
+              <div class="aspecto-item">
+                <strong>💕 Relacionamentos:</strong> ${aspectosVida(perfil.motivacao, 'motivacao').relacionamentos}
+              </div>
+              <div class="aspecto-item">
+                <strong>💼 Carreira:</strong> ${aspectosVida(perfil.motivacao, 'motivacao').carreira}
+              </div>
+              <div class="aspecto-item">
+                <strong>✨ Crescimento:</strong> ${aspectosVida(perfil.motivacao, 'motivacao').crescimento}
+              </div>
             </div>` : ''}
         </div>
         
@@ -185,10 +195,20 @@ function exibirResultadosMapa(perfil, nome, dataNascimento) {
           <div class="numero">${perfil.impressao}</div>
           <div class="titulo">Impressão Causada</div>
           <p>Como as pessoas te veem e a primeira impressão que você causa.</p>
-          ${interpretacoes && interpretacoes.impressao && interpretacoes.impressao[perfil.impressao] ? 
-            `<div class="interpretacao-expandida">
-              <h5>${interpretacoes.impressao[perfil.impressao].titulo}</h5>
-              <p class="texto-expandido">${interpretacoes.impressao[perfil.impressao].texto}</p>
+          ${aspectosVida ? 
+            `<div class="aspectos-vida">
+              <div class="aspecto-item">
+                <strong>🌱 Aprendizado:</strong> ${aspectosVida(perfil.impressao, 'impressao').aprendizado}
+              </div>
+              <div class="aspecto-item">
+                <strong>💕 Relacionamentos:</strong> ${aspectosVida(perfil.impressao, 'impressao').relacionamentos}
+              </div>
+              <div class="aspecto-item">
+                <strong>💼 Carreira:</strong> ${aspectosVida(perfil.impressao, 'impressao').carreira}
+              </div>
+              <div class="aspecto-item">
+                <strong>✨ Crescimento:</strong> ${aspectosVida(perfil.impressao, 'impressao').crescimento}
+              </div>
             </div>` : ''}
         </div>
         
@@ -196,10 +216,20 @@ function exibirResultadosMapa(perfil, nome, dataNascimento) {
           <div class="numero">${perfil.expressao}</div>
           <div class="titulo">Expressão Pessoal</div>
           <p>Seus talentos naturais e como você se expressa no mundo.</p>
-          ${interpretacoes && interpretacoes.expressao && interpretacoes.expressao[perfil.expressao] ? 
-            `<div class="interpretacao-expandida">
-              <h5>${interpretacoes.expressao[perfil.expressao].titulo}</h5>
-              <p class="texto-expandido">${interpretacoes.expressao[perfil.expressao].texto}</p>
+          ${aspectosVida ? 
+            `<div class="aspectos-vida">
+              <div class="aspecto-item">
+                <strong>🌱 Aprendizado:</strong> ${aspectosVida(perfil.expressao, 'expressao').aprendizado}
+              </div>
+              <div class="aspecto-item">
+                <strong>💕 Relacionamentos:</strong> ${aspectosVida(perfil.expressao, 'expressao').relacionamentos}
+              </div>
+              <div class="aspecto-item">
+                <strong>💼 Carreira:</strong> ${aspectosVida(perfil.expressao, 'expressao').carreira}
+              </div>
+              <div class="aspecto-item">
+                <strong>✨ Crescimento:</strong> ${aspectosVida(perfil.expressao, 'expressao').crescimento}
+              </div>
             </div>` : ''}
         </div>
         
@@ -207,10 +237,20 @@ function exibirResultadosMapa(perfil, nome, dataNascimento) {
           <div class="numero">${perfil.destino}</div>
           <div class="titulo">Destino de Vida</div>
           <p>Sua missão principal nesta encarnação e propósito maior.</p>
-          ${interpretacoes && interpretacoes.destino && interpretacoes.destino[perfil.destino] ? 
-            `<div class="interpretacao-expandida">
-              <h5>${interpretacoes.destino[perfil.destino].titulo}</h5>
-              <p class="texto-expandido">${interpretacoes.destino[perfil.destino].texto}</p>
+          ${aspectosVida ? 
+            `<div class="aspectos-vida">
+              <div class="aspecto-item">
+                <strong>🌱 Aprendizado:</strong> ${aspectosVida(perfil.destino, 'destino').aprendizado}
+              </div>
+              <div class="aspecto-item">
+                <strong>💕 Relacionamentos:</strong> ${aspectosVida(perfil.destino, 'destino').relacionamentos}
+              </div>
+              <div class="aspecto-item">
+                <strong>💼 Carreira:</strong> ${aspectosVida(perfil.destino, 'destino').carreira}
+              </div>
+              <div class="aspecto-item">
+                <strong>✨ Crescimento:</strong> ${aspectosVida(perfil.destino, 'destino').crescimento}
+              </div>
             </div>` : ''}
         </div>
       </div>
@@ -643,10 +683,10 @@ function exibirResultadosSinastria(perfil1, perfil2, compatibilidade, nome1, nom
     return;
   }
   
-  // Calcular número da pareja para sinastria expandida
+  // Calcular número da pareja para sinastria original
   const numeroPareja = reduzirNumero(perfil1.destino + perfil2.destino);
-  const sinastria = window.sinastria_expandida || window.sinastria_expandida_completa;
-  console.log('💕 Usando sinastria expandida:', sinastria ? 'EXPANDIDA' : 'BÁSICA', 'Número da Pareja:', numeroPareja);
+  const aspectosSinastria = window.obterAspectosVidaSinastria;
+  console.log('💕 Usando aspectos de sinastria originais:', aspectosSinastria ? 'CARREGADOS' : 'NÃO ENCONTRADOS', 'Número da Pareja:', numeroPareja);
   
   const html = `
     <div class="resultado-completo">
@@ -735,38 +775,37 @@ function exibirResultadosSinastria(perfil1, perfil2, compatibilidade, nome1, nom
         <p>Quanto menor o número, maior a harmonia entre os perfis numerológicos.</p>
       </div>
       
-      ${sinastria && sinastria[numeroPareja] ? 
-        `<div class="sinastria-expandida">
-          <h4>💕 Análise Expandida da Pareja - Número ${numeroPareja}</h4>
-          <div class="sinastria-detalhada">
-            <h5>${sinastria[numeroPareja].significado}</h5>
-            <p class="descricao-pareja">${sinastria[numeroPareja].descricao.substring(0, 600)}...</p>
-            <button class="btn-expandir" onclick="toggleTextoCompleto(this)">Ver Análise Completa</button>
-            <div class="texto-completo hidden">
-              <p>${sinastria[numeroPareja].descricao}</p>
-              
-              <div class="pontos-sinastria">
-                <div class="pontos-positivos">
-                  <h6>✨ Pontos Positivos da União:</h6>
-                  <ul>
-                    ${sinastria[numeroPareja].pontos_positivos.map(ponto => `<li>${ponto}</li>`).join('')}
-                  </ul>
-                </div>
-                
-                <div class="pontos-atencao">
-                  <h6>⚠️ Pontos de Atenção:</h6>
-                  <ul>
-                    ${sinastria[numeroPareja].pontos_negativos.map(ponto => `<li>${ponto}</li>`).join('')}
-                  </ul>
-                </div>
-                
-                <div class="recomendacoes">
-                  <h6>🌟 Recomendações para Aproveitar:</h6>
-                  <ul>
-                    ${sinastria[numeroPareja].o_que_aproveitar.map(rec => `<li>${rec}</li>`).join('')}
-                  </ul>
-                </div>
-              </div>
+      ${aspectosSinastria ? 
+        `<div class="sinastria-original">
+          <h4>💕 Aspectos da Vida em Casal - Número ${numeroPareja}</h4>
+          <div class="aspectos-grid">
+            <div class="aspecto-card">
+              <h5>🌍 Contexto da União</h5>
+              <p>${aspectosSinastria(numeroPareja, compatibilidade.geral).contexto}</p>
+            </div>
+            <div class="aspecto-card">
+              <h5>💕 Vida Amorosa</h5>
+              <p>${aspectosSinastria(numeroPareja, compatibilidade.geral).amor}</p>
+            </div>
+            <div class="aspecto-card">
+              <h5>🏠 Vida Doméstica</h5>
+              <p>${aspectosSinastria(numeroPareja, compatibilidade.geral).domestica}</p>
+            </div>
+            <div class="aspecto-card">
+              <h5>💰 Vida Financeira</h5>
+              <p>${aspectosSinastria(numeroPareja, compatibilidade.geral).financas}</p>
+            </div>
+            <div class="aspecto-card">
+              <h5>👥 Vida Social</h5>
+              <p>${aspectosSinastria(numeroPareja, compatibilidade.geral).social}</p>
+            </div>
+            <div class="aspecto-card">
+              <h5>🎯 Objetivos</h5>
+              <p>${aspectosSinastria(numeroPareja, compatibilidade.geral).objetivos}</p>
+            </div>
+            <div class="aspecto-card">
+              <h5>🌱 Crescimento</h5>
+              <p>${aspectosSinastria(numeroPareja, compatibilidade.geral).crescimento}</p>
             </div>
           </div>
         </div>` : ''}
@@ -929,4 +968,4 @@ setTimeout(inicializarSistema, 100);
 
 console.log("📜 Sistema Funcional Consolidado carregado!");
 
-// FORÇAR ATUALIZAÇÃO GITHUB PAGES - 2024-11-17 21:35:00 - TEXTOS EXPANDIDOS RESGATADOS
+// FORÇAR ATUALIZAÇÃO GITHUB PAGES - 2024-11-17 21:40:00 - TEXTOS ORIGINAIS RESGATADOS
