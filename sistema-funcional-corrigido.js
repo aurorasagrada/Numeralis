@@ -397,6 +397,20 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
+// Carregar interpretações expandidas diretamente
+if (!window.interpretacoesPitagoricasUltraExpandidas) {
+  // Carregar interpretações via fetch como fallback
+  fetch('./interpretacoes_pitagoricas_ultra_expandidas.js')
+    .then(response => response.text())
+    .then(scriptText => {
+      eval(scriptText);
+      console.log('✅ Interpretações carregadas via fetch!');
+    })
+    .catch(error => {
+      console.log('❌ Erro ao carregar interpretações:', error);
+    });
+}
+
 // Disponibilizar globalmente
 window.toggleTextoCompleto = toggleTextoCompleto;
 window.toggleAnaliseCompleta = toggleAnaliseCompleta;
